@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAIS - AI & Automation Solutions</title>
+    <meta property="og:image" content="https://bolt.new/static/og_default.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://bolt.new/static/og_default.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --background: 0 0% 7%;
+            --foreground: 0 0% 95%;
+            --border: 0 0% 20%;
+            --terminal-green: 142 76% 36%;
+            --terminal-green-bright: 142 76% 56%;
+            --industrial-orange: 25 95% 53%;
+            --industrial-orange-bright: 25 95% 60%;
+            --status-cyan: 190 90% 50%;
+            --status-cyan-bright: 190 90% 60%;
+            --accent-purple: 270 70% 60%;
+            --accent-purple-bright: 270 70% 70%;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: hsl(var(--background));
+            color: hsl(var(--foreground));
+        }
+
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .tracking-ultra-wide {
+            letter-spacing: 0.2em;
+        }
+
+        .diagonal-grid {
+            background-image:
+                linear-gradient(45deg, transparent 0%, rgba(255, 127, 36, 0.03) 50%, transparent 100%),
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
+        }
+
+        @keyframes blink-cursor {
+
+            0%,
+            49% {
+                border-right-color: rgba(255, 127, 36, 0.8);
+            }
+
+            50%,
+            100% {
+                border-right-color: transparent;
+            }
+        }
+
+        .terminal-input:focus {
+            animation: blink-cursor 1s step-end infinite;
+        }
+
+        @keyframes pulse-slow {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: scale(1.05);
+            }
+        }
+
+        .animate-pulse-slow {
+            animation: pulse-slow 3s ease-in-out infinite;
+        }
+
+        .bg-background {
+            background: hsl(var(--background));
+        }
+
+        .text-foreground {
+            color: hsl(var(--foreground));
+        }
+
+        .border-border {
+            border-color: hsl(var(--border));
+        }
+
+        .text-industrial-orange {
+            color: hsl(var(--industrial-orange));
+        }
+
+        .text-industrial-orange-bright {
+            color: hsl(var(--industrial-orange-bright));
+        }
+
+        .border-industrial-orange {
+            border-color: hsl(var(--industrial-orange));
+        }
+
+        .text-accent-purple-bright {
+            color: hsl(var(--accent-purple-bright));
+        }
+
+        .bg-accent-purple-bright {
+            background: hsl(var(--accent-purple-bright));
+        }
+
+        .text-status-cyan-bright {
+            color: hsl(var(--status-cyan-bright));
+        }
+
+        .bg-status-cyan-bright {
+            background: hsl(var(--status-cyan-bright));
+        }
+
+        .stat-card {
+            animation: statAppear 0.6s ease-out forwards;
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        @keyframes statAppear {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+                border-color: hsl(var(--border));
+            }
+
+            50% {
+                border-color: hsl(var(--industrial-orange));
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+                border-color: hsl(var(--border));
+            }
+        }
+
+        .service-card {
+            animation: cardAppear 0.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes cardAppear {
+            0% {
+                opacity: 0;
+                border-color: hsl(var(--border));
+            }
+
+            50% {
+                border-color: hsl(var(--industrial-orange));
+            }
+
+            100% {
+                opacity: 1;
+                border-color: hsl(var(--border));
+            }
+        }
+    </style>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: 'hsl(var(--background))',
+                        foreground: 'hsl(var(--foreground))',
+                        border: 'hsl(var(--border))',
+                    },
+                    fontFamily: {
+                        mono: ['JetBrains Mono', 'monospace'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="min-h-screen">
+    <!-- Header -->
+    <header
+        class="fixed top-0 left-0 right-0 z-50 border-b border-dashed border-border bg-background/95 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="#" class="flex items-center gap-3 hover:opacity-80 transition-opacity group">
+                    <div class="relative">
+                        <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            class="text-industrial-orange-bright animate-pulse-slow"
+                            style="filter: drop-shadow(0 0 12px rgba(255,107,0,0.6));">
+                            <g stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M 50 20 L 50 35" />
+                                <circle cx="50" cy="15" r="4" fill="currentColor" />
+                                <path d="M 65 25 L 60 30 L 57 37" />
+                                <circle cx="68" cy="22" r="4" fill="currentColor" />
+                                <path d="M 80 50 L 65 50" />
+                                <circle cx="85" cy="50" r="4" fill="currentColor" />
+                                <path d="M 75 65 L 70 60 L 63 57" />
+                                <circle cx="78" cy="68" r="4" fill="currentColor" />
+                                <path d="M 50 80 L 50 65" />
+                                <circle cx="50" cy="85" r="4" fill="currentColor" />
+                                <path d="M 25 75 L 30 70 L 37 63" />
+                                <circle cx="22" cy="78" r="4" fill="currentColor" />
+                                <path d="M 20 50 L 35 50" />
+                                <circle cx="15" cy="50" r="4" fill="currentColor" />
+                                <path d="M 35 25 L 40 30 L 43 37" />
+                                <circle cx="32" cy="22" r="4" fill="currentColor" />
+                                <circle cx="50" cy="50" r="12" stroke="currentColor" stroke-width="3" fill="none" />
+                            </g>
+                        </svg>
+                    </div>
+                    <span class="font-mono text-xl font-bold tracking-wider text-industrial-orange-bright">RAIS</span>
+                    <span class="hidden md:block text-xs text-gray-500 font-mono">v2.0.1</span>
+                </a>
+
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="#services"
+                        class="font-mono text-sm uppercase tracking-wider text-gray-400 hover:text-industrial-orange-bright transition-colors">Services</a>
+                    <a href="#capabilities"
+                        class="font-mono text-sm uppercase tracking-wider text-gray-400 hover:text-industrial-orange-bright transition-colors">Capabilities</a>
+                    <a href="#tech"
+                        class="font-mono text-sm uppercase tracking-wider text-gray-400 hover:text-industrial-orange-bright transition-colors">Tech
+                        Stack</a>
+                    <a href="#contact"
+                        class="font-mono text-sm uppercase tracking-wider text-gray-400 hover:text-industrial-orange-bright transition-colors">Contact</a>
+                </nav>
+
+                <div class="hidden md:flex items-center gap-2">
+                    <div class="w-2 h-2 bg-accent-purple-bright animate-pulse"></div>
+                    <span class="font-mono text-xs uppercase tracking-ultra-wide text-accent-purple-bright"
+                        style="text-shadow: 0 0 15px rgba(168, 85, 247, 0.6)">Online</span>
+                </div>
+
+                <button id="mobileMenuBtn" class="md:hidden text-industrial-orange-bright">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="hidden md:hidden border-t border-dashed border-border bg-background">
+            <nav class="flex flex-col px-4 py-4 gap-4">
+                <a href="#services"
+                    class="font-mono text-sm uppercase tracking-wider text-gray-400 hover:text-industrial-orange-bright transition-colors">Services</a>
+                <a href="#capabilities"
+                    class="font-mono text-sm uppercase tracking-wider text-gray-400 hover:text-industrial-orange-bright transition-colors">Capabilities</a>
+                <a href="#tech"
+                    class="font-mono text-sm uppercase tracking-wider text-gray-400 hover:text-industrial-orange-bright transition-colors">Tech
+                    Stack</a>
+                <a href="#contact"
+                    class="font-mono text-sm uppercase tracking-wider text-gray-400 hover:text-industrial-orange-bright transition-colors">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+        <div class="absolute inset-0 diagonal-grid opacity-50"></div>
+
+        <div class="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="relative border-2 border-dashed border-border p-8 md:p-12">
+                <!-- Corner Accents -->
+                <i data-lucide="plus" class="absolute -top-[1px] -left-[1px] w-3 h-3 text-industrial-orange"></i>
+                <i data-lucide="plus" class="absolute -top-[1px] -right-[1px] w-3 h-3 text-industrial-orange"></i>
+                <i data-lucide="plus" class="absolute -bottom-[1px] -left-[1px] w-3 h-3 text-industrial-orange"></i>
+                <i data-lucide="plus" class="absolute -bottom-[1px] -right-[1px] w-3 h-3 text-industrial-orange"></i>
+
+                <div class="mb-8">
+                    <div class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-ultra-wide">
+                        <span class="text-gray-500">Mission Control:</span>
+                        <span class="text-accent-purple-bright"
+                            style="text-shadow: 0 0 15px rgba(168, 85, 247, 0.6)">Ready</span>
+                        <span class="w-2 h-2 bg-accent-purple-bright animate-pulse rounded-sm"></span>
+                    </div>
+                </div>
+
+                <div class="space-y-6 mb-12">
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="terminal" class="w-8 h-8 text-industrial-orange-bright"></i>
+                        <span class="font-mono text-xs uppercase tracking-ultra-wide text-gray-500">
+                            Ritz AI Solutions
+                        </span>
+                    </div>
+
+                    <h1 class="font-mono text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-foreground uppercase leading-tight"
+                        style="text-shadow: 0 0 20px rgba(255, 127, 36, 0.5)">
+                        Automating<br>
+                        <span class="text-industrial-orange-bright">Destiny.</span>
+                    </h1>
+
+                    <p class="text-lg md:text-xl text-gray-400 max-w-2xl font-sans">
+                        AI solutions engineered to reclaim time and multiply workforce productivity.
+                    </p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4 mb-12">
+                    <a href="#contact"
+                        class="group relative px-8 py-4 border-2 border-industrial-orange font-mono text-sm uppercase tracking-wider text-industrial-orange-bright flex items-center justify-center gap-2 hover:scale-105 transition-all duration-200"
+                        style="text-shadow: 0 0 5px rgba(255, 127, 36, 0.4)">
+                        <span>Initiate Contact</span>
+                        <i data-lucide="chevron-right"
+                            class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+
+                    <a href="#services"
+                        class="group relative px-8 py-4 border border-dashed border-border font-mono text-sm uppercase tracking-wider text-gray-400 flex items-center justify-center gap-2 hover:border-industrial-orange hover:text-industrial-orange transition-all duration-200">
+                        <span>View Systems</span>
+                        <i data-lucide="chevron-right"
+                            class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="stat-card relative border border-dashed border-border p-4" style="animation-delay: 0s">
+                        <div class="font-mono text-3xl md:text-4xl font-bold text-industrial-orange-bright mb-1">50+
+                        </div>
+                        <div class="font-mono text-xs uppercase tracking-wider text-gray-500">Systems Deployed</div>
+                    </div>
+                    <div class="stat-card relative border border-dashed border-border p-4"
+                        style="animation-delay: 0.15s">
+                        <div class="font-mono text-3xl md:text-4xl font-bold text-industrial-orange-bright mb-1">24/7
+                        </div>
+                        <div class="font-mono text-xs uppercase tracking-wider text-gray-500">Uptime Protocol</div>
+                    </div>
+                    <div class="stat-card relative border border-dashed border-border p-4"
+                        style="animation-delay: 0.3s">
+                        <div class="font-mono text-3xl md:text-4xl font-bold text-industrial-orange-bright mb-1">100%
+                        </div>
+                        <div class="font-mono text-xs uppercase tracking-wider text-gray-500">AI Powered</div>
+                    </div>
+                    <div class="stat-card relative border border-dashed border-border p-4"
+                        style="animation-delay: 0.45s">
+                        <div class="font-mono text-3xl md:text-4xl font-bold text-industrial-orange-bright mb-1">&lt;48h
+                        </div>
+                        <div class="font-mono text-xs uppercase tracking-wider text-gray-500">Response Time</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 relative">
+        <div class="absolute inset-0 diagonal-grid opacity-30"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-16">
+                <div class="font-mono text-xs uppercase tracking-ultra-wide text-accent-purple-bright mb-4">
+                    [ Available Systems ]
+                </div>
+                <h2 class="font-mono text-4xl md:text-5xl font-bold text-foreground uppercase">
+                    Service Modules
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Service Card 1 -->
+                <div class="service-card group relative border-2 border-dashed border-border p-6 hover:border-industrial-orange transition-all duration-300 bg-background/50 backdrop-blur-sm"
+                    style="animation-delay: 0s">
+                    <i data-lucide="plus"
+                        class="absolute -top-[1px] -left-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
+                    <i data-lucide="plus"
+                        class="absolute -top-[1px] -right-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
+                    <i data-lucide="plus"
+                        class="absolute -bottom-[1px] -left-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
+                    <i data-lucide="plus"
+                        class="absolute -bottom-[1px] -right-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
+
+                    <div class="mb-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="font-mono text-xs text-gray-500">MODULE-A</div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-2 h-2 bg-accent-purple-bright animate-pulse"></div>
+                                <span
+                                    class="font-mono text-xs uppercase tracking-wider text-accent-purple-bright">Active</span>
+                            </div>
+                        </div>
+
+                        <i data-lucide="workflow"
+                            class="w-10 h-10 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors mb-4"></i>
+
+                        <h3 class="font-mono text-lg font-bold text-foreground mb-2 uppercase leading-tight">
+                            WORKFLOW ORCHESTRATION
+                        </h3>
+
+                        <div class="font-mono text-xs text-industrial-orange-bright uppercase tracking-wider mb-4">
+                            Eliminate Operational Friction
+                        </div>
+                    </div>
+
+                    <div class="mb-5">
+                        <div class="font-mono text-xs text-gray-500 uppercase tracking-wider mb-2">Mission Brief:</div>
+                        <p class="text-gray-400 text-xs leading-relaxed font-sans">
+                            Manual data entry is a security risk and a resource drain. We deploy 'invisible' logic
+                            layers that connect your fragmented software ecosystems. From student enrollment processing
+                            to inventory synchronization, our bots work in the background, error-free.
+                        </p>
+                    </div>
+
+                    <div class="mb-5">
+                        <div class="font-mono text-xs text-gray-500 uppercase tracking-wider mb-3">Capabilities:</div>
+                        <div class="space-y-2">
+                            <div class="flex items-start gap-2">
+                                <i data-lucide="check-square"
+                                    class="w-3 h-3 text-accent-purple-bright flex-shrink-0 mt-0.5"></i>
+                                <span class="text-gray-400 text-xs font-sans leading-snug">Cross-platform API Bridging
+                                    (n8n/Make)</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i data-lucide="check-square"
+                                    class="w-3 h-3 text-accent-purple-bright flex-shrink-0 mt-0.5"></i>
+                                <span class="text-gray-400 text-xs font-sans leading-snug">Automated Invoicing &
+                                    Compliance</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i data-lucide="check-square"
+                                    class="w-3 h-3 text-accent-purple-bright flex-shrink-0 mt-0.5"></i>
+                                <span class="text-gray-400 text-xs font-sans leading-snug">Zero-Touch Lead
+                                    Routing</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-5 border-t border-dashed border-border">
+                        <div class="font-mono text-xs text-gray-500 uppercase tracking-wider mb-2">Case Study Log:</div>
+                        <div
+                            class="bg-background/80 border border-accent-purple/30 p-3 font-mono text-xs text-accent-purple-bright leading-relaxed">
+                            TARGET: Regional Consulting Firm // OUTCOME: Reduced admin overhead by 65% in Week 1.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="service-card group relative border-2 border-dashed border-border p-6 hover:border-industrial-orange transition-all duration-300 bg-background/50 backdrop-blur-sm"
+                    style="animation-delay: 0.12s">
+                    <i data-lucide="plus"
+                        class="absolute -top-[1px] -left-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
+                    <i data-lucide="plus"
+                        class="absolute -top-[1px] -right-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
+                    <i data-lucide="plus"
+                        class="absolute -bottom-[1px] -left-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
+                    <i data-lucide="plus"
+                        class="absolute -bottom-[1px] -right-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
+
+                    <div class="mb-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="font-mono text-xs text-gray-500">MODULE-B</div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-2 h-2 bg-accent-purple-bright animate-pulse"></div>
+                                <span
+                                    class="font-mono text-xs uppercase tracking-wider text-accent-purple-bright">Active</span>
+                            </div>
+                        </div>
+
+                        <i data-lucide="bot"
+                            class="w-10 h-10 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors mb-4"></i>
+
+                        <h3 class="font-mono text-lg font-bold text-foreground mb-2 uppercase leading-tight">
+                            AUTONOMOUS VOICE & CHAT
+                        </h3>
+
+                        <div class="font-mono text-xs text-industrial-orange-bright uppercase tracking-wider mb-4">
+                            24/7 Frontline Defense
+                        </div>
+                    </div>
+
+                    <div class="mb-5">
+                        <div class="font-mono text-xs text-gray-500 uppercase tracking-wider mb-2">Mission Brief:</div>
+                        <p class="text-gray-400 text-xs leading-relaxed font-sans">
+                            Human staff should not answer the same question twice. We engineer AI agents capable of
+                            natural, voice-based negotiation and complex problem solving. Whether handling restaurant
+                            reservations during peak hours or guiding students through application forms, our agents
+                            never sleep.
+                        </p>
+                    </div>
+
+                    <div class="mb-5">
+                        <div class="font-mono text-xs text-gray-500 uppercase tracking-wider mb-3">Capabilities:</div>
+                        <div class="space-y-2">
+                            <div class="flex items-start gap-2">
+                                <i data-lucide="check-square"
+                                    class="w-3 h-3 text-accent-purple-bright flex-shrink-0 mt-0.5"></i>
+                                <span class="text-gray-400 text-xs font-sans leading-snug">Multi-Turn Voice
+                                    Conversations (Voiceflow)</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i data-lucide="check-square"
+                                    class="w-3 h-3 text-accent-purple-bright flex-shrink-0 mt-0.5"></i>
+                                <span class="text-gray-400 text-xs font-sans leading-snug">Instant Knowledge Base
+                                    Retrieval (RAG)</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i data-lucide="check-square"
+                                    class="w-3 h-3 text-accent-purple-bright flex-shrink-0 mt-0.5"></i>
+                                <span class="text-gray-400 text-xs font-sans leading-snug">Omni-channel Deployment
+                                    (Web/SMS/Phone)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-5 border-t border-dashed border-border">
+                        <div class="font-mono text-xs text-gray-500 uppercase tracking-wider mb-2">Case Study Log:</div>
+                        <div
+                            class="bg-background/80 border border-accent-purple/30 p-3 font-mono text-xs text-accent-purple-bright leading-relaxed">
+                            TARGET: Hospitality Sector // OUTCOME: 100% call answer rate. Zero missed reservations.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="service-card group relative border-2 border-dashed border-border p-6 hover:border-industrial-orange transition-all duration-300 bg-background/50 backdrop-blur-sm"
+                    style="animation-delay: 0.24s">
+                    <i data-lucide="plus"
+                        class="absolute -top-[1px] -left-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
+                    <i data-lucide="plus"
+                        class="absolute -top-[1px] -right-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
+                    <i data-lucide="plus"
+                        class="absolute -bottom-[1px] -left-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
+                    <i data-lucide="plus"
+                        class="absolute -bottom-[1px] -right-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
+
+                    <div class="mb-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="font-mono text-xs text-gray-500">MODULE-C</div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-2 h-2 bg-accent-purple-bright animate-pulse"></div>
+                                <span
+                                    class="font-mono text-xs uppercase tracking-wider text-accent-purple-bright">Active</span>
+                            </div>
+                        </div>
+
+                        <i data-lucide="database"
+                            class="w-10 h-10 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors mb-4"></i>
+
+                        <h3 class="font-mono text-lg font-bold text-foreground mb-2 uppercase leading-tight">
+                            PREDICTIVE INTELLIGENCE
+                        </h3>
+
+                        <div class="font-mono text-xs text-industrial-orange-bright uppercase tracking-wider mb-4">
+                            Weaponize Your Data
+                        </div>
+                    </div>
+
+                    <div class="mb-5">
+                        <div class="font-mono text-xs text-gray-500 uppercase tracking-wider mb-2">Mission Brief:</div>
+                        <p class="text-gray-400 text-xs leading-relaxed font-sans">
+                            Stop driving blind. We transform dormant spreadsheets into live, tactical dashboards. By
+                            visualizing cash flow, customer churn, and operational bottlenecks in real-time, you gain
+                            the foresight needed to pivot before the market does.
+                        </p>
+                    </div>
+
+                    <div class="mb-5">
+                        <div class="font-mono text-xs text-gray-500 uppercase tracking-wider mb-3">Capabilities:</div>
+                        <div class="space-y-2">
+                            <div class="flex items-start gap-2">
+                                <i data-lucide="check-square"
+                                    class="w-3 h-3 text-accent-purple-bright flex-shrink-0 mt-0.5"></i>
+                                <span class="text-gray-400 text-xs font-sans leading-snug">Live P&L & KPI
+                                    Dashboards</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i data-lucide="check-square"
+                                    class="w-3 h-3 text-accent-purple-bright flex-shrink-0 mt-0.5"></i>
+                                <span class="text-gray-400 text-xs font-sans leading-snug">Customer Behavior
+                                    Forecasting</span>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <i data-lucide="check-square"
+                                    class="w-3 h-3 text-accent-purple-bright flex-shrink-0 mt-0.5"></i>
+                                <span class="text-gray-400 text-xs font-sans leading-snug">Automated Weekly Intelligence
+                                    Briefs</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-5 border-t border-dashed border-border">
+                        <div class="font-mono text-xs text-gray-500 uppercase tracking-wider mb-2">Case Study Log:</div>
+                        <div
+                            class="bg-background/80 border border-accent-purple/30 p-3 font-mono text-xs text-accent-purple-bright leading-relaxed">
+                            TARGET: E-Commerce Operations // OUTCOME: Identified 20% wasted ad spend via automated
+                            audit.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why RAIS Section -->
+    <section id="capabilities" class="py-24 relative">
+        <div class="absolute inset-0 diagonal-grid opacity-30"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-16">
+                <div class="font-mono text-xs uppercase tracking-ultra-wide text-industrial-orange-bright mb-4">
+                    [ Core Capabilities ]
+                </div>
+                <h2 class="font-mono text-4xl md:text-5xl font-bold text-foreground uppercase">
+                    Why RAIS
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div
+                    class="group relative border border-dashed border-border p-6 hover:border-industrial-orange transition-all duration-300 flex flex-col items-center text-center">
+                    <i data-lucide="plus"
+                        class="absolute -top-[1px] -left-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
+                    <i data-lucide="plus"
+                        class="absolute -top-[1px] -right-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
+                    <i data-lucide="plus"
+                        class="absolute -bottom-[1px] -left-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
+                    <i data-lucide="plus"
+                        class="absolute -bottom-[1px] -right-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
+
+                    <div class="font-mono text-xs text-gray-500 mb-4">CAP-001</div>
+                    <div class="font-mono text-5xl md:text-6xl font-bold text-industrial-orange-bright mb-6">100% GDPR
+                    </div>
+                    <i data-lucide="shield"
+                        class="w-10 h-10 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors mb-4"></i>
+                    <h3 class="font-mono text-xl font-bold text-foreground mb-3 uppercase">Data Sovereignty</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed font-sans">
+                        Your data never leaves the European legal framework. We build local-first automation systems
+                        compliant with strict German privacy standards (DSGVO).
+                    </p>
+                </div>
+
+                <div
+                    class="group relative border border-dashed border-border p-6 hover:border-industrial-orange transition-all duration-300 flex flex-col items-center text-center">
+                    <i data-lucide="plus"
+                        class="absolute -top-[1px] -left-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
+                    <i data-lucide="plus"
+                        class="absolute -top-[1px] -right-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
+                    <i data-lucide="plus"
+                        class="absolute -bottom-[1px] -left-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
+                    <i data-lucide="plus"
+                        class="absolute -bottom-[1px] -right-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
+
+                    <div class="font-mono text-xs text-gray-500 mb-4">CAP-002</div>
+                    <div class="font-mono text-5xl md:text-6xl font-bold text-industrial-orange-bright mb-6">&lt;7d
+                    </div>
+                    <i data-lucide="zap"
+                        class="w-10 h-10 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors mb-4"></i>
+                    <h3 class="font-mono text-xl font-bold text-foreground mb-3 uppercase">Rapid Deployment</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed font-sans">
+                        From concept to production in days, not months. Agile methodology with continuous integration.
+                    </p>
+                </div>
+
+                <div
+                    class="group relative border border-dashed border-border p-6 hover:border-industrial-orange transition-all duration-300 flex flex-col items-center text-center">
+                    <i data-lucide="plus"
+                        class="absolute -top-[1px] -left-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
+                    <i data-lucide="plus"
+                        class="absolute -top-[1px] -right-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
+                    <i data-lucide="plus"
+                        class="absolute -bottom-[1px] -left-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
+                    <i data-lucide="plus"
+                        class="absolute -bottom-[1px] -right-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
+
+                    <div class="font-mono text-xs text-gray-500 mb-4">CAP-003</div>
+                    <div class="font-mono text-5xl md:text-6xl font-bold text-industrial-orange-bright mb-6">-70%</div>
+                    <i data-lucide="dollar-sign"
+                        class="w-10 h-10 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors mb-4"></i>
+                    <h3 class="font-mono text-xl font-bold text-foreground mb-3 uppercase">Cost Efficiency</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed font-sans">
+                        Reduce operational costs by up to 70%. Pay only for what you use. Transparent pricing.
+                    </p>
+                </div>
+
+                <div
+                    class="group relative border border-dashed border-border p-6 hover:border-industrial-orange transition-all duration-300 flex flex-col items-center text-center">
+                    <i data-lucide="plus"
+                        class="absolute -top-[1px] -left-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
+                    <i data-lucide="plus"
+                        class="absolute -top-[1px] -right-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
+                    <i data-lucide="plus"
+                        class="absolute -bottom-[1px] -left-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
+                    <i data-lucide="plus"
+                        class="absolute -bottom-[1px] -right-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
+
+                    <div class="font-mono text-xs text-gray-500 mb-4">CAP-004</div>
+                    <div class="font-mono text-5xl md:text-6xl font-bold text-industrial-orange-bright mb-6">24/7</div>
+                    <i data-lucide="globe"
+                        class="w-10 h-10 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors mb-4"></i>
+                    <h3 class="font-mono text-xl font-bold text-foreground mb-3 uppercase">Global Scale</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed font-sans">
+                        Deploy anywhere. Multi-region support. 24/7 monitoring and support across all time zones.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section id="tech" class="py-24 relative border-y border-dashed border-border">
+        <div class="absolute inset-0 diagonal-grid opacity-20"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-16 text-center">
+                <div class="font-mono text-xs uppercase tracking-ultra-wide text-industrial-orange-bright mb-4">
+                    [ Technology Stack ]
+                </div>
+                <h2 class="font-mono text-4xl md:text-5xl font-bold text-foreground uppercase">
+                    Arsenal
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-6">
+                <div
+                    class="relative border border-dashed border-border p-6 hover:border-industrial-orange transition-all duration-300 group">
+                    <i data-lucide="cpu"
+                        class="w-8 h-8 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors mb-4"></i>
+                    <div class="font-mono text-sm uppercase tracking-wider text-industrial-orange-bright mb-4">AI/ML
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2">
+                            <span class="w-1 h-1 bg-industrial-orange"></span>
+                            OpenAI GPT-4
+                        </li>
+                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2">
+                            <span class="w-1 h-1 bg-industrial-orange"></span>
+                            Claude
+                        </li>
+                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2">
+                            <span class="w-1 h-1 bg-industrial-orange"></span>
+                            TensorFlow
+                        </li>
+                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2">
+                            <span class="w-1 h-1 bg-industrial-orange"></span>
+                            PyTorch
+                        </li>
+                    </ul>
+                </div>
+
+                <div
+                    class="relative border border-dashed border-border p-6 hover:border-industrial-orange transition-all duration-300 group">
+                    <i data-lucide="cloud"
+                        class="w-8 h-8 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors mb-4"></i>
+                    <div class="font-mono text-sm uppercase tracking-wider text-industrial-orange-bright mb-4">Cloud
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2">
+                            <span class="w-1 h-1 bg-industrial-orange"></span>
+                            AWS
+                        </li>
+                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2">
+                            <span class="w-1 h-1 bg-industrial-orange"></span>
+                            Google Cloud
+                        </li>
+                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2">
+                            <span class="w-1 h-1 bg-industrial-orange"></span>
+                            Azure
+                        </li>
+                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2">
+                            <span class="w-1 h-1 bg-industrial-orange"></span>
+                            Vercel
+                        </li>
+                    </ul>
+                </div>
+
+                <div
+                    class="relative border border-dashed border-border p-6 hover:border-industrial-orange transition-all duration-300 group">
+                    <i data-lucide="lock"
+                        class="w-8 h-8 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors mb-4"></i>
+                    <div class="font-mono text-sm uppercase tracking-wider text-industrial-orange-bright mb-4">Backend
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2">
+                            <span class="w-1 h-1 bg-industrial-orange"></span>
+                            Node.js
+                        </li>
+                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2">
+                            <span class="w-1 h-1 bg-industrial-orange"></span>
+                            Python
+                        </li>
+                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2">
+                            <span class="w-1 h-1 bg-industrial-orange"></span>
+                            PostgreSQL
+                        </li>
+                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2">
+                            <span class="w-1 h-1 bg-industrial-orange"></span>
+                            Redis
+                        </li>
+                    </ul>
+                </div>
+
+                <div
+                    class="relative border border-dashed border-border p-6 hover:border-industrial-orange transition-all duration-300 group">
+                    <i data-lucide="zap"
+                        class="w-8 h-8 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors mb-4"></i>
+                    <div class="font-mono text-sm uppercase tracking-wider text-industrial-orange-bright mb-4">
+                        Orchestration</div>
+                    <ul class="space-y-2">
+                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2">
+                            <span class="w-1 h-1 bg-industrial-orange"></span>
+                            n8n
+                        </li>
+                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2">
+                            <span class="w-1 h-1 bg-industrial-orange"></span>
+                            Make.com
+                        </li>
+                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2">
+                            <span class="w-1 h-1 bg-industrial-orange"></span>
+                            Voiceflow
+                        </li>
+                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2">
+                            <span class="w-1 h-1 bg-industrial-orange"></span>
+                            Zapier
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 relative">
+        <div class="absolute inset-0 diagonal-grid opacity-30"></div>
+
+        <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-16">
+                <div class="font-mono text-xs uppercase tracking-ultra-wide text-industrial-orange-bright mb-4">
+                    [ Secure Channel ]
+                </div>
+                <h2 class="font-mono text-4xl md:text-5xl font-bold text-foreground uppercase mb-4">
+                    Message Gateway
+                </h2>
+                <p class="text-gray-400 text-lg font-sans max-w-2xl">
+                    Initialize contact protocol. All transmissions are encrypted and monitored.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2">
+                    <div class="relative border-2 border-dashed border-border p-8">
+                        <i data-lucide="plus"
+                            class="absolute -top-[1px] -left-[1px] w-3 h-3 text-industrial-orange"></i>
+                        <i data-lucide="plus"
+                            class="absolute -top-[1px] -right-[1px] w-3 h-3 text-industrial-orange"></i>
+                        <i data-lucide="plus"
+                            class="absolute -bottom-[1px] -left-[1px] w-3 h-3 text-industrial-orange"></i>
+                        <i data-lucide="plus"
+                            class="absolute -bottom-[1px] -right-[1px] w-3 h-3 text-industrial-orange"></i>
+
+                        <div class="mb-6">
+                            <div class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-ultra-wide">
+                                <span class="text-gray-500">Gateway:</span>
+                                <span class="text-accent-purple-bright"
+                                    style="text-shadow: 0 0 15px rgba(168, 85, 247, 0.6)">Ready</span>
+                                <span class="w-2 h-2 bg-accent-purple-bright animate-pulse rounded-sm"></span>
+                            </div>
+                        </div>
+
+                        <form class="space-y-6" onsubmit="handleFormSubmit(event)">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name"
+                                        class="block font-mono text-xs uppercase tracking-wider text-gray-500 mb-2">
+                                        Operator Name
+                                    </label>
+                                    <input type="text" id="name" name="name" required
+                                        class="terminal-input w-full px-4 py-3 bg-transparent border border-border font-mono text-sm text-industrial-orange-bright focus:border-industrial-orange focus:outline-none transition-colors"
+                                        style="border-right-width: 3px" placeholder="ENTER_NAME">
+                                </div>
+
+                                <div>
+                                    <label for="email"
+                                        class="block font-mono text-xs uppercase tracking-wider text-gray-500 mb-2">
+                                        Email Address
+                                    </label>
+                                    <input type="email" id="email" name="email" required
+                                        class="terminal-input w-full px-4 py-3 bg-transparent border border-border font-mono text-sm text-industrial-orange-bright focus:border-industrial-orange focus:outline-none transition-colors"
+                                        style="border-right-width: 3px" placeholder="user@domain.com">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="subject"
+                                    class="block font-mono text-xs uppercase tracking-wider text-gray-500 mb-2">
+                                    Subject
+                                </label>
+                                <input type="text" id="subject" name="subject" required
+                                    class="terminal-input w-full px-4 py-3 bg-transparent border border-border font-mono text-sm text-industrial-orange-bright focus:border-industrial-orange focus:outline-none transition-colors"
+                                    style="border-right-width: 3px" placeholder="SUBJECT_LINE">
+                            </div>
+
+                            <div>
+                                <label for="message"
+                                    class="block font-mono text-xs uppercase tracking-wider text-gray-500 mb-2">
+                                    Message Content
+                                </label>
+                                <textarea id="message" name="message" required rows="6"
+                                    class="terminal-input w-full px-4 py-3 bg-transparent border border-border font-mono text-sm text-industrial-orange-bright focus:border-industrial-orange focus:outline-none transition-colors resize-none"
+                                    style="border-right-width: 3px" placeholder="BEGIN_TRANSMISSION..."></textarea>
+                            </div>
+
+                            <button type="submit"
+                                class="w-full px-8 py-4 border-2 border-industrial-orange font-mono text-sm uppercase tracking-wider text-industrial-orange-bright hover:bg-industrial-orange/10 transition-all duration-300 flex items-center justify-center gap-2 group">
+                                <i data-lucide="send"
+                                    class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                                <span>Send Message</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="relative border border-dashed border-border p-6">
+                        <div class="font-mono text-xs uppercase tracking-wider text-gray-500 mb-4">
+                            Contact Info
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="mail"
+                                    class="w-5 h-5 text-industrial-orange-bright flex-shrink-0 mt-1"></i>
+                                <div>
+                                    <div class="font-mono text-xs text-gray-500 mb-1">EMAIL</div>
+                                    <a href="mailto:ritzaisolutions@gmail.com"
+                                        class="font-mono text-sm text-industrial-orange-bright hover:text-industrial-orange transition-colors">
+                                        ritzaisolutions@gmail.com
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="map-pin"
+                                    class="w-5 h-5 text-industrial-orange-bright flex-shrink-0 mt-1"></i>
+                                <div>
+                                    <div class="font-mono text-xs text-gray-500 mb-1">LOCATION</div>
+                                    <div class="font-mono text-sm text-foreground">Remote Operations</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative border border-dashed border-border p-6">
+                        <div class="font-mono text-xs uppercase tracking-wider text-gray-500 mb-4">
+                            Response Time
+                        </div>
+                        <div class="font-mono text-3xl font-bold text-industrial-orange-bright mb-2">
+                            &lt;48h
+                        </div>
+                        <div class="font-mono text-xs text-gray-500">
+                            Average response protocol
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative border-t border-dashed border-border bg-background">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            class="text-industrial-orange-bright">
+                            <g stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="50" cy="50" r="12" stroke="currentColor" stroke-width="3" fill="none" />
+                                <circle cx="50" cy="15" r="4" fill="currentColor" />
+                                <circle cx="85" cy="50" r="4" fill="currentColor" />
+                                <circle cx="50" cy="85" r="4" fill="currentColor" />
+                                <circle cx="15" cy="50" r="4" fill="currentColor" />
+                            </g>
+                        </svg>
+                        <span
+                            class="font-mono text-xl font-bold tracking-wider text-industrial-orange-bright">RAIS</span>
+                    </div>
+                    <p class="text-gray-400 text-sm font-sans max-w-md mb-4">
+                        Ritz AI Solutions - Automating destiny through intelligent systems. AI solutions for financial
+                        and location freedom.
+                    </p>
+                    <div class="flex items-center gap-2">
+                        <div class="w-2 h-2 bg-status-cyan-bright animate-pulse"></div>
+                        <span class="font-mono text-xs text-gray-500">System Status: Operational</span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="font-mono text-xs uppercase tracking-wider text-gray-500 mb-4">Quick Access</div>
+                    <ul class="space-y-2">
+                        <li><a href="#services"
+                                class="font-mono text-sm text-gray-400 hover:text-industrial-orange-bright transition-colors">&gt;
+                                Services</a></li>
+                        <li><a href="#capabilities"
+                                class="font-mono text-sm text-gray-400 hover:text-industrial-orange-bright transition-colors">&gt;
+                                Capabilities</a></li>
+                        <li><a href="#tech"
+                                class="font-mono text-sm text-gray-400 hover:text-industrial-orange-bright transition-colors">&gt;
+                                Tech Stack</a></li>
+                        <li><a href="#contact"
+                                class="font-mono text-sm text-gray-400 hover:text-industrial-orange-bright transition-colors">&gt;
+                                Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <div class="font-mono text-xs uppercase tracking-wider text-gray-500 mb-4">Connect</div>
+                    <div class="space-y-3">
+                        <a href="mailto:ritzaisolutions@gmail.com"
+                            class="flex items-center gap-2 font-mono text-sm text-gray-400 hover:text-industrial-orange-bright transition-colors">
+                            <i data-lucide="mail" class="w-4 h-4"></i>
+                            <span>Email</span>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank"
+                            class="flex items-center gap-2 font-mono text-sm text-gray-400 hover:text-industrial-orange-bright transition-colors">
+                            <i data-lucide="linkedin" class="w-4 h-4"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://github.com" target="_blank"
+                            class="flex items-center gap-2 font-mono text-sm text-gray-400 hover:text-industrial-orange-bright transition-colors">
+                            <i data-lucide="github" class="w-4 h-4"></i>
+                            <span>GitHub</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-dashed border-border">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p class="font-mono text-xs text-gray-500">&copy; 2025 Ritz AI Solutions. All systems operational.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Form submission handler
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                subject: formData.get('subject'),
+                message: formData.get('message')
+            };
+
+            // Here you would normally send the data to your backend
+            console.log('Form submitted:', data);
+
+            // Show success message
+            alert('Message transmitted successfully! We will respond within 48 hours.');
+            event.target.reset();
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
