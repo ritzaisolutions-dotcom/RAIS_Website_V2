@@ -32,7 +32,7 @@ This document outlines the strategic implementation plan to transform the RAIS w
 *Focus: Building confidence through metrics and real-world validation.*
 
 - [ ] **2.1 Partner Logoscape**
-    - [ ] Create a grayscale "Trusted By" or "Powered By" slider/grid featuring n8n, Make, OpenAI, Voiceflow, etc.
+    - [ ] Create a grayscale "Trusted By" or "Powered By" slider/grid featuring n8n, Gemini, Voiceflow, etc.
 - [ ] **2.2 Case Study Showcase**
     - [ ] Expand the current "Case Study Log" into a dedicated section with tabbed metrics (e.g., "65% Overhead Reduction").
 - [ ] **2.3 Testimonials Component**
