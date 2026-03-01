@@ -1,0 +1,14 @@
+{
+  "name": "rais-website",
+  "version": "1.1.0",
+  "description": "Strategic update for RAIS website",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
