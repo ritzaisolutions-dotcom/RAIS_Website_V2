@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RAIS | Architecting Freedom through Industrial AI & Automation</title>
+    <title>RAIS | AI Strategy & Workflow Automation for Hospitality</title>
     <meta name="description"
-        content="Ritz AI Solutions (RAIS) provides premium AI automation, neural orchestration, and structural optimization for businesses seeking financial and location independence.">
+        content="Architecting freedom for the hospitality industry. Premium AI strategy, n8n workflow design, and autonomous agents for restaurants and hotels.">
     <meta name="keywords"
-        content="AI Automation, Industrial AI, n8n, Gemini, Voiceflow, business efficiency, autonomous operations">
+        content="Restaurant Automation Germany, Hospitality AI, n8n Workflow Design, AI Concierge, RAIS, Ritz AI Solutions">
 
     <!-- OpenGraph -->
     <meta property="og:title" content="RAIS | AI & Automation Solutions">
@@ -254,9 +254,118 @@
             }
         }
     </script>
+    <style>
+        .view-systems-cta {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9997;
+        }
+
+        .pulse-cta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: hsl(var(--industrial-orange));
+            color: black;
+            padding: 12px 24px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 12px;
+            border: 2px solid black;
+            box-shadow: 0 0 20px rgba(255, 127, 36, 0.4);
+            animation: cta-pulse 2s infinite;
+            transition: all 0.3s;
+        }
+
+        .pulse-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 127, 36, 0.6);
+        }
+
+        @keyframes cta-pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 127, 36, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(255, 127, 36, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 127, 36, 0);
+            }
+        }
+
+        .pricing-card-neural {
+            position: relative;
+            background: rgba(18, 18, 18, 0.5);
+            border: 1px dashed hsl(var(--border));
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .pricing-card-neural:hover {
+            border-color: hsl(var(--industrial-orange));
+            transform: translateY(-8px) scale(1.02);
+            background: rgba(255, 127, 36, 0.05);
+            box-shadow: 0 20px 40px -20px rgba(255, 127, 36, 0.4);
+        }
+
+        .pricing-card-neural::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 127, 36, 0.05), transparent);
+            transition: 0.5s;
+        }
+
+        .pricing-card-neural:hover::before {
+            left: 100%;
+        }
+
+        @keyframes pulse-glitch {
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(255, 127, 36, 0.2);
+            }
+
+            50% {
+                transform: scale(1.03);
+                box-shadow: 0 0 40px rgba(255, 127, 36, 0.4);
+            }
+
+            51% {
+                transform: translate(1px, 0.5px);
+            }
+
+            52% {
+                transform: translate(0, 0);
+            }
+        }
+
+        .animate-pulse-glitch {
+            animation: pulse-glitch 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
 </head>
 
 <body class="min-h-screen">
+    <!-- Center CTA Button -->
+    <div class="view-systems-cta">
+        <a href="#booking" class="pulse-cta">
+            <i data-lucide="calendar" class="w-4 h-4"></i>
+            Book Live Demo
+        </a>
+    </div>
     <!-- Header -->
     <header
         class="fixed top-0 left-0 right-0 z-50 border-b border-dashed border-border bg-background/95 backdrop-blur-sm">
@@ -268,19 +377,16 @@
                             class="w-full h-full object-contain group-hover:rotate-12 transition-transform duration-500">
                     </div>
                     <span class="font-mono text-xl font-bold tracking-wider text-industrial-orange-bright">RAIS</span>
-                    <span class="hidden md:block text-xs text-gray-500 font-mono">v2.0.1</span>
+                    <span class="hidden md:block text-xs text-gray-500 font-mono">v3.0.0</span>
                 </a>
 
                 <nav class="hidden md:flex items-center gap-6">
                     <a href="#services"
                         class="font-mono text-sm uppercase tracking-wider text-gray-400 hover:text-industrial-orange-bright transition-colors">Services</a>
-                    <a href="#cases"
-                        class="font-mono text-sm uppercase tracking-wider text-gray-400 hover:text-industrial-orange-bright transition-colors">Case
-                        Studies</a>
+                    <a href="#capabilities"
+                        class="font-mono text-sm uppercase tracking-wider text-gray-400 hover:text-industrial-orange-bright transition-colors">Efficiency</a>
                     <a href="#pricing"
                         class="font-mono text-sm uppercase tracking-wider text-gray-400 hover:text-industrial-orange-bright transition-colors">Pricing</a>
-                    <a href="#capabilities"
-                        class="font-mono text-sm uppercase tracking-wider text-gray-400 hover:text-industrial-orange-bright transition-colors">Capabilities</a>
                     <a href="#tech"
                         class="font-mono text-sm uppercase tracking-wider text-gray-400 hover:text-industrial-orange-bright transition-colors">Tech
                         Stack</a>
@@ -288,21 +394,16 @@
                         class="font-mono text-sm uppercase tracking-wider text-gray-400 hover:text-industrial-orange-bright transition-colors">Contact</a>
                 </nav>
 
+                <!-- Lang toggle still present -->
                 <div class="hidden md:flex items-center gap-4">
-                    <!-- Language Toggle -->
                     <div
                         class="flex items-center border border-dashed border-border px-2 py-1 gap-2 font-mono text-[10px] uppercase tracking-wider">
-                        <button onclick="setLanguage('en')" class="lang-btn text-industrial-orange-bright"
+                        <button onclick="setLanguage('en')" class="text-industrial-orange-bright"
                             id="lang-en">EN</button>
                         <span class="text-gray-600">|</span>
                         <button onclick="setLanguage('de')"
-                            class="lang-btn text-gray-500 hover:text-industrial-orange transition-colors"
+                            class="text-gray-500 hover:text-industrial-orange transition-colors"
                             id="lang-de">DE</button>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <div class="w-2 h-2 bg-accent-purple-bright animate-pulse"></div>
-                        <span class="font-mono text-xs uppercase tracking-ultra-wide text-accent-purple-bright"
-                            style="text-shadow: 0 0 15px rgba(168, 85, 247, 0.6)">Online</span>
                     </div>
                 </div>
 
@@ -378,10 +479,10 @@
                 </div>
 
                 <div class="flex flex-col sm:flex-row gap-4 mb-12">
-                    <a href="#contact"
+                    <a href="#booking"
                         class="group relative px-8 py-4 border-2 border-industrial-orange bg-industrial-orange/5 font-mono text-sm uppercase tracking-wider text-industrial-orange-bright flex items-center justify-center gap-2 hover:scale-105 transition-all duration-200"
                         style="text-shadow: 0 0 5px rgba(255, 127, 36, 0.4)">
-                        <span>Book Live Demo</span>
+                        <span>Initialize Protocol</span>
                         <i data-lucide="calendar" class="w-4 h-4 group-hover:rotate-12 transition-transform"></i>
                     </a>
 
@@ -393,20 +494,7 @@
                     </a>
                 </div>
 
-                <!-- App Store Badges -->
-                <div class="flex items-center gap-4 mb-16 opacity-60 hover:opacity-100 transition-opacity">
-                    <div class="font-mono text-[10px] uppercase tracking-[0.2em] text-gray-500 mr-2">Mobile Ops:</div>
-                    <a href="#"
-                        class="border border-border px-3 py-1.5 flex items-center gap-2 hover:border-industrial-orange transition-colors">
-                        <i data-lucide="apple" class="w-4 h-4"></i>
-                        <span class="font-mono text-[10px]">App Store</span>
-                    </a>
-                    <a href="#"
-                        class="border border-border px-3 py-1.5 flex items-center gap-2 hover:border-industrial-orange transition-colors">
-                        <i data-lucide="play" class="w-4 h-4"></i>
-                        <span class="font-mono text-[10px]">Google Play</span>
-                    </a>
-                </div>
+                <!-- Mobile Ops Removed -->
 
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                     <div class="stat-card relative border border-dashed border-border p-4" style="animation-delay: 0s">
@@ -481,449 +569,180 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-6">
-                <!-- Service Card 1 -->
+                <!-- Service Card 1: Web Design -->
                 <div class="service-card group relative border-2 border-dashed border-border p-6 hover:border-industrial-orange transition-all duration-300 bg-background/50 backdrop-blur-sm"
                     style="animation-delay: 0s">
+                    <i data-lucide="plus" class="absolute -top-[1px] -left-[1px] w-3 h-3 text-industrial-orange"></i>
+                    <i data-lucide="plus" class="absolute -top-[1px] -right-[1px] w-3 h-3 text-industrial-orange"></i>
+                    <i data-lucide="plus" class="absolute -bottom-[1px] -left-[1px] w-3 h-3 text-industrial-orange"></i>
                     <i data-lucide="plus"
-                        class="absolute -top-[1px] -left-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
-                    <i data-lucide="plus"
-                        class="absolute -top-[1px] -right-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
-                    <i data-lucide="plus"
-                        class="absolute -bottom-[1px] -left-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
-                    <i data-lucide="plus"
-                        class="absolute -bottom-[1px] -right-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
+                        class="absolute -bottom-[1px] -right-[1px] w-3 h-3 text-industrial-orange"></i>
 
                     <div class="mb-6">
                         <div class="flex items-center justify-between mb-3">
-                            <div class="font-mono text-xs text-gray-500">MODULE-A</div>
+                            <div class="font-mono text-xs text-gray-500">MODULE-01</div>
                             <div class="flex items-center gap-2">
                                 <div class="w-2 h-2 bg-accent-purple-bright animate-pulse"></div>
                                 <span
                                     class="font-mono text-xs uppercase tracking-wider text-accent-purple-bright">Active</span>
                             </div>
                         </div>
-
-                        <i data-lucide="workflow"
-                            class="w-10 h-10 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors mb-4"></i>
-
-                        <h3 class="font-mono text-lg font-bold text-foreground mb-2 uppercase leading-tight">
-                            WORKFLOW ORCHESTRATION
-                        </h3>
-
+                        <i data-lucide="layout" class="w-10 h-10 text-industrial-orange mb-4"></i>
+                        <h3 class="font-mono text-lg font-bold text-foreground mb-2 uppercase leading-tight">Web Design
+                            - Websites</h3>
                         <div class="font-mono text-xs text-industrial-orange-bright uppercase tracking-wider mb-4">
-                            Eliminate Operational Friction
-                        </div>
+                            High-Performance Interfaces</div>
                     </div>
-
-                    <div class="mb-5">
-                        <div class="font-mono text-xs text-gray-500 uppercase tracking-wider mb-2">Mission Brief:</div>
-                        <p class="text-gray-400 text-xs leading-relaxed font-sans">
-                            Manual data entry is a security risk and a resource drain. We deploy 'invisible' logic
-                            layers that connect your fragmented software ecosystems. From student enrollment processing
-                            to inventory synchronization, our bots work in the background, error-free.
-                        </p>
-                    </div>
-
-                    <div class="mb-5">
-                        <div class="font-mono text-xs text-gray-500 uppercase tracking-wider mb-3">Capabilities:</div>
-                        <div class="space-y-2">
-                            <div class="flex items-start gap-2">
-                                <i data-lucide="check-square"
-                                    class="w-3 h-3 text-accent-purple-bright flex-shrink-0 mt-0.5"></i>
-                                <span class="text-gray-400 text-xs font-sans leading-snug">Cross-platform API Bridging
-                                    (n8n/Make)</span>
-                            </div>
-                            <div class="flex items-start gap-2">
-                                <i data-lucide="check-square"
-                                    class="w-3 h-3 text-accent-purple-bright flex-shrink-0 mt-0.5"></i>
-                                <span class="text-gray-400 text-xs font-sans leading-snug">Automated Invoicing &
-                                    Compliance</span>
-                            </div>
-                            <div class="flex items-start gap-2">
-                                <i data-lucide="check-square"
-                                    class="w-3 h-3 text-accent-purple-bright flex-shrink-0 mt-0.5"></i>
-                                <span class="text-gray-400 text-xs font-sans leading-snug">Zero-Touch Lead
-                                    Routing</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="pt-5 border-t border-dashed border-border">
-                        <div class="font-mono text-xs text-gray-500 uppercase tracking-wider mb-2">Case Study Log:</div>
-                        <div
-                            class="bg-background/80 border border-accent-purple/30 p-3 font-mono text-xs text-accent-purple-bright leading-relaxed">
-                            TARGET: Regional Consulting Firm // OUTCOME: Reduced admin overhead by 65% in Week 1.
-                        </div>
+                    <p class="text-gray-400 text-xs leading-relaxed font-sans mb-5">We engineer bespoke,
+                        conversion-optimized websites that serve as your 24/7 digital storefront. Built for speed,
+                        security, and structural integrity.</p>
+                    <div class="space-y-2 mb-5">
+                        <div class="flex items-start gap-2"><i data-lucide="check"
+                                class="w-3 h-3 text-accent-purple-bright"></i><span
+                                class="text-gray-400 text-xs font-sans">SEO & Performance Optimized</span></div>
+                        <div class="flex items-start gap-2"><i data-lucide="check"
+                                class="w-3 h-3 text-accent-purple-bright"></i><span
+                                class="text-gray-400 text-xs font-sans">Responsive Industrial Design</span></div>
                     </div>
                 </div>
 
-                <!-- Service Card 2 -->
+                <!-- Service Card 2: Process Automations -->
                 <div class="service-card group relative border-2 border-dashed border-border p-6 hover:border-industrial-orange transition-all duration-300 bg-background/50 backdrop-blur-sm"
                     style="animation-delay: 0.12s">
+                    <i data-lucide="plus" class="absolute -top-[1px] -left-[1px] w-3 h-3 text-industrial-orange"></i>
+                    <i data-lucide="plus" class="absolute -top-[1px] -right-[1px] w-3 h-3 text-industrial-orange"></i>
+                    <i data-lucide="plus" class="absolute -bottom-[1px] -left-[1px] w-3 h-3 text-industrial-orange"></i>
                     <i data-lucide="plus"
-                        class="absolute -top-[1px] -left-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
-                    <i data-lucide="plus"
-                        class="absolute -top-[1px] -right-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
-                    <i data-lucide="plus"
-                        class="absolute -bottom-[1px] -left-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
-                    <i data-lucide="plus"
-                        class="absolute -bottom-[1px] -right-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
+                        class="absolute -bottom-[1px] -right-[1px] w-3 h-3 text-industrial-orange"></i>
 
                     <div class="mb-6">
                         <div class="flex items-center justify-between mb-3">
-                            <div class="font-mono text-xs text-gray-500">MODULE-B</div>
+                            <div class="font-mono text-xs text-gray-500">MODULE-02</div>
                             <div class="flex items-center gap-2">
                                 <div class="w-2 h-2 bg-accent-purple-bright animate-pulse"></div>
                                 <span
                                     class="font-mono text-xs uppercase tracking-wider text-accent-purple-bright">Active</span>
                             </div>
                         </div>
-
-                        <i data-lucide="bot"
-                            class="w-10 h-10 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors mb-4"></i>
-
-                        <h3 class="font-mono text-lg font-bold text-foreground mb-2 uppercase leading-tight">
-                            AUTONOMOUS VOICE & CHAT
-                        </h3>
-
+                        <i data-lucide="workflow" class="w-10 h-10 text-industrial-orange mb-4"></i>
+                        <h3 class="font-mono text-lg font-bold text-foreground mb-2 uppercase leading-tight">Process
+                            Automations Workflows</h3>
                         <div class="font-mono text-xs text-industrial-orange-bright uppercase tracking-wider mb-4">
-                            24/7 Frontline Defense
-                        </div>
+                            Structural Synchronization</div>
                     </div>
-
-                    <div class="mb-5">
-                        <div class="font-mono text-xs text-gray-500 uppercase tracking-wider mb-2">Mission Brief:</div>
-                        <p class="text-gray-400 text-xs leading-relaxed font-sans">
-                            Human staff should not answer the same question twice. We engineer AI agents capable of
-                            natural, voice-based negotiation and complex problem solving. Whether handling restaurant
-                            reservations during peak hours or guiding students through application forms, our agents
-                            never sleep.
-                        </p>
-                    </div>
-
-                    <div class="mb-5">
-                        <div class="font-mono text-xs text-gray-500 uppercase tracking-wider mb-3">Capabilities:</div>
-                        <div class="space-y-2">
-                            <div class="flex items-start gap-2">
-                                <i data-lucide="check-square"
-                                    class="w-3 h-3 text-accent-purple-bright flex-shrink-0 mt-0.5"></i>
-                                <span class="text-gray-400 text-xs font-sans leading-snug">Multi-Turn Voice
-                                    Conversations (Voiceflow)</span>
-                            </div>
-                            <div class="flex items-start gap-2">
-                                <i data-lucide="check-square"
-                                    class="w-3 h-3 text-accent-purple-bright flex-shrink-0 mt-0.5"></i>
-                                <span class="text-gray-400 text-xs font-sans leading-snug">Instant Knowledge Base
-                                    Retrieval (RAG)</span>
-                            </div>
-                            <div class="flex items-start gap-2">
-                                <i data-lucide="check-square"
-                                    class="w-3 h-3 text-accent-purple-bright flex-shrink-0 mt-0.5"></i>
-                                <span class="text-gray-400 text-xs font-sans leading-snug">Omni-channel Deployment
-                                    (Web/SMS/Phone)</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="pt-5 border-t border-dashed border-border">
-                        <div class="font-mono text-xs text-gray-500 uppercase tracking-wider mb-2">Case Study Log:</div>
-                        <div
-                            class="bg-background/80 border border-accent-purple/30 p-3 font-mono text-xs text-accent-purple-bright leading-relaxed">
-                            TARGET: Hospitality Sector // OUTCOME: 100% call answer rate. Zero missed reservations.
-                        </div>
+                    <p class="text-gray-400 text-xs leading-relaxed font-sans mb-5">Eliminate manual friction. We deploy
+                        n8n and Make-driven logic layers that connect your apps and automate repetitive administrative
+                        burden.</p>
+                    <div class="space-y-2 mb-5">
+                        <div class="flex items-start gap-2"><i data-lucide="check"
+                                class="w-3 h-3 text-accent-purple-bright"></i><span
+                                class="text-gray-400 text-xs font-sans">n8n / Make Orchestration</span></div>
+                        <div class="flex items-start gap-2"><i data-lucide="check"
+                                class="w-3 h-3 text-accent-purple-bright"></i><span
+                                class="text-gray-400 text-xs font-sans">Cross-platform Synchronicity</span></div>
                     </div>
                 </div>
 
-                <!-- Service Card 3 -->
+                <!-- Service Card 3: Chat Agents -->
                 <div class="service-card group relative border-2 border-dashed border-border p-6 hover:border-industrial-orange transition-all duration-300 bg-background/50 backdrop-blur-sm"
                     style="animation-delay: 0.24s">
+                    <i data-lucide="plus" class="absolute -top-[1px] -left-[1px] w-3 h-3 text-industrial-orange"></i>
+                    <i data-lucide="plus" class="absolute -top-[1px] -right-[1px] w-3 h-3 text-industrial-orange"></i>
+                    <i data-lucide="plus" class="absolute -bottom-[1px] -left-[1px] w-3 h-3 text-industrial-orange"></i>
                     <i data-lucide="plus"
-                        class="absolute -top-[1px] -left-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
-                    <i data-lucide="plus"
-                        class="absolute -top-[1px] -right-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
-                    <i data-lucide="plus"
-                        class="absolute -bottom-[1px] -left-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
-                    <i data-lucide="plus"
-                        class="absolute -bottom-[1px] -right-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
+                        class="absolute -bottom-[1px] -right-[1px] w-3 h-3 text-industrial-orange"></i>
 
                     <div class="mb-6">
                         <div class="flex items-center justify-between mb-3">
-                            <div class="font-mono text-xs text-gray-500">MODULE-C</div>
+                            <div class="font-mono text-xs text-gray-500">MODULE-03</div>
                             <div class="flex items-center gap-2">
                                 <div class="w-2 h-2 bg-accent-purple-bright animate-pulse"></div>
                                 <span
                                     class="font-mono text-xs uppercase tracking-wider text-accent-purple-bright">Active</span>
                             </div>
                         </div>
-
-                        <i data-lucide="database"
-                            class="w-10 h-10 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors mb-4"></i>
-
-                        <h3 class="font-mono text-lg font-bold text-foreground mb-2 uppercase leading-tight">
-                            PREDICTIVE INTELLIGENCE
+                        <i data-lucide="bot" class="w-10 h-10 text-industrial-orange mb-4"></i>
+                        <h3 class="font-mono text-lg font-bold text-foreground mb-2 uppercase leading-tight">Chat Agents
                         </h3>
-
                         <div class="font-mono text-xs text-industrial-orange-bright uppercase tracking-wider mb-4">
-                            Weaponize Your Data
-                        </div>
+                            Autonomous Customer Support</div>
                     </div>
-
-                    <div class="mb-5">
-                        <div class="font-mono text-xs text-gray-500 uppercase tracking-wider mb-2">Mission Brief:</div>
-                        <p class="text-gray-400 text-xs leading-relaxed font-sans">
-                            Stop driving blind. We transform dormant spreadsheets into live, tactical dashboards. By
-                            visualizing cash flow, customer churn, and operational bottlenecks in real-time, you gain
-                            the foresight needed to pivot before the market does.
-                        </p>
-                    </div>
-
-                    <div class="mb-5">
-                        <div class="font-mono text-xs text-gray-500 uppercase tracking-wider mb-3">Capabilities:</div>
-                        <div class="space-y-2">
-                            <div class="flex items-start gap-2">
-                                <i data-lucide="check-square"
-                                    class="w-3 h-3 text-accent-purple-bright flex-shrink-0 mt-0.5"></i>
-                                <span class="text-gray-400 text-xs font-sans leading-snug">Live P&L & KPI
-                                    Dashboards</span>
-                            </div>
-                            <div class="flex items-start gap-2">
-                                <i data-lucide="check-square"
-                                    class="w-3 h-3 text-accent-purple-bright flex-shrink-0 mt-0.5"></i>
-                                <span class="text-gray-400 text-xs font-sans leading-snug">Customer Behavior
-                                    Forecasting</span>
-                            </div>
-                            <div class="flex items-start gap-2">
-                                <i data-lucide="check-square"
-                                    class="w-3 h-3 text-accent-purple-bright flex-shrink-0 mt-0.5"></i>
-                                <span class="text-gray-400 text-xs font-sans leading-snug">Automated Weekly Intelligence
-                                    Briefs</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="pt-5 border-t border-dashed border-border">
-                        <div class="font-mono text-xs text-gray-500 uppercase tracking-wider mb-2">Case Study Log:</div>
-                        <div
-                            class="bg-background/80 border border-accent-purple/30 p-3 font-mono text-xs text-accent-purple-bright leading-relaxed">
-                            TARGET: E-Commerce Operations // OUTCOME: Identified 20% wasted ad spend via automated
-                            audit.
-                        </div>
+                    <p class="text-gray-400 text-xs leading-relaxed font-sans mb-5">Structural AI agents capable of
+                        natural negotiation and support. We build voice and text-based bots that never sleep and
+                        constanty learn.</p>
+                    <div class="space-y-2 mb-5">
+                        <div class="flex items-start gap-2"><i data-lucide="check"
+                                class="w-3 h-3 text-accent-purple-bright"></i><span
+                                class="text-gray-400 text-xs font-sans">Voiceflow & GPT Integration</span></div>
+                        <div class="flex items-start gap-2"><i data-lucide="check"
+                                class="w-3 h-3 text-accent-purple-bright"></i><span
+                                class="text-gray-400 text-xs font-sans">24/7 Knowledge Retrieval</span></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Case Study Showcase Section -->
-    <section id="cases" class="py-24 relative border-t border-dashed border-border">
-        <div class="absolute inset-0 diagonal-grid opacity-20"></div>
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-16">
-                <div class="font-mono text-xs uppercase tracking-ultra-wide text-industrial-orange-bright mb-4">
-                    [ Field Operations Log ]
-                </div>
-                <h2 class="font-mono text-4xl md:text-5xl font-bold text-foreground uppercase">
-                    Case Studies
-                </h2>
-            </div>
-
-            <div class="space-y-12">
-                <!-- Case Study 1 -->
-                <div
-                    class="group relative border-2 border-dashed border-border p-8 hover:border-industrial-orange transition-all duration-300 bg-background/50 backdrop-blur-sm overflow-hidden">
-                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                        <i data-lucide="file-text" class="w-32 h-32"></i>
-                    </div>
-
-                    <div class="grid md:grid-cols-3 gap-8 relative z-10">
-                        <div class="md:col-span-1">
-                            <div class="font-mono text-xs text-gray-500 mb-2">TARGET_ID: LOG-042</div>
-                            <h3 class="font-mono text-2xl font-bold text-industrial-orange-bright mb-4 uppercase">
-                                Regional Insurance Broker</h3>
-                            <div class="space-y-4">
-                                <div>
-                                    <div class="font-mono text-[10px] text-gray-500 uppercase">Operational Bottleneck
-                                    </div>
-                                    <p class="text-sm text-gray-300 italic">Manual claims processing taking 12+ hours
-                                        per client.</p>
-                                </div>
-                                <div class="pt-4 border-t border-dashed border-border">
-                                    <button
-                                        class="font-mono text-xs uppercase tracking-widest text-accent-purple-bright flex items-center gap-2 hover:gap-4 transition-all">
-                                        Exploit Full Log <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="md:col-span-2 grid grid-cols-2 lg:grid-cols-3 gap-4">
-                            <div
-                                class="border border-dashed border-border/50 p-6 flex flex-col items-center justify-center text-center">
-                                <div class="font-mono text-3xl font-bold text-foreground mb-1">-85%</div>
-                                <div class="font-mono text-[10px] text-gray-500 uppercase">Latency Reduction</div>
-                            </div>
-                            <div
-                                class="border border-dashed border-border/50 p-6 flex flex-col items-center justify-center text-center">
-                                <div class="font-mono text-3xl font-bold text-foreground mb-1">$140k/yr</div>
-                                <div class="font-mono text-[10px] text-gray-500 uppercase">Resource Savings</div>
-                            </div>
-                            <div
-                                class="border border-dashed border-border/50 p-6 flex flex-col items-center justify-center text-center col-span-2 lg:col-span-1">
-                                <div class="font-mono text-3xl font-bold text-foreground mb-1">ZERO</div>
-                                <div class="font-mono text-[10px] text-gray-500 uppercase">Human Oversight Required
-                                </div>
-                            </div>
-                            <div class="col-span-full mt-4">
-                                <div class="font-mono text-xs text-gray-500 mb-2">System Deployment Overview:</div>
-                                <div class="flex flex-wrap gap-2">
-                                    <span
-                                        class="bg-industrial-orange/10 border border-industrial-orange/30 px-3 py-1 font-mono text-[10px] text-industrial-orange">n8n
-                                        Orchestration</span>
-                                    <span
-                                        class="bg-industrial-orange/10 border border-industrial-orange/30 px-3 py-1 font-mono text-[10px] text-industrial-orange">Gemini
-                                        Data Extraction</span>
-                                    <span
-                                        class="bg-industrial-orange/10 border border-industrial-orange/30 px-3 py-1 font-mono text-[10px] text-industrial-orange">Webhook
-                                        Integrations</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Case Study 2 -->
-                <div
-                    class="group relative border-2 border-dashed border-border p-8 hover:border-industrial-orange transition-all duration-300 bg-background/50 backdrop-blur-sm overflow-hidden">
-                    <div class="grid md:grid-cols-3 gap-8 relative z-10">
-                        <div class="md:col-span-1">
-                            <div class="font-mono text-xs text-gray-500 mb-2">TARGET_ID: LOG-089</div>
-                            <h3 class="font-mono text-2xl font-bold text-industrial-orange-bright mb-4 uppercase">Luxury
-                                Concierge Service</h3>
-                            <div class="space-y-4">
-                                <div>
-                                    <div class="font-mono text-[10px] text-gray-500 uppercase">Operational Bottleneck
-                                    </div>
-                                    <p class="text-sm text-gray-300 italic">Overflow call handling during peak hours
-                                        resulted in 30% lost leads.</p>
-                                </div>
-                                <div class="pt-4 border-t border-dashed border-border">
-                                    <button
-                                        class="font-mono text-xs uppercase tracking-widest text-accent-purple-bright flex items-center gap-2 hover:gap-4 transition-all">
-                                        Exploit Full Log <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="md:col-span-2 grid grid-cols-2 lg:grid-cols-3 gap-4">
-                            <div
-                                class="border border-dashed border-border/50 p-6 flex flex-col items-center justify-center text-center">
-                                <div class="font-mono text-3xl font-bold text-foreground mb-1">100%</div>
-                                <div class="font-mono text-[10px] text-gray-500 uppercase">Capture Rate</div>
-                            </div>
-                            <div
-                                class="border border-dashed border-border/50 p-6 flex flex-col items-center justify-center text-center">
-                                <div class="font-mono text-3xl font-bold text-foreground mb-1">+40%</div>
-                                <div class="font-mono text-[10px] text-gray-500 uppercase">Conversion Lift</div>
-                            </div>
-                            <div
-                                class="border border-dashed border-border/50 p-6 flex flex-col items-center justify-center text-center col-span-2 lg:col-span-1">
-                                <div class="font-mono text-3xl font-bold text-foreground mb-1">24/7</div>
-                                <div class="font-mono text-[10px] text-gray-500 uppercase">Active Defense</div>
-                            </div>
-                            <div class="col-span-full mt-4">
-                                <div class="font-mono text-xs text-gray-500 mb-2">System Deployment Overview:</div>
-                                <div class="flex flex-wrap gap-2">
-                                    <span
-                                        class="bg-accent-purple/10 border border-accent-purple/30 px-3 py-1 font-mono text-[10px] text-accent-purple-bright">Voiceflow
-                                        Agents</span>
-                                    <span
-                                        class="bg-accent-purple/10 border border-accent-purple/30 px-3 py-1 font-mono text-[10px] text-accent-purple-bright">Real-time
-                                        DB Sync</span>
-                                    <span
-                                        class="bg-accent-purple/10 border border-accent-purple/30 px-3 py-1 font-mono text-[10px] text-accent-purple-bright">NLP
-                                        Intent Mapping</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="py-24 relative overflow-hidden bg-background">
+    <!-- ROI Analysis Tool (Structural Efficiency) -->
+    <section class="py-24 relative border-t border-dashed border-border" id="capabilities">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-16 text-center">
-                <div class="font-mono text-xs uppercase tracking-ultra-wide text-status-cyan-bright mb-4">
-                    [ Operator Feedback ]
-                </div>
-                <h2 class="font-mono text-4xl md:text-5xl font-bold text-foreground uppercase">
-                    Trusted Opinions
-                </h2>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-6">
-                <div
-                    class="relative border border-dashed border-border p-8 bg-background/30 group hover:border-industrial-orange transition-all">
-                    <i data-lucide="quote"
-                        class="w-8 h-8 text-industrial-orange/30 mb-6 transition-transform group-hover:scale-110"></i>
-                    <p class="text-gray-400 text-sm italic font-sans mb-8 leading-relaxed">
-                        "RAIS didn't just automate our tasks; they redesigned our operational logic. We've reclaimed
-                        nearly 40 hours of partner time per week."
-                    </p>
-                    <div class="flex items-center gap-4 pt-6 border-t border-dashed border-border">
-                        <div
-                            class="w-10 h-10 rounded-full bg-industrial-orange/20 flex items-center justify-center border border-industrial-orange/50">
-                            <i data-lucide="user" class="w-5 h-5 text-industrial-orange"></i>
-                        </div>
-                        <div>
-                            <div class="font-mono text-xs font-bold text-foreground uppercase">Marcus V.</div>
-                            <div class="font-mono text-[10px] text-gray-500 text-industrial-orange">CEO, VentureLogic
+            <div
+                class="border-2 border-dashed border-accent-purple-bright bg-accent-purple-bright/5 p-8 md:p-12 relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-4 font-mono text-[10px] text-accent-purple-bright/50">
+                    EF-OPTIMIZER_v2.1</div>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="font-mono text-xs uppercase tracking-ultra-wide text-accent-purple-bright mb-4">[
+                            Structural Efficiency Tool ]</div>
+                        <h3 class="font-mono text-3xl font-bold text-foreground mb-6 uppercase">ROI Projection Engine
+                        </h3>
+                        <p class="text-gray-400 text-sm font-sans mb-8 leading-relaxed">
+                            Every manual touchpoint is a leak in your operational hull. Our efficiency tool analyzes
+                            your current friction points and projects the reclaimable value of full structural
+                            automation.
+                        </p>
+                        <div class="space-y-6">
+                            <div class="space-y-2">
+                                <label class="block font-mono text-[10px] uppercase text-gray-500">Monthly Manual Hours
+                                    (Staff):</label>
+                                <input type="range" id="hoursInput" min="10" max="500" value="160"
+                                    oninput="calculateROI()"
+                                    class="w-full accent-industrial-orange bg-border h-1 rounded-lg appearance-none cursor-pointer">
+                                <div class="flex justify-between font-mono text-[10px] text-accent-purple-bright">
+                                    <span>10h</span>
+                                    <span id="hoursVal">160h</span>
+                                    <span>500h</span>
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="block font-mono text-[10px] uppercase text-gray-500">Avg. Hourly Labor
+                                    Rate (€):</label>
+                                <input type="number" id="rateInput" value="25" oninput="calculateROI()"
+                                    class="w-full bg-transparent border-b border-dashed border-border p-2 font-mono text-xl text-industrial-orange-bright outline-none focus:border-industrial-orange transition-colors">
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div
-                    class="relative border border-dashed border-border p-8 bg-background/30 group hover:border-industrial-orange transition-all">
-                    <i data-lucide="quote"
-                        class="w-8 h-8 text-industrial-orange/30 mb-6 transition-transform group-hover:scale-110"></i>
-                    <p class="text-gray-400 text-sm italic font-sans mb-8 leading-relaxed">
-                        "The implementation speed was startling. We went from manual lead routing to full autonomous
-                        distribution in 5 business days."
-                    </p>
-                    <div class="flex items-center gap-4 pt-6 border-t border-dashed border-border">
-                        <div
-                            class="w-10 h-10 rounded-full bg-industrial-orange/20 flex items-center justify-center border border-industrial-orange/50">
-                            <i data-lucide="user" class="w-5 h-5 text-industrial-orange"></i>
+                    <div class="bg-background border border-dashed border-border p-8 text-center relative">
+                        <div class="mb-8">
+                            <div class="font-mono text-[10px] uppercase text-gray-500 mb-2">Projected Annual Reclaimed
+                                Value:</div>
+                            <div class="font-mono text-5xl font-bold text-industrial-orange-bright" id="roiSavings">
+                                €48,000</div>
                         </div>
-                        <div>
-                            <div class="font-mono text-xs font-bold text-foreground uppercase">Sarah L.</div>
-                            <div class="font-mono text-[10px] text-gray-500 text-industrial-orange">Operations Mgr,
-                                GlobalScale</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div
-                    class="relative border border-dashed border-border p-8 bg-background/30 group hover:border-industrial-orange transition-all">
-                    <i data-lucide="quote"
-                        class="w-8 h-8 text-industrial-orange/30 mb-6 transition-transform group-hover:scale-110"></i>
-                    <p class="text-gray-400 text-sm italic font-sans mb-8 leading-relaxed">
-                        "Finally, an AI consultancy that understands compliance first. Their local-first approach to
-                        data gave our legal team 100% confidence."
-                    </p>
-                    <div class="flex items-center gap-4 pt-6 border-t border-dashed border-border">
-                        <div
-                            class="w-10 h-10 rounded-full bg-industrial-orange/20 flex items-center justify-center border border-industrial-orange/50">
-                            <i data-lucide="user" class="w-5 h-5 text-industrial-orange"></i>
-                        </div>
-                        <div>
-                            <div class="font-mono text-xs font-bold text-foreground uppercase">Dr. Thomas B.</div>
-                            <div class="font-mono text-[10px] text-gray-500 text-industrial-orange">CTO, MedSystems DE
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="border border-border p-4">
+                                <div class="font-mono text-[10px] uppercase text-gray-500 mb-1">Monthly Saved:</div>
+                                <div class="font-mono text-xl font-bold text-foreground" id="roiHours">160h</div>
                             </div>
+                            <div class="border border-border p-4">
+                                <div class="font-mono text-[10px] uppercase text-gray-500 mb-1">Efficiency Gain:</div>
+                                <div class="font-mono text-xl font-bold text-accent-purple-bright">+82%</div>
+                            </div>
+                        </div>
+                        <div class="mt-8">
+                            <a href="#booking"
+                                class="inline-block w-full py-4 bg-accent-purple-bright text-black font-mono text-xs font-bold uppercase hover:bg-white transition-all">Download
+                                Audit Report</a>
                         </div>
                     </div>
                 </div>
@@ -931,113 +750,10 @@
         </div>
     </section>
 
-    <!-- Why RAIS Section -->
-    <section id="capabilities" class="py-24 relative">
-        <div class="absolute inset-0 diagonal-grid opacity-30"></div>
-
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-16">
-                <div class="font-mono text-xs uppercase tracking-ultra-wide text-industrial-orange-bright mb-4">
-                    [ Core Capabilities ]
-                </div>
-                <h2 class="font-mono text-4xl md:text-5xl font-bold text-foreground uppercase">
-                    Why RAIS
-                </h2>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-6">
-                <div
-                    class="group relative border border-dashed border-border p-6 hover:border-industrial-orange transition-all duration-300 flex flex-col items-center text-center">
-                    <i data-lucide="plus"
-                        class="absolute -top-[1px] -left-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
-                    <i data-lucide="plus"
-                        class="absolute -top-[1px] -right-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
-                    <i data-lucide="plus"
-                        class="absolute -bottom-[1px] -left-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
-                    <i data-lucide="plus"
-                        class="absolute -bottom-[1px] -right-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
-
-                    <div class="font-mono text-xs text-gray-500 mb-4">CAP-001</div>
-                    <div class="font-mono text-5xl md:text-6xl font-bold text-industrial-orange-bright mb-6">100% GDPR
-                    </div>
-                    <i data-lucide="shield"
-                        class="w-10 h-10 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors mb-4"></i>
-                    <h3 class="font-mono text-xl font-bold text-foreground mb-3 uppercase">Data Sovereignty</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed font-sans">
-                        Your data never leaves the European legal framework. We build local-first automation systems
-                        compliant with strict German privacy standards (DSGVO).
-                    </p>
-                </div>
-
-                <div
-                    class="group relative border border-dashed border-border p-6 hover:border-industrial-orange transition-all duration-300 flex flex-col items-center text-center">
-                    <i data-lucide="plus"
-                        class="absolute -top-[1px] -left-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
-                    <i data-lucide="plus"
-                        class="absolute -top-[1px] -right-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
-                    <i data-lucide="plus"
-                        class="absolute -bottom-[1px] -left-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
-                    <i data-lucide="plus"
-                        class="absolute -bottom-[1px] -right-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
-
-                    <div class="font-mono text-xs text-gray-500 mb-4">CAP-002</div>
-                    <div class="font-mono text-5xl md:text-6xl font-bold text-industrial-orange-bright mb-6">&lt;7d
-                    </div>
-                    <i data-lucide="zap"
-                        class="w-10 h-10 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors mb-4"></i>
-                    <h3 class="font-mono text-xl font-bold text-foreground mb-3 uppercase">Rapid Deployment</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed font-sans">
-                        From concept to production in days, not months. Agile methodology with continuous integration.
-                    </p>
-                </div>
-
-                <div
-                    class="group relative border border-dashed border-border p-6 hover:border-industrial-orange transition-all duration-300 flex flex-col items-center text-center">
-                    <i data-lucide="plus"
-                        class="absolute -top-[1px] -left-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
-                    <i data-lucide="plus"
-                        class="absolute -top-[1px] -right-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
-                    <i data-lucide="plus"
-                        class="absolute -bottom-[1px] -left-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
-                    <i data-lucide="plus"
-                        class="absolute -bottom-[1px] -right-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
-
-                    <div class="font-mono text-xs text-gray-500 mb-4">CAP-003</div>
-                    <div class="font-mono text-5xl md:text-6xl font-bold text-industrial-orange-bright mb-6">-70%</div>
-                    <i data-lucide="dollar-sign"
-                        class="w-10 h-10 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors mb-4"></i>
-                    <h3 class="font-mono text-xl font-bold text-foreground mb-3 uppercase">Cost Efficiency</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed font-sans">
-                        Reduce operational costs by up to 70%. Pay only for what you use. Transparent pricing.
-                    </p>
-                </div>
-
-                <div
-                    class="group relative border border-dashed border-border p-6 hover:border-industrial-orange transition-all duration-300 flex flex-col items-center text-center">
-                    <i data-lucide="plus"
-                        class="absolute -top-[1px] -left-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
-                    <i data-lucide="plus"
-                        class="absolute -top-[1px] -right-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
-                    <i data-lucide="plus"
-                        class="absolute -bottom-[1px] -left-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
-                    <i data-lucide="plus"
-                        class="absolute -bottom-[1px] -right-[1px] w-3 h-3 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors"></i>
-
-                    <div class="font-mono text-xs text-gray-500 mb-4">CAP-004</div>
-                    <div class="font-mono text-5xl md:text-6xl font-bold text-industrial-orange-bright mb-6">24/7</div>
-                    <i data-lucide="globe"
-                        class="w-10 h-10 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors mb-4"></i>
-                    <h3 class="font-mono text-xl font-bold text-foreground mb-3 uppercase">Global Scale</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed font-sans">
-                        Deploy anywhere. Multi-region support. 24/7 monitoring and support across all time zones.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Case Studies Removed -->
 
     <!-- Industry Use Cases Section -->
-    <section class="py-24 relative border-t border-dashed border-border">
+    <section class="py-24 relative border-t border-dashed border-border" id="industries">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-16">
                 <div class="font-mono text-xs uppercase tracking-ultra-wide text-status-cyan-bright mb-4">
@@ -1050,40 +766,128 @@
 
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="border border-border p-8 hover:bg-industrial-orange/5 transition-all group">
-                    <i data-lucide="activity" class="w-10 h-10 text-industrial-orange mb-6"></i>
-                    <h3 class="font-mono text-xl font-bold text-foreground mb-4 uppercase">Healthcare</h3>
+                    <i data-lucide="utensils" class="w-10 h-10 text-industrial-orange mb-6"></i>
+                    <h3 class="font-mono text-xl font-bold text-foreground mb-4 uppercase">Restaurants & Cafes</h3>
                     <ul class="space-y-3 font-sans text-sm text-gray-400">
-                        <li class="flex items-center gap-2"><span class="w-1 h-1 bg-industrial-orange"></span> Patient
-                            Intake Automation</li>
                         <li class="flex items-center gap-2"><span class="w-1 h-1 bg-industrial-orange"></span>
-                            Diagnostic Data Pipeline</li>
-                        <li class="flex items-center gap-2"><span class="w-1 h-1 bg-industrial-orange"></span> HIPAA
-                            Compliant Chatbots</li>
+                            Reservation Automation</li>
+                        <li class="flex items-center gap-2"><span class="w-1 h-1 bg-industrial-orange"></span> Smart
+                            Menu AI</li>
+                        <li class="flex items-center gap-2"><span class="w-1 h-1 bg-industrial-orange"></span> Staff
+                            Scheduling Optimization</li>
                     </ul>
                 </div>
                 <div class="border border-border p-8 hover:bg-industrial-orange/5 transition-all group">
-                    <i data-lucide="landmark" class="w-10 h-10 text-industrial-orange mb-6"></i>
-                    <h3 class="font-mono text-xl font-bold text-foreground mb-4 uppercase">Finance</h3>
+                    <i data-lucide="hotel" class="w-10 h-10 text-industrial-orange mb-6"></i>
+                    <h3 class="font-mono text-xl font-bold text-foreground mb-4 uppercase">Hospitality</h3>
                     <ul class="space-y-3 font-sans text-sm text-gray-400">
-                        <li class="flex items-center gap-2"><span class="w-1 h-1 bg-industrial-orange"></span> Fraud
-                            Detection Agents</li>
+                        <li class="flex items-center gap-2"><span class="w-1 h-1 bg-industrial-orange"></span> Digital
+                            Concierge Agents</li>
                         <li class="flex items-center gap-2"><span class="w-1 h-1 bg-industrial-orange"></span> Automated
-                            P&L Reporting</li>
-                        <li class="flex items-center gap-2"><span class="w-1 h-1 bg-industrial-orange"></span>
-                            Compliance Auditing Bots</li>
+                            Check-in Logic</li>
+                        <li class="flex items-center gap-2"><span class="w-1 h-1 bg-industrial-orange"></span> Guest
+                            Experience Feedback Loops</li>
                     </ul>
                 </div>
                 <div class="border border-border p-8 hover:bg-industrial-orange/5 transition-all group">
-                    <i data-lucide="shopping-cart" class="w-10 h-10 text-industrial-orange mb-6"></i>
-                    <h3 class="font-mono text-xl font-bold text-foreground mb-4 uppercase">E-Commerce</h3>
+                    <i data-lucide="cog" class="w-10 h-10 text-industrial-orange mb-6"></i>
+                    <h3 class="font-mono text-xl font-bold text-foreground mb-4 uppercase">Service Industries</h3>
                     <ul class="space-y-3 font-sans text-sm text-gray-400">
-                        <li class="flex items-center gap-2"><span class="w-1 h-1 bg-industrial-orange"></span> Inventory
-                            Sync Protocols</li>
-                        <li class="flex items-center gap-2"><span class="w-1 h-1 bg-industrial-orange"></span> Customer
-                            Success Agents</li>
+                        <li class="flex items-center gap-2"><span class="w-1 h-1 bg-industrial-orange"></span> Lead
+                            Scoring Engines</li>
+                        <li class="flex items-center gap-2"><span class="w-1 h-1 bg-industrial-orange"></span> CRM
+                            Synchronization</li>
                         <li class="flex items-center gap-2"><span class="w-1 h-1 bg-industrial-orange"></span>
-                            Predictive Demand Logic</li>
+                            Auto-Response
+                            Protocols</li>
                     </ul>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center">
+                <a href="#booking"
+                    class="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-industrial-orange to-industrial-orange-bright text-black font-mono text-sm font-bold uppercase tracking-widest hover:brightness-125 transition-all shadow-[0_0_30px_rgba(255,127,36,0.5)] animate-pulse-glitch">
+                    <i data-lucide="zap" class="w-5 h-5"></i>
+                    Initialize Structural Audit
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-24 relative overflow-hidden bg-background" id="opinions">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-16 text-center">
+                <div class="font-mono text-xs uppercase tracking-ultra-wide text-status-cyan-bright mb-4">
+                    [ Operator Feedback ]
+                </div>
+                <h2 class="font-mono text-4xl md:text-5xl font-bold text-foreground uppercase">
+                    Trusted Opinions
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Log 01 -->
+                <div
+                    class="relative border border-dashed border-border p-8 bg-background/30 group hover:border-industrial-orange transition-all">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="font-mono text-[10px] text-gray-500 uppercase">LOG_REF: OP-042</div>
+                        <div
+                            class="px-2 py-0.5 border border-status-cyan-bright/30 text-status-cyan-bright font-mono text-[8px] uppercase tracking-widest">
+                            Status: Verified</div>
+                    </div>
+                    <p class="text-gray-400 text-xs font-mono mb-8 leading-relaxed">
+                        &gt; RAIS DID NOT JUST AUTOMATE OUR TASKS; THEY REDESIGNED OUR OPERATIONAL LOGIC. WE'VE
+                        RECLAIMED NEARLY 40 HOURS OF PARTNER TIME PER WEEK.
+                    </p>
+                    <div class="flex items-center gap-4 pt-6 border-t border-dashed border-border">
+                        <div>
+                            <div class="font-mono text-xs font-bold text-foreground">MARCUS V.</div>
+                            <div class="font-mono text-[10px] text-industrial-orange">CEO, VENTURELOGIC</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Log 02 -->
+                <div
+                    class="relative border border-dashed border-border p-8 bg-background/30 group hover:border-industrial-orange transition-all">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="font-mono text-[10px] text-gray-500 uppercase">LOG_REF: OP-089</div>
+                        <div
+                            class="px-2 py-0.5 border border-status-cyan-bright/30 text-status-cyan-bright font-mono text-[8px] uppercase tracking-widest">
+                            Status: Verified</div>
+                    </div>
+                    <p class="text-gray-400 text-xs font-mono mb-8 leading-relaxed">
+                        &gt; THE IMPLEMENTATION SPEED WAS STARTLING. WE WENT FROM MANUAL LEAD ROUTING TO FULL AUTONOMOUS
+                        DISTRIBUTION IN 5 BUSINESS DAYS.
+                    </p>
+                    <div class="flex items-center gap-4 pt-6 border-t border-dashed border-border">
+                        <div>
+                            <div class="font-mono text-xs font-bold text-foreground">SARAH L.</div>
+                            <div class="font-mono text-[10px] text-industrial-orange">OPERATIONS MGR, GLOBALSCALE</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Log 03 -->
+                <div
+                    class="relative border border-dashed border-border p-8 bg-background/30 group hover:border-industrial-orange transition-all">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="font-mono text-[10px] text-gray-500 uppercase">LOG_REF: OP-112</div>
+                        <div
+                            class="px-2 py-0.5 border border-status-cyan-bright/30 text-status-cyan-bright font-mono text-[8px] uppercase tracking-widest">
+                            Status: Verified</div>
+                    </div>
+                    <p class="text-gray-400 text-xs font-mono mb-8 leading-relaxed">
+                        &gt; FINALLY, AN AI CONSULTANCY THAT UNDERSTANDS COMPLIANCE FIRST. THEIR LOCAL-FIRST APPROACH TO
+                        DATA GAVE OUR LEGAL TEAM 100% CONFIDENCE.
+                    </p>
+                    <div class="flex items-center gap-4 pt-6 border-t border-dashed border-border">
+                        <div>
+                            <div class="font-mono text-xs font-bold text-foreground">DR. THOMAS B.</div>
+                            <div class="font-mono text-[10px] text-industrial-orange">CTO, MEDSYSTEMS DE</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1142,12 +946,12 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="border border-border p-8 flex flex-col hover:border-accent-purple transition-all relative">
+                <div class="pricing-card-neural p-8 flex flex-col relative">
                     <div class="font-mono text-xs text-gray-500 mb-2 uppercase">Protocol_A</div>
                     <h3 class="font-mono text-2xl font-bold text-foreground mb-4">STARTER</h3>
                     <div class="font-mono text-4xl font-bold text-industrial-orange-bright mb-6">€997<span
                             class="text-xs text-gray-500">/setup</span></div>
-                    <ul class="space-y-4 mb-10 flex-grow font-mono text-xs text-gray-400 uppercase tracking-tighter">
+                    <ul class="space-y-4 mb-10 flex-grow font-mono text-xs text-gray-200 uppercase tracking-tighter">
                         <li class="flex items-center gap-2"><i data-lucide="check"
                                 class="w-3 h-3 text-industrial-orange"></i> 1x CORE AUTOMATION</li>
                         <li class="flex items-center gap-2"><i data-lucide="check"
@@ -1155,19 +959,18 @@
                         <li class="flex items-center gap-2"><i data-lucide="check"
                                 class="w-3 h-3 text-industrial-orange"></i> EMAIL SUPPORT</li>
                     </ul>
-                    <a href="#contact"
+                    <a href="#booking"
                         class="w-full py-4 border border-industrial-orange text-center font-mono text-xs uppercase hover:bg-industrial-orange transition-all hover:text-black">Initialize</a>
                 </div>
-                <div
-                    class="border-2 border-industrial-orange p-8 flex flex-col scale-105 bg-industrial-orange/5 relative">
+                <div class="pricing-card-neural p-8 flex flex-col relative">
                     <div
-                        class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-industrial-orange text-black font-mono text-[10px] font-bold uppercase">
+                        class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-accent-purple-bright text-black font-mono text-[10px] font-bold uppercase">
                         Recommended</div>
                     <div class="font-mono text-xs text-gray-500 mb-2 uppercase">Protocol_B</div>
                     <h3 class="font-mono text-2xl font-bold text-foreground mb-4">SCALE</h3>
                     <div class="font-mono text-4xl font-bold text-industrial-orange-bright mb-6">€2,997<span
                             class="text-xs text-gray-500">/mo</span></div>
-                    <ul class="space-y-4 mb-10 flex-grow font-mono text-xs text-gray-400 uppercase tracking-tighter">
+                    <ul class="space-y-4 mb-10 flex-grow font-mono text-xs text-gray-200 uppercase tracking-tighter">
                         <li class="flex items-center gap-2"><i data-lucide="check"
                                 class="w-3 h-3 text-industrial-orange"></i> UNLIMITED WORKFLOWS</li>
                         <li class="flex items-center gap-2"><i data-lucide="check"
@@ -1175,15 +978,15 @@
                         <li class="flex items-center gap-2"><i data-lucide="check"
                                 class="w-3 h-3 text-industrial-orange"></i> PRIORITY RESPONSE</li>
                     </ul>
-                    <a href="#contact"
-                        class="w-full py-4 bg-industrial-orange text-black text-center font-mono text-xs font-bold uppercase hover:bg-white transition-all">Select
+                    <a href="#booking"
+                        class="w-full py-4 border border-industrial-orange text-center font-mono text-xs uppercase hover:bg-industrial-orange transition-all hover:text-black">Select
                         Protocol</a>
                 </div>
-                <div class="border border-border p-8 flex flex-col hover:border-accent-purple transition-all relative">
+                <div class="pricing-card-neural p-8 flex flex-col relative">
                     <div class="font-mono text-xs text-gray-500 mb-2 uppercase">Protocol_C</div>
                     <h3 class="font-mono text-2xl font-bold text-foreground mb-4">CUSTOM</h3>
                     <div class="font-mono text-4xl font-bold text-industrial-orange-bright mb-6">POA</div>
-                    <ul class="space-y-4 mb-10 flex-grow font-mono text-xs text-gray-400 uppercase tracking-tighter">
+                    <ul class="space-y-4 mb-10 flex-grow font-mono text-xs text-gray-200 uppercase tracking-tighter">
                         <li class="flex items-center gap-2"><i data-lucide="check"
                                 class="w-3 h-3 text-industrial-orange"></i> ONSITE INTEGRATION</li>
                         <li class="flex items-center gap-2"><i data-lucide="check"
@@ -1191,15 +994,168 @@
                         <li class="flex items-center gap-2"><i data-lucide="check"
                                 class="w-3 h-3 text-industrial-orange"></i> PARTNER-LEVEL ACCESS</li>
                     </ul>
-                    <a href="#contact"
+                    <a href="#booking"
                         class="w-full py-4 border border-industrial-orange text-center font-mono text-xs uppercase hover:bg-industrial-orange transition-all hover:text-black">Consult</a>
+                </div>
+            </div>
+
+            <!-- Booking Section Direct Embed -->
+            <div id="booking" class="mt-24 pt-24 border-t border-dashed border-border">
+                <div class="text-center mb-16">
+                    <div class="font-mono text-xs uppercase tracking-ultra-wide text-accent-purple-bright mb-4">
+                        [ Strategic Session ]
+                    </div>
+                    <h2 class="font-mono text-4xl font-bold text-foreground uppercase">Book a Meeting</h2>
+                    <p class="mt-4 text-gray-400 font-sans max-w-2xl mx-auto">Select a slot in our secure terminal to
+                        initialize your operation.</p>
+                </div>
+
+                <div class="relative bg-background/50 border border-dashed border-border p-4 md:p-8">
+                    <!-- Calendly inline widget begin -->
+                    <div class="calendly-inline-widget"
+                        data-url="https://calendly.com/ritzaisolutions/30min?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=121212&text_color=ffffff&primary_color=ff7f24"
+                        style="min-width:320px;height:700px;"></div>
+                    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"
+                        async></script>
+                    <!-- Calendly inline widget end -->
+                    <i data-lucide="plus" class="absolute -top-[1px] -left-[1px] w-3 h-3 text-industrial-orange"></i>
+                    <i data-lucide="plus" class="absolute -top-[1px] -right-[1px] w-3 h-3 text-industrial-orange"></i>
+                    <i data-lucide="plus" class="absolute -bottom-[1px] -left-[1px] w-3 h-3 text-industrial-orange"></i>
+                    <i data-lucide="plus"
+                        class="absolute -bottom-[1px] -right-[1px] w-3 h-3 text-industrial-orange"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section id="tech" class="py-24 relative border-y border-dashed border-border overflow-hidden">
+        <!-- Neural Visualizer Background -->
+        <div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
+            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="neural-grid" width="100" height="100" patternUnits="userSpaceOnUse">
+                        <circle cx="2" cy="2" r="1.5" fill="hsl(var(--industrial-orange))" />
+                        <path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,127,36,0.1)" stroke-width="0.5" />
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#neural-grid)" />
+                <g class="neural-lines">
+                    <line x1="10%" y1="20%" x2="40%" y2="50%" stroke="hsl(var(--industrial-orange))" stroke-width="0.5"
+                        stroke-dasharray="2 4">
+                        <animate attributeName="stroke-dashoffset" from="0" to="20" dur="2s" repeatCount="indefinite" />
+                    </line>
+                    <line x1="40%" y1="50%" x2="70%" y2="30%" stroke="hsl(var(--industrial-orange))" stroke-width="0.5"
+                        stroke-dasharray="2 4">
+                        <animate attributeName="stroke-dashoffset" from="0" to="20" dur="2.5s"
+                            repeatCount="indefinite" />
+                    </line>
+                    <line x1="70%" y1="30%" x2="90%" y2="60%" stroke="hsl(var(--industrial-orange))" stroke-width="0.5"
+                        stroke-dasharray="2 4">
+                        <animate attributeName="stroke-dashoffset" from="0" to="20" dur="1.8s"
+                            repeatCount="indefinite" />
+                    </line>
+                    <line x1="40%" y1="50%" x2="60%" y2="80%" stroke="hsl(var(--industrial-orange))" stroke-width="0.5"
+                        stroke-dasharray="2 4">
+                        <animate attributeName="stroke-dashoffset" from="0" to="20" dur="3s" repeatCount="indefinite" />
+                    </line>
+                </g>
+            </svg>
+        </div>
+        <div class="absolute inset-0 diagonal-grid opacity-20"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-16 text-center">
+                <div class="font-mono text-xs uppercase tracking-ultra-wide text-industrial-orange-bright mb-4">
+                    [ Technology Stack ]
+                </div>
+                <h2 class="font-mono text-4xl md:text-5xl font-bold text-foreground uppercase">
+                    Arsenal
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-6">
+                <!-- AI & AGENTS -->
+                <div
+                    class="relative border border-dashed border-border p-6 hover:border-industrial-orange transition-all duration-300 group">
+                    <i data-lucide="cpu"
+                        class="w-8 h-8 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors mb-4"></i>
+                    <div class="font-mono text-sm uppercase tracking-wider text-industrial-orange-bright mb-4">
+                        Intelligence</div>
+                    <ul class="space-y-2">
+                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2"><span
+                                class="w-1 h-1 bg-industrial-orange"></span> Antigravity</li>
+                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2"><span
+                                class="w-1 h-1 bg-industrial-orange"></span> Claude Code</li>
+                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2"><span
+                                class="w-1 h-1 bg-industrial-orange"></span> GPT-4 / Gemini</li>
+                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2"><span
+                                class="w-1 h-1 bg-industrial-orange"></span> Voiceflow</li>
+                    </ul>
+                </div>
+
+                <!-- ORCHESTRATION -->
+                <div
+                    class="relative border border-dashed border-border p-6 hover:border-industrial-orange transition-all duration-300 group">
+                    <i data-lucide="workflow"
+                        class="w-8 h-8 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors mb-4"></i>
+                    <div class="font-mono text-sm uppercase tracking-wider text-industrial-orange-bright mb-4">
+                        Orchestration</div>
+                    <ul class="space-y-2">
+                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2"><span
+                                class="w-1 h-1 bg-industrial-orange"></span> n8n</li>
+                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2"><span
+                                class="w-1 h-1 bg-industrial-orange"></span> JSON / API</li>
+                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2"><span
+                                class="w-1 h-1 bg-industrial-orange"></span> Webhooks</li>
+                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2"><span
+                                class="w-1 h-1 bg-industrial-orange"></span> Python / JS</li>
+                    </ul>
+                </div>
+
+                <!-- DEVELOPMENT -->
+                <div
+                    class="relative border border-dashed border-border p-6 hover:border-industrial-orange transition-all duration-300 group">
+                    <i data-lucide="code"
+                        class="w-8 h-8 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors mb-4"></i>
+                    <div class="font-mono text-sm uppercase tracking-wider text-industrial-orange-bright mb-4">
+                        Development</div>
+                    <ul class="space-y-2">
+                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2"><span
+                                class="w-1 h-1 bg-industrial-orange"></span> v0 / Vercel</li>
+                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2"><span
+                                class="w-1 h-1 bg-industrial-orange"></span> Tailwind CSS</li>
+                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2"><span
+                                class="w-1 h-1 bg-industrial-orange"></span> Next.js / Vite</li>
+                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2"><span
+                                class="w-1 h-1 bg-industrial-orange"></span> PostgreSQL</li>
+                    </ul>
+                </div>
+
+                <!-- INFRASTRUCTURE -->
+                <div
+                    class="relative border border-dashed border-border p-6 hover:border-industrial-orange transition-all duration-300 group">
+                    <i data-lucide="shield"
+                        class="w-8 h-8 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors mb-4"></i>
+                    <div class="font-mono text-sm uppercase tracking-wider text-industrial-orange-bright mb-4">GDPR
+                        Stack</div>
+                    <ul class="space-y-2">
+                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2"><span
+                                class="w-1 h-1 bg-industrial-orange"></span> Local-first AI</li>
+                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2"><span
+                                class="w-1 h-1 bg-industrial-orange"></span> Sovereign Cloud</li>
+                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2"><span
+                                class="w-1 h-1 bg-industrial-orange"></span> AES-256 Auth</li>
+                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2"><span
+                                class="w-1 h-1 bg-industrial-orange"></span> DSGVO Protocol</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- FAQ Section -->
-    <section class="py-24 relative border-t border-dashed border-border bg-background/30">
+    <section id="faq" class="py-24 relative border-t border-dashed border-border bg-background/30">
         <div class="max-w-3xl mx-auto px-4">
             <div class="text-center mb-16">
                 <div class="font-mono text-xs uppercase tracking-ultra-wide text-status-cyan-bright mb-4">
@@ -1242,127 +1198,6 @@
                         Yes. All Scale and Custom protocols include automated uptime monitoring and human-lead emergency
                         response with a <2h response time commitment. </p>
                 </details>
-            </div>
-        </div>
-    </section>
-    <!-- Tech Stack Section -->
-    <section id="tech" class="py-24 relative border-y border-dashed border-border">
-        <div class="absolute inset-0 diagonal-grid opacity-20"></div>
-
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-16 text-center">
-                <div class="font-mono text-xs uppercase tracking-ultra-wide text-industrial-orange-bright mb-4">
-                    [ Technology Stack ]
-                </div>
-                <h2 class="font-mono text-4xl md:text-5xl font-bold text-foreground uppercase">
-                    Arsenal
-                </h2>
-            </div>
-
-            <div class="grid md:grid-cols-4 gap-6">
-                <div
-                    class="relative border border-dashed border-border p-6 hover:border-industrial-orange transition-all duration-300 group">
-                    <i data-lucide="cpu"
-                        class="w-8 h-8 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors mb-4"></i>
-                    <div class="font-mono text-sm uppercase tracking-wider text-industrial-orange-bright mb-4">AI/ML
-                    </div>
-                    <ul class="space-y-2">
-                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2">
-                            <span class="w-1 h-1 bg-industrial-orange"></span>
-                            OpenAI GPT-4
-                        </li>
-                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2">
-                            <span class="w-1 h-1 bg-industrial-orange"></span>
-                            Claude
-                        </li>
-                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2">
-                            <span class="w-1 h-1 bg-industrial-orange"></span>
-                            TensorFlow
-                        </li>
-                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2">
-                            <span class="w-1 h-1 bg-industrial-orange"></span>
-                            PyTorch
-                        </li>
-                    </ul>
-                </div>
-
-                <div
-                    class="relative border border-dashed border-border p-6 hover:border-industrial-orange transition-all duration-300 group">
-                    <i data-lucide="cloud"
-                        class="w-8 h-8 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors mb-4"></i>
-                    <div class="font-mono text-sm uppercase tracking-wider text-industrial-orange-bright mb-4">Cloud
-                    </div>
-                    <ul class="space-y-2">
-                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2">
-                            <span class="w-1 h-1 bg-industrial-orange"></span>
-                            AWS
-                        </li>
-                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2">
-                            <span class="w-1 h-1 bg-industrial-orange"></span>
-                            Google Cloud
-                        </li>
-                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2">
-                            <span class="w-1 h-1 bg-industrial-orange"></span>
-                            Azure
-                        </li>
-                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2">
-                            <span class="w-1 h-1 bg-industrial-orange"></span>
-                            Vercel
-                        </li>
-                    </ul>
-                </div>
-
-                <div
-                    class="relative border border-dashed border-border p-6 hover:border-industrial-orange transition-all duration-300 group">
-                    <i data-lucide="lock"
-                        class="w-8 h-8 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors mb-4"></i>
-                    <div class="font-mono text-sm uppercase tracking-wider text-industrial-orange-bright mb-4">Backend
-                    </div>
-                    <ul class="space-y-2">
-                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2">
-                            <span class="w-1 h-1 bg-industrial-orange"></span>
-                            Node.js
-                        </li>
-                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2">
-                            <span class="w-1 h-1 bg-industrial-orange"></span>
-                            Python
-                        </li>
-                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2">
-                            <span class="w-1 h-1 bg-industrial-orange"></span>
-                            PostgreSQL
-                        </li>
-                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2">
-                            <span class="w-1 h-1 bg-industrial-orange"></span>
-                            Redis
-                        </li>
-                    </ul>
-                </div>
-
-                <div
-                    class="relative border border-dashed border-border p-6 hover:border-industrial-orange transition-all duration-300 group">
-                    <i data-lucide="zap"
-                        class="w-8 h-8 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors mb-4"></i>
-                    <div class="font-mono text-sm uppercase tracking-wider text-industrial-orange-bright mb-4">
-                        Orchestration</div>
-                    <ul class="space-y-2">
-                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2">
-                            <span class="w-1 h-1 bg-industrial-orange"></span>
-                            n8n
-                        </li>
-                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2">
-                            <span class="w-1 h-1 bg-industrial-orange"></span>
-                            Make.com
-                        </li>
-                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2">
-                            <span class="w-1 h-1 bg-industrial-orange"></span>
-                            Voiceflow
-                        </li>
-                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2">
-                            <span class="w-1 h-1 bg-industrial-orange"></span>
-                            Zapier
-                        </li>
-                    </ul>
-                </div>
             </div>
         </div>
     </section>
@@ -1451,37 +1286,19 @@
                         </div>
 
                         <div id="demoForm" class="hidden">
-                            <div class="text-center py-8">
-                                <i data-lucide="calendar"
-                                    class="w-16 h-16 text-industrial-orange mx-auto mb-6 opacity-40"></i>
-                                <h3 class="font-mono text-xl font-bold text-foreground mb-4 uppercase">Direct Access
-                                    Protocol</h3>
-                                <p class="text-gray-400 text-sm mb-8 font-sans">Select a synchronized time-slot for
-                                    a live structural overview with our lead engineers.</p>
-                                <a href="https://calendly.com" target="_blank"
-                                    class="inline-flex items-center gap-3 px-8 py-4 border-2 border-accent-purple-bright text-accent-purple-bright font-mono text-sm uppercase tracking-widest hover:bg-accent-purple/10 transition-all">
-                                    Open Scheduler <i data-lucide="external-link" class="w-4 h-4"></i>
-                                </a>
+                            <div class="text-center py-4">
+                                <!-- Calendly Inline Widget -->
+                                <div class="calendly-inline-widget"
+                                    data-url="https://calendly.com/ritzaisolutions/30min?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=121212&text_color=ffffff&primary_color=ff7f24"
+                                    style="min-width:320px;height:700px;"></div>
+                                <script type="text/javascript"
+                                    src="https://assets.calendly.com/assets/external/widget.js" async></script>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="space-y-6">
-                    <!-- ROI Calculator Mini-Widget -->
-                    <div class="relative border border-dashed border-status-cyan-bright/50 p-6 bg-status-cyan-bright/5">
-                        <div class="font-mono text-[10px] uppercase tracking-widest text-status-cyan-bright mb-4">
-                            [ ROI Analysis Tool ]
-                        </div>
-                        <h4 class="font-mono text-lg font-bold text-foreground mb-2 uppercase">Estimate Savings</h4>
-                        <p class="text-[10px] text-gray-500 mb-4 font-sans">Calculate potential resource reclaiming
-                            through AI implementation.</p>
-                        <a href="#roi-calc"
-                            class="block w-full text-center py-2 border border-status-cyan-bright text-status-cyan-bright font-mono text-[10px] uppercase hover:bg-status-cyan-bright hover:text-black transition-all">
-                            Initialize Calculator
-                        </a>
-                    </div>
-
                     <div class="relative border border-dashed border-border p-6">
                         <div class="font-mono text-xs uppercase tracking-wider text-gray-500 mb-4">
                             Contact Info
@@ -1493,9 +1310,9 @@
                                     class="w-5 h-5 text-industrial-orange-bright flex-shrink-0 mt-1"></i>
                                 <div>
                                     <div class="font-mono text-xs text-gray-500 mb-1">EMAIL</div>
-                                    <a href="mailto:ritzaisolutions@gmail.com"
+                                    <a href="mailto:kevin@ritz-ai.solutions.com"
                                         class="font-mono text-sm text-industrial-orange-bright hover:text-industrial-orange transition-colors">
-                                        ritzaisolutions@gmail.com
+                                        kevin@ritz-ai.solutions.com
                                     </a>
                                 </div>
                             </div>
@@ -1574,15 +1391,15 @@
                         <li><a href="#services"
                                 class="font-mono text-sm text-gray-400 hover:text-industrial-orange-bright transition-colors">&gt;
                                 Services</a></li>
-                        <li><a href="#cases"
+                        <li><a href="#capabilities"
                                 class="font-mono text-sm text-gray-400 hover:text-industrial-orange-bright transition-colors">&gt;
-                                Case Studies</a></li>
+                                Efficiency</a></li>
                         <li><a href="#pricing"
                                 class="font-mono text-sm text-gray-400 hover:text-industrial-orange-bright transition-colors">&gt;
                                 Pricing</a></li>
-                        <li><a href="#capabilities"
+                        <li><a href="#tech"
                                 class="font-mono text-sm text-gray-400 hover:text-industrial-orange-bright transition-colors">&gt;
-                                Capabilities</a></li>
+                                Arsenal</a></li>
                         <li><a href="#contact"
                                 class="font-mono text-sm text-gray-400 hover:text-industrial-orange-bright transition-colors">&gt;
                                 Contact</a></li>
@@ -1592,7 +1409,7 @@
                 <div>
                     <div class="font-mono text-xs uppercase tracking-wider text-gray-500 mb-4">Connect</div>
                     <div class="space-y-3">
-                        <a href="mailto:ritzaisolutions@gmail.com"
+                        <a href="mailto:kevin@ritz-ai-solutions.com"
                             class="flex items-center gap-2 font-mono text-sm text-gray-400 hover:text-industrial-orange-bright transition-colors">
                             <i data-lucide="mail" class="w-4 h-4"></i>
                             <span>Email</span>
@@ -1616,28 +1433,70 @@
                     <p class="font-mono text-xs text-gray-500">&copy; 2026 Ritz AI Solutions. Core architecture v2.4.0.
                     </p>
                     <div class="flex items-center gap-6 font-mono text-[10px] uppercase tracking-widest text-gray-600">
-                        <a href="#impressum" class="hover:text-industrial-orange transition-colors">Impressum</a>
-                        <a href="#privacy" class="hover:text-industrial-orange transition-colors">Datenschutz (GDPR)</a>
+                        <button onclick="toggleLegal('impressum')"
+                            class="hover:text-industrial-orange transition-colors">Impressum</button>
+                        <button onclick="toggleLegal('privacy')"
+                            class="hover:text-industrial-orange transition-colors">Datenschutz (GDPR)</button>
                     </div>
                 </div>
             </div>
 
-            <!-- GDPR Modal Sections (Hidden by default, can be toggled or linked) -->
+            <!-- GDPR Modal Sections -->
             <div id="impressum"
                 class="hidden mt-12 pt-8 border-t border-dashed border-border text-gray-500 font-sans text-xs max-w-2xl">
-                <h4 class="font-mono text-foreground mb-4">IMPRESSUM</h4>
-                <p>Angaben gemäß § 5 TMG:<br>
-                    Ritz AI Solutions (RAIS)<br>
-                    [Your Address Here]<br>
-                    Represented by: Kevin Ritz<br>
-                    Email: ritzaisolutions@gmail.com</p>
+                <h4 class="font-mono text-foreground mb-4 uppercase tracking-widest text-industrial-orange-bright">
+                    IMPRESSUM</h4>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <p class="mb-4"><strong>Angaben gemäß § 5 TMG:</strong><br>
+                            Ritz AI Solutions (RAIS)<br>
+                            Von-Cohhausenstrasse 9<br>
+                            56076 Koblenz<br>
+                            Germany</p>
+
+                        <p class="mb-4"><strong>Vertreten durch:</strong><br>
+                            Kevin Ritz</p>
+                    </div>
+                    <div>
+                        <p class="mb-4"><strong>Kontakt:</strong><br>
+                            E-Mail: kevin@ritz-ai.solutions.com<br>
+                            Web: www.ritz-ai.solutions.com</p>
+
+                        <p class="mb-4"><strong>Registereintrag:</strong><br>
+                            Registergericht: [STADT]<br>
+                            Registernummer: [NUMMER]</p>
+
+                        <p><strong>Umsatzsteuer-ID:</strong><br>
+                            Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz: [ID]</p>
+                    </div>
+                </div>
             </div>
+
             <div id="privacy"
                 class="hidden mt-8 pt-8 border-t border-dashed border-border text-gray-500 font-sans text-xs max-w-2xl">
-                <h4 class="font-mono text-foreground mb-4">PRIVACY PROTOCOL (DSGVO)</h4>
-                <p>We take your data security seriously. No tracking cookies are used without your explicit consent.
-                    Data submitted via forms is encrypted and used only for communication purposes.
-                    You have the right to request deletion of your terminal logs at any time.</p>
+                <h4 class="font-mono text-foreground mb-4 uppercase tracking-widest text-industrial-orange-bright">
+                    DATENSCHUTZERKLÄRUNG (GDPR)</h4>
+                <div class="space-y-4">
+                    <p><strong>1. Datenschutz auf einen Blick</strong><br>
+                        Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen
+                        Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser
+                        Datenschutzerklärung.</p>
+
+                    <p><strong>2. Datenerfassung auf dieser Website</strong><br>
+                        Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Die Kontaktdaten
+                        können Sie dem Impressum dieser Website entnehmen. Ihre Daten werden zum einen dadurch erhoben,
+                        dass Sie uns diese mitteilen (z.B. im Kontaktformular). Andere Daten werden automatisch beim
+                        Besuch der Website durch unsere IT-Systeme erfasst (z.B. IP-Adresse, Browser, Uhrzeit).</p>
+
+                    <p><strong>3. Ihre Rechte</strong><br>
+                        Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer
+                        gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die
+                        Berichtigung oder Löschung dieser Daten zu verlangen.</p>
+
+                    <p><strong>4. Analyse-Tools</strong><br>
+                        Beim Besuch unserer Website kann Ihr Surf-Verhalten statistisch ausgewertet werden. Dies
+                        geschieht vor allem mit Cookies und mit sog. Analyseprogrammen.</p>
+                </div>
             </div>
         </div>
     </footer>
@@ -1682,6 +1541,29 @@
             event.target.reset();
         }
 
+        // ROI Calculator Logic
+        function calculateROI() {
+            const hoursVal = document.getElementById('hoursInput').value;
+            const rate = parseFloat(document.getElementById('rateInput').value) || 0;
+
+            document.getElementById('hoursVal').innerText = hoursVal + 'h';
+
+            const monthlySavings = hoursVal * rate;
+            const annualSavings = monthlySavings * 12;
+
+            document.getElementById('roiSavings').innerText = '€' + annualSavings.toLocaleString();
+            document.getElementById('roiHours').innerText = hoursVal + 'h';
+        }
+
+        // Legal toggle
+        function toggleLegal(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('hidden');
+            if (!el.classList.contains('hidden')) {
+                el.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1697,29 +1579,83 @@
         });
 
         // AI Chat Functionality
+        // Proactive System Ping
+        let systemPingTriggered = false;
+        setTimeout(() => {
+            if (!systemPingTriggered && document.getElementById('aiChat').classList.contains('hidden')) {
+                const display = document.getElementById('chatDisplay');
+                const aiPing = document.createElement('div');
+                aiPing.className = 'text-status-cyan-bright animate-pulse';
+                aiPing.innerHTML = `&gt; SYSTEM: Efficiency audit required? Type 'START' to initialize.`;
+                display.appendChild(aiPing);
+
+                // Show notification dot
+                const dot = document.querySelector('#aiWidget span');
+                if (dot) dot.classList.remove('hidden');
+
+                systemPingTriggered = true;
+                console.log("RAIS: System ping initialized.");
+            }
+        }, 30000); // 30 second delay
+
         function toggleAIChat() {
             const chat = document.getElementById('aiChat');
+            const dot = document.querySelector('#aiWidget span');
             chat.classList.toggle('hidden');
+            if (!chat.classList.contains('hidden')) {
+                if (dot) dot.classList.add('hidden');
+            }
         }
 
-        function sendChatMessage() {
+        async function sendChatMessage() {
             const input = document.getElementById('chatInput');
             const display = document.getElementById('chatDisplay');
-            if (input.value.trim()) {
+            const message = input.value.trim();
+
+            if (message) {
+                // Display User Message
                 const userMsg = document.createElement('div');
                 userMsg.className = 'text-gray-400';
-                userMsg.innerHTML = `&gt; OPERATOR: ${input.value}`;
+                userMsg.innerHTML = `&gt; OPERATOR: ${message}`;
                 display.appendChild(userMsg);
+                input.value = '';
+                display.scrollTop = display.scrollHeight;
 
-                setTimeout(() => {
+                try {
+                    // N8N INTEGRATION POINT
+                    const N8N_URL = 'https://n8n.srv1230723.hstgr.cloud/webhook-test/9f791144-9e4c-4924-92f9-f192c26334f6';
+
+                    if (!N8N_URL.includes('/webhook')) {
+                        // Safety check for incorrect URL types
+                        setTimeout(() => {
+                            const aiMsg = document.createElement('div');
+                            aiMsg.className = 'text-industrial-orange-bright';
+                            aiMsg.innerHTML = `&gt; AI: Connection protocol error. Terminal requires a valid Webhook endpoint.`;
+                            display.appendChild(aiMsg);
+                            display.scrollTop = display.scrollHeight;
+                        }, 600);
+                        return;
+                    }
+
+                    const response = await fetch(N8N_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ message: message })
+                    });
+
+                    const data = await response.json();
+
                     const aiMsg = document.createElement('div');
                     aiMsg.className = 'text-industrial-orange-bright';
-                    aiMsg.innerHTML = `&gt; AI: Profile analysis for "${input.value}" in progress. Structural optimization suggests booking a Live Demo for full integration.`;
+                    aiMsg.innerHTML = `&gt; AI: ${data.output || data.text || 'Response received.'}`;
                     display.appendChild(aiMsg);
-                    display.scrollTop = display.scrollHeight;
-                }, 600);
-
-                input.value = '';
+                } catch (error) {
+                    const errorMsg = document.createElement('div');
+                    errorMsg.className = 'text-red-500';
+                    errorMsg.innerHTML = `&gt; ERROR: Connection to neural node failed.`;
+                    display.appendChild(errorMsg);
+                }
+                display.scrollTop = display.scrollHeight;
             }
         }
 
@@ -1770,7 +1706,7 @@
         }
     </script>
     <!-- Floating AI Assistant Widget -->
-    <div id="aiWidget" class="fixed bottom-6 right-6 z-[100] group">
+    <div id="aiWidget" class="fixed bottom-6 right-6 z-[9999] group">
         <div id="aiChat"
             class="hidden absolute bottom-20 right-0 w-80 md:w-96 bg-background border-2 border-dashed border-industrial-orange shadow-[0_0_50px_rgba(255,127,36,0.2)] p-6">
             <div class="flex items-center justify-between mb-4 border-b border-dashed border-border pb-4">
@@ -1799,11 +1735,9 @@
             </div>
         </div>
         <button onclick="toggleAIChat()"
-            class="w-14 h-14 bg-background border-2 border-industrial-orange text-industrial-orange-bright flex items-center justify-center hover:scale-110 hover:rotate-12 transition-all shadow-[0_0_20px_rgba(255,127,36,0.3)]">
-            <div class="w-10 h-10 flex items-center justify-center p-1">
-                <img src="RAIS-Logo-transparent.png" alt="RAIS Logo" class="w-10 h-10 object-contain">
-            </div>
-            <span class="absolute -top-1 -right-1 w-3 h-3 bg-accent-purple-bright animate-ping"></span>
+            class="w-14 h-14 bg-background border-2 border-industrial-orange text-industrial-orange-bright flex items-center justify-center hover:scale-110 hover:rotate-12 transition-all shadow-[0_0_20px_rgba(255,127,36,0.3)] !opacity-100 !flex rounded-full">
+            <i data-lucide="message-square" class="w-6 h-6" style="display: block !important;"></i>
+            <span class="absolute top-0 right-0 w-3 h-3 bg-accent-purple-bright animate-ping rounded-full"></span>
         </button>
     </div>
 
@@ -1829,10 +1763,11 @@
                         <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
                     </svg>
                 </div>
-                <h2 class="font-mono text-3xl font-bold text-foreground mb-4 uppercase tracking-tighter">Wait, Operator!
+                <h2 class="font-mono text-3xl font-bold text-foreground mb-4 uppercase tracking-tighter">The 24/7
+                    Hospitality Protocol
                 </h2>
-                <p class="text-gray-400 font-sans mb-8">Before you disconnect, download our <strong>AI Strategy
-                        Implementation Guide</strong> (2026 Edition) for free.</p>
+                <p class="text-gray-400 font-sans mb-8">Before you disconnect, download the <strong>Hands-Free
+                        Restaurant & Hotel Playbook</strong> (2026 Edition) for free.</p>
                 <form class="space-y-4" onsubmit="handleExitSubmit(event)">
                     <input type="email" required placeholder="ENTER_EMAIL_FOR_ACCESS"
                         class="w-full bg-transparent border border-border p-4 font-mono text-sm text-industrial-orange-bright focus:border-industrial-orange outline-none text-center">
