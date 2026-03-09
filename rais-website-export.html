@@ -1624,10 +1624,30 @@
                     });
 
                     const data = await response.json();
+                    console.log("RAW n8n Response:", data);
+
+                    // Try every possible combination of where n8n might have put the text
+                    let aiText = data.output || data.text || data.reply || data.response;
+
+                    // If n8n returned an array of items (default behavior sometimes)
+                    if (!aiText && Array.isArray(data) && data.length > 0) {
+                        const item = data[0];
+                        aiText = item.output || item.text || item.reply || (item.json && (item.json.output || item.json.text || item.json.reply));
+                    }
+
+                    // If it's a generic message object
+                    if (!aiText && data.message) {
+                        aiText = data.message;
+                    }
+
+                    // Fallback to stringifying the whole thing if it's still missing so we can see it on screen
+                    if (!aiText) {
+                        aiText = "Debug Output: " + JSON.stringify(data);
+                    }
 
                     const aiMsg = document.createElement('div');
                     aiMsg.className = 'text-industrial-orange-bright';
-                    aiMsg.innerHTML = `&gt; AI: ${data.output || data.text || 'Response received.'}`;
+                    aiMsg.innerHTML = `&gt; AI: ${aiText}`;
                     display.appendChild(aiMsg);
                 } catch (error) {
                     console.error("Chat Widget Error:", error);
