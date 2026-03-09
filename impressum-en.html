@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Notice | RAIS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --background: 0 0% 7%;
+            --foreground: 0 0% 95%;
+            --border: 0 0% 20%;
+            --industrial-orange: 24 100% 57%;
+            --industrial-orange-bright: 24 100% 67%;
+            --accent-purple-bright: 271 91% 65%;
+        }
+
+        body {
+            background-color: hsl(var(--background));
+            color: hsl(var(--foreground));
+            font-family: 'Inter', sans-serif;
+            background-image:
+                radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.03) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .border-dashed {
+            border-style: dashed;
+        }
+
+        .text-industrial-orange-bright {
+            color: hsl(var(--industrial-orange-bright));
+        }
+
+        .glow-text {
+            text-shadow: 0 0 15px rgba(255, 127, 36, 0.4);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen py-20 px-4">
+    <div class="max-w-4xl mx-auto">
+        <!-- Back Button -->
+        <a href="rais-website-export.html"
+            class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-gray-500 hover:text-industrial-orange-bright transition-colors mb-12">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            Back to Terminal
+        </a>
+
+        <div class="relative border-2 border-dashed border-border p-8 md:p-12 bg-background/50 backdrop-blur-sm">
+            <!-- Corner Accents -->
+            <i data-lucide="plus" class="absolute -top-[1px] -left-[1px] w-3 h-3 text-industrial-orange-bright"></i>
+            <i data-lucide="plus" class="absolute -top-[1px] -right-[1px] w-3 h-3 text-industrial-orange-bright"></i>
+            <i data-lucide="plus" class="absolute -bottom-[1px] -left-[1px] w-3 h-3 text-industrial-orange-bright"></i>
+            <i data-lucide="plus" class="absolute -bottom-[1px] -right-[1px] w-3 h-3 text-industrial-orange-bright"></i>
+
+            <div class="mb-12">
+                <div class="font-mono text-xs uppercase tracking-ultra-wide text-accent-purple-bright mb-4">
+                    [ Legal Documentation ]
+                </div>
+                <h1 class="font-mono text-5xl font-bold text-foreground uppercase tracking-tighter glow-text">
+                    Legal Notice
+                </h1>
+            </div>
+
+            <div class="space-y-12 font-sans text-sm text-gray-400 leading-relaxed">
+                <!-- Administrative Section -->
+                <section>
+                    <h2
+                        class="font-mono text-xs uppercase tracking-widest text-industrial-orange-bright mb-4 border-b border-dashed border-border pb-2">
+                        01. Information according to § 5 TMG</h2>
+                    <p class="text-foreground">
+                        Kevin Ritz<br>
+                        Ritz AI Solutions (RAIS)<br>
+                        Von-Cohhausen-Straße 9<br>
+                        56076 Koblenz<br>
+                        Germany
+                    </p>
+                </section>
+
+                <!-- Contact Section -->
+                <section>
+                    <h2
+                        class="font-mono text-xs uppercase tracking-widest text-industrial-orange-bright mb-4 border-b border-dashed border-border pb-2">
+                        02. Contact</h2>
+                    <p>
+                        Email: <a href="mailto:kevin@ritz-ai.solutions"
+                            class="text-foreground hover:text-industrial-orange-bright">kevin@ritz-ai.solutions</a><br>
+                        Web: <a href="https://ritz-ai.solutions"
+                            class="text-foreground hover:text-industrial-orange-bright">www.ritz-ai.solutions</a>
+                    </p>
+                </section>
+
+                <!-- Tax ID Section -->
+                <section>
+                    <h2
+                        class="font-mono text-xs uppercase tracking-widest text-industrial-orange-bright mb-4 border-b border-dashed border-border pb-2">
+                        03. Tax ID</h2>
+                    <p>
+                        Tax Number: 22/139/34062<br><br>
+                        <span class="italic">VAT identification number according to § 27 a UStG: Not
+                            available due to small business status according to § 19 UStG.</span>
+                    </p>
+                </section>
+
+                <!-- Dispute Resolution -->
+                <section>
+                    <h2
+                        class="font-mono text-xs uppercase tracking-widest text-industrial-orange-bright mb-4 border-b border-dashed border-border pb-2">
+                        04. EU Dispute Resolution</h2>
+                    <p>
+                        The European Commission provides a platform for online dispute resolution (OS):
+                        <a href="https://ec.europa.eu/consumers/odr/" target="_blank"
+                            class="text-foreground hover:text-industrial-orange-bright">https://ec.europa.eu/consumers/odr/</a>.<br>
+                        Our email address can be found at the top of this legal notice.
+                    </p>
+                </section>
+
+                <!-- Legal Disclaimer -->
+                <section>
+                    <h2
+                        class="font-mono text-xs uppercase tracking-widest text-industrial-orange-bright mb-4 border-b border-dashed border-border pb-2">
+                        05. Consumer Dispute Resolution</h2>
+                    <p>
+                        We are not willing or obliged to participate in dispute resolution proceedings before a consumer
+                        arbitration board.
+                    </p>
+                </section>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-12 pt-8 border-t border-dashed border-border">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="font-mono text-[10px] text-gray-600 uppercase tracking-widest">
+                    &copy; 2026 Ritz AI Solutions. RAIS_LEGAL_V1.0
+                </p>
+                <div class="flex gap-6">
+                    <a href="privacy.html"
+                        class="font-mono text-[10px] text-gray-600 uppercase hover:text-industrial-orange-bright transition-colors">Privacy
+                        Policy</a>
+                    <a href="rais-website-export.html"
+                        class="font-mono text-[10px] text-gray-600 uppercase hover:text-industrial-orange-bright transition-colors">Home</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
