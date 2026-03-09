@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | RAIS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --background: 0 0% 7%;
+            --foreground: 0 0% 95%;
+            --border: 0 0% 20%;
+            --industrial-orange: 24 100% 57%;
+            --industrial-orange-bright: 24 100% 67%;
+            --accent-purple-bright: 271 91% 65%;
+        }
+
+        body {
+            background-color: hsl(var(--background));
+            color: hsl(var(--foreground));
+            font-family: 'Inter', sans-serif;
+            background-image:
+                radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.03) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .border-dashed {
+            border-style: dashed;
+        }
+
+        .text-industrial-orange-bright {
+            color: hsl(var(--industrial-orange-bright));
+        }
+
+        .glow-text {
+            text-shadow: 0 0 15px rgba(255, 127, 36, 0.4);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen py-20 px-4">
+    <div class="max-w-4xl mx-auto">
+        <!-- Back Button -->
+        <a href="rais-website-export.html"
+            class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-gray-500 hover:text-industrial-orange-bright transition-colors mb-12">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            Back to Terminal
+        </a>
+
+        <div class="relative border-2 border-dashed border-border p-8 md:p-12 bg-background/50 backdrop-blur-sm">
+            <!-- Corner Accents -->
+            <i data-lucide="plus" class="absolute -top-[1px] -left-[1px] w-3 h-3 text-industrial-orange-bright"></i>
+            <i data-lucide="plus" class="absolute -top-[1px] -right-[1px] w-3 h-3 text-industrial-orange-bright"></i>
+            <i data-lucide="plus" class="absolute -bottom-[1px] -left-[1px] w-3 h-3 text-industrial-orange-bright"></i>
+            <i data-lucide="plus" class="absolute -bottom-[1px] -right-[1px] w-3 h-3 text-industrial-orange-bright"></i>
+
+            <div class="mb-12">
+                <div class="font-mono text-xs uppercase tracking-ultra-wide text-accent-purple-bright mb-4">
+                    [ Privacy Protocol ]
+                </div>
+                <h1 class="font-mono text-5xl font-bold text-foreground uppercase tracking-tighter glow-text">
+                    Privacy Policy
+                </h1>
+            </div>
+
+            <div class="space-y-10 font-sans text-sm text-gray-400 leading-relaxed">
+                <section>
+                    <h2
+                        class="font-mono text-xs uppercase tracking-widest text-industrial-orange-bright mb-4 border-b border-dashed border-border pb-2">
+                        01. Privacy at a Glance</h2>
+                    <h3 class="text-foreground font-bold mb-2">General Information</h3>
+                    <p class="mb-4">The following information provides a simple overview of what happens to your
+                        personal data when you visit this website. Personal data is any data with which you can be
+                        personally identified.</p>
+                    <h3 class="text-foreground font-bold mb-2">Data Collection on This Website</h3>
+                    <p>The data processing on this website is carried out by the website operator. You can find their
+                        contact details in the section "Notice on the Responsible Party" in this privacy policy.</p>
+                </section>
+
+                <section>
+                    <h2
+                        class="font-mono text-xs uppercase tracking-widest text-industrial-orange-bright mb-4 border-b border-dashed border-border pb-2">
+                        02. Hostinger Hosting</h2>
+                    <p>We host our website at Hostinger. The provider is Hostinger International Ltd., 61 Lordou Vironos
+                        Street, 6023 Larnaca, Cyprus (hereinafter: Hostinger).</p>
+                    <p class="mt-2">Details can be found in Hostinger's privacy policy: <a
+                            href="https://www.hostinger.com/legal/privacy-policy" target="_blank"
+                            class="underline">https://www.hostinger.com/legal/privacy-policy</a>.</p>
+                </section>
+
+                <section>
+                    <h2
+                        class="font-mono text-xs uppercase tracking-widest text-industrial-orange-bright mb-4 border-b border-dashed border-border pb-2">
+                        03. Information on the Responsible Party</h2>
+                    <p class="text-foreground">
+                        Kevin Ritz<br>
+                        Von-Cohhausen-Straße 9<br>
+                        56076 Koblenz<br>
+                        Email: kevin@ritz-ai.solutions
+                    </p>
+                    <p class="mt-4">The responsible party is the natural or legal person who alone or jointly with
+                        others decides on the purposes and means of processing personal data.</p>
+                </section>
+
+                <section>
+                    <h2
+                        class="font-mono text-xs uppercase tracking-widest text-industrial-orange-bright mb-4 border-b border-dashed border-border pb-2">
+                        04. AI Processing (Google Gemini & n8n)</h2>
+                    <p>In our chat widget, we use n8n webhooks and Google Gemini AI technology (Google Ireland Limited,
+                        Gordon House, Barrow Street, Dublin 4, Ireland) to process your requests.</p>
+                    <p class="mt-2 text-foreground font-bold">Processing Details:</p>
+                    <p>When you use the chat widget, your inputs are transmitted to our n8n instance and forwarded to
+                        the Google Gemini API to generate a response. Your data is used exclusively to process the
+                        current session.</p>
+                    <p class="mt-2 text-foreground font-bold">Purpose of Processing:</p>
+                    <p>Processing is carried out to provide automated support functions and to answer your requests. The
+                        legal basis is Art. 6 Para. 1 lit. f GDPR (legitimate interest in efficient communication).</p>
+                </section>
+
+                <section>
+                    <h2
+                        class="font-mono text-xs uppercase tracking-widest text-industrial-orange-bright mb-4 border-b border-dashed border-border pb-2">
+                        05. Your Rights</h2>
+                    <p>Within the framework of the applicable legal provisions, you have the right at any time to:</p>
+                    <ul class="list-disc pl-5 mt-2 space-y-1">
+                        <li>Information about your stored personal data (Art. 15 GDPR)</li>
+                        <li>Correction of incorrect data (Art. 16 GDPR)</li>
+                        <li>Deletion of your data (Art. 17 GDPR)</li>
+                        <li>Restriction of processing (Art. 18 GDPR)</li>
+                        <li>Data portability (Art. 20 GDPR)</li>
+                        <li>Withdrawal of your consent (Art. 7 Para. 3 GDPR)</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2
+                        class="font-mono text-xs uppercase tracking-widest text-industrial-orange-bright mb-4 border-b border-dashed border-border pb-2">
+                        06. SSL or TLS Encryption</h2>
+                    <p>For security reasons and to protect the transmission of confidential content, such as requests
+                        you send to us as the site operator, this site uses SSL or TLS encryption. You can recognize an
+                        encrypted connection by the fact that the address line of the browser changes from "http://" to
+                        "https://" and by the lock symbol in your browser line.</p>
+                </section>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-12 pt-8 border-t border-dashed border-border">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="font-mono text-[10px] text-gray-600 uppercase tracking-widest">
+                    &copy; 2026 Ritz AI Solutions. RAIS_PRIVACY_V1.0
+                </p>
+                <div class="flex gap-6">
+                    <a href="impressum-en.html"
+                        class="font-mono text-[10px] text-gray-600 uppercase hover:text-industrial-orange-bright transition-colors">Legal
+                        Notice</a>
+                    <a href="rais-website-export.html"
+                        class="font-mono text-[10px] text-gray-600 uppercase hover:text-industrial-orange-bright transition-colors">Home</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

@@ -341,21 +341,6 @@
             box-shadow: 0 20px 40px -20px rgba(255, 127, 36, 0.4);
         }
 
-        .pricing-card-neural::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 127, 36, 0.05), transparent);
-            transition: 0.5s;
-        }
-
-        .pricing-card-neural:hover::before {
-            left: 100%;
-        }
-
         @keyframes pulse-glitch {
 
             0%,
@@ -406,23 +391,29 @@
                     <span class="hidden md:block text-xs text-gray-500 font-mono">v3.0.0</span>
                     <div class="flex items-center gap-1.5 ml-2 md:hidden">
                         <div class="w-1.5 h-1.5 bg-status-cyan-bright animate-pulse rounded-full"></div>
-                        <span class="font-mono text-[8px] text-status-cyan-bright uppercase tracking-tighter">System
+                        <span class="font-mono text-[8px] text-status-cyan-bright uppercase tracking-tighter"
+                            data-i18n="system_status">System
                             Online</span>
                     </div>
                 </a>
 
                 <nav class="hidden md:flex items-center gap-6">
                     <a href="#services"
-                        class="font-mono text-sm uppercase tracking-wider text-gray-400 hover:text-industrial-orange-bright transition-colors">Services</a>
+                        class="font-mono text-sm uppercase tracking-wider text-gray-400 hover:text-industrial-orange-bright transition-colors"
+                        data-i18n="services">Services</a>
                     <a href="#capabilities"
-                        class="font-mono text-sm uppercase tracking-wider text-gray-400 hover:text-industrial-orange-bright transition-colors">Efficiency</a>
+                        class="font-mono text-sm uppercase tracking-wider text-gray-400 hover:text-industrial-orange-bright transition-colors"
+                        data-i18n="efficiency">Efficiency</a>
                     <a href="#pricing"
-                        class="font-mono text-sm uppercase tracking-wider text-gray-400 hover:text-industrial-orange-bright transition-colors">Pricing</a>
+                        class="font-mono text-sm uppercase tracking-wider text-gray-400 hover:text-industrial-orange-bright transition-colors"
+                        data-i18n="pricing">Pricing</a>
                     <a href="#tech"
-                        class="font-mono text-sm uppercase tracking-wider text-gray-400 hover:text-industrial-orange-bright transition-colors">Tech
+                        class="font-mono text-sm uppercase tracking-wider text-gray-400 hover:text-industrial-orange-bright transition-colors"
+                        data-i18n="tech">Tech
                         Stack</a>
                     <a href="#contact"
-                        class="font-mono text-sm uppercase tracking-wider text-gray-400 hover:text-industrial-orange-bright transition-colors">Contact</a>
+                        class="font-mono text-sm uppercase tracking-wider text-gray-400 hover:text-industrial-orange-bright transition-colors"
+                        data-i18n="contact">Contact</a>
                 </nav>
 
                 <!-- Lang toggle still present -->
@@ -495,18 +486,18 @@
                     </div>
 
                     <h1 class="font-mono text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-foreground uppercase leading-tight"
-                        style="text-shadow: 0 0 20px rgba(255, 127, 36, 0.5)">
+                        style="text-shadow: 0 0 20px rgba(255, 127, 36, 0.5)" data-i18n="hero_h1">
                         Architecting<br>
                         <span class="text-industrial-orange-bright">Freedom.</span>
                     </h1>
 
-                    <p class="text-lg md:text-xl text-gray-400 max-w-2xl font-sans">
+                    <p class="text-lg md:text-xl text-gray-400 max-w-2xl font-sans" data-i18n="hero_p">
                         Next-gen AI systems engineered for financial and location independence. Reclaim your time with
                         24/7 autonomous operations.
-                        <span
-                            class="block mt-2 text-industrial-orange/80 text-sm font-mono uppercase tracking-wider">Average
-                            ROI: +300% in Year 1</span>
                     </p>
+                    <span class="block mt-2 text-industrial-orange/80 text-sm font-mono uppercase tracking-wider"
+                        data-i18n="roi_stat">Average
+                        ROI: +300% in Year 1</span>
                 </div>
 
                 <div class="flex flex-col sm:flex-row gap-4 mb-12">
@@ -789,16 +780,6 @@
         <div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
             <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
                 <rect width="100%" height="100%" fill="url(#neural-grid)" />
-                <g class="neural-lines">
-                    <line x1="20%" y1="10%" x2="50%" y2="40%" stroke="hsl(var(--industrial-orange))" stroke-width="0.5"
-                        stroke-dasharray="2 4">
-                        <animate attributeName="stroke-dashoffset" from="0" to="20" dur="3s" repeatCount="indefinite" />
-                    </line>
-                    <line x1="50%" y1="40%" x2="80%" y2="20%" stroke="hsl(var(--industrial-orange))" stroke-width="0.5"
-                        stroke-dasharray="2 4">
-                        <animate attributeName="stroke-dashoffset" from="0" to="20" dur="4s" repeatCount="indefinite" />
-                    </line>
-                </g>
             </svg>
         </div>
         <div class="absolute inset-0 diagonal-grid opacity-10"></div>
@@ -1008,32 +989,11 @@
         <div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
             <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
                 <defs>
-                    <pattern id="neural-grid" width="100" height="100" patternUnits="userSpaceOnUse">
-                        <circle cx="2" cy="2" r="1.5" fill="hsl(var(--industrial-orange))" />
-                        <path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,127,36,0.1)" stroke-width="0.5" />
+                    <pattern id="neural-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,127,36,0.1)" stroke-width="0.5" />
                     </pattern>
                 </defs>
                 <rect width="100%" height="100%" fill="url(#neural-grid)" />
-                <g class="neural-lines">
-                    <line x1="10%" y1="20%" x2="40%" y2="50%" stroke="hsl(var(--industrial-orange))" stroke-width="0.5"
-                        stroke-dasharray="2 4">
-                        <animate attributeName="stroke-dashoffset" from="0" to="20" dur="2s" repeatCount="indefinite" />
-                    </line>
-                    <line x1="40%" y1="50%" x2="70%" y2="30%" stroke="hsl(var(--industrial-orange))" stroke-width="0.5"
-                        stroke-dasharray="2 4">
-                        <animate attributeName="stroke-dashoffset" from="0" to="20" dur="2.5s"
-                            repeatCount="indefinite" />
-                    </line>
-                    <line x1="70%" y1="30%" x2="90%" y2="60%" stroke="hsl(var(--industrial-orange))" stroke-width="0.5"
-                        stroke-dasharray="2 4">
-                        <animate attributeName="stroke-dashoffset" from="0" to="20" dur="1.8s"
-                            repeatCount="indefinite" />
-                    </line>
-                    <line x1="40%" y1="50%" x2="60%" y2="80%" stroke="hsl(var(--industrial-orange))" stroke-width="0.5"
-                        stroke-dasharray="2 4">
-                        <animate attributeName="stroke-dashoffset" from="0" to="20" dur="3s" repeatCount="indefinite" />
-                    </line>
-                </g>
             </svg>
         </div>
         <div class="absolute inset-0 diagonal-grid opacity-20"></div>
@@ -1130,18 +1090,15 @@
 
     <!-- Pricing Section -->
     <section id="pricing" class="py-24 relative overflow-hidden border-t border-dashed border-border">
-        <!-- Neural Visualizer Background -->
-        <div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
-            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                <rect width="100%" height="100%" fill="url(#neural-grid)" />
-            </svg>
-        </div>
+        <!-- Background removed -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="mb-16 text-center">
-                <div class="font-mono text-xs uppercase tracking-ultra-wide text-industrial-orange-bright mb-4">
+                <div class="font-mono text-xs uppercase tracking-ultra-wide text-industrial-orange-bright mb-4"
+                    data-i18n="pricing_label">
                     [ Cost Architecture ]
                 </div>
-                <h2 class="font-mono text-4xl md:text-5xl font-bold text-foreground uppercase">Resource Allocation</h2>
+                <h2 class="font-mono text-4xl md:text-5xl font-bold text-foreground uppercase"
+                    data-i18n="pricing_title">Resource Allocation</h2>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
@@ -1200,18 +1157,15 @@
 
             <!-- Booking Section Direct Embed -->
             <div id="booking" class="mt-24 pt-24 border-t border-dashed border-border relative overflow-hidden">
-                <!-- Neural Visualizer Background -->
-                <div class="absolute inset-0 z-0 opacity-15 pointer-events-none">
-                    <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="100%" height="100%" fill="url(#neural-grid)" />
-                    </svg>
-                </div>
+                <!-- Background removed -->
                 <div class="text-center mb-16">
                     <div class="font-mono text-xs uppercase tracking-ultra-wide text-accent-purple-bright mb-4">
                         [ Strategic Session ]
                     </div>
-                    <h2 class="font-mono text-4xl font-bold text-foreground uppercase">Book a Meeting</h2>
-                    <p class="mt-4 text-gray-400 font-sans max-w-2xl mx-auto">Select a slot in our secure terminal to
+                    <h2 class="font-mono text-4xl font-bold text-foreground uppercase" data-i18n="booking_title">Book a
+                        Meeting</h2>
+                    <p class="mt-4 text-gray-400 font-sans max-w-2xl mx-auto" data-i18n="booking_p">Select a slot in our
+                        secure terminal to
                         initialize your operation.</p>
                 </div>
 
@@ -1512,71 +1466,17 @@
                     <p class="font-mono text-xs text-gray-500">&copy; 2026 Ritz AI Solutions. Core architecture v2.4.0.
                     </p>
                     <div class="flex items-center gap-6 font-mono text-[10px] uppercase tracking-widest text-gray-600">
-                        <button onclick="toggleLegal('impressum')"
-                            class="hover:text-industrial-orange transition-colors">Impressum</button>
-                        <button onclick="toggleLegal('privacy')"
-                            class="hover:text-industrial-orange transition-colors">Datenschutz (GDPR)</button>
+                        <a href="impressum.html" id="link-impressum"
+                            class="hover:text-industrial-orange transition-colors"
+                            data-i18n="legal_notice">Impressum</a>
+                        <a href="datenschutz.html" id="link-privacy"
+                            class="hover:text-industrial-orange transition-colors"
+                            data-i18n="privacy_policy">Datenschutz (GDPR)</a>
                     </div>
                 </div>
             </div>
 
-            <!-- GDPR Modal Sections -->
-            <div id="impressum"
-                class="hidden mt-12 pt-8 border-t border-dashed border-border text-gray-500 font-sans text-xs max-w-2xl">
-                <h4 class="font-mono text-foreground mb-4 uppercase tracking-widest text-industrial-orange-bright">
-                    IMPRESSUM</h4>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div>
-                        <p class="mb-4"><strong>Angaben gemäß § 5 TMG:</strong><br>
-                            Ritz AI Solutions (RAIS)<br>
-                            Von-Cohhausenstrasse 9<br>
-                            56076 Koblenz<br>
-                            Germany</p>
 
-                        <p class="mb-4"><strong>Vertreten durch:</strong><br>
-                            Kevin Ritz</p>
-                    </div>
-                    <div>
-                        <p class="mb-4"><strong>Kontakt:</strong><br>
-                            E-Mail: kevin@ritz-ai.solutions.com<br>
-                            Web: www.ritz-ai.solutions.com</p>
-
-                        <p class="mb-4"><strong>Registereintrag:</strong><br>
-                            Registergericht: [STADT]<br>
-                            Registernummer: [NUMMER]</p>
-
-                        <p><strong>Umsatzsteuer-ID:</strong><br>
-                            Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz: [ID]</p>
-                    </div>
-                </div>
-            </div>
-
-            <div id="privacy"
-                class="hidden mt-8 pt-8 border-t border-dashed border-border text-gray-500 font-sans text-xs max-w-2xl">
-                <h4 class="font-mono text-foreground mb-4 uppercase tracking-widest text-industrial-orange-bright">
-                    DATENSCHUTZERKLÄRUNG (GDPR)</h4>
-                <div class="space-y-4">
-                    <p><strong>1. Datenschutz auf einen Blick</strong><br>
-                        Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen
-                        Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser
-                        Datenschutzerklärung.</p>
-
-                    <p><strong>2. Datenerfassung auf dieser Website</strong><br>
-                        Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Die Kontaktdaten
-                        können Sie dem Impressum dieser Website entnehmen. Ihre Daten werden zum einen dadurch erhoben,
-                        dass Sie uns diese mitteilen (z.B. im Kontaktformular). Andere Daten werden automatisch beim
-                        Besuch der Website durch unsere IT-Systeme erfasst (z.B. IP-Adresse, Browser, Uhrzeit).</p>
-
-                    <p><strong>3. Ihre Rechte</strong><br>
-                        Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer
-                        gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die
-                        Berichtigung oder Löschung dieser Daten zu verlangen.</p>
-
-                    <p><strong>4. Analyse-Tools</strong><br>
-                        Beim Besuch unserer Website kann Ihr Surf-Verhalten statistisch ausgewertet werden. Dies
-                        geschieht vor allem mit Cookies und mit sog. Analyseprogrammen.</p>
-                </div>
-            </div>
         </div>
         </div>
     </footer>
@@ -1702,8 +1602,8 @@
                 display.scrollTop = display.scrollHeight;
 
                 try {
-                    // N8N INTEGRATION POINT
-                    const N8N_URL = 'https://n8n.srv1230723.hstgr.cloud/webhook-test/9f791144-9e4c-4924-92f9-f192c26334f6';
+                    // N8N PRODUCTION WEBHOOK
+                    const N8N_URL = 'https://n8n.ritz-ai.solutions/webhook/sAuteNsDOpnken75';
 
                     if (!N8N_URL.includes('/webhook')) {
                         // Safety check for incorrect URL types
@@ -1730,6 +1630,7 @@
                     aiMsg.innerHTML = `&gt; AI: ${data.output || data.text || 'Response received.'}`;
                     display.appendChild(aiMsg);
                 } catch (error) {
+                    console.error("Chat Widget Error:", error);
                     const errorMsg = document.createElement('div');
                     errorMsg.className = 'text-red-500';
                     errorMsg.innerHTML = `&gt; ERROR: Connection to neural node failed.`;
@@ -1783,24 +1684,116 @@
             }
         }
 
-        // Language toggle
+        // Language switch logic
+        const translations = {
+            en: {
+                services: "Services",
+                efficiency: "Efficiency",
+                pricing: "Pricing",
+                tech: "Tech Stack",
+                contact: "Contact",
+                hero_h1: "Architecting<br><span class='text-industrial-orange-bright'>Freedom.</span>",
+                hero_p: "Next-gen AI systems engineered for financial and location independence. Reclaim your time with 24/7 autonomous operations.",
+                pricing_label: "[ Cost Architecture ]",
+                pricing_title: "Resource Allocation",
+                system_status: "System Online",
+                roi_stat: "Average ROI: +300% in Year 1",
+                booking_title: "Book a Meeting",
+                booking_p: "Select a slot in our secure terminal to initialize your operation.",
+                chat_disclaimer: "All transmissions are processed according to <a href='privacy.html' class='underline hover:text-industrial-orange-bright transition-colors'>GDPR protocols</a>.",
+                legal_notice: "Legal Notice",
+                privacy_policy: "Privacy Policy (GDPR)",
+                impressum_url: "impressum-en.html",
+                privacy_url: "privacy.html"
+            },
+            de: {
+                services: "Services",
+                efficiency: "Effizienz",
+                pricing: "Preise",
+                tech: "Technologien",
+                contact: "Kontakt",
+                hero_h1: "Architektur der<br><span class='text-industrial-orange-bright'>Freiheit.</span>",
+                hero_p: "KI-Systeme der nächsten Generation für finanzielle und örtliche Unabhängigkeit. Gewinnen Sie Ihre Zeit zurück durch 24/7 autonomen Betrieb.",
+                pricing_label: "[ Kosten-Architektur ]",
+                pricing_title: "Ressourcenplanung",
+                system_status: "System Online",
+                roi_stat: "Durchschnittlicher ROI: +300% im 1. Jahr",
+                booking_title: "Termin buchen",
+                booking_p: "Wählen Sie ein Zeitfenster in unserem sicheren Terminal, um Ihre Operation zu initialisieren.",
+                chat_disclaimer: "Alle Übertragungen werden gemäß den <a href='datenschutz.html' class='underline hover:text-industrial-orange-bright transition-colors'>DSGVO-Protokollen</a> verarbeitet.",
+                legal_notice: "Impressum",
+                privacy_policy: "Datenschutz (DSGVO)",
+                impressum_url: "impressum.html",
+                privacy_url: "datenschutz.html"
+            }
+        };
+
         function setLanguage(lang) {
             const enBtn = document.getElementById('lang-en');
             const deBtn = document.getElementById('lang-de');
 
+            // UI Update
             if (lang === 'en') {
                 enBtn.classList.add('text-industrial-orange-bright');
                 enBtn.classList.remove('text-gray-500');
                 deBtn.classList.remove('text-industrial-orange-bright');
                 deBtn.classList.add('text-gray-500');
-                alert('Language switched to English Protocol.');
             } else {
                 deBtn.classList.add('text-industrial-orange-bright');
                 deBtn.classList.remove('text-gray-500');
                 enBtn.classList.remove('text-industrial-orange-bright');
                 enBtn.classList.add('text-gray-500');
-                alert('Sprache auf Deutsch umgestellt.');
             }
+
+            // Content Update
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            // Update Legal Links
+            const impLink = document.getElementById('link-impressum');
+            const privLink = document.getElementById('link-privacy');
+            if (impLink) impLink.href = translations[lang].impressum_url;
+            if (privLink) privLink.href = translations[lang].privacy_url;
+
+            localStorage.setItem('rais_lang', lang);
+        }
+
+        // Initialize Language
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('rais_lang') || 'en';
+            setLanguage(savedLang);
+        });
+
+        // Chat Data Notice Logic
+        function acceptDataNotice() {
+            document.getElementById('dataNotice').classList.add('hidden');
+            document.getElementById('chatInput').disabled = false;
+            document.getElementById('chatInput').classList.remove('opacity-50', 'cursor-not-allowed');
+            document.getElementById('chatSendBtn').disabled = false;
+            document.getElementById('chatSendBtn').classList.remove('opacity-50');
+            localStorage.setItem('rais_chat_consent', 'true');
+        }
+
+        // Initialize Chat State
+        if (localStorage.getItem('rais_chat_consent') === 'true') {
+            window.addEventListener('DOMContentLoaded', () => {
+                const notice = document.getElementById('dataNotice');
+                if (notice) notice.classList.add('hidden');
+                const input = document.getElementById('chatInput');
+                if (input) {
+                    input.disabled = false;
+                    input.classList.remove('opacity-50', 'cursor-not-allowed');
+                }
+                const btn = document.getElementById('chatSendBtn');
+                if (btn) {
+                    btn.disabled = false;
+                    btn.classList.remove('opacity-50');
+                }
+            });
         }
     </script>
     <!-- Floating AI Assistant Widget -->
@@ -1817,20 +1810,37 @@
                     <i data-lucide="x" class="w-4 h-4"></i>
                 </button>
             </div>
-            <div class="h-64 overflow-y-auto font-mono text-xs space-y-4 mb-4 scrollbar-hide" id="chatDisplay"
+            <div class="h-64 overflow-y-auto font-mono text-xs space-y-4 mb-4 scrollbar-hide relative" id="chatDisplay"
                 style="scrollbar-width: none;">
+                <!-- Accept and Continue Modal -->
+                <div id="dataNotice"
+                    class="absolute inset-0 bg-background/95 flex flex-col items-center justify-center p-6 text-center z-20">
+                    <i data-lucide="shield-check" class="w-8 h-8 text-industrial-orange-bright mb-4"></i>
+                    <p class="text-[10px] text-gray-400 mb-6 font-sans leading-relaxed">
+                        To initialize the neural connection, please accept our data processing protocol. We process your
+                        inputs locally and securely.
+                    </p>
+                    <button onclick="acceptDataNotice()"
+                        class="px-6 py-2 border border-industrial-orange text-industrial-orange-bright font-mono text-[10px] uppercase tracking-widest hover:bg-industrial-orange hover:text-black transition-all">
+                        Accept & Continue
+                    </button>
+                </div>
                 <div class="text-accent-purple-bright">&gt; SYSTEM: Neural connection established.</div>
                 <div class="text-industrial-orange-bright">&gt; AI: Greetings, operator. How may I assist in optimizing
                     your destiny today?</div>
             </div>
             <div class="relative">
-                <input type="text" id="chatInput" placeholder="Enter command..."
-                    class="w-full bg-transparent border border-border p-3 font-mono text-xs text-industrial-orange-bright focus:border-industrial-orange outline-none">
-                <button onclick="sendChatMessage()"
-                    class="absolute right-3 top-3 text-industrial-orange hover:scale-110 transition-transform">
+                <input type="text" id="chatInput" placeholder="Enter command..." disabled
+                    class="w-full bg-transparent border border-border p-3 font-mono text-xs text-industrial-orange-bright focus:border-industrial-orange outline-none opacity-50 cursor-not-allowed">
+                <button onclick="sendChatMessage()" id="chatSendBtn" disabled
+                    class="absolute right-3 top-3 text-industrial-orange hover:scale-110 transition-transform opacity-50">
                     <i data-lucide="send" class="w-4 h-4"></i>
                 </button>
             </div>
+            <p class="text-[9px] text-gray-600 italic mt-2 text-center font-sans" data-i18n="chat_disclaimer">
+                All transmissions are processed according to <a href="datenschutz.html"
+                    class="underline hover:text-industrial-orange-bright transition-colors">GDPR protocols</a>.
+            </p>
         </div>
         <button onclick="toggleAIChat()"
             class="w-14 h-14 bg-background border-2 border-industrial-orange text-industrial-orange-bright flex items-center justify-center hover:scale-110 hover:rotate-12 transition-all shadow-[0_0_20px_rgba(255,127,36,0.3)] !opacity-100 !flex rounded-full">
