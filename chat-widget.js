@@ -87,18 +87,33 @@
     display.scrollTop = display.scrollHeight;
 
     try {
-      const controller = new AbortController(); const timeout = setTimeout(() => controller.abort(), 30000); const resp = await fetch(WEBHOOK_URL, {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 30000);
+      
+      const resp = await fetch(WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: text, sessionId: sessionId }), signal: controller.signal
+        body: JSON.stringify({ message: text, sessionId: sessionId }),
+        signal: controller.signal
       });
-      const data = await resp.json();
-      const reply = data.reply || data.output || data.message || 'I could not process that. Please email kevin@ritz-ai.solutions';
+      
+      clearTimeout(timeout);
+      
+      const textBody = await resp.text();
+      let data = {};
+      try {
+        data = textBody ? JSON.parse(textBody) : {};
+      } catch (parseErr) {
+        console.error('RAIS: Failed to parse response JSON', parseErr);
+      }
+      
+      const reply = data.reply || data.output || data.message || 'Protocol acknowledged. Processing sequence complete.';
       typingP.className = 'text-green-400';
       typingP.textContent = '> AI: ' + reply;
     } catch(err) {
+      console.error('RAIS: Chat connection error', err);
       typingP.className = 'text-red-400';
-      typingP.textContent = '> ERROR: Connection failed. Email kevin@ritz-ai.solutions';
+      typingP.textContent = '> ERROR: Connection failed. Terminal nodes are currently undergoing maintenance.';
     }
 
     display.scrollTop = display.scrollHeight;

@@ -48,32 +48,42 @@
     </script>
 
     <!-- Analytics Placeholders -->
-    <!-- GA4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PLACEHOLDER"></script>
+    <!-- Analytics Core -->
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-PLACEHOLDER');
-    </script>
-    <!-- Hotjar -->
-    <script>
-        (function (h, o, t, j, a, r) {
-            h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
-            h._hjSettings = { hjid: '000000', hjsv: 6 };
-            a = o.getElementsByTagName('head')[0];
-            r = o.createElement('script'); r.async = 1;
-            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
-            a.appendChild(r);
-        })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+        function loadAnalytics() {
+            if (window.analyticsLoaded) return;
+            window.analyticsLoaded = true;
+
+            // GA4
+            const gaScript = document.createElement('script');
+            gaScript.async = true;
+            gaScript.src = "https://www.googletagmanager.com/gtag/js?id=G-PLACEHOLDER";
+            document.head.appendChild(gaScript);
+
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'G-PLACEHOLDER');
+
+            // Hotjar
+            (function (h, o, t, j, a, r) {
+                h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
+                h._hjSettings = { hjid: '000000', hjsv: 6 };
+                a = o.getElementsByTagName('head')[0];
+                r = o.createElement('script'); r.async = 1;
+                r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+                a.appendChild(r);
+            })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+        }
+
+        if (localStorage.getItem('rais_consent') === 'granted') {
+            loadAnalytics();
+        }
     </script>
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <!-- Fonts (Localized) -->
+    <link rel="stylesheet" href="fonts.css">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -1528,6 +1538,7 @@
                 <div class="grid md:grid-cols-2 gap-8">
                     <div>
                         <p class="mb-4"><strong>Angaben gemäß § 5 TMG:</strong><br>
+                            Kevin Ritz<br>
                             Ritz AI Solutions (RAIS)<br>
                             Von-Cohhausenstrasse 9<br>
                             56076 Koblenz<br>
@@ -1538,15 +1549,13 @@
                     </div>
                     <div>
                         <p class="mb-4"><strong>Kontakt:</strong><br>
+                            Telefon: +49 151 29755134<br>
                             E-Mail: kevin@ritz-ai.solutions.com<br>
                             Web: www.ritz-ai.solutions.com</p>
 
-                        <p class="mb-4"><strong>Registereintrag:</strong><br>
-                            Registergericht: [STADT]<br>
-                            Registernummer: [NUMMER]</p>
-
                         <p><strong>Umsatzsteuer-ID:</strong><br>
-                            Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz: [ID]</p>
+                            Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz: Entfällt
+                            (Kleinunternehmerregelung gemäß § 19 UStG)</p>
                     </div>
                 </div>
             </div>
@@ -1559,22 +1568,32 @@
                     <p><strong>1. Datenschutz auf einen Blick</strong><br>
                         Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen
                         Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser
-                        Datenschutzerklärung.</p>
+                        Datenschutzerklärung. Die Nutzung unserer Webseite ist in der Regel ohne Angabe
+                        personenbezogener Daten möglich.</p>
 
-                    <p><strong>2. Datenerfassung auf dieser Website</strong><br>
-                        Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Die Kontaktdaten
-                        können Sie dem Impressum dieser Website entnehmen. Ihre Daten werden zum einen dadurch erhoben,
-                        dass Sie uns diese mitteilen (z.B. im Kontaktformular). Andere Daten werden automatisch beim
-                        Besuch der Website durch unsere IT-Systeme erfasst (z.B. IP-Adresse, Browser, Uhrzeit).</p>
+                    <p><strong>2. Verantwortliche Stelle</strong><br>
+                        Verantwortlich für die Datenverarbeitung auf dieser Website ist:<br>
+                        Kevin Ritz, Von-Cohhausenstrasse 9, 56076 Koblenz. Details siehe Impressum.</p>
 
-                    <p><strong>3. Ihre Rechte</strong><br>
-                        Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer
-                        gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die
-                        Berichtigung oder Löschung dieser Daten zu verlangen.</p>
+                    <p><strong>3. Datenerfassung auf dieser Website</strong><br>
+                        Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen (z.B. im
+                        Kontaktformular).
+                        Andere Daten (z.B. IP-Adresse) werden automatisch beim Besuch der Website durch unsere
+                        IT-Systeme erfasst.
+                        Die Erfassung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (berechtigtes
+                        Interesse).</p>
 
-                    <p><strong>4. Analyse-Tools</strong><br>
-                        Beim Besuch unserer Website kann Ihr Surf-Verhalten statistisch ausgewertet werden. Dies
-                        geschieht vor allem mit Cookies und mit sog. Analyseprogrammen.</p>
+                    <p><strong>4. Drittanbieter-Tools (Analyse & Service)</strong><br>
+                        Wir nutzen Google Tag Manager, Google Analytics, Hotjar und Stripe. Diese Tools werden erst nach
+                        Ihrer ausdrücklichen Einwilligung (Cookie-Banner) aktiviert (Art. 6 Abs. 1 lit. a DSGVO).
+                        Wir nutzen zudem Calendly zur Terminbuchung. Die Datenübermittlung erfolgt hierbei an Server in
+                        den USA.</p>
+
+                    <p><strong>5. Ihre Rechte & Beschwerderecht</strong><br>
+                        Sie haben jederzeit das Recht auf Auskunft, Berichtigung, Sperrung oder Löschung Ihrer
+                        gespeicherten Daten.
+                        Zudem steht Ihnen ein Beschwerderecht bei der zuständigen Aufsichtsbehörde zu (Art. 77 DSGVO).
+                    </p>
                 </div>
             </div>
         </div>
@@ -1723,11 +1742,17 @@
                         body: JSON.stringify({ message: message })
                     });
 
-                    const data = await response.json();
+                    const textBody = await response.text();
+                    let data = {};
+                    try {
+                        data = textBody ? JSON.parse(textBody) : {};
+                    } catch (e) {
+                        console.error('Failed to parse JSON:', e);
+                    }
 
                     const aiMsg = document.createElement('div');
                     aiMsg.className = 'text-industrial-orange-bright';
-                    aiMsg.innerHTML = `&gt; AI: ${data.output || data.reply || data.text || 'Response received.'}`;
+                    aiMsg.innerHTML = `&gt; AI: ${data.output || data.reply || data.text || 'Protocol acknowledged. Processing sequence complete.'}`;
                     display.appendChild(aiMsg);
                 } catch (error) {
                     const errorMsg = document.createElement('div');
@@ -1739,49 +1764,7 @@
             }
         }
 
-        // Exit intent logic
-        let exitPopupShown = false;
 
-        function showExitPopup() {
-            if (!exitPopupShown) {
-                document.getElementById('exitPopup').classList.remove('hidden');
-                lucide.createIcons(); // Re-initialize icons for the popup
-                exitPopupShown = true;
-            }
-        }
-
-        function hideExitPopup() {
-            document.getElementById('exitPopup').classList.add('hidden');
-        }
-
-        document.body.addEventListener('mouseleave', (e) => {
-            if (e.clientY < 0) showExitPopup();
-        });
-
-        // Time trigger (20 seconds)
-        setTimeout(showExitPopup, 20000);
-
-        // Add Escape key listener
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                hideExitPopup();
-            }
-        });
-
-        function handleExitSubmit(event) {
-            event.preventDefault();
-            const formData = new FormData(event.target);
-            const name = formData.get('operatorName');
-            const email = formData.get('corporateEmail');
-
-            if (name && email) {
-                alert(`Protocol blueprint for ${name} (${email}) transmitted to your terminal.`);
-                hideExitPopup();
-                event.target.reset();
-            } else {
-                alert('Please fill in all fields.');
-            }
-        }
 
         // Language toggle
         function setLanguage(lang) {
@@ -1803,6 +1786,32 @@
             }
         }
     </script>
+    <!-- Cookie Consent Banner -->
+    <div id="cookieBanner"
+        class="fixed bottom-0 left-0 right-0 z-[10000] p-4 transform translate-y-full transition-transform duration-500">
+        <div
+            class="max-w-4xl mx-auto bg-background border-2 border-dashed border-industrial-orange p-6 shadow-[0_0_50px_rgba(255,127,36,0.3)]">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex-1">
+                    <h5
+                        class="font-mono text-xs font-bold uppercase tracking-widest text-industrial-orange-bright mb-2">
+                        &gt; PRIVACY_PROTOCOL_v3.0</h5>
+                    <p class="text-gray-400 text-xs font-sans leading-relaxed">
+                        We use neural nodes (cookies) to optimize your terminal experience and analyze traffic patterns.
+                        Default state is "ANONYMOUS". Enable tracking for full system diagnostics.
+                    </p>
+                </div>
+                <div class="flex gap-4">
+                    <button onclick="acceptConsent('denied')"
+                        class="px-6 py-2 border border-dashed border-border font-mono text-[10px] uppercase text-gray-500 hover:text-white transition-colors">Decline</button>
+                    <button onclick="acceptConsent('granted')"
+                        class="px-6 py-2 bg-industrial-orange text-black font-mono text-[10px] font-bold uppercase hover:bg-white transition-all">Fully
+                        Enable</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Floating AI Assistant Widget -->
     <div id="aiWidget" class="fixed bottom-6 right-6 z-[9999] group">
         <div id="aiChat"
@@ -1825,6 +1834,7 @@
             </div>
             <div class="relative">
                 <input type="text" id="chatInput" placeholder="Enter command..."
+                    onkeydown="if(event.key === 'Enter') sendChatMessage()"
                     class="w-full bg-transparent border border-border p-3 font-mono text-xs text-industrial-orange-bright focus:border-industrial-orange outline-none">
                 <button onclick="sendChatMessage()"
                     class="absolute right-3 top-3 text-industrial-orange hover:scale-110 transition-transform">
@@ -1839,53 +1849,26 @@
         </button>
     </div>
 
-    <!-- Exit Intent Popup -->
-    <div id="exitPopup" onclick="hideExitPopup()"
-        class="hidden fixed inset-0 z-[200] flex items-center justify-center bg-black/80 backdrop-blur-sm px-4">
-        <div id="exitContent" onclick="event.stopPropagation()"
-            class="max-w-xl w-full bg-background border-2 border-dashed border-industrial-orange p-10 relative">
-            <button onclick="hideExitPopup()"
-                class="absolute top-4 right-4 text-gray-500 hover:text-industrial-orange transition-colors flex items-center gap-2 font-mono text-[10px] uppercase">
-                <span>Close [Esc]</span>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            </button>
-            <div class="text-center">
-                <div
-                    class="inline-flex items-center justify-center w-16 h-16 border-2 border-dashed border-accent-purple-bright mb-6">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round" class="text-accent-purple-bright">
-                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                    </svg>
-                </div>
-                <h2 class="font-mono text-3xl font-bold text-foreground mb-4 uppercase tracking-tighter">The 24/7
-                    Hospitality Protocol</h2>
-                <p class="text-gray-400 font-sans mb-8 leading-relaxed">Download the Hands-Free Restaurant & Hotel
-                    Playbook (2026 Edition).</p>
-                <form class="space-y-4" onsubmit="handleExitSubmit(event)">
-                    <div class="space-y-2 text-left">
-                        <label class="block font-mono text-[10px] uppercase text-gray-500">Operator Name</label>
-                        <input type="text" name="operatorName" required placeholder="ENTER_NAME"
-                            class="w-full bg-transparent border border-border p-4 font-mono text-sm text-industrial-orange-bright focus:border-industrial-orange outline-none text-center">
-                    </div>
-                    <div class="space-y-2 text-left">
-                        <label class="block font-mono text-[10px] uppercase text-gray-500">Corporate Email</label>
-                        <input type="email" name="corporateEmail" required placeholder="name@company.com"
-                            class="w-full bg-transparent border border-border p-4 font-mono text-sm text-industrial-orange-bright focus:border-industrial-orange outline-none text-center">
-                    </div>
-                    <button type="submit"
-                        class="w-full py-4 bg-industrial-orange/10 border-2 border-industrial-orange text-industrial-orange-bright font-mono text-sm uppercase tracking-widest hover:bg-industrial-orange transition-all hover:text-black">
-                        Access Protocol Blueprint
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
 
 
+
+    <script>
+        function acceptConsent(status) {
+            localStorage.setItem('rais_consent', status);
+            document.getElementById('cookieBanner').classList.add('translate-y-full');
+            if (status === 'granted') {
+                loadAnalytics();
+            }
+        }
+
+        window.addEventListener('load', () => {
+            if (!localStorage.getItem('rais_consent')) {
+                setTimeout(() => {
+                    document.getElementById('cookieBanner').classList.remove('translate-y-full');
+                }, 2000);
+            }
+        });
+    </script>
     <script src="/chat-widget.js"></script>
 </body>
 
