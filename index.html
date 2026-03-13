@@ -1568,119 +1568,6 @@
             });
         });
 
-        // AI Chat Functionality
-        // Proactive System Ping
-        let systemPingTriggered = false;
-        setTimeout(() => {
-            if (!systemPingTriggered && document.getElementById('aiChat').classList.contains('hidden')) {
-                const display = document.getElementById('chatDisplay');
-                const aiPing = document.createElement('div');
-                aiPing.className = 'text-status-cyan-bright animate-pulse';
-                aiPing.innerHTML = `&gt; SYSTEM: Efficiency audit required? Type 'START' to initialize.`;
-                display.appendChild(aiPing);
-
-                // Show notification dot
-                const dot = document.querySelector('#aiWidget span');
-                if (dot) dot.classList.remove('hidden');
-
-                systemPingTriggered = true;
-                console.log("RAIS: System ping initialized.");
-            }
-        }, 30000); // 30 second delay
-
-        function toggleAIChat() {
-            const chat = document.getElementById('aiChat');
-            const dot = document.querySelector('#aiWidget span');
-            chat.classList.toggle('hidden');
-            if (!chat.classList.contains('hidden')) {
-                if (dot) dot.classList.add('hidden');
-            }
-        }
-
-        async function sendChatMessage() {
-            const input = document.getElementById('chatInput');
-            const display = document.getElementById('chatDisplay');
-            const message = input.value.trim();
-
-            if (message) {
-                // Display User Message
-                const userMsg = document.createElement('div');
-                userMsg.className = 'text-gray-400';
-                userMsg.innerHTML = `&gt; OPERATOR: ${message}`;
-                display.appendChild(userMsg);
-                input.value = '';
-                display.scrollTop = display.scrollHeight;
-
-                try {
-                    // N8N PRODUCTION WEBHOOK
-                    const N8N_URL = 'https://n8n.ritz-ai.solutions/webhook/sAuteNsDOpnken75';
-
-                    if (!N8N_URL.includes('/webhook')) {
-                        // Safety check for incorrect URL types
-                        setTimeout(() => {
-                            const aiMsg = document.createElement('div');
-                            aiMsg.className = 'text-industrial-orange-bright';
-                            aiMsg.innerHTML = `&gt; AI: Connection protocol error. Terminal requires a valid Webhook endpoint.`;
-                            display.appendChild(aiMsg);
-                            display.scrollTop = display.scrollHeight;
-                        }, 600);
-                        return;
-                    }
-
-                    const response = await fetch(N8N_URL, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ message: message })
-                    });
-
-                    const textBody = await response.text();
-                    let data = {};
-                    try {
-                        data = textBody ? JSON.parse(textBody) : {};
-                    } catch (e) {
-                        console.error('Failed to parse JSON:', e);
-                        data = { output: "Error parsing system response." };
-                    }
-                    
-                    console.log("RAW n8n Response:", data);
-
-                    // Try every possible combination of where n8n might have put the text
-                    let aiText = data.output || data.text || data.reply || data.response;
-
-                    // If n8n returned an array of items (default behavior sometimes)
-                    if (!aiText && Array.isArray(data) && data.length > 0) {
-                        const item = data[0];
-                        aiText = item.output || item.text || item.reply || (item.json && (item.json.output || item.json.text || item.json.reply));
-                    }
-
-                    // If it's a generic message object
-                    if (!aiText && data.message) {
-                        aiText = data.message;
-                    }
-
-                    // Fallback to stringifying the whole thing if it's still missing so we can see it on screen
-                    if (!aiText) {
-                        aiText = textBody || "Protocol acknowledged. Processing sequence complete.";
-                    }
-                    }
-
-                    const aiMsg = document.createElement('div');
-                    aiMsg.className = 'text-industrial-orange-bright';
-                    aiMsg.innerHTML = `&gt; AI: ${aiText}`;
-                    display.appendChild(aiMsg);
-                } catch (error) {
-                    console.error("Chat Widget Error:", error);
-                    const errorMsg = document.createElement('div');
-                    errorMsg.className = 'text-red-500';
-                    errorMsg.innerHTML = `&gt; ERROR: Connection to neural node failed.`;
-                    display.appendChild(errorMsg);
-                }
-                display.scrollTop = display.scrollHeight;
-            }
-        }
-
-
-
         // Language switch logic
         const translations = {
             en: {
@@ -1764,34 +1651,6 @@
             const savedLang = localStorage.getItem('rais_lang') || 'en';
             setLanguage(savedLang);
         });
-
-        // Chat Data Notice Logic
-        function acceptDataNotice() {
-            document.getElementById('dataNotice').classList.add('hidden');
-            document.getElementById('chatInput').disabled = false;
-            document.getElementById('chatInput').classList.remove('opacity-50', 'cursor-not-allowed');
-            document.getElementById('chatSendBtn').disabled = false;
-            document.getElementById('chatSendBtn').classList.remove('opacity-50');
-            localStorage.setItem('rais_chat_consent', 'true');
-        }
-
-        // Initialize Chat State
-        if (localStorage.getItem('rais_chat_consent') === 'true') {
-            window.addEventListener('DOMContentLoaded', () => {
-                const notice = document.getElementById('dataNotice');
-                if (notice) notice.classList.add('hidden');
-                const input = document.getElementById('chatInput');
-                if (input) {
-                    input.disabled = false;
-                    input.classList.remove('opacity-50', 'cursor-not-allowed');
-                }
-                const btn = document.getElementById('chatSendBtn');
-                if (btn) {
-                    btn.disabled = false;
-                    btn.classList.remove('opacity-50');
-                }
-            });
-        }
     </script>
     <!-- Cookie Consent Banner -->
     <div id="cookieBanner"
@@ -1892,7 +1751,7 @@
             }
         });
     </script>
-    <script src="/chat-widget.js"></script>
+    <script src="chat-widget.js"></script>
 </body>
 
 </html>
