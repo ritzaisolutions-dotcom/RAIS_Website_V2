@@ -1,0 +1,28 @@
+# RAIS Deployment Configuration
+# This file ensures Hostinger serves the correct root version and handles routing
+
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Force HTTPS
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Ensure index.html is served from the root
+    DirectoryIndex index.html
+
+    # Prevent access to old project zips or subfolders that might contain stale versions
+    RewriteRule ^temp_zip_content/ - [F,L]
+    RewriteRule ^RAIS_WEBSITE_LIVE/ - [F,L]
+    RewriteRule ^\.git/ - [F,L]
+</IfModule>
+
+# Cache Control for v3.0 release
+<FilesMatch "\.(html|js|css)$">
+    Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+</FilesMatch>

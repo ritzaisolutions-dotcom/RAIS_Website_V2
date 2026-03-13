@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- DEPLOYMENT STAMP: 2026-03-13 | RAIS-V3-PRODUCTION -->
 <html lang="de" class="scroll-smooth">
 
 <head>
@@ -398,7 +399,7 @@
                             class="w-full h-full object-contain group-hover:rotate-12 transition-transform duration-500">
                     </div>
                     <span class="font-mono text-xl font-bold tracking-wider text-industrial-orange-bright">RAIS</span>
-                    <span class="hidden md:block text-xs text-gray-500 font-mono">v3.0.0</span>
+                    <span class="hidden md:block text-xs text-gray-500 font-mono">v3.0.0-Live</span>
                     <div class="flex items-center gap-1.5 ml-2 md:hidden">
                         <div class="w-1.5 h-1.5 bg-status-cyan-bright animate-pulse rounded-full"></div>
                         <span class="font-mono text-[8px] text-status-cyan-bright uppercase tracking-tighter"
@@ -1713,9 +1714,8 @@
             </div>
             <div class="relative">
                 <input type="text" id="chatInput" placeholder="Enter command..." disabled
-                    onkeydown="if(event.key === 'Enter') sendChatMessage()"
                     class="w-full bg-transparent border border-border p-3 font-mono text-xs text-industrial-orange-bright focus:border-industrial-orange outline-none opacity-50 cursor-not-allowed">
-                <button onclick="sendChatMessage()" id="chatSendBtn" disabled
+                <button id="chatSendBtn" disabled
                     class="absolute right-3 top-3 text-industrial-orange hover:scale-110 transition-transform opacity-50">
                     <i data-lucide="send" class="w-4 h-4"></i>
                 </button>
