@@ -20,6 +20,44 @@
       return;
     }
 
+    // Expose functions to global window object
+    window.toggleAIChat = function() {
+        const chat = document.getElementById('aiChat');
+        const dot = document.querySelector('#aiWidget span');
+        chat.classList.toggle('hidden');
+        if (!chat.classList.contains('hidden')) {
+            if (dot) dot.classList.add('hidden');
+        }
+    };
+
+    window.acceptDataNotice = function() {
+        document.getElementById('dataNotice').classList.add('hidden');
+        document.getElementById('chatInput').disabled = false;
+        document.getElementById('chatInput').classList.remove('opacity-50', 'cursor-not-allowed');
+        document.getElementById('chatSendBtn').disabled = false;
+        document.getElementById('chatSendBtn').classList.remove('opacity-50');
+        localStorage.setItem('rais_chat_consent', 'true');
+    };
+
+    window.sendChatMessage = function() {
+        handleSend(document.getElementById('chatInput'), document.getElementById('chatDisplay'));
+    };
+
+    // Initialize Chat State securely
+    if (localStorage.getItem('rais_chat_consent') === 'true') {
+        const notice = document.getElementById('dataNotice');
+        if (notice) notice.classList.add('hidden');
+        if (input) {
+            input.disabled = false;
+            input.classList.remove('opacity-50', 'cursor-not-allowed');
+        }
+        const btn = document.getElementById('chatSendBtn');
+        if (btn) {
+            btn.disabled = false;
+            btn.classList.remove('opacity-50');
+        }
+    }
+
     // Override: clear static placeholder messages and show welcome
     display.innerHTML = '';
     addLine(display, '> SYSTEM: RAIS AI v2.0 initialized.', 'text-industrial-orange-bright');
