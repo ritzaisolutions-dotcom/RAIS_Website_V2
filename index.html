@@ -1353,9 +1353,8 @@
                                     class="w-5 h-5 text-industrial-orange-bright flex-shrink-0 mt-1"></i>
                                 <div>
                                     <div class="font-mono text-xs text-gray-500 mb-1">EMAIL</div>
-                                    <a href="mailto:kevin@ritz-ai.solutions.com"
-                                        class="font-mono text-sm text-industrial-orange-bright hover:text-industrial-orange transition-colors">
-                                        kevin@ritz-ai.solutions.com
+                                    <a href="/cdn-cgi/l/email-protection#f69d93809f98b6849f828cdb979fd885999a83829f999885d895999b" class="font-mono text-sm text-industrial-orange-bright hover:text-industrial-orange transition-colors">
+                                        <span class="__cf_email__" data-cfemail="b7dcd2c1ded9f7c5dec3cd9ad6de99c4d8dbc2c3ded8d9c499d4d8da">[email&#160;protected]</span>
                                     </a>
                                 </div>
                             </div>
@@ -1365,7 +1364,7 @@
             </div>
         </div>
 
-        <script>
+        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
             function switchForm(type) {
                 const msgForm = document.getElementById('messageForm');
                 const demoForm = document.getElementById('demoForm');
@@ -1452,8 +1451,7 @@
                 <div>
                     <div class="font-mono text-xs uppercase tracking-wider text-gray-500 mb-4">Connect</div>
                     <div class="space-y-3">
-                        <a href="mailto:kevin@ritz-ai-solutions.com"
-                            class="flex items-center gap-2 font-mono text-sm text-gray-400 hover:text-industrial-orange-bright transition-colors">
+                        <a href="/cdn-cgi/l/email-protection#d7bcb2a1beb997a5bea3adfab6befaa4b8bba2a3beb8b9a4f9b4b8ba" class="flex items-center gap-2 font-mono text-sm text-gray-400 hover:text-industrial-orange-bright transition-colors">
                             <i data-lucide="mail" class="w-4 h-4"></i>
                             <span>Email</span>
                         </a>
@@ -1491,7 +1489,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Initialize Lucide icons
         document.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
@@ -1745,15 +1743,163 @@
             }
         }
 
-        window.addEventListener('load', () => {
+    </script>
+
+    <!-- ============================================================
+         RAIS CHATBOT — n8n LIVE INTEGRATION
+         All chatbot functions: toggleAIChat, acceptDataNotice,
+         sendChatMessage, and the n8n API connector.
+    ============================================================ -->
+    <script>
+        // ---- Config ----
+        const RAIS_WEBHOOK_URL = 'https://n8n.ritz-ai.solutions/webhook/chat';
+
+        // ---- Session ID (persists per browser tab session) ----
+        function getSessionId() {
+            let sid = sessionStorage.getItem('rais_session_id');
+            if (!sid) {
+                sid = 'rais_' + Date.now().toString(36) + Math.random().toString(36).substr(2, 6);
+                sessionStorage.setItem('rais_session_id', sid);
+            }
+            return sid;
+        }
+
+        // ---- Toggle chat window open/closed ----
+        function toggleAIChat() {
+            const chat = document.getElementById('aiChat');
+            chat.classList.toggle('hidden');
+            if (!chat.classList.contains('hidden')) {
+                lucide.createIcons(); // re-render icons in case widget was hidden on load
+            }
+        }
+
+        // ---- GDPR data notice inside chat — "Accept & Continue" ----
+        function acceptDataNotice() {
+            document.getElementById('dataNotice').style.display = 'none';
+            // Enable the input and send button
+            const input = document.getElementById('chatInput');
+            const btn   = document.getElementById('chatSendBtn');
+            input.disabled  = false;
+            input.classList.remove('opacity-50', 'cursor-not-allowed');
+            btn.disabled    = false;
+            btn.classList.remove('opacity-50');
+            input.focus();
+        }
+
+        // ---- Append a message bubble to the chat display ----
+        function appendChatMessage(text, role) {
+            const display = document.getElementById('chatDisplay');
+            const div = document.createElement('div');
+            if (role === 'user') {
+                div.className = 'text-status-cyan-bright text-right';
+                div.textContent = '> YOU: ' + text;
+            } else {
+                div.className = 'text-industrial-orange-bright';
+                div.innerHTML = '> AI: ' + text.replace(/\n/g, '<br>');
+            }
+            display.appendChild(div);
+            display.scrollTop = display.scrollHeight;
+        }
+
+        // ---- Typing indicator ----
+        function showTypingIndicator() {
+            const display = document.getElementById('chatDisplay');
+            const div = document.createElement('div');
+            div.id = 'typingIndicator';
+            div.className = 'text-gray-500';
+            div.textContent = '> AI: Processing...';
+            display.appendChild(div);
+            display.scrollTop = display.scrollHeight;
+        }
+
+        function hideTypingIndicator() {
+            const el = document.getElementById('typingIndicator');
+            if (el) el.remove();
+        }
+
+        // ---- Core n8n API call ----
+        async function callN8NWebhook(message) {
+            const response = await fetch(RAIS_WEBHOOK_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    message: message.trim(),
+                    sessionId: getSessionId(),
+                    consent: true
+                })
+            });
+
+            if (!response.ok) {
+                if (response.status === 429) {
+                    throw new Error('rate_limit');
+                }
+                throw new Error('http_' + response.status);
+            }
+
+            const data = await response.json();
+            if (data && typeof data.reply === 'string' && data.reply.length > 0) {
+                return data.reply;
+            }
+            throw new Error('empty_reply');
+        }
+
+        // ---- Main send handler (called by button and Enter key) ----
+        async function sendChatMessage() {
+            const input  = document.getElementById('chatInput');
+            const btn    = document.getElementById('chatSendBtn');
+            const message = input.value.trim();
+
+            if (!message) return;
+
+            // Clear input + disable while waiting
+            input.value   = '';
+            input.disabled = true;
+            btn.disabled   = true;
+            input.classList.add('opacity-50');
+            btn.classList.add('opacity-50');
+
+            // Show user message
+            appendChatMessage(message, 'user');
+            showTypingIndicator();
+
+            try {
+                const reply = await callN8NWebhook(message);
+                hideTypingIndicator();
+                appendChatMessage(reply, 'bot');
+            } catch (err) {
+                hideTypingIndicator();
+                let errorMsg;
+                if (err.message === 'rate_limit') {
+                    errorMsg = 'You\'ve sent too many messages. Please wait a few minutes.';
+                } else if (err.message === 'Failed to fetch' || err.name === 'TypeError') {
+                    errorMsg = 'Connection failed. Please email kevin@ritz-ai.solutions directly.';
+                } else {
+                    errorMsg = 'Something went wrong. Try again or email kevin@ritz-ai.solutions.';
+                }
+                appendChatMessage(errorMsg, 'bot');
+                console.error('[RAIS Chat]', err);
+            }
+
+            // Re-enable input
+            input.disabled = false;
+            btn.disabled   = false;
+            input.classList.remove('opacity-50');
+            btn.classList.remove('opacity-50');
+            input.focus();
+        }
+
+        // ---- Show cookie banner on first visit ----
+        window.addEventListener('DOMContentLoaded', () => {
             if (!localStorage.getItem('rais_consent')) {
                 setTimeout(() => {
                     document.getElementById('cookieBanner').classList.remove('translate-y-full');
-                }, 2000);
+                }, 1500);
             }
         });
     </script>
-    <script src="chat-widget.js"></script>
-</body>
 
+</body>
 </html>
