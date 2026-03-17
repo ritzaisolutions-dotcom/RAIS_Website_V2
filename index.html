@@ -1798,7 +1798,11 @@
                 div.innerHTML = '> AI: ' + text.replace(/\n/g, '<br>');
             }
             display.appendChild(div);
-            display.scrollTop = display.scrollHeight;
+            
+            // Smarter scroll
+            setTimeout(() => {
+                div.scrollIntoView({ behavior: 'smooth', block: 'end' });
+            }, 50);
         }
 
         // ---- Typing indicator ----
@@ -1891,11 +1895,31 @@
             input.focus();
         }
 
-        // ---- Show cookie banner on first visit ----
+        // ---- Wire up UI elements ----
         window.addEventListener('DOMContentLoaded', () => {
+            const chatInput = document.getElementById('chatInput');
+            const chatSendBtn = document.getElementById('chatSendBtn');
+
+            if (chatInput && chatSendBtn) {
+                // Send on Enter (unless Shift is held)
+                chatInput.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        sendChatMessage();
+                    }
+                });
+
+                // Send on Button Click
+                chatSendBtn.addEventListener('click', () => {
+                    sendChatMessage();
+                });
+            }
+
+            // ---- Show cookie banner on first visit ----
             if (!localStorage.getItem('rais_consent')) {
                 setTimeout(() => {
-                    document.getElementById('cookieBanner').classList.remove('translate-y-full');
+                    const banner = document.getElementById('cookieBanner');
+                    if (banner) banner.classList.remove('translate-y-full');
                 }, 1500);
             }
         });
