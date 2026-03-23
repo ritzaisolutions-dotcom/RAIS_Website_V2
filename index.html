@@ -633,7 +633,7 @@
     <!-- Revenue Recovery Calculator -->
     <section class="py-24 relative border-t border-dashed border-border" id="capabilities">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="border-2 border-dashed border-accent-purple-bright bg-accent-purple-bright/5 p-8 md:p-12 relative overflow-hidden">
+            <div class="border-2 border-dashed p-8 md:p-12 relative overflow-hidden" style="border-color: rgba(255, 140, 0, 0.5); background: rgba(255, 140, 0, 0.03);">
                 <div class="absolute top-0 right-0 p-4 font-mono text-[10px] text-accent-purple-bright/50">REV-CALC_v1.0</div>
                 <div class="mb-10">
                     <div class="font-mono text-xs uppercase tracking-ultra-wide text-accent-purple-bright mb-4">[ Revenue Recovery Calculator ]</div>
@@ -644,7 +644,7 @@
                     <div class="space-y-6">
                         <div class="space-y-2">
                             <label class="block font-mono text-[10px] uppercase text-gray-500">Covers per service:</label>
-                            <input type="number" id="calc_covers" min="10" max="300" value="40" oninput="calcRevenue()"
+                            <input type="number" id="calc_covers" min="10" max="300" value="30" oninput="calcRevenue()"
                                 class="w-full bg-transparent border-b border-dashed border-border p-2 font-mono text-xl text-industrial-orange-bright outline-none focus:border-industrial-orange transition-colors">
                         </div>
                         <div class="space-y-2">
@@ -654,22 +654,22 @@
                         </div>
                         <div class="space-y-2">
                             <label class="block font-mono text-[10px] uppercase text-gray-500">Average spend per cover (€):</label>
-                            <input type="number" id="calc_spend" min="10" max="200" value="35" oninput="calcRevenue()"
+                            <input type="number" id="calc_spend" min="10" max="200" value="28" oninput="calcRevenue()"
                                 class="w-full bg-transparent border-b border-dashed border-border p-2 font-mono text-xl text-industrial-orange-bright outline-none focus:border-industrial-orange transition-colors">
                         </div>
                         <div class="space-y-2">
                             <label class="block font-mono text-[10px] uppercase text-gray-500">Days open per week:</label>
-                            <input type="number" id="calc_days" min="1" max="7" value="6" oninput="calcRevenue()"
+                            <input type="number" id="calc_days" min="1" max="7" value="5" oninput="calcRevenue()"
                                 class="w-full bg-transparent border-b border-dashed border-border p-2 font-mono text-xl text-industrial-orange-bright outline-none focus:border-industrial-orange transition-colors">
                         </div>
                         <div class="space-y-2">
-                            <label class="block font-mono text-[10px] uppercase text-gray-500">% of bookings taken by phone: <span id="calc_phone_val" class="text-accent-purple-bright">60%</span></label>
-                            <input type="range" id="calc_phone" min="0" max="100" value="60" oninput="calcRevenue()"
+                            <label class="block font-mono text-[10px] uppercase text-gray-500">% of bookings taken by phone: <span id="calc_phone_val" class="text-accent-purple-bright">40%</span></label>
+                            <input type="range" id="calc_phone" min="0" max="100" value="40" oninput="calcRevenue()"
                                 class="w-full accent-industrial-orange bg-border h-1 rounded-lg appearance-none cursor-pointer">
                         </div>
                         <div class="space-y-2">
-                            <label class="block font-mono text-[10px] uppercase text-gray-500">% of phone bookings missed during rush hour: <span id="calc_missed_val" class="text-accent-purple-bright">25%</span></label>
-                            <input type="range" id="calc_missed" min="0" max="100" value="25" oninput="calcRevenue()"
+                            <label class="block font-mono text-[10px] uppercase text-gray-500">% of phone bookings missed during rush hour: <span id="calc_missed_val" class="text-accent-purple-bright">20%</span></label>
+                            <input type="range" id="calc_missed" min="0" max="100" value="20" oninput="calcRevenue()"
                                 class="w-full accent-industrial-orange bg-border h-1 rounded-lg appearance-none cursor-pointer">
                         </div>
                     </div>
