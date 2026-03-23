@@ -746,52 +746,78 @@
             </div>
 
             <style>
-                .system-card { border: 1px solid var(--border, rgba(255,255,255,0.1)); background: var(--background, #121212); padding: 1.5rem; }
+                .system-card {
+                    border: 1px solid rgba(255, 165, 0, 0.25);
+                    background: rgba(255, 255, 255, 0.03);
+                    border-radius: 4px;
+                    padding: 2rem;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    height: 100%;
+                    transition: border-color 0.2s ease;
+                }
+                .system-card:hover { border-color: rgba(255, 165, 0, 0.7); }
+                .system-card-badge {
+                    font-size: 0.7rem;
+                    letter-spacing: 0.15em;
+                    color: #ff7f24;
+                    margin-bottom: 0.5rem;
+                    font-family: monospace;
+                    text-transform: uppercase;
+                }
+                .system-card-cta { margin-top: auto; }
             </style>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-stretch" style="gap: 1.5rem;">
                 <!-- SYSTEM-01 -->
                 <div class="system-card">
-                    <div class="font-mono text-xs text-gray-500 mb-1 uppercase">SYSTEM-01 | Active</div>
-                    <div class="font-mono text-lg font-bold text-foreground leading-tight">Restaurant Website + Reservation System</div>
-                    <div class="font-mono text-xs text-industrial-orange-bright mt-1 mb-4">from €1,500 setup</div>
-                    <div class="font-mono text-xs text-industrial-orange uppercase mb-3">High-Performance Booking Infrastructure</div>
-                    <p class="text-gray-400 text-sm font-sans mb-5 leading-relaxed">Your phone line shouldn't be your booking system. We build you a high-performance restaurant website with a fully integrated reservation engine — capturing bookings 24/7 while your staff focuses on the floor. Every reservation lands in a live dashboard and your team gets notified instantly: same-day bookings via Telegram, daily summaries by email. No missed calls. No lost covers. No excuses.</p>
-                    <ul class="space-y-2 mb-6 font-mono text-xs text-gray-300">
-                        <li>→ Live reservation dashboard</li>
-                        <li>→ Instant Telegram alerts for same-day bookings</li>
-                        <li>→ Daily email digest for the manager on duty</li>
-                        <li>→ Google Sheets sync — your data, always accessible</li>
-                        <li>→ System integrations available (OpenTable, TheFork, POS) — on request</li>
-                    </ul>
-                    <a href="#booking" class="block w-full py-3 border border-industrial-orange text-center font-mono text-xs uppercase hover:bg-industrial-orange hover:text-black transition-all">Request Free Booking Audit</a>
+                    <div>
+                        <div class="system-card-badge">SYSTEM-01 | Active</div>
+                        <div class="font-mono text-lg font-bold text-foreground leading-tight">Restaurant Website + Reservation System</div>
+                        <div class="font-mono text-xs text-industrial-orange-bright mt-1 mb-4">from €1,500 setup</div>
+                        <div class="font-mono text-xs text-industrial-orange uppercase mb-3">High-Performance Booking Infrastructure</div>
+                        <p class="text-gray-400 text-sm font-sans mb-5 leading-relaxed">Your phone line shouldn't be your booking system. We build you a high-performance restaurant website with a fully integrated reservation engine — capturing bookings 24/7 while your staff focuses on the floor. Every reservation lands in a live dashboard and your team gets notified instantly: same-day bookings via Telegram, daily summaries by email. No missed calls. No lost covers. No excuses.</p>
+                        <ul class="space-y-2 mb-6 font-mono text-xs text-gray-300">
+                            <li>→ Live reservation dashboard</li>
+                            <li>→ Instant Telegram alerts for same-day bookings</li>
+                            <li>→ Daily email digest for the manager on duty</li>
+                            <li>→ Google Sheets sync — your data, always accessible</li>
+                            <li>→ System integrations available (OpenTable, TheFork, POS) — on request</li>
+                        </ul>
+                    </div>
+                    <a href="#booking" class="system-card-cta block w-full py-3 border border-industrial-orange text-center font-mono text-xs uppercase hover:bg-industrial-orange hover:text-black transition-all">Request Free Booking Audit</a>
                 </div>
                 <!-- SYSTEM-02 -->
                 <div class="system-card">
-                    <div class="font-mono text-xs text-gray-500 mb-1 uppercase">SYSTEM-02 | Active</div>
-                    <div class="font-mono text-lg font-bold text-foreground leading-tight">Guest Retention — Email Marketing</div>
-                    <div class="font-mono text-xs text-industrial-orange-bright mt-1 mb-4">from €400/month retainer</div>
-                    <div class="font-mono text-xs text-industrial-orange uppercase mb-3">Recurring Revenue Protocol</div>
-                    <p class="text-gray-400 text-sm font-sans mb-5 leading-relaxed">Your best customers already know you. Most restaurants forget to talk to them. We build and run monthly email campaigns that bring past guests back — seasonal menus, special events, quiet Tuesday nights that need filling. Measurable open rates. Measurable covers. Measurable revenue.</p>
-                    <ul class="space-y-2 mb-6 font-mono text-xs text-gray-300">
-                        <li>→ Monthly campaign strategy + execution</li>
-                        <li>→ Segmented guest lists</li>
-                        <li>→ Performance reporting every month</li>
-                    </ul>
-                    <a href="#booking" class="block w-full py-3 border border-industrial-orange text-center font-mono text-xs uppercase hover:bg-industrial-orange hover:text-black transition-all">See How It Works</a>
+                    <div>
+                        <div class="system-card-badge">SYSTEM-02 | Active</div>
+                        <div class="font-mono text-lg font-bold text-foreground leading-tight">Guest Retention — Email Marketing</div>
+                        <div class="font-mono text-xs text-industrial-orange-bright mt-1 mb-4">from €400/month retainer</div>
+                        <div class="font-mono text-xs text-industrial-orange uppercase mb-3">Recurring Revenue Protocol</div>
+                        <p class="text-gray-400 text-sm font-sans mb-5 leading-relaxed">Your best customers already know you. Most restaurants forget to talk to them. We build and run monthly email campaigns that bring past guests back — seasonal menus, special events, quiet Tuesday nights that need filling. Measurable open rates. Measurable covers. Measurable revenue.</p>
+                        <ul class="space-y-2 mb-6 font-mono text-xs text-gray-300">
+                            <li>→ Monthly campaign strategy + execution</li>
+                            <li>→ Segmented guest lists</li>
+                            <li>→ Performance reporting every month</li>
+                        </ul>
+                    </div>
+                    <a href="#booking" class="system-card-cta block w-full py-3 border border-industrial-orange text-center font-mono text-xs uppercase hover:bg-industrial-orange hover:text-black transition-all">See How It Works</a>
                 </div>
                 <!-- SYSTEM-03 -->
                 <div class="system-card">
-                    <div class="font-mono text-xs text-gray-500 mb-1 uppercase">SYSTEM-03 | Active</div>
-                    <div class="font-mono text-lg font-bold text-foreground leading-tight">Website Chat Agent</div>
-                    <div class="font-mono text-xs text-industrial-orange-bright mt-1 mb-4">from €900 setup</div>
-                    <div class="font-mono text-xs text-industrial-orange uppercase mb-3">Autonomous Guest Interface</div>
-                    <p class="text-gray-400 text-sm font-sans mb-5 leading-relaxed">Answers menu questions at midnight. Takes reservation requests when you're slammed on a Saturday. An AI agent embedded directly into your website — trained on your menu, hours, policies, and FAQs. Handles the repetitive so your staff handles the exceptional.</p>
-                    <ul class="space-y-2 mb-6 font-mono text-xs text-gray-300">
-                        <li>→ Trained on your restaurant's data</li>
-                        <li>→ Reservation handoff integration</li>
-                        <li>→ Multilingual (DE / EN)</li>
-                    </ul>
-                    <a href="#booking" class="block w-full py-3 border border-industrial-orange text-center font-mono text-xs uppercase hover:bg-industrial-orange hover:text-black transition-all">Add to Your System</a>
+                    <div>
+                        <div class="system-card-badge">SYSTEM-03 | Active</div>
+                        <div class="font-mono text-lg font-bold text-foreground leading-tight">Website Chat Agent</div>
+                        <div class="font-mono text-xs text-industrial-orange-bright mt-1 mb-4">from €900 setup</div>
+                        <div class="font-mono text-xs text-industrial-orange uppercase mb-3">Autonomous Guest Interface</div>
+                        <p class="text-gray-400 text-sm font-sans mb-5 leading-relaxed">Answers menu questions at midnight. Takes reservation requests when you're slammed on a Saturday. An AI agent embedded directly into your website — trained on your menu, hours, policies, and FAQs. Handles the repetitive so your staff handles the exceptional.</p>
+                        <ul class="space-y-2 mb-6 font-mono text-xs text-gray-300">
+                            <li>→ Trained on your restaurant's data</li>
+                            <li>→ Reservation handoff integration</li>
+                            <li>→ Multilingual (DE / EN)</li>
+                        </ul>
+                    </div>
+                    <a href="#booking" class="system-card-cta block w-full py-3 border border-industrial-orange text-center font-mono text-xs uppercase hover:bg-industrial-orange hover:text-black transition-all">Add to Your System</a>
                 </div>
             </div>
             <!-- Booking Section Direct Embed -->
