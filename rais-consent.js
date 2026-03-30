@@ -212,7 +212,7 @@
       this._loaded.statistiken = true;
 
       /* ── Google Analytics 4 ── */
-      var GA_ID = 'G-W5EPR7JPXG';
+      var GA_ID = 'G-XV9M848G0Z';
       var gaScript = document.createElement('script');
       gaScript.async = true;
       gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
