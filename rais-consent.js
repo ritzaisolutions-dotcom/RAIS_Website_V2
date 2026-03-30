@@ -341,9 +341,6 @@
     open: function () {
       if (this._container) return;
       document.body.style.overflow = 'hidden';
-      this._backdrop = document.createElement('div');
-      this._backdrop.className = 'rcc-backdrop rcc-root';
-      document.body.appendChild(this._backdrop);
 
       this._container = document.createElement('div');
       this._container.className = 'rcc-modal rcc-root';
@@ -362,9 +359,7 @@
       if (!this._container) return;
       if (this._releaseFocus) { this._releaseFocus(); this._releaseFocus = null; }
       this._container.remove();
-      this._backdrop.remove();
       this._container = null;
-      this._backdrop  = null;
       document.body.style.overflow = '';
     },
 
