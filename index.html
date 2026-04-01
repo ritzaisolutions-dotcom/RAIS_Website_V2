@@ -48,25 +48,8 @@
     }
     </script>
 
-    <!-- Google Consent Mode v2 — MUST be first script on page (DSGVO / EU March 2024 requirement) -->
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { window.dataLayer.push(arguments); }
-        // Default: deny everything except security storage before user makes a choice
-        gtag('consent', 'default', {
-            ad_storage:              'denied',
-            ad_user_data:            'denied',
-            ad_personalization:      'denied',
-            analytics_storage:       'denied',
-            functionality_storage:   'granted',
-            personalization_storage: 'denied',
-            security_storage:        'granted',
-            wait_for_update:         500
-        });
-    </script>
-
-    <!-- RAIS Consent Manager (DSGVO / TTDSG § 25 compliant) -->
-    <link rel="stylesheet" href="rais-consent.css">
+    <!-- Cookiebot — DSGVO/TTDSG consent management (must be first script) -->
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="e97619e5-544b-4a6c-aeb9-c4c02403c500" data-blockingmode="auto" type="text/javascript"></script>
 
     <!-- Fonts -->
     <!-- Fonts (Localized) -->
@@ -1604,7 +1587,6 @@
             setLanguage(savedLang);
         });
     </script>
-    <!-- Cookie banner injected by rais-consent.js -->
 
     <!-- Floating AI Assistant Widget -->
     <div id="aiWidget" class="fixed bottom-6 right-6 z-[9999] group">
@@ -1959,8 +1941,6 @@
     })();
     </script>
 
-    <!-- RAIS Consent Manager — loads after all other scripts -->
-    <script src="rais-consent.js" defer></script>
 
 </body>
 </html>
