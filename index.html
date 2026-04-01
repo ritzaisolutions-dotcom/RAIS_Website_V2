@@ -234,6 +234,16 @@
                 border-color: hsl(var(--border));
             }
         }
+
+        /* ── Shooting star canvas ── */
+        #hero-canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
     </style>
 
     <script>
@@ -363,6 +373,62 @@
         .animate-pulse-glitch {
             animation: pulse-glitch 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
+
+        /* ── Infinite tech stack marquee ── */
+        @keyframes rais-marquee {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+
+        .rais-marquee-wrap {
+            overflow: hidden;
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+            mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+        }
+
+        .rais-marquee-track {
+            display: flex;
+            width: max-content;
+            animation: rais-marquee 35s linear infinite;
+        }
+
+        .rais-marquee-track:hover {
+            animation-play-state: paused;
+        }
+
+        .rais-marquee-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.5rem 2.5rem;
+            opacity: 0.45;
+            transition: opacity 200ms ease;
+            cursor: default;
+        }
+
+        .rais-marquee-item:hover {
+            opacity: 1;
+        }
+
+        .rais-marquee-item img {
+            width: 2.25rem;
+            height: 2.25rem;
+            object-fit: contain;
+        }
+
+        .rais-marquee-item span {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.55rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: hsl(var(--industrial-orange-bright));
+            white-space: nowrap;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .rais-marquee-track { animation: none; }
+        }
     </style>
 </head>
 
@@ -446,7 +512,8 @@
 
     <!-- Hero Section -->
     <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-        <div class="absolute inset-0 diagonal-grid opacity-50"></div>
+        <div class="absolute inset-0 diagonal-grid opacity-50" id="hero-diagonal-grid"></div>
+        <canvas id="hero-canvas" aria-hidden="true"></canvas>
 
         <div class="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
             <div class="relative border-2 border-dashed border-border p-8 md:p-12">
@@ -907,81 +974,107 @@
                 </h2>
             </div>
 
-            <div class="grid md:grid-cols-4 gap-6">
-                <!-- AI & AGENTS -->
-                <div
-                    class="relative border border-dashed border-border p-6 hover:border-industrial-orange transition-all duration-300 group">
-                    <i data-lucide="cpu"
-                        class="w-8 h-8 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors mb-4"></i>
-                    <div class="font-mono text-sm uppercase tracking-wider text-industrial-orange-bright mb-4">
-                        Intelligence</div>
-                    <ul class="space-y-2">
-                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2"><span
-                                class="w-1 h-1 bg-industrial-orange"></span> Claude AI</li>
-                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2"><span
-                                class="w-1 h-1 bg-industrial-orange"></span> Claude Code</li>
-                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2"><span
-                                class="w-1 h-1 bg-industrial-orange"></span> GPT-4 / Gemini</li>
-                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2"><span
-                                class="w-1 h-1 bg-industrial-orange"></span> Voiceflow</li>
-                    </ul>
-                </div>
-
-                <!-- ORCHESTRATION -->
-                <div
-                    class="relative border border-dashed border-border p-6 hover:border-industrial-orange transition-all duration-300 group">
-                    <i data-lucide="workflow"
-                        class="w-8 h-8 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors mb-4"></i>
-                    <div class="font-mono text-sm uppercase tracking-wider text-industrial-orange-bright mb-4">
-                        Orchestration</div>
-                    <ul class="space-y-2">
-                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2"><span
-                                class="w-1 h-1 bg-industrial-orange"></span> n8n</li>
-                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2"><span
-                                class="w-1 h-1 bg-industrial-orange"></span> JSON / API</li>
-                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2"><span
-                                class="w-1 h-1 bg-industrial-orange"></span> Webhooks</li>
-                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2"><span
-                                class="w-1 h-1 bg-industrial-orange"></span> Python / JS</li>
-                    </ul>
-                </div>
-
-                <!-- DEVELOPMENT -->
-                <div
-                    class="relative border border-dashed border-border p-6 hover:border-industrial-orange transition-all duration-300 group">
-                    <i data-lucide="code"
-                        class="w-8 h-8 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors mb-4"></i>
-                    <div class="font-mono text-sm uppercase tracking-wider text-industrial-orange-bright mb-4">
-                        Development</div>
-                    <ul class="space-y-2">
-                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2"><span
-                                class="w-1 h-1 bg-industrial-orange"></span> v0 / Vercel</li>
-                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2"><span
-                                class="w-1 h-1 bg-industrial-orange"></span> Tailwind CSS</li>
-                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2"><span
-                                class="w-1 h-1 bg-industrial-orange"></span> Next.js / Vite</li>
-                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2"><span
-                                class="w-1 h-1 bg-industrial-orange"></span> PostgreSQL</li>
-                    </ul>
-                </div>
-
-                <!-- INFRASTRUCTURE -->
-                <div
-                    class="relative border border-dashed border-border p-6 hover:border-industrial-orange transition-all duration-300 group">
-                    <i data-lucide="shield"
-                        class="w-8 h-8 text-industrial-orange group-hover:text-industrial-orange-bright transition-colors mb-4"></i>
-                    <div class="font-mono text-sm uppercase tracking-wider text-industrial-orange-bright mb-4">GDPR
-                        Stack</div>
-                    <ul class="space-y-2">
-                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2"><span
-                                class="w-1 h-1 bg-industrial-orange"></span> Local-first AI</li>
-                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2"><span
-                                class="w-1 h-1 bg-industrial-orange"></span> Sovereign Cloud</li>
-                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2"><span
-                                class="w-1 h-1 bg-industrial-orange"></span> AES-256 Auth</li>
-                        <li class="font-mono text-xs text-gray-400 flex items-center gap-2"><span
-                                class="w-1 h-1 bg-industrial-orange"></span> DSGVO Protocol</li>
-                    </ul>
+            <!-- Infinite marquee — hover pauses, fades at edges via CSS mask -->
+            <div class="rais-marquee-wrap">
+                <div class="rais-marquee-track">
+                    <!-- Set 1 -->
+                    <div class="rais-marquee-item">
+                        <img src="https://cdn.simpleicons.org/anthropic/FF7A00" alt="Claude AI" width="36" height="36">
+                        <span>Claude AI</span>
+                    </div>
+                    <div class="rais-marquee-item">
+                        <img src="https://cdn.simpleicons.org/n8n/FF7A00" alt="n8n" width="36" height="36">
+                        <span>n8n</span>
+                    </div>
+                    <div class="rais-marquee-item">
+                        <img src="https://cdn.simpleicons.org/supabase/FF7A00" alt="Supabase" width="36" height="36">
+                        <span>Supabase</span>
+                    </div>
+                    <div class="rais-marquee-item">
+                        <img src="https://cdn.simpleicons.org/tailwindcss/FF7A00" alt="Tailwind CSS" width="36" height="36">
+                        <span>Tailwind</span>
+                    </div>
+                    <div class="rais-marquee-item">
+                        <img src="https://cdn.simpleicons.org/vercel/FF7A00" alt="Vercel" width="36" height="36">
+                        <span>Vercel</span>
+                    </div>
+                    <div class="rais-marquee-item">
+                        <img src="https://cdn.simpleicons.org/postgresql/FF7A00" alt="PostgreSQL" width="36" height="36">
+                        <span>PostgreSQL</span>
+                    </div>
+                    <div class="rais-marquee-item">
+                        <img src="https://cdn.simpleicons.org/python/FF7A00" alt="Python" width="36" height="36">
+                        <span>Python</span>
+                    </div>
+                    <div class="rais-marquee-item">
+                        <img src="https://cdn.simpleicons.org/javascript/FF7A00" alt="JavaScript" width="36" height="36">
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="rais-marquee-item">
+                        <img src="https://cdn.simpleicons.org/vite/FF7A00" alt="Vite" width="36" height="36">
+                        <span>Vite</span>
+                    </div>
+                    <div class="rais-marquee-item">
+                        <img src="https://cdn.simpleicons.org/openai/FF7A00" alt="GPT-4" width="36" height="36">
+                        <span>GPT-4</span>
+                    </div>
+                    <div class="rais-marquee-item">
+                        <img src="https://cdn.simpleicons.org/googlegemini/FF7A00" alt="Gemini" width="36" height="36">
+                        <span>Gemini</span>
+                    </div>
+                    <div class="rais-marquee-item">
+                        <img src="https://cdn.simpleicons.org/make/FF7A00" alt="Make" width="36" height="36">
+                        <span>Make</span>
+                    </div>
+                    <!-- Set 2 — exact duplicate for seamless loop -->
+                    <div class="rais-marquee-item">
+                        <img src="https://cdn.simpleicons.org/anthropic/FF7A00" alt="Claude AI" width="36" height="36">
+                        <span>Claude AI</span>
+                    </div>
+                    <div class="rais-marquee-item">
+                        <img src="https://cdn.simpleicons.org/n8n/FF7A00" alt="n8n" width="36" height="36">
+                        <span>n8n</span>
+                    </div>
+                    <div class="rais-marquee-item">
+                        <img src="https://cdn.simpleicons.org/supabase/FF7A00" alt="Supabase" width="36" height="36">
+                        <span>Supabase</span>
+                    </div>
+                    <div class="rais-marquee-item">
+                        <img src="https://cdn.simpleicons.org/tailwindcss/FF7A00" alt="Tailwind CSS" width="36" height="36">
+                        <span>Tailwind</span>
+                    </div>
+                    <div class="rais-marquee-item">
+                        <img src="https://cdn.simpleicons.org/vercel/FF7A00" alt="Vercel" width="36" height="36">
+                        <span>Vercel</span>
+                    </div>
+                    <div class="rais-marquee-item">
+                        <img src="https://cdn.simpleicons.org/postgresql/FF7A00" alt="PostgreSQL" width="36" height="36">
+                        <span>PostgreSQL</span>
+                    </div>
+                    <div class="rais-marquee-item">
+                        <img src="https://cdn.simpleicons.org/python/FF7A00" alt="Python" width="36" height="36">
+                        <span>Python</span>
+                    </div>
+                    <div class="rais-marquee-item">
+                        <img src="https://cdn.simpleicons.org/javascript/FF7A00" alt="JavaScript" width="36" height="36">
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="rais-marquee-item">
+                        <img src="https://cdn.simpleicons.org/vite/FF7A00" alt="Vite" width="36" height="36">
+                        <span>Vite</span>
+                    </div>
+                    <div class="rais-marquee-item">
+                        <img src="https://cdn.simpleicons.org/openai/FF7A00" alt="GPT-4" width="36" height="36">
+                        <span>GPT-4</span>
+                    </div>
+                    <div class="rais-marquee-item">
+                        <img src="https://cdn.simpleicons.org/googlegemini/FF7A00" alt="Gemini" width="36" height="36">
+                        <span>Gemini</span>
+                    </div>
+                    <div class="rais-marquee-item">
+                        <img src="https://cdn.simpleicons.org/make/FF7A00" alt="Make" width="36" height="36">
+                        <span>Make</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1731,6 +1824,133 @@
             }
 
         });
+    </script>
+
+    <!-- Shooting Star Canvas -->
+    <script>
+    (function () {
+        var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var canvas  = document.getElementById('hero-canvas');
+        var grid    = document.getElementById('hero-diagonal-grid');
+
+        if (!canvas || !grid) return;
+
+        if (reducedMotion) {
+            // Keep diagonal grid, hide canvas
+            canvas.style.display = 'none';
+            return;
+        }
+
+        // Hide grid, show canvas
+        grid.style.display = 'none';
+
+        var ctx = canvas.getContext('2d');
+        var W, H, stars, raf;
+        var isMobile = window.innerWidth < 768;
+        var COUNT = isMobile ? 22 : 85;
+        var SPEED_SCALE = isMobile ? 0.5 : 1;
+
+        function rand(min, max) { return min + Math.random() * (max - min); }
+
+        function makeStar(spawnEdge) {
+            // spawnEdge: 'top' or 'left' (stars enter from top-left region)
+            var x, y;
+            if (spawnEdge === 'top' || Math.random() > 0.4) {
+                x = rand(0, W);
+                y = rand(-40, 0);
+            } else {
+                x = rand(-40, 0);
+                y = rand(0, H * 0.7);
+            }
+            var angle = rand(28, 52) * Math.PI / 180; // 28–52 degrees diagonal
+            var speed = rand(1.8, 4.2) * SPEED_SCALE;
+            return {
+                x: x, y: y,
+                vx: Math.cos(angle) * speed,
+                vy: Math.sin(angle) * speed,
+                len: rand(60, 160),
+                size: rand(0.5, 1.8),
+                opacity: rand(0.35, 0.95),
+                decay: rand(0.004, 0.01)   // opacity fades at end of life
+            };
+        }
+
+        function resize() {
+            var hero = canvas.parentElement;
+            W = canvas.width  = hero ? hero.offsetWidth  : window.innerWidth;
+            H = canvas.height = hero ? hero.offsetHeight : window.innerHeight;
+            isMobile = W < 768;
+            COUNT = isMobile ? 22 : 85;
+            SPEED_SCALE = isMobile ? 0.5 : 1;
+        }
+
+        function init() {
+            resize();
+            stars = [];
+            // Spread initial stars across the canvas (not all at top edge)
+            for (var i = 0; i < COUNT; i++) {
+                var s = makeStar('top');
+                // Random starting position so screen isn't empty at load
+                s.x = rand(0, W);
+                s.y = rand(0, H);
+                stars.push(s);
+            }
+        }
+
+        function draw() {
+            if (document.hidden) { raf = requestAnimationFrame(draw); return; }
+
+            ctx.clearRect(0, 0, W, H);
+
+            for (var i = 0; i < stars.length; i++) {
+                var s = stars[i];
+
+                // Tail start (behind the star)
+                var tx = s.x - s.vx * (s.len / (s.vx || 1));
+                var ty = s.y - s.vy * (s.len / (s.vy || 1));
+
+                ctx.save();
+                ctx.globalAlpha = s.opacity;
+                ctx.strokeStyle = 'hsl(25, 95%, 58%)';
+                ctx.lineWidth   = s.size;
+                ctx.shadowColor = 'hsl(25, 95%, 58%)';
+                ctx.shadowBlur  = 8;
+                ctx.lineCap     = 'round';
+
+                var grad = ctx.createLinearGradient(tx, ty, s.x, s.y);
+                grad.addColorStop(0, 'rgba(255,127,36,0)');
+                grad.addColorStop(1, 'rgba(255,127,36,1)');
+                ctx.strokeStyle = grad;
+
+                ctx.beginPath();
+                ctx.moveTo(tx, ty);
+                ctx.lineTo(s.x, s.y);
+                ctx.stroke();
+                ctx.restore();
+
+                // Advance position
+                s.x += s.vx;
+                s.y += s.vy;
+
+                // Reset when off screen
+                if (s.x > W + 50 || s.y > H + 50) {
+                    stars[i] = makeStar(Math.random() > 0.5 ? 'top' : 'left');
+                }
+            }
+
+            raf = requestAnimationFrame(draw);
+        }
+
+        // Debounced resize
+        var resizeTimer;
+        window.addEventListener('resize', function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function () { resize(); }, 200);
+        });
+
+        init();
+        draw();
+    })();
     </script>
 
     <!-- RAIS Consent Manager — loads after all other scripts -->
