@@ -5,42 +5,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant Websites, Bookings & Guest Retention | RAIS</title>
+    <title>Restaurant-Websites mit Reservierungssystem | RAIS</title>
     <meta name="description"
-        content="Your restaurant is losing covers to missed calls and guests who never come back. We fix that — websites, booking systems, AI chat support, and retention campaigns built for busy restaurants.">
+        content="RAIS baut professionelle Restaurant-Websites mit Reservierungsformular, Bestätigungen, Erinnerungen und DSGVO-bewusstem Grundsetup - für mehr Reservierungen und weniger verpasste Anfragen.">
     <meta name="keywords"
         content="Restaurant Booking System, Restaurant Website, Missed Bookings Restaurant, Guest Retention Restaurant, Restaurant AI Chat, RAIS, Ritz AI Solutions">
     <link rel="icon" type="image/png" href="favicon.png?v=2">
     <link rel="apple-touch-icon" href="favicon.png?v=2">
 
     <!-- OpenGraph -->
-    <meta property="og:title" content="Restaurant Websites, Bookings & Guest Retention | RAIS">
+    <meta property="og:title" content="Restaurant-Websites mit Reservierungssystem | RAIS">
     <meta property="og:description"
-        content="Stop losing tables to missed calls. RAIS builds restaurant websites, booking systems and guest retention campaigns — live in 14 days.">
+        content="Mehr Reservierungen. Weniger verpasste Anfragen. Professionelle Restaurant-Websites mit Reservierungssystem, Erinnerungen und klarer Struktur für den Alltag im Betrieb.">
     <meta property="og:image" content="https://ritz-ai.solutions/og-image.jpg">
     <meta property="og:url" content="https://ritz-ai.solutions">
     <meta property="og:type" content="website">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Restaurant Websites, Bookings & Guest Retention | RAIS">
-    <meta name="twitter:description" content="Stop losing tables to missed calls. RAIS builds restaurant websites, booking systems and guest retention campaigns — live in 14 days.">
+    <meta name="twitter:title" content="Restaurant-Websites mit Reservierungssystem | RAIS">
+    <meta name="twitter:description" content="Mehr Reservierungen. Weniger verpasste Anfragen. Professionelle Restaurant-Websites mit Reservierungssystem, Erinnerungen und klarer Struktur für den Alltag im Betrieb.">
     <meta name="twitter:image" content="https://ritz-ai.solutions/twitter-card.jpg">
 
     <!-- Structured Data (Schema.org) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "ProfessionalService",
       "name": "RAIS (Ritz AI Solutions)",
-      "applicationCategory": "BusinessApplication",
-      "operatingSystem": "Web-based",
       "offers": {
         "@type": "Offer",
-        "price": "997.00",
+        "price": "1200.00",
         "priceCurrency": "EUR"
       },
-      "description": "Industrial-grade AI automation and neural orchestration platforms for operational freedom.",
+      "description": "Professionelle Restaurant-Websites mit Reservierungsformular, automatischen Benachrichtigungen und Erinnerungen für einen ruhigeren Betriebsalltag.",
       "brand": {
         "@type": "Brand",
         "name": "RAIS"
@@ -60,30 +58,48 @@
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-    <style>
+        <style>
         :root {
-            --background: 0 0% 7%;
-            --foreground: 0 0% 95%;
-            --border: 0 0% 20%;
-            --terminal-green: 142 76% 36%;
-            --terminal-green-bright: 142 76% 56%;
-            --industrial-orange: 25 95% 53%;
-            --industrial-orange-bright: 25 95% 60%;
-            --status-cyan: 190 90% 50%;
-            --status-cyan-bright: 190 90% 60%;
-            --accent-purple: 270 70% 60%;
-            --accent-purple-bright: 270 70% 70%;
+            --background: 36 27% 94%;
+            --foreground: 24 13% 16%;
+            --border: 34 22% 85%;
+            --industrial-orange: 18 83% 57%;
+            --industrial-orange-bright: 18 88% 62%;
+            --sage: 87 18% 65%;
+            --dark-pistachio: 90 14% 44%;
+            --muted-stone: 31 8% 45%;
+            --surface: 36 45% 97%;
         }
 
         body {
             font-family: 'Inter', sans-serif;
             background: hsl(var(--background));
             color: hsl(var(--foreground));
+            background-image:
+                radial-gradient(circle at top right, rgba(169, 180, 148, 0.24), transparent 28%),
+                radial-gradient(circle at 18% 22%, rgba(111, 127, 95, 0.12), transparent 24%),
+                linear-gradient(180deg, rgba(251, 248, 243, 0.95), rgba(245, 242, 236, 1));
+        }
+
+        @keyframes drift {
+            0% { transform: translate3d(0, 0, 0) scale(1); }
+            50% { transform: translate3d(0, -18px, 0) scale(1.03); }
+            100% { transform: translate3d(0, 0, 0) scale(1); }
+        }
+
+        @keyframes pulseFade {
+            0%, 100% { opacity: 0.25; }
+            50% { opacity: 0.55; }
         }
 
         .font-mono {
             font-family: 'JetBrains Mono', monospace;
+        }
+
+        .font-display {
+            font-family: "Baskerville", "Palatino Linotype", "Book Antiqua", serif;
         }
 
         .tracking-ultra-wide {
@@ -92,53 +108,38 @@
 
         .diagonal-grid {
             background-image:
-                linear-gradient(45deg, transparent 0%, rgba(255, 127, 36, 0.03) 50%, transparent 100%),
-                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 100% 100%, 40px 40px, 40px 40px;
-        }
-
-        @keyframes blink-cursor {
-
-            0%,
-            49% {
-                border-right-color: rgba(255, 127, 36, 0.8);
-            }
-
-            50%,
-            100% {
-                border-right-color: transparent;
-            }
-        }
-
-        .terminal-input:focus {
-            animation: blink-cursor 1s step-end infinite;
-        }
-
-        @keyframes pulse-slow {
-
-            0%,
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-
-            50% {
-                opacity: 0.8;
-                transform: scale(1.05);
-            }
-        }
-
-        .animate-pulse-slow {
-            animation: pulse-slow 3s ease-in-out infinite;
+                linear-gradient(135deg, rgba(236, 106, 55, 0.035), rgba(111, 127, 95, 0.02)),
+                linear-gradient(to right, rgba(47, 42, 36, 0.035) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(47, 42, 36, 0.035) 1px, transparent 1px);
+            background-size: 100% 100%, 48px 48px, 48px 48px;
         }
 
         .bg-background {
             background: hsl(var(--background));
         }
 
+        .bg-surface {
+            background: hsl(var(--surface));
+        }
+
         .text-foreground {
             color: hsl(var(--foreground));
+        }
+
+        .text-stone {
+            color: hsl(var(--muted-stone));
+        }
+
+        .text-sage {
+            color: hsl(var(--sage));
+        }
+
+        .text-pistachio {
+            color: hsl(var(--dark-pistachio));
+        }
+
+        .bg-sage-soft {
+            background: rgba(169, 180, 148, 0.28);
         }
 
         .border-border {
@@ -157,75 +158,220 @@
             border-color: hsl(var(--industrial-orange));
         }
 
-        .text-accent-purple-bright {
-            color: hsl(var(--accent-purple-bright));
+        .section-card {
+            background: hsl(var(--surface));
+            border: 1px solid hsl(var(--border));
+            box-shadow: 0 24px 60px rgba(47, 42, 36, 0.06);
         }
 
-        .bg-accent-purple-bright {
-            background: hsl(var(--accent-purple-bright));
+        .hero-panel {
+            background:
+                linear-gradient(180deg, rgba(251, 248, 243, 0.96), rgba(245, 242, 236, 0.94));
+            border: 1px solid hsl(var(--border));
+            box-shadow: 0 40px 90px rgba(47, 42, 36, 0.08);
         }
 
-        .text-status-cyan-bright {
-            color: hsl(var(--status-cyan-bright));
+        .editorial-frame {
+            position: relative;
+            background: linear-gradient(180deg, rgba(246, 247, 240, 0.98), rgba(239, 242, 232, 0.94));
+            border: 1px solid hsl(var(--border));
         }
 
-        .bg-status-cyan-bright {
-            background: hsl(var(--status-cyan-bright));
+        .editorial-frame::before,
+        .editorial-frame::after {
+            content: "";
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            border-color: hsl(var(--industrial-orange));
+            opacity: 0.7;
         }
 
-        .stat-card {
-            animation: statAppear 0.6s ease-out forwards;
-            opacity: 0;
-            transform: scale(0.8);
+        .editorial-frame::before {
+            top: 18px;
+            right: 18px;
+            border-top: 1px solid;
+            border-right: 1px solid;
         }
 
-        @keyframes statAppear {
-            0% {
-                opacity: 0;
-                transform: scale(0.8);
-                border-color: hsl(var(--border));
-            }
-
-            50% {
-                border-color: hsl(var(--industrial-orange));
-            }
-
-            100% {
-                opacity: 1;
-                transform: scale(1);
-                border-color: hsl(var(--border));
-            }
+        .editorial-frame::after {
+            bottom: 18px;
+            left: 18px;
+            border-bottom: 1px solid;
+            border-left: 1px solid;
         }
 
-        .service-card {
-            animation: cardAppear 0.5s ease-out forwards;
-            opacity: 0;
+        .soft-pill {
+            border: 1px solid hsl(var(--border));
+            background: rgba(251, 248, 243, 0.9);
         }
 
-        @keyframes cardAppear {
-            0% {
-                opacity: 0;
-                border-color: hsl(var(--border));
-            }
-
-            50% {
-                border-color: hsl(var(--industrial-orange));
-            }
-
-            100% {
-                opacity: 1;
-                border-color: hsl(var(--border));
-            }
+        .offer-main {
+            background:
+                linear-gradient(180deg, rgba(248, 249, 243, 1), rgba(241, 244, 235, 0.98));
+            border: 1px solid hsl(var(--border));
+            box-shadow: 0 28px 70px rgba(47, 42, 36, 0.08);
         }
 
-        /* ── Shooting star canvas — fixed full-viewport background ── */
-        #hero-canvas {
+        .offer-side {
+            background: rgba(243, 246, 237, 0.94);
+            border: 1px solid hsl(var(--border));
+            box-shadow: 0 18px 45px rgba(47, 42, 36, 0.05);
+        }
+
+        .mockup-surface {
+            background: rgba(251, 248, 243, 0.94);
+            border: 1px solid hsl(var(--border));
+        }
+
+        .proposal-sheet {
+            background:
+                linear-gradient(180deg, rgba(248, 249, 243, 1), rgba(241, 244, 235, 0.95));
+            border: 1px solid rgba(111, 127, 95, 0.24);
+            box-shadow: 0 30px 70px rgba(47, 42, 36, 0.07);
+        }
+
+        .signal-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: hsl(var(--dark-pistachio));
+        }
+
+        .signal-divider {
+            height: 1px;
+            background: linear-gradient(90deg, rgba(111, 127, 95, 0.82), rgba(236, 106, 55, 0.55), rgba(217, 209, 199, 0.18));
+        }
+
+        .proof-stack {
+            border-left: 1px solid rgba(111, 127, 95, 0.35);
+            padding-left: 1.25rem;
+        }
+
+        .impact-input {
+            border: 1px solid hsl(var(--border));
+            background: rgba(251, 248, 243, 0.78);
+        }
+
+        .impact-output {
+            border: 1px solid rgba(111, 127, 95, 0.28);
+            background: rgba(169, 180, 148, 0.2);
+        }
+
+        .impact-range {
+            width: 100%;
+            accent-color: rgb(236, 106, 55);
+        }
+
+        .quiet-note {
+            border: 1px solid rgba(217, 209, 199, 0.9);
+            background: rgba(233, 239, 225, 0.72);
+        }
+
+        .sage-panel {
+            background: rgba(169, 180, 148, 0.22);
+            border: 1px solid rgba(111, 127, 95, 0.22);
+        }
+
+        .pistachio-line {
+            border-color: rgba(111, 127, 95, 0.28);
+        }
+
+        .cta-band {
+            background: linear-gradient(135deg, rgba(169, 180, 148, 0.22), rgba(251, 248, 243, 0.92));
+            border: 1px solid rgba(111, 127, 95, 0.22);
+        }
+
+        .chat-launcher {
             position: fixed;
-            inset: 0;
-            width: 100vw;
-            height: 100vh;
+            right: 1.5rem;
+            bottom: 1.5rem;
+            z-index: 70;
+            box-shadow: 0 20px 45px rgba(47, 42, 36, 0.14);
+        }
+
+        .chat-panel {
+            position: fixed;
+            right: 1.5rem;
+            bottom: 6.5rem;
+            width: min(24rem, calc(100vw - 2rem));
+            z-index: 70;
+            border: 1px solid rgba(111, 127, 95, 0.24);
+            background: linear-gradient(180deg, rgba(248, 249, 243, 0.98), rgba(241, 244, 235, 0.98));
+            box-shadow: 0 28px 65px rgba(47, 42, 36, 0.16);
+        }
+
+        .chat-messages {
+            max-height: 18rem;
+            overflow-y: auto;
+        }
+
+        .chat-bubble-user {
+            background: rgba(236, 106, 55, 0.12);
+            border: 1px solid rgba(236, 106, 55, 0.22);
+        }
+
+        .chat-bubble-agent {
+            background: rgba(169, 180, 148, 0.18);
+            border: 1px solid rgba(111, 127, 95, 0.2);
+        }
+
+        .ambient-orb {
+            position: absolute;
+            border-radius: 9999px;
+            filter: blur(2px);
+            animation: drift 12s ease-in-out infinite;
             pointer-events: none;
-            z-index: 0;
+        }
+
+        .ambient-orb.one {
+            top: 8rem;
+            right: 8%;
+            width: 12rem;
+            height: 12rem;
+            background: radial-gradient(circle, rgba(169, 180, 148, 0.34), rgba(169, 180, 148, 0));
+        }
+
+        .ambient-orb.two {
+            top: 28rem;
+            left: 5%;
+            width: 9rem;
+            height: 9rem;
+            background: radial-gradient(circle, rgba(111, 127, 95, 0.22), rgba(111, 127, 95, 0));
+            animation-duration: 15s;
+        }
+
+        .ambient-line {
+            position: absolute;
+            inset: auto 0 0 0;
+            height: 180px;
+            background:
+                linear-gradient(180deg, rgba(245, 242, 236, 0), rgba(169, 180, 148, 0.08)),
+                repeating-linear-gradient(90deg, rgba(111, 127, 95, 0.08) 0 1px, transparent 1px 110px);
+            mask-image: linear-gradient(180deg, transparent, rgba(0,0,0,0.95));
+            animation: pulseFade 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .section-air {
+            padding-top: 7rem;
+            padding-bottom: 7rem;
+        }
+
+        .warm-button {
+            background: hsl(var(--industrial-orange));
+            color: #fff;
+        }
+
+        .warm-button:hover {
+            background: hsl(var(--industrial-orange-bright));
+        }
+
+        .outline-button:hover {
+            border-color: hsl(var(--industrial-orange));
+            color: hsl(var(--foreground));
+            background: rgba(236, 106, 55, 0.04);
         }
     </style>
 
@@ -239,12 +385,13 @@
                         border: 'hsl(var(--border))',
                         'industrial-orange': 'hsl(var(--industrial-orange))',
                         'industrial-orange-bright': 'hsl(var(--industrial-orange-bright))',
-                        'status-cyan': 'hsl(var(--status-cyan))',
-                        'status-cyan-bright': 'hsl(var(--status-cyan-bright))',
-                        'accent-purple': 'hsl(var(--accent-purple))',
-                        'accent-purple-bright': 'hsl(var(--accent-purple-bright))',
+                        sage: 'hsl(var(--sage))',
+                        pistachio: 'hsl(var(--dark-pistachio))',
+                        stone: 'hsl(var(--muted-stone))',
+                        surface: 'hsl(var(--surface))',
                     },
                     fontFamily: {
+                        display: ['Baskerville', 'Palatino Linotype', 'Book Antiqua', 'serif'],
                         mono: ['JetBrains Mono', 'monospace'],
                         sans: ['Inter', 'sans-serif'],
                     },
@@ -252,815 +399,554 @@
             }
         }
     </script>
-    <style>
+        <style>
         .bg-industrial-orange {
             background: hsl(var(--industrial-orange)) !important;
         }
 
-        .view-systems-cta {
-            position: fixed;
-            bottom: 24px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 9997;
-            width: auto;
-            white-space: nowrap;
-        }
-
-        .pulse-cta {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: hsl(var(--industrial-orange));
-            color: black;
-            padding: 12px 24px;
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 12px;
-            border: 2px solid black;
-            box-shadow: 0 0 20px rgba(255, 127, 36, 0.4);
-            animation: cta-pulse 2s infinite;
-            transition: all 0.3s;
-        }
-
-        @media (max-width: 640px) {
-            .view-systems-cta {
-                bottom: 16px;
-            }
-
-            .pulse-cta {
-                padding: 10px 16px;
-                font-size: 10px;
-                gap: 8px;
-            }
-        }
-
-        .pulse-cta:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(255, 127, 36, 0.6);
-        }
-
-        @keyframes cta-pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(255, 127, 36, 0.7);
-            }
-
-            70% {
-                box-shadow: 0 0 0 15px rgba(255, 127, 36, 0);
-            }
-
-            100% {
-                box-shadow: 0 0 0 0 rgba(255, 127, 36, 0);
-            }
-        }
-
-        .pricing-card-neural {
-            position: relative;
-            background: rgba(18, 18, 18, 0.5);
-            border: 1px dashed hsl(var(--border));
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow: visible;
-        }
-
-        .pricing-card-neural:hover {
+        .terminal-input:focus {
             border-color: hsl(var(--industrial-orange));
-            transform: translateY(-8px) scale(1.02);
-            background: rgba(255, 127, 36, 0.05);
-            box-shadow: 0 20px 40px -20px rgba(255, 127, 36, 0.4);
-        }
-
-        @keyframes pulse-glitch {
-
-            0%,
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 20px rgba(255, 127, 36, 0.2);
-            }
-
-            50% {
-                transform: scale(1.03);
-                box-shadow: 0 0 40px rgba(255, 127, 36, 0.4);
-            }
-
-            51% {
-                transform: translate(1px, 0.5px);
-            }
-
-            52% {
-                transform: translate(0, 0);
-            }
-        }
-
-        .animate-pulse-glitch {
-            animation: pulse-glitch 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-
-        /* ── Infinite tech stack marquee ── */
-        @keyframes rais-marquee {
-            from { transform: translateX(0); }
-            to   { transform: translateX(-50%); }
-        }
-
-        .rais-marquee-wrap {
-            overflow: hidden;
-            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-            mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-        }
-
-        .rais-marquee-track {
-            display: flex;
-            width: max-content;
-            animation: rais-marquee 35s linear infinite;
-        }
-
-        .rais-marquee-track:hover {
-            animation-play-state: paused;
-        }
-
-        .rais-marquee-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 0.5rem 2.5rem;
-            opacity: 0.45;
-            transition: opacity 200ms ease;
-            cursor: default;
-        }
-
-        .rais-marquee-item:hover {
-            opacity: 1;
-        }
-
-        .rais-marquee-item img {
-            width: 2.25rem;
-            height: 2.25rem;
-            object-fit: contain;
-        }
-
-        .rais-marquee-item span {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.55rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: hsl(var(--industrial-orange-bright));
-            white-space: nowrap;
+            box-shadow: 0 0 0 3px rgba(236, 106, 55, 0.08);
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .rais-marquee-track { animation: none; }
+            html {
+                scroll-behavior: auto;
+            }
         }
     </style>
 </head>
 
 <body class="min-h-screen">
-    <!-- Fixed full-page shooting star canvas (index.html only — excluded from impressum/datenschutz) -->
-    <canvas id="hero-canvas" aria-hidden="true"></canvas>
-    <!-- Center CTA Button -->
-    <div class="view-systems-cta">
-        <a href="#booking" class="pulse-cta">
-            <i data-lucide="calendar" class="w-4 h-4"></i>
-            Get Free Booking Audit
-        </a>
-    </div>
-    <!-- Header -->
-    <header
-        class="fixed top-0 left-0 right-0 z-50 border-b border-dashed border-border bg-background/95 backdrop-blur-sm">
+    <header class="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/92 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <a href="#" class="flex items-center gap-3 hover:opacity-80 transition-opacity group">
-                    <div class="relative w-12 h-12 flex items-center justify-center">
-                        <img src="RAIS-Logo-transparent.png" alt="RAIS Logo"
-                            class="w-full h-full object-contain group-hover:rotate-12 transition-transform duration-500">
-                    </div>
-                    <span class="font-mono text-xl font-bold tracking-wider text-industrial-orange-bright">RAIS</span>
-                    <span class="hidden md:block text-xs text-gray-500 font-mono">v3.0.0-Live</span>
-                    <div class="flex items-center gap-1.5 ml-2 md:hidden">
-                        <div class="w-1.5 h-1.5 bg-status-cyan-bright animate-pulse rounded-full"></div>
-                        <span class="font-mono text-[8px] text-status-cyan-bright uppercase tracking-tighter"
-                            data-i18n="system_status">System
-                            Online</span>
+            <div class="flex items-center justify-between h-20">
+                <a href="#" class="flex items-center gap-3">
+                    <img src="RAIS-Logo-transparent.png" alt="RAIS Logo" class="w-11 h-11 object-contain">
+                    <div>
+                        <div class="font-mono text-lg tracking-wider text-industrial-orange-bright font-semibold">RAIS</div>
+                        <div class="text-xs text-stone">Restaurant Systems mit Haltung</div>
                     </div>
                 </a>
 
-                <nav class="hidden md:flex items-center gap-6">
-                    <a href="#steps"
-                        class="font-mono text-sm uppercase tracking-wider text-gray-400 hover:text-industrial-orange-bright transition-colors"
-                        data-i18n="efficiency">How It Works</a>
-                    <a href="#pricing"
-                        class="font-mono text-sm uppercase tracking-wider text-gray-400 hover:text-industrial-orange-bright transition-colors"
-                        data-i18n="pricing">Pricing</a>
-                    <a href="#tech"
-                        class="font-mono text-sm uppercase tracking-wider text-gray-400 hover:text-industrial-orange-bright transition-colors"
-                        data-i18n="tech">Tech
-                        Stack</a>
-                    <a href="#contact"
-                        class="font-mono text-sm uppercase tracking-wider text-gray-400 hover:text-industrial-orange-bright transition-colors"
-                        data-i18n="contact">Contact</a>
+                <nav class="hidden md:flex items-center gap-8 text-sm text-stone">
+                    <a href="#pricing" class="hover:text-foreground transition-colors">Leistung</a>
+                    <a href="#impact" class="hover:text-foreground transition-colors">Wirkung</a>
+                    <a href="#steps" class="hover:text-foreground transition-colors">Zusammenarbeit</a>
+                    <a href="impressum.html" class="hover:text-foreground transition-colors">Impressum</a>
+                    <a href="datenschutz.html" class="hover:text-foreground transition-colors">Datenschutz</a>
+                    <a href="#contact" class="hover:text-foreground transition-colors">Kontakt</a>
                 </nav>
 
-                <!-- Lang toggle still present -->
-                <div class="hidden md:flex items-center gap-4">
-                    <div
-                        class="flex items-center border border-dashed border-border px-2 py-1 gap-2 font-mono text-[10px] uppercase tracking-wider">
-                        <button onclick="setLanguage('en')" class="text-industrial-orange-bright"
-                            id="lang-en">EN</button>
-                        <span class="text-gray-600">|</span>
-                        <button onclick="setLanguage('de')"
-                            class="text-gray-500 hover:text-industrial-orange transition-colors"
-                            id="lang-de">DE</button>
-                    </div>
-                </div>
+                <a href="#booking" class="hidden md:inline-flex items-center justify-center px-5 py-3 rounded-full border border-industrial-orange text-industrial-orange-bright text-sm font-medium transition-colors outline-button">Erstgespräch buchen</a>
 
-                <button id="mobileMenuBtn" class="md:hidden text-industrial-orange-bright">
+                <button id="mobileMenuBtn" class="md:hidden text-industrial-orange-bright" aria-label="Menü öffnen">
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
             </div>
         </div>
 
-        <div id="mobileMenu" class="hidden md:hidden border-t border-dashed border-border bg-background">
-            <nav class="flex flex-col px-4 py-4 gap-4">
-                <a href="#pricing"
-                    class="font-mono text-sm uppercase tracking-wider text-gray-400 hover:text-industrial-orange-bright transition-colors">Pricing</a>
-                <a href="#capabilities"
-                    class="font-mono text-sm uppercase tracking-wider text-gray-400 hover:text-industrial-orange-bright transition-colors">Capabilities</a>
-                <a href="#tech"
-                    class="font-mono text-sm uppercase tracking-wider text-gray-400 hover:text-industrial-orange-bright transition-colors">Tech
-                    Stack</a>
-                <a href="#contact"
-                    class="font-mono text-sm uppercase tracking-wider text-gray-400 hover:text-industrial-orange-bright transition-colors">Contact</a>
+        <div id="mobileMenu" class="hidden md:hidden border-t border-border bg-surface">
+            <nav class="flex flex-col px-4 py-5 gap-4 text-stone">
+                <a href="#pricing" class="hover:text-foreground transition-colors">Leistung</a>
+                <a href="#impact" class="hover:text-foreground transition-colors">Wirkung</a>
+                <a href="#steps" class="hover:text-foreground transition-colors">Zusammenarbeit</a>
+                <a href="impressum.html" class="hover:text-foreground transition-colors">Impressum</a>
+                <a href="datenschutz.html" class="hover:text-foreground transition-colors">Datenschutz</a>
+                <a href="#contact" class="hover:text-foreground transition-colors">Kontakt</a>
+                <a href="#booking" class="inline-flex items-center justify-center px-5 py-3 rounded-full warm-button text-sm font-medium transition-colors">Kostenloses Erstgespräch</a>
             </nav>
         </div>
     </header>
 
+
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-        <div class="absolute inset-0 diagonal-grid opacity-50" id="hero-diagonal-grid"></div>
+    <section class="relative min-h-screen flex items-center overflow-hidden pt-28 pb-16">
+        <div class="absolute inset-0 diagonal-grid opacity-30"></div>
+        <div class="ambient-orb one"></div>
+        <div class="ambient-orb two"></div>
+        <div class="ambient-line"></div>
 
-        <div class="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-            <div class="relative border-2 border-dashed border-border p-8 md:p-12">
-                <!-- Corner Accents -->
-                <i data-lucide="plus" class="absolute -top-[1px] -left-[1px] w-3 h-3 text-industrial-orange"></i>
-                <i data-lucide="plus" class="absolute -top-[1px] -right-[1px] w-3 h-3 text-industrial-orange"></i>
-                <i data-lucide="plus" class="absolute -bottom-[1px] -left-[1px] w-3 h-3 text-industrial-orange"></i>
-                <i data-lucide="plus" class="absolute -bottom-[1px] -right-[1px] w-3 h-3 text-industrial-orange"></i>
-
-                <div class="mb-8">
-                    <div class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-ultra-wide">
-                        <span class="text-gray-500">Bookings open</span>
-                        <span class="text-accent-purple-bright"
-                            style="text-shadow: 0 0 15px rgba(168, 85, 247, 0.6)">24/7</span>
-                        <span class="w-2 h-2 bg-accent-purple-bright animate-pulse rounded-sm"></span>
-                    </div>
-                </div>
-
-                <div class="space-y-6 mb-12">
-                    <div class="flex items-center gap-3">
-                        <i data-lucide="terminal" class="w-8 h-8 text-industrial-orange-bright"></i>
-                        <span class="font-mono text-xs uppercase tracking-ultra-wide text-gray-500">
-                            Ritz AI Solutions
-                        </span>
+        <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-[1.15fr_0.85fr] gap-10 items-start">
+                <div class="pt-8">
+                    <div class="signal-label mb-6 flex items-center gap-3">
+                        <span class="w-2 h-2 bg-industrial-orange rounded-full"></span>
+                        RAIS V2 / Editorial Hospitality / Restaurant Systems
                     </div>
 
-                    <h1 class="font-mono text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-foreground uppercase leading-tight"
-                        style="text-shadow: 0 0 20px rgba(255, 127, 36, 0.5)" data-i18n="hero_h1">
-                        Stop Losing Tables<br>
-                        <span class="text-industrial-orange-bright">Every Rush Hour.</span>
+                    <h1 class="font-display text-5xl md:text-7xl leading-[0.94] text-foreground max-w-4xl mb-6">
+                        Keine Reservierungsanfrage mehr im Stoßgeschäft verpassen.
                     </h1>
 
-                    <p class="text-lg md:text-xl text-gray-400 max-w-2xl font-sans" data-i18n="hero_p">
-                        We build your booking system, website, and AI agent — so every reservation, every question, every returning guest is handled automatically.
+                    <div class="max-w-2xl proof-stack mb-8">
+                        <p class="text-xl md:text-2xl text-foreground leading-relaxed mb-4">
+                            Mehr Reservierungen. Weniger verpasste Anfragen. Weniger Chaos, wenn im Betrieb gerade niemand ans Telefon gehen kann.
+                        </p>
+                        <p class="text-base md:text-lg text-stone leading-relaxed">
+                            RAIS baut Restaurant-Websites, die Reservierungen strukturiert erfassen, Betrieb und Gast sofort informieren und 24 Stunden vor dem Termin automatisch erinnern.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4 mb-10">
+                        <a href="#booking" class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full warm-button text-base font-medium transition-colors">
+                            <i data-lucide="calendar-check-2" class="w-5 h-5"></i>
+                            Kostenloses Erstgespräch anfragen
+                        </a>
+                        <a href="#impact" class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full border border-border outline-button text-base text-stone transition-colors">
+                            <i data-lucide="chart-column" class="w-5 h-5"></i>
+                            Verlust einschätzen
+                        </a>
+                    </div>
+
+                    <div class="grid sm:grid-cols-3 gap-4 max-w-4xl">
+                        <div class="editorial-frame rounded-[1.5rem] p-5">
+                            <div class="signal-label mb-3">Signal 01</div>
+                            <div class="text-lg font-medium text-foreground mb-1">Betrieb wird sofort informiert</div>
+                            <div class="text-sm text-stone">Neue Anfragen landen direkt dort, wo sie gebraucht werden.</div>
+                        </div>
+                        <div class="editorial-frame rounded-[1.5rem] p-5">
+                            <div class="signal-label mb-3">Signal 02</div>
+                            <div class="text-lg font-medium text-foreground mb-1">Gast erhält Bestätigung</div>
+                            <div class="text-sm text-stone">Klare Rückmeldung statt Unsicherheit oder Warten.</div>
+                        </div>
+                        <div class="editorial-frame rounded-[1.5rem] p-5">
+                            <div class="signal-label mb-3">Signal 03</div>
+                            <div class="text-lg font-medium text-foreground mb-1">24h-Erinnerung läuft automatisch</div>
+                            <div class="text-sm text-stone">Hilft gegen vergessene Reservierungen und Leerlauf.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="proposal-sheet rounded-[2rem] p-6 md:p-8 mt-4 lg:mt-0">
+                    <div class="flex items-center justify-between mb-5">
+                        <div>
+                            <div class="signal-label mb-2">Reservierungsstrecke</div>
+                            <div class="text-2xl font-display text-foreground">Eine Website, die im Betrieb mitarbeitet</div>
+                        </div>
+                        <div class="w-10 h-10 rounded-full border border-border flex items-center justify-center text-industrial-orange">
+                            <i data-lucide="utensils-crossed" class="w-5 h-5"></i>
+                        </div>
+                    </div>
+
+                    <div class="signal-divider mb-6"></div>
+
+                    <div class="bg-white/55 border border-border rounded-[1.5rem] p-5 mb-5">
+                        <div class="grid grid-cols-2 gap-3 text-sm text-stone mb-4">
+                            <div class="border border-border rounded-2xl px-4 py-3">Name des Gastes</div>
+                            <div class="border border-border rounded-2xl px-4 py-3">Datum</div>
+                            <div class="border border-border rounded-2xl px-4 py-3">Uhrzeit</div>
+                            <div class="border border-border rounded-2xl px-4 py-3">Personen</div>
+                        </div>
+                        <div class="border border-border rounded-2xl px-4 py-3 text-sm text-stone mb-4">Telefon oder E-Mail für die Bestätigung</div>
+                        <div class="warm-button rounded-full text-center py-3 text-sm font-medium">Reservierung absenden</div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-sage-soft flex items-center justify-center text-pistachio shrink-0">
+                                <i data-lucide="bell" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium text-foreground">Restaurant bekommt die Anfrage direkt</div>
+                                <div class="text-sm text-stone">Sauber erfasst statt zwischen Anruf, Service und WhatsApp unterzugehen.</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-sage-soft flex items-center justify-center text-pistachio shrink-0">
+                                <i data-lucide="badge-check" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium text-foreground">Gast bekommt sofort eine klare Rückmeldung</div>
+                                <div class="text-sm text-stone">Das wirkt professionell und nimmt Unsicherheit aus dem Prozess.</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-sage-soft flex items-center justify-center text-pistachio shrink-0">
+                                <i data-lucide="clock-3" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium text-foreground">Vor dem Termin geht automatisch eine Erinnerung raus</div>
+                                <div class="text-sm text-stone">Ein kleiner Ablauf mit großer Wirkung für den Alltag im Betrieb.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Mechanism Section -->
+    <section id="flow" class="section-air">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 items-start">
+                <div class="pr-0 lg:pr-8">
+                    <div class="signal-label mb-5">Mechanismus</div>
+                    <h2 class="font-display text-4xl md:text-5xl text-foreground mb-6">So arbeitet das System im Alltag, ohne technisch zu wirken.</h2>
+                    <p class="text-lg text-stone leading-relaxed mb-8">
+                        Der Gast soll nicht merken, wie viel Ordnung im Hintergrund entsteht. Für ihn ist es einfach eine klare Reservierung. Für Sie ist es ein sauberer Ablauf mit weniger Verlusten und weniger Nacharbeit.
                     </p>
-                </div>
-
-                <div class="flex flex-col sm:flex-row gap-4 mb-12">
-                    <a href="#booking"
-                        class="group relative px-8 py-4 border-2 border-industrial-orange bg-industrial-orange/5 font-mono text-sm uppercase tracking-wider text-industrial-orange-bright flex items-center justify-center gap-2 hover:scale-105 transition-all duration-200"
-                        style="text-shadow: 0 0 5px rgba(255, 127, 36, 0.4)">
-                        <span>Get Free Booking Audit</span>
-                        <i data-lucide="calendar" class="w-4 h-4 group-hover:rotate-12 transition-transform"></i>
-                    </a>
-
-                    <a href="#pricing"
-                        class="group relative px-8 py-4 border border-dashed border-border font-mono text-sm uppercase tracking-wider text-gray-400 flex items-center justify-center gap-2 hover:border-industrial-orange hover:text-industrial-orange transition-all duration-200">
-                        <span>See Our Systems</span>
-                        <i data-lucide="chevron-right"
-                            class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
-                    </a>
-                </div>
-
-                <!-- Mobile Ops Removed -->
-
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <div class="stat-card relative border border-dashed border-border p-4" style="animation-delay: 0s">
-                        <i data-lucide="shield-check" class="w-8 h-8 text-industrial-orange-bright mb-3"></i>
-                        <div class="font-mono text-xs uppercase tracking-wider text-gray-500">GDPR Compliant</div>
-                    </div>
-                    <div class="stat-card relative border border-dashed border-border p-4"
-                        style="animation-delay: 0.15s">
-                        <i data-lucide="utensils" class="w-8 h-8 text-industrial-orange-bright mb-3"></i>
-                        <div class="font-mono text-xs uppercase tracking-wider text-gray-500">Built for Restaurants</div>
-                    </div>
-                    <div class="stat-card relative border border-dashed border-border p-4"
-                        style="animation-delay: 0.3s">
-                        <i data-lucide="zap" class="w-8 h-8 text-industrial-orange-bright mb-3"></i>
-                        <div class="font-mono text-xs uppercase tracking-wider text-gray-500">We Handle Everything</div>
-                    </div>
-                    <div class="stat-card relative border border-dashed border-border p-4"
-                        style="animation-delay: 0.45s">
-                        <i data-lucide="clock" class="w-8 h-8 text-industrial-orange-bright mb-3"></i>
-                        <div class="font-mono text-xs uppercase tracking-wider text-gray-500">Live in 14 Days</div>
-                    </div>
-                </div>
-
-                <!-- Partner Logoscape -->
-                <div class="mt-16 pt-8 border-t border-dashed border-border">
-                    <div class="font-mono text-[10px] uppercase tracking-widest text-gray-500 mb-6 text-center">Powered
-                        by Core Intelligence Ecosystem:</div>
-                    <div
-                        class="flex flex-wrap items-center justify-center gap-8 md:gap-16 opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
-                        <div class="flex items-center gap-2">
-                            <i data-lucide="zap" class="w-5 h-5"></i>
-                            <span class="font-mono text-sm font-bold">n8n</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i data-lucide="brain" class="w-5 h-5"></i>
-                            <span class="font-mono text-sm font-bold">GEMINI</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i data-lucide="message-square" class="w-5 h-5"></i>
-                            <span class="font-mono text-sm font-bold">VOICEFLOW</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i data-lucide="container" class="w-5 h-5"></i>
-                            <span class="font-mono text-sm font-bold">MAKE</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i data-lucide="database" class="w-5 h-5"></i>
-                            <span class="font-mono text-sm font-bold">POSTGRES</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Industry Use Cases Section -->
-    <section class="py-24 relative border-t border-dashed border-border overflow-hidden" id="industries">
-        <!-- Neural Visualizer Background -->
-        <div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
-            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                <rect width="100%" height="100%" fill="url(#neural-grid)" />
-            </svg>
-        </div>
-        <div class="absolute inset-0 diagonal-grid opacity-10"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-16">
-                <div class="font-mono text-xs uppercase tracking-ultra-wide text-status-cyan-bright mb-4" data-i18n="who_label">
-                    [ Who We Work With ]
-                </div>
-                <h2 class="font-mono text-4xl md:text-5xl font-bold text-foreground uppercase" data-i18n="industries_title">
-                    Built for Restaurants &amp; Hotels
-                </h2>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="border border-border p-8 hover:bg-industrial-orange/5 transition-all group">
-                    <i data-lucide="utensils" class="w-10 h-10 text-industrial-orange mb-6"></i>
-                    <h3 class="font-mono text-xl font-bold text-foreground mb-4 uppercase" data-i18n="restaurants_title">Restaurants & Cafés</h3>
-                    <ul class="space-y-3 font-sans text-sm text-gray-400">
-                        <li class="flex items-center gap-2"><span class="w-1 h-1 bg-industrial-orange"></span><span data-i18n="restaurants_li1"> Reservation system + website</span></li>
-                        <li class="flex items-center gap-2"><span class="w-1 h-1 bg-industrial-orange"></span><span data-i18n="restaurants_li2"> Guest retention email campaigns</span></li>
-                        <li class="flex items-center gap-2"><span class="w-1 h-1 bg-industrial-orange"></span><span data-i18n="restaurants_li3"> Chat agent for bookings &amp; FAQs</span></li>
-                        <li class="flex items-center gap-2"><span class="w-1 h-1 bg-industrial-orange"></span><span data-i18n="restaurants_li4"> Rush hour booking automation</span></li>
-                    </ul>
-                </div>
-                <div class="border border-border p-8 hover:bg-industrial-orange/5 transition-all group">
-                    <i data-lucide="hotel" class="w-10 h-10 text-industrial-orange mb-6"></i>
-                    <h3 class="font-mono text-xl font-bold text-foreground mb-4 uppercase" data-i18n="hotels_title">Hotels & Bar Operations</h3>
-                    <ul class="space-y-3 font-sans text-sm text-gray-400">
-                        <li class="flex items-center gap-2"><span class="w-1 h-1 bg-industrial-orange"></span><span data-i18n="hotels_li1"> Table &amp; venue reservation infrastructure</span></li>
-                        <li class="flex items-center gap-2"><span class="w-1 h-1 bg-industrial-orange"></span><span data-i18n="hotels_li2"> F&amp;B guest communication flows</span></li>
-                        <li class="flex items-center gap-2"><span class="w-1 h-1 bg-industrial-orange"></span><span data-i18n="hotels_li3"> Concierge chat agent</span></li>
-                        <li class="flex items-center gap-2"><span class="w-1 h-1 bg-industrial-orange"></span><span data-i18n="hotels_li4"> Daily booking digest for managers</span></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="mt-16 text-center">
-                <a href="#booking"
-                    class="inline-flex items-center gap-3 px-10 py-5 bg-industrial-orange text-black font-mono text-sm font-bold uppercase tracking-widest hover:brightness-125 transition-all shadow-[0_0_30px_rgba(255,127,36,0.6)] z-10 relative">
-                    <i data-lucide="zap" class="w-5 h-5"></i>
-                    <span data-i18n="industries_cta">Get Your Free Booking Audit</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Revenue Recovery Calculator -->
-    <section class="py-24 relative border-t border-dashed border-border" id="capabilities">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="border-2 border-dashed p-8 md:p-12 relative overflow-hidden" style="border-color: rgba(255, 140, 0, 0.5); background: rgba(255, 140, 0, 0.03);">
-                <div class="absolute top-0 right-0 p-4 font-mono text-[10px] text-accent-purple-bright/50">REV-CALC_v1.0</div>
-                <div class="mb-10">
-                    <div class="font-mono text-xs uppercase tracking-ultra-wide text-accent-purple-bright mb-4">[ Revenue Recovery Calculator ]</div>
-                    <h3 class="font-mono text-3xl font-bold text-foreground uppercase">How Much Are Missed Bookings Costing You?</h3>
-                </div>
-                <div class="grid md:grid-cols-2 gap-12">
-                    <!-- Inputs -->
+                    <div class="signal-divider mb-8"></div>
                     <div class="space-y-6">
-                        <div class="space-y-2">
-                            <label class="block font-mono text-[10px] uppercase text-gray-500">Covers per service:</label>
-                            <input type="number" id="calc_covers" min="10" max="300" value="30" oninput="calcRevenue()"
-                                class="w-full bg-transparent border-b border-dashed border-border p-2 font-mono text-xl text-industrial-orange-bright outline-none focus:border-industrial-orange transition-colors">
+                        <div>
+                            <div class="signal-label mb-2">Für den Gast</div>
+                            <p class="text-stone leading-relaxed">Die Reservierung fühlt sich klar, schnell und professionell an. Kein Warten, keine Unsicherheit, keine unklare Rückfrage.</p>
                         </div>
-                        <div class="space-y-2">
-                            <label class="block font-mono text-[10px] uppercase text-gray-500">Services per day:</label>
-                            <input type="number" id="calc_services" min="1" max="4" value="2" oninput="calcRevenue()"
-                                class="w-full bg-transparent border-b border-dashed border-border p-2 font-mono text-xl text-industrial-orange-bright outline-none focus:border-industrial-orange transition-colors">
+                        <div>
+                            <div class="signal-label mb-2">Für den Betrieb</div>
+                            <p class="text-stone leading-relaxed">Anfragen gehen nicht im Stoßgeschäft unter, Daten liegen geordnet vor und Erinnerungen laufen automatisch im Hintergrund.</p>
                         </div>
-                        <div class="space-y-2">
-                            <label class="block font-mono text-[10px] uppercase text-gray-500">Average spend per cover (€):</label>
-                            <input type="number" id="calc_spend" min="10" max="200" value="28" oninput="calcRevenue()"
-                                class="w-full bg-transparent border-b border-dashed border-border p-2 font-mono text-xl text-industrial-orange-bright outline-none focus:border-industrial-orange transition-colors">
-                        </div>
-                        <div class="space-y-2">
-                            <label class="block font-mono text-[10px] uppercase text-gray-500">Days open per week:</label>
-                            <input type="number" id="calc_days" min="1" max="7" value="5" oninput="calcRevenue()"
-                                class="w-full bg-transparent border-b border-dashed border-border p-2 font-mono text-xl text-industrial-orange-bright outline-none focus:border-industrial-orange transition-colors">
-                        </div>
-                        <div class="space-y-2">
-                            <label class="block font-mono text-[10px] uppercase text-gray-500">% of bookings taken by phone: <span id="calc_phone_val" class="text-accent-purple-bright">40%</span></label>
-                            <input type="range" id="calc_phone" min="0" max="100" value="40" oninput="calcRevenue()"
-                                class="w-full accent-industrial-orange bg-border h-1 rounded-lg appearance-none cursor-pointer">
-                        </div>
-                        <div class="space-y-2">
-                            <label class="block font-mono text-[10px] uppercase text-gray-500">% of phone bookings missed during rush hour: <span id="calc_missed_val" class="text-accent-purple-bright">20%</span></label>
-                            <input type="range" id="calc_missed" min="0" max="100" value="20" oninput="calcRevenue()"
-                                class="w-full accent-industrial-orange bg-border h-1 rounded-lg appearance-none cursor-pointer">
-                        </div>
-                    </div>
-                    <!-- Outputs -->
-                    <div class="flex flex-col justify-between">
-                        <div class="grid grid-cols-2 gap-4 mb-8">
-                            <div class="border border-dashed border-border bg-background p-5">
-                                <div class="font-mono text-[10px] uppercase text-gray-500 mb-2">Covers Lost / Week</div>
-                                <div class="font-mono text-3xl font-bold text-industrial-orange-bright" id="out_covers">—</div>
-                            </div>
-                            <div class="border border-dashed border-border bg-background p-5">
-                                <div class="font-mono text-[10px] uppercase text-gray-500 mb-2">Revenue Lost / Week</div>
-                                <div class="font-mono text-3xl font-bold text-industrial-orange-bright" id="out_week">—</div>
-                            </div>
-                            <div class="border border-dashed border-border bg-background p-5">
-                                <div class="font-mono text-[10px] uppercase text-gray-500 mb-2">Revenue Lost / Year</div>
-                                <div class="font-mono text-3xl font-bold text-industrial-orange-bright" id="out_year">—</div>
-                            </div>
-                            <div class="border border-dashed border-border bg-background p-5">
-                                <div class="font-mono text-[10px] uppercase text-gray-500 mb-2">System Payback Period</div>
-                                <div class="font-mono text-3xl font-bold text-accent-purple-bright" id="out_payback">—</div>
-                            </div>
-                        </div>
-                        <a href="#booking"
-                            class="w-full py-4 bg-industrial-orange text-black text-center font-mono text-xs font-bold uppercase hover:bg-industrial-orange-bright transition-all">Recover This Revenue — Get Free Audit</a>
+                        <a href="#booking" class="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full warm-button text-base font-medium transition-colors">
+                            <i data-lucide="calendar-check-2" class="w-5 h-5"></i>
+                            Erstgespräch buchen
+                        </a>
                     </div>
                 </div>
-            </div>
-        </div>
-        <script>
-        function calcRevenue() {
-            var covers = parseFloat(document.getElementById('calc_covers').value) || 0;
-            var services = parseFloat(document.getElementById('calc_services').value) || 0;
-            var spend = parseFloat(document.getElementById('calc_spend').value) || 0;
-            var days = parseFloat(document.getElementById('calc_days').value) || 0;
-            var phonePct = parseFloat(document.getElementById('calc_phone').value) || 0;
-            var missedPct = parseFloat(document.getElementById('calc_missed').value) || 0;
-            document.getElementById('calc_phone_val').textContent = phonePct + '%';
-            document.getElementById('calc_missed_val').textContent = missedPct + '%';
-            var weeklyCo = covers * services * days;
-            var phoneBk = weeklyCo * (phonePct / 100);
-            var missed = phoneBk * (missedPct / 100);
-            var lostWeek = missed * spend;
-            var lostYear = lostWeek * 52;
-            var payback = missed > 0 ? (1500 / (lostWeek / 7)) : null;
-            document.getElementById('out_covers').textContent = Math.round(missed);
-            document.getElementById('out_week').textContent = '€' + Math.round(lostWeek).toLocaleString('de-DE');
-            document.getElementById('out_year').textContent = '€' + Math.round(lostYear).toLocaleString('de-DE');
-            if (missed === 0) {
-                document.getElementById('out_payback').textContent = '—';
-            } else if (payback < 1) {
-                document.getElementById('out_payback').textContent = '< 1 day';
-            } else {
-                document.getElementById('out_payback').textContent = Math.round(payback) + ' days';
-            }
-        }
-        calcRevenue();
-        </script>
-    </section>
 
-    <!-- Tech Stack Section -->
-    <section id="tech" class="py-24 relative border-y border-dashed border-border overflow-hidden">
-        <!-- Neural Visualizer Background -->
-        <div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
-            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <pattern id="neural-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,127,36,0.1)" stroke-width="0.5" />
-                    </pattern>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#neural-grid)" />
-            </svg>
-        </div>
-        <div class="absolute inset-0 diagonal-grid opacity-20"></div>
+                <div class="editorial-frame rounded-[2rem] p-8 md:p-10">
+                    <div class="grid md:grid-cols-2 gap-6 mb-8">
+                        <div>
+                            <div class="signal-label mb-3">Schritt 01</div>
+                            <div class="text-2xl font-medium text-foreground mb-2">Gast sendet die Reservierung</div>
+                            <p class="text-stone leading-relaxed">Über Ihre Website, mobil und ohne Reibung. Alle relevanten Angaben werden direkt sauber erfasst.</p>
+                        </div>
+                        <div>
+                            <div class="signal-label mb-3">Schritt 02</div>
+                            <div class="text-2xl font-medium text-foreground mb-2">Restaurant und Gast werden informiert</div>
+                            <p class="text-stone leading-relaxed">Sie sehen sofort die neue Anfrage. Der Gast erhält eine klare Bestätigung statt im Unklaren zu bleiben.</p>
+                        </div>
+                    </div>
 
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-16 text-center">
-                <div class="font-mono text-xs uppercase tracking-ultra-wide text-industrial-orange-bright mb-4">
-                    [ Technology Stack ]
-                </div>
-                <h2 class="font-mono text-4xl md:text-5xl font-bold text-foreground uppercase">
-                    Tech Stack
-                </h2>
-            </div>
+                    <div class="signal-divider mb-8"></div>
 
-            <!-- Infinite marquee — hover pauses, fades at edges via CSS mask -->
-            <div class="rais-marquee-wrap">
-                <div class="rais-marquee-track">
-                    <!-- Set 1 -->
-                    <div class="rais-marquee-item">
-                        <img src="https://cdn.simpleicons.org/anthropic/FF7A00" alt="Claude AI" width="36" height="36">
-                        <span>Claude AI</span>
-                    </div>
-                    <div class="rais-marquee-item">
-                        <img src="https://cdn.simpleicons.org/n8n/FF7A00" alt="n8n" width="36" height="36">
-                        <span>n8n</span>
-                    </div>
-                    <div class="rais-marquee-item">
-                        <img src="https://cdn.simpleicons.org/supabase/FF7A00" alt="Supabase" width="36" height="36">
-                        <span>Supabase</span>
-                    </div>
-                    <div class="rais-marquee-item">
-                        <img src="https://cdn.simpleicons.org/tailwindcss/FF7A00" alt="Tailwind CSS" width="36" height="36">
-                        <span>Tailwind</span>
-                    </div>
-                    <div class="rais-marquee-item">
-                        <img src="https://cdn.simpleicons.org/vercel/FF7A00" alt="Vercel" width="36" height="36">
-                        <span>Vercel</span>
-                    </div>
-                    <div class="rais-marquee-item">
-                        <img src="https://cdn.simpleicons.org/postgresql/FF7A00" alt="PostgreSQL" width="36" height="36">
-                        <span>PostgreSQL</span>
-                    </div>
-                    <div class="rais-marquee-item">
-                        <img src="https://cdn.simpleicons.org/python/FF7A00" alt="Python" width="36" height="36">
-                        <span>Python</span>
-                    </div>
-                    <div class="rais-marquee-item">
-                        <img src="https://cdn.simpleicons.org/javascript/FF7A00" alt="JavaScript" width="36" height="36">
-                        <span>JavaScript</span>
-                    </div>
-                    <div class="rais-marquee-item">
-                        <img src="https://cdn.simpleicons.org/vite/FF7A00" alt="Vite" width="36" height="36">
-                        <span>Vite</span>
-                    </div>
-                    <div class="rais-marquee-item">
-                        <!-- OpenAI/GPT-4 — using unpkg versioned path for reliability -->
-                        <img src="https://unpkg.com/simple-icons@13/icons/openai.svg" alt="GPT-4" width="36" height="36" style="filter: invert(55%) sepia(90%) saturate(800%) hue-rotate(5deg) brightness(105%);">
-                        <span>GPT-4</span>
-                    </div>
-                    <div class="rais-marquee-item">
-                        <img src="https://cdn.simpleicons.org/googlegemini/FF7A00" alt="Gemini" width="36" height="36">
-                        <span>Gemini</span>
-                    </div>
-                    <div class="rais-marquee-item">
-                        <img src="https://cdn.simpleicons.org/make/FF7A00" alt="Make" width="36" height="36">
-                        <span>Make</span>
-                    </div>
-                    <!-- Set 2 — exact duplicate for seamless loop -->
-                    <div class="rais-marquee-item">
-                        <img src="https://cdn.simpleicons.org/anthropic/FF7A00" alt="Claude AI" width="36" height="36">
-                        <span>Claude AI</span>
-                    </div>
-                    <div class="rais-marquee-item">
-                        <img src="https://cdn.simpleicons.org/n8n/FF7A00" alt="n8n" width="36" height="36">
-                        <span>n8n</span>
-                    </div>
-                    <div class="rais-marquee-item">
-                        <img src="https://cdn.simpleicons.org/supabase/FF7A00" alt="Supabase" width="36" height="36">
-                        <span>Supabase</span>
-                    </div>
-                    <div class="rais-marquee-item">
-                        <img src="https://cdn.simpleicons.org/tailwindcss/FF7A00" alt="Tailwind CSS" width="36" height="36">
-                        <span>Tailwind</span>
-                    </div>
-                    <div class="rais-marquee-item">
-                        <img src="https://cdn.simpleicons.org/vercel/FF7A00" alt="Vercel" width="36" height="36">
-                        <span>Vercel</span>
-                    </div>
-                    <div class="rais-marquee-item">
-                        <img src="https://cdn.simpleicons.org/postgresql/FF7A00" alt="PostgreSQL" width="36" height="36">
-                        <span>PostgreSQL</span>
-                    </div>
-                    <div class="rais-marquee-item">
-                        <img src="https://cdn.simpleicons.org/python/FF7A00" alt="Python" width="36" height="36">
-                        <span>Python</span>
-                    </div>
-                    <div class="rais-marquee-item">
-                        <img src="https://cdn.simpleicons.org/javascript/FF7A00" alt="JavaScript" width="36" height="36">
-                        <span>JavaScript</span>
-                    </div>
-                    <div class="rais-marquee-item">
-                        <img src="https://cdn.simpleicons.org/vite/FF7A00" alt="Vite" width="36" height="36">
-                        <span>Vite</span>
-                    </div>
-                    <div class="rais-marquee-item">
-                        <img src="https://unpkg.com/simple-icons@13/icons/openai.svg" alt="GPT-4" width="36" height="36" style="filter: invert(55%) sepia(90%) saturate(800%) hue-rotate(5deg) brightness(105%);">
-                        <span>GPT-4</span>
-                    </div>
-                    <div class="rais-marquee-item">
-                        <img src="https://cdn.simpleicons.org/googlegemini/FF7A00" alt="Gemini" width="36" height="36">
-                        <span>Gemini</span>
-                    </div>
-                    <div class="rais-marquee-item">
-                        <img src="https://cdn.simpleicons.org/make/FF7A00" alt="Make" width="36" height="36">
-                        <span>Make</span>
+                    <div class="grid md:grid-cols-[0.85fr_1.15fr] gap-8 items-start">
+                        <div>
+                            <div class="signal-label mb-3">Schritt 03</div>
+                            <h3 class="font-display text-3xl text-foreground mb-4">24 Stunden vor dem Termin läuft die Erinnerung automatisch.</h3>
+                            <p class="text-stone leading-relaxed">So werden vergessene Reservierungen reduziert und Ihr Tagesgeschäft bleibt ruhiger. Genau das ist der Unterschied zwischen einer schönen Website und einer nützlichen Website.</p>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="sage-panel rounded-[1.5rem] px-5 py-4 flex items-center gap-4">
+                                <div class="w-11 h-11 rounded-full bg-sage-soft flex items-center justify-center text-pistachio font-semibold">1</div>
+                                <div>
+                                    <div class="font-medium text-foreground">Gast sendet Reservierung</div>
+                                    <div class="text-sm text-stone">Direkt über das Formular auf Ihrer Website.</div>
+                                </div>
+                            </div>
+                            <div class="sage-panel rounded-[1.5rem] px-5 py-4 flex items-center gap-4">
+                                <div class="w-11 h-11 rounded-full bg-sage-soft flex items-center justify-center text-pistachio font-semibold">2</div>
+                                <div>
+                                    <div class="font-medium text-foreground">Restaurant erhält Nachricht</div>
+                                    <div class="text-sm text-stone">Der Betrieb weiß sofort, dass eine neue Anfrage da ist.</div>
+                                </div>
+                            </div>
+                            <div class="sage-panel rounded-[1.5rem] px-5 py-4 flex items-center gap-4">
+                                <div class="w-11 h-11 rounded-full bg-sage-soft flex items-center justify-center text-pistachio font-semibold">3</div>
+                                <div>
+                                    <div class="font-medium text-foreground">Gast erhält Erinnerung</div>
+                                    <div class="text-sm text-stone">24 Stunden vor dem Termin automatisch und verlässlich.</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+
+    <section id="impact" class="section-air">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-[0.84fr_1.16fr] gap-10 items-start">
+                <div>
+                    <div class="signal-label mb-5">Problem sichtbar machen</div>
+                    <h2 class="font-display text-4xl md:text-5xl text-foreground mb-6">Schon wenige verpasste Reservierungen pro Woche werden schnell teurer als die Lösung.</h2>
+                    <p class="text-lg text-stone leading-relaxed mb-8">
+                        Wenn im Stoßgeschäft niemand ans Telefon geht oder eine Anfrage auf der Website im Nichts endet, ist das kein kleines Detail. Es ist verlorener Umsatz, verlorene Tische und ein unprofessioneller Eindruck beim Gast.
+                    </p>
+                    <div class="editorial-frame rounded-[1.8rem] p-6 mb-6">
+                        <div class="signal-label mb-3">Worauf wir schauen</div>
+                        <div class="space-y-4 text-stone leading-relaxed">
+                            <p>Wie viele Reservierungsanfragen gehen pro Woche unter, weil gerade niemand reagieren kann?</p>
+                            <p>Wie hoch ist der typische Bon pro Gast oder Tisch?</p>
+                            <p>Wie schnell kann eine klare Website mit Reservierungsstrecke diese Verluste sichtbar reduzieren?</p>
+                        </div>
+                    </div>
+                    <div class="proof-stack text-stone leading-relaxed">
+                        Die Rechnung rechts ist bewusst einfach gehalten. Genau deshalb ist sie für Inhaber nützlich: Sie zeigt in wenigen Zahlen, ob eine bessere Website nur schön wäre oder betriebswirtschaftlich sinnvoll.
+                    </div>
+                </div>
+
+                <div class="proposal-sheet rounded-[2rem] p-8 md:p-10">
+                    <div class="flex items-start justify-between gap-4 mb-6">
+                        <div>
+                            <div class="signal-label mb-3">Modellrechnung</div>
+                            <h3 class="font-display text-3xl md:text-4xl text-foreground mb-3">Was kosten verpasste Anfragen in einem normalen Monat?</h3>
+                            <p class="text-stone leading-relaxed max-w-2xl">Stellen Sie die drei Werte auf Ihren Betrieb ein. Die Schätzung zeigt, welches Potenzial schon in einer einfachen, sauber geführten Reservierungsstrecke stecken kann.</p>
+                        </div>
+                        <div class="quiet-note rounded-[1.4rem] px-4 py-3 text-right shrink-0">
+                            <div class="signal-label mb-1">Zielbild</div>
+                            <div class="text-sm text-stone">klare Website</div>
+                            <div class="text-sm text-stone">saubere Erfassung</div>
+                            <div class="text-sm text-stone">24h-Erinnerung</div>
+                        </div>
+                    </div>
+
+                    <div class="grid xl:grid-cols-[0.9fr_1.1fr] gap-6 items-start">
+                        <div class="space-y-4">
+                            <div class="impact-input rounded-[1.5rem] p-5">
+                                <div class="flex items-center justify-between gap-4 mb-3">
+                                    <div>
+                                        <div class="signal-label mb-1">Wert 01</div>
+                                        <div class="text-foreground font-medium">Verpasste Reservierungen pro Woche</div>
+                                    </div>
+                                    <div id="missedReservationsValue" class="text-2xl font-display text-foreground">6</div>
+                                </div>
+                                <input id="missedReservations" class="impact-range" type="range" min="0" max="20" step="1" value="6">
+                            </div>
+
+                            <div class="impact-input rounded-[1.5rem] p-5">
+                                <div class="flex items-center justify-between gap-4 mb-3">
+                                    <div>
+                                        <div class="signal-label mb-1">Wert 02</div>
+                                        <div class="text-foreground font-medium">Durchschnittliche Gäste pro Reservierung</div>
+                                    </div>
+                                    <div id="avgGuestsValue" class="text-2xl font-display text-foreground">3</div>
+                                </div>
+                                <input id="avgGuests" class="impact-range" type="range" min="1" max="8" step="1" value="3">
+                            </div>
+
+                            <div class="impact-input rounded-[1.5rem] p-5">
+                                <div class="flex items-center justify-between gap-4 mb-3">
+                                    <div>
+                                        <div class="signal-label mb-1">Wert 03</div>
+                                        <div class="text-foreground font-medium">Durchschnittlicher Umsatz pro Gast in Euro</div>
+                                    </div>
+                                    <div id="avgSpendValue" class="text-2xl font-display text-foreground">38</div>
+                                </div>
+                                <input id="avgSpend" class="impact-range" type="range" min="15" max="120" step="1" value="38">
+                            </div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div class="impact-output rounded-[1.6rem] p-5">
+                                <div class="signal-label mb-2">Geschätzter Verlust / Monat</div>
+                                <div id="monthlyLoss" class="font-display text-4xl text-foreground mb-2">2.964 Euro</div>
+                                <p class="text-sm text-stone">Wenn diese Anfragen nicht sauber über die Website aufgefangen werden.</p>
+                            </div>
+                            <div class="impact-output rounded-[1.6rem] p-5">
+                                <div class="signal-label mb-2">Geschätzter Verlust / Jahr</div>
+                                <div id="annualLoss" class="font-display text-4xl text-foreground mb-2">35.568 Euro</div>
+                                <p class="text-sm text-stone">Selbst bei einer vorsichtigen Modellrechnung entsteht schnell ein klarer Business Case.</p>
+                            </div>
+                            <div class="impact-output rounded-[1.6rem] p-5 sm:col-span-2">
+                                <div class="signal-label mb-2">Einfaches Ziel für die ersten 30 Tage nach Livegang</div>
+                                <div class="grid md:grid-cols-[1fr_auto] gap-5 items-end">
+                                    <div>
+                                        <div id="savedReservations" class="font-display text-4xl text-foreground mb-2">26 gesicherte Reservierungen pro Monat</div>
+                                        <p class="text-sm text-stone">Schon wenn nur diese bisher verlorenen Anfragen sauber erfasst werden, arbeitet die neue Website direkt an einem messbaren Ergebnis.</p>
+                                    </div>
+                                    <div class="quiet-note rounded-[1.4rem] px-4 py-3 text-left md:text-right">
+                                        <div class="signal-label mb-1">Paket amortisiert sich ca.</div>
+                                        <div id="paybackWindow" class="text-2xl font-display text-foreground">1,5 Wochen</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cta-band rounded-[1.8rem] p-6 mt-6">
+                        <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-6 items-start">
+                            <div>
+                                <div class="signal-label mb-3">Kostenloser Report</div>
+                                <h4 class="font-display text-3xl text-foreground mb-3">Lassen Sie sich Ihre aktuelle Verlustschätzung als PDF senden.</h4>
+                                <p class="text-stone leading-relaxed mb-4">Sie erhalten einen kompakten Report mit Ihren aktuellen Werten, der geschätzten Umsatzlücke und einem klaren Ansatz, wie eine bessere Reservierungsstrecke dieses Problem reduzieren kann.</p>
+                                <div class="proof-stack text-stone leading-relaxed">
+                                    Sie geben Ihre E-Mail an, wir schicken Ihnen den Report und dürfen Sie im Anschluss zu diesem Thema kontaktieren. Genau dafür holen wir darunter Ihre Einwilligung ein.
+                                </div>
+                            </div>
+                            <form id="reportLeadForm" class="space-y-4">
+                                <div>
+                                    <label for="reportEmail" class="block text-sm text-stone mb-2">E-Mail für den Report</label>
+                                    <input type="email" id="reportEmail" name="email" required class="w-full rounded-2xl border border-border bg-white/80 px-4 py-3 text-foreground focus:outline-none transition-colors" placeholder="restaurant@beispiel.de">
+                                </div>
+                                <div>
+                                    <label for="reportRestaurant" class="block text-sm text-stone mb-2">Restaurantname</label>
+                                    <input type="text" id="reportRestaurant" name="restaurant" class="w-full rounded-2xl border border-border bg-white/80 px-4 py-3 text-foreground focus:outline-none transition-colors" placeholder="Zum Beispiel Trattoria Rossi">
+                                </div>
+                                <div class="flex items-start gap-3 text-sm text-stone">
+                                    <input type="checkbox" id="reportConsent" name="consent" required class="mt-1 accent-industrial-orange">
+                                    <label for="reportConsent">Ich willige ein, dass RAIS meine E-Mail-Adresse und die eingegebenen Report-Werte verarbeitet, um mir den PDF-Report zu senden und mich anschließend zu diesem Thema zu kontaktieren. Hinweise dazu stehen in der <a href="datenschutz.html" class="text-industrial-orange-bright hover:underline">Datenschutzerklärung</a>.</label>
+                                </div>
+                                <div class="flex flex-col sm:flex-row gap-3">
+                                    <button type="submit" class="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full warm-button text-base font-medium transition-colors">
+                                        <i data-lucide="file-down" class="w-5 h-5"></i>
+                                        PDF-Report anfordern
+                                    </button>
+                                </div>
+                                <p id="reportLeadMessage" class="text-sm text-pistachio hidden"></p>
+                            </form>
+                        </div>
+                    </div>
+
+                    <p class="text-sm text-stone leading-relaxed mt-5">Hinweis: Die Rechnung ist eine einfache Orientierung auf Basis Ihrer Angaben, keine Garantie. Sie hilft dabei, die Größenordnung des Problems und den Wert einer besseren Reservierungsstrecke schnell einzuordnen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <!-- Pricing Section -->
-    <section id="pricing" class="py-24 relative overflow-hidden border-t border-dashed border-border">
-        <!-- Background removed -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="mb-16 text-center">
-                <div class="font-mono text-xs uppercase tracking-ultra-wide text-industrial-orange-bright mb-4"
-                    data-i18n="pricing_label">
-                    [ Your Digital Infrastructure ]
-                </div>
-                <h2 class="font-mono text-4xl md:text-5xl font-bold text-foreground uppercase"
-                    data-i18n="pricing_title">Built for Restaurants That Can't Afford to Miss a Table.</h2>
-            </div>
-
-            <style>
-                .system-card {
-                    border: 1px solid rgba(255, 140, 0, 0.4);
-                    background: rgba(255, 140, 0, 0.04);
-                    border-radius: 4px;
-                    padding: 2rem;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                    height: 100%;
-                    transition: border-color 0.2s ease;
-                }
-                .system-card:hover { border-color: rgba(255, 140, 0, 0.85); }
-                .system-card-badge {
-                    font-size: 0.7rem;
-                    letter-spacing: 0.15em;
-                    color: #ff7f24;
-                    margin-bottom: 0.5rem;
-                    font-family: monospace;
-                    text-transform: uppercase;
-                }
-                .system-card-cta { margin-top: auto; }
-            </style>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-stretch" style="gap: 1.5rem;">
-                <!-- SYSTEM-01 -->
-                <div class="system-card">
-                    <div>
-                        <div class="system-card-badge" data-i18n="sys01_badge">SYSTEM-01 | Active</div>
-                        <div class="font-mono text-lg font-bold text-foreground leading-tight" data-i18n="sys01_title">Restaurant Website + Reservation System</div>
-                        <div class="font-mono text-xs text-industrial-orange-bright mt-1 mb-4" data-i18n="sys01_price">from €1,000 setup</div>
-                        <div class="font-mono text-xs text-industrial-orange uppercase mb-3" data-i18n="sys01_sub">High-Performance Booking Infrastructure</div>
-                        <p class="text-gray-400 text-sm font-sans mb-5 leading-relaxed" data-i18n="sys01_desc">Your phone line shouldn't be your booking system. We build you a high-performance restaurant website with a fully integrated reservation engine — capturing bookings 24/7 while your staff focuses on the floor. Every reservation lands in a live dashboard and your team gets notified instantly: same-day bookings via Telegram, daily summaries by email. No missed calls. No lost covers. No excuses.</p>
-                        <ul class="space-y-2 mb-6 font-mono text-xs text-gray-300">
-                            <li data-i18n="sys01_li1">→ Live reservation dashboard</li>
-                            <li data-i18n="sys01_li2">→ Instant Telegram alerts for same-day bookings</li>
-                            <li data-i18n="sys01_li3">→ Daily email digest for the manager on duty</li>
-                            <li data-i18n="sys01_li4">→ CRM integration via Supabase — your guest data, always yours</li>
-                            <li data-i18n="sys01_li5">→ System integrations available (OpenTable, TheFork, POS) — on request</li>
-                        </ul>
+    <section id="pricing" class="section-air">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-[0.88fr_1.12fr] gap-8 items-start mb-10">
+                <div>
+                    <div class="signal-label mb-5">Angebot</div>
+                    <h2 class="font-display text-4xl md:text-5xl text-foreground mb-6">Ein klares Paket für Restaurants, die Reservierungen sauber erfassen wollen.</h2>
+                    <p class="text-lg text-stone leading-relaxed mb-8">Sie kaufen keine Spielerei und keinen Baukasten. Sie bekommen einen professionellen Auftritt mit Reservierungsstrecke, Bestätigungen und Erinnerungen, damit aus Interesse verlässlich Termine werden.</p>
+                    <div class="signal-divider mb-8"></div>
+                    <div class="text-stone leading-relaxed">
+                        Einmal sauber aufsetzen, statt weiter mit Telefon, Nachrichten und uneinheitlichen Anfragen zu improvisieren.
                     </div>
-                    <a href="#booking" class="system-card-cta block w-full py-3 border border-industrial-orange text-center font-mono text-xs uppercase hover:bg-industrial-orange hover:text-black transition-all" data-i18n="sys01_cta">Request Free Booking Audit</a>
-                </div>
-                <!-- SYSTEM-02 -->
-                <div class="system-card">
-                    <div>
-                        <div class="system-card-badge" data-i18n="sys02_badge">SYSTEM-02 | Active</div>
-                        <div class="font-mono text-lg font-bold text-foreground leading-tight" data-i18n="sys02_title">Guest Retention — Email Marketing</div>
-                        <div class="font-mono text-xs text-industrial-orange-bright mt-1 mb-4" data-i18n="sys02_price">from €200/month retainer</div>
-                        <div class="font-mono text-xs text-industrial-orange uppercase mb-3" data-i18n="sys02_sub">Recurring Revenue Protocol</div>
-                        <p class="text-gray-400 text-sm font-sans mb-5 leading-relaxed" data-i18n="sys02_desc">Your best customers already know you. Most restaurants forget to talk to them. We build and run monthly email campaigns that bring past guests back — seasonal menus, special events, quiet Tuesday nights that need filling. Measurable open rates. Measurable covers. Measurable revenue.</p>
-                        <ul class="space-y-2 mb-6 font-mono text-xs text-gray-300">
-                            <li data-i18n="sys02_li1">→ Monthly campaign strategy + execution</li>
-                            <li data-i18n="sys02_li2">→ Segmented guest lists</li>
-                            <li data-i18n="sys02_li3">→ Performance reporting every month</li>
-                        </ul>
-                    </div>
-                    <a href="#booking" class="system-card-cta block w-full py-3 border border-industrial-orange text-center font-mono text-xs uppercase hover:bg-industrial-orange hover:text-black transition-all" data-i18n="sys02_cta">See How It Works</a>
-                </div>
-                <!-- SYSTEM-03 -->
-                <div class="system-card">
-                    <div>
-                        <div class="system-card-badge" data-i18n="sys03_badge">SYSTEM-03 | Active</div>
-                        <div class="font-mono text-lg font-bold text-foreground leading-tight" data-i18n="sys03_title">Website Chat Agent</div>
-                        <div class="font-mono text-xs text-industrial-orange-bright mt-1 mb-4" data-i18n="sys03_price">from €500 setup</div>
-                        <div class="font-mono text-xs text-industrial-orange uppercase mb-3" data-i18n="sys03_sub">Autonomous Guest Interface</div>
-                        <p class="text-gray-400 text-sm font-sans mb-5 leading-relaxed" data-i18n="sys03_desc">Answers menu questions at midnight. Takes reservation requests when you're slammed on a Saturday. An AI agent embedded directly into your website — trained on your menu, hours, policies, and FAQs. Handles the repetitive so your staff handles the exceptional.</p>
-                        <ul class="space-y-2 mb-6 font-mono text-xs text-gray-300">
-                            <li data-i18n="sys03_li1">→ Trained on your restaurant's data</li>
-                            <li data-i18n="sys03_li2">→ Reservation handoff integration</li>
-                            <li data-i18n="sys03_li3">→ Multilingual (DE / EN)</li>
-                        </ul>
-                    </div>
-                    <a href="#booking" class="system-card-cta block w-full py-3 border border-industrial-orange text-center font-mono text-xs uppercase hover:bg-industrial-orange hover:text-black transition-all" data-i18n="sys03_cta">Add to Your System</a>
-                </div>
-            </div>
-            <!-- Booking Section Direct Embed -->
-            <div id="booking" class="mt-24 pt-24 border-t border-dashed border-border relative overflow-hidden">
-                <!-- Background removed -->
-                <div class="text-center mb-16">
-                    <div class="font-mono text-xs uppercase tracking-ultra-wide text-accent-purple-bright mb-4">
-                        [ Strategic Session ]
-                    </div>
-                    <h2 class="font-mono text-4xl font-bold text-foreground uppercase" data-i18n="booking_title">Book a
-                        Meeting</h2>
-                    <p class="mt-4 text-gray-400 font-sans max-w-2xl mx-auto" data-i18n="booking_p">Book a free 20-minute audit call. We'll show you exactly what you're losing and how to fix it — no commitment, no pitch deck.</p>
                 </div>
 
-                <div class="relative bg-background/50 border border-dashed border-border p-4 md:p-8">
-                    <!-- Calendly inline widget begin -->
-                    <div class="calendly-inline-widget"
-                        data-url="https://calendly.com/ritzaisolutions/30min?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=1a1a1a&text_color=ffffff&primary_color=ff7f24&theme=dark"
-                        data-background-color="1a1a1a"
-                        data-text-color="ffffff"
-                        data-primary-color="ff7f24"
-                        style="min-width:320px;height:700px;"></div>
-                    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"
-                        async></script>
-                    <!-- Calendly inline widget end -->
-                    <i data-lucide="plus" class="absolute -top-[1px] -left-[1px] w-3 h-3 text-industrial-orange"></i>
-                    <i data-lucide="plus" class="absolute -top-[1px] -right-[1px] w-3 h-3 text-industrial-orange"></i>
-                    <i data-lucide="plus" class="absolute -bottom-[1px] -left-[1px] w-3 h-3 text-industrial-orange"></i>
-                    <i data-lucide="plus"
-                        class="absolute -bottom-[1px] -right-[1px] w-3 h-3 text-industrial-orange"></i>
+                <div class="proposal-sheet rounded-[2rem] p-8 md:p-10">
+                    <div class="flex flex-wrap items-start justify-between gap-4 mb-8">
+                        <div>
+                            <div class="signal-label mb-3">Hauptleistung</div>
+                            <h3 class="font-display text-3xl md:text-4xl text-foreground mb-3">Website + Reservierungssystem</h3>
+                            <p class="text-stone text-lg leading-relaxed max-w-2xl">Eine professionelle Restaurant-Website mit Reservierungsformular, strukturierter Erfassung und automatischen Benachrichtigungen, damit Anfragen nicht mehr verloren gehen und Gäste rechtzeitig erinnert werden.</p>
+                        </div>
+                        <div class="border border-border bg-white/60 rounded-[1.6rem] px-6 py-5 min-w-[220px]">
+                            <div class="signal-label mb-2">Einmalig</div>
+                            <div class="text-4xl font-display text-foreground">1.200 Euro</div>
+                            <div class="text-sm text-stone mt-1">inklusive rechtlicher Grundstruktur</div>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-x-8 gap-y-5 mb-8">
+                        <div class="border-b border-border pb-4">
+                            <div class="signal-label mb-2">Leistung 01</div>
+                            <div class="text-foreground font-medium">Professionelle, mobil optimierte Website</div>
+                        </div>
+                        <div class="border-b border-border pb-4">
+                            <div class="signal-label mb-2">Leistung 02</div>
+                            <div class="text-foreground font-medium">Reservierungsformular mit strukturierter Erfassung</div>
+                        </div>
+                        <div class="border-b border-border pb-4">
+                            <div class="signal-label mb-2">Leistung 03</div>
+                            <div class="text-foreground font-medium">Sofortige Benachrichtigung an Betrieb und Gast</div>
+                        </div>
+                        <div class="border-b border-border pb-4">
+                            <div class="signal-label mb-2">Leistung 04</div>
+                            <div class="text-foreground font-medium">Automatische Erinnerung 24 Stunden vor der Reservierung</div>
+                        </div>
+                        <div class="border-b border-border pb-4">
+                            <div class="signal-label mb-2">Leistung 05</div>
+                            <div class="text-foreground font-medium">Impressum, Datenschutz und Cookie-Banner-Grundsetup</div>
+                        </div>
+                        <div class="border-b border-border pb-4">
+                            <div class="signal-label mb-2">Leistung 06</div>
+                            <div class="text-foreground font-medium">Klarer, glaubwürdiger Markenauftritt statt Technik-Look</div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#booking" class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full warm-button text-base font-medium transition-colors">
+                            <i data-lucide="calendar-range" class="w-5 h-5"></i>
+                            Kostenloses Erstgespräch buchen
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-[0.72fr_0.72fr_0.56fr] gap-6">
+                <div class="editorial-frame rounded-[1.8rem] p-6">
+                    <div class="signal-label mb-3">Erweiterung 01</div>
+                    <h3 class="text-2xl font-semibold text-foreground mb-2">Add-on: E-Mail-Marketing</h3>
+                    <div class="text-2xl font-display text-foreground mb-4">+250 Euro / Monat</div>
+                    <p class="text-stone leading-relaxed">Wir helfen Restaurants, bestehende Gäste mit ruhigen, klaren Kampagnen wieder zurück an den Tisch zu holen.</p>
+                </div>
+                <div class="editorial-frame rounded-[1.8rem] p-6">
+                    <div class="signal-label mb-3">Erweiterung 02</div>
+                    <h3 class="text-2xl font-semibold text-foreground mb-2">Add-on: Betreuung</h3>
+                    <div class="text-2xl font-display text-foreground mb-4">+350 Euro / Monat</div>
+                    <p class="text-stone leading-relaxed">Laufende Pflege, Support, Updates und operative Hilfe, damit die Seite im Alltag sauber und verlässlich bleibt.</p>
+                </div>
+                <div class="border border-border rounded-[1.8rem] p-6 bg-white/45">
+                    <div class="signal-label mb-3">Fremdkosten</div>
+                    <h3 class="text-xl font-semibold text-foreground mb-3">ca. 80 Euro / Monat auf Kundenseite</h3>
+                    <p class="text-stone leading-relaxed">Hosting, Backups, Datenbank und verwandte Dienste für den stabilen Betrieb. Bewusst getrennt von den eigentlichen RAIS-Leistungen.</p>
+                </div>
+            </div>
+
+            <div id="booking" class="mt-20 max-w-6xl mx-auto editorial-frame rounded-[2rem] p-8 md:p-10 lg:p-12">
+                <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 items-start">
+                    <div>
+                        <div class="signal-label mb-4">Terminbuchung</div>
+                        <h3 class="font-display text-3xl md:text-4xl text-foreground mb-4">Lassen Sie uns kurz anschauen, wo Ihre Website heute Reservierungen liegen lässt.</h3>
+                        <p class="text-lg text-stone leading-relaxed mb-6">Im Erstgespräch schauen wir auf Ihren aktuellen Auftritt, die Reservierungsstrecke und die Punkte, an denen im Stoßgeschäft Anfragen verloren gehen.</p>
+                        <div class="proof-stack text-stone leading-relaxed">
+                            Kein Technik-Vortrag, keine Agentur-Show. Sondern ein klarer Blick darauf, was sich für Ihren Betrieb rechnet und was nicht.
+                        </div>
+                    </div>
+                    <div class="rounded-[1.5rem] overflow-hidden border border-border bg-white/50">
+                        <div class="calendly-inline-widget"
+                            data-url="https://calendly.com/ritzaisolutions/30min?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=fbf8f3&text_color=2f2a24&primary_color=ec6a37"
+                            data-background-color="fbf8f3"
+                            data-text-color="2f2a24"
+                            data-primary-color="ec6a37"
+                            style="min-width:320px;height:700px;"></div>
+                        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-
     <!-- Deployment Cycle Section -->
-    <section id="steps" class="py-24 relative border-t border-dashed border-border overflow-hidden">
-        <!-- Neural Visualizer Background -->
-        <div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
-            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="20%" cy="30%" r="200" fill="url(#grad1)" opacity="0.1" />
-                <defs>
-                    <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-                        <stop offset="0%" style="stop-color:hsl(var(--industrial-orange));stop-opacity:0.5" />
-                        <stop offset="100%" style="stop-color:transparent;stop-opacity:0" />
-                    </radialGradient>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#neural-grid)" />
-            </svg>
-        </div>
-        <div class="max-w-4xl mx-auto px-4 relative z-10">
-            <div class="text-center mb-16">
-                <div class="font-mono text-xs uppercase tracking-ultra-wide text-accent-purple-bright mb-4" data-i18n="steps_label">
-                    [ Deployment Cycle ]
+    <section id="steps" class="section-air">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-[0.86fr_1.14fr] gap-10 items-start">
+                <div>
+                    <div class="signal-label mb-5">Zusammenarbeit</div>
+                    <h2 class="font-display text-4xl md:text-5xl text-foreground mb-6">Drei Phasen, ein klares Ziel: schnell zu einer Website, die im Alltag mitarbeitet.</h2>
+                    <p class="text-lg text-stone leading-relaxed">Der Ablauf soll sich für den Inhaber einfach anfühlen: erst verstehen, dann umsetzen, dann begleiten. Klare Übergänge, kein Agentur-Nebel.</p>
                 </div>
-                <h2 class="font-mono text-4xl font-bold text-foreground uppercase" data-i18n="steps_title">How It Works</h2>
-            </div>
 
-            <div class="space-y-8">
-                <div class="relative pl-12 border-l-2 border-dashed border-border pb-8">
-                    <div
-                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-industrial-orange border-4 border-background">
+                <div class="proposal-sheet rounded-[2rem] p-8 md:p-10">
+                    <div class="space-y-8">
+                        <div class="grid md:grid-cols-[140px_1fr] gap-6 items-start">
+                            <div class="signal-label">01 / Analyse / 1-2 Termine</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-foreground mb-3">Wir schauen auf den Ist-Zustand.</h3>
+                                <p class="text-stone leading-relaxed">Wir prüfen Ihre aktuelle Website, die Reservierungsanfragen und die Punkte, an denen im Alltag Anfragen verloren gehen oder Gäste nicht sauber nachgefasst werden.</p>
+                            </div>
+                        </div>
+                        <div class="signal-divider"></div>
+                        <div class="grid md:grid-cols-[140px_1fr] gap-6 items-start">
+                            <div class="signal-label">02 / Umsetzung / ca. 10-14 Werktage</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-foreground mb-3">Wir bauen die neue Strecke.</h3>
+                                <p class="text-stone leading-relaxed">Ihre Website wird gestaltet, das Reservierungsformular eingebunden, Benachrichtigungen eingerichtet und alles vor dem Livegang sauber getestet.</p>
+                            </div>
+                        </div>
+                        <div class="signal-divider"></div>
+                        <div class="grid md:grid-cols-[140px_1fr] gap-6 items-start">
+                            <div class="signal-label">03 / Begleitung / ab Livegang</div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-foreground mb-3">Wir bleiben erreichbar, wenn es sinnvoll ist.</h3>
+                                <p class="text-stone leading-relaxed">Auf Wunsch übernehmen wir Pflege, Support, Updates und weitere operative Themen, damit die Seite auch langfristig zu Ihrem Betrieb passt.</p>
+                            </div>
+                        </div>
+                        <div class="pt-2">
+                            <a href="#booking" class="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full warm-button text-base font-medium transition-colors">
+                                <i data-lucide="calendar-check-2" class="w-5 h-5"></i>
+                                Kostenloses Erstgespräch buchen
+                            </a>
+                        </div>
                     </div>
-                    <div class="font-mono text-xs text-industrial-orange uppercase mb-2" data-i18n="phase01_label">Phase 01: DISCOVERY</div>
-                    <h4 class="font-mono text-lg font-bold text-foreground mb-2" data-i18n="phase01_title">FREE AUDIT CALL</h4>
-                    <p class="text-gray-400 text-sm font-sans" data-i18n="phase01_desc">We review your current booking setup, identify exactly where covers are being lost, and show you what the fix looks like. 20 minutes. No commitment.</p>
-                </div>
-                <div class="relative pl-12 border-l-2 border-dashed border-border pb-8">
-                    <div
-                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-industrial-orange border-4 border-background">
-                    </div>
-                    <div class="font-mono text-xs text-industrial-orange uppercase mb-2" data-i18n="phase02_label">Phase 02: BUILD</div>
-                    <h4 class="font-mono text-lg font-bold text-foreground mb-2" data-i18n="phase02_title">WE BUILD YOUR SYSTEM</h4>
-                    <p class="text-gray-400 text-sm font-sans" data-i18n="phase02_desc">Your website, reservation engine, dashboard, and notification flows are built and tested in a staging environment. You review before anything goes live.</p>
-                </div>
-                <div class="relative pl-12 border-l-2 border-dashed border-border">
-                    <div
-                        class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-industrial-orange border-4 border-background">
-                    </div>
-                    <div class="font-mono text-xs text-industrial-orange uppercase mb-2" data-i18n="phase03_label">Phase 03: DEPLOYMENT</div>
-                    <h4 class="font-mono text-lg font-bold text-foreground mb-2" data-i18n="phase03_title">LIVE IN 14 DAYS</h4>
-                    <p class="text-gray-400 text-sm font-sans" data-i18n="phase03_desc">Full production deployment with Telegram alerts active, Google Sheets sync running, and your team briefed. We stay on for 30 days post-launch support.</p>
                 </div>
             </div>
         </div>
@@ -1068,258 +954,181 @@
 
 
     <!-- Contact Section -->
-    <section id="contact" class="py-24 relative">
-        <div class="absolute inset-0 diagonal-grid opacity-30"></div>
-
-        <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-16">
-                <div class="font-mono text-xs uppercase tracking-ultra-wide text-industrial-orange-bright mb-4">
-                    <span data-i18n="contact_label">[ Contact ]</span>
-                </div>
-                <h2 class="font-mono text-4xl md:text-5xl font-bold text-foreground uppercase mb-4" data-i18n="contact_title">
-                    Get in Touch
-                </h2>
-                <p class="text-gray-400 text-lg font-sans max-w-2xl" data-i18n="contact_desc">
-                    Send us a message. We'll get back within 24 hours.
-                </p>
-            </div>
-
-            <div class="grid lg:grid-cols-3 gap-8">
-                <div class="lg:col-span-2">
-                    <div class="relative border-2 border-dashed border-border p-8">
-                        <i data-lucide="plus"
-                            class="absolute -top-[1px] -left-[1px] w-3 h-3 text-industrial-orange"></i>
-                        <i data-lucide="plus"
-                            class="absolute -top-[1px] -right-[1px] w-3 h-3 text-industrial-orange"></i>
-                        <i data-lucide="plus"
-                            class="absolute -bottom-[1px] -left-[1px] w-3 h-3 text-industrial-orange"></i>
-                        <i data-lucide="plus"
-                            class="absolute -bottom-[1px] -right-[1px] w-3 h-3 text-industrial-orange"></i>
-
-                        <div class="mb-6">
-                            <div class="inline-flex items-center gap-6 font-mono text-xs uppercase tracking-ultra-wide">
-                                <button onclick="switchForm('message')" id="msgTab"
-                                    class="text-industrial-orange-bright border-b border-industrial-orange pb-1" data-i18n="contact_tab_msg">01.
-                                    Message</button>
-                                <button onclick="switchForm('demo')" id="demoTab"
-                                    class="text-gray-500 hover:text-industrial-orange transition-colors" data-i18n="contact_tab_demo">02. Live
-                                    Demo</button>
+    <section id="contact" class="section-air">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-[0.92fr_1.08fr] gap-8 items-start">
+                <div>
+                    <div class="signal-label mb-4">Kontakt</div>
+                    <h2 class="font-display text-4xl md:text-5xl text-foreground mb-5">Wenn Sie eine ruhigere und nützlichere Website für Ihr Restaurant wollen, schreiben Sie uns.</h2>
+                    <p class="text-lg text-stone leading-relaxed mb-8">Sie müssen keine technischen Begriffe kennen. Schreiben Sie einfach kurz, wie Ihr aktueller Stand aussieht und was im Alltag gerade am meisten stört.</p>
+                    <div class="editorial-frame rounded-[1.75rem] p-6 space-y-5">
+                        <div class="flex items-start gap-4">
+                            <div class="w-11 h-11 rounded-full bg-sage-soft flex items-center justify-center text-pistachio">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm uppercase tracking-[0.18em] text-stone mb-1">E-Mail</div>
+                                <a href="mailto:kevin@ritz-ai.solutions" class="text-lg text-foreground hover:text-industrial-orange transition-colors">kevin@ritz-ai.solutions</a>
                             </div>
                         </div>
-
-                        <div id="messageForm">
-                            <form class="space-y-6" onsubmit="handleFormSubmit(event)">
-                                <div class="grid md:grid-cols-2 gap-6">
-                                    <div>
-                                        <label for="name"
-                                            class="block font-mono text-xs uppercase tracking-wider text-gray-500 mb-2" data-i18n="contact_name_label">
-                                            Your Name
-                                        </label>
-                                        <input type="text" id="name" name="name" required
-                                            class="terminal-input w-full px-4 py-3 bg-transparent border border-border font-mono text-sm text-industrial-orange-bright focus:border-industrial-orange focus:outline-none transition-colors"
-                                            style="border-right-width: 3px" placeholder="ENTER_NAME">
-                                    </div>
-
-                                    <div>
-                                        <label for="email"
-                                            class="block font-mono text-xs uppercase tracking-wider text-gray-500 mb-2" data-i18n="contact_email_label">
-                                            Email Address
-                                        </label>
-                                        <input type="email" id="email" name="email" required
-                                            class="terminal-input w-full px-4 py-3 bg-transparent border border-border font-mono text-sm text-industrial-orange-bright focus:border-industrial-orange focus:outline-none transition-colors"
-                                            style="border-right-width: 3px" placeholder="user@domain.com">
-                                    </div>
-                                </div>
-
-                                <div class="flex items-start gap-3">
-                                    <input type="checkbox" id="consent" required class="mt-1 accent-industrial-orange">
-                                    <label for="consent"
-                                        class="font-mono text-[10px] text-gray-500 uppercase leading-relaxed" data-i18n="contact_consent">
-                                        I consent to the processing of my personal data in accordance with the
-                                        <a href="privacy.html" class="text-industrial-orange-bright hover:underline">Privacy Policy (DSGVO)</a>.
-                                    </label>
-                                </div>
-
-                                <button type="submit"
-                                    class="w-full px-8 py-4 border-2 border-industrial-orange font-mono text-sm uppercase tracking-wider text-industrial-orange-bright hover:bg-industrial-orange/10 transition-all duration-300 flex items-center justify-center gap-2 group">
-                                    <i data-lucide="send"
-                                        class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
-                                    <span data-i18n="contact_send">Send Message</span>
-                                </button>
-                            </form>
-                        </div>
-
-                        <div id="demoForm" class="hidden">
-                            <div class="text-center py-4">
-                                <!-- Calendly Inline Widget -->
-                                <div class="calendly-inline-widget"
-                                    data-url="https://calendly.com/ritzaisolutions/30min?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=1a1a1a&text_color=ffffff&primary_color=ff7f24&theme=dark"
-                                    data-background-color="1a1a1a"
-                                    data-text-color="ffffff"
-                                    data-primary-color="ff7f24"
-                                    style="min-width:320px;height:700px;"></div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-11 h-11 rounded-full bg-sage-soft flex items-center justify-center text-pistachio">
+                                <i data-lucide="shield-check" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm uppercase tracking-[0.18em] text-stone mb-1">Rechtlicher Rahmen</div>
+                                <p class="text-stone leading-relaxed">Impressum, Datenschutz und Cookie-Banner sind Teil des Grundauftritts und werden nicht erst am Ende mitgedacht.</p>
                             </div>
                         </div>
+                        <a href="#booking" class="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full warm-button text-base font-medium transition-colors">
+                            <i data-lucide="calendar-check-2" class="w-5 h-5"></i>
+                            Erstgespräch buchen
+                        </a>
                     </div>
                 </div>
 
-                <div class="space-y-6">
-                    <div class="relative border border-dashed border-border p-6">
-                        <div class="font-mono text-xs uppercase tracking-wider text-gray-500 mb-4">
-                            Contact Info
-                        </div>
-
-                        <div class="space-y-4">
-                            <div class="flex items-start gap-3">
-                                <i data-lucide="mail"
-                                    class="w-5 h-5 text-industrial-orange-bright flex-shrink-0 mt-1"></i>
-                                <div>
-                                    <div class="font-mono text-xs text-gray-500 mb-1">EMAIL</div>
-                                    <a href="mailto:kevin@ritz-ai.solutions" class="font-mono text-sm text-industrial-orange-bright hover:text-industrial-orange transition-colors">
-                                        kevin@ritz-ai.solutions
-                                    </a>
-                                </div>
+                <div class="proposal-sheet rounded-[2rem] p-8">
+                    <form class="space-y-6" onsubmit="handleFormSubmit(event)">
+                        <div class="grid md:grid-cols-2 gap-5">
+                            <div>
+                                <label for="name" class="block text-sm text-stone mb-2">Ihr Name</label>
+                                <input type="text" id="name" name="name" required class="terminal-input w-full rounded-2xl border border-border bg-white/70 px-4 py-3 text-foreground focus:outline-none transition-colors" placeholder="Max Mustermann">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm text-stone mb-2">E-Mail-Adresse</label>
+                                <input type="email" id="email" name="email" required class="terminal-input w-full rounded-2xl border border-border bg-white/70 px-4 py-3 text-foreground focus:outline-none transition-colors" placeholder="restaurant@beispiel.de">
                             </div>
                         </div>
-                    </div>
+                        <div>
+                            <label for="subject" class="block text-sm text-stone mb-2">Worum geht es?</label>
+                            <input type="text" id="subject" name="subject" class="terminal-input w-full rounded-2xl border border-border bg-white/70 px-4 py-3 text-foreground focus:outline-none transition-colors" placeholder="Neue Website, Reservierungsformular, Betreuung">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm text-stone mb-2">Ihre Nachricht</label>
+                            <textarea id="message" name="message" rows="6" required class="terminal-input w-full rounded-3xl border border-border bg-white/70 px-4 py-4 text-foreground focus:outline-none transition-colors resize-none" placeholder="Kurz beschrieben: Was funktioniert aktuell nicht gut?"></textarea>
+                        </div>
+                        <div class="flex items-start gap-3 text-sm text-stone">
+                            <input type="checkbox" id="consent" required class="mt-1 accent-industrial-orange">
+                            <label for="consent">Ich stimme der Verarbeitung meiner personenbezogenen Daten gemäß der <a href="datenschutz.html" class="text-industrial-orange-bright hover:underline">Datenschutzerklärung</a> zu.</label>
+                        </div>
+                        <button type="submit" class="w-full inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full warm-button text-base font-medium transition-colors">
+                            <i data-lucide="send" class="w-5 h-5"></i>
+                            Nachricht senden
+                        </button>
+                    </form>
                 </div>
             </div>
-        </div>
-
-        <script>
-            function switchForm(type) {
-                const msgForm = document.getElementById('messageForm');
-                const demoForm = document.getElementById('demoForm');
-                const msgTab = document.getElementById('msgTab');
-                const demoTab = document.getElementById('demoTab');
-
-                if (type === 'message') {
-                    msgForm.classList.remove('hidden');
-                    demoForm.classList.add('hidden');
-                    msgTab.classList.add('text-industrial-orange-bright', 'border-b', 'border-industrial-orange');
-                    msgTab.classList.remove('text-gray-500');
-                    demoTab.classList.remove('text-industrial-orange-bright', 'border-b', 'border-industrial-orange');
-                    demoTab.classList.add('text-gray-500');
-                } else {
-                    msgForm.classList.add('hidden');
-                    demoForm.classList.remove('hidden');
-                    demoTab.classList.add('text-industrial-orange-bright', 'border-b', 'border-industrial-orange');
-                    demoTab.classList.remove('text-gray-500');
-                    msgTab.classList.remove('text-industrial-orange-bright', 'border-b', 'border-industrial-orange');
-                    msgTab.classList.add('text-gray-500');
-                }
-            }
-        </script>
-        </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="relative border-t border-dashed border-border bg-background">
+    <footer class="border-t border-border bg-surface/90">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="grid md:grid-cols-4 gap-8 mb-8">
-                <div class="md:col-span-2">
+            <div class="grid md:grid-cols-[1.25fr_0.75fr_0.75fr] gap-8 items-start mb-8">
+                <div>
                     <div class="flex items-center gap-3 mb-4">
                         <img src="RAIS-Logo-transparent.png" alt="RAIS Logo" class="w-10 h-10 object-contain">
-                        <span
-                            class="font-mono text-xl font-bold tracking-wider text-industrial-orange-bright">RAIS</span>
+                        <span class="font-mono text-xl tracking-wider text-industrial-orange-bright font-semibold">RAIS</span>
                     </div>
-                    <p class="text-gray-400 text-sm font-sans max-w-md mb-6">
-                        Ritz AI Solutions — Digital infrastructure for restaurants and hotels that take operations seriously.
-                    </p>
-                    <div class="flex flex-wrap items-center gap-4 mb-6">
-                        <!-- Security Badges -->
-                        <div class="flex flex-col items-center gap-1">
-                            <i data-lucide="shield-check" class="w-6 h-6 text-status-cyan-bright opacity-70"></i>
-                            <span class="font-mono text-[8px] text-gray-600 uppercase">GDPR COMPLIANT</span>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <div class="w-2 h-2 bg-status-cyan-bright animate-pulse"></div>
-                        <span class="font-mono text-xs text-gray-500">System Status: Operational</span>
+                    <div class="signal-label mb-3">Restaurant Systems mit Haltung</div>
+                    <p class="text-stone max-w-md leading-relaxed">Ritz AI Solutions baut für Restaurants einen professionellen Webauftritt, der im Alltag wirklich hilft: mehr Reservierungen, weniger verpasste Anfragen und ein sauberer geschäftlicher Eindruck.</p>
+                </div>
+                <div>
+                    <div class="signal-label mb-4">Schnellzugriff</div>
+                    <div class="space-y-3 text-stone">
+                        <a href="#pricing" class="block hover:text-foreground transition-colors">Leistung</a>
+                        <a href="#impact" class="block hover:text-foreground transition-colors">Wirkung</a>
+                        <a href="#steps" class="block hover:text-foreground transition-colors">Zusammenarbeit</a>
+                        <a href="#contact" class="block hover:text-foreground transition-colors">Kontakt</a>
                     </div>
                 </div>
-
                 <div>
-                    <div class="font-mono text-xs uppercase tracking-wider text-gray-500 mb-4">Quick Access</div>
-                    <ul class="space-y-2">
-                        <li><a href="#steps"
-                                class="font-mono text-sm text-gray-400 hover:text-industrial-orange-bright transition-colors">&gt;
-                                How It Works</a></li>
-                        <li><a href="#pricing"
-                                class="font-mono text-sm text-gray-400 hover:text-industrial-orange-bright transition-colors">&gt;
-                                Pricing</a></li>
-                        <li><a href="#tech"
-                                class="font-mono text-sm text-gray-400 hover:text-industrial-orange-bright transition-colors">&gt;
-                                Tech Stack</a></li>
-                        <li><a href="#contact"
-                                class="font-mono text-sm text-gray-400 hover:text-industrial-orange-bright transition-colors">&gt;
-                                Contact</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <div class="font-mono text-xs uppercase tracking-wider text-gray-500 mb-4">Connect</div>
-                    <div class="space-y-3">
-                        <a href="mailto:kevin@ritz-ai.solutions" class="flex items-center gap-2 font-mono text-sm text-gray-400 hover:text-industrial-orange-bright transition-colors">
-                            <i data-lucide="mail" class="w-4 h-4"></i>
-                            <span>kevin@ritz-ai.solutions</span>
-                        </a>
-                        <a href="https://linkedin.com" target="_blank"
-                            class="flex items-center gap-2 font-mono text-sm text-gray-400 hover:text-industrial-orange-bright transition-colors">
-                            <i data-lucide="linkedin" class="w-4 h-4"></i>
-                            <span>LinkedIn</span>
-                        </a>
-                        <a href="https://github.com" target="_blank"
-                            class="flex items-center gap-2 font-mono text-sm text-gray-400 hover:text-industrial-orange-bright transition-colors">
-                            <i data-lucide="github" class="w-4 h-4"></i>
-                            <span>GitHub</span>
-                        </a>
+                    <div class="signal-label mb-4">Rechtliches</div>
+                    <div class="space-y-3 text-stone">
+                        <a href="impressum.html" id="link-impressum" class="block hover:text-foreground transition-colors">Impressum</a>
+                        <a href="datenschutz.html" id="link-privacy" class="block hover:text-foreground transition-colors">Datenschutz (DSGVO)</a>
                     </div>
                 </div>
             </div>
-
-            <div class="pt-8 border-t border-dashed border-border">
-                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p class="font-mono text-xs text-gray-400">&copy; 2026 Ritz AI Solutions.
-                    </p>
-                    <div class="flex items-center gap-6 font-mono text-xs uppercase tracking-widest text-gray-400">
-                        <a href="impressum.html" id="link-impressum"
-                            class="hover:text-industrial-orange transition-colors"
-                            data-i18n="legal_notice">Impressum</a>
-                        <a href="datenschutz.html" id="link-privacy"
-                            class="hover:text-industrial-orange transition-colors"
-                            data-i18n="privacy_policy">Datenschutz (GDPR)</a>
-                    </div>
-                </div>
+            <div class="pt-6 border-t border-border text-sm text-stone flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
+                <p>&copy; 2026 Ritz AI Solutions</p>
+                <p>ritz-ai.solutions</p>
             </div>
-
-
-        </div>
         </div>
     </footer>
 
+    <div id="chatPanel" class="chat-panel rounded-[1.8rem] p-5 hidden">
+        <div class="flex items-start justify-between gap-4 mb-4">
+            <div>
+                <div class="signal-label mb-2">RAIS Assistent</div>
+                <h3 class="font-display text-2xl text-foreground">Fragen zur Website oder zum Reservierungsablauf?</h3>
+            </div>
+            <button id="chatCloseBtn" type="button" class="w-10 h-10 rounded-full border border-border text-stone hover:text-foreground transition-colors" aria-label="Chat schließen">
+                <i data-lucide="x" class="w-4 h-4 mx-auto"></i>
+            </button>
+        </div>
+
+        <p class="text-sm text-stone leading-relaxed mb-4">
+            Der Assistent beantwortet erste Fragen zu Reservierungen, Ablauf und Zusammenarbeit. Für konkrete Angebote oder einen schnellen Austausch bleibt das Erstgespräch der beste nächste Schritt.
+        </p>
+
+        <div id="chatMessages" class="chat-messages space-y-3 mb-4 pr-1">
+            <div class="chat-bubble-agent rounded-[1.3rem] px-4 py-3 text-sm text-foreground">
+                Ich bin der RAIS Assistent und beantworte erste Fragen zu Angebot, Ablauf und Reservierungsstrecke.
+            </div>
+        </div>
+
+        <form id="chatForm" class="space-y-3">
+            <textarea id="chatInput" rows="6" class="w-full rounded-3xl border border-border bg-white/80 px-4 py-4 text-foreground focus:outline-none transition-colors resize-none" placeholder="Ihre Frage an RAIS"></textarea>
+            <div class="flex items-start gap-3 text-sm text-stone">
+                <input type="checkbox" id="chatConsent" class="mt-1 accent-industrial-orange">
+                <label for="chatConsent">Ich bin einverstanden, dass meine Chat-Eingaben zur Beantwortung über einen Webhook an die RAIS-Systeme übermittelt und gemäß der <a href="datenschutz.html" class="text-industrial-orange-bright hover:underline">Datenschutzerklärung</a> verarbeitet werden.</label>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-3">
+                <button type="submit" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full warm-button text-sm font-medium transition-colors">
+                    <i data-lucide="send-horizontal" class="w-4 h-4"></i>
+                    Frage senden
+                </button>
+            </div>
+            <p id="chatStatus" class="text-sm text-stone hidden"></p>
+        </form>
+    </div>
+
+    <button id="chatLauncher" type="button" class="chat-launcher inline-flex items-center justify-center rounded-full bg-surface border border-border w-14 h-14 text-pistachio transition-colors hover:text-foreground">
+        <i data-lucide="messages-square" class="w-5 h-5"></i>
+    </button>
+
+
     <script>
+        const MAIN_OFFER_PRICE = 1200;
+        const REPORT_WEBHOOK_URL = 'PASTE_N8N_WEBHOOK_URL_HERE';
+        const CHAT_WEBHOOK_URL = 'https://n8n.ritz-ai.solutions/webhook/65f15d05-e0e0-49db-9fe7-47f9a2716baf';
+
         // Initialize Lucide icons
         document.addEventListener('DOMContentLoaded', () => {
+            reorderHomepageSections();
             lucide.createIcons();
+            setupImpactCalculator();
+            setupReportLeadForm();
+            setupChatWidget();
         });
 
         // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
 
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Close mobile menu when clicking a link
-        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
             });
-        });
+
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
 
         // Form submission handler
         function handleFormSubmit(event) {
@@ -1337,24 +1146,333 @@
             console.log('Form submitted:', data);
 
             // Show success message
-            alert('Message transmitted successfully! We will respond within 48 hours.');
+            alert('Danke. Ihre Nachricht wurde übermittelt. Wir melden uns zeitnah.');
             event.target.reset();
         }
 
-        // ROI Calculator Logic
-        function calculateROI() {
-            const hoursVal = document.getElementById('hoursInput').value;
-            const rate = parseFloat(document.getElementById('rateInput').value) || 0;
+        function setupImpactCalculator() {
+            const missedReservations = document.getElementById('missedReservations');
+            const avgGuests = document.getElementById('avgGuests');
+            const avgSpend = document.getElementById('avgSpend');
 
-            document.getElementById('hoursVal').innerText = hoursVal + 'h';
+            if (!missedReservations || !avgGuests || !avgSpend) {
+                return;
+            }
 
-            const monthlySavings = hoursVal * rate;
-            const annualSavings = monthlySavings * 12;
+            const formatter = new Intl.NumberFormat('de-DE');
+            const decimalFormatter = new Intl.NumberFormat('de-DE', {
+                minimumFractionDigits: 1,
+                maximumFractionDigits: 1
+            });
 
-            document.getElementById('roiSavings').innerText = '€' + annualSavings.toLocaleString();
-            document.getElementById('roiHours').innerText = hoursVal + 'h';
+            const outputIds = {
+                missedReservationsValue: document.getElementById('missedReservationsValue'),
+                avgGuestsValue: document.getElementById('avgGuestsValue'),
+                avgSpendValue: document.getElementById('avgSpendValue'),
+                monthlyLoss: document.getElementById('monthlyLoss'),
+                annualLoss: document.getElementById('annualLoss'),
+                savedReservations: document.getElementById('savedReservations'),
+                paybackWindow: document.getElementById('paybackWindow')
+            };
+
+            const updateCalculator = () => {
+                const missed = Number(missedReservations.value);
+                const guests = Number(avgGuests.value);
+                const spend = Number(avgSpend.value);
+                const monthlySavedReservations = Math.round(missed * 4.33);
+                const monthlyLossValue = Math.round(missed * guests * spend * 4.33);
+                const annualLossValue = monthlyLossValue * 12;
+                const paybackWeeks = monthlyLossValue > 0 ? (MAIN_OFFER_PRICE / monthlyLossValue) * 4.33 : 0;
+
+                outputIds.missedReservationsValue.textContent = formatter.format(missed);
+                outputIds.avgGuestsValue.textContent = formatter.format(guests);
+                outputIds.avgSpendValue.textContent = formatter.format(spend);
+                outputIds.monthlyLoss.textContent = `${formatter.format(monthlyLossValue)} Euro`;
+                outputIds.annualLoss.textContent = `${formatter.format(annualLossValue)} Euro`;
+                outputIds.savedReservations.textContent = `${formatter.format(monthlySavedReservations)} gesicherte Reservierungen pro Monat`;
+                outputIds.paybackWindow.textContent = paybackWeeks > 0 ? `${decimalFormatter.format(paybackWeeks)} Wochen` : 'offen';
+            };
+
+            [missedReservations, avgGuests, avgSpend].forEach((input) => {
+                input.addEventListener('input', updateCalculator);
+            });
+
+            updateCalculator();
         }
 
+        function reorderHomepageSections() {
+            const heroSection = document.querySelector('section.relative.min-h-screen');
+            const impactSection = document.getElementById('impact');
+            const pricingSection = document.getElementById('pricing');
+            const flowSection = document.getElementById('flow');
+            const stepsSection = document.getElementById('steps');
+            const bookingSection = document.getElementById('booking');
+
+            if (heroSection && impactSection) {
+                heroSection.insertAdjacentElement('afterend', impactSection);
+            }
+
+            if (pricingSection && flowSection) {
+                pricingSection.insertAdjacentElement('afterend', flowSection);
+            }
+
+            if (stepsSection && bookingSection) {
+                stepsSection.insertAdjacentElement('afterend', bookingSection);
+            }
+        }
+
+        function getImpactReportData() {
+            const missed = Number(document.getElementById('missedReservations')?.value || 0);
+            const guests = Number(document.getElementById('avgGuests')?.value || 0);
+            const spend = Number(document.getElementById('avgSpend')?.value || 0);
+            const monthlyLoss = Math.round(missed * guests * spend * 4.33);
+            const annualLoss = monthlyLoss * 12;
+            const savedReservations = Math.round(missed * 4.33);
+            const paybackWeeks = monthlyLoss > 0 ? (MAIN_OFFER_PRICE / monthlyLoss) * 4.33 : 0;
+
+            return {
+                missedReservationsPerWeek: missed,
+                averageGuestsPerReservation: guests,
+                averageSpendPerGuest: spend,
+                monthlyLoss,
+                annualLoss,
+                savedReservations,
+                paybackWeeks: Number(paybackWeeks.toFixed(1))
+            };
+        }
+
+        function createReportPdf(leadData) {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF({
+                unit: 'mm',
+                format: 'a4'
+            });
+
+            const report = getImpactReportData();
+            const margin = 20;
+            let y = 24;
+
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(20);
+            doc.text('RAIS Report: Verpasste Reservierungen', margin, y);
+
+            y += 10;
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(11);
+            doc.text(`Restaurant: ${leadData.restaurant || 'Nicht angegeben'}`, margin, y);
+            y += 7;
+            doc.text(`E-Mail: ${leadData.email}`, margin, y);
+            y += 7;
+            doc.text(`Erstellt am: ${new Date().toLocaleDateString('de-DE')}`, margin, y);
+
+            y += 14;
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(14);
+            doc.text('Ihre aktuelle Schätzung', margin, y);
+
+            y += 8;
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(11);
+            const lines = [
+                `Verpasste Reservierungen pro Woche: ${report.missedReservationsPerWeek}`,
+                `Durchschnittliche Gäste pro Reservierung: ${report.averageGuestsPerReservation}`,
+                `Durchschnittlicher Umsatz pro Gast: ${report.averageSpendPerGuest} Euro`,
+                `Geschätzter Verlust pro Monat: ${new Intl.NumberFormat('de-DE').format(report.monthlyLoss)} Euro`,
+                `Geschätzter Verlust pro Jahr: ${new Intl.NumberFormat('de-DE').format(report.annualLoss)} Euro`,
+                `Mögliches Ziel nach Livegang: ${new Intl.NumberFormat('de-DE').format(report.savedReservations)} gesicherte Reservierungen pro Monat`,
+                `Mögliche Amortisation des Hauptangebots: ${report.paybackWeeks > 0 ? report.paybackWeeks.toLocaleString('de-DE', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + ' Wochen' : 'offen'}`
+            ];
+            lines.forEach((line) => {
+                doc.text(line, margin, y);
+                y += 7;
+            });
+
+            y += 10;
+            doc.setFont('helvetica', 'bold');
+            doc.text('Was diese Zahl bedeutet', margin, y);
+            y += 8;
+            doc.setFont('helvetica', 'normal');
+            const explanation = doc.splitTextToSize(
+                'Schon eine kleine Zahl verpasster Reservierungen kann sich im Monat deutlich summieren. Eine bessere Website mit klarer Reservierungsstrecke, sofortiger Benachrichtigung und automatischer Erinnerung hilft dabei, diese Verluste sichtbar zu senken.',
+                170
+            );
+            doc.text(explanation, margin, y);
+            y += explanation.length * 6 + 8;
+
+            doc.setFont('helvetica', 'bold');
+            doc.text('Nächster sinnvoller Schritt', margin, y);
+            y += 8;
+            doc.setFont('helvetica', 'normal');
+            const nextStep = doc.splitTextToSize(
+                'In einem kurzen Erstgespräch schauen wir auf Ihren aktuellen Auftritt, Ihre Reservierungsstrecke und die Punkte, an denen heute Anfragen verloren gehen.',
+                170
+            );
+            doc.text(nextStep, margin, y);
+
+            doc.save(`rais-report-${(leadData.restaurant || 'restaurant').toLowerCase().replace(/[^a-z0-9]+/g, '-')}.pdf`);
+        }
+
+        async function setupReportLeadForm() {
+            const reportForm = document.getElementById('reportLeadForm');
+            const reportMessage = document.getElementById('reportLeadMessage');
+
+            if (!reportForm || !reportMessage) {
+                return;
+            }
+
+            reportForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+
+                const formData = new FormData(reportForm);
+                const leadData = {
+                    email: String(formData.get('email') || ''),
+                    restaurant: String(formData.get('restaurant') || ''),
+                    consent: Boolean(formData.get('consent')),
+                    report: getImpactReportData(),
+                    source: 'impact-report',
+                    page: window.location.href,
+                    createdAt: new Date().toISOString()
+                };
+
+                reportMessage.classList.remove('hidden');
+                reportMessage.textContent = 'Report wird vorbereitet...';
+
+                try {
+                    if (REPORT_WEBHOOK_URL && !REPORT_WEBHOOK_URL.includes('PASTE_N8N_WEBHOOK_URL_HERE')) {
+                        const response = await fetch(REPORT_WEBHOOK_URL, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(leadData)
+                        });
+
+                        if (!response.ok) {
+                            throw new Error('Webhook request failed');
+                        }
+                    }
+
+                    createReportPdf(leadData);
+                    reportMessage.textContent = REPORT_WEBHOOK_URL.includes('PASTE_N8N_WEBHOOK_URL_HERE')
+                        ? 'PDF wurde erzeugt. Die Webhook-URL ist noch als Platzhalter hinterlegt.'
+                        : 'PDF wurde erzeugt und Ihre Anfrage wurde gespeichert.';
+                    reportForm.reset();
+                } catch (error) {
+                    console.error('Report lead error:', error);
+                    reportMessage.textContent = 'Die Anfrage konnte gerade nicht gespeichert werden. Sie können es erneut versuchen oder direkt ein Gespräch buchen.';
+                }
+            });
+        }
+
+        function appendChatMessage(kind, text) {
+            const chatMessages = document.getElementById('chatMessages');
+            if (!chatMessages) {
+                return;
+            }
+
+            const bubble = document.createElement('div');
+            bubble.className = `${kind === 'user' ? 'chat-bubble-user' : 'chat-bubble-agent'} rounded-[1.3rem] px-4 py-3 text-sm ${kind === 'user' ? 'text-foreground ml-8' : 'text-foreground mr-8'}`;
+            bubble.textContent = text;
+            chatMessages.appendChild(bubble);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function getFallbackChatResponse(message) {
+            const text = message.toLowerCase();
+
+            if (text.includes('preis') || text.includes('kosten')) {
+                return 'Das Hauptpaket Website + Reservierungssystem liegt bei 1.200 Euro einmalig. Dazu kommen auf Kundenseite laufende Fremdkosten von etwa 80 Euro pro Monat.';
+            }
+
+            if (text.includes('ablauf') || text.includes('mechan') || text.includes('reserv')) {
+                return 'Der Ablauf ist einfach: Ein Gast sendet die Reservierung über Ihre Website, der Betrieb wird sofort informiert und der Gast bekommt automatisch eine Bestätigung sowie 24 Stunden vor dem Termin eine Erinnerung.';
+            }
+
+            if (text.includes('dauer') || text.includes('wie lange')) {
+                return 'Die Umsetzung liegt typischerweise bei etwa 10 bis 14 Werktagen, nachdem wir die Analyse und die nötigen Inhalte geklärt haben.';
+            }
+
+            return 'Ich kann erste Fragen zu Angebot, Ablauf und Reservierungsstrecke beantworten. Wenn Sie Ihren Fall kurz besprechen möchten, ist das Erstgespräch der beste nächste Schritt.';
+        }
+
+        function setupChatWidget() {
+            const launcher = document.getElementById('chatLauncher');
+            const panel = document.getElementById('chatPanel');
+            const closeBtn = document.getElementById('chatCloseBtn');
+            const form = document.getElementById('chatForm');
+            const input = document.getElementById('chatInput');
+            const consent = document.getElementById('chatConsent');
+            const status = document.getElementById('chatStatus');
+
+            if (!launcher || !panel || !closeBtn || !form || !input || !consent || !status) {
+                return;
+            }
+
+            launcher.addEventListener('click', () => {
+                panel.classList.toggle('hidden');
+            });
+
+            closeBtn.addEventListener('click', () => {
+                panel.classList.add('hidden');
+            });
+
+            form.addEventListener('submit', async (event) => {
+                event.preventDefault();
+
+                const message = input.value.trim();
+
+                if (!message) {
+                    status.textContent = 'Bitte geben Sie zuerst eine Frage ein.';
+                    status.classList.remove('hidden');
+                    return;
+                }
+
+                if (!consent.checked) {
+                    status.textContent = 'Bitte bestätigen Sie zuerst die Einwilligung zur Verarbeitung der Chat-Eingaben.';
+                    status.classList.remove('hidden');
+                    return;
+                }
+
+                status.classList.remove('hidden');
+                status.textContent = 'Antwort wird vorbereitet...';
+                appendChatMessage('user', message);
+                input.value = '';
+
+                try {
+                    if (CHAT_WEBHOOK_URL && !CHAT_WEBHOOK_URL.includes('PASTE_CHAT_WEBHOOK_URL_HERE')) {
+                        const response = await fetch(CHAT_WEBHOOK_URL, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                message,
+                                page: window.location.href,
+                                consent: true,
+                                source: 'website-chat',
+                                createdAt: new Date().toISOString()
+                            })
+                        });
+
+                        if (!response.ok) {
+                            throw new Error('Chat webhook request failed');
+                        }
+
+                        const payload = await response.json().catch(() => ({}));
+                        appendChatMessage('agent', payload.reply || getFallbackChatResponse(message));
+                        status.textContent = 'Antwort eingetroffen.';
+                        return;
+                    }
+
+                    appendChatMessage('agent', getFallbackChatResponse(message));
+                    status.textContent = 'Platzhalter-Antwort aktiv. Die echte Chat-Webhook-URL fehlt noch.';
+                } catch (error) {
+                    console.error('Chat widget error:', error);
+                    appendChatMessage('agent', 'Gerade konnte keine Live-Antwort geladen werden. Wenn Sie möchten, buchen Sie direkt ein Erstgespräch oder versuchen es gleich noch einmal.');
+                    status.textContent = 'Die Live-Antwort konnte gerade nicht geladen werden.';
+                }
+            });
+        }
         // Legal toggle
         function toggleLegal(id) {
             const el = document.getElementById(id);
@@ -1377,570 +1495,6 @@
                 }
             });
         });
-
-        // Language switch logic
-        const translations = {
-            en: {
-                services: "Services",
-                efficiency: "How It Works",
-                pricing: "Pricing",
-                tech: "Tech Stack",
-                contact: "Contact",
-                hero_h1: "Stop Losing Tables<br><span class='text-industrial-orange-bright'>Every Rush Hour.</span>",
-                hero_p: "We build your booking system, website, and AI agent — so every reservation, every question, every returning guest is handled automatically.",
-                pricing_label: "[ Your Digital Infrastructure ]",
-                pricing_title: "Built for Restaurants That Can't Afford to Miss a Table.",
-                system_status: "System Online",
-                roi_stat: "",
-                booking_title: "Book a Meeting",
-                booking_p: "Book a free 20-minute audit call. We'll show you exactly what you're losing and how to fix it — no commitment.",
-                chat_disclaimer: "All data is processed in accordance with <a href='privacy.html' class='underline hover:text-industrial-orange-bright transition-colors'>GDPR</a>.",
-                legal_notice: "Legal Notice",
-                privacy_policy: "Privacy Policy (GDPR)",
-                impressum_url: "impressum-en.html",
-                privacy_url: "privacy.html",
-                who_label: "[ Who We Work With ]",
-                industries_title: "Built for Restaurants &amp; Hotels",
-                restaurants_title: "Restaurants &amp; Cafés",
-                restaurants_li1: " Reservation system + website",
-                restaurants_li2: " Guest retention email campaigns",
-                restaurants_li3: " Chat agent for bookings &amp; FAQs",
-                restaurants_li4: " Rush hour booking automation",
-                hotels_title: "Hotels &amp; Bar Operations",
-                hotels_li1: " Table &amp; venue reservation infrastructure",
-                hotels_li2: " F&amp;B guest communication flows",
-                hotels_li3: " Concierge chat agent",
-                hotels_li4: " Daily booking digest for managers",
-                industries_cta: "Get Your Free Booking Audit",
-                sys01_badge: "SYSTEM-01 | Active",
-                sys01_title: "Restaurant Website + Reservation System",
-                sys01_price: "from €1,000 setup",
-                sys01_sub: "High-Performance Booking Infrastructure",
-                sys01_desc: "Your phone line shouldn't be your booking system. We build you a high-performance restaurant website with a fully integrated reservation engine — capturing bookings 24/7 while your staff focuses on the floor. Every reservation lands in a live dashboard and your team gets notified instantly: same-day bookings via Telegram, daily summaries by email. No missed calls. No lost covers. No excuses.",
-                sys01_li1: "→ Live reservation dashboard",
-                sys01_li2: "→ Instant Telegram alerts for same-day bookings",
-                sys01_li3: "→ Daily email digest for the manager on duty",
-                sys01_li4: "→ CRM integration via Supabase — your guest data, always yours",
-                sys01_li5: "→ System integrations available (OpenTable, TheFork, POS) — on request",
-                sys01_cta: "Request Free Booking Audit",
-                sys02_badge: "SYSTEM-02 | Active",
-                sys02_title: "Guest Retention — Email Marketing",
-                sys02_price: "from €200/month retainer",
-                sys02_sub: "Recurring Revenue",
-                sys02_desc: "Your best customers already know you. Most restaurants forget to talk to them. We build and run monthly email campaigns that bring past guests back — seasonal menus, special events, quiet Tuesday nights that need filling. Measurable open rates. Measurable covers. Measurable revenue.",
-                sys02_li1: "→ Monthly campaign strategy + execution",
-                sys02_li2: "→ Segmented guest lists",
-                sys02_li3: "→ Performance reporting every month",
-                sys02_cta: "See How It Works",
-                sys03_badge: "SYSTEM-03 | Active",
-                sys03_title: "Website Chat Agent",
-                sys03_price: "from €500 setup",
-                sys03_sub: "Automated Guest Service",
-                sys03_desc: "Answers menu questions at midnight. Takes reservation requests when you're slammed on a Saturday. An AI agent embedded directly into your website — trained on your menu, hours, policies, and FAQs. Handles the repetitive so your staff handles the exceptional.",
-                sys03_li1: "→ Trained on your restaurant's data",
-                sys03_li2: "→ Reservation handoff integration",
-                sys03_li3: "→ Multilingual (DE / EN)",
-                sys03_cta: "Add to Your System",
-                steps_label: "[ Deployment Cycle ]",
-                steps_title: "How It Works",
-                phase01_label: "Phase 01: DISCOVERY",
-                phase01_title: "FREE AUDIT CALL",
-                phase01_desc: "We review your current booking setup, identify exactly where covers are being lost, and show you what the fix looks like. 20 minutes. No commitment.",
-                phase02_label: "Phase 02: BUILD",
-                phase02_title: "WE BUILD YOUR SYSTEM",
-                phase02_desc: "Your website, reservation engine, dashboard, and notification flows are built and tested in a staging environment. You review before anything goes live.",
-                phase03_label: "Phase 03: DEPLOYMENT",
-                phase03_title: "LIVE IN 14 DAYS",
-                phase03_desc: "Full production deployment with Telegram alerts active, Google Sheets sync running, and your team briefed. We stay on for 30 days post-launch support.",
-                contact_label: "[ Contact ]",
-                contact_title: "Get in Touch",
-                contact_desc: "Send us a message. We'll get back within 24 hours.",
-                contact_tab_msg: "01. Message",
-                contact_tab_demo: "02. Live Demo",
-                contact_name_label: "Your Name",
-                contact_email_label: "Email Address",
-                contact_consent: "I consent to the processing of my personal data in accordance with the <a href='privacy.html' class='text-industrial-orange-bright hover:underline'>Privacy Policy (GDPR)</a>.",
-                contact_send: "Send Message"
-            },
-            de: {
-                services: "Services",
-                efficiency: "So funktioniert es",
-                pricing: "Preise",
-                tech: "Technologien",
-                contact: "Kontakt",
-                hero_h1: "Keine verpassten Tische<br><span class='text-industrial-orange-bright'>in der Stoßzeit.</span>",
-                hero_p: "Wir bauen Ihr Buchungssystem, Ihre Website und Ihren KI-Agenten — damit jede Reservierung, jede Anfrage und jeder Stammgast automatisch betreut wird.",
-                pricing_label: "[ Ihre digitale Infrastruktur ]",
-                pricing_title: "Für Restaurants, die es sich nicht leisten können, Tische zu verlieren.",
-                system_status: "System aktiv",
-                roi_stat: "",
-                booking_title: "Termin buchen",
-                booking_p: "Buchen Sie ein kostenloses 20-Minuten-Gespräch. Wir zeigen Ihnen genau, was Sie verlieren und wie wir es beheben — ohne Verpflichtung.",
-                chat_disclaimer: "Alle Daten werden gemäß der <a href='datenschutz.html' class='underline hover:text-industrial-orange-bright transition-colors'>DSGVO</a> verarbeitet.",
-                legal_notice: "Impressum",
-                privacy_policy: "Datenschutz (DSGVO)",
-                impressum_url: "impressum.html",
-                privacy_url: "datenschutz.html",
-                who_label: "[ Für wen wir arbeiten ]",
-                industries_title: "Für Restaurants &amp; Hotels",
-                restaurants_title: "Restaurants &amp; Cafés",
-                restaurants_li1: " Reservierungssystem + Website",
-                restaurants_li2: " Gästebindung per E-Mail",
-                restaurants_li3: " Chat-Agent für Buchungen &amp; Anfragen",
-                restaurants_li4: " Automatisierte Buchungen in der Stoßzeit",
-                hotels_title: "Hotels &amp; Bar-Betriebe",
-                hotels_li1: " Tisch- &amp; Veranstaltungsreservierung",
-                hotels_li2: " Gästekommunikation für F&amp;B",
-                hotels_li3: " Concierge-Chat-Agent",
-                hotels_li4: " Tägliche Buchungsübersicht für Manager",
-                industries_cta: "Kostenlose Buchungsanalyse anfordern",
-                sys01_badge: "SYSTEM-01 | Aktiv",
-                sys01_title: "Restaurant-Website + Reservierungssystem",
-                sys01_price: "ab €1.000 Einrichtung",
-                sys01_sub: "Hochleistungs-Buchungssystem",
-                sys01_desc: "Ihr Telefon sollte kein Buchungssystem sein. Wir bauen Ihnen eine leistungsstarke Restaurant-Website mit integriertem Reservierungssystem — das Buchungen rund um die Uhr erfasst, während Ihr Team sich auf den Service konzentriert. Jede Reservierung erscheint sofort im Dashboard: Tagesbuchungen per Telegram, tägliche Zusammenfassungen per E-Mail. Keine verpassten Anrufe. Kein verlorener Umsatz.",
-                sys01_li1: "→ Live-Reservierungs-Dashboard",
-                sys01_li2: "→ Sofortige Telegram-Benachrichtigungen für Tagesbuchungen",
-                sys01_li3: "→ Tägliche E-Mail-Zusammenfassung für den Manager",
-                sys01_li4: "→ CRM-Integration via Supabase — Ihre Gästedaten, immer in Ihren Händen",
-                sys01_li5: "→ Systemintegrationen verfügbar (OpenTable, TheFork, POS) — auf Anfrage",
-                sys01_cta: "Kostenlose Buchungsanalyse anfordern",
-                sys02_badge: "SYSTEM-02 | Aktiv",
-                sys02_title: "Gästebindung — E-Mail-Marketing",
-                sys02_price: "ab €200/Monat",
-                sys02_sub: "Wiederkehrende Umsätze",
-                sys02_desc: "Ihre besten Gäste kennen Sie bereits. Die meisten Restaurants vergessen, mit ihnen in Kontakt zu bleiben. Wir erstellen und betreiben monatliche E-Mail-Kampagnen, die frühere Gäste zurückbringen — saisonale Menüs, besondere Events, ruhige Dienstagabende, die gefüllt werden müssen. Messbare Öffnungsraten. Messbare Gedecke. Messbarer Umsatz.",
-                sys02_li1: "→ Monatliche Kampagnenstrategie + Umsetzung",
-                sys02_li2: "→ Segmentierte Gästelisten",
-                sys02_li3: "→ Monatliche Leistungsberichte",
-                sys02_cta: "So funktioniert es",
-                sys03_badge: "SYSTEM-03 | Aktiv",
-                sys03_title: "Website-Chat-Agent",
-                sys03_price: "ab €500 Einrichtung",
-                sys03_sub: "Automatisierter Gästeservice",
-                sys03_desc: "Beantwortet Menüfragen um Mitternacht. Nimmt Reservierungsanfragen entgegen, wenn Sie am Samstagabend ausgelastet sind. Ein KI-Agent, direkt in Ihre Website integriert — trainiert auf Ihre Speisekarte, Öffnungszeiten und häufige Fragen. Übernimmt die Routineaufgaben, damit Ihr Team sich ums Wesentliche kümmern kann.",
-                sys03_li1: "→ Trainiert auf Ihre Restaurantdaten",
-                sys03_li2: "→ Direkte Reservierungsübergabe",
-                sys03_li3: "→ Mehrsprachig (DE / EN)",
-                sys03_cta: "Zum System hinzufügen",
-                steps_label: "[ Ablauf ]",
-                steps_title: "So funktioniert es",
-                phase01_label: "Phase 01: ANALYSE",
-                phase01_title: "KOSTENLOSER BERATUNGSANRUF",
-                phase01_desc: "Wir analysieren Ihre aktuelle Buchungssituation, identifizieren genau, wo Gedecke verloren gehen, und zeigen Ihnen, wie die Lösung aussieht. 20 Minuten. Keine Verpflichtung.",
-                phase02_label: "Phase 02: UMSETZUNG",
-                phase02_title: "WIR BAUEN IHR SYSTEM",
-                phase02_desc: "Ihre Website, Ihr Reservierungssystem, Dashboard und Benachrichtigungsabläufe werden gebaut und in einer Testumgebung geprüft. Sie genehmigen alles, bevor es live geht.",
-                phase03_label: "Phase 03: LIVEGANG",
-                phase03_title: "LIVE IN 14 TAGEN",
-                phase03_desc: "Vollständiger Livegang mit aktiven Telegram-Benachrichtigungen, laufendem Google Sheets-Abgleich und eingearbeitetem Team. Wir bleiben 30 Tage nach dem Launch für Support.",
-                contact_label: "[ Kontakt ]",
-                contact_title: "Schreiben Sie uns",
-                contact_desc: "Senden Sie uns eine Nachricht. Wir melden uns innerhalb von 24 Stunden.",
-                contact_tab_msg: "01. Nachricht",
-                contact_tab_demo: "02. Live Demo",
-                contact_name_label: "Ihr Name",
-                contact_email_label: "E-Mail-Adresse",
-                contact_consent: "Ich stimme der Verarbeitung meiner personenbezogenen Daten gemäß der <a href='datenschutz.html' class='text-industrial-orange-bright hover:underline'>Datenschutzerklärung (DSGVO)</a> zu.",
-                contact_send: "Nachricht senden"
-            }
-        };
-
-        function setLanguage(lang) {
-            const enBtn = document.getElementById('lang-en');
-            const deBtn = document.getElementById('lang-de');
-
-            // UI Update
-            if (lang === 'en') {
-                enBtn.classList.add('text-industrial-orange-bright');
-                enBtn.classList.remove('text-gray-500');
-                deBtn.classList.remove('text-industrial-orange-bright');
-                deBtn.classList.add('text-gray-500');
-            } else {
-                deBtn.classList.add('text-industrial-orange-bright');
-                deBtn.classList.remove('text-gray-500');
-                enBtn.classList.remove('text-industrial-orange-bright');
-                enBtn.classList.add('text-gray-500');
-            }
-
-            // Content Update
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (translations[lang][key]) {
-                    el.innerHTML = translations[lang][key];
-                }
-            });
-
-            // Update Legal Links
-            const impLink = document.getElementById('link-impressum');
-            const privLink = document.getElementById('link-privacy');
-            if (impLink) impLink.href = translations[lang].impressum_url;
-            if (privLink) privLink.href = translations[lang].privacy_url;
-
-
-            localStorage.setItem('rais_lang', lang);
-        }
-
-        // Initialize Language
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('rais_lang') || 'en';
-            setLanguage(savedLang);
-        });
     </script>
-
-    <!-- Floating AI Assistant Widget -->
-    <div id="aiWidget" class="fixed bottom-6 right-6 z-[9999] group">
-        <div id="aiChat"
-            class="hidden absolute bottom-20 right-0 w-80 md:w-96 bg-background border-2 border-dashed border-industrial-orange shadow-[0_0_50px_rgba(255,127,36,0.2)] p-6">
-            <div class="flex items-center justify-between mb-4 border-b border-dashed border-border pb-4">
-                <div class="flex items-center gap-3">
-                    <div class="w-2 h-2 bg-accent-purple-bright animate-pulse"></div>
-                    <span class="font-mono text-xs font-bold uppercase tracking-widest text-foreground">Chat with RAIS</span>
-                </div>
-                <button onclick="toggleAIChat()" class="text-gray-500 hover:text-industrial-orange">
-                    <i data-lucide="x" class="w-4 h-4"></i>
-                </button>
-            </div>
-            <div class="h-64 overflow-y-auto font-mono text-xs space-y-4 mb-4 scrollbar-hide relative" id="chatDisplay"
-                style="scrollbar-width: none;">
-                <!-- Accept and Continue Modal -->
-                <div id="dataNotice"
-                    class="absolute inset-0 bg-background/95 flex flex-col items-center justify-center p-6 text-center z-20">
-                    <i data-lucide="shield-check" class="w-8 h-8 text-industrial-orange-bright mb-4"></i>
-                    <p class="text-[10px] text-gray-400 mb-6 font-sans leading-relaxed">
-                        To initialize the neural connection, please accept our data processing protocol. We process your
-                        inputs locally and securely.
-                    </p>
-                    <button onclick="acceptDataNotice()"
-                        class="px-6 py-2 border border-industrial-orange text-industrial-orange-bright font-mono text-[10px] uppercase tracking-widest hover:bg-industrial-orange hover:text-black transition-all">
-                        Accept & Continue
-                    </button>
-                </div>
-                <div class="text-accent-purple-bright">&gt; SYSTEM: Neural connection established.</div>
-                <div class="text-industrial-orange-bright">&gt; AI: Got a question about our reservation systems or pricing? Ask me anything.</div>
-            </div>
-            <div class="relative">
-                <input type="text" id="chatInput" placeholder="Enter command..." disabled
-                    class="w-full bg-transparent border border-border p-3 font-mono text-xs text-industrial-orange-bright focus:border-industrial-orange outline-none opacity-50 cursor-not-allowed">
-                <button id="chatSendBtn" disabled
-                    class="absolute right-3 top-3 text-industrial-orange hover:scale-110 transition-transform opacity-50">
-                    <i data-lucide="send" class="w-4 h-4"></i>
-                </button>
-            </div>
-            <p class="text-[9px] text-gray-600 italic mt-2 text-center font-sans" data-i18n="chat_disclaimer">
-                All transmissions are processed according to <a href="datenschutz.html"
-                    class="underline hover:text-industrial-orange-bright transition-colors">GDPR protocols</a>.
-            </p>
-        </div>
-        <button onclick="toggleAIChat()"
-            class="w-14 h-14 bg-background border-2 border-industrial-orange text-industrial-orange-bright flex items-center justify-center hover:scale-110 hover:rotate-12 transition-all shadow-[0_0_20px_rgba(255,127,36,0.3)] !opacity-100 !flex rounded-full">
-            <span class="absolute top-0 right-0 w-3 h-3 bg-accent-purple-bright animate-ping rounded-full"></span>
-            <i data-lucide="message-square" class="w-6 h-6" style="display: block !important;"></i>
-        </button>
-    </div>
-
-
-
-
-    <!-- ============================================================
-         RAIS CHATBOT — n8n LIVE INTEGRATION
-         All chatbot functions: toggleAIChat, acceptDataNotice,
-         sendChatMessage, and the n8n API connector.
-    ============================================================ -->
-    <script>
-        // ---- Config ----
-        const RAIS_WEBHOOK_URL = 'https://n8n.ritz-ai.solutions/webhook/chat';
-
-        // ---- Session ID (persists per browser tab session) ----
-        function getSessionId() {
-            let sid = sessionStorage.getItem('rais_session_id');
-            if (!sid) {
-                sid = 'rais_' + Date.now().toString(36) + Math.random().toString(36).substr(2, 6);
-                sessionStorage.setItem('rais_session_id', sid);
-            }
-            return sid;
-        }
-
-        // ---- Toggle chat window open/closed ----
-        function toggleAIChat() {
-            const chat = document.getElementById('aiChat');
-            chat.classList.toggle('hidden');
-            if (!chat.classList.contains('hidden')) {
-                lucide.createIcons(); // re-render icons in case widget was hidden on load
-            }
-        }
-
-        // ---- GDPR data notice inside chat — "Accept & Continue" ----
-        function acceptDataNotice() {
-            document.getElementById('dataNotice').style.display = 'none';
-            // Enable the input and send button
-            const input = document.getElementById('chatInput');
-            const btn   = document.getElementById('chatSendBtn');
-            input.disabled  = false;
-            input.classList.remove('opacity-50', 'cursor-not-allowed');
-            btn.disabled    = false;
-            btn.classList.remove('opacity-50');
-            input.focus();
-        }
-
-        // ---- Append a message bubble to the chat display ----
-        function appendChatMessage(text, role) {
-            const display = document.getElementById('chatDisplay');
-            const div = document.createElement('div');
-            if (role === 'user') {
-                div.className = 'text-status-cyan-bright text-right';
-                div.textContent = '> YOU: ' + text;
-            } else {
-                div.className = 'text-industrial-orange-bright';
-                div.innerHTML = '> AI: ' + text.replace(/\n/g, '<br>');
-            }
-            display.appendChild(div);
-            
-            // Smarter scroll
-            setTimeout(() => {
-                div.scrollIntoView({ behavior: 'smooth', block: 'end' });
-            }, 50);
-        }
-
-        // ---- Typing indicator ----
-        function showTypingIndicator() {
-            const display = document.getElementById('chatDisplay');
-            const div = document.createElement('div');
-            div.id = 'typingIndicator';
-            div.className = 'text-gray-500';
-            div.textContent = '> AI: Processing...';
-            display.appendChild(div);
-            display.scrollTop = display.scrollHeight;
-        }
-
-        function hideTypingIndicator() {
-            const el = document.getElementById('typingIndicator');
-            if (el) el.remove();
-        }
-
-        // ---- Core n8n API call ----
-        async function callN8NWebhook(message) {
-            const response = await fetch(RAIS_WEBHOOK_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    message: message.trim(),
-                    sessionId: getSessionId(),
-                    consent: true
-                })
-            });
-
-            if (!response.ok) {
-                if (response.status === 429) {
-                    throw new Error('rate_limit');
-                }
-                throw new Error('http_' + response.status);
-            }
-
-            const data = await response.json();
-            if (data && typeof data.reply === 'string' && data.reply.length > 0) {
-                return data.reply;
-            }
-            throw new Error('empty_reply');
-        }
-
-        // ---- Main send handler (called by button and Enter key) ----
-        async function sendChatMessage() {
-            const input  = document.getElementById('chatInput');
-            const btn    = document.getElementById('chatSendBtn');
-            const message = input.value.trim();
-
-            if (!message) return;
-
-            // Clear input + disable while waiting
-            input.value   = '';
-            input.disabled = true;
-            btn.disabled   = true;
-            input.classList.add('opacity-50');
-            btn.classList.add('opacity-50');
-
-            // Show user message
-            appendChatMessage(message, 'user');
-            showTypingIndicator();
-
-            try {
-                const reply = await callN8NWebhook(message);
-                hideTypingIndicator();
-                appendChatMessage(reply, 'bot');
-            } catch (err) {
-                hideTypingIndicator();
-                let errorMsg;
-                if (err.message === 'rate_limit') {
-                    errorMsg = 'You\'ve sent too many messages. Please wait a few minutes.';
-                } else if (err.message === 'Failed to fetch' || err.name === 'TypeError') {
-                    errorMsg = 'Connection failed. Please email kevin@ritz-ai.solutions directly.';
-                } else {
-                    errorMsg = 'Something went wrong. Try again or email kevin@ritz-ai.solutions.';
-                }
-                appendChatMessage(errorMsg, 'bot');
-                console.error('[RAIS Chat]', err);
-            }
-
-            // Re-enable input
-            input.disabled = false;
-            btn.disabled   = false;
-            input.classList.remove('opacity-50');
-            btn.classList.remove('opacity-50');
-            input.focus();
-        }
-
-        // ---- Wire up UI elements ----
-        window.addEventListener('DOMContentLoaded', () => {
-            const chatInput = document.getElementById('chatInput');
-            const chatSendBtn = document.getElementById('chatSendBtn');
-
-            if (chatInput && chatSendBtn) {
-                // Send on Enter (unless Shift is held)
-                chatInput.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' && !e.shiftKey) {
-                        e.preventDefault();
-                        sendChatMessage();
-                    }
-                });
-
-                // Send on Button Click
-                chatSendBtn.addEventListener('click', () => {
-                    sendChatMessage();
-                });
-            }
-
-        });
-    </script>
-
-    <!-- Shooting Star Canvas -->
-    <script>
-    (function () {
-        var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        var canvas  = document.getElementById('hero-canvas');
-        var grid    = document.getElementById('hero-diagonal-grid');
-
-        if (!canvas || !grid) return;
-
-        if (reducedMotion) {
-            // Keep diagonal grid, hide canvas
-            canvas.style.display = 'none';
-            return;
-        }
-
-        // Hide grid, show canvas
-        grid.style.display = 'none';
-
-        var ctx = canvas.getContext('2d');
-        var W, H, stars, raf;
-        var isMobile = window.innerWidth < 768;
-        var COUNT = isMobile ? 22 : 85;
-        var SPEED_SCALE = isMobile ? 0.5 : 1;
-
-        function rand(min, max) { return min + Math.random() * (max - min); }
-
-        function makeStar(spawnEdge) {
-            // spawnEdge: 'top' or 'left' (stars enter from top-left region)
-            var x, y;
-            if (spawnEdge === 'top' || Math.random() > 0.4) {
-                x = rand(0, W);
-                y = rand(-40, 0);
-            } else {
-                x = rand(-40, 0);
-                y = rand(0, H * 0.7);
-            }
-            var angle = rand(28, 52) * Math.PI / 180; // 28–52 degrees diagonal
-            var speed = rand(0.7, 1.6) * SPEED_SCALE;
-            return {
-                x: x, y: y,
-                vx: Math.cos(angle) * speed,
-                vy: Math.sin(angle) * speed,
-                len: rand(60, 160),
-                size: rand(0.5, 1.8),
-                opacity: rand(0.35, 0.95),
-                decay: rand(0.004, 0.01)   // opacity fades at end of life
-            };
-        }
-
-        function resize() {
-            W = canvas.width  = window.innerWidth;
-            H = canvas.height = window.innerHeight;
-            isMobile = W < 768;
-            COUNT = isMobile ? 22 : 85;
-            SPEED_SCALE = isMobile ? 0.5 : 1;
-        }
-
-        function init() {
-            resize();
-            stars = [];
-            // Spread initial stars across the canvas (not all at top edge)
-            for (var i = 0; i < COUNT; i++) {
-                var s = makeStar('top');
-                // Random starting position so screen isn't empty at load
-                s.x = rand(0, W);
-                s.y = rand(0, H);
-                stars.push(s);
-            }
-        }
-
-        function draw() {
-            if (document.hidden) { raf = requestAnimationFrame(draw); return; }
-
-            ctx.clearRect(0, 0, W, H);
-
-            for (var i = 0; i < stars.length; i++) {
-                var s = stars[i];
-
-                // Tail start (behind the star)
-                var tx = s.x - s.vx * (s.len / (s.vx || 1));
-                var ty = s.y - s.vy * (s.len / (s.vy || 1));
-
-                ctx.save();
-                ctx.globalAlpha = s.opacity;
-                ctx.strokeStyle = 'hsl(25, 95%, 58%)';
-                ctx.lineWidth   = s.size;
-                ctx.shadowColor = 'hsl(25, 95%, 58%)';
-                ctx.shadowBlur  = 8;
-                ctx.lineCap     = 'round';
-
-                var grad = ctx.createLinearGradient(tx, ty, s.x, s.y);
-                grad.addColorStop(0, 'rgba(255,127,36,0)');
-                grad.addColorStop(1, 'rgba(255,127,36,1)');
-                ctx.strokeStyle = grad;
-
-                ctx.beginPath();
-                ctx.moveTo(tx, ty);
-                ctx.lineTo(s.x, s.y);
-                ctx.stroke();
-                ctx.restore();
-
-                // Advance position
-                s.x += s.vx;
-                s.y += s.vy;
-
-                // Reset when off screen
-                if (s.x > W + 50 || s.y > H + 50) {
-                    stars[i] = makeStar(Math.random() > 0.5 ? 'top' : 'left');
-                }
-            }
-
-            raf = requestAnimationFrame(draw);
-        }
-
-        // Debounced resize
-        var resizeTimer;
-        window.addEventListener('resize', function () {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(function () { resize(); }, 200);
-        });
-
-        init();
-        draw();
-    })();
-    </script>
-
-
 </body>
 </html>
