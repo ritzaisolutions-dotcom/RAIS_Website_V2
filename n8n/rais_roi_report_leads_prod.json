@@ -1,0 +1,327 @@
+{
+  "name": "RAIS ROI Report Leads Prod",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "rais-roi-report-lead",
+        "options": {
+          "allowedOrigins": "https://ritz-ai.solutions,https://www.ritz-ai.solutions,http://localhost:5173,http://localhost:5174,http://localhost:5175,http://localhost:5176,http://localhost:5177"
+        }
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -900,
+        100
+      ],
+      "id": "5f5d7d48-feb0-4db7-8c39-3ed6e63d6f4c",
+      "name": "Webhook",
+      "webhookId": "rais-roi-report-lead"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\n\nconst toText = (value) => String(value ?? '').trim();\nconst toLowerEmail = (value) => toText(value).toLowerCase();\nconst toBool = (value) => {\n  if (typeof value === 'boolean') return value;\n  if (typeof value === 'number') return value === 1;\n  const normalized = String(value ?? '').trim().toLowerCase();\n  return ['true', '1', 'yes', 'ja', 'on'].includes(normalized);\n};\nconst toNumber = (value) => {\n  if (value === null || value === undefined || value === '') return null;\n  const sanitized = String(value).replace(',', '.').replace(/[^\\d.-]/g, '');\n  const parsed = Number(sanitized);\n  return Number.isFinite(parsed) ? parsed : null;\n};\n\nreturn items.map((item) => {\n  const payload = item.json ?? {};\n  const report = payload.report ?? {};\n  const email = toLowerEmail(payload.email);\n  const businessName = toText(payload.restaurant || payload.business_name || payload.businessName || payload.restaurant_name);\n  const consentGranted = toBool(payload.consent);\n  const pageUrl = toText(payload.page);\n  const source = toText(payload.source) || 'impact-report';\n  const clientCreatedAt = toText(payload.createdAt) || new Date().toISOString();\n\n  const normalizedReport = {\n    missed_reservations_per_week: toNumber(report.missedReservationsPerWeek),\n    average_guests_per_reservation: toNumber(report.averageGuestsPerReservation),\n    average_spend_per_guest: toNumber(report.averageSpendPerGuest),\n    monthly_loss: toNumber(report.monthlyLoss),\n    annual_loss: toNumber(report.annualLoss),\n    saved_reservations: toNumber(report.savedReservations),\n    payback_weeks: toNumber(report.paybackWeeks)\n  };\n\n  const errors = [];\n  if (!email || !/^[\\w.%+-]+@[\\w.-]+\\.[A-Za-z]{2,}$/i.test(email)) {\n    errors.push('Bitte eine gueltige E-Mail-Adresse uebergeben.');\n  }\n  if (!businessName || businessName.length < 2) {\n    errors.push('Restaurantname fehlt oder ist zu kurz.');\n  }\n  if (!consentGranted) {\n    errors.push('Explizite Einwilligung ist erforderlich.');\n  }\n  if (!normalizedReport.monthly_loss || normalizedReport.monthly_loss < 1) {\n    errors.push('Monatlicher Verlust konnte nicht plausibel berechnet werden.');\n  }\n  if (!normalizedReport.annual_loss || normalizedReport.annual_loss < normalizedReport.monthly_loss) {\n    errors.push('Jahresverlust ist unplausibel.');\n  }\n\n  const submittedAt = new Date().toISOString();\n  const valid = errors.length === 0;\n\n  return {\n    json: {\n      valid,\n      validation_errors: errors,\n      email,\n      business_name: businessName,\n      consent_granted: consentGranted,\n      consent_text_version: 'rais-roi-report-v1',\n      source,\n      page_url: pageUrl,\n      lead_type: 'roi_report',\n      submitted_at: submittedAt,\n      client_created_at: clientCreatedAt,\n      report: normalizedReport,\n      missed_reservations_per_week: normalizedReport.missed_reservations_per_week,\n      average_guests_per_reservation: normalizedReport.average_guests_per_reservation,\n      average_spend_per_guest: normalizedReport.average_spend_per_guest,\n      monthly_loss: normalizedReport.monthly_loss,\n      annual_loss: normalizedReport.annual_loss,\n      saved_reservations: normalizedReport.saved_reservations,\n      payback_weeks: normalizedReport.payback_weeks,\n      original_payload: payload,\n      notification_summary: `${businessName} | ${email} | ${normalizedReport.monthly_loss ?? 0} EUR Verlust/Monat`\n    }\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -660,
+        100
+      ],
+      "id": "e2bb10d7-f2e8-4bc9-a9c0-f8a2fe91a115",
+      "name": "Normalize And Validate"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.valid }}",
+              "operation": "true"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        -420,
+        100
+      ],
+      "id": "63dbcaec-5db2-43b6-bf2b-a1e40177870c",
+      "name": "Lead Valid?"
+    },
+    {
+      "parameters": {
+        "tableId": "roi_leads"
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -180,
+        20
+      ],
+      "id": "d9f8f9c8-b01d-4d18-a235-9d1d95205fef",
+      "name": "Insert Lead",
+      "credentials": {
+        "supabaseApi": {
+          "id": "REPLACE_WITH_SUPABASE_CREDENTIAL_ID",
+          "name": "RAIS Supabase"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "tableId": "roi_lead_rejections"
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -180,
+        220
+      ],
+      "id": "99ab9129-4614-43c5-aa36-cf6bb10d4fc8",
+      "name": "Insert Rejection",
+      "credentials": {
+        "supabaseApi": {
+          "id": "REPLACE_WITH_SUPABASE_CREDENTIAL_ID",
+          "name": "RAIS Supabase"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.RAIS_ALERT_WEBHOOK_URL }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { type: 'roi_report_lead', business_name: $json.business_name, email: $json.email, monthly_loss: $json.monthly_loss, annual_loss: $json.annual_loss, saved_reservations: $json.saved_reservations, submitted_at: $json.submitted_at, page_url: $json.page_url, source: $json.source } }}",
+        "options": {
+          "ignoreResponseCode": true,
+          "timeout": 10000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        300,
+        20
+      ],
+      "id": "a85b2328-7bb0-4a70-bdf7-90b4f9e5f782",
+      "name": "Send Alert"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ String($env.RAIS_ALERT_WEBHOOK_URL || '').trim() }}",
+              "operation": "notEmpty"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        60,
+        20
+      ],
+      "id": "5b83ce35-21da-49fc-a1c0-3f4f33893527",
+      "name": "Alert URL Configured?"
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all().map((item) => ({\n  json: {\n    success: true,\n    stored: true,\n    message: 'Lead gespeichert.',\n    responseCode: 200\n  }\n}));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        540,
+        20
+      ],
+      "id": "eb5c59e5-69e2-4f2e-8381-c68dc8663163",
+      "name": "Prepare Success Response"
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all().map((item) => ({\n  json: {\n    success: false,\n    stored: false,\n    message: 'Lead nicht gespeichert.',\n    errors: item.json.validation_errors ?? [],\n    responseCode: 422\n  }\n}));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        60,
+        220
+      ],
+      "id": "96e2dc38-42a4-46c0-af0a-afd88e6fe731",
+      "name": "Prepare Invalid Response"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {
+          "responseCode": "={{ $json.responseCode || 200 }}"
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        780,
+        120
+      ],
+      "id": "06d95dcf-9293-4f0c-b548-8a333abdf53d",
+      "name": "Respond To Webhook"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Normalize And Validate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalize And Validate": {
+      "main": [
+        [
+          {
+            "node": "Lead Valid?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lead Valid?": {
+      "main": [
+        [
+          {
+            "node": "Insert Lead",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Insert Rejection",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Insert Lead": {
+      "main": [
+        [
+          {
+            "node": "Alert URL Configured?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Alert URL Configured?": {
+      "main": [
+        [
+          {
+            "node": "Send Alert",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Prepare Success Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Insert Rejection": {
+      "main": [
+        [
+          {
+            "node": "Prepare Invalid Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Alert": {
+      "main": [
+        [
+          {
+            "node": "Prepare Success Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Success Response": {
+      "main": [
+        [
+          {
+            "node": "Respond To Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Invalid Response": {
+      "main": [
+        [
+          {
+            "node": "Respond To Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": ""
+  },
+  "versionId": "0f1df178-7aef-4d79-a364-5dc17ff7f676",
+  "meta": {
+    "templateCredsSetupCompleted": false
+  },
+  "tags": [
+    {
+      "name": "production"
+    },
+    {
+      "name": "rais"
+    },
+    {
+      "name": "roi"
+    }
+  ]
+}

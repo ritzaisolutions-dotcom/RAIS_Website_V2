@@ -354,9 +354,43 @@
             pointer-events: none;
         }
 
+        .side-wash {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            width: min(11vw, 12rem);
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.7;
+            animation: pulseFade 12s ease-in-out infinite;
+        }
+
+        .side-wash.left {
+            left: 0;
+            background:
+                linear-gradient(90deg, rgba(169, 180, 148, 0.16), rgba(169, 180, 148, 0)),
+                repeating-linear-gradient(180deg, rgba(111, 127, 95, 0.08) 0 1px, transparent 1px 90px);
+            mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.9), transparent);
+        }
+
+        .side-wash.right {
+            right: 0;
+            background:
+                linear-gradient(270deg, rgba(169, 180, 148, 0.15), rgba(169, 180, 148, 0)),
+                repeating-linear-gradient(180deg, rgba(111, 127, 95, 0.07) 0 1px, transparent 1px 110px);
+            mask-image: linear-gradient(270deg, rgba(0, 0, 0, 0.9), transparent);
+            animation-duration: 15s;
+        }
+
         .section-air {
             padding-top: 7rem;
             padding-bottom: 7rem;
+        }
+
+        .site-shell {
+            width: min(96rem, calc(100vw - 2rem));
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .warm-button {
@@ -418,6 +452,8 @@
 </head>
 
 <body class="min-h-screen">
+    <div class="side-wash left"></div>
+    <div class="side-wash right"></div>
     <header class="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/92 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
@@ -467,19 +503,19 @@
         <div class="ambient-orb two"></div>
         <div class="ambient-line"></div>
 
-        <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-[1.15fr_0.85fr] gap-10 items-start">
+        <div class="relative z-10 w-full site-shell px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-[1.18fr_0.82fr] gap-14 items-start">
                 <div class="pt-8">
                     <div class="signal-label mb-6 flex items-center gap-3">
                         <span class="w-2 h-2 bg-industrial-orange rounded-full"></span>
                         RAIS V2 / Editorial Hospitality / Restaurant Systems
                     </div>
 
-                    <h1 class="font-display text-5xl md:text-7xl leading-[0.94] text-foreground max-w-4xl mb-6">
+                    <h1 class="font-display text-5xl md:text-7xl leading-[0.94] text-foreground max-w-5xl mb-6">
                         Keine Reservierungsanfrage mehr im Stoßgeschäft verpassen.
                     </h1>
 
-                    <div class="max-w-2xl proof-stack mb-8">
+                    <div class="max-w-3xl proof-stack mb-8">
                         <p class="text-xl md:text-2xl text-foreground leading-relaxed mb-4">
                             Mehr Reservierungen. Weniger verpasste Anfragen. Weniger Chaos, wenn im Betrieb gerade niemand ans Telefon gehen kann.
                         </p>
@@ -499,7 +535,7 @@
                         </a>
                     </div>
 
-                    <div class="grid sm:grid-cols-3 gap-4 max-w-4xl">
+                    <div class="grid sm:grid-cols-3 gap-5 max-w-5xl">
                         <div class="editorial-frame rounded-[1.5rem] p-5">
                             <div class="signal-label mb-3">Signal 01</div>
                             <div class="text-lg font-medium text-foreground mb-1">Betrieb wird sofort informiert</div>
@@ -579,8 +615,8 @@
 
     <!-- Mechanism Section -->
     <section id="flow" class="section-air">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 items-start">
+        <div class="site-shell px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-[0.92fr_1.08fr] gap-14 items-start">
                 <div class="pr-0 lg:pr-8">
                     <div class="signal-label mb-5">Mechanismus</div>
                     <h2 class="font-display text-4xl md:text-5xl text-foreground mb-6">So arbeitet das System im Alltag, ohne technisch zu wirken.</h2>
@@ -657,8 +693,8 @@
 
 
     <section id="impact" class="section-air">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-[0.84fr_1.16fr] gap-10 items-start">
+        <div class="site-shell px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-14 items-start">
                 <div>
                     <div class="signal-label mb-5">Problem sichtbar machen</div>
                     <h2 class="font-display text-4xl md:text-5xl text-foreground mb-6">Schon wenige verpasste Reservierungen pro Woche werden schnell teurer als die Lösung.</h2>
@@ -756,8 +792,8 @@
                         </div>
                     </div>
 
-                    <div class="cta-band rounded-[1.8rem] p-6 mt-6">
-                        <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-6 items-start">
+                    <div class="cta-band rounded-[1.8rem] p-7 md:p-8 mt-8">
+                        <div class="grid lg:grid-cols-[0.95fr_1.05fr] gap-8 items-start">
                             <div>
                                 <div class="signal-label mb-3">Kostenloser Report</div>
                                 <h4 class="font-display text-3xl text-foreground mb-3">Lassen Sie sich Ihre aktuelle Verlustschätzung als PDF senden.</h4>
@@ -780,7 +816,7 @@
                                     <label for="reportConsent">Ich willige ein, dass RAIS meine E-Mail-Adresse und die eingegebenen Report-Werte verarbeitet, um mir den PDF-Report zu senden und mich anschließend zu diesem Thema zu kontaktieren. Hinweise dazu stehen in der <a href="datenschutz.html" class="text-industrial-orange-bright hover:underline">Datenschutzerklärung</a>.</label>
                                 </div>
                                 <div class="flex flex-col sm:flex-row gap-3">
-                                    <button type="submit" class="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full warm-button text-base font-medium transition-colors">
+                                    <button id="reportLeadSubmit" type="submit" class="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full warm-button text-base font-medium transition-colors">
                                         <i data-lucide="file-down" class="w-5 h-5"></i>
                                         PDF-Report anfordern
                                     </button>
@@ -799,8 +835,8 @@
 
     <!-- Pricing Section -->
     <section id="pricing" class="section-air">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-[0.88fr_1.12fr] gap-8 items-start mb-10">
+        <div class="site-shell px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-14 items-start mb-14">
                 <div>
                     <div class="signal-label mb-5">Angebot</div>
                     <h2 class="font-display text-4xl md:text-5xl text-foreground mb-6">Ein klares Paket für Restaurants, die Reservierungen sauber erfassen wollen.</h2>
@@ -861,7 +897,7 @@
                 </div>
             </div>
 
-            <div class="grid lg:grid-cols-[0.72fr_0.72fr_0.56fr] gap-6">
+            <div class="grid lg:grid-cols-[0.78fr_0.78fr_0.64fr] gap-7">
                 <div class="editorial-frame rounded-[1.8rem] p-6">
                     <div class="signal-label mb-3">Erweiterung 01</div>
                     <h3 class="text-2xl font-semibold text-foreground mb-2">Add-on: E-Mail-Marketing</h3>
@@ -881,8 +917,8 @@
                 </div>
             </div>
 
-            <div id="booking" class="mt-20 max-w-6xl mx-auto editorial-frame rounded-[2rem] p-8 md:p-10 lg:p-12">
-                <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 items-start">
+            <div id="booking" class="mt-24 rounded-[2rem] p-8 md:p-10 lg:p-12 editorial-frame">
+                <div class="grid lg:grid-cols-[0.92fr_1.08fr] gap-12 items-start">
                     <div>
                         <div class="signal-label mb-4">Terminbuchung</div>
                         <h3 class="font-display text-3xl md:text-4xl text-foreground mb-4">Lassen Sie uns kurz anschauen, wo Ihre Website heute Reservierungen liegen lässt.</h3>
@@ -907,8 +943,8 @@
 
     <!-- Deployment Cycle Section -->
     <section id="steps" class="section-air">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-[0.86fr_1.14fr] gap-10 items-start">
+        <div class="site-shell px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-14 items-start">
                 <div>
                     <div class="signal-label mb-5">Zusammenarbeit</div>
                     <h2 class="font-display text-4xl md:text-5xl text-foreground mb-6">Drei Phasen, ein klares Ziel: schnell zu einer Website, die im Alltag mitarbeitet.</h2>
@@ -955,8 +991,8 @@
 
     <!-- Contact Section -->
     <section id="contact" class="section-air">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-[0.92fr_1.08fr] gap-8 items-start">
+        <div class="site-shell px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-[0.95fr_1.05fr] gap-12 items-start">
                 <div>
                     <div class="signal-label mb-4">Kontakt</div>
                     <h2 class="font-display text-4xl md:text-5xl text-foreground mb-5">Wenn Sie eine ruhigere und nützlichere Website für Ihr Restaurant wollen, schreiben Sie uns.</h2>
@@ -1101,7 +1137,7 @@
 
     <script>
         const MAIN_OFFER_PRICE = 1200;
-        const REPORT_WEBHOOK_URL = 'PASTE_N8N_WEBHOOK_URL_HERE';
+        const REPORT_WEBHOOK_URL = 'https://n8n.ritz-ai.solutions/webhook/rais-roi-report-lead';
         const CHAT_WEBHOOK_URL = 'https://n8n.ritz-ai.solutions/webhook/65f15d05-e0e0-49db-9fe7-47f9a2716baf';
 
         // Initialize Lucide icons
@@ -1241,6 +1277,42 @@
             };
         }
 
+        async function ensureJsPdfLoaded() {
+            if (window.jspdf?.jsPDF) {
+                return window.jspdf.jsPDF;
+            }
+
+            const existingScript = document.querySelector('script[data-jspdf-loader="true"]');
+
+            if (existingScript) {
+                await new Promise((resolve, reject) => {
+                    existingScript.addEventListener('load', () => resolve(), { once: true });
+                    existingScript.addEventListener('error', () => reject(new Error('jsPDF load failed')), { once: true });
+                });
+                if (!window.jspdf?.jsPDF) {
+                    throw new Error('jsPDF unavailable after load');
+                }
+                return window.jspdf.jsPDF;
+            }
+
+            const script = document.createElement('script');
+            script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+            script.async = true;
+            script.dataset.jspdfLoader = 'true';
+
+            await new Promise((resolve, reject) => {
+                script.onload = resolve;
+                script.onerror = () => reject(new Error('jsPDF load failed'));
+                document.head.appendChild(script);
+            });
+
+            if (!window.jspdf?.jsPDF) {
+                throw new Error('jsPDF unavailable after load');
+            }
+
+            return window.jspdf.jsPDF;
+        }
+
         function createReportPdf(leadData) {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF({
@@ -1315,8 +1387,9 @@
         async function setupReportLeadForm() {
             const reportForm = document.getElementById('reportLeadForm');
             const reportMessage = document.getElementById('reportLeadMessage');
+            const submitButton = document.getElementById('reportLeadSubmit');
 
-            if (!reportForm || !reportMessage) {
+            if (!reportForm || !reportMessage || !submitButton) {
                 return;
             }
 
@@ -1336,30 +1409,39 @@
 
                 reportMessage.classList.remove('hidden');
                 reportMessage.textContent = 'Report wird vorbereitet...';
+                submitButton.setAttribute('disabled', 'disabled');
+                submitButton.classList.add('opacity-70', 'cursor-not-allowed');
 
                 try {
-                    if (REPORT_WEBHOOK_URL && !REPORT_WEBHOOK_URL.includes('PASTE_N8N_WEBHOOK_URL_HERE')) {
-                        const response = await fetch(REPORT_WEBHOOK_URL, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify(leadData)
-                        });
+                    await ensureJsPdfLoaded();
+                    createReportPdf(leadData);
 
-                        if (!response.ok) {
-                            throw new Error('Webhook request failed');
+                    let leadStored = false;
+                    if (REPORT_WEBHOOK_URL && !REPORT_WEBHOOK_URL.includes('PASTE_N8N_WEBHOOK_URL_HERE')) {
+                        try {
+                            const response = await fetch(REPORT_WEBHOOK_URL, {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(leadData)
+                            });
+                            leadStored = response.ok;
+                        } catch (webhookError) {
+                            console.error('Report webhook error:', webhookError);
                         }
                     }
 
-                    createReportPdf(leadData);
-                    reportMessage.textContent = REPORT_WEBHOOK_URL.includes('PASTE_N8N_WEBHOOK_URL_HERE')
-                        ? 'PDF wurde erzeugt. Die Webhook-URL ist noch als Platzhalter hinterlegt.'
-                        : 'PDF wurde erzeugt und Ihre Anfrage wurde gespeichert.';
+                    reportMessage.textContent = leadStored
+                        ? 'PDF wurde erzeugt und Ihre Anfrage wurde gespeichert.'
+                        : 'PDF wurde erzeugt. Falls die Speicherung gerade nicht geklappt hat, können Sie den Report trotzdem direkt nutzen.';
                     reportForm.reset();
                 } catch (error) {
-                    console.error('Report lead error:', error);
-                    reportMessage.textContent = 'Die Anfrage konnte gerade nicht gespeichert werden. Sie können es erneut versuchen oder direkt ein Gespräch buchen.';
+                    console.error('Report PDF error:', error);
+                    reportMessage.textContent = 'Der PDF-Report konnte gerade nicht erzeugt werden. Bitte versuchen Sie es noch einmal.';
+                } finally {
+                    submitButton.removeAttribute('disabled');
+                    submitButton.classList.remove('opacity-70', 'cursor-not-allowed');
                 }
             });
         }
