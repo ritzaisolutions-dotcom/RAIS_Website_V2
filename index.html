@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- DEPLOYMENT STAMP: 2026-03-13 | RAIS-V3-PRODUCTION -->
+<!-- DEPLOYMENT STAMP: 2026-04-06 | RAIS-V3-PRODUCTION -->
 <html lang="de" class="scroll-smooth">
 
 <head>
@@ -9,7 +9,7 @@
     <meta name="description"
         content="RAIS baut professionelle Restaurant-Websites mit Reservierungsformular, Bestätigungen, Erinnerungen und DSGVO-bewusstem Grundsetup - für mehr Reservierungen und weniger verpasste Anfragen.">
     <meta name="keywords"
-        content="Restaurant Booking System, Restaurant Website, Missed Bookings Restaurant, Guest Retention Restaurant, Restaurant AI Chat, RAIS, Ritz AI Solutions">
+        content="Restaurant Website, Reservierungssystem Restaurant, Reservierungsanfragen, Restaurant Buchung, RAIS, Ritz AI Solutions">
     <link rel="icon" type="image/png" href="favicon.png?v=2">
     <link rel="apple-touch-icon" href="favicon.png?v=2">
 
@@ -49,7 +49,6 @@
     <!-- Cookiebot — DSGVO/TTDSG consent management (must be first script) -->
     <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="e97619e5-544b-4a6c-aeb9-c4c02403c500" data-blockingmode="auto" type="text/javascript"></script>
 
-    <!-- Fonts -->
     <!-- Fonts (Localized) -->
     <link rel="stylesheet" href="fonts.css">
 
@@ -60,17 +59,17 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-        <style>
+    <style>
         :root {
-            --background: 36 27% 94%;
+            --background: 40 29% 94%;
             --foreground: 24 13% 16%;
-            --border: 34 22% 85%;
+            --border: 36 21% 83%;
             --industrial-orange: 18 83% 57%;
             --industrial-orange-bright: 18 88% 62%;
-            --sage: 87 18% 65%;
-            --dark-pistachio: 90 14% 44%;
-            --muted-stone: 31 8% 45%;
-            --surface: 36 45% 97%;
+            --sage: 86 22% 48%;
+            --dark-pistachio: 95 28% 26%;
+            --muted-stone: 31 8% 42%;
+            --surface: 38 42% 97%;
         }
 
         body {
@@ -78,20 +77,9 @@
             background: hsl(var(--background));
             color: hsl(var(--foreground));
             background-image:
-                radial-gradient(circle at top right, rgba(169, 180, 148, 0.24), transparent 28%),
-                radial-gradient(circle at 18% 22%, rgba(111, 127, 95, 0.12), transparent 24%),
-                linear-gradient(180deg, rgba(251, 248, 243, 0.95), rgba(245, 242, 236, 1));
-        }
-
-        @keyframes drift {
-            0% { transform: translate3d(0, 0, 0) scale(1); }
-            50% { transform: translate3d(0, -18px, 0) scale(1.03); }
-            100% { transform: translate3d(0, 0, 0) scale(1); }
-        }
-
-        @keyframes pulseFade {
-            0%, 100% { opacity: 0.25; }
-            50% { opacity: 0.55; }
+                radial-gradient(circle at top right, rgba(143, 159, 114, 0.22), transparent 28%),
+                radial-gradient(circle at 16% 18%, rgba(72, 96, 54, 0.14), transparent 24%),
+                linear-gradient(180deg, rgba(251, 248, 243, 0.98), rgba(244, 241, 234, 1));
         }
 
         .font-mono {
@@ -108,7 +96,7 @@
 
         .diagonal-grid {
             background-image:
-                linear-gradient(135deg, rgba(236, 106, 55, 0.035), rgba(111, 127, 95, 0.02)),
+                linear-gradient(135deg, rgba(236, 106, 55, 0.035), rgba(72, 96, 54, 0.02)),
                 linear-gradient(to right, rgba(47, 42, 36, 0.035) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(47, 42, 36, 0.035) 1px, transparent 1px);
             background-size: 100% 100%, 48px 48px, 48px 48px;
@@ -139,7 +127,7 @@
         }
 
         .bg-sage-soft {
-            background: rgba(169, 180, 148, 0.28);
+            background: rgba(120, 148, 100, 0.28);
         }
 
         .border-border {
@@ -173,7 +161,7 @@
 
         .editorial-frame {
             position: relative;
-            background: linear-gradient(180deg, rgba(246, 247, 240, 0.98), rgba(239, 242, 232, 0.94));
+            background: linear-gradient(180deg, rgba(247, 248, 242, 0.98), rgba(239, 243, 233, 0.95));
             border: 1px solid hsl(var(--border));
         }
 
@@ -203,18 +191,18 @@
 
         .soft-pill {
             border: 1px solid hsl(var(--border));
-            background: rgba(251, 248, 243, 0.9);
+            background: rgba(249, 245, 238, 0.92);
         }
 
         .offer-main {
             background:
-                linear-gradient(180deg, rgba(248, 249, 243, 1), rgba(241, 244, 235, 0.98));
+                linear-gradient(180deg, rgba(248, 249, 243, 1), rgba(240, 244, 234, 0.98));
             border: 1px solid hsl(var(--border));
             box-shadow: 0 28px 70px rgba(47, 42, 36, 0.08);
         }
 
         .offer-side {
-            background: rgba(243, 246, 237, 0.94);
+            background: rgba(241, 245, 236, 0.94);
             border: 1px solid hsl(var(--border));
             box-shadow: 0 18px 45px rgba(47, 42, 36, 0.05);
         }
@@ -226,9 +214,9 @@
 
         .proposal-sheet {
             background:
-                linear-gradient(180deg, rgba(248, 249, 243, 1), rgba(241, 244, 235, 0.95));
-            border: 1px solid rgba(111, 127, 95, 0.24);
-            box-shadow: 0 30px 70px rgba(47, 42, 36, 0.07);
+                linear-gradient(180deg, rgba(248, 249, 243, 1), rgba(239, 243, 232, 0.96));
+            border: 1px solid rgba(72, 96, 54, 0.24);
+            box-shadow: 0 30px 70px rgba(47, 42, 36, 0.06);
         }
 
         .signal-label {
@@ -241,11 +229,11 @@
 
         .signal-divider {
             height: 1px;
-            background: linear-gradient(90deg, rgba(111, 127, 95, 0.82), rgba(236, 106, 55, 0.55), rgba(217, 209, 199, 0.18));
+            background: linear-gradient(90deg, rgba(72, 96, 54, 0.82), rgba(236, 106, 55, 0.55), rgba(217, 209, 199, 0.18));
         }
 
         .proof-stack {
-            border-left: 1px solid rgba(111, 127, 95, 0.35);
+            border-left: 1px solid rgba(72, 96, 54, 0.35);
             padding-left: 1.25rem;
         }
 
@@ -255,8 +243,8 @@
         }
 
         .impact-output {
-            border: 1px solid rgba(111, 127, 95, 0.28);
-            background: rgba(169, 180, 148, 0.2);
+            border: 1px solid rgba(72, 96, 54, 0.28);
+            background: rgba(120, 148, 100, 0.2);
         }
 
         .impact-range {
@@ -270,17 +258,17 @@
         }
 
         .sage-panel {
-            background: rgba(169, 180, 148, 0.22);
-            border: 1px solid rgba(111, 127, 95, 0.22);
+            background: rgba(120, 148, 100, 0.22);
+            border: 1px solid rgba(72, 96, 54, 0.22);
         }
 
         .pistachio-line {
-            border-color: rgba(111, 127, 95, 0.28);
+            border-color: rgba(72, 96, 54, 0.28);
         }
 
         .cta-band {
-            background: linear-gradient(135deg, rgba(169, 180, 148, 0.22), rgba(251, 248, 243, 0.92));
-            border: 1px solid rgba(111, 127, 95, 0.22);
+            background: linear-gradient(135deg, rgba(120, 148, 100, 0.22), rgba(251, 248, 243, 0.92));
+            border: 1px solid rgba(72, 96, 54, 0.22);
         }
 
         .chat-launcher {
@@ -297,7 +285,7 @@
             bottom: 6.5rem;
             width: min(24rem, calc(100vw - 2rem));
             z-index: 70;
-            border: 1px solid rgba(111, 127, 95, 0.24);
+            border: 1px solid rgba(72, 96, 54, 0.24);
             background: linear-gradient(180deg, rgba(248, 249, 243, 0.98), rgba(241, 244, 235, 0.98));
             box-shadow: 0 28px 65px rgba(47, 42, 36, 0.16);
         }
@@ -313,73 +301,8 @@
         }
 
         .chat-bubble-agent {
-            background: rgba(169, 180, 148, 0.18);
-            border: 1px solid rgba(111, 127, 95, 0.2);
-        }
-
-        .ambient-orb {
-            position: absolute;
-            border-radius: 9999px;
-            filter: blur(2px);
-            animation: drift 12s ease-in-out infinite;
-            pointer-events: none;
-        }
-
-        .ambient-orb.one {
-            top: 8rem;
-            right: 8%;
-            width: 12rem;
-            height: 12rem;
-            background: radial-gradient(circle, rgba(169, 180, 148, 0.34), rgba(169, 180, 148, 0));
-        }
-
-        .ambient-orb.two {
-            top: 28rem;
-            left: 5%;
-            width: 9rem;
-            height: 9rem;
-            background: radial-gradient(circle, rgba(111, 127, 95, 0.22), rgba(111, 127, 95, 0));
-            animation-duration: 15s;
-        }
-
-        .ambient-line {
-            position: absolute;
-            inset: auto 0 0 0;
-            height: 180px;
-            background:
-                linear-gradient(180deg, rgba(245, 242, 236, 0), rgba(169, 180, 148, 0.08)),
-                repeating-linear-gradient(90deg, rgba(111, 127, 95, 0.08) 0 1px, transparent 1px 110px);
-            mask-image: linear-gradient(180deg, transparent, rgba(0,0,0,0.95));
-            animation: pulseFade 8s ease-in-out infinite;
-            pointer-events: none;
-        }
-
-        .side-wash {
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            width: min(11vw, 12rem);
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0.7;
-            animation: pulseFade 12s ease-in-out infinite;
-        }
-
-        .side-wash.left {
-            left: 0;
-            background:
-                linear-gradient(90deg, rgba(169, 180, 148, 0.16), rgba(169, 180, 148, 0)),
-                repeating-linear-gradient(180deg, rgba(111, 127, 95, 0.08) 0 1px, transparent 1px 90px);
-            mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0.9), transparent);
-        }
-
-        .side-wash.right {
-            right: 0;
-            background:
-                linear-gradient(270deg, rgba(169, 180, 148, 0.15), rgba(169, 180, 148, 0)),
-                repeating-linear-gradient(180deg, rgba(111, 127, 95, 0.07) 0 1px, transparent 1px 110px);
-            mask-image: linear-gradient(270deg, rgba(0, 0, 0, 0.9), transparent);
-            animation-duration: 15s;
+            background: rgba(120, 148, 100, 0.18);
+            border: 1px solid rgba(72, 96, 54, 0.2);
         }
 
         .section-air {
@@ -407,6 +330,16 @@
             color: hsl(var(--foreground));
             background: rgba(236, 106, 55, 0.04);
         }
+
+        .offer-primary {
+            background: linear-gradient(160deg, hsl(95, 28%, 22%), hsl(95, 26%, 28%));
+            border: 1px solid rgba(72, 96, 54, 0.5);
+            box-shadow: 0 28px 60px rgba(47, 42, 36, 0.12);
+        }
+
+        .offer-primary .signal-label {
+            color: rgba(187, 210, 170, 0.75);
+        }
     </style>
 
     <script>
@@ -433,7 +366,7 @@
             }
         }
     </script>
-        <style>
+    <style>
         .bg-industrial-orange {
             background: hsl(var(--industrial-orange)) !important;
         }
@@ -452,8 +385,7 @@
 </head>
 
 <body class="min-h-screen">
-    <div class="side-wash left"></div>
-    <div class="side-wash right"></div>
+
     <header class="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/92 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
@@ -466,12 +398,11 @@
                 </a>
 
                 <nav class="hidden md:flex items-center gap-8 text-sm text-stone">
+                    <a href="#problem" class="hover:text-foreground transition-colors">Das Problem</a>
                     <a href="#pricing" class="hover:text-foreground transition-colors">Leistung</a>
-                    <a href="#impact" class="hover:text-foreground transition-colors">Wirkung</a>
-                    <a href="#steps" class="hover:text-foreground transition-colors">Zusammenarbeit</a>
+                    <a href="#flow" class="hover:text-foreground transition-colors">Wie es funktioniert</a>
                     <a href="impressum.html" class="hover:text-foreground transition-colors">Impressum</a>
                     <a href="datenschutz.html" class="hover:text-foreground transition-colors">Datenschutz</a>
-                    <a href="#contact" class="hover:text-foreground transition-colors">Kontakt</a>
                 </nav>
 
                 <a href="#booking" class="hidden md:inline-flex items-center justify-center px-5 py-3 rounded-full border border-industrial-orange text-industrial-orange-bright text-sm font-medium transition-colors outline-button">Erstgespräch buchen</a>
@@ -484,126 +415,134 @@
 
         <div id="mobileMenu" class="hidden md:hidden border-t border-border bg-surface">
             <nav class="flex flex-col px-4 py-5 gap-4 text-stone">
+                <a href="#problem" class="hover:text-foreground transition-colors">Das Problem</a>
                 <a href="#pricing" class="hover:text-foreground transition-colors">Leistung</a>
-                <a href="#impact" class="hover:text-foreground transition-colors">Wirkung</a>
-                <a href="#steps" class="hover:text-foreground transition-colors">Zusammenarbeit</a>
+                <a href="#flow" class="hover:text-foreground transition-colors">Wie es funktioniert</a>
                 <a href="impressum.html" class="hover:text-foreground transition-colors">Impressum</a>
                 <a href="datenschutz.html" class="hover:text-foreground transition-colors">Datenschutz</a>
-                <a href="#contact" class="hover:text-foreground transition-colors">Kontakt</a>
-                <a href="#booking" class="inline-flex items-center justify-center px-5 py-3 rounded-full warm-button text-sm font-medium transition-colors">Kostenloses Erstgespräch</a>
+                <a href="#booking" class="inline-flex items-center justify-center px-5 py-3 rounded-full warm-button text-sm font-medium transition-colors">Erstgespräch buchen</a>
             </nav>
         </div>
     </header>
 
 
-    <!-- Hero Section -->
+    <!-- 1 — Cover / Hero -->
     <section class="relative min-h-screen flex items-center overflow-hidden pt-28 pb-16">
         <div class="absolute inset-0 diagonal-grid opacity-30"></div>
-        <div class="ambient-orb one"></div>
-        <div class="ambient-orb two"></div>
-        <div class="ambient-line"></div>
 
         <div class="relative z-10 w-full site-shell px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-[1.18fr_0.82fr] gap-14 items-start">
                 <div class="pt-8">
                     <div class="signal-label mb-6 flex items-center gap-3">
                         <span class="w-2 h-2 bg-industrial-orange rounded-full"></span>
-                        RAIS V2 / Editorial Hospitality / Restaurant Systems
+                        I — RAIS / Für Restaurants mit echtem Reservierungsdruck
                     </div>
 
-                    <h1 class="font-display text-5xl md:text-7xl leading-[0.94] text-foreground max-w-5xl mb-6">
-                        Keine Reservierungsanfrage mehr im Stoßgeschäft verpassen.
+                    <h1 class="font-display text-5xl md:text-7xl leading-[1.08] text-foreground max-w-5xl mb-6">
+                        Mehr Reservierungen.<br>Weniger verlorene Anfragen.
                     </h1>
 
                     <div class="max-w-3xl proof-stack mb-8">
                         <p class="text-xl md:text-2xl text-foreground leading-relaxed mb-4">
-                            Mehr Reservierungen. Weniger verpasste Anfragen. Weniger Chaos, wenn im Betrieb gerade niemand ans Telefon gehen kann.
+                            Wenn im Stoßgeschäft niemand ans Telefon geht, bleibt Nachfrage liegen.
                         </p>
                         <p class="text-base md:text-lg text-stone leading-relaxed">
-                            RAIS baut Restaurant-Websites, die Reservierungen strukturiert erfassen, Betrieb und Gast sofort informieren und 24 Stunden vor dem Termin automatisch erinnern.
+                            RAIS baut für Restaurants einen klaren digitalen Reservierungsweg mit Bestätigungen, Erinnerungen und weniger Reibung im Alltag.
                         </p>
                     </div>
 
                     <div class="flex flex-col sm:flex-row gap-4 mb-10">
                         <a href="#booking" class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full warm-button text-base font-medium transition-colors">
-                            <i data-lucide="calendar-check-2" class="w-5 h-5"></i>
-                            Kostenloses Erstgespräch anfragen
+                            <i data-lucide="calendar" class="w-5 h-5"></i>
+                            Erstgespräch buchen
                         </a>
                         <a href="#impact" class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full border border-border outline-button text-base text-stone transition-colors">
                             <i data-lucide="chart-column" class="w-5 h-5"></i>
-                            Verlust einschätzen
+                            Verlust berechnen
                         </a>
                     </div>
 
                     <div class="grid sm:grid-cols-3 gap-5 max-w-5xl">
                         <div class="editorial-frame rounded-[1.5rem] p-5">
-                            <div class="signal-label mb-3">Signal 01</div>
+                            <div class="signal-label mb-3">Anfrage erfasst</div>
                             <div class="text-lg font-medium text-foreground mb-1">Betrieb wird sofort informiert</div>
                             <div class="text-sm text-stone">Neue Anfragen landen direkt dort, wo sie gebraucht werden.</div>
                         </div>
                         <div class="editorial-frame rounded-[1.5rem] p-5">
-                            <div class="signal-label mb-3">Signal 02</div>
+                            <div class="signal-label mb-3">Bestätigung versandt</div>
                             <div class="text-lg font-medium text-foreground mb-1">Gast erhält Bestätigung</div>
                             <div class="text-sm text-stone">Klare Rückmeldung statt Unsicherheit oder Warten.</div>
                         </div>
                         <div class="editorial-frame rounded-[1.5rem] p-5">
-                            <div class="signal-label mb-3">Signal 03</div>
-                            <div class="text-lg font-medium text-foreground mb-1">24h-Erinnerung läuft automatisch</div>
+                            <div class="signal-label mb-3">Erinnerung läuft automatisch</div>
+                            <div class="text-lg font-medium text-foreground mb-1">24h-Erinnerung automatisch</div>
                             <div class="text-sm text-stone">Hilft gegen vergessene Reservierungen und Leerlauf.</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="proposal-sheet rounded-[2rem] p-6 md:p-8 mt-4 lg:mt-0">
-                    <div class="flex items-center justify-between mb-5">
+                <div class="proposal-sheet rounded-[2rem] p-5 md:p-6 mt-4 lg:mt-0">
+                    <div class="flex items-center justify-between mb-4">
                         <div>
-                            <div class="signal-label mb-2">Reservierungsstrecke</div>
-                            <div class="text-2xl font-display text-foreground">Eine Website, die im Betrieb mitarbeitet</div>
+                            <div class="signal-label mb-1">Reservierungsstrecke</div>
+                            <div class="text-xl font-display text-foreground">Eine Website, die im Betrieb mitarbeitet</div>
                         </div>
-                        <div class="w-10 h-10 rounded-full border border-border flex items-center justify-center text-industrial-orange">
-                            <i data-lucide="utensils-crossed" class="w-5 h-5"></i>
+                        <div class="w-9 h-9 rounded-full border border-border flex items-center justify-center text-industrial-orange shrink-0">
+                            <i data-lucide="utensils-crossed" class="w-4 h-4"></i>
                         </div>
                     </div>
 
-                    <div class="signal-divider mb-6"></div>
+                    <div class="signal-divider mb-4"></div>
 
-                    <div class="bg-white/55 border border-border rounded-[1.5rem] p-5 mb-5">
-                        <div class="grid grid-cols-2 gap-3 text-sm text-stone mb-4">
-                            <div class="border border-border rounded-2xl px-4 py-3">Name des Gastes</div>
-                            <div class="border border-border rounded-2xl px-4 py-3">Datum</div>
-                            <div class="border border-border rounded-2xl px-4 py-3">Uhrzeit</div>
-                            <div class="border border-border rounded-2xl px-4 py-3">Personen</div>
+                    <div class="bg-white/55 border border-border rounded-[1.25rem] p-4 mb-4">
+                        <div class="grid grid-cols-2 gap-2 text-xs text-stone mb-2">
+                            <div class="border border-border rounded-xl px-3 py-2">Name des Gastes</div>
+                            <div class="border border-border rounded-xl px-3 py-2">Datum</div>
+                            <div class="border border-border rounded-xl px-3 py-2">Uhrzeit</div>
+                            <div class="border border-border rounded-xl px-3 py-2">Personen</div>
                         </div>
-                        <div class="border border-border rounded-2xl px-4 py-3 text-sm text-stone mb-4">Telefon oder E-Mail für die Bestätigung</div>
-                        <div class="warm-button rounded-full text-center py-3 text-sm font-medium">Reservierung absenden</div>
+                        <div class="border border-border rounded-xl px-3 py-2 text-xs text-stone mb-3">Telefon oder E-Mail für die Bestätigung</div>
+                        <div class="space-y-2 mb-3">
+                            <div class="flex items-start gap-2 text-xs text-stone">
+                                <div class="w-3.5 h-3.5 rounded border border-border bg-white/80 shrink-0 mt-0.5 flex items-center justify-center">
+                                    <div class="w-2 h-2 rounded-sm bg-industrial-orange opacity-80"></div>
+                                </div>
+                                <span>Ich stimme der Verarbeitung meiner Daten gemäß Datenschutzerklärung zu.</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs text-stone">
+                                <div class="w-3.5 h-3.5 rounded border border-border bg-white/80 shrink-0 mt-0.5"></div>
+                                <span>Ich möchte gelegentlich über Angebote und Neuigkeiten informiert werden (optional).</span>
+                            </div>
+                        </div>
+                        <div class="warm-button rounded-full text-center py-2.5 text-xs font-medium">Reservierung absenden</div>
                     </div>
 
-                    <div class="space-y-4">
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-full bg-sage-soft flex items-center justify-center text-pistachio shrink-0">
-                                <i data-lucide="bell" class="w-4 h-4"></i>
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-full bg-sage-soft flex items-center justify-center text-pistachio shrink-0">
+                                <i data-lucide="bell" class="w-3.5 h-3.5"></i>
                             </div>
                             <div>
-                                <div class="font-medium text-foreground">Restaurant bekommt die Anfrage direkt</div>
-                                <div class="text-sm text-stone">Sauber erfasst statt zwischen Anruf, Service und WhatsApp unterzugehen.</div>
+                                <div class="text-sm font-medium text-foreground">Restaurant bekommt die Anfrage direkt</div>
+                                <div class="text-xs text-stone">Sauber erfasst statt zwischen Anruf, Service und WhatsApp unterzugehen.</div>
                             </div>
                         </div>
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-full bg-sage-soft flex items-center justify-center text-pistachio shrink-0">
-                                <i data-lucide="badge-check" class="w-4 h-4"></i>
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-full bg-sage-soft flex items-center justify-center text-pistachio shrink-0">
+                                <i data-lucide="badge-check" class="w-3.5 h-3.5"></i>
                             </div>
                             <div>
-                                <div class="font-medium text-foreground">Gast bekommt sofort eine klare Rückmeldung</div>
-                                <div class="text-sm text-stone">Das wirkt professionell und nimmt Unsicherheit aus dem Prozess.</div>
+                                <div class="text-sm font-medium text-foreground">Gast bekommt sofort eine klare Rückmeldung</div>
+                                <div class="text-xs text-stone">Das wirkt professionell und nimmt Unsicherheit aus dem Prozess.</div>
                             </div>
                         </div>
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-full bg-sage-soft flex items-center justify-center text-pistachio shrink-0">
-                                <i data-lucide="clock-3" class="w-4 h-4"></i>
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-full bg-sage-soft flex items-center justify-center text-pistachio shrink-0">
+                                <i data-lucide="clock-3" class="w-3.5 h-3.5"></i>
                             </div>
                             <div>
-                                <div class="font-medium text-foreground">Vor dem Termin geht automatisch eine Erinnerung raus</div>
-                                <div class="text-sm text-stone">Ein kleiner Ablauf mit großer Wirkung für den Alltag im Betrieb.</div>
+                                <div class="text-sm font-medium text-foreground">Vor dem Termin geht automatisch eine Erinnerung raus</div>
+                                <div class="text-xs text-stone">Ein kleiner Ablauf mit großer Wirkung für den Alltag im Betrieb.</div>
                             </div>
                         </div>
                     </div>
@@ -613,94 +552,51 @@
     </section>
 
 
-    <!-- Mechanism Section -->
-    <section id="flow" class="section-air">
+    <!-- 2 — Das Problem -->
+    <section id="problem" class="section-air">
         <div class="site-shell px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-[0.92fr_1.08fr] gap-14 items-start">
-                <div class="pr-0 lg:pr-8">
-                    <div class="signal-label mb-5">Mechanismus</div>
-                    <h2 class="font-display text-4xl md:text-5xl text-foreground mb-6">So arbeitet das System im Alltag, ohne technisch zu wirken.</h2>
-                    <p class="text-lg text-stone leading-relaxed mb-8">
-                        Der Gast soll nicht merken, wie viel Ordnung im Hintergrund entsteht. Für ihn ist es einfach eine klare Reservierung. Für Sie ist es ein sauberer Ablauf mit weniger Verlusten und weniger Nacharbeit.
-                    </p>
-                    <div class="signal-divider mb-8"></div>
-                    <div class="space-y-6">
-                        <div>
-                            <div class="signal-label mb-2">Für den Gast</div>
-                            <p class="text-stone leading-relaxed">Die Reservierung fühlt sich klar, schnell und professionell an. Kein Warten, keine Unsicherheit, keine unklare Rückfrage.</p>
-                        </div>
-                        <div>
-                            <div class="signal-label mb-2">Für den Betrieb</div>
-                            <p class="text-stone leading-relaxed">Anfragen gehen nicht im Stoßgeschäft unter, Daten liegen geordnet vor und Erinnerungen laufen automatisch im Hintergrund.</p>
-                        </div>
-                        <a href="#booking" class="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full warm-button text-base font-medium transition-colors">
-                            <i data-lucide="calendar-check-2" class="w-5 h-5"></i>
-                            Erstgespräch buchen
-                        </a>
-                    </div>
+            <div class="mb-12">
+                <div class="signal-label mb-5">II — Das Problem</div>
+                <h2 class="font-display text-4xl md:text-5xl text-foreground max-w-4xl leading-[1.1]">Drei Dinge, die Restaurants täglich Gäste und Umsatz kosten – ohne dass man es sofort merkt.</h2>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-7">
+                <div class="proposal-sheet rounded-[2rem] p-7 md:p-8">
+                    <div class="signal-label mb-4">Umsatz / Stoßgeschäft</div>
+                    <h3 class="font-display text-2xl md:text-3xl text-foreground mb-5 leading-[1.15]">Im Stoßgeschäft geht das Telefon nicht ran.</h3>
+                    <p class="text-stone leading-relaxed">Wenn alle Hände gebraucht werden, bleibt die Reservierungsanfrage unbeantwortet. Der Gast wählt das nächste Restaurant. Der Tisch bleibt leer. Das passiert nicht einmal – es passiert jeden Abend.</p>
                 </div>
 
-                <div class="editorial-frame rounded-[2rem] p-8 md:p-10">
-                    <div class="grid md:grid-cols-2 gap-6 mb-8">
-                        <div>
-                            <div class="signal-label mb-3">Schritt 01</div>
-                            <div class="text-2xl font-medium text-foreground mb-2">Gast sendet die Reservierung</div>
-                            <p class="text-stone leading-relaxed">Über Ihre Website, mobil und ohne Reibung. Alle relevanten Angaben werden direkt sauber erfasst.</p>
-                        </div>
-                        <div>
-                            <div class="signal-label mb-3">Schritt 02</div>
-                            <div class="text-2xl font-medium text-foreground mb-2">Restaurant und Gast werden informiert</div>
-                            <p class="text-stone leading-relaxed">Sie sehen sofort die neue Anfrage. Der Gast erhält eine klare Bestätigung statt im Unklaren zu bleiben.</p>
-                        </div>
-                    </div>
+                <div class="proposal-sheet rounded-[2rem] p-7 md:p-8">
+                    <div class="signal-label mb-4">Auftritt / 2026</div>
+                    <h3 class="font-display text-2xl md:text-3xl text-foreground mb-5 leading-[1.15]">Kein sauberer Online-Auftritt kostet Gäste, bevor sie je anrufen.</h3>
+                    <p class="text-stone leading-relaxed">Wer heute keinen klaren Reservierungsweg online hat, wirkt nicht professionell. Gäste suchen, klicken, entscheiden – in Sekunden. Ein veralteter Auftritt oder eine fehlende Buchungsmöglichkeit kostet Anfragen, die man nie sieht.</p>
+                </div>
 
-                    <div class="signal-divider mb-8"></div>
-
-                    <div class="grid md:grid-cols-[0.85fr_1.15fr] gap-8 items-start">
-                        <div>
-                            <div class="signal-label mb-3">Schritt 03</div>
-                            <h3 class="font-display text-3xl text-foreground mb-4">24 Stunden vor dem Termin läuft die Erinnerung automatisch.</h3>
-                            <p class="text-stone leading-relaxed">So werden vergessene Reservierungen reduziert und Ihr Tagesgeschäft bleibt ruhiger. Genau das ist der Unterschied zwischen einer schönen Website und einer nützlichen Website.</p>
-                        </div>
-                        <div class="space-y-4">
-                            <div class="sage-panel rounded-[1.5rem] px-5 py-4 flex items-center gap-4">
-                                <div class="w-11 h-11 rounded-full bg-sage-soft flex items-center justify-center text-pistachio font-semibold">1</div>
-                                <div>
-                                    <div class="font-medium text-foreground">Gast sendet Reservierung</div>
-                                    <div class="text-sm text-stone">Direkt über das Formular auf Ihrer Website.</div>
-                                </div>
-                            </div>
-                            <div class="sage-panel rounded-[1.5rem] px-5 py-4 flex items-center gap-4">
-                                <div class="w-11 h-11 rounded-full bg-sage-soft flex items-center justify-center text-pistachio font-semibold">2</div>
-                                <div>
-                                    <div class="font-medium text-foreground">Restaurant erhält Nachricht</div>
-                                    <div class="text-sm text-stone">Der Betrieb weiß sofort, dass eine neue Anfrage da ist.</div>
-                                </div>
-                            </div>
-                            <div class="sage-panel rounded-[1.5rem] px-5 py-4 flex items-center gap-4">
-                                <div class="w-11 h-11 rounded-full bg-sage-soft flex items-center justify-center text-pistachio font-semibold">3</div>
-                                <div>
-                                    <div class="font-medium text-foreground">Gast erhält Erinnerung</div>
-                                    <div class="text-sm text-stone">24 Stunden vor dem Termin automatisch und verlässlich.</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="proposal-sheet rounded-[2rem] p-7 md:p-8">
+                    <div class="signal-label mb-4">Service / Fokus</div>
+                    <h3 class="font-display text-2xl md:text-3xl text-foreground mb-5 leading-[1.15]">Jeder Anruf reißt den Service aus dem Moment.</h3>
+                    <p class="text-stone leading-relaxed">Ein Servicemitarbeiter, der ans Telefon läuft, lässt die Gäste am Tisch warten. Das unterbricht das Erlebnis, belastet das Team – und kostet genau die Qualität, für die Ihr Restaurant steht.</p>
                 </div>
             </div>
         </div>
     </section>
 
 
+    <!-- 3 — Verlust quantifizieren / ROI -->
     <section id="impact" class="section-air">
         <div class="site-shell px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-14 items-start">
                 <div>
-                    <div class="signal-label mb-5">Problem sichtbar machen</div>
-                    <h2 class="font-display text-4xl md:text-5xl text-foreground mb-6">Schon wenige verpasste Reservierungen pro Woche werden schnell teurer als die Lösung.</h2>
-                    <p class="text-lg text-stone leading-relaxed mb-8">
+                    <div class="signal-label mb-5">III — Verlust sichtbar machen</div>
+                    <h2 class="font-display text-4xl md:text-5xl text-foreground mb-6 leading-[1.1]">Schon wenige verpasste Reservierungen pro Woche werden schnell teurer als die Lösung.</h2>
+                    <p class="text-lg text-stone leading-relaxed mb-6">
                         Wenn im Stoßgeschäft niemand ans Telefon geht oder eine Anfrage auf der Website im Nichts endet, ist das kein kleines Detail. Es ist verlorener Umsatz, verlorene Tische und ein unprofessioneller Eindruck beim Gast.
                     </p>
+                    <div class="sage-panel rounded-[1.5rem] p-5 mb-6">
+                        <div class="signal-label mb-2">Reputation / Langzeitwirkung</div>
+                        <p class="text-stone leading-relaxed">Ein Gast, der nicht erreichbar war, kommt oft nicht mehr wieder – und erzählt es weiter. Der finanzielle Schaden einer schlechten Erreichbarkeit ist deutlich größer als der verlorene Tisch allein.</p>
+                    </div>
                     <div class="editorial-frame rounded-[1.8rem] p-6 mb-6">
                         <div class="signal-label mb-3">Worauf wir schauen</div>
                         <div class="space-y-4 text-stone leading-relaxed">
@@ -792,15 +688,12 @@
                         </div>
                     </div>
 
-                    <div class="cta-band rounded-[1.8rem] p-7 md:p-8 mt-8">
-                        <div class="grid lg:grid-cols-[0.95fr_1.05fr] gap-8 items-start">
+                    <div class="cta-band rounded-[1.8rem] p-5 md:p-6 mt-7">
+                        <div class="grid lg:grid-cols-[1fr_1fr] gap-6 items-start">
                             <div>
-                                <div class="signal-label mb-3">Kostenloser Report</div>
-                                <h4 class="font-display text-3xl text-foreground mb-3">Lassen Sie sich Ihre aktuelle Verlustschätzung als PDF senden.</h4>
-                                <p class="text-stone leading-relaxed mb-4">Sie erhalten einen kompakten Report mit Ihren aktuellen Werten, der geschätzten Umsatzlücke und einem klaren Ansatz, wie eine bessere Reservierungsstrecke dieses Problem reduzieren kann.</p>
-                                <div class="proof-stack text-stone leading-relaxed">
-                                    Sie geben Ihre E-Mail an, wir schicken Ihnen den Report und dürfen Sie im Anschluss zu diesem Thema kontaktieren. Genau dafür holen wir darunter Ihre Einwilligung ein.
-                                </div>
+                                <div class="signal-label mb-2">Kostenloser Report</div>
+                                <h4 class="font-display text-2xl text-foreground mb-2">Verlustschätzung als PDF erhalten.</h4>
+                                <p class="text-sm text-stone leading-relaxed">Ihre aktuellen Werte, die geschätzte Umsatzlücke und ein klarer Ansatz, wie eine bessere Reservierungsstrecke hilft – kompakt in einem PDF.</p>
                             </div>
                             <form id="reportLeadForm" class="space-y-4">
                                 <div>
@@ -833,35 +726,58 @@
     </section>
 
 
-    <!-- Pricing Section -->
+    <!-- 4 — Angebot / Lösung -->
     <section id="pricing" class="section-air">
         <div class="site-shell px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-14 items-start mb-14">
-                <div>
-                    <div class="signal-label mb-5">Angebot</div>
-                    <h2 class="font-display text-4xl md:text-5xl text-foreground mb-6">Ein klares Paket für Restaurants, die Reservierungen sauber erfassen wollen.</h2>
-                    <p class="text-lg text-stone leading-relaxed mb-8">Sie kaufen keine Spielerei und keinen Baukasten. Sie bekommen einen professionellen Auftritt mit Reservierungsstrecke, Bestätigungen und Erinnerungen, damit aus Interesse verlässlich Termine werden.</p>
-                    <div class="signal-divider mb-8"></div>
-                    <div class="text-stone leading-relaxed">
-                        Einmal sauber aufsetzen, statt weiter mit Telefon, Nachrichten und uneinheitlichen Anfragen zu improvisieren.
+            <div class="grid lg:grid-cols-[1fr_1.4fr] gap-9 items-start">
+
+                <!-- Left column: Hauptleistung + stacked add-ons -->
+                <div class="space-y-5">
+                    <div class="offer-primary rounded-[2rem] p-7">
+                        <div class="signal-label mb-4">IV — Angebot / Hauptleistung</div>
+                        <h2 class="font-display text-3xl text-white mb-3 leading-[1.15]">Website + Reservierungssystem</h2>
+                        <p class="text-white/70 text-base leading-relaxed mb-6">Eine professionelle Restaurant-Website mit Reservierungsformular, Bestätigungen und 24h-Erinnerung – einmal aufgesetzt, dauerhaft im Betrieb.</p>
+                        <div class="border border-white/20 rounded-[1.4rem] px-5 py-4 mb-6 inline-block bg-white/10">
+                            <div class="text-xs text-white/55 mb-1 font-mono tracking-widest uppercase">Einmalig</div>
+                            <div class="text-4xl font-display text-white">1.200 Euro</div>
+                            <div class="text-xs text-white/55 mt-1">inkl. rechtlicher Grundstruktur</div>
+                        </div>
+                        <div>
+                            <a href="#booking" class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-white/15 hover:bg-white/25 transition-colors border border-white/20 text-white text-sm font-medium">
+                                <i data-lucide="calendar" class="w-4 h-4"></i>
+                                Erstgespräch buchen
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="editorial-frame rounded-[1.8rem] p-5">
+                        <div class="signal-label mb-2">Erweiterung 01</div>
+                        <h3 class="text-lg font-semibold text-foreground mb-1">Add-on: E-Mail-Marketing</h3>
+                        <div class="text-2xl font-display text-foreground mb-2">+250 Euro / Monat</div>
+                        <p class="text-sm text-stone leading-relaxed">Bestehende Gäste mit ruhigen, klaren Kampagnen zurück an den Tisch holen.</p>
+                    </div>
+
+                    <div class="editorial-frame rounded-[1.8rem] p-5">
+                        <div class="signal-label mb-2">Erweiterung 02</div>
+                        <h3 class="text-lg font-semibold text-foreground mb-1">Add-on: Betreuung</h3>
+                        <div class="text-2xl font-display text-foreground mb-2">+150 Euro / Monat</div>
+                        <p class="text-sm text-stone leading-relaxed">Laufende Pflege, technischer Support und kleine Updates. Hosting-Kosten separat.</p>
+                    </div>
+
+                    <div class="border border-border rounded-[1.8rem] p-5 bg-white/45">
+                        <div class="signal-label mb-2">Fremdkosten</div>
+                        <h3 class="text-lg font-semibold text-foreground mb-1">ca. 80 Euro / Monat auf Kundenseite</h3>
+                        <p class="text-sm text-stone leading-relaxed">Hosting, Backups, Datenbank. Bewusst getrennt von den RAIS-Leistungen ausgewiesen.</p>
                     </div>
                 </div>
 
+                <!-- Right column: description + features + CRM callout -->
                 <div class="proposal-sheet rounded-[2rem] p-8 md:p-10">
-                    <div class="flex flex-wrap items-start justify-between gap-4 mb-8">
-                        <div>
-                            <div class="signal-label mb-3">Hauptleistung</div>
-                            <h3 class="font-display text-3xl md:text-4xl text-foreground mb-3">Website + Reservierungssystem</h3>
-                            <p class="text-stone text-lg leading-relaxed max-w-2xl">Eine professionelle Restaurant-Website mit Reservierungsformular, strukturierter Erfassung und automatischen Benachrichtigungen, damit Anfragen nicht mehr verloren gehen und Gäste rechtzeitig erinnert werden.</p>
-                        </div>
-                        <div class="border border-border bg-white/60 rounded-[1.6rem] px-6 py-5 min-w-[220px]">
-                            <div class="signal-label mb-2">Einmalig</div>
-                            <div class="text-4xl font-display text-foreground">1.200 Euro</div>
-                            <div class="text-sm text-stone mt-1">inklusive rechtlicher Grundstruktur</div>
-                        </div>
-                    </div>
+                    <h2 class="font-display text-3xl md:text-4xl text-foreground mb-4 leading-[1.1]">Ein klares Paket für Restaurants, die Reservierungen sauber erfassen wollen.</h2>
+                    <p class="text-lg text-stone leading-relaxed mb-6">Sie kaufen keine Spielerei und keinen Baukasten. Sie bekommen einen professionellen Auftritt mit Reservierungsstrecke, Bestätigungen und Erinnerungen, damit aus Interesse verlässlich Termine werden.</p>
+                    <div class="signal-divider mb-7"></div>
 
-                    <div class="grid md:grid-cols-2 gap-x-8 gap-y-5 mb-8">
+                    <div class="grid md:grid-cols-2 gap-x-8 gap-y-4 mb-8">
                         <div class="border-b border-border pb-4">
                             <div class="signal-label mb-2">Leistung 01</div>
                             <div class="text-foreground font-medium">Professionelle, mobil optimierte Website</div>
@@ -884,48 +800,203 @@
                         </div>
                         <div class="border-b border-border pb-4">
                             <div class="signal-label mb-2">Leistung 06</div>
-                            <div class="text-foreground font-medium">Klarer, glaubwürdiger Markenauftritt statt Technik-Look</div>
+                            <div class="text-foreground font-medium">Markenauftritt, der premium wirkt und zum Restaurant passt</div>
+                        </div>
+                        <div class="border-b border-border pb-4">
+                            <div class="signal-label mb-2">Leistung 07</div>
+                            <div class="text-foreground font-medium">Jede Reservierung rechtssicher in einer gesicherten Datenbank erfasst</div>
+                        </div>
+                        <div class="border-b border-border pb-4">
+                            <div class="signal-label mb-2">Leistung 08</div>
+                            <div class="text-foreground font-medium">Passwortgeschütztes Dashboard – alle Anfragen auf einen Blick</div>
                         </div>
                     </div>
 
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#booking" class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full warm-button text-base font-medium transition-colors">
-                            <i data-lucide="calendar-range" class="w-5 h-5"></i>
-                            Kostenloses Erstgespräch buchen
+                    <div class="sage-panel rounded-[1.5rem] p-5">
+                        <div class="signal-label mb-2">Mehr als eine Website</div>
+                        <p class="text-foreground font-medium leading-relaxed">Jede Reservierungsanfrage wird DSGVO-konform in einer Supabase-Datenbank gespeichert und ist jederzeit über ein passwortgeschütztes Dashboard einsehbar. Das macht RAIS zu einem vollständigen Reservierungs-CRM für Ihren Betrieb – nicht nur zu einem schönen Auftritt.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 5 — Mechanismus / Wie es funktioniert -->
+    <section id="flow" class="section-air">
+        <div class="site-shell px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-[0.92fr_1.08fr] gap-14 items-start">
+                <div class="pr-0 lg:pr-8">
+                    <div class="signal-label mb-5">V — Mechanismus</div>
+                    <h2 class="font-display text-4xl md:text-5xl text-foreground mb-6 leading-[1.1]">So arbeitet das System im Alltag, ohne technisch zu wirken.</h2>
+                    <p class="text-lg text-stone leading-relaxed mb-8">
+                        Der Gast soll nicht merken, wie viel Ordnung im Hintergrund entsteht. Für ihn ist es einfach eine klare Reservierung. Für Sie ist es ein sauberer Ablauf mit weniger Verlusten und weniger Nacharbeit.
+                    </p>
+                    <div class="signal-divider mb-8"></div>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="signal-label mb-2">Für den Gast</div>
+                            <p class="text-stone leading-relaxed">Die Reservierung fühlt sich klar, schnell und professionell an. Kein Warten, keine Unsicherheit, keine unklare Rückfrage.</p>
+                        </div>
+                        <div>
+                            <div class="signal-label mb-2">Für den Betrieb</div>
+                            <p class="text-stone leading-relaxed">Anfragen gehen nicht im Stoßgeschäft unter, Daten liegen geordnet vor und Erinnerungen laufen automatisch im Hintergrund.</p>
+                        </div>
+                        <a href="#booking" class="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full warm-button text-base font-medium transition-colors">
+                            <i data-lucide="calendar" class="w-5 h-5"></i>
+                            Erstgespräch buchen
                         </a>
                     </div>
                 </div>
+
+                <div class="editorial-frame rounded-[2rem] p-8 md:p-10">
+                    <div class="signal-label mb-5">Beispiel / So sieht es in der Praxis aus</div>
+
+                    <!-- Demo booking form — populated, non-interactive -->
+                    <div class="bg-white/60 border border-border rounded-[1.5rem] p-6 mb-6">
+                        <div class="text-center mb-5">
+                            <div class="font-display text-2xl text-foreground mb-1">Tisch reservieren</div>
+                            <p class="text-sm text-stone">Wir halten Ihren Tisch. Einfach kurz Bescheid geben.</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3 mb-3">
+                            <div>
+                                <div class="text-xs text-stone mb-1.5 tracking-wide">Name</div>
+                                <div class="border border-border rounded-xl px-3 py-2.5 text-sm text-foreground bg-white/80">Maximilian Roth</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-stone mb-1.5 tracking-wide">E-Mail</div>
+                                <div class="border border-border rounded-xl px-3 py-2.5 text-sm text-foreground bg-white/80">m.roth@mail.de</div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3 mb-3">
+                            <div>
+                                <div class="text-xs text-stone mb-1.5 tracking-wide">Datum</div>
+                                <div class="border border-border rounded-xl px-3 py-2.5 text-sm text-foreground bg-white/80">Sa, 12. April 2026</div>
+                            </div>
+                            <div>
+                                <div class="text-xs text-stone mb-1.5 tracking-wide">Personen</div>
+                                <div class="border border-border rounded-xl px-3 py-2.5 text-sm text-foreground bg-white/80">4 Gäste</div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="text-xs text-stone mb-1.5 tracking-wide">Uhrzeit</div>
+                            <div class="border border-border rounded-xl px-3 py-2.5 text-sm text-foreground bg-white/80">19:30 Uhr</div>
+                        </div>
+                        <div class="space-y-2 mb-4">
+                            <div class="flex items-start gap-2 text-xs text-stone">
+                                <div class="w-3.5 h-3.5 rounded border border-border bg-white/80 shrink-0 mt-0.5 flex items-center justify-center">
+                                    <div class="w-2 h-2 rounded-sm bg-industrial-orange opacity-80"></div>
+                                </div>
+                                <span>Ich stimme der Verarbeitung meiner Daten gemäß Datenschutzerklärung zu.</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-xs text-stone">
+                                <div class="w-3.5 h-3.5 rounded border border-border bg-white/80 shrink-0 mt-0.5"></div>
+                                <span>Ich möchte gelegentlich über Angebote informiert werden (optional).</span>
+                            </div>
+                        </div>
+                        <div class="warm-button rounded-full text-center py-3 text-sm font-medium cursor-default">Reservierung absenden</div>
+                    </div>
+
+                    <!-- Automated chain after submission -->
+                    <div class="signal-label mb-3">Was danach automatisch passiert</div>
+                    <div class="space-y-3">
+                        <div class="sage-panel rounded-[1.2rem] px-4 py-3 flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-full bg-sage-soft flex items-center justify-center text-pistachio shrink-0 mt-0.5">
+                                <i data-lucide="store" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm font-medium text-foreground">Betrieb erhält sofort Bescheid</div>
+                                <div class="text-xs text-stone mt-0.5">Neue Reservierung: M. Roth · Sa 12. April · 4 Pers. · 19:30 Uhr</div>
+                            </div>
+                        </div>
+                        <div class="sage-panel rounded-[1.2rem] px-4 py-3 flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-full bg-sage-soft flex items-center justify-center text-pistachio shrink-0 mt-0.5">
+                                <i data-lucide="badge-check" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm font-medium text-foreground">Gast erhält Bestätigung</div>
+                                <div class="text-xs text-stone mt-0.5">„Ihre Reservierung am Sa, 12. April um 19:30 Uhr ist eingegangen."</div>
+                            </div>
+                        </div>
+                        <div class="sage-panel rounded-[1.2rem] px-4 py-3 flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-full bg-sage-soft flex items-center justify-center text-pistachio shrink-0 mt-0.5">
+                                <i data-lucide="clock-3" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm font-medium text-foreground">24h-Erinnerung läuft automatisch</div>
+                                <div class="text-xs text-stone mt-0.5">„Ihr Tisch morgen um 19:30 Uhr – wir freuen uns auf Sie."</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 6 — Zusammenarbeit / Nächster Schritt -->
+    <section id="steps" class="section-air">
+        <div class="site-shell px-4 sm:px-6 lg:px-8">
+            <div class="mb-12">
+                <div class="signal-label mb-5">VI — Zusammenarbeit</div>
+                <h2 class="font-display text-4xl md:text-5xl text-foreground mb-4 leading-[1.1] max-w-3xl">Drei Phasen, ein klares Ziel: weniger verlorene Reservierungen und mehr planbarer Umsatz.</h2>
+                <p class="text-lg text-stone leading-relaxed max-w-2xl">Der Ablauf bleibt bewusst einfach: Analyse, Umsetzung, Begleitung. Klar, ruhig und ohne Agentur-Nebel.</p>
             </div>
 
-            <div class="grid lg:grid-cols-[0.78fr_0.78fr_0.64fr] gap-7">
-                <div class="editorial-frame rounded-[1.8rem] p-6">
-                    <div class="signal-label mb-3">Erweiterung 01</div>
-                    <h3 class="text-2xl font-semibold text-foreground mb-2">Add-on: E-Mail-Marketing</h3>
-                    <div class="text-2xl font-display text-foreground mb-4">+250 Euro / Monat</div>
-                    <p class="text-stone leading-relaxed">Wir helfen Restaurants, bestehende Gäste mit ruhigen, klaren Kampagnen wieder zurück an den Tisch zu holen.</p>
+            <div class="grid lg:grid-cols-3 gap-6 mb-10">
+                <div class="proposal-sheet rounded-[2rem] p-8">
+                    <div class="signal-label mb-4">01 / Analyse</div>
+                    <h3 class="font-display text-4xl md:text-5xl text-foreground mb-3 leading-[1.05]">Analyse</h3>
+                    <div class="text-sm text-stone mb-6 font-mono tracking-wide">30 Minuten</div>
+                    <p class="text-stone leading-relaxed">Wir prüfen Website, Reservierungsweg, Gästekommunikation und die wirtschaftlich relevanten Lücken im aktuellen Ablauf.</p>
                 </div>
-                <div class="editorial-frame rounded-[1.8rem] p-6">
-                    <div class="signal-label mb-3">Erweiterung 02</div>
-                    <h3 class="text-2xl font-semibold text-foreground mb-2">Add-on: Betreuung</h3>
-                    <div class="text-2xl font-display text-foreground mb-4">+350 Euro / Monat</div>
-                    <p class="text-stone leading-relaxed">Laufende Pflege, Support, Updates und operative Hilfe, damit die Seite im Alltag sauber und verlässlich bleibt.</p>
+
+                <div class="proposal-sheet rounded-[2rem] p-8">
+                    <div class="signal-label mb-4">02 / Umsetzung</div>
+                    <h3 class="font-display text-4xl md:text-5xl text-foreground mb-3 leading-[1.05]">Umsetzung</h3>
+                    <div class="text-sm text-stone mb-6 font-mono tracking-wide">ca. 10–14 Werktage</div>
+                    <p class="text-stone leading-relaxed">Ihre Website wird gestaltet, das Reservierungsformular eingebunden, Benachrichtigungen eingerichtet und alles vor dem Livegang sauber getestet.</p>
                 </div>
-                <div class="border border-border rounded-[1.8rem] p-6 bg-white/45">
-                    <div class="signal-label mb-3">Fremdkosten</div>
-                    <h3 class="text-xl font-semibold text-foreground mb-3">ca. 80 Euro / Monat auf Kundenseite</h3>
-                    <p class="text-stone leading-relaxed">Hosting, Backups, Datenbank und verwandte Dienste für den stabilen Betrieb. Bewusst getrennt von den eigentlichen RAIS-Leistungen.</p>
+
+                <div class="proposal-sheet rounded-[2rem] p-8">
+                    <div class="signal-label mb-4">03 / Begleitung</div>
+                    <h3 class="font-display text-4xl md:text-5xl text-foreground mb-3 leading-[1.05]">Begleitung</h3>
+                    <div class="text-sm text-stone mb-6 font-mono tracking-wide">ab Livegang</div>
+                    <p class="text-stone leading-relaxed mb-4">14 Tage Post-Launch-Support für technische Fragen und Bugfixes sind inklusive. Auf Wunsch übernehmen wir danach Pflege, Support und kleine Updates, damit die Seite dauerhaft zu Ihrem Betrieb passt.</p>
                 </div>
             </div>
 
-            <div id="booking" class="mt-24 rounded-[2rem] p-8 md:p-10 lg:p-12 editorial-frame">
+            <div>
+                <a href="#booking" class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full warm-button text-base font-medium transition-colors">
+                    <i data-lucide="calendar" class="w-5 h-5"></i>
+                    Erstgespräch buchen
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 7 — CTA / Erstgespräch Kalender -->
+    <section id="booking" class="section-air">
+        <div class="site-shell px-4 sm:px-6 lg:px-8">
+            <div class="editorial-frame rounded-[2rem] p-8 md:p-10 lg:p-12">
                 <div class="grid lg:grid-cols-[0.92fr_1.08fr] gap-12 items-start">
                     <div>
-                        <div class="signal-label mb-4">Terminbuchung</div>
-                        <h3 class="font-display text-3xl md:text-4xl text-foreground mb-4">Lassen Sie uns kurz anschauen, wo Ihre Website heute Reservierungen liegen lässt.</h3>
-                        <p class="text-lg text-stone leading-relaxed mb-6">Im Erstgespräch schauen wir auf Ihren aktuellen Auftritt, die Reservierungsstrecke und die Punkte, an denen im Stoßgeschäft Anfragen verloren gehen.</p>
-                        <div class="proof-stack text-stone leading-relaxed">
-                            Kein Technik-Vortrag, keine Agentur-Show. Sondern ein klarer Blick darauf, was sich für Ihren Betrieb rechnet und was nicht.
+                        <div class="signal-label mb-4">VII — Nächster Schritt</div>
+                        <h2 class="font-display text-3xl md:text-4xl text-foreground mb-4 leading-[1.1]">30 Minuten. Kein Technik-Vortrag. Ein klares Bild davon, ob RAIS für Ihren Betrieb sinnvoll ist.</h2>
+                        <p class="text-lg text-stone leading-relaxed mb-6">Wir prüfen gemeinsam Ihren aktuellen Auftritt, die Reservierungsstrecke und die Stellen, an denen im Stoßgeschäft Nachfrage verloren geht.</p>
+                        <div class="proof-stack text-stone leading-relaxed mb-6">
+                            Keine Agentur-Show. Keine unverbindliche Begeisterung. Sondern eine ruhige Einordnung, ob das Angebot für Ihren Betrieb Sinn ergibt.
                         </div>
+                        <div class="flex items-center gap-3 text-stone mb-4">
+                            <i data-lucide="mail" class="w-4 h-4 text-industrial-orange shrink-0"></i>
+                            <a href="mailto:kevin@ritz-ai.solutions" class="hover:text-foreground transition-colors">kevin@ritz-ai.solutions</a>
+                        </div>
+                        <a href="https://calendly.com/ritzaisolutions/30min" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-border text-stone text-sm font-medium transition-colors outline-button">
+                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                            Direkt im Browser buchen
+                        </a>
+                        <p class="text-xs text-stone mt-2">Falls das Kalender-Widget nicht lädt.</p>
                     </div>
                     <div class="rounded-[1.5rem] overflow-hidden border border-border bg-white/50">
                         <div class="calendly-inline-widget"
@@ -941,121 +1012,6 @@
         </div>
     </section>
 
-    <!-- Deployment Cycle Section -->
-    <section id="steps" class="section-air">
-        <div class="site-shell px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-14 items-start">
-                <div>
-                    <div class="signal-label mb-5">Zusammenarbeit</div>
-                    <h2 class="font-display text-4xl md:text-5xl text-foreground mb-6">Drei Phasen, ein klares Ziel: schnell zu einer Website, die im Alltag mitarbeitet.</h2>
-                    <p class="text-lg text-stone leading-relaxed">Der Ablauf soll sich für den Inhaber einfach anfühlen: erst verstehen, dann umsetzen, dann begleiten. Klare Übergänge, kein Agentur-Nebel.</p>
-                </div>
-
-                <div class="proposal-sheet rounded-[2rem] p-8 md:p-10">
-                    <div class="space-y-8">
-                        <div class="grid md:grid-cols-[140px_1fr] gap-6 items-start">
-                            <div class="signal-label">01 / Analyse / 1-2 Termine</div>
-                            <div>
-                                <h3 class="text-2xl font-semibold text-foreground mb-3">Wir schauen auf den Ist-Zustand.</h3>
-                                <p class="text-stone leading-relaxed">Wir prüfen Ihre aktuelle Website, die Reservierungsanfragen und die Punkte, an denen im Alltag Anfragen verloren gehen oder Gäste nicht sauber nachgefasst werden.</p>
-                            </div>
-                        </div>
-                        <div class="signal-divider"></div>
-                        <div class="grid md:grid-cols-[140px_1fr] gap-6 items-start">
-                            <div class="signal-label">02 / Umsetzung / ca. 10-14 Werktage</div>
-                            <div>
-                                <h3 class="text-2xl font-semibold text-foreground mb-3">Wir bauen die neue Strecke.</h3>
-                                <p class="text-stone leading-relaxed">Ihre Website wird gestaltet, das Reservierungsformular eingebunden, Benachrichtigungen eingerichtet und alles vor dem Livegang sauber getestet.</p>
-                            </div>
-                        </div>
-                        <div class="signal-divider"></div>
-                        <div class="grid md:grid-cols-[140px_1fr] gap-6 items-start">
-                            <div class="signal-label">03 / Begleitung / ab Livegang</div>
-                            <div>
-                                <h3 class="text-2xl font-semibold text-foreground mb-3">Wir bleiben erreichbar, wenn es sinnvoll ist.</h3>
-                                <p class="text-stone leading-relaxed">Auf Wunsch übernehmen wir Pflege, Support, Updates und weitere operative Themen, damit die Seite auch langfristig zu Ihrem Betrieb passt.</p>
-                            </div>
-                        </div>
-                        <div class="pt-2">
-                            <a href="#booking" class="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full warm-button text-base font-medium transition-colors">
-                                <i data-lucide="calendar-check-2" class="w-5 h-5"></i>
-                                Kostenloses Erstgespräch buchen
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Contact Section -->
-    <section id="contact" class="section-air">
-        <div class="site-shell px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-[0.95fr_1.05fr] gap-12 items-start">
-                <div>
-                    <div class="signal-label mb-4">Kontakt</div>
-                    <h2 class="font-display text-4xl md:text-5xl text-foreground mb-5">Wenn Sie eine ruhigere und nützlichere Website für Ihr Restaurant wollen, schreiben Sie uns.</h2>
-                    <p class="text-lg text-stone leading-relaxed mb-8">Sie müssen keine technischen Begriffe kennen. Schreiben Sie einfach kurz, wie Ihr aktueller Stand aussieht und was im Alltag gerade am meisten stört.</p>
-                    <div class="editorial-frame rounded-[1.75rem] p-6 space-y-5">
-                        <div class="flex items-start gap-4">
-                            <div class="w-11 h-11 rounded-full bg-sage-soft flex items-center justify-center text-pistachio">
-                                <i data-lucide="mail" class="w-5 h-5"></i>
-                            </div>
-                            <div>
-                                <div class="text-sm uppercase tracking-[0.18em] text-stone mb-1">E-Mail</div>
-                                <a href="mailto:kevin@ritz-ai.solutions" class="text-lg text-foreground hover:text-industrial-orange transition-colors">kevin@ritz-ai.solutions</a>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-4">
-                            <div class="w-11 h-11 rounded-full bg-sage-soft flex items-center justify-center text-pistachio">
-                                <i data-lucide="shield-check" class="w-5 h-5"></i>
-                            </div>
-                            <div>
-                                <div class="text-sm uppercase tracking-[0.18em] text-stone mb-1">Rechtlicher Rahmen</div>
-                                <p class="text-stone leading-relaxed">Impressum, Datenschutz und Cookie-Banner sind Teil des Grundauftritts und werden nicht erst am Ende mitgedacht.</p>
-                            </div>
-                        </div>
-                        <a href="#booking" class="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full warm-button text-base font-medium transition-colors">
-                            <i data-lucide="calendar-check-2" class="w-5 h-5"></i>
-                            Erstgespräch buchen
-                        </a>
-                    </div>
-                </div>
-
-                <div class="proposal-sheet rounded-[2rem] p-8">
-                    <form class="space-y-6" onsubmit="handleFormSubmit(event)">
-                        <div class="grid md:grid-cols-2 gap-5">
-                            <div>
-                                <label for="name" class="block text-sm text-stone mb-2">Ihr Name</label>
-                                <input type="text" id="name" name="name" required class="terminal-input w-full rounded-2xl border border-border bg-white/70 px-4 py-3 text-foreground focus:outline-none transition-colors" placeholder="Max Mustermann">
-                            </div>
-                            <div>
-                                <label for="email" class="block text-sm text-stone mb-2">E-Mail-Adresse</label>
-                                <input type="email" id="email" name="email" required class="terminal-input w-full rounded-2xl border border-border bg-white/70 px-4 py-3 text-foreground focus:outline-none transition-colors" placeholder="restaurant@beispiel.de">
-                            </div>
-                        </div>
-                        <div>
-                            <label for="subject" class="block text-sm text-stone mb-2">Worum geht es?</label>
-                            <input type="text" id="subject" name="subject" class="terminal-input w-full rounded-2xl border border-border bg-white/70 px-4 py-3 text-foreground focus:outline-none transition-colors" placeholder="Neue Website, Reservierungsformular, Betreuung">
-                        </div>
-                        <div>
-                            <label for="message" class="block text-sm text-stone mb-2">Ihre Nachricht</label>
-                            <textarea id="message" name="message" rows="6" required class="terminal-input w-full rounded-3xl border border-border bg-white/70 px-4 py-4 text-foreground focus:outline-none transition-colors resize-none" placeholder="Kurz beschrieben: Was funktioniert aktuell nicht gut?"></textarea>
-                        </div>
-                        <div class="flex items-start gap-3 text-sm text-stone">
-                            <input type="checkbox" id="consent" required class="mt-1 accent-industrial-orange">
-                            <label for="consent">Ich stimme der Verarbeitung meiner personenbezogenen Daten gemäß der <a href="datenschutz.html" class="text-industrial-orange-bright hover:underline">Datenschutzerklärung</a> zu.</label>
-                        </div>
-                        <button type="submit" class="w-full inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full warm-button text-base font-medium transition-colors">
-                            <i data-lucide="send" class="w-5 h-5"></i>
-                            Nachricht senden
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Footer -->
     <footer class="border-t border-border bg-surface/90">
@@ -1067,15 +1023,15 @@
                         <span class="font-mono text-xl tracking-wider text-industrial-orange-bright font-semibold">RAIS</span>
                     </div>
                     <div class="signal-label mb-3">Restaurant Systems mit Haltung</div>
-                    <p class="text-stone max-w-md leading-relaxed">Ritz AI Solutions baut für Restaurants einen professionellen Webauftritt, der im Alltag wirklich hilft: mehr Reservierungen, weniger verpasste Anfragen und ein sauberer geschäftlicher Eindruck.</p>
+                    <p class="text-stone max-w-md leading-relaxed">RAIS baut für Restaurants einen professionellen Webauftritt, der im Alltag wirklich hilft: mehr erfasste Reservierungen, weniger verlorene Anfragen und ein sauberer geschäftlicher Eindruck.</p>
                 </div>
                 <div>
                     <div class="signal-label mb-4">Schnellzugriff</div>
                     <div class="space-y-3 text-stone">
+                        <a href="#problem" class="block hover:text-foreground transition-colors">Das Problem</a>
                         <a href="#pricing" class="block hover:text-foreground transition-colors">Leistung</a>
-                        <a href="#impact" class="block hover:text-foreground transition-colors">Wirkung</a>
-                        <a href="#steps" class="block hover:text-foreground transition-colors">Zusammenarbeit</a>
-                        <a href="#contact" class="block hover:text-foreground transition-colors">Kontakt</a>
+                        <a href="#flow" class="block hover:text-foreground transition-colors">Wie es funktioniert</a>
+                        <a href="#booking" class="block hover:text-foreground transition-colors">Erstgespräch</a>
                     </div>
                 </div>
                 <div>
@@ -1105,7 +1061,7 @@
         </div>
 
         <p class="text-sm text-stone leading-relaxed mb-4">
-            Der Assistent beantwortet erste Fragen zu Reservierungen, Ablauf und Zusammenarbeit. Für konkrete Angebote oder einen schnellen Austausch bleibt das Erstgespräch der beste nächste Schritt.
+            Der Assistent beantwortet erste Fragen zu Reservierungen, Ablauf und Zusammenarbeit. Für ein konkretes Gespräch ist die Kalender-Buchung der beste nächste Schritt.
         </p>
 
         <div id="chatMessages" class="chat-messages space-y-3 mb-4 pr-1">
@@ -1117,7 +1073,7 @@
         <form id="chatForm" class="space-y-3">
             <textarea id="chatInput" rows="6" class="w-full rounded-3xl border border-border bg-white/80 px-4 py-4 text-foreground focus:outline-none transition-colors resize-none" placeholder="Ihre Frage an RAIS"></textarea>
             <div class="flex items-start gap-3 text-sm text-stone">
-                <input type="checkbox" id="chatConsent" class="mt-1 accent-industrial-orange">
+                <input type="checkbox" id="chatConsent" required class="mt-1 accent-industrial-orange">
                 <label for="chatConsent">Ich bin einverstanden, dass meine Chat-Eingaben zur Beantwortung über einen Webhook an die RAIS-Systeme übermittelt und gemäß der <a href="datenschutz.html" class="text-industrial-orange-bright hover:underline">Datenschutzerklärung</a> verarbeitet werden.</label>
             </div>
             <div class="flex flex-col sm:flex-row gap-3">
@@ -1138,11 +1094,9 @@
     <script>
         const MAIN_OFFER_PRICE = 1200;
         const REPORT_WEBHOOK_URL = 'https://n8n.ritz-ai.solutions/webhook/rais-roi-report-lead';
-        const CHAT_WEBHOOK_URL = 'https://n8n.ritz-ai.solutions/webhook/65f15d05-e0e0-49db-9fe7-47f9a2716baf';
+        const CHAT_WEBHOOK_URL = 'https://n8n.ritz-ai.solutions/webhook/chat';
 
-        // Initialize Lucide icons
         document.addEventListener('DOMContentLoaded', () => {
-            reorderHomepageSections();
             lucide.createIcons();
             setupImpactCalculator();
             setupReportLeadForm();
@@ -1164,26 +1118,6 @@
                     mobileMenu.classList.add('hidden');
                 });
             });
-        }
-
-        // Form submission handler
-        function handleFormSubmit(event) {
-            event.preventDefault();
-
-            const formData = new FormData(event.target);
-            const data = {
-                name: formData.get('name'),
-                email: formData.get('email'),
-                subject: formData.get('subject'),
-                message: formData.get('message')
-            };
-
-            // Here you would normally send the data to your backend
-            console.log('Form submitted:', data);
-
-            // Show success message
-            alert('Danke. Ihre Nachricht wurde übermittelt. Wir melden uns zeitnah.');
-            event.target.reset();
         }
 
         function setupImpactCalculator() {
@@ -1234,27 +1168,6 @@
             });
 
             updateCalculator();
-        }
-
-        function reorderHomepageSections() {
-            const heroSection = document.querySelector('section.relative.min-h-screen');
-            const impactSection = document.getElementById('impact');
-            const pricingSection = document.getElementById('pricing');
-            const flowSection = document.getElementById('flow');
-            const stepsSection = document.getElementById('steps');
-            const bookingSection = document.getElementById('booking');
-
-            if (heroSection && impactSection) {
-                heroSection.insertAdjacentElement('afterend', impactSection);
-            }
-
-            if (pricingSection && flowSection) {
-                pricingSection.insertAdjacentElement('afterend', flowSection);
-            }
-
-            if (stepsSection && bookingSection) {
-                stepsSection.insertAdjacentElement('afterend', bookingSection);
-            }
         }
 
         function getImpactReportData() {
@@ -1376,7 +1289,7 @@
             y += 8;
             doc.setFont('helvetica', 'normal');
             const nextStep = doc.splitTextToSize(
-                'In einem kurzen Erstgespräch schauen wir auf Ihren aktuellen Auftritt, Ihre Reservierungsstrecke und die Punkte, an denen heute Anfragen verloren gehen.',
+                'In einer kurzen Einordnung schauen wir auf Ihren aktuellen Auftritt, Ihre Reservierungsstrecke und die Punkte, an denen heute Anfragen verloren gehen.',
                 170
             );
             doc.text(nextStep, margin, y);
@@ -1474,7 +1387,7 @@
                 return 'Die Umsetzung liegt typischerweise bei etwa 10 bis 14 Werktagen, nachdem wir die Analyse und die nötigen Inhalte geklärt haben.';
             }
 
-            return 'Ich kann erste Fragen zu Angebot, Ablauf und Reservierungsstrecke beantworten. Wenn Sie Ihren Fall kurz besprechen möchten, ist das Erstgespräch der beste nächste Schritt.';
+            return 'Ich kann erste Fragen zu Angebot, Ablauf und Reservierungsstrecke beantworten. Für ein konkretes Gespräch ist die Kalender-Buchung der beste nächste Schritt.';
         }
 
         function setupChatWidget() {
@@ -1521,47 +1434,39 @@
                 input.value = '';
 
                 try {
-                    if (CHAT_WEBHOOK_URL && !CHAT_WEBHOOK_URL.includes('PASTE_CHAT_WEBHOOK_URL_HERE')) {
-                        const response = await fetch(CHAT_WEBHOOK_URL, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({
-                                message,
-                                page: window.location.href,
-                                consent: true,
-                                source: 'website-chat',
-                                createdAt: new Date().toISOString()
-                            })
-                        });
+                    const response = await fetch(CHAT_WEBHOOK_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            message,
+                            page: window.location.href,
+                            consent: true,
+                            source: 'website-chat',
+                            createdAt: new Date().toISOString()
+                        })
+                    });
 
-                        if (!response.ok) {
-                            throw new Error('Chat webhook request failed');
-                        }
-
-                        const payload = await response.json().catch(() => ({}));
-                        appendChatMessage('agent', payload.reply || getFallbackChatResponse(message));
-                        status.textContent = 'Antwort eingetroffen.';
-                        return;
+                    if (!response.ok) {
+                        throw new Error('Chat webhook request failed');
                     }
 
-                    appendChatMessage('agent', getFallbackChatResponse(message));
-                    status.textContent = 'Platzhalter-Antwort aktiv. Die echte Chat-Webhook-URL fehlt noch.';
+                    const payload = await response.json().catch(() => ({}));
+                    if (payload.reply) {
+                        appendChatMessage('agent', payload.reply);
+                        status.textContent = 'Antwort eingetroffen.';
+                    } else {
+                        console.warn('Chat webhook returned 200 but no reply field:', payload);
+                        appendChatMessage('agent', getFallbackChatResponse(message));
+                        status.textContent = 'Automatische Antwort – Live-Assistent gerade nicht erreichbar.';
+                    }
                 } catch (error) {
                     console.error('Chat widget error:', error);
-                    appendChatMessage('agent', 'Gerade konnte keine Live-Antwort geladen werden. Wenn Sie möchten, buchen Sie direkt ein Erstgespräch oder versuchen es gleich noch einmal.');
+                    appendChatMessage('agent', 'Gerade konnte keine Live-Antwort geladen werden. Buchen Sie gerne direkt ein Erstgespräch oder versuchen Sie es gleich noch einmal.');
                     status.textContent = 'Die Live-Antwort konnte gerade nicht geladen werden.';
                 }
             });
-        }
-        // Legal toggle
-        function toggleLegal(id) {
-            const el = document.getElementById(id);
-            el.classList.toggle('hidden');
-            if (!el.classList.contains('hidden')) {
-                el.scrollIntoView({ behavior: 'smooth' });
-            }
         }
 
         // Smooth scroll for anchor links

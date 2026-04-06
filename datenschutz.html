@@ -5,357 +5,451 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Datenschutzerklärung | RAIS</title>
+    <meta name="robots" content="noindex, follow">
+
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="e97619e5-544b-4a6c-aeb9-c4c02403c500" data-blockingmode="auto" type="text/javascript"></script>
+
+    <link rel="icon" type="image/png" href="favicon.png?v=2">
+    <link rel="stylesheet" href="fonts.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+
     <style>
         :root {
-            --background: 0 0% 7%;
-            --foreground: 0 0% 95%;
-            --border: 0 0% 20%;
-            --industrial-orange: 24 100% 57%;
-            --industrial-orange-bright: 24 100% 67%;
-            --accent-purple-bright: 271 91% 65%;
+            --background: 40 29% 94%;
+            --foreground: 24 13% 16%;
+            --border: 36 21% 83%;
+            --industrial-orange: 18 83% 57%;
+            --industrial-orange-bright: 18 88% 62%;
+            --sage: 86 22% 48%;
+            --dark-pistachio: 95 28% 26%;
+            --muted-stone: 31 8% 42%;
+            --surface: 38 42% 97%;
         }
 
         body {
-            background-color: hsl(var(--background));
-            color: hsl(var(--foreground));
             font-family: 'Inter', sans-serif;
+            background: hsl(var(--background));
+            color: hsl(var(--foreground));
             background-image:
-                radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.03) 1px, transparent 0);
-            background-size: 40px 40px;
+                radial-gradient(circle at top right, rgba(143, 159, 114, 0.22), transparent 28%),
+                radial-gradient(circle at 16% 18%, rgba(72, 96, 54, 0.14), transparent 24%),
+                linear-gradient(180deg, rgba(251, 248, 243, 0.98), rgba(244, 241, 234, 1));
         }
 
-        .font-mono {
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .font-display { font-family: "Baskerville", "Palatino Linotype", "Book Antiqua", serif; }
+
+        .text-foreground { color: hsl(var(--foreground)); }
+        .text-stone { color: hsl(var(--muted-stone)); }
+        .text-industrial-orange { color: hsl(var(--industrial-orange)); }
+        .text-industrial-orange-bright { color: hsl(var(--industrial-orange-bright)); }
+        .border-border { border-color: hsl(var(--border)); }
+        .bg-surface { background: hsl(var(--surface)); }
+
+        .signal-label {
             font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: hsl(var(--dark-pistachio));
         }
 
-        .border-dashed {
-            border-style: dashed;
+        .signal-divider {
+            height: 1px;
+            background: linear-gradient(90deg, rgba(72, 96, 54, 0.82), rgba(236, 106, 55, 0.55), rgba(217, 209, 199, 0.18));
         }
 
-        .text-industrial-orange-bright {
-            color: hsl(var(--industrial-orange-bright));
+        .proposal-sheet {
+            background: linear-gradient(180deg, rgba(248, 249, 243, 1), rgba(239, 243, 232, 0.96));
+            border: 1px solid rgba(72, 96, 54, 0.24);
+            box-shadow: 0 30px 70px rgba(47, 42, 36, 0.06);
         }
 
-        .glow-text {
-            text-shadow: 0 0 15px rgba(255, 127, 36, 0.4);
+        .sage-panel {
+            background: rgba(120, 148, 100, 0.22);
+            border: 1px solid rgba(72, 96, 54, 0.22);
+        }
+
+        .editorial-frame {
+            background: linear-gradient(180deg, rgba(247, 248, 242, 0.98), rgba(239, 243, 233, 0.95));
+            border: 1px solid hsl(var(--border));
+        }
+
+        .proof-stack {
+            border-left: 1px solid rgba(72, 96, 54, 0.35);
+            padding-left: 1.25rem;
+        }
+
+        .site-shell {
+            width: min(72rem, calc(100vw - 2rem));
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .outline-button:hover {
+            border-color: hsl(var(--industrial-orange));
+            color: hsl(var(--foreground));
+            background: rgba(236, 106, 55, 0.04);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.8rem;
+        }
+
+        .data-table th {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: hsl(var(--dark-pistachio));
+            text-align: left;
+            padding: 0.5rem 1rem 0.5rem 0;
+            border-bottom: 1px solid hsl(var(--border));
+        }
+
+        .data-table td {
+            padding: 0.6rem 1rem 0.6rem 0;
+            border-bottom: 1px solid rgba(217, 209, 199, 0.5);
+            color: hsl(31 8% 42%);
+            vertical-align: top;
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
         }
     </style>
-</head>
-
-<body class="min-h-screen py-20 px-4">
-    <div class="max-w-4xl mx-auto">
-        <!-- Back Button -->
-        <a href="index.html"
-            class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-gray-500 hover:text-industrial-orange-bright transition-colors mb-12">
-            <i data-lucide="arrow-left" class="w-4 h-4"></i>
-            Zurück zur Startseite
-        </a>
-
-        <div class="relative border-2 border-dashed border-border p-8 md:p-12 bg-background/50 backdrop-blur-sm">
-            <!-- Corner Accents -->
-            <i data-lucide="plus" class="absolute -top-[1px] -left-[1px] w-3 h-3 text-industrial-orange-bright"></i>
-            <i data-lucide="plus" class="absolute -top-[1px] -right-[1px] w-3 h-3 text-industrial-orange-bright"></i>
-            <i data-lucide="plus" class="absolute -bottom-[1px] -left-[1px] w-3 h-3 text-industrial-orange-bright"></i>
-            <i data-lucide="plus" class="absolute -bottom-[1px] -right-[1px] w-3 h-3 text-industrial-orange-bright"></i>
-
-            <div class="mb-12">
-                <div class="font-mono text-xs uppercase tracking-ultra-wide text-accent-purple-bright mb-4">
-                    [ Privacy Protocol ]
-                </div>
-                <h1 class="font-mono text-5xl font-bold text-foreground uppercase tracking-tighter glow-text">
-                    Datenschutz
-                </h1>
-            </div>
-
-            <div class="space-y-10 font-sans text-sm text-gray-400 leading-relaxed">
-                <section>
-                    <h2
-                        class="font-mono text-xs uppercase tracking-widest text-industrial-orange-bright mb-4 border-b border-dashed border-border pb-2">
-                        01. Datenschutz auf einen Blick</h2>
-                    <h3 class="text-foreground font-bold mb-2">Allgemeine Hinweise</h3>
-                    <p class="mb-4">Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren
-                        personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind
-                        alle Daten, mit denen Sie persönlich identifiziert werden können.</p>
-                    <h3 class="text-foreground font-bold mb-2">Datenerfassung auf dieser Website</h3>
-                    <p>Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten
-                        können Sie dem Abschnitt „Hinweis zur Verantwortlichen Stelle“ in dieser Datenschutzerklärung
-                        entnehmen.</p>
-                </section>
-
-                <section>
-                    <h2
-                        class="font-mono text-xs uppercase tracking-widest text-industrial-orange-bright mb-4 border-b border-dashed border-border pb-2">
-                        02. Hostinger Hosting</h2>
-                    <p>Wir hosten unsere Website bei Hostinger. Anbieter ist die Hostinger International Ltd., 61 Lordou
-                        Vironos Street, 6023 Larnaca, Zypern (im Folgenden: Hostinger).</p>
-                    <p class="mt-2">Details entnehmen Sie der Datenschutzerklärung von Hostinger: <a
-                            href="https://www.hostinger.de/datenschutz" target="_blank"
-                            class="underline">https://www.hostinger.de/datenschutz</a>.</p>
-                </section>
-
-                <section>
-                    <h2
-                        class="font-mono text-xs uppercase tracking-widest text-industrial-orange-bright mb-4 border-b border-dashed border-border pb-2">
-                        03. Allgemeine Hinweise und Pflichtinformationen</h2>
-                    <h3 class="text-foreground font-bold mb-2">Hinweis zur verantwortlichen Stelle</h3>
-                    <p class="text-foreground">
-                        Kevin Ritz<br>
-                        Von-Cohhausen-Straße 9<br>
-                        56076 Koblenz<br>
-                        E-Mail: kevin@ritz-ai.solutions
-                    </p>
-                    <p class="mt-4">Verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder
-                        gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten
-                        entscheidet.</p>
-                </section>
-
-                <section>
-                    <h2
-                        class="font-mono text-xs uppercase tracking-widest text-industrial-orange-bright mb-4 border-b border-dashed border-border pb-2">
-                        04. KI-Verarbeitung (Google Gemini & n8n)</h2>
-                    <p>In unserem Chat-Widget nutzen wir Webhooks von n8n und die KI-Technologie von Google Gemini
-                        (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland), um Ihre Anfragen zu
-                        verarbeiten.</p>
-                    <p class="mt-2 text-foreground font-bold">Details zur Verarbeitung:</p>
-                    <p>Wenn Sie das Chat-Widget nutzen, werden Ihre Eingaben an unsere n8n-Instanz übertragen und zur
-                        Generierung einer Antwort an die Google Gemini API weitergeleitet. Ihre Daten werden hierbei
-                        ausschließlich zur Bearbeitung der aktuellen Sitzung verwendet.</p>
-                    <p class="mt-2 text-foreground font-bold">Zweck der Verarbeitung:</p>
-                    <p>Die Verarbeitung erfolgt zur Bereitstellung automatisierter Support-Funktionen und zur
-                        Beantwortung Ihrer Anfragen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes
-                        Interesse an einer effizienten Kommunikation).</p>
-                </section>
-
-                <section>
-                    <h2
-                        class="font-mono text-xs uppercase tracking-widest text-industrial-orange-bright mb-4 border-b border-dashed border-border pb-2">
-                        05. PDF-Report zur Reservierungsanalyse</h2>
-                    <p>Wenn Sie auf unserer Website einen PDF-Report zur Schätzung verpasster Reservierungen anfordern,
-                        verarbeiten wir die von Ihnen eingegebene E-Mail-Adresse, den optionalen Restaurantnamen sowie
-                        die von Ihnen im Rechner eingestellten Werte.</p>
-                    <p class="mt-2 text-foreground font-bold">Zweck der Verarbeitung:</p>
-                    <p>Die Verarbeitung erfolgt, um Ihnen den angeforderten Report bereitzustellen, die Anfrage intern
-                        zu dokumentieren und Sie im Anschluss zum Inhalt dieses Reports kontaktieren zu dürfen.</p>
-                    <p class="mt-2 text-foreground font-bold">Technische Verarbeitung:</p>
-                    <p>Die Anfragedaten werden über einen Webhook an unsere n8n-Instanz übertragen und von dort in
-                        unsere Supabase-Datenbank übernommen. Dort werden der Lead, die Report-Werte und die zugehörige
-                        Einwilligung gespeichert, damit wir die Anfrage nachvollziehen und bearbeiten können.</p>
-                    <p class="mt-2 text-foreground font-bold">Rechtsgrundlage:</p>
-                    <p>Die Verarbeitung erfolgt auf Grundlage Ihrer ausdrücklichen Einwilligung gemäß Art. 6 Abs. 1 lit.
-                        a DSGVO, die Sie im Formular zur Report-Anforderung erteilen.</p>
-                    <p class="mt-2 text-foreground font-bold">Speicherdauer:</p>
-                    <p>Wir speichern diese Daten nur so lange, wie dies für die Bearbeitung der Anfrage, die mögliche
-                        Kontaktaufnahme und die kaufmännische bzw. rechtliche Dokumentation erforderlich ist. Sobald der
-                        Zweck entfällt und keine gesetzlichen Aufbewahrungspflichten bestehen, werden die Daten gelöscht.</p>
-                </section>
-
-                <section>
-                    <h2
-                        class="font-mono text-xs uppercase tracking-widest text-industrial-orange-bright mb-4 border-b border-dashed border-border pb-2">
-                        06. Ihre Rechte</h2>
-                    <p>Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen jederzeit das Recht auf:</p>
-                    <ul class="list-disc pl-5 mt-2 space-y-1">
-                        <li>Auskunft über Ihre gespeicherten personenbezogenen Daten (Art. 15 DSGVO)</li>
-                        <li>Berichtigung unrichtiger Daten (Art. 16 DSGVO)</li>
-                        <li>Löschung Ihrer Daten (Art. 17 DSGVO)</li>
-                        <li>Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
-                        <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
-                        <li>Widerruf Ihrer Einwilligung (Art. 7 Abs. 3 DSGVO)</li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h2
-                        class=”font-mono text-xs uppercase tracking-widest text-industrial-orange-bright mb-4 border-b border-dashed border-border pb-2”>
-                        06. SSL- bzw. TLS-Verschlüsselung</h2>
-                    <p>Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte,
-                        wie zum Beispiel Anfragen, die Sie an uns als Seitenbetreiber senden, eine SSL- bzw.
-                        TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des
-                        Browsers von „http://” auf „https://” wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.
-                    </p>
-                </section>
-
-                <section>
-                    <h2
-                        class=”font-mono text-xs uppercase tracking-widest text-industrial-orange-bright mb-4 border-b border-dashed border-border pb-2”>
-                        07. Cookie-Einwilligungsverwaltung (RAIS Consent)</h2>
-                    <p>Auf dieser Website ist ein eigenes Cookie-Consent-System eingesetzt, das Ihre Einwilligung zur
-                        Verwendung von Cookies gemäß § 25 Abs. 1 TTDSG und Art. 7 DSGVO einholt, dokumentiert und
-                        verwaltet.</p>
-                    <p class=”mt-2 text-foreground font-bold”>Was das System speichert:</p>
-                    <p class=”mt-1”>Bei jeder Einwilligungsaktion wird in Ihrem Browser ein Cookie namens
-                        <strong>rais_consent</strong> gesetzt. Dieses Cookie enthält eine anonyme eindeutige ID (UID),
-                        den Zeitstempel der Einwilligung, die Version der Einwilligungskonfiguration sowie Ihre
-                        Kategoriauswahl. Es werden keine personenbezogenen Daten (Name, E-Mail etc.) in diesem Cookie
-                        gespeichert.</p>
-                    <p class=”mt-2 text-foreground font-bold”>Cookie-Details:</p>
-                    <div class=”overflow-x-auto mt-2”>
-                        <table class=”w-full text-xs border-collapse”>
-                            <thead>
-                                <tr class=”border-b border-dashed border-border”>
-                                    <th class=”text-left font-mono text-industrial-orange-bright py-1 pr-4”>Name</th>
-                                    <th class=”text-left font-mono text-industrial-orange-bright py-1 pr-4”>Anbieter</th>
-                                    <th class=”text-left font-mono text-industrial-orange-bright py-1 pr-4”>Zweck</th>
-                                    <th class=”text-left font-mono text-industrial-orange-bright py-1 pr-4”>Laufzeit</th>
-                                    <th class=”text-left font-mono text-industrial-orange-bright py-1”>Typ</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class=”border-b border-dashed border-border”>
-                                    <td class=”py-1 pr-4”>rais_consent</td>
-                                    <td class=”py-1 pr-4”>Eigentümer dieser Website</td>
-                                    <td class=”py-1 pr-4”>Speichert Cookie-Einwilligung mit UID und Zeitstempel</td>
-                                    <td class=”py-1 pr-4”>365 Tage</td>
-                                    <td class=”py-1”>HTTP Cookie</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <p class=”mt-2”><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. c DSGVO (rechtliche
-                        Verpflichtung zur Einwilligungsdokumentation). Die Einwilligungsdaten werden nicht an Dritte
-                        weitergegeben.</p>
-                    <p class=”mt-2”>Sie können Ihre Einwilligung jederzeit über das Cookie-Icon (unten links auf der
-                        Seite) widerrufen oder anpassen. Der Widerruf berührt nicht die Rechtmäßigkeit der bis zum
-                        Widerruf aufgrund der Einwilligung erfolgten Verarbeitung (Art. 7 Abs. 3 DSGVO).</p>
-                </section>
-
-                <section>
-                    <h2
-                        class=”font-mono text-xs uppercase tracking-widest text-industrial-orange-bright mb-4 border-b border-dashed border-border pb-2”>
-                        08. Google Analytics (GA4)</h2>
-                    <p>Diese Website nutzt Google Analytics 4, einen Webanalysedienst der Google Ireland Limited,
-                        Gordon House, Barrow Street, Dublin 4, Irland (im Folgenden: Google).</p>
-                    <p class=”mt-2”><strong>Zweck:</strong> Analyse des Nutzerverhaltens zur Verbesserung unseres
-                        Webangebots. Google Analytics erfasst Daten über Seitenaufrufe, Verweildauer, Absprungrate und
-                        verwendete Geräte in anonymisierter Form.</p>
-                    <p class=”mt-2”><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TTDSG.
-                        Google Analytics wird nur nach ausdrücklicher Einwilligung aktiviert.</p>
-                    <p class=”mt-2”><strong>IP-Anonymisierung:</strong> Google Analytics ist mit IP-Anonymisierung
-                        konfiguriert — Ihre IP-Adresse wird vor der Speicherung gekürzt.</p>
-                    <p class=”mt-2”><strong>Datenübertragung in Drittländer:</strong> Eine Übertragung von Daten in die
-                        USA ist möglich. Google LLC hat sich den EU-Standardvertragsklauseln (SCCs) unterworfen.</p>
-                    <p class=”mt-2 text-foreground font-bold”>Cookie-Details:</p>
-                    <div class=”overflow-x-auto mt-2”>
-                        <table class=”w-full text-xs border-collapse”>
-                            <thead>
-                                <tr class=”border-b border-dashed border-border”>
-                                    <th class=”text-left font-mono text-industrial-orange-bright py-1 pr-4”>Name</th>
-                                    <th class=”text-left font-mono text-industrial-orange-bright py-1 pr-4”>Zweck</th>
-                                    <th class=”text-left font-mono text-industrial-orange-bright py-1 pr-4”>Laufzeit</th>
-                                    <th class=”text-left font-mono text-industrial-orange-bright py-1”>Typ</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class=”border-b border-dashed border-border”>
-                                    <td class=”py-1 pr-4”>_ga</td>
-                                    <td class=”py-1 pr-4”>Unterscheidung von Nutzern</td>
-                                    <td class=”py-1 pr-4”>2 Jahre</td>
-                                    <td class=”py-1”>HTTP Cookie</td>
-                                </tr>
-                                <tr class=”border-b border-dashed border-border”>
-                                    <td class=”py-1 pr-4”>_ga_*</td>
-                                    <td class=”py-1 pr-4”>Speicherung des Sitzungsstatus</td>
-                                    <td class=”py-1 pr-4”>2 Jahre</td>
-                                    <td class=”py-1”>HTTP Cookie</td>
-                                </tr>
-                                <tr>
-                                    <td class=”py-1 pr-4”>_gid</td>
-                                    <td class=”py-1 pr-4”>Unterscheidung von Nutzern</td>
-                                    <td class=”py-1 pr-4”>24 Stunden</td>
-                                    <td class=”py-1”>HTTP Cookie</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <p class=”mt-2”>
-                        <strong>Datenschutzerklärung Google:</strong>
-                        <a href=”https://policies.google.com/privacy?hl=de” target=”_blank” rel=”noopener”
-                            class=”underline”>https://policies.google.com/privacy?hl=de</a><br>
-                        <strong>Opt-out (Browser-Add-on):</strong>
-                        <a href=”https://tools.google.com/dlpage/gaoptout?hl=de” target=”_blank” rel=”noopener”
-                            class=”underline”>https://tools.google.com/dlpage/gaoptout?hl=de</a>
-                    </p>
-                </section>
-
-                <section>
-                    <h2
-                        class=”font-mono text-xs uppercase tracking-widest text-industrial-orange-bright mb-4 border-b border-dashed border-border pb-2”>
-                        09. Hotjar</h2>
-                    <p>Diese Website nutzt Hotjar, einen Analysedienst der Hotjar Ltd., Dragonara Business Centre,
-                        5th Floor, Dragonara Road, Paceville St Julian's STJ 3141, Malta.</p>
-                    <p class=”mt-2”><strong>Zweck:</strong> Analyse des Nutzerverhaltens mittels Heatmaps und
-                        Session-Recordings zur Verbesserung der Benutzerfreundlichkeit.</p>
-                    <p class=”mt-2”><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TTDSG.
-                        Hotjar wird nur nach ausdrücklicher Einwilligung aktiviert.</p>
-                    <p class=”mt-2”><strong>Datenübertragung:</strong> Hotjar Ltd. hat seinen Sitz in Malta (EU/EWR).
-                        Eine Datenübertragung in Drittländer außerhalb der EU/EWR ist nach aktuellem Stand nicht
-                        vorgesehen.</p>
-                    <p class=”mt-2 text-foreground font-bold”>Cookie-Details:</p>
-                    <div class=”overflow-x-auto mt-2”>
-                        <table class=”w-full text-xs border-collapse”>
-                            <thead>
-                                <tr class=”border-b border-dashed border-border”>
-                                    <th class=”text-left font-mono text-industrial-orange-bright py-1 pr-4”>Name</th>
-                                    <th class=”text-left font-mono text-industrial-orange-bright py-1 pr-4”>Zweck</th>
-                                    <th class=”text-left font-mono text-industrial-orange-bright py-1 pr-4”>Laufzeit</th>
-                                    <th class=”text-left font-mono text-industrial-orange-bright py-1”>Typ</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class=”border-b border-dashed border-border”>
-                                    <td class=”py-1 pr-4”>_hjid</td>
-                                    <td class=”py-1 pr-4”>Eindeutige Benutzer-ID</td>
-                                    <td class=”py-1 pr-4”>365 Tage</td>
-                                    <td class=”py-1”>HTTP Cookie</td>
-                                </tr>
-                                <tr class=”border-b border-dashed border-border”>
-                                    <td class=”py-1 pr-4”>_hjSessionUser_*</td>
-                                    <td class=”py-1 pr-4”>Sitzungsnutzer-ID</td>
-                                    <td class=”py-1 pr-4”>365 Tage</td>
-                                    <td class=”py-1”>HTTP Cookie</td>
-                                </tr>
-                                <tr>
-                                    <td class=”py-1 pr-4”>_hjSession_*</td>
-                                    <td class=”py-1 pr-4”>Aktuelle Sitzungs-ID</td>
-                                    <td class=”py-1 pr-4”>30 Minuten</td>
-                                    <td class=”py-1”>HTTP Cookie</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <p class=”mt-2”>
-                        <strong>Datenschutzerklärung Hotjar:</strong>
-                        <a href=”https://www.hotjar.com/legal/policies/privacy/” target=”_blank” rel=”noopener”
-                            class=”underline”>https://www.hotjar.com/legal/policies/privacy/</a><br>
-                        <strong>Opt-out:</strong>
-                        <a href=”https://www.hotjar.com/legal/compliance/opt-out” target=”_blank” rel=”noopener”
-                            class=”underline”>https://www.hotjar.com/legal/compliance/opt-out</a>
-                    </p>
-                </section>
-            </div>
-        </div>
-
-        <!-- Footer -->
-        <footer class="mt-12 pt-8 border-t border-dashed border-border">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="font-mono text-xs text-gray-400 uppercase tracking-widest">
-                    &copy; 2026 Ritz AI Solutions. RAIS_PRIVACY_V1.0
-                </p>
-                <div class="flex gap-6">
-                    <a href="impressum.html"
-                        class="font-mono text-xs text-gray-400 uppercase hover:text-industrial-orange-bright transition-colors">Impressum</a>
-                    <a href="index.html"
-                        class="font-mono text-xs text-gray-400 uppercase hover:text-industrial-orange-bright transition-colors">Home</a>
-                </div>
-            </div>
-        </footer>
-    </div>
 
     <script>
-        lucide.createIcons();
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: 'hsl(var(--background))',
+                        foreground: 'hsl(var(--foreground))',
+                        border: 'hsl(var(--border))',
+                        'industrial-orange': 'hsl(var(--industrial-orange))',
+                        'industrial-orange-bright': 'hsl(var(--industrial-orange-bright))',
+                        sage: 'hsl(var(--sage))',
+                        pistachio: 'hsl(var(--dark-pistachio))',
+                        stone: 'hsl(var(--muted-stone))',
+                        surface: 'hsl(var(--surface))',
+                    },
+                    fontFamily: {
+                        display: ['Baskerville', 'Palatino Linotype', 'Book Antiqua', 'serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
     </script>
-</body>
+</head>
 
+<body class="min-h-screen">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/92 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex items-center gap-3">
+                    <img src="RAIS-Logo-transparent.png" alt="RAIS Logo" class="w-11 h-11 object-contain">
+                    <div>
+                        <div class="font-mono text-lg tracking-wider text-industrial-orange-bright font-semibold">RAIS</div>
+                        <div class="text-xs text-stone">Restaurant Systems mit Haltung</div>
+                    </div>
+                </a>
+                <nav class="hidden md:flex items-center gap-8 text-sm text-stone">
+                    <a href="index.html#problem" class="hover:text-foreground transition-colors">Das Problem</a>
+                    <a href="index.html#pricing" class="hover:text-foreground transition-colors">Leistung</a>
+                    <a href="index.html#flow" class="hover:text-foreground transition-colors">Wie es funktioniert</a>
+                    <a href="impressum.html" class="hover:text-foreground transition-colors">Impressum</a>
+                    <a href="datenschutz.html" class="text-foreground font-medium">Datenschutz</a>
+                </nav>
+                <a href="index.html#booking" class="hidden md:inline-flex items-center justify-center px-5 py-3 rounded-full border border-industrial-orange text-industrial-orange-bright text-sm font-medium transition-colors outline-button">Erstgespräch buchen</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Content -->
+    <main class="pt-32 pb-24">
+        <div class="site-shell px-4 sm:px-6 lg:px-8">
+
+            <!-- Page Header -->
+            <div class="mb-12">
+                <div class="signal-label mb-4 flex items-center gap-3">
+                    <span class="w-2 h-2 bg-industrial-orange rounded-full"></span>
+                    RAIS / Ritz AI Solutions — Datenschutz
+                </div>
+                <h1 class="font-display text-5xl md:text-6xl text-foreground mb-3 leading-[1.08]">Datenschutzerklärung</h1>
+                <p class="text-stone text-lg">Stand: April 2026</p>
+                <div class="signal-divider mt-6"></div>
+            </div>
+
+            <!-- Overview panel -->
+            <div class="sage-panel rounded-[1.8rem] p-6 mb-8">
+                <div class="signal-label mb-3">Was auf dieser Website verarbeitet wird</div>
+                <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-3 text-sm text-stone">
+                    <span>— Server-Logs (Hosting)</span>
+                    <span>— Cookie-Einwilligungen (Cookiebot)</span>
+                    <span>— Terminbuchungen (Calendly)</span>
+                    <span>— Report-Formular (E-Mail, n8n, Supabase)</span>
+                    <span>— Chat-Widget (n8n)</span>
+                    <span>— CDN-Ressourcen (Tailwind, Lucide, jsPDF)</span>
+                </div>
+            </div>
+
+            <!-- Content Card -->
+            <div class="proposal-sheet rounded-[2rem] p-8 md:p-12">
+                <div class="space-y-10 text-stone leading-relaxed">
+
+                    <!-- 1 -->
+                    <section>
+                        <div class="signal-label mb-3">1. Verantwortliche Stelle</div>
+                        <h2 class="font-display text-2xl text-foreground mb-4">Wer ist verantwortlich?</h2>
+                        <p class="text-foreground">
+                            Kevin Ritz<br>
+                            Ritz AI Solutions (RAIS)<br>
+                            Von-Cohhausen-Straße 9<br>
+                            56076 Koblenz<br>
+                            Deutschland
+                        </p>
+                        <p class="mt-3">
+                            E-Mail: <a href="mailto:kevin@ritz-ai.solutions" class="text-foreground hover:text-industrial-orange transition-colors">kevin@ritz-ai.solutions</a>
+                        </p>
+                    </section>
+
+                    <div class="signal-divider"></div>
+
+                    <!-- 2 -->
+                    <section>
+                        <div class="signal-label mb-3">2. Ihre Rechte als betroffene Person</div>
+                        <h2 class="font-display text-2xl text-foreground mb-4">Betroffenenrechte nach DSGVO</h2>
+                        <p>Sie haben gegenüber uns folgende Rechte hinsichtlich der Sie betreffenden personenbezogenen Daten:</p>
+                        <ul class="mt-4 space-y-2 text-sm">
+                            <li><strong class="text-foreground">Auskunft (Art. 15 DSGVO):</strong> Sie können Auskunft darüber verlangen, ob und welche personenbezogenen Daten wir von Ihnen verarbeiten.</li>
+                            <li><strong class="text-foreground">Berichtigung (Art. 16 DSGVO):</strong> Sie können die Berichtigung unrichtiger oder unvollständiger Daten verlangen.</li>
+                            <li><strong class="text-foreground">Löschung (Art. 17 DSGVO):</strong> Sie können unter bestimmten Voraussetzungen die Löschung Ihrer Daten verlangen.</li>
+                            <li><strong class="text-foreground">Einschränkung der Verarbeitung (Art. 18 DSGVO):</strong> Sie können eine Einschränkung der Verarbeitung verlangen.</li>
+                            <li><strong class="text-foreground">Datenübertragbarkeit (Art. 20 DSGVO):</strong> Sie können Ihre Daten in einem maschinenlesbaren Format erhalten.</li>
+                            <li><strong class="text-foreground">Widerspruch (Art. 21 DSGVO):</strong> Sie können der Verarbeitung widersprechen, sofern sie auf berechtigtem Interesse beruht.</li>
+                            <li><strong class="text-foreground">Widerruf einer Einwilligung (Art. 7 Abs. 3 DSGVO):</strong> Eine Einwilligung kann jederzeit mit Wirkung für die Zukunft widerrufen werden.</li>
+                        </ul>
+                        <p class="mt-4">
+                            Zur Ausübung Ihrer Rechte: <a href="mailto:kevin@ritz-ai.solutions" class="text-foreground hover:text-industrial-orange transition-colors">kevin@ritz-ai.solutions</a>
+                        </p>
+                        <div class="editorial-frame rounded-[1.4rem] p-5 mt-5">
+                            <div class="signal-label mb-2">Zuständige Aufsichtsbehörde</div>
+                            <p class="text-sm">Landesbeauftragte für den Datenschutz und die Informationsfreiheit Rheinland-Pfalz<br>
+                            Hintere Bleiche 34 · 55116 Mainz ·
+                            <a href="https://www.datenschutz.rlp.de" target="_blank" rel="noopener" class="text-foreground hover:text-industrial-orange transition-colors">www.datenschutz.rlp.de</a></p>
+                        </div>
+                    </section>
+
+                    <div class="signal-divider"></div>
+
+                    <!-- 3 -->
+                    <section>
+                        <div class="signal-label mb-3">3. Hosting</div>
+                        <h2 class="font-display text-2xl text-foreground mb-4">Hostinger</h2>
+                        <p>Diese Website wird gehostet bei der Hostinger International Ltd., Švitrigailos g. 34, 03230 Vilnius, Litauen. Beim Besuch der Website werden automatisch Verbindungsdaten (IP-Adresse, aufgerufene Seite, Zeitstempel, Browsertyp) in Server-Logfiles erfasst.</p>
+                        <p class="mt-3">
+                            <strong class="text-foreground">Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse am sicheren Betrieb der Website).<br>
+                            <strong class="text-foreground">Speicherdauer:</strong> Server-Logs werden nach spätestens 30 Tagen gelöscht.
+                        </p>
+                        <p class="mt-3">Datenschutzerklärung Hostinger: <a href="https://www.hostinger.de/datenschutz" target="_blank" rel="noopener" class="text-foreground hover:text-industrial-orange transition-colors">www.hostinger.de/datenschutz</a></p>
+                    </section>
+
+                    <div class="signal-divider"></div>
+
+                    <!-- 4 -->
+                    <section>
+                        <div class="signal-label mb-3">4. SSL- und TLS-Verschlüsselung</div>
+                        <h2 class="font-display text-2xl text-foreground mb-4">Verschlüsselte Datenübertragung</h2>
+                        <p>Diese Website nutzt SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie am „https://" in der Adresszeile und am Schloss-Symbol im Browser. Wenn die Verschlüsselung aktiv ist, können Daten, die Sie an uns übermitteln, nicht von Dritten mitgelesen werden.</p>
+                    </section>
+
+                    <div class="signal-divider"></div>
+
+                    <!-- 5 -->
+                    <section>
+                        <div class="signal-label mb-3">5. Einwilligungsverwaltung</div>
+                        <h2 class="font-display text-2xl text-foreground mb-4">Cookiebot</h2>
+                        <p>Diese Website verwendet Cookiebot, einen Dienst der Cybot A/S, Havnegade 39, 1058 Kopenhagen K, Dänemark, zur Verwaltung von Cookie-Einwilligungen gemäß § 25 Abs. 1 TTDSG und Art. 7 DSGVO.</p>
+                        <p class="mt-3">Beim ersten Aufruf der Website wird Ihnen ein Einwilligungsbanner angezeigt. Ihre Auswahl wird in einem Cookie dokumentiert. Cookiebot übermittelt dabei eine anonymisierte Version Ihrer IP-Adresse sowie die Einwilligungsdaten an Server in Dänemark (EU/EWR).</p>
+                        <p class="mt-3">
+                            <strong class="text-foreground">Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. c DSGVO (gesetzliche Verpflichtung zur Einwilligungsdokumentation).
+                        </p>
+                        <div class="overflow-x-auto mt-5">
+                            <table class="data-table">
+                                <thead><tr><th>Cookie</th><th>Zweck</th><th>Laufzeit</th></tr></thead>
+                                <tbody>
+                                    <tr><td>CookieConsent</td><td>Speichert Einwilligungsstatus und -zeitpunkt</td><td>12 Monate</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="mt-3">Sie können Ihre Einwilligung jederzeit über das Cookie-Symbol am unteren Seitenrand anpassen oder widerrufen.<br>
+                        Datenschutzerklärung Cookiebot: <a href="https://www.cookiebot.com/de/privacy-policy/" target="_blank" rel="noopener" class="text-foreground hover:text-industrial-orange transition-colors">www.cookiebot.com/de/privacy-policy/</a></p>
+                    </section>
+
+                    <div class="signal-divider"></div>
+
+                    <!-- 6 -->
+                    <section>
+                        <div class="signal-label mb-3">6. Externe Ressourcen (CDN)</div>
+                        <h2 class="font-display text-2xl text-foreground mb-4">Eingebundene Drittanbieter-Bibliotheken</h2>
+                        <p>Diese Website lädt technische Hilfsbibliotheken von externen CDN-Servern. Beim Laden dieser Ressourcen wird Ihre IP-Adresse an den jeweiligen Anbieter übertragen. Es werden keine personenbezogenen Profile erstellt.</p>
+                        <div class="overflow-x-auto mt-5">
+                            <table class="data-table">
+                                <thead><tr><th>Ressource</th><th>Anbieter</th><th>Zweck</th></tr></thead>
+                                <tbody>
+                                    <tr><td>Tailwind CSS</td><td>cdn.tailwindcss.com (Tailwind Labs, USA)</td><td>Styling-Framework</td></tr>
+                                    <tr><td>Lucide Icons</td><td>unpkg.com (npm Inc., USA)</td><td>Icon-Bibliothek</td></tr>
+                                    <tr><td>jsPDF</td><td>cdnjs.cloudflare.com (Cloudflare, USA)</td><td>Client-seitige PDF-Erstellung</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="mt-3"><strong class="text-foreground">Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO. Datenübertragung in die USA auf Basis von Standardvertragsklauseln (SCCs, Art. 46 Abs. 2 lit. c DSGVO).</p>
+                    </section>
+
+                    <div class="signal-divider"></div>
+
+                    <!-- 7 -->
+                    <section>
+                        <div class="signal-label mb-3">7. Terminbuchung</div>
+                        <h2 class="font-display text-2xl text-foreground mb-4">Calendly</h2>
+                        <p>Auf dieser Website ist ein Terminbuchungs-Widget von Calendly LLC, 271 17th St NW, Suite 1000, Atlanta, GA 30363, USA eingebunden. Wenn Sie über dieses Widget ein Erstgespräch buchen, werden Name, E-Mail-Adresse und der ausgewählte Termin an Calendly übertragen und dort verarbeitet.</p>
+                        <p class="mt-3">
+                            <strong class="text-foreground">Zweck:</strong> Vereinbarung von Beratungsgesprächen.<br>
+                            <strong class="text-foreground">Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung auf Ihren Wunsch hin).<br>
+                            <strong class="text-foreground">Datenübertragung in die USA:</strong> auf Basis von EU-Standardvertragsklauseln (SCCs, Art. 46 Abs. 2 lit. c DSGVO).
+                        </p>
+                        <p class="mt-3">Datenschutzerklärung Calendly: <a href="https://calendly.com/privacy" target="_blank" rel="noopener" class="text-foreground hover:text-industrial-orange transition-colors">calendly.com/privacy</a></p>
+                    </section>
+
+                    <div class="signal-divider"></div>
+
+                    <!-- 8 -->
+                    <section>
+                        <div class="signal-label mb-3">8. Datenbank & CRM</div>
+                        <h2 class="font-display text-2xl text-foreground mb-4">Supabase</h2>
+                        <p>Für die Speicherung von Reservierungsanfragen und Formulardaten aus dem PDF-Report-Formular verwenden wir Supabase als Datenbankdienst. Anbieter ist die Supabase Inc., 970 Toa Payoh North, Singapur. Die Daten werden ausschließlich in einem Rechenzentrum in der EU (Frankfurt, Amazon Web Services eu-central-1) gespeichert.</p>
+                        <p class="mt-3"><strong class="text-foreground">Was in Supabase gespeichert wird:</strong></p>
+                        <ul class="mt-2 space-y-1 text-sm">
+                            <li>— E-Mail-Adresse und Restaurantname aus dem PDF-Report-Formular</li>
+                            <li>— Die im Verlustrechner eingegebenen Werte</li>
+                            <li>— Zeitstempel der Einwilligung und Einwilligungsstatus</li>
+                            <li>— Reservierungsanfragen, die über das Reservierungsformular eingehen</li>
+                        </ul>
+                        <p class="mt-3">
+                            <strong class="text-foreground">Zweck:</strong> Strukturierte Erfassung von Anfragen, Nachverfolgung von Leads und Verwaltung eingehender Reservierungen (Reservierungs-CRM).<br>
+                            <strong class="text-foreground">Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO für Report-Leads (auf Basis Ihrer Einwilligung) bzw. Art. 6 Abs. 1 lit. b DSGVO für Reservierungsanfragen (Vertragsanbahnung).<br>
+                            <strong class="text-foreground">Speicherdauer:</strong> Die Daten werden gespeichert, solange die Bearbeitung der Anfrage oder eine mögliche Geschäftsbeziehung dies erfordert. Danach werden sie gelöscht, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
+                        </p>
+                        <div class="sage-panel rounded-[1.4rem] p-4 mt-4">
+                            <div class="signal-label mb-2">Auftragsverarbeitung</div>
+                            <p class="text-sm">Mit Supabase Inc. besteht ein Auftragsverarbeitungsvertrag (AVV) gemäß Art. 28 DSGVO. Die Daten befinden sich ausschließlich im EU-Rechenzentrum Frankfurt und verlassen den europäischen Wirtschaftsraum nicht.</p>
+                        </div>
+                        <p class="mt-3">Datenschutzerklärung Supabase: <a href="https://supabase.com/privacy" target="_blank" rel="noopener" class="text-foreground hover:text-industrial-orange transition-colors">supabase.com/privacy</a></p>
+                    </section>
+
+                    <div class="signal-divider"></div>
+
+                    <!-- 9 -->
+                    <section>
+                        <div class="signal-label mb-3">9. PDF-Report-Formular</div>
+                        <h2 class="font-display text-2xl text-foreground mb-4">Verlustschätzung / Lead-Formular</h2>
+                        <p>Wenn Sie auf dieser Website einen kostenlosen PDF-Report anfordern, erheben wir E-Mail-Adresse (Pflicht), Restaurantname (freiwillig) sowie die im Rechner eingestellten Werte.</p>
+                        <p class="mt-3"><strong class="text-foreground">Technische Verarbeitung:</strong> Die Daten werden über einen Webhook an unsere selbst betriebene n8n-Instanz (Serverstandort Deutschland) übertragen und anschließend in Supabase gespeichert (siehe Abschnitt 8).</p>
+                        <p class="mt-3">
+                            <strong class="text-foreground">Zweck:</strong> Zusendung des angeforderten Reports und anschließende Kontaktaufnahme – ausschließlich auf Basis Ihrer Einwilligung.<br>
+                            <strong class="text-foreground">Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO (ausdrückliche Einwilligung im Formular).
+                        </p>
+                        <p class="mt-3">Widerruf jederzeit möglich per E-Mail an: <a href="mailto:kevin@ritz-ai.solutions" class="text-foreground hover:text-industrial-orange transition-colors">kevin@ritz-ai.solutions</a></p>
+                    </section>
+
+                    <div class="signal-divider"></div>
+
+                    <!-- 10 -->
+                    <section>
+                        <div class="signal-label mb-3">10. Chat-Widget</div>
+                        <h2 class="font-display text-2xl text-foreground mb-4">Automatisierter Chat-Assistent</h2>
+                        <p>Das Chat-Widget übermittelt Ihre Nachricht über einen Webhook an unsere n8n-Instanz, die eine automatisierte Antwort zurückgibt. Nachrichten können intern zur Qualitätssicherung protokolliert werden.</p>
+                        <p class="mt-3">
+                            <strong class="text-foreground">Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an effizienter Kommunikation).<br>
+                            <strong class="text-foreground">Infrastruktur:</strong> n8n selbst betrieben, Serverstandort Deutschland. Keine dauerhafte Speicherung von Chat-Nachrichten, sofern kein Vertragsverhältnis entsteht.
+                        </p>
+                        <p class="mt-3">Bitte teilen Sie im Chat keine sensiblen personenbezogenen Daten mit, die nicht im Zusammenhang mit einer Anfrage stehen.</p>
+                    </section>
+
+                    <div class="signal-divider"></div>
+
+                    <!-- 11 -->
+                    <section>
+                        <div class="signal-label mb-3">11. E-Mail-Kontakt</div>
+                        <h2 class="font-display text-2xl text-foreground mb-4">Direkte Kontaktaufnahme</h2>
+                        <p>Wenn Sie uns per E-Mail kontaktieren, werden Ihre Angaben inkl. Kontaktdaten zur Bearbeitung der Anfrage bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+                        <p class="mt-3"><strong class="text-foreground">Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an Bearbeitung von Anfragen) bzw. Art. 6 Abs. 1 lit. b DSGVO bei Vertragsanbahnung.</p>
+                    </section>
+
+                    <div class="signal-divider"></div>
+
+                    <!-- 12 -->
+                    <section>
+                        <div class="signal-label mb-3">12. Auftragsverarbeitung</div>
+                        <h2 class="font-display text-2xl text-foreground mb-4">AVV-Partner gemäß Art. 28 DSGVO</h2>
+                        <p>Mit folgenden Dienstleistern, die personenbezogene Daten in unserem Auftrag verarbeiten, bestehen Auftragsverarbeitungsverträge oder die Datenübertragung erfolgt auf Basis von SCCs:</p>
+                        <ul class="mt-3 space-y-1 text-sm">
+                            <li>— Hostinger International Ltd. (Hosting)</li>
+                            <li>— Cybot A/S / Cookiebot (Einwilligungsverwaltung)</li>
+                            <li>— Supabase Inc. (Datenbank, EU-Rechenzentrum Frankfurt)</li>
+                            <li>— Calendly LLC (Terminverwaltung, SCC-basiert)</li>
+                        </ul>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-border bg-surface/90">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid md:grid-cols-[1.25fr_0.75fr_0.75fr] gap-8 items-start mb-8">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="RAIS-Logo-transparent.png" alt="RAIS Logo" class="w-10 h-10 object-contain">
+                        <span class="font-mono text-xl tracking-wider text-industrial-orange-bright font-semibold">RAIS</span>
+                    </div>
+                    <div class="signal-label mb-3">Restaurant Systems mit Haltung</div>
+                    <p class="text-stone max-w-md leading-relaxed">RAIS baut für Restaurants einen professionellen Webauftritt, der im Alltag wirklich hilft: mehr erfasste Reservierungen, weniger verlorene Anfragen und ein sauberer geschäftlicher Eindruck.</p>
+                </div>
+                <div>
+                    <div class="signal-label mb-4">Schnellzugriff</div>
+                    <div class="space-y-3 text-stone">
+                        <a href="index.html#problem" class="block hover:text-foreground transition-colors">Das Problem</a>
+                        <a href="index.html#pricing" class="block hover:text-foreground transition-colors">Leistung</a>
+                        <a href="index.html#flow" class="block hover:text-foreground transition-colors">Wie es funktioniert</a>
+                        <a href="index.html#booking" class="block hover:text-foreground transition-colors">Erstgespräch</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="signal-label mb-4">Rechtliches</div>
+                    <div class="space-y-3 text-stone">
+                        <a href="impressum.html" class="block hover:text-foreground transition-colors">Impressum</a>
+                        <a href="datenschutz.html" class="block text-foreground font-medium">Datenschutz (DSGVO)</a>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-6 border-t border-border text-sm text-stone flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
+                <p>&copy; 2026 Ritz AI Solutions</p>
+                <p>ritz-ai.solutions</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>lucide.createIcons();</script>
+</body>
 </html>

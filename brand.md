@@ -37,7 +37,7 @@ RAIS is selling:
 ## Core Offer Structure
 Primary offer:
 - Professional restaurant website with integrated reservation form and simple CRM or reservation capture logic
-- One-time price: 1.000 EUR
+- One-time price: 1.200 EUR
 
 Primary system behavior:
 - Restaurant gets notified after a reservation is made
@@ -84,8 +84,8 @@ Use this exact palette:
 - Accent hover / Soft Mandarin: `#F37A48`
 - Base background / Cloud: `#F5F2EC`
 - Surface / Warm Linen: `#FBF8F3`
-- Sage: `#A9B494`
-- Dark Pistachio: `#6F7F5F`
+- Sage: `#789464`
+- Dark Pistachio: `#3C5A2A`
 - Charcoal text: `#2F2A24`
 - Muted text / Stone: `#7B746B`
 - Border: `#D9D1C7`
