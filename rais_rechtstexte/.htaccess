@@ -1,0 +1,14 @@
+# prevent access to settings and log files
+<FilesMatch "\.(htaccess|json|lock|md|log)$">
+    order allow,deny
+    deny from all
+</FilesMatch>
+
+# prevent access to vendor and src folder
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteRule ^(vendor|src)/.*$ - [F,L]
+</IfModule>
+
+# Prevent directory listings
+Options All -Indexes
