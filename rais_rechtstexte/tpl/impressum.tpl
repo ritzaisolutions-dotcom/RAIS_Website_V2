@@ -7,6 +7,7 @@
     <meta name="robots" content="noindex, follow" />
     <link rel="icon" type="image/png" href="favicon.png?v=3" />
     <link rel="stylesheet" href="fonts.css" />
+    <script src="https://cloud.ccm19.de/app.js?apiKey=44ff2519f360f540f17d013a2a4094e2019143535dcc7c76&domain=69e29700b6f98fcee101f2d2" referrerpolicy="origin"></script>
     <style>
         :root {
             --background: 40 29% 94%;
@@ -99,6 +100,13 @@
             height: 1px;
             background: linear-gradient(90deg, rgba(72, 96, 54, 0.82), rgba(236, 106, 55, 0.55), rgba(217, 209, 199, 0.18));
             margin: 0 0 1.75rem;
+        }
+
+        .brand-note {
+            margin: 0 0 1.5rem;
+            color: hsl(var(--foreground));
+            font-size: 0.98rem;
+            line-height: 1.7;
         }
 
         .legal-copy {
@@ -241,6 +249,7 @@
     <section class="page-frame">
         <div class="signal-label">RAIS / Ritz AI Solutions — Impressum</div>
         <div class="signal-divider"></div>
+        <p class="brand-note">Kevin Ritz handelt unter Ritz AI Solutions (RAIS).</p>
         <article class="legal-copy">
             {{eRecht24_legal_text}}
         </article>

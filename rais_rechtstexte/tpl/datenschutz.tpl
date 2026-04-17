@@ -7,6 +7,7 @@
     <meta name="robots" content="noindex, follow" />
     <link rel="icon" type="image/png" href="favicon.png?v=3" />
     <link rel="stylesheet" href="fonts.css" />
+    <script src="https://cloud.ccm19.de/app.js?apiKey=44ff2519f360f540f17d013a2a4094e2019143535dcc7c76&domain=69e29700b6f98fcee101f2d2" referrerpolicy="origin"></script>
     <style>
         :root {
             --background: 40 29% 94%;
