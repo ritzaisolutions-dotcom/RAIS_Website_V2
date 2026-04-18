@@ -7,9 +7,11 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "build:tailwind": "tailwindcss -i ./styles/tailwind.input.css -o ./styles/tailwind.generated.css --config ./tailwind.config.js --minify",
     "test:roi-webhook": "node scripts/roi-lead-smoke-test.mjs"
   },
   "devDependencies": {
+    "tailwindcss": "^3.4.17",
     "vite": "^5.0.0"
   },
   "dependencies": {

@@ -6,3 +6,4 @@ dist/
 .env.*
 vite.log
 vite.err.log
+.playwright-cli/

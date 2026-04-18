@@ -102,13 +102,6 @@
             margin: 0 0 1.5rem;
         }
 
-        .brand-note {
-            margin: 0 0 1.5rem;
-            color: hsl(var(--foreground));
-            font-size: 0.96rem;
-            line-height: 1.65;
-        }
-
         .legal-copy {
             max-width: 42rem;
             margin: 0 auto;
@@ -155,13 +148,23 @@
             margin: 0 0 1rem;
         }
 
-        .legal-copy > p:first-of-type {
+        .legal-note-block {
+            margin: 0 0 1.4rem;
             padding: 1rem 1.1rem;
             border: 1px solid rgba(72, 96, 54, 0.18);
-            border-left: 4px solid hsl(var(--industrial-orange));
             border-radius: 1rem;
-            background: rgba(245, 242, 236, 0.78);
+            background: rgba(120, 148, 100, 0.08);
             color: hsl(var(--foreground));
+        }
+
+        .legal-note-block strong {
+            display: block;
+            margin-bottom: 0.45rem;
+            font-size: 0.92rem;
+        }
+
+        .legal-note-block p:last-child {
+            margin-bottom: 0;
         }
 
         .legal-copy ul,
@@ -264,8 +267,12 @@
     <section class="page-frame">
         <div class="signal-label">RAIS / Ritz AI Solutions - Legal Notice</div>
         <div class="signal-divider"></div>
-        <p class="brand-note">Kevin Ritz trades as Ritz AI Solutions (RAIS).</p>
         <article class="legal-copy">
+            <div class="legal-note-block">
+                <strong>Additional business note</strong>
+                <p>Kevin Ritz trades as Ritz AI Solutions (RAIS).</p>
+                <p>Small business pursuant to §&nbsp;19 of the German Value Added Tax Act (UStG) – no VAT is charged or shown on invoices.</p>
+            </div>
             {{eRecht24_legal_text}}
         </article>
     </section>

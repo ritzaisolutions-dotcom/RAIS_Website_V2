@@ -49,13 +49,9 @@
 
     <!-- Fonts (Localized) -->
     <link rel="stylesheet" href="fonts.css">
-
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="styles/tailwind.generated.css">
+    <script src="vendor/lucide.min.js"></script>
+    <script src="vendor/jspdf.umd.min.js"></script>
 
     <style>
         :root {
@@ -340,30 +336,6 @@
         }
     </style>
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        background: 'hsl(var(--background))',
-                        foreground: 'hsl(var(--foreground))',
-                        border: 'hsl(var(--border))',
-                        'industrial-orange': 'hsl(var(--industrial-orange))',
-                        'industrial-orange-bright': 'hsl(var(--industrial-orange-bright))',
-                        sage: 'hsl(var(--sage))',
-                        pistachio: 'hsl(var(--dark-pistachio))',
-                        stone: 'hsl(var(--muted-stone))',
-                        surface: 'hsl(var(--surface))',
-                    },
-                    fontFamily: {
-                        display: ['Baskerville', 'Palatino Linotype', 'Book Antiqua', 'serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
     <style>
         .bg-industrial-orange {
             background: hsl(var(--industrial-orange)) !important;
@@ -395,19 +367,22 @@
         .ref-browser-preview {
             overflow: hidden;
             height: 440px;
-            background: #f5f0eb;
+            background:
+                radial-gradient(circle at top right, rgba(236, 106, 55, 0.12), transparent 32%),
+                linear-gradient(180deg, rgba(251, 248, 243, 0.98), rgba(244, 241, 234, 1));
         }
-        .ref-browser-preview iframe {
-            width: 200%;
-            height: 880px;
-            transform: scale(0.5);
-            transform-origin: top left;
-            border: none;
-            pointer-events: none;
+        .ref-preview-surface {
+            border: 1px solid rgba(72, 96, 54, 0.16);
+            background: rgba(255, 255, 255, 0.84);
+            box-shadow: 0 18px 42px rgba(47, 42, 36, 0.08);
+        }
+        .booking-loader-card {
+            background:
+                linear-gradient(160deg, rgba(255, 255, 255, 0.94), rgba(250, 246, 239, 0.96)),
+                rgba(255, 255, 255, 0.9);
         }
         @media (max-width: 768px) {
             .ref-browser-preview { height: 280px; }
-            .ref-browser-preview iframe { height: 560px; }
         }
     </style>
 </head>
@@ -956,8 +931,18 @@
                         </div>
                         <div class="ref-browser-url flex-1 text-center text-xs text-stone font-mono py-1 px-3 rounded">clay-and-light.vercel.app</div>
                     </div>
-                    <div class="ref-browser-preview">
-                        <iframe src="https://clay-and-light.vercel.app" title="Clay & Light Referenzsystem" loading="lazy" scrolling="no"></iframe>
+                    <div class="ref-browser-preview p-6 md:p-8 flex items-end">
+                        <div class="ref-preview-surface w-full rounded-[1.35rem] p-5 md:p-6">
+                            <div class="signal-label mb-3">Live-Vorschau bewusst nicht eingebettet</div>
+                            <h4 class="font-display text-2xl md:text-3xl text-foreground mb-3 leading-[1.1]">Kein Fremd-Embed beim Seitenaufruf.</h4>
+                            <p class="text-stone leading-relaxed mb-5">Damit vor Zustimmung keine Requests an Drittinhalte entstehen, zeigen wir auf der Startseite nur eine statische Vorschau. Das Live-System bleibt per bewusstem Klick erreichbar.</p>
+                            <div class="grid sm:grid-cols-2 gap-3 text-sm text-stone">
+                                <div class="rounded-2xl border border-border bg-white/70 px-4 py-3">Dual-Buchungssystem für Sessions und Tischreservierungen</div>
+                                <div class="rounded-2xl border border-border bg-white/70 px-4 py-3">Automatische Bestätigungen und Erinnerungen</div>
+                                <div class="rounded-2xl border border-border bg-white/70 px-4 py-3">DSGVO-konforme Abläufe ohne Dauer-Embed</div>
+                                <div class="rounded-2xl border border-border bg-white/70 px-4 py-3">Externer Live-Link nur nach bewusster Nutzeraktion</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div>
@@ -1012,14 +997,25 @@
                         </a>
                         <p class="text-xs text-stone mt-2">Falls das Kalender-Widget nicht lädt.</p>
                     </div>
-                    <div class="rounded-[1.5rem] overflow-hidden border border-border bg-white/50">
-                        <div class="calendly-inline-widget"
-                            data-url="https://calendly.com/ritzaisolutions/30min?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=fbf8f3&text_color=2f2a24&primary_color=ec6a37"
-                            data-background-color="fbf8f3"
-                            data-text-color="2f2a24"
-                            data-primary-color="ec6a37"
-                            style="min-width:320px;height:700px;"></div>
-                        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                    <div class="booking-loader-card rounded-[1.5rem] border border-border p-6 md:p-8">
+                        <div class="signal-label mb-4">Kalender auf Abruf</div>
+                        <h3 class="font-display text-3xl text-foreground mb-3 leading-[1.08]">Calendly erst nach bewusstem Klick laden.</h3>
+                        <p class="text-stone leading-relaxed mb-5">Damit beim Seitenaufruf keine Requests an Calendly oder Stripe entstehen, laden wir das Widget erst, wenn Sie es hier ausdrücklich anfordern.</p>
+                        <div class="flex flex-col sm:flex-row gap-3 mb-4">
+                            <button id="loadCalendlyBtn" type="button" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full warm-button text-sm font-medium transition-colors">
+                                <i data-lucide="calendar-days" class="w-4 h-4"></i>
+                                Kalender jetzt laden
+                            </button>
+                            <a href="https://calendly.com/ritzaisolutions/30min" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-border text-stone text-sm font-medium transition-colors outline-button">
+                                <i data-lucide="external-link" class="w-4 h-4"></i>
+                                Direkt bei Calendly öffnen
+                            </a>
+                        </div>
+                        <p class="text-xs text-stone mb-6">Mit dem Klick wird ein externer Kalenderdienst von Calendly nachgeladen.</p>
+                        <p id="calendlyLoadStatus" class="text-sm text-stone hidden mb-4"></p>
+                        <div id="calendlyEmbedContainer" class="hidden rounded-[1.2rem] overflow-hidden border border-border bg-white/80">
+                            <div id="calendlyEmbedHost" style="min-width:320px;height:700px;"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1109,11 +1105,13 @@
         const MAIN_OFFER_PRICE = 1200;
         const REPORT_WEBHOOK_URL = 'https://n8n.ritz-ai.solutions/webhook/rais-roi-report-lead';
         const CHAT_WEBHOOK_URL = 'https://n8n.ritz-ai.solutions/webhook/chat';
+        const CALENDLY_INLINE_URL = 'https://calendly.com/ritzaisolutions/30min?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=fbf8f3&text_color=2f2a24&primary_color=ec6a37';
 
         document.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
             setupImpactCalculator();
             setupReportLeadForm();
+            setupCalendlyLoader();
             setupChatWidget();
         });
 
@@ -1223,7 +1221,7 @@
             }
 
             const script = document.createElement('script');
-            script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+            script.src = 'vendor/jspdf.umd.min.js';
             script.async = true;
             script.dataset.jspdfLoader = 'true';
 
@@ -1369,6 +1367,88 @@
                 } finally {
                     submitButton.removeAttribute('disabled');
                     submitButton.classList.remove('opacity-70', 'cursor-not-allowed');
+                }
+            });
+        }
+
+        function setupCalendlyLoader() {
+            const loadBtn = document.getElementById('loadCalendlyBtn');
+            const status = document.getElementById('calendlyLoadStatus');
+            const container = document.getElementById('calendlyEmbedContainer');
+            const host = document.getElementById('calendlyEmbedHost');
+
+            if (!loadBtn || !status || !container || !host) {
+                return;
+            }
+
+            let isLoading = false;
+            let isLoaded = false;
+
+            const ensureCalendlyScript = async () => {
+                if (window.Calendly?.initInlineWidget) {
+                    return window.Calendly;
+                }
+
+                const existingScript = document.querySelector('script[data-calendly-loader="true"]');
+
+                if (existingScript) {
+                    await new Promise((resolve, reject) => {
+                        existingScript.addEventListener('load', resolve, { once: true });
+                        existingScript.addEventListener('error', () => reject(new Error('Calendly load failed')), { once: true });
+                    });
+                    if (!window.Calendly?.initInlineWidget) {
+                        throw new Error('Calendly unavailable after load');
+                    }
+                    return window.Calendly;
+                }
+
+                const script = document.createElement('script');
+                script.src = 'https://assets.calendly.com/assets/external/widget.js';
+                script.async = true;
+                script.dataset.calendlyLoader = 'true';
+
+                await new Promise((resolve, reject) => {
+                    script.onload = resolve;
+                    script.onerror = () => reject(new Error('Calendly load failed'));
+                    document.head.appendChild(script);
+                });
+
+                if (!window.Calendly?.initInlineWidget) {
+                    throw new Error('Calendly unavailable after load');
+                }
+
+                return window.Calendly;
+            };
+
+            loadBtn.addEventListener('click', async () => {
+                if (isLoaded || isLoading) {
+                    return;
+                }
+
+                isLoading = true;
+                status.classList.remove('hidden');
+                status.textContent = 'Calendly wird geladen...';
+                loadBtn.setAttribute('disabled', 'disabled');
+                loadBtn.classList.add('opacity-70', 'cursor-not-allowed');
+
+                try {
+                    const Calendly = await ensureCalendlyScript();
+                    host.innerHTML = '';
+                    Calendly.initInlineWidget({
+                        url: CALENDLY_INLINE_URL,
+                        parentElement: host,
+                    });
+                    container.classList.remove('hidden');
+                    status.textContent = 'Calendly wurde geladen.';
+                    loadBtn.textContent = 'Kalender geladen';
+                    isLoaded = true;
+                } catch (error) {
+                    console.error('Calendly load error:', error);
+                    status.textContent = 'Calendly konnte gerade nicht geladen werden. Bitte nutzen Sie den Direktlink.';
+                    loadBtn.removeAttribute('disabled');
+                    loadBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+                } finally {
+                    isLoading = false;
                 }
             });
         }
