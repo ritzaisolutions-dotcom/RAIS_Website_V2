@@ -4,34 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>RAIS — Digitale Lösungen für Handwerksbetriebe</title>
-    <meta name="description" content="RAIS baut professionelle Websites für Handwerksbetriebe: mit Kostenrechner, klarer Anfrageleitung und Terminbuchung. Für Fliesenleger, Elektriker, Maler und weitere Gewerke.">
+    <title>RAIS für Fliesenleger &amp; Bodenleger — Websites mit Kostenrechner und Terminbuchung</title>
+    <meta name="description" content="RAIS baut professionelle Websites für Fliesenleger und Bodenleger mit Kostenrechner, Terminbuchung und automatischer Anfragen-Benachrichtigung.">
 
     <link rel="icon" type="image/png" href="favicon.png?v=3">
     <link rel="apple-touch-icon" href="favicon.png?v=3">
-
-    <!-- OpenGraph -->
-    <meta property="og:title" content="RAIS — Digitale Lösungen für Handwerksbetriebe">
-    <meta property="og:description" content="RAIS baut professionelle Websites für Handwerksbetriebe mit Kostenrechner, klarer Anfrageleitung und Terminbuchung.">
-    <meta property="og:url" content="https://ritz-ai.solutions">
-    <meta property="og:type" content="website">
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="RAIS — Digitale Lösungen für Handwerksbetriebe">
-    <meta name="twitter:description" content="RAIS baut professionelle Websites für Handwerksbetriebe mit Kostenrechner, klarer Anfrageleitung und Terminbuchung.">
-
-    <!-- Schema.org -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "RAIS (Ritz AI Solutions)",
-      "url": "https://ritz-ai.solutions",
-      "description": "Professionelle Websites mit Kostenrechner und Terminbuchung für Handwerksbetriebe.",
-      "brand": { "@type": "Brand", "name": "RAIS" }
-    }
-    </script>
 
     <!-- CCM19 Cookie Consent -->
     <!-- CCM19 logo size must be adjusted in the CCM19 dashboard under Erscheinungsbild settings. URL: https://cloud.ccm19.de -->
@@ -39,7 +16,6 @@
 
     <!-- Fonts & Styles -->
     <link rel="stylesheet" href="fonts.css">
-    <link rel="stylesheet" href="styles/tailwind.generated.css">
     <script src="vendor/lucide.min.js"></script>
 
     <style>
@@ -73,7 +49,7 @@
 
         html {
             scroll-behavior: smooth;
-            color-scheme: light;           /* prevents browser dark-mode override */
+            color-scheme: light;
         }
 
         body {
@@ -87,7 +63,6 @@
 
         body.noscroll { overflow: hidden; }
 
-        /* Anchor offset for fixed navbar */
         section[id] { scroll-margin-top: var(--nav-h); }
 
         /* ─────────────────────────────────────────────────────
@@ -117,8 +92,6 @@
             align-items: center;
             gap: 2.5rem;
         }
-
-        /* ── Brand ──────────────────────────────────────────── */
 
         .nav-brand {
             display: flex;
@@ -160,8 +133,6 @@
             margin-top: 2px;
         }
 
-        /* ── Desktop links ──────────────────────────────────── */
-
         .nav-center {
             flex: 1;
             display: flex;
@@ -201,8 +172,6 @@
             color: var(--charcoal);
             background-color: rgba(47, 42, 36, 0.05);
         }
-
-        /* ── Branchen dropdown ──────────────────────────────── */
 
         .nav-dropdown { position: relative; }
 
@@ -268,8 +237,6 @@
             color: var(--orange);
             flex-shrink: 0;
         }
-
-        /* ── Right: CTA + hamburger ─────────────────────────── */
 
         .nav-right {
             display: flex;
@@ -398,14 +365,6 @@
         .mobile-cta:hover { background-color: var(--orange-hover); }
 
         /* ─────────────────────────────────────────────────────
-           SECTION STUBS  (removed once sections are filled)
-        ───────────────────────────────────────────────────── */
-
-        .section-stub { padding: 5rem 1.5rem; }
-
-        #hero.section-stub { padding-top: calc(var(--nav-h) + 5rem); }
-
-        /* ─────────────────────────────────────────────────────
            FOOTER
         ───────────────────────────────────────────────────── */
 
@@ -426,12 +385,24 @@
         }
 
         .footer-brand {
-            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
-            font-size: 0.9375rem;
-            font-weight: 600;
-            color: var(--charcoal);
-            letter-spacing: 0.06em;
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
             text-decoration: none;
+        }
+
+        .footer-brand img {
+            height: 3rem;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .footer-wordmark {
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--orange);
+            letter-spacing: 0.08em;
         }
 
         .footer-legal {
@@ -455,34 +426,6 @@
         }
 
         /* ─────────────────────────────────────────────────────
-           RESPONSIVE
-        ───────────────────────────────────────────────────── */
-
-        @media (max-width: 860px) {
-            .nav-center,
-            .btn-primary {
-                display: none;
-            }
-
-            .nav-hamburger { display: flex; }
-
-            .nav-inner {
-                padding: 0 1.25rem;
-                gap: 0;
-                justify-content: space-between;
-            }
-        }
-
-        @media (max-width: 520px) {
-            .footer-inner {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.75rem;
-            }
-        }
-
-
-        /* ─────────────────────────────────────────────────────
            HERO
         ───────────────────────────────────────────────────── */
 
@@ -495,49 +438,32 @@
             justify-content: center;
             overflow: hidden;
             padding: 0;
-            background-color: #F5F2EC;
-            /* Sage soft glow: top-right, static */
-            background-image: radial-gradient(ellipse 50vw 50vw at 92% 8%, rgba(120, 148, 100, 0.05) 0%, transparent 65%);
-            background-repeat: no-repeat;
         }
 
-        /* SVG fractal noise texture — warm linen paper feel */
-        #hero::before {
-            content: '';
+        .hero-slides {
             position: absolute;
             inset: 0;
             z-index: 0;
-            pointer-events: none;
-            background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='300'%20height='300'%3E%3Cfilter%20id='n'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.65'%20numOctaves='3'%20stitchTiles='stitch'/%3E%3CfeColorMatrix%20type='saturate'%20values='0'/%3E%3C/filter%3E%3Crect%20width='300'%20height='300'%20filter='url(%23n)'/%3E%3C/svg%3E");
-            background-repeat: repeat;
-            background-size: 300px 300px;
-            opacity: 0.038;
         }
 
-        /* Orange radial glow: bottom-left, subtle drift animation */
-        #hero::after {
-            content: '';
+        .hero-slide {
             position: absolute;
             inset: 0;
-            z-index: 0;
-            pointer-events: none;
-            background-image: radial-gradient(ellipse at center, rgba(236, 106, 55, 0.08) 0%, transparent 60%);
-            background-size: 110vw 110vw;
-            background-position: 0% 100%;
-            background-repeat: no-repeat;
-            animation: hero-glow-drift 12s ease-in-out infinite;
+            opacity: 0;
+            transition: opacity 1.5s ease;
+            background-size: cover;
+            background-position: center;
         }
 
-        @keyframes hero-glow-drift {
-            0%, 100% { background-position: 0% 100%; }
-            50%       { background-position: 3% 97%; }
+        .hero-slide.is-active { opacity: 1; }
+
+        .hero-scrim {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background-color: rgba(30, 26, 22, 0.52);
         }
 
-        @media (prefers-reduced-motion: reduce) {
-            #hero::after { animation: none; }
-        }
-
-        /* Content overlay */
         .hero-content {
             position: relative;
             z-index: 2;
@@ -550,7 +476,6 @@
             padding: calc(var(--nav-h) + 3rem) 2rem 4rem;
         }
 
-        /* Pictogram watermark above mono label */
         .hero-logo-mark {
             width: 40px;
             height: 40px;
@@ -559,39 +484,35 @@
             align-self: flex-start;
         }
 
-        /* Mono label pill */
         .hero-label {
             display: inline-block;
             font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
             font-size: 0.6875rem;
             letter-spacing: 0.13em;
             text-transform: uppercase;
-            color: var(--stone);
-            border: 1px solid var(--border);
+            color: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.22);
             padding: 0.375rem 0.9375rem;
             border-radius: 100px;
         }
 
-        /* H1 */
         .hero-h1 {
             font-family: 'Baskerville', 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
             font-size: clamp(2rem, 5vw, 3.5rem);
             font-weight: 700;
             line-height: 1.17;
-            color: #2F2A24;
+            color: #ffffff;
             letter-spacing: -0.01em;
         }
 
-        /* Subline */
         .hero-sub {
             font-family: 'Inter', sans-serif;
             font-size: clamp(1rem, 2.25vw, 1.1875rem);
             line-height: 1.65;
-            color: #7B746B;
+            color: rgba(255, 255, 255, 0.82);
             max-width: 560px;
         }
 
-        /* CTA row */
         .hero-ctas {
             display: flex;
             flex-wrap: wrap;
@@ -625,31 +546,30 @@
             justify-content: center;
             padding: 0.875rem 1.875rem;
             background-color: transparent;
-            color: #7B746B;
+            color: #ffffff;
             font-family: 'Inter', sans-serif;
             font-size: 1rem;
             font-weight: 500;
             border-radius: 10px;
             text-decoration: none;
-            border: 1.5px solid #D9D1C7;
+            border: 1.5px solid rgba(255, 255, 255, 0.5);
             transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease;
             white-space: nowrap;
         }
 
         .hero-btn-outline:hover {
-            border-color: var(--stone);
-            color: var(--charcoal);
-            background-color: rgba(47, 42, 36, 0.04);
+            border-color: rgba(255, 255, 255, 0.9);
+            color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.08);
         }
 
-        /* Scroll cue */
         .hero-scroll-cue {
             position: absolute;
             bottom: 2rem;
             left: 50%;
             transform: translateX(-50%);
             z-index: 2;
-            color: rgba(123, 116, 107, 0.45);
+            color: rgba(255, 255, 255, 0.35);
             animation: hero-bounce 2.8s ease-in-out infinite;
         }
 
@@ -670,10 +590,12 @@
             .hero-btn-outline { justify-content: center; }
         }
 
+        @media (prefers-reduced-motion: reduce) {
+            .hero-slide { transition: none; }
+        }
 
         /* ─────────────────────────────────────────────────────
            SHARED SECTION UTILITIES
-           (reused across leistungen, branchen, ueber-uns, etc.)
         ───────────────────────────────────────────────────── */
 
         .section-wrap {
@@ -682,7 +604,6 @@
             padding: 0 2rem;
         }
 
-        /* Mono section label (pistachio by default) */
         .mono-label {
             display: inline-block;
             font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
@@ -693,7 +614,6 @@
             margin-bottom: 0.875rem;
         }
 
-        /* Section headline */
         .section-h2 {
             font-family: 'Baskerville', 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
             font-size: clamp(1.625rem, 3vw, 2.5rem);
@@ -704,376 +624,374 @@
             margin-bottom: 1rem;
         }
 
-        /* Section supporting text */
         .section-sub {
             font-size: 1rem;
             line-height: 1.72;
             color: var(--stone);
         }
 
-        /* ─────────────────────────────────────────────────────
-           LEISTUNGEN
-        ───────────────────────────────────────────────────── */
-
-        #leistungen {
-            padding: 6rem 0;
-            background-color: var(--background);
+        .niche-section {
+            padding: 5rem 0;
         }
 
-        .leis-intro {
+        .niche-intro {
             max-width: 640px;
             margin-bottom: 3.5rem;
         }
 
-        /* 2-column grid: primary card left, two cards stacked right */
-        .leis-grid {
-            display: grid;
-            grid-template-columns: 3fr 2fr;
-            grid-template-rows: 1fr 1fr;
-            gap: 1.25rem;
-            align-items: stretch;
+        /* ─────────────────────────────────────────────────────
+           PROBLEM
+        ───────────────────────────────────────────────────── */
+
+        #problem {
+            padding: 5rem 0;
+            background-color: var(--background);
         }
 
-        /* Card base */
-        .leis-card {
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .problem-item {
+            padding: 2rem;
             background-color: var(--surface);
             border: 1px solid var(--border);
             border-radius: 14px;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
         }
 
-        /* Primary card: left column, spans both rows, pistachio accent */
-        .leis-card--primary {
-            grid-column: 1;
-            grid-row: 1 / 3;
-            border-left: 3px solid var(--pistachio);
-            border-top-left-radius: 12px;
-            border-bottom-left-radius: 12px;
-            padding: 2.5rem;
-            box-shadow: 0 4px 28px rgba(47, 42, 36, 0.07);
-        }
-
-        .leis-card--secondary-top {
-            grid-column: 2;
-            grid-row: 1;
-        }
-
-        .leis-card--secondary-bot {
-            grid-column: 2;
-            grid-row: 2;
-        }
-
-        /* Card icon */
-        .leis-card-icon {
-            width: 2rem;
-            height: 2rem;
+        .problem-icon {
+            display: block;
+            width: 28px;
+            height: 28px;
             color: var(--pistachio);
-            margin-bottom: 1.25rem;
-            flex-shrink: 0;
-        }
-
-        .leis-card--primary .leis-card-icon {
-            width: 2.375rem;
-            height: 2.375rem;
-        }
-
-        /* Hauptleistung badge */
-        .leis-card-badge {
-            display: inline-flex;
-            align-items: center;
-            font-family: 'JetBrains Mono', 'Courier New', monospace;
-            font-size: 0.5625rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--pistachio);
-            background-color: rgba(60, 90, 42, 0.08);
-            padding: 0.25rem 0.6875rem;
-            border-radius: 100px;
             margin-bottom: 1rem;
-            align-self: flex-start;
         }
 
-        /* Card title */
-        .leis-card-title {
+        .problem-title {
             font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
-            font-size: 1.1875rem;
+            font-size: 1.0625rem;
             font-weight: 700;
             color: var(--charcoal);
             line-height: 1.28;
-            margin-bottom: 0.875rem;
+            margin-bottom: 0.75rem;
         }
 
-        .leis-card--primary .leis-card-title {
-            font-size: 1.4375rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Card body */
-        .leis-card-body {
+        .problem-body {
             font-size: 0.9375rem;
             line-height: 1.72;
             color: var(--stone);
-            flex: 1;
         }
 
-        /* Card inline CTA link */
-        .leis-card-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3125rem;
-            margin-top: 1.625rem;
-            font-size: 0.9375rem;
-            font-weight: 500;
-            color: var(--pistachio);
-            text-decoration: none;
-            align-self: flex-start;
-            transition: color 0.15s ease, gap 0.15s ease;
-        }
-
-        .leis-card-link:hover {
-            color: var(--sage);
-            gap: 0.5rem;
-        }
-
-        /* Responsive */
         @media (max-width: 840px) {
-            .leis-grid {
-                grid-template-columns: 1fr;
-                grid-template-rows: auto;
-            }
-
-            .leis-card--primary    { grid-column: 1; grid-row: 1; }
-            .leis-card--secondary-top { grid-column: 1; grid-row: 2; }
-            .leis-card--secondary-bot { grid-column: 1; grid-row: 3; }
+            .problem-grid { grid-template-columns: 1fr; gap: 1.25rem; }
         }
-
-        @media (max-width: 520px) {
-            #leistungen { padding: 4rem 0; }
-        }
-
 
         /* ─────────────────────────────────────────────────────
-           BRANCHEN
+           ZAHLEN
         ───────────────────────────────────────────────────── */
 
-        #branchen {
-            padding: 6rem 0;
+        #zahlen {
+            padding: 5rem 0;
             background-color: var(--surface);
         }
 
-        .branchen-intro {
-            max-width: 600px;
-            margin-bottom: 4rem;
-        }
-
-        /* Three-column grid, zero gap — dividers are borders */
-        .branchen-grid {
+        .zahlen-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             border-top: 1px solid var(--border);
         }
 
-        .branchen-block {
-            display: flex;
-            flex-direction: column;
-            padding: 2.75rem 2.5rem 2.75rem 0;
+        .zahlen-item {
+            padding: 3rem 2.5rem 3rem 0;
             border-right: 1px solid var(--border);
         }
 
-        .branchen-block:first-child {
-            padding-left: 0;
-        }
+        .zahlen-item:first-child { padding-left: 0; }
 
-        .branchen-block:last-child {
+        .zahlen-item:last-child {
             padding-left: 2.5rem;
             padding-right: 0;
             border-right: none;
         }
 
-        .branchen-block:nth-child(2) {
-            padding-left: 2.5rem;
-        }
+        .zahlen-item:nth-child(2) { padding-left: 2.5rem; }
 
-        /* Mono number */
-        .branchen-num {
-            display: inline-block;
-            font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
-            font-size: 0.625rem;
-            letter-spacing: 0.16em;
-            color: var(--pistachio);
-            margin-bottom: 1.375rem;
-        }
-
-        /* Lucide icon per niche */
-        .branchen-icon {
+        .zahlen-num {
             display: block;
-            width: 32px;
-            height: 32px;
-            color: var(--pistachio);
-            margin-bottom: 1rem;
-        }
-
-        /* Niche title */
-        .branchen-title {
-            font-family: 'Baskerville', 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
-            font-size: clamp(1.5rem, 2.5vw, 2.125rem);
+            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 700;
-            color: var(--charcoal);
-            line-height: 1.18;
-            margin-bottom: 1rem;
+            color: var(--pistachio);
+            line-height: 1;
+            margin-bottom: 0.875rem;
+            letter-spacing: -0.02em;
         }
 
-        /* Description */
-        .branchen-desc {
+        .zahlen-label {
             font-size: 0.9375rem;
-            line-height: 1.72;
+            line-height: 1.65;
             color: var(--stone);
-            flex: 1;
-            margin-bottom: 2rem;
         }
 
-        /* Outline CTA button */
-        .branchen-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.625rem 1.375rem;
-            border: 1.5px solid var(--orange);
-            color: var(--orange);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9375rem;
-            font-weight: 500;
-            border-radius: 10px;
-            text-decoration: none;
-            align-self: flex-start;
-            transition: background-color 0.15s ease, color 0.15s ease;
-            white-space: nowrap;
-        }
-
-        .branchen-btn:hover {
-            background-color: var(--orange);
-            color: #ffffff;
-        }
-
-        /* Responsive */
         @media (max-width: 840px) {
-            .branchen-grid {
+            .zahlen-grid {
                 grid-template-columns: 1fr;
                 border-top: none;
             }
 
-            .branchen-block {
+            .zahlen-item {
                 padding: 2.25rem 0;
                 border-right: none;
                 border-top: 1px solid var(--border);
             }
 
-            .branchen-block:first-child  { padding-top: 0; border-top: none; }
-            .branchen-block:nth-child(2) { padding-left: 0; }
-            .branchen-block:last-child   { padding-left: 0; border-bottom: none; }
+            .zahlen-item:first-child  { padding-top: 0; border-top: none; }
+            .zahlen-item:nth-child(2) { padding-left: 0; }
+            .zahlen-item:last-child   { padding-left: 0; }
         }
-
-        @media (max-width: 520px) {
-            #branchen { padding: 4rem 0; }
-        }
-
 
         /* ─────────────────────────────────────────────────────
-           ÜBER UNS
+           LÖSUNG
         ───────────────────────────────────────────────────── */
 
-        #ueber-uns {
-            padding: 6rem 0;
+        #loesung {
+            padding: 5rem 0;
             background-color: var(--background);
         }
 
-        /* Two-column: text left, founder card right (fixed 340px) */
-        .ueberuns-grid {
+        .loesung-grid {
             display: grid;
-            grid-template-columns: 1fr 340px;
+            grid-template-columns: 1fr 1fr;
             gap: 5rem;
             align-items: start;
         }
 
-        .ueberuns-copy {
-            font-size: 1rem;
-            line-height: 1.78;
-            color: var(--stone);
-            margin-top: 1.5rem;
-        }
-
-        /* Photo placeholder */
-        .founder-photo-placeholder {
-            width: 100%;
-            height: 300px;
-            background-color: rgba(123, 116, 107, 0.1);
-            border: 1px dashed var(--border);
-            border-radius: 14px;
+        .loesung-list {
+            list-style: none;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
+            flex-direction: column;
+            gap: 1rem;
+            padding-top: 0.25rem;
         }
 
-        .founder-photo-placeholder span {
-            font-family: 'JetBrains Mono', 'Courier New', monospace;
-            font-size: 0.5625rem;
-            letter-spacing: 0.13em;
-            text-transform: uppercase;
-            color: var(--stone);
-        }
-
-        .founder-name {
-            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--charcoal);
-            margin-bottom: 0.25rem;
-        }
-
-        .founder-role {
-            font-family: 'JetBrains Mono', 'Courier New', monospace;
-            font-size: 0.5625rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--stone);
-            margin-bottom: 1.125rem;
-        }
-
-        .founder-meta {
-            font-size: 0.875rem;
-            color: var(--stone);
-            margin-bottom: 0.875rem;
-        }
-
-        .founder-link {
-            display: block;
+        .loesung-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
             font-size: 0.9375rem;
+            line-height: 1.6;
             color: var(--charcoal);
-            text-decoration: none;
-            margin-bottom: 0.3125rem;
-            transition: color 0.15s ease;
         }
 
-        .founder-link:hover { color: var(--orange); }
+        .loesung-check {
+            display: block;
+            width: 18px;
+            height: 18px;
+            color: var(--pistachio);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        @media (max-width: 840px) {
+            .loesung-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
 
         /* ─────────────────────────────────────────────────────
-           TRUST (Referenzen & Vertrauen)
+           ANGEBOT
         ───────────────────────────────────────────────────── */
 
-        #trust {
-            padding: 6rem 0;
+        #angebot {
+            padding: 5rem 0;
             background-color: var(--surface);
         }
 
-        .trust-intro {
+        .angebot-header {
             max-width: 640px;
             margin-bottom: 3rem;
         }
 
-        /* Demo embed wrapper */
+        .angebot-card {
+            background-color: var(--background);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--pistachio);
+            border-radius: 14px;
+            padding: 2.5rem;
+            max-width: 720px;
+        }
+
+        .angebot-price-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .angebot-price {
+            display: block;
+            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--charcoal);
+            line-height: 1;
+            letter-spacing: -0.02em;
+        }
+
+        .angebot-price-note {
+            display: block;
+            font-size: 0.875rem;
+            color: var(--stone);
+            margin-top: 0.25rem;
+        }
+
+        .angebot-laufend-num {
+            display: block;
+            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
+            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+            font-weight: 700;
+            color: var(--stone);
+            line-height: 1;
+        }
+
+        .angebot-laufend-label {
+            display: block;
+            font-size: 0.8125rem;
+            color: var(--stone);
+            margin-top: 0.25rem;
+        }
+
+        .angebot-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.875rem;
+            margin-bottom: 2rem;
+        }
+
+        .angebot-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+            font-size: 0.9375rem;
+            color: var(--charcoal);
+        }
+
+        .angebot-list li svg {
+            width: 16px;
+            height: 16px;
+            color: var(--pistachio);
+            flex-shrink: 0;
+            stroke-width: 2.5;
+        }
+
+        .angebot-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.875rem 1.875rem;
+            background-color: var(--orange);
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: background-color 0.15s ease;
+        }
+
+        .angebot-cta:hover { background-color: var(--orange-hover); }
+
+        /* ─────────────────────────────────────────────────────
+           ABLAUF
+        ───────────────────────────────────────────────────── */
+
+        #ablauf {
+            padding: 5rem 0;
+            background-color: var(--background);
+        }
+
+        .ablauf-header {
+            max-width: 640px;
+            margin-bottom: 3.5rem;
+        }
+
+        .ablauf-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border-top: 1px solid var(--border);
+        }
+
+        .ablauf-step {
+            padding: 2.5rem 2.5rem 2.5rem 0;
+            border-right: 1px solid var(--border);
+        }
+
+        .ablauf-step:first-child { padding-left: 0; }
+
+        .ablauf-step:last-child {
+            padding-left: 2.5rem;
+            padding-right: 0;
+            border-right: none;
+        }
+
+        .ablauf-step:nth-child(2) { padding-left: 2.5rem; }
+
+        .ablauf-num {
+            display: inline-block;
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 0.625rem;
+            letter-spacing: 0.16em;
+            color: var(--pistachio);
+            margin-bottom: 1.25rem;
+        }
+
+        .ablauf-title {
+            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            margin-bottom: 0.75rem;
+        }
+
+        .ablauf-body {
+            font-size: 0.9375rem;
+            line-height: 1.72;
+            color: var(--stone);
+        }
+
+        @media (max-width: 840px) {
+            .ablauf-grid {
+                grid-template-columns: 1fr;
+                border-top: none;
+            }
+
+            .ablauf-step {
+                padding: 2rem 0;
+                border-right: none;
+                border-top: 1px solid var(--border);
+            }
+
+            .ablauf-step:first-child  { padding-top: 0; border-top: none; }
+            .ablauf-step:nth-child(2) { padding-left: 0; }
+            .ablauf-step:last-child   { padding-left: 0; }
+        }
+
+        /* ─────────────────────────────────────────────────────
+           DEMO
+        ───────────────────────────────────────────────────── */
+
+        #demo {
+            padding: 5rem 0;
+            background-color: var(--surface);
+        }
+
         .proof-wrap {
             position: relative;
             border: 1px solid var(--border);
@@ -1082,7 +1000,6 @@
             background-color: var(--background);
         }
 
-        /* Loading skeleton — animated warm pulse */
         .proof-skeleton {
             position: absolute;
             inset: 0;
@@ -1114,8 +1031,6 @@
         .proof-ext-link-wrap {
             padding: 0.875rem 1rem;
             text-align: center;
-            border-top: 1px solid var(--border);
-            background-color: var(--background);
         }
 
         .proof-ext-link {
@@ -1128,15 +1043,14 @@
         .proof-ext-link:hover { color: var(--charcoal); }
 
         /* ─────────────────────────────────────────────────────
-           CONTACT
+           KONTAKT
         ───────────────────────────────────────────────────── */
 
-        #contact {
-            padding: 6rem 0;
+        #kontakt {
+            padding: 5rem 0;
             background-color: var(--background);
         }
 
-        /* Two equal columns: copy left, Calendly right */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1151,7 +1065,6 @@
             margin-top: 1.5rem;
         }
 
-        /* Calendly inline embed */
         .cal-embed-wrap { width: 100%; }
         .cal-load-btn {
             display: inline-flex; align-items: center; justify-content: center;
@@ -1178,7 +1091,6 @@
 
         .cal-ext-link:hover { color: var(--charcoal); }
 
-        /* Contact details strip (below grid) */
         .contact-details {
             margin-top: 3.5rem;
             padding-top: 2rem;
@@ -1211,43 +1123,45 @@
         .contact-detail-link:hover { color: var(--orange); }
 
         /* ─────────────────────────────────────────────────────
-           FOOTER (logo update)
+           RESPONSIVE
         ───────────────────────────────────────────────────── */
 
-        .footer-brand {
-            display: flex;
-            align-items: center;
-            gap: 0.625rem;
-        }
+        @media (max-width: 860px) {
+            .nav-center,
+            .btn-primary {
+                display: none;
+            }
 
-        .footer-brand img {
-            height: 3rem;
-            width: auto;
-            object-fit: contain;
-        }
+            .nav-hamburger { display: flex; }
 
-        .footer-wordmark {
-            font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--orange);
-            letter-spacing: 0.08em;
+            .nav-inner {
+                padding: 0 1.25rem;
+                gap: 0;
+                justify-content: space-between;
+            }
         }
-
-        /* ─────────────────────────────────────────────────────
-           RESPONSIVE  (shared breakpoint for last sections)
-        ───────────────────────────────────────────────────── */
 
         @media (max-width: 840px) {
-            .ueberuns-grid,
             .contact-grid {
                 grid-template-columns: 1fr;
                 gap: 2.5rem;
             }
 
-            #ueber-uns,
-            #trust,
-            #contact { padding: 4rem 0; }
+            #problem,
+            #zahlen,
+            #loesung,
+            #angebot,
+            #ablauf,
+            #demo,
+            #kontakt { padding: 4rem 0; }
+        }
+
+        @media (max-width: 520px) {
+            .footer-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
         }
 
     </style>
@@ -1261,7 +1175,6 @@
     <nav id="navbar" aria-label="Hauptnavigation">
         <div class="nav-inner">
 
-            <!-- Brand -->
             <a href="/" class="nav-brand" aria-label="RAIS — Zur Startseite">
                 <img src="RAIS_LOGO_PICTOGRAM.png" alt="" width="52" height="52" aria-hidden="true">
                 <div class="nav-brand-words">
@@ -1270,12 +1183,11 @@
                 </div>
             </a>
 
-            <!-- Desktop center links -->
             <div class="nav-center" role="none">
                 <ul class="nav-list" role="list">
 
                     <li>
-                        <a href="#leistungen">Leistungen</a>
+                        <a href="index.html#leistungen">Leistungen</a>
                     </li>
 
                     <li class="nav-dropdown">
@@ -1295,7 +1207,6 @@
                         <div class="dropdown-panel" id="branchen-panel" role="menu" aria-labelledby="branchen-btn">
 
                             <a href="fliesenleger.html" class="dropdown-item" role="menuitem">
-                                <!-- Tile / grid icon -->
                                 <svg class="dropdown-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                     <rect x="3"  y="3"  width="7" height="7" rx="1"/>
                                     <rect x="14" y="3"  width="7" height="7" rx="1"/>
@@ -1306,7 +1217,6 @@
                             </a>
 
                             <a href="elektriker.html" class="dropdown-item" role="menuitem">
-                                <!-- Lightning bolt -->
                                 <svg class="dropdown-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                     <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
                                 </svg>
@@ -1314,7 +1224,6 @@
                             </a>
 
                             <a href="maler.html" class="dropdown-item" role="menuitem">
-                                <!-- Paintbrush -->
                                 <svg class="dropdown-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                     <path d="M9.06 11.9l8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08"/>
                                     <path d="M7.07 14.94c-1.66 0-3 1.35-3 3.02 0 1.33-2.5 1.52-2 2.45.63 1.24 2.49.97 3.35.64 1.07-.42 1.65-1.62 1.65-2.73v-1.38z"/>
@@ -1326,19 +1235,18 @@
                     </li>
 
                     <li>
-                        <a href="#ueber-uns">Über uns</a>
+                        <a href="index.html#ueber-uns">Über uns</a>
                     </li>
 
                     <li>
-                        <a href="#contact">Kontakt</a>
+                        <a href="#kontakt">Kontakt</a>
                     </li>
 
                 </ul>
             </div>
 
-            <!-- Right: CTA + hamburger -->
             <div class="nav-right">
-                <a href="#contact" class="btn-primary">Gespräch buchen</a>
+                <a href="#kontakt" class="btn-primary">Gespräch buchen</a>
 
                 <button
                     class="nav-hamburger"
@@ -1366,7 +1274,7 @@
     <div id="mobile-overlay" role="dialog" aria-label="Navigation" aria-modal="true">
         <div class="mobile-nav-inner">
 
-            <a href="#leistungen" class="mobile-link" data-close-menu>Leistungen</a>
+            <a href="index.html#leistungen" class="mobile-link" data-close-menu>Leistungen</a>
 
             <span class="mobile-section-label">Branchen</span>
             <div class="mobile-sublinks">
@@ -1375,12 +1283,12 @@
                 <a href="maler.html"        class="mobile-link" data-close-menu>Maler</a>
             </div>
 
-            <a href="#ueber-uns" class="mobile-link" data-close-menu>Über uns</a>
-            <a href="#contact"   class="mobile-link" data-close-menu>Kontakt</a>
+            <a href="index.html#ueber-uns" class="mobile-link" data-close-menu>Über uns</a>
+            <a href="#kontakt"             class="mobile-link" data-close-menu>Kontakt</a>
 
             <hr class="mobile-hr">
 
-            <a href="#contact" class="mobile-cta" data-close-menu>Gespräch buchen</a>
+            <a href="#kontakt" class="mobile-cta" data-close-menu>Gespräch buchen</a>
 
         </div>
     </div>
@@ -1391,29 +1299,43 @@
     ═══════════════════════════════════════════════════════ -->
     <main>
 
+        <!-- ═══════════════════════════════════════════════════
+             HERO
+        ═══════════════════════════════════════════════════ -->
         <section id="hero">
 
-            <!-- Overlay content -->
+            <div class="hero-slides" aria-hidden="true">
+                <!-- SLIDESHOW SLIDE 1: Replace URL with licensed or owned photo when available -->
+                <div class="hero-slide is-active" style="background-image: url('https://plus.unsplash.com/premium_photo-1683121250314-f5e3bb80aa75?w=1920&q=80&auto=format&fit=crop');"></div>
+                <!-- SLIDESHOW SLIDE 2: Replace URL with licensed or owned photo when available -->
+                <div class="hero-slide" style="background-image: url('https://plus.unsplash.com/premium_photo-1664301210513-76167b070179?w=1920&q=80&auto=format&fit=crop');"></div>
+                <!-- SLIDESHOW SLIDE 3: Replace URL with licensed or owned photo when available -->
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1523413555809-0fb1d4da238d?w=1920&q=80&auto=format&fit=crop');"></div>
+                <!-- SLIDESHOW SLIDE 4: Replace URL with licensed or owned photo when available -->
+                <div class="hero-slide" style="background-image: url('https://plus.unsplash.com/premium_photo-1683121910935-9df51a09e93f?w=1920&q=80&auto=format&fit=crop');"></div>
+            </div>
+
+            <div class="hero-scrim" aria-hidden="true"></div>
+
             <div class="hero-content">
                 <img src="RAIS_LOGO_PICTOGRAM.png" alt="" width="40" height="40" class="hero-logo-mark" aria-hidden="true">
-                <span class="hero-label">RAIS — Ritz AI Solutions</span>
+                <span class="hero-label">RAIS — Fliesenleger &amp; Bodenleger</span>
 
                 <h1 class="hero-h1">
-                    Handwerksbetriebe, die online wachsen wollen.<br>
-                    Wir machen das möglich.
+                    Mehr Aufträge. Weniger verpasste Anfragen.<br>
+                    Rund um die Uhr.
                 </h1>
 
                 <p class="hero-sub">
-                    Websites, Kostenrechner, Terminbuchung und Automatisierung. Alles aus einer Hand.
+                    Websites mit Kostenrechner und Terminbuchung, speziell für Fliesenleger und Bodenleger.
                 </p>
 
                 <div class="hero-ctas">
-                    <a href="#contact"    class="hero-btn-primary">Erstgespräch buchen</a>
-                    <a href="#leistungen" class="hero-btn-outline">Unsere Leistungen</a>
+                    <a href="#kontakt" class="hero-btn-primary">Erstgespräch buchen</a>
+                    <a href="#demo"    class="hero-btn-outline">Demo ansehen</a>
                 </div>
             </div>
 
-            <!-- Scroll cue -->
             <div class="hero-scroll-cue" aria-hidden="true">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="6 9 12 15 18 9"/>
@@ -1422,179 +1344,231 @@
 
         </section>
 
-        <section id="leistungen">
-            <div class="section-wrap">
-
-                <!-- Section intro -->
-                <div class="leis-intro">
-                    <span class="mono-label">Was wir tun</span>
-                    <h2 class="section-h2">Drei Leistungen. Ein Ziel: Ihr Betrieb wächst.</h2>
-                    <p class="section-sub">
-                        Wir helfen Handwerksbetrieben, sich digital klar aufzustellen, mit einem professionellen Auftritt, der Anfragen erfasst, Termine bucht und Abläufe im Hintergrund vereinfacht.
-                    </p>
-                </div>
-
-                <!-- Service cards -->
-                <div class="leis-grid">
-
-                    <!-- Card 1 — Primary / Hauptleistung -->
-                    <article class="leis-card leis-card--primary">
-                        <!-- Monitor icon -->
-                        <svg class="leis-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <rect x="2" y="3" width="20" height="14" rx="2"/>
-                            <line x1="8" y1="21" x2="16" y2="21"/>
-                            <line x1="12" y1="17" x2="12" y2="21"/>
-                        </svg>
-                        <span class="leis-card-badge">Hauptleistung</span>
-                        <h3 class="leis-card-title">Website mit Kostenrechner &amp; Terminbuchung</h3>
-                        <p class="leis-card-body">
-                            Ein professioneller Webauftritt, der rund um die Uhr arbeitet. Interessenten bekommen sofort eine Preisspanne und können direkt einen Termin buchen, auch abends und am Wochenende.
-                        </p>
-                        <a href="#branchen" class="leis-card-link">
-                            Mehr erfahren
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <polyline points="9 18 15 12 9 6"/>
-                            </svg>
-                        </a>
-                    </article>
-
-                    <!-- Card 2 — Prozessautomatisierung -->
-                    <article class="leis-card leis-card--secondary-top">
-                        <!-- Git-branch / flow icon -->
-                        <svg class="leis-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <line x1="6" y1="3" x2="6" y2="15"/>
-                            <circle cx="18" cy="6" r="3"/>
-                            <circle cx="6" cy="18" r="3"/>
-                            <path d="M18 9a9 9 0 0 1-9 9"/>
-                        </svg>
-                        <h3 class="leis-card-title">Prozessautomatisierung</h3>
-                        <p class="leis-card-body">
-                            Wiederkehrende Abläufe im Betrieb automatisieren: Anfragen weiterleiten, Erinnerungen versenden, Daten strukturieren. Weniger manuelle Arbeit, mehr Zeit für das eigentliche Handwerk.
-                        </p>
-                    </article>
-
-                    <!-- Card 3 — Chat-Agent -->
-                    <article class="leis-card leis-card--secondary-bot">
-                        <!-- Message square icon -->
-                        <svg class="leis-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                        </svg>
-                        <h3 class="leis-card-title">Chat-Agent für Kundenanfragen</h3>
-                        <p class="leis-card-body">
-                            Ein digitaler Assistent auf Ihrer Website, der häufige Fragen beantwortet, Öffnungszeiten nennt und Anfragen vorqualifiziert, bevor Sie überhaupt ans Telefon gehen.
-                        </p>
-                    </article>
-
-                </div>
-
-            </div>
-        </section>
-
-        <section id="branchen">
-            <div class="section-wrap">
-
-                <!-- Section intro -->
-                <div class="branchen-intro">
-                    <span class="mono-label">Mit wem wir arbeiten</span>
-                    <h2 class="section-h2">Spezialisiert. Nicht generisch.</h2>
-                    <p class="section-sub">
-                        Jede Branche hat eigene Abläufe, eigene Kundenerwartungen und eigene Schwachstellen. Wir bauen keine Einheitslösungen, sondern spezialisierte Systeme.
-                    </p>
-                </div>
-
-                <!-- Niche blocks -->
-                <div class="branchen-grid">
-
-                    <!-- Block 01 — Fliesenleger & Bodenleger -->
-                    <div class="branchen-block">
-                        <span class="branchen-num">01</span>
-                        <i data-lucide="grid-2x2" class="branchen-icon" aria-hidden="true"></i>
-                        <h3 class="branchen-title">Fliesenleger &amp; Bodenleger</h3>
-                        <p class="branchen-desc">
-                            Interessenten fragen abends an und bekommen keine Antwort. Mit Kostenrechner und Terminbuchung erfasst Ihr Betrieb Anfragen rund um die Uhr.
-                        </p>
-                        <a href="fliesenleger.html" class="branchen-btn">Zum Angebot</a>
-                    </div>
-
-                    <!-- Block 02 — Elektriker -->
-                    <div class="branchen-block">
-                        <span class="branchen-num">02</span>
-                        <i data-lucide="zap" class="branchen-icon" aria-hidden="true"></i>
-                        <h3 class="branchen-title">Elektriker</h3>
-                        <p class="branchen-desc">
-                            Notfallanfragen und Terminwünsche kommen zu jeder Tageszeit. Ein strukturiertes System sorgt dafür, dass keine Anfrage untergeht.
-                        </p>
-                        <a href="elektriker.html" class="branchen-btn">Zum Angebot</a>
-                    </div>
-
-                    <!-- Block 03 — Maler & Lackierer -->
-                    <div class="branchen-block">
-                        <span class="branchen-num">03</span>
-                        <i data-lucide="paintbrush" class="branchen-icon" aria-hidden="true"></i>
-                        <h3 class="branchen-title">Maler &amp; Lackierer</h3>
-                        <p class="branchen-desc">
-                            Projekte werden online verglichen und bewertet. Ein professioneller Auftritt mit klarer Angebotsstruktur entscheidet, wer den Auftrag bekommt.
-                        </p>
-                        <a href="maler.html" class="branchen-btn">Zum Angebot</a>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
 
         <!-- ═══════════════════════════════════════════════════
-             ÜBER UNS
+             PROBLEM
         ═══════════════════════════════════════════════════ -->
-        <section id="ueber-uns">
+        <section id="problem">
             <div class="section-wrap">
-                <div class="ueberuns-grid">
 
-                    <!-- Text column -->
-                    <div>
-                        <span class="mono-label">Wer steckt dahinter</span>
-                        <h2 class="section-h2">Unsere Mission</h2>
-                        <p class="ueberuns-copy">
-                            RAIS wurde gegründet, weil zu viele gute Handwerksbetriebe online unsichtbar sind. Nicht weil ihre Arbeit schlecht ist, sondern weil niemand ihnen einen digitalen Auftritt gebaut hat, der wirklich funktioniert. Das ändern wir.
-                        </p>
-                        <p class="ueberuns-copy" style="margin-top: 1.25rem;">
-                            Wir bauen keine Baukastenseiten. Wir bauen Systeme, die Anfragen erfassen, Termine sichern und Betriebe professionell positionieren. Spezialisiert auf Handwerk. Nicht auf alles.
+                <div class="niche-intro">
+                    <span class="mono-label">Das Problem</span>
+                    <h2 class="section-h2">Warum gehen so viele Anfragen verloren?</h2>
+                    <p class="section-sub">
+                        Gute Handwerker sind online oft unsichtbar. Nicht weil ihre Arbeit schlecht ist, sondern weil das digitale Fundament fehlt.
+                    </p>
+                </div>
+
+                <div class="problem-grid">
+
+                    <div class="problem-item">
+                        <i data-lucide="eye-off" class="problem-icon" aria-hidden="true"></i>
+                        <h3 class="problem-title">Kein sichtbarer Auftritt</h3>
+                        <p class="problem-body">Interessenten finden den Betrieb online nicht oder springen wegen eines veralteten Webauftritts ab.</p>
+                    </div>
+
+                    <div class="problem-item">
+                        <i data-lucide="clock" class="problem-icon" aria-hidden="true"></i>
+                        <h3 class="problem-title">Keine Rückmeldung außerhalb der Öffnungszeiten</h3>
+                        <p class="problem-body">Wer abends oder am Wochenende fragt, bekommt keine Antwort und wählt den nächsten Anbieter.</p>
+                    </div>
+
+                    <div class="problem-item">
+                        <i data-lucide="phone-missed" class="problem-icon" aria-hidden="true"></i>
+                        <h3 class="problem-title">Preisanfragen ohne Ergebnis</h3>
+                        <p class="problem-body">Ohne Kostenrechner rufen Kunden an, fragen den Preis und melden sich nicht mehr zurück.</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ═══════════════════════════════════════════════════
+             ZAHLEN
+        ═══════════════════════════════════════════════════ -->
+        <section id="zahlen">
+            <div class="section-wrap">
+
+                <div class="zahlen-grid">
+
+                    <div class="zahlen-item">
+                        <span class="zahlen-num">67 %</span>
+                        <p class="zahlen-label">der Hausbesitzer suchen online nach Fachbetrieben, bevor sie anrufen.</p>
+                    </div>
+
+                    <div class="zahlen-item">
+                        <span class="zahlen-num">3×</span>
+                        <p class="zahlen-label">mehr Anfragen generieren Betriebe mit Kostenrechner im Vergleich zu reinen Kontaktformularen.</p>
+                    </div>
+
+                    <div class="zahlen-item">
+                        <span class="zahlen-num">60 %</span>
+                        <p class="zahlen-label">aller Erstanfragen kommen außerhalb der regulären Öffnungszeiten.</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ═══════════════════════════════════════════════════
+             LÖSUNG
+        ═══════════════════════════════════════════════════ -->
+        <section id="loesung">
+            <div class="section-wrap">
+
+                <div class="loesung-grid">
+
+                    <div class="loesung-text">
+                        <span class="mono-label">Unsere Lösung</span>
+                        <h2 class="section-h2">Eine Website, die für Sie arbeitet, auch wenn Sie auf der Baustelle sind.</h2>
+                        <p class="section-sub">
+                            Kein Bastel-Baukasten. Ein fertig aufgesetztes System, das Anfragen erfasst, Termine sichert und professionell kommuniziert.
                         </p>
                     </div>
 
-                    <!-- Founder column -->
-                    <div>
-                        <!-- Replace with professional photo -->
-                        <div class="founder-photo-placeholder" aria-hidden="true">
-                            <span>Foto folgt</span>
+                    <ul class="loesung-list">
+                        <li class="loesung-item">
+                            <i data-lucide="check" class="loesung-check" aria-hidden="true"></i>
+                            <span>Klare, professionelle Website für Fliesen- und Bodenarbeiten</span>
+                        </li>
+                        <li class="loesung-item">
+                            <i data-lucide="check" class="loesung-check" aria-hidden="true"></i>
+                            <span>Interaktiver Kostenrechner für sofortige Ersteinschätzung</span>
+                        </li>
+                        <li class="loesung-item">
+                            <i data-lucide="check" class="loesung-check" aria-hidden="true"></i>
+                            <span>Online-Terminbuchung ohne Telefonat</span>
+                        </li>
+                        <li class="loesung-item">
+                            <i data-lucide="check" class="loesung-check" aria-hidden="true"></i>
+                            <span>Automatische Benachrichtigung bei neuen Anfragen</span>
+                        </li>
+                        <li class="loesung-item">
+                            <i data-lucide="check" class="loesung-check" aria-hidden="true"></i>
+                            <span>SEO-Grundoptimierung für lokale Suchen</span>
+                        </li>
+                        <li class="loesung-item">
+                            <i data-lucide="check" class="loesung-check" aria-hidden="true"></i>
+                            <span>DSGVO-konform mit Cookie-Management</span>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ═══════════════════════════════════════════════════
+             ANGEBOT
+        ═══════════════════════════════════════════════════ -->
+        <section id="angebot">
+            <div class="section-wrap">
+
+                <div class="angebot-header">
+                    <span class="mono-label">Angebot</span>
+                    <h2 class="section-h2">Transparent. Einmalig. Ohne Überraschungen.</h2>
+                </div>
+
+                <div class="angebot-card">
+                    <div class="angebot-price-row">
+                        <div>
+                            <span class="angebot-price">1.800 EUR</span>
+                            <span class="angebot-price-note">einmalig</span>
                         </div>
-                        <p class="founder-name">Kevin Ritz</p>
-                        <p class="founder-role">Gründer &amp; Geschäftsführer, Koblenz</p>
-                        <a href="tel:+4915129755134" class="founder-link">+49 151 297 551 34</a>
-                        <a href="mailto:kevin@ritz-ai.solutions" class="founder-link">kevin@ritz-ai.solutions</a>
+                        <div>
+                            <span class="angebot-laufend-num">ca. 80 EUR</span>
+                            <span class="angebot-laufend-label">pro Monat (Hosting, Domain, Wartung, CCM19)</span>
+                        </div>
                     </div>
-
+                    <ul class="angebot-list">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                            Professionelle Website mit Ihrem Branding
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                            Interaktiver Kostenrechner
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                            Online-Terminbuchung via Calendly
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                            SEO-Grundoptimierung
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                            Einrichtung des Anfrage-Prozesses
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                            30 Tage Support nach Livegang
+                        </li>
+                    </ul>
+                    <a href="#kontakt" class="angebot-cta">Jetzt Erstgespräch buchen</a>
                 </div>
+
             </div>
         </section>
 
 
         <!-- ═══════════════════════════════════════════════════
-             TRUST (Referenzen & Vertrauen)
+             ABLAUF
         ═══════════════════════════════════════════════════ -->
-        <section id="trust">
+        <section id="ablauf">
             <div class="section-wrap">
 
-                <!-- Section intro -->
-                <div class="trust-intro">
-                    <span class="mono-label">Referenzen &amp; Vertrauen</span>
+                <div class="ablauf-header">
+                    <span class="mono-label">Ablauf</span>
+                    <h2 class="section-h2">In 3 Schritten live.</h2>
+                </div>
+
+                <div class="ablauf-grid">
+
+                    <div class="ablauf-step">
+                        <span class="ablauf-num">01</span>
+                        <h3 class="ablauf-title">Gespräch</h3>
+                        <p class="ablauf-body">15 Minuten Kennenlernen. Wir besprechen Ihren Betrieb, Ihre Anfragen und was Sie sich wünschen.</p>
+                    </div>
+
+                    <div class="ablauf-step">
+                        <span class="ablauf-num">02</span>
+                        <h3 class="ablauf-title">Umsetzung</h3>
+                        <p class="ablauf-body">Wir bauen Ihr System. Sie geben Texte und Inhalte frei. Kein technisches Vorwissen erforderlich.</p>
+                    </div>
+
+                    <div class="ablauf-step">
+                        <span class="ablauf-num">03</span>
+                        <h3 class="ablauf-title">Livegang</h3>
+                        <p class="ablauf-body">Ihre neue Website geht online. Wir erklären Ihnen alles Wichtige und sind 30 Tage erreichbar.</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ═══════════════════════════════════════════════════
+             DEMO
+        ═══════════════════════════════════════════════════ -->
+        <section id="demo">
+            <div class="section-wrap">
+
+                <div class="niche-intro">
+                    <span class="mono-label">Live-Demo</span>
                     <h2 class="section-h2">Sehen Sie selbst, wie ein RAIS-System aussieht.</h2>
                     <p class="section-sub">
-                        Kein Mockup. Ein vollständig funktionierendes Demo-System für Fliesenleger, live und interaktiv.
+                        Ein vollständig funktionierendes Echtbeispiel, live und interaktiv.
                     </p>
                 </div>
 
-                <!-- Demo embed (IntersectionObserver lazy-load) -->
                 <div class="proof-wrap">
                     <div class="proof-skeleton" aria-hidden="true"></div>
                     <iframe
@@ -1610,8 +1584,6 @@
                     </a>
                 </p>
 
-                <!-- FUTURE: testimonial carousel goes here -->
-
             </div>
         </section>
 
@@ -1619,12 +1591,11 @@
         <!-- ═══════════════════════════════════════════════════
              KONTAKT
         ═══════════════════════════════════════════════════ -->
-        <section id="contact">
+        <section id="kontakt">
             <div class="section-wrap">
 
                 <div class="contact-grid">
 
-                    <!-- Copy column -->
                     <div class="contact-text-col">
                         <span class="mono-label">Zusammenarbeiten</span>
                         <h2 class="section-h2">Klingt das interessant für Ihren Betrieb?</h2>
@@ -1649,10 +1620,8 @@
 
                 </div>
 
-                <!-- Contact details -->
                 <div class="contact-details">
                     <div class="contact-detail">
-                        <!-- Mail icon -->
                         <svg class="contact-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <rect x="2" y="4" width="20" height="16" rx="2"/>
                             <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
@@ -1660,7 +1629,6 @@
                         <a href="mailto:kevin@ritz-ai.solutions" class="contact-detail-link">kevin@ritz-ai.solutions</a>
                     </div>
                     <div class="contact-detail">
-                        <!-- Phone icon -->
                         <svg class="contact-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.28h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.99a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.28 16"/>
                         </svg>
@@ -1708,9 +1676,9 @@
 
 
         /* ── Mobile menu ─────────────────────────────────────── */
-        var hamburgerBtn    = document.getElementById('hamburger-btn');
-        var hamburgerIcon   = document.getElementById('hamburger-icon');
-        var mobileOverlay   = document.getElementById('mobile-overlay');
+        var hamburgerBtn  = document.getElementById('hamburger-btn');
+        var hamburgerIcon = document.getElementById('hamburger-icon');
+        var mobileOverlay = document.getElementById('mobile-overlay');
 
         var SVG_MENU = [
             '<line x1="3"  y1="6"  x2="21" y2="6"/>',
@@ -1772,14 +1740,12 @@
             });
         }
 
-        /* Close dropdown when clicking outside */
         document.addEventListener('click', function (e) {
             if (branchenDropdown && !branchenDropdown.contains(e.target)) {
                 closeDropdown();
             }
         });
 
-        /* Escape closes both */
         document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') {
                 closeMenu();
@@ -1791,6 +1757,20 @@
         /* ── Init Lucide icons ───────────────────────────────── */
         if (typeof lucide !== 'undefined' && typeof lucide.createIcons === 'function') {
             lucide.createIcons();
+        }
+
+
+        /* ── Hero slideshow ──────────────────────────────────── */
+        var heroSlides = document.querySelectorAll('.hero-slide');
+        var slideCount = heroSlides.length;
+        var slideIndex = 0;
+
+        if (slideCount > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            setInterval(function () {
+                heroSlides[slideIndex].classList.remove('is-active');
+                slideIndex = (slideIndex + 1) % slideCount;
+                heroSlides[slideIndex].classList.add('is-active');
+            }, 6000);
         }
 
 
