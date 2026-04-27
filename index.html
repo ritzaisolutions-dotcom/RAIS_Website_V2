@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>RAIS — Digitale Lösungen für Handwerksbetriebe</title>
-    <meta name="description" content="RAIS baut professionelle Websites für Handwerksbetriebe: mit Kostenrechner, klarer Anfrageleitung und Terminbuchung. Für Fliesenleger, Elektriker, Maler und weitere Gewerke.">
+    <title>RAIS - Websites für Handwerksbetriebe mit klarem Anfrage-System</title>
+    <meta name="description" content="RAIS baut spezialisierte Websites für Handwerksbetriebe, die Anfragen erfassen, vorsortieren und in Gespräche verwandeln - für Fliesenleger, Elektriker und Maler.">
 
     <link rel="icon" type="image/png" href="favicon.png?v=3">
     <link rel="apple-touch-icon" href="favicon.png?v=3">
 
     <!-- OpenGraph -->
-    <meta property="og:title" content="RAIS — Digitale Lösungen für Handwerksbetriebe">
-    <meta property="og:description" content="RAIS baut professionelle Websites für Handwerksbetriebe mit Kostenrechner, klarer Anfrageleitung und Terminbuchung.">
+    <meta property="og:title" content="RAIS - Websites für Handwerksbetriebe mit klarem Anfrage-System">
+    <meta property="og:description" content="RAIS baut spezialisierte Websites für Handwerksbetriebe, die Anfragen erfassen, vorsortieren und in Gespräche verwandeln.">
     <meta property="og:url" content="https://ritz-ai.solutions">
     <meta property="og:type" content="website">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="RAIS — Digitale Lösungen für Handwerksbetriebe">
-    <meta name="twitter:description" content="RAIS baut professionelle Websites für Handwerksbetriebe mit Kostenrechner, klarer Anfrageleitung und Terminbuchung.">
+    <meta name="twitter:title" content="RAIS - Websites für Handwerksbetriebe mit klarem Anfrage-System">
+    <meta name="twitter:description" content="RAIS baut spezialisierte Websites für Handwerksbetriebe, die Anfragen erfassen, vorsortieren und in Gespräche verwandeln.">
 
     <!-- Schema.org -->
     <script type="application/ld+json">
@@ -28,7 +28,7 @@
       "@type": "ProfessionalService",
       "name": "RAIS (Ritz AI Solutions)",
       "url": "https://ritz-ai.solutions",
-      "description": "Professionelle Websites mit Kostenrechner und Terminbuchung für Handwerksbetriebe.",
+      "description": "Spezialisierte Websites für Handwerksbetriebe mit klarem Anfrage-System, Kostenrechnern und strukturiertem Erstkontakt.",
       "brand": { "@type": "Brand", "name": "RAIS" }
     }
     </script>
@@ -495,43 +495,34 @@
             justify-content: center;
             overflow: hidden;
             padding: 0;
-            background-color: #F5F2EC;
-            /* Sage glow: top-right, static */
-            background-image: radial-gradient(ellipse 55vw 55vw at 95% 4%, rgba(120, 148, 100, 0.13) 0%, transparent 70%);
-            background-repeat: no-repeat;
+            background-color: var(--background);
         }
 
-        /* SVG fractal noise texture — warm linen paper feel */
-        #hero::before {
-            content: '';
+        /* Background layer: cloud base + spotlight + canvas grain */
+        .hero-bg {
             position: absolute;
             inset: 0;
             z-index: 0;
-            pointer-events: none;
-            background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='300'%20height='300'%3E%3Cfilter%20id='n'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.65'%20numOctaves='3'%20stitchTiles='stitch'/%3E%3CfeColorMatrix%20type='saturate'%20values='0'/%3E%3C/filter%3E%3Crect%20width='300'%20height='300'%20filter='url(%23n)'/%3E%3C/svg%3E");
-            background-repeat: repeat;
-            background-size: 300px 300px;
-            opacity: 0.065;
+            background:
+                linear-gradient(180deg, rgba(245, 242, 236, 0.98) 0%, rgba(251, 248, 243, 1) 100%);
         }
 
-        /* Orange radial glow: bottom-left corner, slow drift */
-        #hero::after {
-            content: '';
+        .hero-bg-gradient {
             position: absolute;
             inset: 0;
-            z-index: 0;
+            background:
+                radial-gradient(circle 560px at 50% 200px, rgba(236, 106, 55, 0.24) 0%, rgba(236, 106, 55, 0) 62%),
+                radial-gradient(circle 760px at 92% 8%, rgba(120, 148, 100, 0.11) 0%, rgba(120, 148, 100, 0) 68%);
+        }
+
+        #heroGrain {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
-            background: radial-gradient(ellipse 58vw 58vw at 8% 92%, rgba(236, 106, 55, 0.22) 0%, transparent 70%);
-            animation: hero-glow-drift 12s ease-in-out infinite;
-        }
-
-        @keyframes hero-glow-drift {
-            0%, 100% { transform: translate(0, 0); }
-            50%       { transform: translate(-2vw, 1.5vh); }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            #hero::after { animation: none; }
+            image-rendering: pixelated;
+            opacity: 0.5;
         }
 
         /* Content overlay */
@@ -992,25 +983,27 @@
             margin-top: 1.5rem;
         }
 
-        /* Photo placeholder */
+        /* Founder card */
         .founder-photo-placeholder {
             width: 100%;
             height: 300px;
-            background-color: rgba(123, 116, 107, 0.1);
-            border: 1px dashed var(--border);
+            background:
+                linear-gradient(180deg, rgba(251, 248, 243, 0.98), rgba(237, 232, 225, 0.96));
+            border: 1px solid var(--border);
             border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 1.5rem;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
         }
 
         .founder-photo-placeholder span {
-            font-family: 'JetBrains Mono', 'Courier New', monospace;
-            font-size: 0.5625rem;
-            letter-spacing: 0.13em;
-            text-transform: uppercase;
-            color: var(--stone);
+            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            color: var(--pistachio);
         }
 
         .founder-name {
@@ -1381,22 +1374,28 @@
 
         <section id="hero">
 
+            <!-- Noise + gradient background -->
+            <div class="hero-bg" aria-hidden="true">
+                <div class="hero-bg-gradient"></div>
+                <canvas id="heroGrain"></canvas>
+            </div>
+
             <!-- Overlay content -->
             <div class="hero-content">
-                <span class="hero-label">RAIS — Ritz AI Solutions</span>
+                <span class="hero-label">RAIS - Anfrage-Systeme für Handwerksbetriebe</span>
 
                 <h1 class="hero-h1">
-                    Handwerksbetriebe, die online wachsen wollen.<br>
-                    Wir machen das möglich.
+                    Websites für Handwerksbetriebe,<br>
+                    die Anfragen nicht liegen lassen.
                 </h1>
 
                 <p class="hero-sub">
-                    Websites, Kostenrechner, Terminbuchung und Automatisierung. Alles aus einer Hand.
+                    RAIS baut spezialisierte Auftritte für Gewerke, in denen Interessenten vergleichen, abends anfragen und beim klareren Anbieter landen.
                 </p>
 
                 <div class="hero-ctas">
-                    <a href="#contact"    class="hero-btn-primary">Erstgespräch buchen</a>
-                    <a href="#leistungen" class="hero-btn-outline">Unsere Leistungen</a>
+                    <a href="#contact"    class="hero-btn-primary">15-Minuten-Gespräch buchen</a>
+                    <a href="#branchen" class="hero-btn-outline">Branchen ansehen</a>
                 </div>
             </div>
 
@@ -1415,9 +1414,9 @@
                 <!-- Section intro -->
                 <div class="leis-intro">
                     <span class="mono-label">Was wir tun</span>
-                    <h2 class="section-h2">Drei Leistungen. Ein Ziel: Ihr Betrieb wächst.</h2>
+                    <h2 class="section-h2">Ein Kernsystem. Zwei sinnvolle Erweiterungen.</h2>
                     <p class="section-sub">
-                        Wir helfen Handwerksbetrieben, sich digital klar aufzustellen, mit einem professionellen Auftritt, der Anfragen erfasst, Termine bucht und Abläufe im Hintergrund vereinfacht.
+                        Im Kern verkauft RAIS keinen Bauchladen. Wir bauen einen professionellen Auftritt mit klarem Anfrageweg. Alles andere ist nur dann sinnvoll, wenn es Ihren Ablauf wirklich entlastet.
                     </p>
                 </div>
 
@@ -1433,9 +1432,9 @@
                             <line x1="12" y1="17" x2="12" y2="21"/>
                         </svg>
                         <span class="leis-card-badge">Hauptleistung</span>
-                        <h3 class="leis-card-title">Website mit Kostenrechner &amp; Terminbuchung</h3>
+                        <h3 class="leis-card-title">Website mit Anfrage-System</h3>
                         <p class="leis-card-body">
-                            Ein professioneller Webauftritt, der rund um die Uhr arbeitet. Interessenten bekommen sofort eine Preisspanne und können direkt einen Termin buchen, auch abends und am Wochenende.
+                            Ein Auftritt, der Leistungen sauber erklärt und Interessenten zum nächsten sinnvollen Schritt führt: Preis orientieren, Rückruf anfordern oder Termin anfragen.
                         </p>
                         <a href="#branchen" class="leis-card-link">
                             Mehr erfahren
@@ -1445,7 +1444,7 @@
                         </a>
                     </article>
 
-                    <!-- Card 2 — Prozessautomatisierung -->
+                    <!-- Card 2 — Support automation -->
                     <article class="leis-card leis-card--secondary-top">
                         <!-- Git-branch / flow icon -->
                         <svg class="leis-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -1454,21 +1453,21 @@
                             <circle cx="6" cy="18" r="3"/>
                             <path d="M18 9a9 9 0 0 1-9 9"/>
                         </svg>
-                        <h3 class="leis-card-title">Prozessautomatisierung</h3>
+                        <h3 class="leis-card-title">Rückmeldungen und Struktur im Hintergrund</h3>
                         <p class="leis-card-body">
-                            Wiederkehrende Abläufe im Betrieb automatisieren: Anfragen weiterleiten, Erinnerungen versenden, Daten strukturieren. Weniger manuelle Arbeit, mehr Zeit für das eigentliche Handwerk.
+                            Neue Anfragen landen sauber an einem Ort. Bestätigungen, Erinnerungen oder interne Weiterleitungen nehmen Kleinarbeit raus, ohne Ihren Betrieb umzubauen.
                         </p>
                     </article>
 
-                    <!-- Card 3 — Chat-Agent -->
+                    <!-- Card 3 — Guided intake -->
                     <article class="leis-card leis-card--secondary-bot">
                         <!-- Message square icon -->
                         <svg class="leis-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
                         </svg>
-                        <h3 class="leis-card-title">Chat-Agent für Kundenanfragen</h3>
+                        <h3 class="leis-card-title">Optionale Vorqualifizierung</h3>
                         <p class="leis-card-body">
-                            Ein digitaler Assistent auf Ihrer Website, der häufige Fragen beantwortet, Öffnungszeiten nennt und Anfragen vorqualifiziert, bevor Sie überhaupt ans Telefon gehen.
+                            Wenn viele Standardfragen kommen, kann ein geführter Frageweg Anfragen vorsortieren. Nicht als Spielerei, sondern nur dort, wo er Ihren Alltag wirklich entlastet.
                         </p>
                     </article>
 
@@ -1485,7 +1484,7 @@
                     <span class="mono-label">Mit wem wir arbeiten</span>
                     <h2 class="section-h2">Spezialisiert. Nicht generisch.</h2>
                     <p class="section-sub">
-                        Jede Branche hat eigene Abläufe, eigene Kundenerwartungen und eigene Schwachstellen. Wir bauen keine Einheitslösungen, sondern spezialisierte Systeme.
+                        Gleiche Technik, unterschiedliche Verkaufslogik. Je nach Gewerk entscheiden Preisorientierung, Rückruf-Triage oder Angebotsvergleich darüber, ob aus Interesse ein Auftrag wird.
                     </p>
                 </div>
 
@@ -1498,7 +1497,7 @@
                         <i data-lucide="grid-2x2" class="branchen-icon" aria-hidden="true"></i>
                         <h3 class="branchen-title">Fliesenleger &amp; Bodenleger</h3>
                         <p class="branchen-desc">
-                            Interessenten fragen abends an und bekommen keine Antwort. Mit Kostenrechner und Terminbuchung erfasst Ihr Betrieb Anfragen rund um die Uhr.
+                            Hier wird oft abends verglichen, nach Preisspannen gesucht und der Vor-Ort-Termin vom klareren Anbieter gewonnen.
                         </p>
                         <a href="fliesenleger.html" class="branchen-btn">Zum Angebot</a>
                     </div>
@@ -1509,7 +1508,7 @@
                         <i data-lucide="zap" class="branchen-icon" aria-hidden="true"></i>
                         <h3 class="branchen-title">Elektriker</h3>
                         <p class="branchen-desc">
-                            Notfallanfragen und Terminwünsche kommen zu jeder Tageszeit. Ein strukturiertes System sorgt dafür, dass keine Anfrage untergeht.
+                            Hier zählt saubere Triage: Was ist dringend, was ist planbar und was braucht zuerst einen Rückruf statt eines blinden Terminlinks.
                         </p>
                         <a href="elektriker.html" class="branchen-btn">Zum Angebot</a>
                     </div>
@@ -1520,7 +1519,7 @@
                         <i data-lucide="paintbrush" class="branchen-icon" aria-hidden="true"></i>
                         <h3 class="branchen-title">Maler &amp; Lackierer</h3>
                         <p class="branchen-desc">
-                            Projekte werden online verglichen und bewertet. Ein professioneller Auftritt mit klarer Angebotsstruktur entscheidet, wer den Auftrag bekommt.
+                            Hier entscheidet der erste Eindruck mit: Wer Leistungen sauber zeigt und Anfragen besser führt, bleibt im Angebotsvergleich drin.
                         </p>
                         <a href="maler.html" class="branchen-btn">Zum Angebot</a>
                     </div>
@@ -1540,23 +1539,22 @@
                     <!-- Text column -->
                     <div>
                         <span class="mono-label">Wer steckt dahinter</span>
-                        <h2 class="section-h2">Unsere Mission</h2>
+                        <h2 class="section-h2">Direkter Ansprechpartner. Kein Agentur-Apparat.</h2>
                         <p class="ueberuns-copy">
-                            RAIS wurde gegründet, weil zu viele gute Handwerksbetriebe online unsichtbar sind. Nicht weil ihre Arbeit schlecht ist, sondern weil niemand ihnen einen digitalen Auftritt gebaut hat, der wirklich funktioniert. Das ändern wir.
+                            RAIS arbeitet mit Betrieben, bei denen der erste Online-Kontakt direkt über Umsatz entscheidet. Nicht jeder braucht Automatisierung. Fast jeder braucht zuerst einen Auftritt, der ernst genommen wird und Anfragen sauber einsammelt.
                         </p>
                         <p class="ueberuns-copy" style="margin-top: 1.25rem;">
-                            Wir bauen keine Baukastenseiten. Wir bauen Systeme, die Anfragen erfassen, Termine sichern und Betriebe professionell positionieren. Spezialisiert auf Handwerk. Nicht auf alles.
+                            Deshalb beginnt hier nichts mit Tool-Gerede. Wir schauen zuerst, was ein Interessent bei Ihnen als Nächstes tun soll: Preis orientieren, Rückruf anfordern oder Termin anfragen. Darauf bauen wir die Seite.
                         </p>
                     </div>
 
                     <!-- Founder column -->
                     <div>
-                        <!-- Replace with professional photo -->
                         <div class="founder-photo-placeholder" aria-hidden="true">
-                            <span>Foto folgt</span>
+                            <span>KR</span>
                         </div>
                         <p class="founder-name">Kevin Ritz</p>
-                        <p class="founder-role">Gründer &amp; Geschäftsführer, Koblenz</p>
+                        <p class="founder-role">Direkter Ansprechpartner, Koblenz</p>
                         <a href="tel:+4915129755134" class="founder-link">+49 151 297 551 34</a>
                         <a href="mailto:kevin@ritz-ai.solutions" class="founder-link">kevin@ritz-ai.solutions</a>
                     </div>
@@ -1575,9 +1573,9 @@
                 <!-- Section intro -->
                 <div class="trust-intro">
                     <span class="mono-label">Referenzen &amp; Vertrauen</span>
-                    <h2 class="section-h2">Sehen Sie selbst, wie ein RAIS-System aussieht.</h2>
+                    <h2 class="section-h2">Funktionsbeispiel statt Agenturversprechen.</h2>
                     <p class="section-sub">
-                        Kein Mockup. Ein vollständig funktionierendes Demo-System für Fliesenleger, live und interaktiv.
+                        Sie sehen kein statisches Mockup, sondern einen echten Ablauf. So erkennen Sie, wie Preisorientierung, Anfrageweg und Terminlogik auf einer RAIS-Seite zusammenspielen.
                     </p>
                 </div>
 
@@ -1613,10 +1611,10 @@
 
                     <!-- Copy column -->
                     <div class="contact-text-col">
-                        <span class="mono-label">Zusammenarbeiten</span>
-                        <h2 class="section-h2">Klingt das interessant für Ihren Betrieb?</h2>
+                        <span class="mono-label">Nächster Schritt</span>
+                        <h2 class="section-h2">In 15 Minuten sehen Sie, ob Ihr Auftritt Anfragen verliert.</h2>
                         <p class="contact-copy">
-                            Buchen Sie direkt ein kostenloses 15-minütiges Kennenlerngespräch. Wir schauen gemeinsam, ob eine Zusammenarbeit für beide Seiten sinnvoll ist, ohne Druck, ohne versteckte Kosten.
+                            Wir schauen auf Ihren aktuellen Stand und klären drei Dinge: wo Interessenten abspringen, welcher Anfrageweg für Ihr Gewerk sinnvoll ist und ob sich das für Ihren Betrieb wirtschaftlich lohnt.
                         </p>
                     </div>
 
@@ -1625,7 +1623,7 @@
                          Disclose Calendly in Datenschutz as third-party tool. -->
                     <div class="cal-embed-wrap">
                         <div id="calWidget" style="display:none; min-width:320px; height:700px;"></div>
-                        <button type="button" id="calLoadBtn" class="cal-load-btn">Gespräch jetzt buchen</button>
+                        <button type="button" id="calLoadBtn" class="cal-load-btn">15-Minuten-Gespräch buchen</button>
                         <p id="calError" class="cal-error" style="display:none;">
                             Kalender konnte nicht geladen werden. <a href="https://calendly.com/ritzaisolutions/erstgesprach-mit-rais" target="_blank" rel="noopener">Direkt öffnen ↗</a>
                         </p>
@@ -1692,6 +1690,66 @@
         window.addEventListener('scroll', function () {
             navbar.classList.toggle('scrolled', window.scrollY > 8);
         }, { passive: true });
+
+        /* Hero grain */
+        var heroGrain = document.getElementById('heroGrain');
+
+        if (heroGrain && heroGrain.getContext) {
+            (function initHeroGrain(canvas) {
+                var ctx = canvas.getContext('2d', { alpha: true });
+                if (!ctx) return;
+
+                var frame = 0;
+                var animationId = 0;
+                var canvasSize = 1024;
+                var refreshInterval = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 2;
+                var grainAlpha = 15;
+
+                function resizeCanvas() {
+                    canvas.width = canvasSize;
+                    canvas.height = canvasSize;
+                }
+
+                function drawGrain() {
+                    var imageData = ctx.createImageData(canvasSize, canvasSize);
+                    var data = imageData.data;
+
+                    for (var i = 0; i < data.length; i += 4) {
+                        var value = Math.floor(Math.random() * 256);
+                        data[i] = value;
+                        data[i + 1] = value;
+                        data[i + 2] = value;
+                        data[i + 3] = grainAlpha;
+                    }
+
+                    ctx.putImageData(imageData, 0, 0);
+                }
+
+                function loop() {
+                    if (frame % refreshInterval === 0) {
+                        drawGrain();
+                    }
+
+                    frame += 1;
+                    animationId = window.requestAnimationFrame(loop);
+                }
+
+                function cleanup() {
+                    window.cancelAnimationFrame(animationId);
+                    window.removeEventListener('resize', resizeCanvas);
+                    window.removeEventListener('pagehide', cleanup);
+                }
+
+                resizeCanvas();
+                drawGrain();
+                window.addEventListener('resize', resizeCanvas, { passive: true });
+                window.addEventListener('pagehide', cleanup);
+
+                if (refreshInterval > 0) {
+                    animationId = window.requestAnimationFrame(loop);
+                }
+            }(heroGrain));
+        }
 
 
         /* ── Mobile menu ─────────────────────────────────────── */

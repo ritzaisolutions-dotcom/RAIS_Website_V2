@@ -1,168 +1,124 @@
 # RAIS Brand Steer
 
 ## Purpose
-This file governs visual execution and appearance decisions for RAIS V2.
-It translates `brand.md` into concrete on-screen design behavior.
+This file governs visual execution for the current RAIS website.
+`brand.md` defines positioning and messaging.
+`brand_steer.md` translates that into on-screen decisions.
 
 Authority order:
-1. `brand.md` defines brand truth, audience, positioning, and messaging
-2. `brand_steer.md` defines visual execution and appearance
-3. page files implement both
+1. `brand.md`
+2. `brand_steer.md`
+3. page files
 
 ## Core Appearance Goal
-RAIS V2 should look like editorial hospitality with operator precision.
+RAIS should look like commercial clarity with editorial restraint.
 
 That means:
-- warm, premium, and composed
-- specific to restaurants and operators
-- more like a boutique hospitality brand with systems discipline
-- less like a startup landing page
+- warm
+- premium
+- composed
+- specific to trades businesses
+- more like a serious proposal than a startup landing page
 
 ## Anti-Goals
-Do not let the site drift into:
-- template landing page feel
-- generic SaaS card-grid rhythm
-- all-white-plus-orange oversimplification
-- dark tech throwbacks
-- AI agency aesthetics
-- visual fluff that weakens commercial trust
+Do not drift into:
+- generic agency aesthetics
+- generic SaaS card grids
+- "AI agency" visual language
+- dark tech theatrics
+- decorative effects that weaken trust
 
 ## Layout Steering
-Prefer contrast through composition, pacing, and density rather than by adding more containers.
-
-Use a mix of:
-- full-width editorial rows
-- split compositions
-- inset panels
-- proposal-like framed blocks
-- proof-driven side panels
+Prefer:
+- clear section rhythm
+- strong copy hierarchy
+- framed proposal-like offer areas
+- proof-led demo sections
+- visible seriousness around contact and legal trust
 
 Avoid:
-- repeating the same rounded box pattern section after section
-- making every section a centered headline plus cards
-- making every CTA look identical
-
-## RAIS Signal Accents
-Preserve a reduced, mature version of RAIS signal language from the earlier identity.
-
-Allowed uses:
-- small section labels
-- disciplined dividers
-- micro-markers
-- icon holders
-- reservation flow indicators
-- trust markers
-- proposal framing cues
-
-Not allowed:
-- mission control theatrics
-- terminal cosplay
-- "system online" gimmicks
-- neon pulses
-- sci-fi ornament for its own sake
-
-Signal accents should feel like controlled operator cues, not performance graphics.
+- repeating the same card treatment section after section
+- multiple equally loud CTAs
+- ornamental layout moves with no sales purpose
 
 ## Surface Strategy
-Default surface behavior:
-- Cloud and Warm Linen as primary page atmosphere
-- Sage and Dark Pistachio as support structure
-- Charcoal and Stone for hierarchy and legibility
-- Mandarin Orange only for action, emphasis, and signature moments
+Primary atmosphere:
+- Cloud and Warm Linen
+- calm tonal layering
+- subtle paper-like contrast
 
-Depth should come from:
-- tonal layering
-- paper-like contrast
-- borders
-- composition
-- spacing
+Support structure:
+- Sage and Dark Pistachio
+- Charcoal and Stone for legibility
 
-Do not rely on:
-- glow
-- oversized shadows
-- gradient spectacle
-- decorative visual noise
+Accent:
+- Mandarin Orange for action and key emphasis only
+
+Do not let orange become the dominant atmosphere.
 
 ## Typography Steering
-Headlines should feel more editorial and more distinctive than body text.
-Body copy should remain direct, legible, and commercially clear.
+Headlines should feel editorial and commercially serious.
+Body copy should stay plain, readable, and direct.
 
-Use mono/system cues only for:
-- labels
-- short markers
-- restrained RAIS signal moments
+Mono cues are allowed for:
+- small labels
+- restrained system markers
+- support framing
 
-Do not let mono become the dominant voice of the page.
-The main voice should feel human, premium, and hospitality-aware.
+Mono must not become the dominant voice.
 
 ## Module Rules
 ### Hero
-The hero should feel like a composed brand statement.
+The hero should communicate one clear offer.
 
 Use:
-- strong asymmetry or deliberate split composition
-- one central visual proof object
-- a clear headline plus operational proof pairing
-- fewer generic hero patterns
+- a strong business claim
+- one clear supporting paragraph
+- a primary CTA with obvious value
+- a secondary CTA that helps orientation
 
 Avoid:
-- centered startup hero symmetry
-- generic browser mockups
-- multiple equal-weight CTA blocks
+- vague growth language
+- product menus in the hero
+- equal emphasis on multiple unrelated services
 
 ### Offer Section
-The offer should read like a commercial proposal, not pricing widgets.
+The offer should read like a clear commercial package.
 
 Use:
-- one signature main package
-- smaller side modules for extensions
-- visual distinction between revenue-driving add-ons and operating costs
+- one main offer
+- supporting modules as extensions
+- obvious distinction between one-time setup and monthly costs
 
-### Process Section
-The process should feel like an operator briefing or working relationship timeline.
+### Niche Sections
+Niche pages should not feel cloned.
 
-Avoid:
-- standard SaaS "three steps" cards
-- decorative numbered tiles with no narrative weight
+Each page needs:
+- niche-specific pains
+- niche-specific request flow
+- niche-specific wording
+- niche-specific objections
 
-### Trust and Legal Cues
-Legal and compliance cues should feel integrated and deliberate.
+### Trust Section
+Demo sections should be honest.
 
 Use:
-- quiet proof moments
+- "funktionsbeispiel" language when it is not a real case study
+- direct founder access
 - visible seriousness
-- subtle framing around GDPR, privacy, and company legitimacy
 
-Do not treat trust as footer filler.
+Do not fake proof.
 
-## Imagery and UI Mockups
-Reservation mockups should feel like branded hospitality materials.
-
-Use:
-- reservation form views
-- confirmation moments
-- reminder moments
-- operational proof layouts
-
-Avoid:
-- generic browser-window mockups
-- fake dashboards
-- tech-style admin UI fillers
-
-## Copy and Appearance Pairing
-Operational claims should be paired with calm, proof-like layouts.
-
-Rules:
-- the more practical the copy, the less decorative the design should become
-- serious promises need composed visual support
-- proof, clarity, and rhythm matter more than visual excitement
+## Visual Proof Guidance
+If only one demo exists, frame it as a functional example.
+Do not imply you have trade-specific case studies when you do not.
 
 ## Quality Check
-Before finalizing a design, ask:
-- does this feel like RAIS, or like a template?
-- does this feel specific to restaurants?
-- does this feel commercially credible to a non-technical owner?
-- are RAIS accents restrained and meaningful?
-- is orange still an accent rather than the atmosphere?
+Before shipping, ask:
+- does this page sell one clear thing?
+- does this feel specific to the niche?
+- does this feel commercially credible to a skeptical owner?
+- is the CTA concrete?
+- is trust handled honestly?
 
 If the answer fails any of these, revise before shipping.

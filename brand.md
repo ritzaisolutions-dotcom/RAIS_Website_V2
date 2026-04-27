@@ -1,81 +1,81 @@
 # RAIS Brand Guide
 
 ## Brand Summary
-RAIS, Ritz AI Solutions, is a practical growth and operations partner for restaurants.
-RAIS does not present itself as a flashy AI lab, futuristic software vendor, or trend-driven startup.
-The brand should feel calm, capable, premium, and commercially useful.
-The website should make restaurant owners feel that RAIS understands service pressure, guest expectations, and operational reality.
+RAIS, Ritz AI Solutions, is a practical growth and first-contact partner for handwerksbetriebe.
+RAIS should not read like an AI lab, trend agency, or vague digital consultancy.
+The brand should feel calm, capable, commercially useful, and specific to owner-led trades businesses.
 
 ## Audience
 Primary audience:
-- Restaurant owners
-- Often older and non-technical
-- Time-poor
-- Operationally focused
-- Skeptical of hype
+- owner-led handwerksbetriebe
+- often non-technical
+- time-poor
+- skeptical of hype
+- focused on jobs, staff, calls, and cash flow
 
-The brand must speak in a way that feels immediately understandable to owners in their 40s, 50s, and beyond.
+The copy must be understandable to a busy owner in a few seconds.
 
 ## Positioning
-Sell outcomes, not AI.
+Sell clearer first contact, not abstract technology.
 
 RAIS is not selling:
-- fancy AI tools
+- AI for its own sake
 - chatbot novelty
-- futuristic automation language
-- software for engineers
+- startup language
+- generic "digital transformation"
+- a menu of random services
 
 RAIS is selling:
-- more reservations
-- fewer missed reservation requests
-- less chaos during rush hours
-- automatic guest reminders
-- cleaner reservation capture
-- a more professional online presence
-- better follow-up with existing guests
+- a stronger first impression
+- fewer lost inquiries
+- clearer inquiry capture
+- better qualification before the callback
+- faster movement from interest to site visit or sales call
+- less manual chaos around inbound leads
 
 ## Core Offer Structure
 Primary offer:
-- Professional restaurant website with integrated reservation form and simple CRM or reservation capture logic
-- One-time price: 1.200 EUR
-
-Primary system behavior:
-- Restaurant gets notified after a reservation is made
-- Guest gets notified after a reservation is made
-- Guest gets an automatic reminder 24 hours before the reservation
-
-Required trust and legal baseline:
-- Impressum
-- Datenschutz
-- Cookie banner
+- specialized website for handwerksbetriebe
+- one-time setup: 1.800 EUR
 
 Ongoing client-side costs:
-- Around 80 EUR per month
-- Hosting, backups, database, and related infrastructure
+- around 80 EUR per month
+- hosting, domain, maintenance, consent tooling, and related infrastructure
 
-Upsells:
-- E-Mail-Marketing: 250 EUR per month
-- Betreuung: 350 EUR per month
+Offer logic:
+- the website must lead to the next sensible step
+- depending on the trade, that can be price orientation, callback request, site visit request, or structured project inquiry
+- do not force the same lead flow on every niche
 
-Do not prioritize AI-agent upsells unless there is a very clear and visible restaurant-specific business case.
+Optional extensions:
+- guided qualification flows
+- reminder or follow-up automation
+- structured lead routing
+
+## Trust Baseline
+Always include:
+- Impressum
+- Datenschutz
+- cookie banner / consent tooling
+
+Trust should not be hidden in the footer as an afterthought.
 
 ## Brand Personality
 The brand should feel:
-- warm
-- trustworthy
-- mature
-- business-oriented
+- direct
 - grounded
-- elegant
-- hospitality-aware
+- mature
+- commercially serious
+- warm without sounding soft
+- confident without sounding loud
 
 The brand should not feel:
-- overexcited
 - futuristic
-- tech-bro
-- cyberpunk
-- abstract
-- overly polished in a generic SaaS way
+- salesy
+- overproduced
+- generic SaaS
+- "full-service agency" vague
+- hype-driven
 
 ## Color Palette
 Use this exact palette:
@@ -91,143 +91,79 @@ Use this exact palette:
 - Border: `#D9D1C7`
 
 ## Color Usage
-- 60 to 70 percent cloud and warm linen backgrounds
-- 15 to 20 percent charcoal and stone text structure
-- 10 to 15 percent sage and dark pistachio support tones
-- 5 to 8 percent mandarin orange only for accents, CTAs, links, highlight moments, key icons, and logo moments
-
-Orange must remain part of the identity, but it should not dominate the full page atmosphere.
+- Cloud and Warm Linen should dominate the atmosphere
+- Charcoal and Stone carry hierarchy and readability
+- Sage and Dark Pistachio support structure and trust
+- Orange is an accent, not the page background
 
 ## Typography Direction
 Typography should feel:
-- warm
 - premium
-- trustworthy
-- practical
-- legible
+- readable
+- editorial, not techy
+- confident without aggression
 
 Avoid:
-- ultra-tech fonts
-- aggressive geometric startup fonts
-- anything that feels like dev tooling or a sci-fi product launch
-
-The typography mix should support:
-- elegant headlines
-- simple readable body copy
-- restrained emphasis
+- futuristic fonts
+- dev-tool aesthetics
+- overly geometric startup typography
 
 ## Messaging Principles
 Copy should be:
-- clear
-- warm
-- direct
-- confident
+- concrete
 - believable
 - outcome-focused
+- trade-aware
+- plain German by default on the site
 
 Copy should not:
 - overuse the word AI
-- rely on jargon
-- sound like enterprise software sales
-- sound like a startup pitch deck
-
-Rewrite technical ideas into restaurant-owner language.
+- promise everything to everyone
+- rely on vague growth language
+- invent statistics without proof
 
 ## Messaging Pillars
-Always return to these core outcomes:
-- more reservations
-- fewer missed inquiries
-- reminders that reduce forgotten bookings
-- better organization
-- professional online presence
-- time saved for the owner
+Keep returning to:
+- clearer first contact
+- fewer lost inquiries
+- stronger online impression
+- better qualification
+- more useful callbacks
+- less operational friction
+
+## Niche Logic
+Each niche needs its own commercial angle.
+
+Examples:
+- Fliesenleger: price orientation, project fit, site visit flow
+- Elektriker: triage, urgency, structured callback logic
+- Maler: first impression, scope clarity, quote comparison
+
+Do not clone one landing page and swap nouns.
 
 ## Visual Direction
-The website should feel like a premium operational partner for restaurants.
+The site should feel like a premium commercial partner for trades businesses.
 
 Use:
 - warm whitespace
-- calm layout rhythm
 - restrained contrast
-- elegant structure
-- subtle hospitality cues
-- restaurant-relevant storytelling
+- clear section pacing
+- proof-oriented layouts
+- calm seriousness
 
-Preferred visual content:
-- website mockups with reservation form
-- simple reservation flow visual
-- guest books -> restaurant gets notified -> guest gets reminder
-- subtle legal and trust cues
+Avoid:
+- dashboard fantasy
+- neon or sci-fi styling
+- generic AI agency cues
+- decorative noise without purpose
 
-## Forbidden Aesthetics
-Do not use:
-- dark mode as the main presentation
-- sci-fi gradients
-- glowing blobs
-- neon blue accents
-- futuristic dashboards
-- cyberpunk visuals
-- generic SaaS landing page structures
-- generic AI agency look
-- tech illustration filler
-- startup cliche hero layouts
+## Offer and CTA Guidance
+The homepage should present one clear core offer.
+Supporting capabilities can appear as extensions, not equal-weight products.
 
-## Copy and Section Guidance
-### Hero
-The hero must feel:
-- direct
-- operational
-- trustworthy
-- non-technical
-- outcome-focused
+CTAs should explain the value of the call.
+Do not ask for permission with weak lines like "Klingt das interessant?"
 
-Good direction:
-- Keine Reservierungsanfrage mehr im Stossgeschaeft verpassen.
-- Mehr Reservierungen. Weniger verpasste Anfragen. Weniger Chaos im Stossgeschaeft.
-- Ihre Website soll nicht nur gut aussehen, sie soll Reservierungen bringen.
-- Professionelle Restaurant-Websites, die Reservierungen erfassen und Gaeste automatisch erinnern.
-
-### Offer Section
-Use this visual hierarchy:
-- left side: one large primary offer card
-- right side: three smaller stacked cards
-
-Primary left card:
-- Website + Reservierungssystem
-- 1.000 EUR einmalig
-
-Smaller right cards:
-- Add-on: E-Mail-Marketing
-- Add-on: Betreuung
-- Laufende Fremdkosten
-
-### Three-Phase Section
-Use these exact phases:
-1. Analyse
-2. Umsetzung
-3. Begleitung
-
-Each phase should be written in plain German for restaurant owners.
-
-### Legal Trust Cues
-Legal and privacy cues should be visible and reassuring.
-Do not hide them as an afterthought.
-They should support the impression that RAIS is commercially serious and GDPR-conscious.
-
-## Copywriting Do and Don't
-Do:
-- speak to real operational pain
-- use plain German by default
-- focus on what improves for the owner
-- sound like an experienced operator-partner
-
-Do not:
-- say neural orchestration
-- say omnichannel orchestration
-- say workflow architecture unless translated into plain language
-- say AI-powered everywhere
-- sound like a VC-backed SaaS homepage
-
-## Design Standard
-If a design choice is visually impressive but makes the site feel more generic, more technical, or less hospitality-friendly, reject it.
-If a design choice feels calmer, more specific, more operational, and more credible for restaurants, prefer it.
+## Quality Standard
+If a page could plausibly belong to any freelancer, agency, or SaaS consultant, it is not specific enough.
+If a niche page can be reused by another trade with a few noun swaps, it is not specialized enough.
