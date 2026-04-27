@@ -496,8 +496,8 @@
             overflow: hidden;
             padding: 0;
             background-color: #F5F2EC;
-            /* Sage soft glow: top-right, static */
-            background-image: radial-gradient(ellipse 50vw 50vw at 92% 8%, rgba(120, 148, 100, 0.05) 0%, transparent 65%);
+            /* Sage glow: top-right, static */
+            background-image: radial-gradient(ellipse 55vw 55vw at 95% 4%, rgba(120, 148, 100, 0.13) 0%, transparent 70%);
             background-repeat: no-repeat;
         }
 
@@ -511,26 +511,23 @@
             background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='300'%20height='300'%3E%3Cfilter%20id='n'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.65'%20numOctaves='3'%20stitchTiles='stitch'/%3E%3CfeColorMatrix%20type='saturate'%20values='0'/%3E%3C/filter%3E%3Crect%20width='300'%20height='300'%20filter='url(%23n)'/%3E%3C/svg%3E");
             background-repeat: repeat;
             background-size: 300px 300px;
-            opacity: 0.038;
+            opacity: 0.065;
         }
 
-        /* Orange radial glow: bottom-left, subtle drift animation */
+        /* Orange radial glow: bottom-left corner, slow drift */
         #hero::after {
             content: '';
             position: absolute;
             inset: 0;
             z-index: 0;
             pointer-events: none;
-            background-image: radial-gradient(ellipse at center, rgba(236, 106, 55, 0.08) 0%, transparent 60%);
-            background-size: 110vw 110vw;
-            background-position: 0% 100%;
-            background-repeat: no-repeat;
+            background: radial-gradient(ellipse 58vw 58vw at 8% 92%, rgba(236, 106, 55, 0.22) 0%, transparent 70%);
             animation: hero-glow-drift 12s ease-in-out infinite;
         }
 
         @keyframes hero-glow-drift {
-            0%, 100% { background-position: 0% 100%; }
-            50%       { background-position: 3% 97%; }
+            0%, 100% { transform: translate(0, 0); }
+            50%       { transform: translate(-2vw, 1.5vh); }
         }
 
         @media (prefers-reduced-motion: reduce) {
