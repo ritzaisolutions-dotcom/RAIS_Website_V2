@@ -55,7 +55,9 @@ Secondary references:
 - legal structure
 - working calendly and privacy logic
 - branding assets without reason
-- the core one-time plus monthly pricing structure unless explicitly changed
+- the current one-time pricing structure and the absence of recurring third-party costs unless explicitly changed
+
+- `index.html` should function as a hub into the niche pages first and a brand page second
 
 ## Copy Quality Standard
 The site should feel:

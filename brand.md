@@ -38,11 +38,11 @@ Primary offer:
 - specialized website for handwerksbetriebe
 - one-time setup: 1.800 EUR
 
-Ongoing client-side costs:
-- around 80 EUR per month
-- hosting, domain, maintenance, consent tooling, and related infrastructure
+Recurring costs:
+- no ongoing third-party costs in the standard offer
 
 Offer logic:
+- the homepage acts as a hub into the niche pages
 - the website must lead to the next sensible step
 - depending on the trade, that can be price orientation, callback request, site visit request, or structured project inquiry
 - do not force the same lead flow on every niche
@@ -136,7 +136,7 @@ Each niche needs its own commercial angle.
 
 Examples:
 - Fliesenleger: price orientation, project fit, site visit flow
-- Elektriker: triage, urgency, structured callback logic
+- Elektriker: request sorting, urgency, callback path
 - Maler: first impression, scope clarity, quote comparison
 
 Do not clone one landing page and swap nouns.

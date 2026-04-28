@@ -88,7 +88,15 @@ The offer should read like a clear commercial package.
 Use:
 - one main offer
 - supporting modules as extensions
-- obvious distinction between one-time setup and monthly costs
+- obvious distinction between one-time setup and the absence of recurring third-party costs
+
+### Homepage Role
+The homepage is a routing layer first.
+
+It should:
+- send users quickly into the correct niche page
+- present RAIS as the brand and commercial frame
+- avoid feeling like a one-person portfolio page
 
 ### Niche Sections
 Niche pages should not feel cloned.
