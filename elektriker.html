@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>RAIS für Elektriker - Websites mit klarer Vorsortierung und klarem Rückrufweg</title>
-    <meta name="description" content="RAIS baut Websites für Elektrikerbetriebe mit klarer Vorsortierung, sauberer Leistungsstruktur und klarem Rückrufweg statt unklarer Anfragen.">
+    <title>RAIS für Elektriker - Website mit Vorsortierung und planbarem Rechner</title>
+    <meta name="description" content="RAIS baut Websites für Elektriker, die auch dann Anfragen auffangen, wenn Sie im Einsatz, auf der Baustelle oder am Wochenende nicht ans Telefon gehen.">
 
     <link rel="icon" type="image/png" href="favicon.png?v=3">
     <link rel="apple-touch-icon" href="favicon.png?v=3">
@@ -445,6 +445,108 @@
         .proof-ext-link { font-size: 0.875rem; color: var(--stone); text-decoration: none; transition: color 0.15s ease; }
         .proof-ext-link:hover { color: var(--charcoal); }
 
+        #loesung { display: none; }
+        .demo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+        .demo-card {
+            display: flex; flex-direction: column; gap: 1.25rem; padding: 1.5rem;
+            background-color: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+        }
+        .demo-kicker {
+            display: inline-block; font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 0.625rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--pistachio); margin-bottom: 0.625rem;
+        }
+        .demo-title {
+            font-family: 'Baskerville', Georgia, serif; font-size: 1.375rem;
+            line-height: 1.18; color: var(--charcoal); margin-bottom: 0.75rem;
+        }
+        .demo-copy { font-size: 0.9375rem; line-height: 1.72; color: var(--stone); }
+        .demo-list { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
+        .demo-list li {
+            display: flex; align-items: flex-start; gap: 0.625rem;
+            font-size: 0.9375rem; line-height: 1.6; color: var(--charcoal);
+        }
+        .demo-list li::before { content: "•"; color: var(--pistachio); flex-shrink: 0; }
+        .demo-frame-shell {
+            display: block; max-width: 88%; margin: 0 auto; border: 1px solid var(--border);
+            border-radius: 16px; overflow: hidden; background-color: #ffffff;
+            box-shadow: 0 24px 60px rgba(47, 42, 36, 0.08); text-decoration: none;
+        }
+        .demo-browser-bar {
+            display: flex; align-items: center; gap: 0.75rem; padding: 0.875rem 1rem;
+            border-bottom: 1px solid var(--border); background-color: var(--background);
+        }
+        .demo-browser-dots { display: flex; gap: 0.375rem; flex-shrink: 0; }
+        .demo-browser-dots span { width: 0.5rem; height: 0.5rem; border-radius: 999px; background-color: #d8d0c4; }
+        .demo-browser-label {
+            flex: 1; min-width: 0; font-size: 0.75rem; color: var(--stone);
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .demo-open-label { font-size: 0.75rem; color: var(--charcoal); white-space: nowrap; }
+        .demo-image {
+            display: block; width: 100%; aspect-ratio: 16 / 10;
+            object-fit: cover; object-position: top center; background-color: #ffffff;
+        }
+        .calculator-preview { padding: 1.125rem; background: linear-gradient(180deg, #f4efe7 0%, #fbf8f4 100%); }
+        .calculator-card { padding: 1rem; background-color: #ffffff; border: 1px solid var(--border); border-radius: 14px; }
+        .calculator-row {
+            display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+            padding: 0.875rem 0; border-bottom: 1px solid var(--border);
+        }
+        .calculator-row:last-of-type { border-bottom: none; }
+        .calculator-label { font-size: 0.875rem; color: var(--stone); }
+        .calculator-value { font-size: 0.9375rem; font-weight: 600; color: var(--charcoal); text-align: right; }
+        .calculator-total {
+            display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem;
+            margin-top: 1rem; padding: 1rem; border-radius: 12px; background-color: var(--surface);
+        }
+        .calculator-total span {
+            font-size: 0.75rem; line-height: 1.5; letter-spacing: 0.08em;
+            text-transform: uppercase; color: var(--stone);
+        }
+        .calculator-total strong {
+            font-family: 'Baskerville', Georgia, serif; font-size: 1.75rem; line-height: 1; color: var(--charcoal);
+        }
+        .demo-links { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+        .demo-link {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 0.75rem 1.125rem; border-radius: 10px; border: 1px solid var(--border);
+            text-decoration: none; font-size: 0.9375rem; color: var(--charcoal);
+            transition: background-color 0.15s ease, border-color 0.15s ease;
+        }
+        .demo-link:hover { background-color: rgba(47, 42, 36, 0.04); border-color: rgba(47, 42, 36, 0.2); }
+        .demo-note { font-size: 0.875rem; line-height: 1.7; color: var(--stone); margin-top: 1.25rem; }
+
+        #trust { padding: 5rem 0; background-color: var(--surface); }
+        .trust-grid {
+            display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+            gap: 2rem; align-items: start;
+        }
+        .trust-copy {
+            max-width: 42rem; margin-top: 1.5rem; font-size: 1rem;
+            line-height: 1.78; color: var(--stone);
+        }
+        .trust-card {
+            padding: 1.75rem; background-color: var(--background);
+            border: 1px solid var(--border); border-radius: 16px;
+        }
+        .trust-card-kicker {
+            display: inline-block; font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 0.625rem; letter-spacing: 0.16em; text-transform: uppercase;
+            color: var(--pistachio); margin-bottom: 0.875rem;
+        }
+        .trust-card-title {
+            font-family: 'Baskerville', Georgia, serif; font-size: 1.5rem;
+            line-height: 1.18; color: var(--charcoal); margin-bottom: 0.875rem;
+        }
+        .trust-card-copy { font-size: 0.9375rem; line-height: 1.72; color: var(--stone); }
+        .trust-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.25rem; }
+        .trust-list li {
+            display: flex; align-items: flex-start; gap: 0.625rem;
+            font-size: 0.9375rem; line-height: 1.6; color: var(--charcoal);
+        }
+        .trust-list li::before { content: "•"; color: var(--pistachio); flex-shrink: 0; }
+        .trust-card .contact-details { margin-top: 1.5rem; padding-top: 1.5rem; }
+
         /* KONTAKT */
         #kontakt { padding: 5rem 0; background-color: var(--background); }
         .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
@@ -488,7 +590,9 @@
         }
         @media (max-width: 840px) {
             .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-            #problem, #zahlen, #loesung, #angebot, #ablauf, #demo, #kontakt { padding: 4rem 0; }
+            .demo-grid, .trust-grid { grid-template-columns: 1fr; }
+            .demo-frame-shell { max-width: 100%; }
+            #problem, #zahlen, #angebot, #ablauf, #demo, #kontakt, #trust { padding: 4rem 0; }
         }
         @media (max-width: 520px) {
             .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
@@ -512,7 +616,7 @@
 
             <div class="nav-center" role="none">
                 <ul class="nav-list" role="list">
-                    <li><a href="index.html#leistungen">Leistungen</a></li>
+                    <li><a href="#angebot">Leistungen</a></li>
                     <li class="nav-dropdown">
                         <button type="button" id="branchen-btn" aria-haspopup="true" aria-expanded="false" aria-controls="branchen-panel">
                             Branchen
@@ -533,13 +637,13 @@
                             </a>
                         </div>
                     </li>
-                    <li><a href="index.html#ueber-uns">Über uns</a></li>
+                    <li><a href="#trust">Über uns</a></li>
                     <li><a href="#kontakt">Kontakt</a></li>
                 </ul>
             </div>
 
             <div class="nav-right">
-                <a href="#kontakt" class="btn-primary">Gespräch buchen</a>
+                <a href="#kontakt" class="btn-primary">Demo anfordern</a>
                 <button class="nav-hamburger" id="hamburger-btn" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-overlay">
                     <svg id="hamburger-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <line x1="3" y1="6" x2="21" y2="6"/>
@@ -554,17 +658,17 @@
 
     <div id="mobile-overlay" role="dialog" aria-label="Navigation" aria-modal="true">
         <div class="mobile-nav-inner">
-            <a href="index.html#leistungen" class="mobile-link" data-close-menu>Leistungen</a>
+            <a href="#angebot" class="mobile-link" data-close-menu>Leistungen</a>
             <span class="mobile-section-label">Branchen</span>
             <div class="mobile-sublinks">
                 <a href="fliesenleger.html" class="mobile-link" data-close-menu>Fliesenleger &amp; Bodenleger</a>
                 <a href="elektriker.html"   class="mobile-link" data-close-menu>Elektriker</a>
                 <a href="maler.html"        class="mobile-link" data-close-menu>Maler</a>
             </div>
-            <a href="index.html#ueber-uns" class="mobile-link" data-close-menu>Über uns</a>
+            <a href="#trust" class="mobile-link" data-close-menu>Über uns</a>
             <a href="#kontakt"             class="mobile-link" data-close-menu>Kontakt</a>
             <hr class="mobile-hr">
-            <a href="#kontakt" class="mobile-cta" data-close-menu>Gespräch buchen</a>
+            <a href="#kontakt" class="mobile-cta" data-close-menu>Demo anfordern</a>
         </div>
     </div>
 
@@ -583,17 +687,17 @@
             </div>
             <div class="hero-scrim" aria-hidden="true"></div>
             <div class="hero-content">
-                <span class="hero-label">RAIS - Elektriker</span>
+                <span class="hero-label">RAIS - Website für Elektriker</span>
                 <h1 class="hero-h1">
-                    Anfragen sauber rein.<br>
-                    Dringendes zuerst.
+                    Wenn Sie im Einsatz sind,<br>
+                    muss Ihre Website den Erstkontakt übernehmen.
                 </h1>
                 <p class="hero-sub">
-                    Websites für Elektrikerbetriebe mit klarer Vorsortierung, sauberer Leistungsstruktur und einem Rückrufweg, der Anfragen besser ordnet.
+                    Wir bauen Websites für Elektriker, die Anfragen auch dann auffangen, wenn Sie auf der Baustelle sind: mit klaren Leistungsseiten, sauberem Formular, Terminwunsch und einem Rechner für planbare Leistungen.
                 </p>
                 <div class="hero-ctas">
-                    <a href="#kontakt" class="hero-btn-primary">15-Minuten-Gespräch buchen</a>
-                    <a href="#demo"    class="hero-btn-outline">Demo ansehen</a>
+                    <a href="#kontakt" class="hero-btn-primary">Demo anfordern</a>
+                    <a href="#demo"    class="hero-btn-outline">Beispiel ansehen</a>
                 </div>
             </div>
             <div class="hero-scroll-cue" aria-hidden="true">
@@ -606,26 +710,26 @@
             <div class="section-wrap">
                 <div class="niche-intro">
                     <span class="mono-label">Das Problem</span>
-                    <h2 class="section-h2">Warum gehen so viele Anfragen verloren?</h2>
+                    <h2 class="section-h2">Viele Anfragen sehen zuerst gleich aus, obwohl sie es nicht sind.</h2>
                     <p class="section-sub">
-                        Bei Elektrikerthemen reicht Erreichbarkeit allein nicht. Entscheidend ist, ob Ihre Website Anfragen vorsortiert, bevor alles gleichzeitig auf Ihrem Telefon landet.
+                        Wenn Störung, Kleinauftrag und planbares Projekt über denselben Kontaktweg reinkommen, geht Zeit verloren. Vor allem dann, wenn Sie gerade im Einsatz sind und nicht sofort zurückrufen können.
                     </p>
                 </div>
                 <div class="problem-grid">
                     <div class="problem-item">
                         <i data-lucide="phone-off" class="problem-icon" aria-hidden="true"></i>
-                        <h3 class="problem-title">Alles landet ungefiltert</h3>
-                        <p class="problem-body">Störung, Kleinauftrag und größere Installation kommen über denselben Kanal rein und sehen im ersten Moment gleich aus.</p>
+                        <h3 class="problem-title">Alles kommt ungefiltert rein</h3>
+                        <p class="problem-body">Störung, Kleinauftrag und größere Installation laufen über denselben Kanal und sehen im ersten Moment gleich aus.</p>
                     </div>
                     <div class="problem-item">
                         <i data-lucide="inbox" class="problem-icon" aria-hidden="true"></i>
-                        <h3 class="problem-title">Rückruf kostet zu viel Zeit</h3>
-                        <p class="problem-body">Ohne Vorabinfos müssen Sie zuerst herausfinden, worum es überhaupt geht, bevor Sie den Auftrag einordnen können.</p>
+                        <h3 class="problem-title">Dringendes und Planbares vermischt sich</h3>
+                        <p class="problem-body">Wenn die Website nicht sauber sortiert, landet auch eine gute Projektanfrage zwischen allem anderen und geht im Alltag unter.</p>
                     </div>
                     <div class="problem-item">
                         <i data-lucide="shield-off" class="problem-icon" aria-hidden="true"></i>
-                        <h3 class="problem-title">Zu wenig Klarheit für planbare Aufträge</h3>
-                        <p class="problem-body">Wer Leistungen wie Wallbox, Sanierung oder Installation nicht sauber zeigt, verliert planbare Anfragen vor dem ersten Gespräch.</p>
+                        <h3 class="problem-title">Rückrufe dauern unnötig lange</h3>
+                        <p class="problem-body">Ohne Angaben zu Anliegen, Objektart und Dringlichkeit müssen Sie im Rückruf erst sortieren, statt direkt entscheiden zu können.</p>
                     </div>
                 </div>
             </div>
@@ -636,16 +740,16 @@
             <div class="section-wrap">
                 <div class="zahlen-grid">
                     <div class="zahlen-item">
-                        <span class="zahlen-num">Dringend</span>
-                        <p class="zahlen-label">Nicht jede Anfrage ist gleich. Ihre Website sollte erkennbar machen, was sofortige Priorität hat und was planbar ist.</p>
+                        <span class="zahlen-num">Auf der Baustelle</span>
+                        <p class="zahlen-label">Genau dann gehen Anrufe ins Leere. Die Website muss den Erstkontakt übernehmen und sauber vorsortieren.</p>
                     </div>
                     <div class="zahlen-item">
-                        <span class="zahlen-num">Planbar</span>
-                        <p class="zahlen-label">Gerade attraktive Aufträge brauchen klare Leistungsseiten, damit Kunden wissen, ob Sie der richtige Betrieb für ihr Vorhaben sind.</p>
+                        <span class="zahlen-num">Nach Feierabend</span>
+                        <p class="zahlen-label">Dann werden Rückrufe erwartet oder neue Anfragen geschrieben. Wer keine klare Struktur bietet, verliert gegen den besser sortierten Betrieb.</p>
                     </div>
                     <div class="zahlen-item">
-                        <span class="zahlen-num">Vorab</span>
-                        <p class="zahlen-label">Wenn Objektart, Anliegen und Dringlichkeit schon vorliegen, wird der Rückruf kürzer und die Priorisierung besser.</p>
+                        <span class="zahlen-num">Am Wochenende</span>
+                        <p class="zahlen-label">Viele Eigentümer und Bauherren planen dann erst ihr Anliegen. Auch dann sollte Ihre Seite erreichbar, klar und handlungsfähig sein.</p>
                     </div>
                 </div>
             </div>
@@ -697,7 +801,7 @@
             <div class="section-wrap">
                 <div class="angebot-header">
                     <span class="mono-label">Angebot</span>
-                    <h2 class="section-h2">Klares Paket für Elektrikerbetriebe.</h2>
+                    <h2 class="section-h2">Was auf der Website für Ihren Betrieb konkret enthalten ist.</h2>
                 </div>
                 <div class="angebot-card">
                     <div class="angebot-price-row">
@@ -705,20 +809,17 @@
                             <span class="angebot-price">1.800 EUR</span>
                             <span class="angebot-price-note">einmalig</span>
                         </div>
-                        <div>
-                            <span class="angebot-laufend-num">0 EUR</span>
-                            <span class="angebot-laufend-label">keine laufenden Fremdkosten im Standardangebot</span>
-                        </div>
                     </div>
                     <ul class="angebot-list">
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Professionelle Website mit Ihrem Branding</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Priorisiertes Anfrageformular</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Rückrufwunsch oder Terminanfrage</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>SEO-Grundoptimierung</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Einrichtung des Anfragewegs</li>
-                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>14 Tage technischer Support nach Livegang</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Individuelle Website mit bis zu 7 Seiten: Start, Leistungen, Referenzen, Rechner, Kontakt, Impressum und Datenschutz</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Rechner für planbare Leistungen wie Wallbox, Unterverteilung oder Teilsanierung</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Online-Terminwunsch oder Rückrufanfrage</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Kontaktformular mit Anliegen, Objektart, Ort und Dringlichkeit</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Einbindung von bis zu 15 Referenzfotos aus Ihrem Betrieb</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Bis zu 2 Revisionsrunden vor dem Livegang</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Domain-Setup, Livegang und 14 Tage technischer Support</li>
                     </ul>
-                    <a href="#kontakt" class="angebot-cta">15-Minuten-Gespräch buchen</a>
+                    <a href="#kontakt" class="angebot-cta">Demo anfordern</a>
                 </div>
             </div>
         </section>
@@ -727,24 +828,24 @@
         <section id="ablauf">
             <div class="section-wrap">
                 <div class="ablauf-header">
-                    <span class="mono-label">Ablauf</span>
-                    <h2 class="section-h2">In 3 Schritten zu klareren Anfragen.</h2>
+                    <span class="mono-label">Nächste Schritte</span>
+                    <h2 class="section-h2">So entsteht die Seite in 2 bis 3 Wochen.</h2>
                 </div>
                 <div class="ablauf-grid">
                     <div class="ablauf-step">
                         <span class="ablauf-num">01</span>
-                        <h3 class="ablauf-title">Gespräch</h3>
-                        <p class="ablauf-body">Wir klären, welche Anliegen dringend, planbar oder unpassend sind und welche Infos Sie vor einem Rückruf brauchen.</p>
+                        <h3 class="ablauf-title">Ausrichtung</h3>
+                        <p class="ablauf-body">Wir besprechen Leistungen, Einsatzgebiet und welche Anliegen über die Website sauber vorsortiert werden sollen.</p>
                     </div>
                     <div class="ablauf-step">
                         <span class="ablauf-num">02</span>
                         <h3 class="ablauf-title">Umsetzung</h3>
-                        <p class="ablauf-body">Wir bauen Leistungsseiten, Vorsortierung und Anfrageweg passend zu Ihrem Betrieb statt eines generischen Kontaktformulars.</p>
+                        <p class="ablauf-body">Sie liefern Fotos, Firmendaten und Leistungslogik. Daraus bauen wir Website, Rechner, Anfrageformular und Terminweg für Ihren Betrieb.</p>
                     </div>
                     <div class="ablauf-step">
                         <span class="ablauf-num">03</span>
                         <h3 class="ablauf-title">Livegang</h3>
-                        <p class="ablauf-body">Nach Freigabe geht die Seite live. Sie sehen schneller, was wichtig ist, und verschwenden weniger Zeit im ersten Rückruf.</p>
+                        <p class="ablauf-body">Nach Freigabe geht die Seite live. Danach sind noch 14 Tage technischer Support enthalten, damit alles sauber läuft.</p>
                     </div>
                 </div>
             </div>
@@ -755,26 +856,89 @@
         <section id="demo">
             <div class="section-wrap">
                 <div class="niche-intro">
-                    <span class="mono-label">Live-Demo</span>
-                    <h2 class="section-h2">So sieht der Ablauf in der Praxis aus.</h2>
+                    <span class="mono-label">Demo</span>
+                    <h2 class="section-h2">So können Website und Rechner für planbare Anfragen aussehen.</h2>
                     <p class="section-sub">
-                        Wir zeigen den Ablauf an einer Beispielseite. Entscheidend ist nicht das Gewerk des Demos, sondern wie Anfrage, Vorsortierung und nächster Schritt geführt werden.
+                        Zwei kompakte Vorschauen statt einer schweren Vollansicht. Die Bilder zeigen die Struktur. Im Projekt wird die Anfrageführung auf Ihre Leistungen, Ihr Einsatzgebiet und Ihre Prioritäten angepasst.
                     </p>
                 </div>
-                <div class="proof-wrap">
-                    <div class="proof-skeleton" aria-hidden="true"></div>
-                    <iframe
-                        id="proofIframe"
-                        data-proof-src="https://project-frjzx.vercel.app"
-                        title="RAIS Demo-System"
-                        class="proof-iframe"
-                    ></iframe>
+                <div class="demo-grid">
+                    <article class="demo-card">
+                        <div>
+                            <span class="demo-kicker">Beispiel-Website</span>
+                            <h3 class="demo-title">Die komplette Seite für Installation, Sanierung und Rückrufweg.</h3>
+                            <p class="demo-copy">Diese Vorschau zeigt den Aufbau. Im Projekt werden Leistungen, Texte und Auswahlwege auf Ihren Betrieb angepasst, damit planbare Anfragen nicht untergehen.</p>
+                        </div>
+                        <ul class="demo-list">
+                            <li>klare Leistungsseiten für planbare Arbeiten</li>
+                            <li>saubere Anfrageführung statt Sammelkontakt</li>
+                            <li>Referenzen und Einsatzgebiet vor dem Rückruf</li>
+                        </ul>
+                        <div class="demo-frame-shell" aria-label="Statische Vorschau einer Beispiel-Website">
+                            <div class="demo-browser-bar">
+                                <div class="demo-browser-dots" aria-hidden="true">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <span class="demo-browser-label">Beispielseite: Leistungen, Anfrageweg und Rückruflogik</span>
+                                <span class="demo-open-label">Statische Vorschau</span>
+                            </div>
+                            <img src="images/fliesenweber-demo-preview.png" alt="Vorschau einer Beispiel-Website für einen Handwerksbetrieb" class="demo-image">
+                        </div>
+                        <div class="demo-links">
+                            <a href="#kontakt" class="demo-link">Eigene Website-Demo anfordern</a>
+                        </div>
+                    </article>
+
+                    <article class="demo-card">
+                        <div>
+                            <span class="demo-kicker">Beispiel-Rechner</span>
+                            <h3 class="demo-title">Der Rechner ist für planbare Leistungen gedacht, nicht für Störungen.</h3>
+                            <p class="demo-copy">Die Vorschau zeigt den Typ Rechner. Im Projekt wird er nur dort eingesetzt, wo eine erste Orientierung sinnvoll ist, zum Beispiel bei Wallbox, Unterverteilung oder Teilsanierung.</p>
+                        </div>
+                        <ul class="demo-list">
+                            <li>erste Orientierung für planbare Leistungen</li>
+                            <li>klare Abfrage von Objektart und Leistungsumfang</li>
+                            <li>bessere Vorbereitung vor dem Rückruf</li>
+                        </ul>
+                        <div class="demo-frame-shell" aria-label="Statische Vorschau eines Beispiel-Rechners">
+                            <div class="demo-browser-bar">
+                                <div class="demo-browser-dots" aria-hidden="true">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <span class="demo-browser-label">Beispiel-Rechner: planbare Leistung statt Störung</span>
+                                <span class="demo-open-label">Statische Vorschau</span>
+                            </div>
+                            <div class="calculator-preview">
+                                <div class="calculator-card">
+                                    <div class="calculator-row">
+                                        <span class="calculator-label">Leistung</span>
+                                        <span class="calculator-value">Wallbox</span>
+                                    </div>
+                                    <div class="calculator-row">
+                                        <span class="calculator-label">Objekt</span>
+                                        <span class="calculator-value">Einfamilienhaus</span>
+                                    </div>
+                                    <div class="calculator-row">
+                                        <span class="calculator-label">Zusatzaufwand</span>
+                                        <span class="calculator-value">Leitung + Absicherung</span>
+                                    </div>
+                                    <div class="calculator-total">
+                                        <span>Erste Orientierung</span>
+                                        <strong>ab 1.690 EUR</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="demo-links">
+                            <a href="#kontakt" class="demo-link">Eigene Rechner-Demo anfordern</a>
+                        </div>
+                    </article>
                 </div>
-                <p class="proof-ext-link-wrap">
-                    <a href="https://project-frjzx.vercel.app" target="_blank" rel="noopener" class="proof-ext-link">
-                        Demo in neuem Tab öffnen ↗
-                    </a>
-                </p>
+                <p class="demo-note">Die Vorschauen sind bewusst statisch gehalten. Entscheidend ist die Struktur. Inhalte, Bilder und Auswahlwege werden im Projekt auf Ihren Betrieb umgebaut.</p>
             </div>
         </section>
 
@@ -783,10 +947,10 @@
             <div class="section-wrap">
                 <div class="contact-grid">
                     <div class="contact-text-col">
-                        <span class="mono-label">Nächster Schritt</span>
-                        <h2 class="section-h2">In 15 Minuten sehen Sie, ob Ihre Website Anfragen sauber vorsortiert.</h2>
+                        <span class="mono-label">Demo anfordern</span>
+                        <h2 class="section-h2">Lassen Sie sich zeigen, wie Ihre Website Anfragen sauber vorsortieren kann.</h2>
                         <p class="contact-copy">
-                            Wir schauen, welche Anfragen Sie eigentlich wollen, welche Informationen vor dem Rückruf fehlen und wie Ihre Website das sauber vorsortieren kann.
+                            In 15 Minuten klären wir, welche Anfragen zuerst sichtbar werden müssen und wie Ihre Website mit Rechner, Terminwunsch und sauberem Formular für Ihren Betrieb aussehen kann.
                         </p>
                     </div>
                     <!-- CALENDLY: Loads only on user click.
@@ -794,12 +958,12 @@
                          Disclose Calendly in Datenschutz as third-party tool. -->
                     <div class="cal-embed-wrap">
                         <div id="calWidget" style="display:none; min-width:320px; height:700px;"></div>
-                        <button type="button" id="calLoadBtn" class="cal-load-btn">15-Minuten-Gespräch buchen</button>
+                        <button type="button" id="calLoadBtn" class="cal-load-btn">15-Minuten-Demo anfordern</button>
                         <p id="calError" class="cal-error" style="display:none;">
                             Kalender konnte nicht geladen werden. <a href="https://calendly.com/ritzaisolutions/erstgesprach-mit-rais" target="_blank" rel="noopener">Direkt öffnen ↗</a>
                         </p>
                         <a href="https://calendly.com/ritzaisolutions/erstgesprach-mit-rais" target="_blank" rel="noopener" class="cal-ext-link">
-                            Kalender extern öffnen ↗
+                            Termin extern öffnen ↗
                         </a>
                     </div>
                 </div>
@@ -812,6 +976,42 @@
                         <svg class="contact-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.28h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.99a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.28 16"/></svg>
                         <a href="tel:+4915129755134" class="contact-detail-link">+49 151 297 551 34</a>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="trust">
+            <div class="section-wrap">
+                <div class="trust-grid">
+                    <div>
+                        <span class="mono-label">Vertrauen</span>
+                        <h2 class="section-h2">Direkter Ansprechpartner. Klarer Rahmen.</h2>
+                        <p class="trust-copy">
+                            Sie sprechen direkt mit Kevin Ritz. RAIS ist der Rahmen dahinter: Positionierung, Seitenstruktur, Copy und technische Umsetzung für spezialisierte Handwerksseiten. Kein loses Freelancer-Gebastel, sondern ein klares Angebot mit Festpreis, definiertem Scope und sauberem Livegang.
+                        </p>
+                    </div>
+
+                    <aside class="trust-card">
+                        <span class="trust-card-kicker">RAIS / Kevin Ritz</span>
+                        <h3 class="trust-card-title">Persönlich im Kontakt, sauber im Aufbau.</h3>
+                        <p class="trust-card-copy">Ein Ansprechpartner, ein klarer Ablauf, ein verständliches Angebot.</p>
+                        <ul class="trust-list">
+                            <li>Direkter Kontakt statt Vertriebskette</li>
+                            <li>Fokus auf ausgewählte Handwerksbereiche statt alles für alle</li>
+                            <li>Website, Rechner, Copy und technischer Aufbau aus einer Hand</li>
+                            <li>14 Tage technischer Support nach dem Livegang</li>
+                        </ul>
+                        <div class="contact-details">
+                            <div class="contact-detail">
+                                <svg class="contact-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                                <a href="mailto:kevin@ritz-ai.solutions" class="contact-detail-link">kevin@ritz-ai.solutions</a>
+                            </div>
+                            <div class="contact-detail">
+                                <svg class="contact-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.28h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.99a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.28 16"/></svg>
+                                <a href="tel:+4915129755134" class="contact-detail-link">+49 151 297 551 34</a>
+                            </div>
+                        </div>
+                    </aside>
                 </div>
             </div>
         </section>
@@ -924,27 +1124,6 @@
                     document.getElementById('calError').style.display = 'block';
                 };
                 document.head.appendChild(s);
-            });
-        }
-
-        var proofIframe = document.getElementById('proofIframe');
-        if (proofIframe) {
-            var proofSrcSet = false;
-            var proofObserver = new IntersectionObserver(function (entries, obs) {
-                if (entries[0].isIntersecting) {
-                    proofIframe.src = proofIframe.dataset.proofSrc;
-                    proofSrcSet = true;
-                    obs.disconnect();
-                }
-            }, { rootMargin: '200px', threshold: 0 });
-            proofObserver.observe(proofIframe);
-            proofIframe.addEventListener('load', function () {
-                if (!proofSrcSet) return;
-                var skeleton = document.querySelector('.proof-skeleton');
-                if (skeleton) {
-                    skeleton.style.opacity = '0';
-                    setTimeout(function () { skeleton.style.display = 'none'; }, 420);
-                }
             });
         }
 
