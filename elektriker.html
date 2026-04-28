@@ -585,6 +585,20 @@
             padding: 1.75rem; background-color: var(--background);
             border: 1px solid var(--border); border-radius: 16px;
         }
+        .trust-person {
+            display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem;
+        }
+        .trust-avatar {
+            width: 4.75rem; height: 4.75rem; border-radius: 18px; flex-shrink: 0;
+            display: grid; place-items: center;
+            background: linear-gradient(135deg, rgba(207, 106, 58, 0.18), rgba(118, 132, 90, 0.12));
+            border: 1px solid rgba(207, 106, 58, 0.18);
+            color: var(--charcoal); font-family: 'Baskerville', Georgia, serif;
+            font-size: 1.5rem; font-weight: 700;
+        }
+        .trust-person-meta { display: flex; flex-direction: column; gap: 0.25rem; min-width: 0; }
+        .trust-person-name { font-size: 1rem; font-weight: 600; color: var(--charcoal); }
+        .trust-person-role { font-size: 0.875rem; line-height: 1.5; color: var(--stone); }
         .trust-card-kicker {
             display: inline-block; font-family: 'JetBrains Mono', 'Courier New', monospace;
             font-size: 0.625rem; letter-spacing: 0.16em; text-transform: uppercase;
@@ -647,10 +661,21 @@
         @media (max-width: 840px) {
             .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
             .demo-grid, .trust-grid { grid-template-columns: 1fr; }
-            .demo-frame-shell { max-width: 100%; }
+            .demo-frame-shell { max-width: 100%; width: 100%; }
             #problem, #zahlen, #angebot, #ablauf, #demo, #kontakt, #trust { padding: 4rem 0; }
         }
         @media (max-width: 520px) {
+            .demo-card { padding: 1.25rem; }
+            .demo-browser-bar { flex-wrap: wrap; align-items: flex-start; padding: 0.75rem 0.875rem; }
+            .demo-browser-label, .demo-open-label { white-space: normal; overflow: visible; text-overflow: unset; }
+            .demo-open-label { width: 100%; }
+            .calculator-preview, .calculator-card { padding: 0.875rem; }
+            .calculator-field-meta { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+            .calculator-row { flex-direction: column; align-items: flex-start; gap: 0.375rem; }
+            .calculator-value { width: 100%; text-align: left; overflow-wrap: anywhere; }
+            .calculator-toggle { flex-direction: column; align-items: flex-start; }
+            .calculator-toggle span:last-child { white-space: normal; }
+            .trust-person { align-items: flex-start; }
             .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
         }
 
@@ -749,7 +774,7 @@
                     geht die Anfrage oft an den Elektriker, der es ist.
                 </h1>
                 <p class="hero-sub">
-                    Gerade bei Elektrothemen wird oft sofort weitertelefoniert oder weitergeklickt. Wir bauen Websites, die in diesem Moment vorsortieren, Vertrauen schaffen und planbare Anfragen sauber auffangen.
+                    Bei Elektrothemen wird oft sofort weitertelefoniert. Die Website muss Anfragen vorsortieren, Vertrauen schaffen und planbare Projekte festhalten, bevor sie weiterwandern.
                 </p>
                 <div class="hero-ctas">
                     <a href="#kontakt" class="hero-btn-primary">Demo anfordern</a>
@@ -768,24 +793,24 @@
                     <span class="mono-label">Das Problem</span>
                     <h2 class="section-h2">Gute Anfragen gehen verloren, wenn in diesem Moment niemand greifbar ist.</h2>
                     <p class="section-sub">
-                        Nicht jede Anfrage ist dringend. Aber wenn Störung, Kleinauftrag und planbares Projekt gleich aussehen, wandert auch ein guter Auftrag schnell weiter.
+                        Wenn Störung, Kleinauftrag und planbares Projekt gleich aussehen, wandert auch ein guter Auftrag schnell weiter.
                     </p>
                 </div>
                 <div class="problem-grid">
                     <div class="problem-item">
                         <i data-lucide="phone-off" class="problem-icon" aria-hidden="true"></i>
                         <h3 class="problem-title">Alles kommt ungefiltert rein</h3>
-                        <p class="problem-body">Störung, Kleinauftrag und größere Installation laufen über denselben Kanal und sehen im ersten Moment gleich aus.</p>
+                        <p class="problem-body">Störung, Kleinauftrag und größere Installation laufen über denselben Kanal.</p>
                     </div>
                     <div class="problem-item">
                         <i data-lucide="inbox" class="problem-icon" aria-hidden="true"></i>
                         <h3 class="problem-title">Dringendes und Planbares vermischt sich</h3>
-                        <p class="problem-body">Wenn die Website nicht sauber sortiert, landet auch eine gute Projektanfrage zwischen allem anderen und geht im Alltag unter.</p>
+                        <p class="problem-body">Ohne klare Sortierung geht auch eine gute Projektanfrage im Alltag unter.</p>
                     </div>
                     <div class="problem-item">
                         <i data-lucide="shield-off" class="problem-icon" aria-hidden="true"></i>
                         <h3 class="problem-title">Rückrufe dauern unnötig lange</h3>
-                        <p class="problem-body">Ohne Angaben zu Anliegen, Objektart und Dringlichkeit müssen Sie im Rückruf erst sortieren, statt direkt entscheiden zu können.</p>
+                        <p class="problem-body">Ohne Anliegen, Objektart und Dringlichkeit beginnt jeder Rückruf mit Sortierarbeit.</p>
                     </div>
                 </div>
             </div>
@@ -855,7 +880,7 @@
                     <span class="mono-label">Demo</span>
                     <h2 class="section-h2">So können Website und Rechner für planbare Anfragen aussehen.</h2>
                     <p class="section-sub">
-                        Zwei kompakte Vorschauen statt einer schweren Vollansicht. Die Bilder zeigen die Struktur. Im Projekt wird die Anfrageführung auf Ihre Leistungen, Ihr Einsatzgebiet und Ihre Prioritäten angepasst.
+                        Zwei kleine Vorschauen: die Seite und der Rechner. Beides wird auf Ihre Leistungen und Ihren Anfrageweg angepasst.
                     </p>
                 </div>
                 <div class="demo-grid">
@@ -863,7 +888,7 @@
                         <div>
                             <span class="demo-kicker">Beispiel-Website</span>
                             <h3 class="demo-title">Die komplette Seite für Installation, Sanierung und Rückrufweg.</h3>
-                            <p class="demo-copy">Diese Vorschau zeigt den Aufbau. Im Projekt werden Leistungen, Texte und Auswahlwege auf Ihren Betrieb angepasst, damit planbare Anfragen nicht untergehen.</p>
+                            <p class="demo-copy">Hier entscheidet sich, ob eine planbare Anfrage bei Ihnen bleibt oder weitertelefoniert wird.</p>
                         </div>
                         <ul class="demo-list">
                             <li>klare Leistungsseiten für planbare Arbeiten</li>
@@ -891,7 +916,7 @@
                         <div>
                             <span class="demo-kicker">Beispiel-Rechner</span>
                             <h3 class="demo-title">Der Rechner ist für planbare Leistungen gedacht, nicht für Störungen.</h3>
-                            <p class="demo-copy">Die Vorschau zeigt den Typ Rechner. Im Projekt wird er nur dort eingesetzt, wo eine erste Orientierung sinnvoll ist, zum Beispiel bei Wallbox, Unterverteilung oder Teilsanierung.</p>
+                            <p class="demo-copy">Er gibt Orientierung bei planbaren Leistungen und spart Rückfragearbeit vor dem Rückruf.</p>
                         </div>
                         <ul class="demo-list">
                             <li>erste Orientierung für planbare Leistungen</li>
@@ -956,11 +981,11 @@
                             </div>
                         </div>
                         <div class="demo-links">
-                            <a href="#kontakt" class="demo-link">Eigene Rechner-Demo anfordern</a>
+                            <a href="#kontakt" class="demo-link">Eigene Demo im 15-Minuten-Call anfragen</a>
                         </div>
                     </article>
                 </div>
-                <p class="demo-note">Die Website-Vorschau zeigt nur den Aufbau. Der Rechner daneben bleibt interaktiv und wird im Projekt auf Ihre Leistungen, Auswahlwege und Preislogik angepasst.</p>
+                <p class="demo-note">Die Website-Vorschau ist statisch. Der Rechner bleibt interaktiv und wird im Projekt auf Ihre Logik angepasst.</p>
             </div>
         </section>
 
@@ -969,23 +994,23 @@
             <div class="section-wrap">
                 <div class="ablauf-header">
                     <span class="mono-label">Nächste Schritte</span>
-                    <h2 class="section-h2">So entsteht die Seite in 2 bis 3 Wochen.</h2>
+                    <h2 class="section-h2">So geht es nach dem 15-Minuten-Call weiter.</h2>
                 </div>
                 <div class="ablauf-grid">
                     <div class="ablauf-step">
                         <span class="ablauf-num">01</span>
-                        <h3 class="ablauf-title">Ausrichtung</h3>
-                        <p class="ablauf-body">Wir besprechen Leistungen, Einsatzgebiet und welche Anliegen über die Website sauber vorsortiert werden sollen.</p>
+                        <h3 class="ablauf-title">15-Minuten-Call</h3>
+                        <p class="ablauf-body">Wir klären, welche Anfragen sichtbar bleiben müssen und was die Seite vor dem Rückruf schon sortieren soll.</p>
                     </div>
                     <div class="ablauf-step">
                         <span class="ablauf-num">02</span>
                         <h3 class="ablauf-title">Umsetzung</h3>
-                        <p class="ablauf-body">Sie liefern Fotos, Firmendaten und Leistungslogik. Daraus bauen wir Website, Rechner, Anfrageformular und Terminweg für Ihren Betrieb.</p>
+                        <p class="ablauf-body">Sie liefern Fotos, Firmendaten und Leistungslogik. Daraus bauen wir Seite, Rechner und Anfrageweg.</p>
                     </div>
                     <div class="ablauf-step">
                         <span class="ablauf-num">03</span>
                         <h3 class="ablauf-title">Livegang</h3>
-                        <p class="ablauf-body">Nach Freigabe geht die Seite live. Danach sind noch 14 Tage technischer Support enthalten, damit alles sauber läuft.</p>
+                        <p class="ablauf-body">Nach Freigabe geht die Seite live. Danach sind 14 Tage technischer Support enthalten.</p>
                     </div>
                 </div>
             </div>
@@ -997,9 +1022,9 @@
                 <div class="contact-grid">
                     <div class="contact-text-col">
                         <span class="mono-label">Demo anfordern</span>
-                        <h2 class="section-h2">Lassen Sie sich zeigen, wie Ihre Website Anfragen sauber vorsortieren kann.</h2>
+                        <h2 class="section-h2">Im 15-Minuten-Call sehen Sie, wie Website, Rechner und Anfrageweg für Ihren Betrieb aussehen können.</h2>
                         <p class="contact-copy">
-                            In 15 Minuten klären wir, welche Anfragen zuerst sichtbar werden müssen und wie Ihre Website mit Rechner, Terminwunsch und sauberem Formular für Ihren Betrieb aussehen kann.
+                            Wir gehen kurz durch, wo heute Anfragen verloren gehen und wie die Seite planbare Projekte sauberer festhält.
                         </p>
                     </div>
                     <!-- CALENDLY: Loads only on user click.
@@ -1007,7 +1032,7 @@
                          Disclose Calendly in Datenschutz as third-party tool. -->
                     <div class="cal-embed-wrap">
                         <div id="calWidget" style="display:none; min-width:320px; height:700px;"></div>
-                        <button type="button" id="calLoadBtn" class="cal-load-btn">15-Minuten-Demo anfordern</button>
+                        <button type="button" id="calLoadBtn" class="cal-load-btn">15-Minuten-Demo anfragen</button>
                         <p id="calError" class="cal-error" style="display:none;">
                             Kalender konnte nicht geladen werden. <a href="https://calendly.com/ritzaisolutions/erstgesprach-mit-rais" target="_blank" rel="noopener">Direkt öffnen ↗</a>
                         </p>
@@ -1036,14 +1061,21 @@
                         <span class="mono-label">Vertrauen</span>
                         <h2 class="section-h2">Direkter Ansprechpartner. Klarer Rahmen.</h2>
                         <p class="trust-copy">
-                            Sie sprechen direkt mit Kevin Ritz. RAIS ist der Rahmen dahinter: Positionierung, Seitenstruktur, Copy und technische Umsetzung für spezialisierte Handwerksseiten. Kein loses Freelancer-Gebastel, sondern ein klares Angebot mit Festpreis, definiertem Scope und sauberem Livegang.
+                            Sie sprechen direkt mit Kevin Ritz. RAIS bündelt Struktur, Copy, Rechner und technische Umsetzung für diese spezialisierten Handwerksseiten.
                         </p>
                     </div>
 
                     <aside class="trust-card">
                         <span class="trust-card-kicker">RAIS / Kevin Ritz</span>
+                        <div class="trust-person">
+                            <div class="trust-avatar" aria-hidden="true">KR</div>
+                            <div class="trust-person-meta">
+                                <span class="trust-person-name">Kevin Ritz</span>
+                                <span class="trust-person-role">Direkter Ansprechpartner bei RAIS</span>
+                            </div>
+                        </div>
                         <h3 class="trust-card-title">Persönlich im Kontakt, sauber im Aufbau.</h3>
-                        <p class="trust-card-copy">Ein Ansprechpartner, ein klarer Ablauf, ein verständliches Angebot.</p>
+                        <p class="trust-card-copy">Ein Ansprechpartner, ein klarer Scope, ein sauberer Livegang.</p>
                         <ul class="trust-list">
                             <li>Direkter Kontakt statt Vertriebskette</li>
                             <li>Fokus auf ausgewählte Handwerksbereiche statt alles für alle</li>
