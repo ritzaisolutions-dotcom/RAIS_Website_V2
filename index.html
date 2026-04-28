@@ -609,25 +609,6 @@
             transform: translateY(-1px);
         }
 
-        .hero-meta {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            margin-top: 0.25rem;
-            color: var(--stone);
-            font-size: 0.9375rem;
-            line-height: 1.55;
-        }
-
-        .hero-meta-divider {
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            background-color: rgba(123, 116, 107, 0.4);
-        }
-
         /* CTA row */
         .hero-ctas {
             display: flex;
@@ -737,15 +718,6 @@
                 align-items: stretch;
                 width: 100%;
                 max-width: 320px;
-            }
-
-            .hero-meta {
-                flex-direction: column;
-                gap: 0.4rem;
-            }
-
-            .hero-meta-divider {
-                display: none;
             }
 
             .hero-btn-primary,
@@ -1179,140 +1151,6 @@
         .founder-link:hover { color: var(--orange); }
 
         /* ─────────────────────────────────────────────────────
-           TRUST (Referenzen & Vertrauen)
-        ───────────────────────────────────────────────────── */
-
-        #trust {
-            padding: 6rem 0;
-            background-color: var(--surface);
-        }
-
-        .trust-intro {
-            max-width: 640px;
-            margin-bottom: 3rem;
-        }
-
-        /* Demo proof card */
-        .proof-wrap {
-            display: block;
-            max-width: 920px;
-            margin: 0 auto;
-            border: 1px solid var(--border);
-            border-radius: 18px;
-            overflow: hidden;
-            background-color: var(--background);
-            box-shadow: 0 12px 48px rgba(47, 42, 36, 0.08);
-            text-decoration: none;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .proof-wrap:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 18px 60px rgba(47, 42, 36, 0.12);
-        }
-
-        .proof-browser-bar {
-            display: flex;
-            align-items: center;
-            gap: 0.875rem;
-            padding: 0.9rem 1rem;
-            border-bottom: 1px solid var(--border);
-            background: linear-gradient(180deg, rgba(251, 248, 243, 0.96), rgba(245, 242, 236, 0.96));
-        }
-
-        .proof-browser-dots {
-            display: flex;
-            gap: 0.35rem;
-            flex-shrink: 0;
-        }
-
-        .proof-browser-dots span {
-            width: 0.625rem;
-            height: 0.625rem;
-            border-radius: 50%;
-            background-color: rgba(123, 116, 107, 0.32);
-        }
-
-        .proof-browser-label {
-            flex: 1;
-            min-width: 0;
-            font-size: 0.8125rem;
-            line-height: 1.5;
-            color: var(--stone);
-        }
-
-        .proof-open-label {
-            font-size: 0.8125rem;
-            font-weight: 600;
-            color: var(--orange);
-            white-space: nowrap;
-        }
-
-        .proof-preview {
-            position: relative;
-            aspect-ratio: 16 / 9;
-            background-color: #e8e1d8;
-        }
-
-        .proof-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .proof-overlay {
-            position: absolute;
-            left: 1rem;
-            right: 1rem;
-            bottom: 1rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.55rem;
-        }
-
-        .proof-chip {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.42rem 0.75rem;
-            border: 1px solid rgba(217, 209, 199, 0.92);
-            border-radius: 999px;
-            background-color: rgba(251, 248, 243, 0.88);
-            backdrop-filter: blur(10px);
-            font-size: 0.75rem;
-            color: var(--charcoal);
-        }
-
-        .proof-ext-link-wrap {
-            max-width: 920px;
-            margin: 0.9rem auto 0;
-            padding: 0;
-            text-align: left;
-            border-top: none;
-            background-color: transparent;
-        }
-
-        .proof-ext-link {
-            font-size: 0.875rem;
-            color: var(--stone);
-            text-decoration: none;
-            transition: color 0.15s ease;
-        }
-
-        .proof-ext-link:hover { color: var(--charcoal); }
-
-        @media (max-width: 640px) {
-            .proof-browser-bar {
-                flex-wrap: wrap;
-                gap: 0.65rem;
-            }
-
-            .proof-open-label {
-                width: 100%;
-            }
-        }
-
-        /* ─────────────────────────────────────────────────────
            CONTACT
         ───────────────────────────────────────────────────── */
 
@@ -1609,13 +1447,6 @@
                     <a href="#contact" class="hero-btn-outline">Erstgespräch buchen</a>
                         </div>
 
-                        <div class="hero-meta" aria-label="Kurzinfo zum Angebot">
-                    <span>1.800 EUR Festpreis</span>
-                    <span class="hero-meta-divider" aria-hidden="true"></span>
-                    <span>2 bis 3 Wochen bis Go-Live</span>
-                    <span class="hero-meta-divider" aria-hidden="true"></span>
-                    <span>14 Tage technischer Support</span>
-                </div>
             </div>
 
             <!-- Scroll cue -->
@@ -1633,9 +1464,9 @@
                 <!-- Section intro -->
                 <div class="leis-intro">
                     <span class="mono-label">Was wir tun</span>
-                    <h2 class="section-h2">Was im Standardangebot enthalten ist.</h2>
+                    <h2 class="section-h2">Drei Leistungen. Ein klarer Fokus.</h2>
                     <p class="section-sub">
-                        Kein offenes Agenturprojekt, sondern ein klar abgestecktes Website-Paket für Handwerksbetriebe. Sie sehen sofort, was drin ist, was es kostet und wie das Projekt abläuft.
+                        Im Zentrum steht Ihre Website für neue Anfragen. Automatisierungen und Agenten ergänzen dort, wo heute Anfragen liegenbleiben oder Abläufe unnötig Zeit kosten.
                     </p>
                 </div>
 
@@ -1651,19 +1482,15 @@
                             <line x1="12" y1="17" x2="12" y2="21"/>
                         </svg>
                         <span class="leis-card-badge">Hauptleistung</span>
-                        <h3 class="leis-card-title">Im Paket: Website, Rechner und Terminbuchung.</h3>
+                        <h3 class="leis-card-title">Website mit Kostenrechner und Terminbuchung.</h3>
                         <p class="leis-card-body">
-                            Sie bekommen kein diffuses Baukasten-Angebot, sondern ein sauberes Paket für Ihren ersten Online-Eindruck und die nächsten Schritte bei neuen Anfragen.
+                            Unser Hauptangebot: eine Website mit Kostenrechner und Terminbuchung, damit neue Anfragen auch dann sauber ankommen, wenn Sie gerade nicht ans Telefon gehen.
                         </p>
                         <ul class="leis-card-list">
-                            <li>bis zu 7 Seiten: Home, Leistungen, Referenzen, Kostenrechner, Kontakt, Impressum und Datenschutz</li>
-                            <li>individueller Kostenrechner auf Basis Ihrer Preise und Zusatzleistungen</li>
-                            <li>Kontaktformular, Terminbuchung und technisch schlankes Setup</li>
-                            <li>Einbindung von bis zu 15 Referenzfotos aus Ihrem Betrieb</li>
+                            <li>Leistungen, Referenzen und klarer Anfrageweg</li>
+                            <li>individueller Kostenrechner auf Basis Ihrer Preise</li>
+                            <li>Terminbuchung für Rückruf, Besichtigung oder Erstgespräch</li>
                         </ul>
-                        <p class="leis-card-note">
-                            Dazu kommen bis zu 2 Revisionsrunden, ein schlankes technisches Setup und 14 Tage technischer Support nach dem Go-Live.
-                        </p>
                         <a href="#branchen" class="leis-card-link">
                             Branchen ansehen
                             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -1681,9 +1508,9 @@
                             <circle cx="6" cy="18" r="3"/>
                             <path d="M18 9a9 9 0 0 1-9 9"/>
                         </svg>
-                        <h3 class="leis-card-title">Preis, Zahlung und Zeitplan</h3>
+                        <h3 class="leis-card-title">KI-gestützte Prozessautomatisierungen</h3>
                         <p class="leis-card-body">
-                            1.800 EUR Festpreis. 50 Prozent bei Projektstart, 50 Prozent bei Go-Live. Projektstart nach Anzahlung und vollständigen Inputs. Die übliche Laufzeit liegt bei 2 bis 3 Wochen.
+                            Für wiederkehrende Abläufe wie Vorqualifizierung, Erinnerungen, Weiterleitungen oder interne Übergaben.
                         </p>
                     </article>
 
@@ -1693,9 +1520,9 @@
                         <svg class="leis-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
                         </svg>
-                        <h3 class="leis-card-title">Nach dem Go-Live</h3>
+                        <h3 class="leis-card-title">Chat- und Voice-Agents für verpasste Anfragen</h3>
                         <p class="leis-card-body">
-                            14 Tage technischer Support sind enthalten. Laufende Betreuung oder neue Funktionen kommen nur dazu, wenn sie sp&auml;ter ausdr&uuml;cklich gew&uuml;nscht sind.
+                            Damit verpasste Anfragen telefonisch oder per Chat nicht einfach bei der Konkurrenz landen.
                         </p>
                     </article>
 
@@ -1796,48 +1623,6 @@
         <!-- ═══════════════════════════════════════════════════
              TRUST (Referenzen & Vertrauen)
         ═══════════════════════════════════════════════════ -->
-        <section id="trust">
-            <div class="section-wrap">
-
-                <!-- Section intro -->
-                <div class="trust-intro">
-                    <span class="mono-label">Referenzen &amp; Vertrauen</span>
-                    <h2 class="section-h2">So kann eine fertige Seite aussehen.</h2>
-                    <p class="section-sub">
-                        Sie sehen eine Beispielansicht. Mit einem Klick springen Sie direkt auf die Fliesenleger-Seite. So können Sie Referenzen, Anfrageweg und Angebotslogik in Ruhe prüfen.
-                    </p>
-                </div>
-
-                <a href="fliesenleger.html" class="proof-wrap" aria-label="Fliesenleger-Seite öffnen">
-                    <div class="proof-browser-bar">
-                        <div class="proof-browser-dots" aria-hidden="true">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <p class="proof-browser-label">Beispielansicht: Fliesenleger-Seite mit Referenzen und Anfrageführung</p>
-                        <span class="proof-open-label">Seite öffnen ↗</span>
-                    </div>
-                    <div class="proof-preview">
-                        <img src="images/fliesenweber-demo-preview.png" alt="Vorschau einer Fliesenleger-Demo-Website" class="proof-image">
-                        <div class="proof-overlay" aria-hidden="true">
-                            <span class="proof-chip">Beispielseite</span>
-                            <span class="proof-chip">Kostenrechner</span>
-                            <span class="proof-chip">Terminbuchung</span>
-                        </div>
-                    </div>
-                </a>
-                <p class="proof-ext-link-wrap">
-                    <a href="fliesenleger.html" class="proof-ext-link">
-                        Fliesenleger-Seite öffnen ↗
-                    </a>
-                </p>
-
-                <!-- FUTURE: testimonial carousel goes here -->
-
-            </div>
-        </section>
-
 
         <!-- ═══════════════════════════════════════════════════
              KONTAKT

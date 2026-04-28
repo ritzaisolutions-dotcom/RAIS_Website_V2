@@ -748,51 +748,6 @@
            LÖSUNG
         ───────────────────────────────────────────────────── */
 
-        #loesung {
-            padding: 5rem 0;
-            background-color: var(--background);
-        }
-
-        .loesung-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: start;
-        }
-
-        .loesung-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            padding-top: 0.25rem;
-        }
-
-        .loesung-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-            font-size: 0.9375rem;
-            line-height: 1.6;
-            color: var(--charcoal);
-        }
-
-        .loesung-check {
-            display: block;
-            width: 18px;
-            height: 18px;
-            color: var(--pistachio);
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        @media (max-width: 840px) {
-            .loesung-grid {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
-        }
-
         /* ─────────────────────────────────────────────────────
            ANGEBOT
         ───────────────────────────────────────────────────── */
@@ -1034,10 +989,6 @@
 
         .proof-ext-link:hover { color: var(--charcoal); }
 
-        #loesung {
-            display: none;
-        }
-
         .demo-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1103,7 +1054,7 @@
 
         .demo-frame-shell {
             display: block;
-            max-width: 88%;
+            max-width: 60%;
             margin: 0 auto;
             border: 1px solid var(--border);
             border-radius: 16px;
@@ -1111,6 +1062,18 @@
             background-color: #ffffff;
             box-shadow: 0 24px 60px rgba(47, 42, 36, 0.08);
             text-decoration: none;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+        }
+
+        .demo-frame-shell:hover {
+            transform: translateY(-2px);
+            border-color: rgba(47, 42, 36, 0.22);
+            box-shadow: 0 28px 70px rgba(47, 42, 36, 0.12);
+        }
+
+        .demo-frame-shell:focus-visible {
+            outline: 2px solid rgba(207, 106, 58, 0.45);
+            outline-offset: 4px;
         }
 
         .demo-browser-bar {
@@ -1195,6 +1158,84 @@
             font-weight: 600;
             color: var(--charcoal);
             text-align: right;
+        }
+
+        .calculator-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .calculator-field-label {
+            font-size: 0.75rem;
+            line-height: 1.4;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--stone);
+        }
+
+        .calculator-range {
+            width: 100%;
+            accent-color: var(--orange);
+        }
+
+        .calculator-field-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            font-size: 0.75rem;
+            color: var(--stone);
+        }
+
+        .calculator-field-meta strong {
+            font-size: 0.9375rem;
+            color: var(--charcoal);
+        }
+
+        .calculator-select {
+            width: 100%;
+            padding: 0.75rem 0.875rem;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background-color: #ffffff;
+            font-size: 0.9375rem;
+            color: var(--charcoal);
+        }
+
+        .calculator-toggle-grid {
+            display: grid;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .calculator-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            width: 100%;
+            padding: 0.75rem 0.875rem;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background-color: #ffffff;
+            font-size: 0.875rem;
+            color: var(--stone);
+            cursor: pointer;
+            transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+        }
+
+        .calculator-toggle.is-active {
+            border-color: rgba(207, 106, 58, 0.45);
+            background-color: rgba(207, 106, 58, 0.08);
+            color: var(--charcoal);
+        }
+
+        .calculator-toggle span:last-child {
+            font-size: 0.75rem;
+            color: inherit;
+            white-space: nowrap;
         }
 
         .calculator-total {
@@ -1621,12 +1662,12 @@
                 <span class="hero-label">RAIS - Website für Fliesenleger &amp; Bodenleger</span>
 
                 <h1 class="hero-h1">
-                    Wenn Interessenten abends Preise vergleichen,<br>
-                    sollte Ihr Betrieb trotzdem ansprechbar sein.
+                    Wenn Sie nicht erreichbar sind,<br>
+                    geht der Auftrag oft an den nächsten Betrieb.
                 </h1>
 
                 <p class="hero-sub">
-                    Wir bauen Websites für Fliesenleger und Bodenleger, die Anfragen auch dann auffangen, wenn Sie auf der Baustelle sind: mit Referenzen, Kostenrechner, sauberem Formular und Terminwunsch bis zur Besichtigung.
+                    Gerade bei Fliesen-, Bad- und Bodenprojekten wird abends, am Wochenende oder an Feiertagen verglichen und angefragt. Wir bauen Websites, die in diesem Moment Orientierung geben, Vertrauen aufbauen und den Weg zur Besichtigung sauber übernehmen.
                 </p>
 
                 <div class="hero-ctas">
@@ -1652,9 +1693,9 @@
 
                 <div class="niche-intro">
                     <span class="mono-label">Das Problem</span>
-                    <h2 class="section-h2">Viele Anfragen gehen verloren, bevor Sie überhaupt davon erfahren.</h2>
+                    <h2 class="section-h2">Gute Fliesenaufträge gehen oft verloren, bevor Sie zurückrufen können.</h2>
                     <p class="section-sub">
-                        Nicht weil Ihr Betrieb schlecht ist, sondern weil Interessenten oft dann anfragen, wenn Sie auf der Baustelle, im Auto oder schon im Feierabend sind. Wenn die Website in diesem Moment keine Orientierung gibt, geht die Anfrage weiter.
+                        Nicht weil Ihr Betrieb nicht passt, sondern weil der Interessent in diesem Moment Preisgefühl, Referenzen und einen klaren nächsten Schritt sucht. Wenn das fehlt, fragt er beim nächsten Betrieb weiter.
                     </p>
                 </div>
 
@@ -1690,21 +1731,29 @@
         <section id="zahlen">
             <div class="section-wrap">
 
+                <div class="niche-intro">
+                    <span class="mono-label">Was das in Zahlen heißt</span>
+                    <h2 class="section-h2">Schon ein verlorener Auftrag kann teurer sein als die ganze Website.</h2>
+                    <p class="section-sub">
+                        Bei Fliesen- und Bodenprojekten hängen Besichtigung, Preisgefühl und Vertrauen eng zusammen. Wenn der Erstkontakt in einem schlechten Moment wegrutscht, ist oft nicht nur eine Nachricht weg, sondern ein kompletter Auftrag.
+                    </p>
+                </div>
+
                 <div class="zahlen-grid">
 
                     <div class="zahlen-item">
-                        <span class="zahlen-num">Auf der Baustelle</span>
-                        <p class="zahlen-label">Genau dann geht oft niemand ans Telefon. Die Website muss den Erstkontakt übernehmen, bis Sie zurückrufen können.</p>
+                        <span class="zahlen-num">1 Auftrag</span>
+                        <p class="zahlen-label">Schon eine verlorene Badsanierung oder ein größerer Bodenauftrag kann den Preis der Website mehrfach übersteigen. Genau deshalb lohnt sich ein sauberer Erstkontakt.</p>
                     </div>
 
                     <div class="zahlen-item">
-                        <span class="zahlen-num">Abends</span>
-                        <p class="zahlen-label">Dann werden Angebote verglichen und erste Anfragen geschrieben. Wer online keine Orientierung gibt, ist schnell aus dem Rennen.</p>
+                        <span class="zahlen-num">3 Angaben</span>
+                        <p class="zahlen-label">Wenn Fläche, Material und Untergrund im Erstkontakt fehlen, wird aus einer einfachen Anfrage sofort Rückfragearbeit. Genau diese drei Punkte sollte die Website schon vor dem Rückruf erfassen.</p>
                     </div>
 
                     <div class="zahlen-item">
-                        <span class="zahlen-num">Am Wochenende</span>
-                        <p class="zahlen-label">Viele Renovierungs- und Bodenprojekte werden samstags oder sonntags geplant. Auch dann sollte eine Anfrage bei Ihnen sauber landen können.</p>
+                        <span class="zahlen-num">24/7</span>
+                        <p class="zahlen-label">Interessenten vergleichen auch dann weiter, wenn Sie auf der Baustelle, abends oder am Wochenende nicht erreichbar sind. Die Website muss diesen Erstkontakt in genau diesen Stunden übernehmen.</p>
                     </div>
 
                 </div>
@@ -1716,52 +1765,6 @@
         <!-- ═══════════════════════════════════════════════════
              LÖSUNG
         ═══════════════════════════════════════════════════ -->
-        <section id="loesung">
-            <div class="section-wrap">
-
-                <div class="loesung-grid">
-
-                    <div class="loesung-text">
-                        <span class="mono-label">Unsere Lösung</span>
-                        <h2 class="section-h2">Eine Website, die aus Preisinteresse eine saubere Anfrage macht.</h2>
-                        <p class="section-sub">
-                            Nicht jeder Fliesenjob braucht Sofortbuchung. Aber jeder gute Erstkontakt braucht Klarheit, passende Fragen und einen sinnvollen nächsten Schritt.
-                        </p>
-                    </div>
-
-                    <ul class="loesung-list">
-                        <li class="loesung-item">
-                            <i data-lucide="check" class="loesung-check" aria-hidden="true"></i>
-                            <span>Leistungsseiten für Bad, Boden, Terrasse oder Sanierung</span>
-                        </li>
-                        <li class="loesung-item">
-                            <i data-lucide="check" class="loesung-check" aria-hidden="true"></i>
-                            <span>Erste Preiseinschätzung über Kostenrechner oder klaren Anfrageweg</span>
-                        </li>
-                        <li class="loesung-item">
-                            <i data-lucide="check" class="loesung-check" aria-hidden="true"></i>
-                            <span>Besichtigungsanfrage oder Terminwunsch passend zu Ihrem Ablauf</span>
-                        </li>
-                        <li class="loesung-item">
-                            <i data-lucide="check" class="loesung-check" aria-hidden="true"></i>
-                            <span>Projektangaben vor dem ersten Rückruf</span>
-                        </li>
-                        <li class="loesung-item">
-                            <i data-lucide="check" class="loesung-check" aria-hidden="true"></i>
-                            <span>SEO-Grundoptimierung für lokale Suchen</span>
-                        </li>
-                        <li class="loesung-item">
-                            <i data-lucide="check" class="loesung-check" aria-hidden="true"></i>
-                            <span>DSGVO-konform mit Cookie-Management</span>
-                        </li>
-                    </ul>
-
-                </div>
-
-            </div>
-        </section>
-
-
         <!-- ═══════════════════════════════════════════════════
              ANGEBOT
         ═══════════════════════════════════════════════════ -->
@@ -1820,6 +1823,125 @@
         <!-- ═══════════════════════════════════════════════════
              ABLAUF
         ═══════════════════════════════════════════════════ -->
+        <!-- ═══════════════════════════════════════════════════
+             DEMO
+        ═══════════════════════════════════════════════════ -->
+        <section id="demo">
+            <div class="section-wrap">
+
+                <div class="niche-intro">
+                    <span class="mono-label">Demo</span>
+                    <h2 class="section-h2">So können Website und Kostenrechner für Ihren Betrieb aussehen.</h2>
+                    <p class="section-sub">
+                        Zwei kompakte Vorschauen statt einer schweren Vollansicht. Die Bilder zeigen die Struktur. Im Projekt werden Design, Inhalte und Preise auf Ihren Betrieb angepasst.
+                    </p>
+                </div>
+
+                <div class="demo-grid">
+                    <article class="demo-card">
+                        <div>
+                            <span class="demo-kicker">Beispiel-Website</span>
+                            <h3 class="demo-title">Die komplette Seite für Fliesen, Boden und Besichtigung.</h3>
+                            <p class="demo-copy">Diese Vorschau zeigt, wie Referenzen, Leistungen, Einzugsgebiet und Anfrageweg zusammenarbeiten, wenn jemand Ihren Betrieb abends oder am Wochenende prüft.</p>
+                        </div>
+                        <ul class="demo-list">
+                            <li>klare Leistungsseiten für Bad, Boden, Terrasse oder Sanierung</li>
+                            <li>Referenzen, die vor der Besichtigung Vertrauen schaffen</li>
+                            <li>sauberer Weg vom Erstinteresse zum Terminwunsch</li>
+                        </ul>
+                        <a href="https://ritz-ai.solutions/fliesenleger.html" target="_blank" rel="noopener" class="demo-frame-shell" aria-label="Beispielseite in neuem Tab öffnen">
+                            <div class="demo-browser-bar">
+                                <div class="demo-browser-dots" aria-hidden="true">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <span class="demo-browser-label">Beispielseite: Referenzen, Leistungen und Anfrageweg</span>
+                                <span class="demo-open-label">Beispielseite öffnen ↗</span>
+                            </div>
+                            <img src="images/fliesenweber-demo-preview.png" alt="Vorschau einer Beispiel-Website für Fliesenleger" class="demo-image">
+                        </a>
+                        <div class="demo-links">
+                            <a href="https://ritz-ai.solutions/fliesenleger.html" target="_blank" rel="noopener" class="demo-link">Live-Seite öffnen ↗</a>
+                        </div>
+                    </article>
+
+                    <article class="demo-card">
+                        <div>
+                            <span class="demo-kicker">Beispiel-Rechner</span>
+                            <h3 class="demo-title">Der Rechner gibt Orientierung, ohne schon ein Festangebot zu versprechen.</h3>
+                            <p class="demo-copy">Die Vorschau zeigt den Typ Kostenrechner. Im Projekt werden Positionen, Materialstufen und Zusatzarbeiten auf Ihre echte Preislogik angepasst.</p>
+                        </div>
+                        <ul class="demo-list">
+                            <li>Fläche, Material und Zusatzarbeiten sauber abgefragt</li>
+                            <li>erste Preiseinordnung für den Kunden vor dem Rückruf</li>
+                            <li>bessere Vorqualifizierung für Besichtigung oder Angebot</li>
+                        </ul>
+                        <div class="demo-frame-shell demo-frame-shell--interactive" aria-label="Interaktiver Beispiel-Rechner">
+                            <div class="demo-browser-bar">
+                                <div class="demo-browser-dots" aria-hidden="true">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <span class="demo-browser-label">Beispiel-Rechner: Fläche, Material, Zusatzleistungen</span>
+                                <span class="demo-open-label">Interaktiv</span>
+                            </div>
+                            <div class="calculator-preview">
+                                <div class="calculator-card" data-calc="fliesenleger">
+                                    <label class="calculator-field">
+                                        <span class="calculator-field-label">Fläche in m²</span>
+                                        <input type="range" min="12" max="120" step="1" value="42" class="calculator-range" data-role="area">
+                                        <div class="calculator-field-meta">
+                                            <span>kleiner Auftrag</span>
+                                            <strong data-output="area">42 m²</strong>
+                                            <span>größerer Auftrag</span>
+                                        </div>
+                                    </label>
+                                    <label class="calculator-field">
+                                        <span class="calculator-field-label">Material</span>
+                                        <select class="calculator-select" data-role="material">
+                                            <option value="64">Keramik</option>
+                                            <option value="79" selected>Feinsteinzeug</option>
+                                            <option value="112">Naturstein</option>
+                                        </select>
+                                    </label>
+                                    <div class="calculator-toggle-grid">
+                                        <button type="button" class="calculator-toggle is-active" data-role="extra" data-label="Altbelag entfernen" data-rate="6">
+                                            <span>Altbelag entfernen</span>
+                                            <span>+ pro m²</span>
+                                        </button>
+                                        <button type="button" class="calculator-toggle is-active" data-role="extra" data-label="Untergrund vorbereiten" data-rate="7">
+                                            <span>Untergrund vorbereiten</span>
+                                            <span>+ pro m²</span>
+                                        </button>
+                                    </div>
+                                    <div class="calculator-row">
+                                        <span class="calculator-label">Material</span>
+                                        <span class="calculator-value" data-output="materialLabel">Feinsteinzeug</span>
+                                    </div>
+                                    <div class="calculator-row">
+                                        <span class="calculator-label">Zusatzarbeiten</span>
+                                        <span class="calculator-value" data-output="extrasLabel">Altbelag entfernen + Untergrund vorbereiten</span>
+                                    </div>
+                                    <div class="calculator-total">
+                                        <span>Erste Orientierung</span>
+                                        <strong data-output="total">ab 3.980 EUR</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="demo-links">
+                            <a href="#kontakt" class="demo-link">Eigene Rechner-Demo anfordern</a>
+                        </div>
+                    </article>
+                </div>
+                <p class="demo-note">Die Website-Vorschau zeigt nur den Aufbau. Der Rechner daneben bleibt interaktiv und wird im Projekt auf Ihre Bilder, Texte und Preislogik angepasst.</p>
+
+            </div>
+        </section>
+
+
         <section id="ablauf">
             <div class="section-wrap">
 
@@ -1849,102 +1971,6 @@
                     </div>
 
                 </div>
-
-            </div>
-        </section>
-
-
-        <!-- ═══════════════════════════════════════════════════
-             DEMO
-        ═══════════════════════════════════════════════════ -->
-        <section id="demo">
-            <div class="section-wrap">
-
-                <div class="niche-intro">
-                    <span class="mono-label">Demo</span>
-                    <h2 class="section-h2">So können Website und Kostenrechner für Ihren Betrieb aussehen.</h2>
-                    <p class="section-sub">
-                        Zwei kompakte Vorschauen statt einer schweren Vollansicht. Die Bilder zeigen die Struktur. Im Projekt werden Design, Inhalte und Preise auf Ihren Betrieb angepasst.
-                    </p>
-                </div>
-
-                <div class="demo-grid">
-                    <article class="demo-card">
-                        <div>
-                            <span class="demo-kicker">Beispiel-Website</span>
-                            <h3 class="demo-title">Die komplette Seite für Fliesen, Boden und Besichtigung.</h3>
-                            <p class="demo-copy">Diese Vorschau zeigt, wie Referenzen, Leistungen, Einzugsgebiet und Anfrageweg zusammenarbeiten, wenn jemand Ihren Betrieb abends oder am Wochenende prüft.</p>
-                        </div>
-                        <ul class="demo-list">
-                            <li>klare Leistungsseiten für Bad, Boden, Terrasse oder Sanierung</li>
-                            <li>Referenzen, die vor der Besichtigung Vertrauen schaffen</li>
-                            <li>sauberer Weg vom Erstinteresse zum Terminwunsch</li>
-                        </ul>
-                        <div class="demo-frame-shell" aria-label="Statische Vorschau einer Beispiel-Website">
-                            <div class="demo-browser-bar">
-                                <div class="demo-browser-dots" aria-hidden="true">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                                <span class="demo-browser-label">Beispielseite: Referenzen, Leistungen und Anfrageweg</span>
-                                <span class="demo-open-label">Statische Vorschau</span>
-                            </div>
-                            <img src="images/fliesenweber-demo-preview.png" alt="Vorschau einer Beispiel-Website für Fliesenleger" class="demo-image">
-                        </div>
-                        <div class="demo-links">
-                            <a href="#kontakt" class="demo-link">Eigene Website-Demo anfordern</a>
-                        </div>
-                    </article>
-
-                    <article class="demo-card">
-                        <div>
-                            <span class="demo-kicker">Beispiel-Rechner</span>
-                            <h3 class="demo-title">Der Rechner gibt Orientierung, ohne schon ein Festangebot zu versprechen.</h3>
-                            <p class="demo-copy">Die Vorschau zeigt den Typ Kostenrechner. Im Projekt werden Positionen, Materialstufen und Zusatzarbeiten auf Ihre echte Preislogik angepasst.</p>
-                        </div>
-                        <ul class="demo-list">
-                            <li>Fläche, Material und Zusatzarbeiten sauber abgefragt</li>
-                            <li>erste Preiseinordnung für den Kunden vor dem Rückruf</li>
-                            <li>bessere Vorqualifizierung für Besichtigung oder Angebot</li>
-                        </ul>
-                        <div class="demo-frame-shell" aria-label="Statische Vorschau eines Kostenrechners">
-                            <div class="demo-browser-bar">
-                                <div class="demo-browser-dots" aria-hidden="true">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                                <span class="demo-browser-label">Beispiel-Rechner: Fläche, Material, Zusatzleistungen</span>
-                                <span class="demo-open-label">Statische Vorschau</span>
-                            </div>
-                            <div class="calculator-preview">
-                                <div class="calculator-card">
-                                    <div class="calculator-row">
-                                        <span class="calculator-label">Fläche</span>
-                                        <span class="calculator-value">42 m²</span>
-                                    </div>
-                                    <div class="calculator-row">
-                                        <span class="calculator-label">Material</span>
-                                        <span class="calculator-value">Feinsteinzeug</span>
-                                    </div>
-                                    <div class="calculator-row">
-                                        <span class="calculator-label">Zusatzarbeiten</span>
-                                        <span class="calculator-value">Altbelag + Untergrund</span>
-                                    </div>
-                                    <div class="calculator-total">
-                                        <span>Erste Orientierung</span>
-                                        <strong>ab 3.980 EUR</strong>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="demo-links">
-                            <a href="#kontakt" class="demo-link">Eigene Rechner-Demo anfordern</a>
-                        </div>
-                    </article>
-                </div>
-                <p class="demo-note">Die Vorschauen sind bewusst statisch gehalten. Entscheidend ist hier die Struktur. Inhalte, Bilder und Preislogik werden im Projekt auf Ihren Betrieb umgebaut.</p>
 
             </div>
         </section>
@@ -2206,6 +2232,49 @@
 
 
         /* ── Demo iframe: IntersectionObserver lazy-load ────────── */
+        var fliesenCalc = document.querySelector('[data-calc="fliesenleger"]');
+        if (fliesenCalc) {
+            var fliesenArea = fliesenCalc.querySelector('[data-role="area"]');
+            var fliesenMaterial = fliesenCalc.querySelector('[data-role="material"]');
+            var fliesenExtras = fliesenCalc.querySelectorAll('[data-role="extra"]');
+            var fliesenAreaOutput = fliesenCalc.querySelector('[data-output="area"]');
+            var fliesenMaterialOutput = fliesenCalc.querySelector('[data-output="materialLabel"]');
+            var fliesenExtrasOutput = fliesenCalc.querySelector('[data-output="extrasLabel"]');
+            var fliesenTotalOutput = fliesenCalc.querySelector('[data-output="total"]');
+
+            function updateFliesenCalc() {
+                var area = parseInt(fliesenArea.value, 10);
+                var materialRate = parseFloat(fliesenMaterial.value);
+                var materialLabel = fliesenMaterial.options[fliesenMaterial.selectedIndex].text;
+                var extrasLabel = [];
+                var extrasTotal = 0;
+
+                fliesenExtras.forEach(function (button) {
+                    if (!button.classList.contains('is-active')) return;
+                    extrasLabel.push(button.getAttribute('data-label'));
+                    extrasTotal += area * parseFloat(button.getAttribute('data-rate'));
+                });
+
+                var total = Math.round((area * materialRate + extrasTotal) / 10) * 10;
+
+                fliesenAreaOutput.textContent = area + ' m²';
+                fliesenMaterialOutput.textContent = materialLabel;
+                fliesenExtrasOutput.textContent = extrasLabel.length ? extrasLabel.join(' + ') : 'keine';
+                fliesenTotalOutput.textContent = 'ab ' + total.toLocaleString('de-DE') + ' EUR';
+            }
+
+            fliesenArea.addEventListener('input', updateFliesenCalc);
+            fliesenMaterial.addEventListener('change', updateFliesenCalc);
+            fliesenExtras.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    button.classList.toggle('is-active');
+                    updateFliesenCalc();
+                });
+            });
+
+            updateFliesenCalc();
+        }
+
     }());
     </script>
 

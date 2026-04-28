@@ -350,13 +350,6 @@
         }
 
         /* LÖSUNG */
-        #loesung { padding: 5rem 0; background-color: var(--background); }
-        .loesung-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
-        .loesung-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; padding-top: 0.25rem; }
-        .loesung-item { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.9375rem; line-height: 1.6; color: var(--charcoal); }
-        .loesung-check { display: block; width: 18px; height: 18px; color: var(--pistachio); flex-shrink: 0; margin-top: 2px; }
-        @media (max-width: 840px) { .loesung-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
-
         /* ANGEBOT */
         #angebot { padding: 5rem 0; background-color: var(--surface); }
         .angebot-header { max-width: 640px; margin-bottom: 3rem; }
@@ -445,7 +438,6 @@
         .proof-ext-link { font-size: 0.875rem; color: var(--stone); text-decoration: none; transition: color 0.15s ease; }
         .proof-ext-link:hover { color: var(--charcoal); }
 
-        #loesung { display: none; }
         .demo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
         .demo-card {
             display: flex; flex-direction: column; gap: 1.25rem; padding: 1.5rem;
@@ -467,9 +459,19 @@
         }
         .demo-list li::before { content: "•"; color: var(--pistachio); flex-shrink: 0; }
         .demo-frame-shell {
-            display: block; max-width: 88%; margin: 0 auto; border: 1px solid var(--border);
+            display: block; max-width: 60%; margin: 0 auto; border: 1px solid var(--border);
             border-radius: 16px; overflow: hidden; background-color: #ffffff;
             box-shadow: 0 24px 60px rgba(47, 42, 36, 0.08); text-decoration: none;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+        }
+        .demo-frame-shell:hover {
+            transform: translateY(-2px);
+            border-color: rgba(47, 42, 36, 0.22);
+            box-shadow: 0 28px 70px rgba(47, 42, 36, 0.12);
+        }
+        .demo-frame-shell:focus-visible {
+            outline: 2px solid rgba(207, 106, 58, 0.45);
+            outline-offset: 4px;
         }
         .demo-browser-bar {
             display: flex; align-items: center; gap: 0.75rem; padding: 0.875rem 1rem;
@@ -495,6 +497,60 @@
         .calculator-row:last-of-type { border-bottom: none; }
         .calculator-label { font-size: 0.875rem; color: var(--stone); }
         .calculator-value { font-size: 0.9375rem; font-weight: 600; color: var(--charcoal); text-align: right; }
+        .calculator-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .calculator-field-label {
+            font-size: 0.75rem;
+            line-height: 1.4;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--stone);
+        }
+        .calculator-range { width: 100%; accent-color: var(--orange); }
+        .calculator-field-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            font-size: 0.75rem;
+            color: var(--stone);
+        }
+        .calculator-field-meta strong { font-size: 0.9375rem; color: var(--charcoal); }
+        .calculator-select {
+            width: 100%;
+            padding: 0.75rem 0.875rem;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background-color: #ffffff;
+            font-size: 0.9375rem;
+            color: var(--charcoal);
+        }
+        .calculator-toggle-grid { display: grid; gap: 0.5rem; margin-bottom: 1rem; }
+        .calculator-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            width: 100%;
+            padding: 0.75rem 0.875rem;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background-color: #ffffff;
+            font-size: 0.875rem;
+            color: var(--stone);
+            cursor: pointer;
+            transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+        }
+        .calculator-toggle.is-active {
+            border-color: rgba(207, 106, 58, 0.45);
+            background-color: rgba(207, 106, 58, 0.08);
+            color: var(--charcoal);
+        }
+        .calculator-toggle span:last-child { font-size: 0.75rem; color: inherit; white-space: nowrap; }
         .calculator-total {
             display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem;
             margin-top: 1rem; padding: 1rem; border-radius: 12px; background-color: var(--surface);
@@ -689,11 +745,11 @@
             <div class="hero-content">
                 <span class="hero-label">RAIS - Website für Elektriker</span>
                 <h1 class="hero-h1">
-                    Wenn Sie im Einsatz sind,<br>
-                    muss Ihre Website den Erstkontakt übernehmen.
+                    Wenn Sie im Einsatz nicht erreichbar sind,<br>
+                    geht die Anfrage oft an den Elektriker, der es ist.
                 </h1>
                 <p class="hero-sub">
-                    Wir bauen Websites für Elektriker, die Anfragen auch dann auffangen, wenn Sie auf der Baustelle sind: mit klaren Leistungsseiten, sauberem Formular, Terminwunsch und einem Rechner für planbare Leistungen.
+                    Gerade bei Elektrothemen wird oft sofort weitertelefoniert oder weitergeklickt. Wir bauen Websites, die in diesem Moment vorsortieren, Vertrauen schaffen und planbare Anfragen sauber auffangen.
                 </p>
                 <div class="hero-ctas">
                     <a href="#kontakt" class="hero-btn-primary">Demo anfordern</a>
@@ -710,9 +766,9 @@
             <div class="section-wrap">
                 <div class="niche-intro">
                     <span class="mono-label">Das Problem</span>
-                    <h2 class="section-h2">Viele Anfragen sehen zuerst gleich aus, obwohl sie es nicht sind.</h2>
+                    <h2 class="section-h2">Gute Anfragen gehen verloren, wenn in diesem Moment niemand greifbar ist.</h2>
                     <p class="section-sub">
-                        Wenn Störung, Kleinauftrag und planbares Projekt über denselben Kontaktweg reinkommen, geht Zeit verloren. Vor allem dann, wenn Sie gerade im Einsatz sind und nicht sofort zurückrufen können.
+                        Nicht jede Anfrage ist dringend. Aber wenn Störung, Kleinauftrag und planbares Projekt gleich aussehen, wandert auch ein guter Auftrag schnell weiter.
                     </p>
                 </div>
                 <div class="problem-grid">
@@ -738,60 +794,27 @@
 
         <section id="zahlen">
             <div class="section-wrap">
+                <div class="niche-intro">
+                    <span class="mono-label">Was das in Zahlen heißt</span>
+                    <h2 class="section-h2">Schon ein planbares Projekt mehr kann die Website sehr schnell rechtfertigen.</h2>
+                    <p class="section-sub">
+                        Bei Elektrik geht oft vieles gleichzeitig ein: Störung, Rückrufbitte und planbares Projekt. Wenn die erste Einordnung fehlt, verlieren Sie nicht nur Zeit, sondern unter Umständen genau die Anfrage, die eigentlich interessant gewesen wäre.
+                    </p>
+                </div>
+
                 <div class="zahlen-grid">
                     <div class="zahlen-item">
-                        <span class="zahlen-num">Auf der Baustelle</span>
-                        <p class="zahlen-label">Genau dann gehen Anrufe ins Leere. Die Website muss den Erstkontakt übernehmen und sauber vorsortieren.</p>
+                        <span class="zahlen-num">1 Projekt</span>
+                        <p class="zahlen-label">Schon eine zusätzliche Wallbox, Unterverteilung oder Teilsanierung kann mehr wert sein als die komplette Website. Deshalb muss ein gutes Projekt sauber auffindbar und erfassbar sein.</p>
                     </div>
                     <div class="zahlen-item">
-                        <span class="zahlen-num">Nach Feierabend</span>
-                        <p class="zahlen-label">Dann werden Rückrufe erwartet oder neue Anfragen geschrieben. Wer keine klare Struktur bietet, verliert gegen den besser sortierten Betrieb.</p>
+                        <span class="zahlen-num">3 Fragen</span>
+                        <p class="zahlen-label">Wenn Anliegen, Objektart und Dringlichkeit im Erstkontakt fehlen, ist selbst eine gute Anfrage erst einmal unklar. Genau diese drei Punkte sollte die Website vorsortieren, bevor Sie zurückrufen.</p>
                     </div>
                     <div class="zahlen-item">
-                        <span class="zahlen-num">Am Wochenende</span>
-                        <p class="zahlen-label">Viele Eigentümer und Bauherren planen dann erst ihr Anliegen. Auch dann sollte Ihre Seite erreichbar, klar und handlungsfähig sein.</p>
+                        <span class="zahlen-num">24/7</span>
+                        <p class="zahlen-label">Anfragen kommen auch dann rein, wenn gerade niemand rangehen kann. Die Website muss deshalb jederzeit vorsortieren, Rückrufwünsche festhalten und planbare Leistungen klarer machen.</p>
                     </div>
-                </div>
-            </div>
-        </section>
-
-
-        <section id="loesung">
-            <div class="section-wrap">
-                <div class="loesung-grid">
-                    <div class="loesung-text">
-                        <span class="mono-label">Unsere Lösung</span>
-                        <h2 class="section-h2">Eine Website, die Anfragen vorsortiert, bevor Ihr Telefon klingelt.</h2>
-                        <p class="section-sub">
-                            Kein Sammelbecken für alles. Ein Aufbau, der Anliegen einordnet und den ersten Kontakt für Sie vorbereitet.
-                        </p>
-                    </div>
-                    <ul class="loesung-list">
-                        <li class="loesung-item">
-                            <i data-lucide="check" class="loesung-check" aria-hidden="true"></i>
-                            <span>Leistungsseiten für Installation, Sanierung, Wallbox, PV oder Störung</span>
-                        </li>
-                        <li class="loesung-item">
-                            <i data-lucide="check" class="loesung-check" aria-hidden="true"></i>
-                            <span>Geführtes Anfrageformular mit Priorisierung nach Anliegen</span>
-                        </li>
-                        <li class="loesung-item">
-                            <i data-lucide="check" class="loesung-check" aria-hidden="true"></i>
-                            <span>Rückruf- oder Terminwunsch statt blindem Kalenderlink</span>
-                        </li>
-                        <li class="loesung-item">
-                            <i data-lucide="check" class="loesung-check" aria-hidden="true"></i>
-                            <span>Pflichtinfos vor dem ersten Kontakt</span>
-                        </li>
-                        <li class="loesung-item">
-                            <i data-lucide="check" class="loesung-check" aria-hidden="true"></i>
-                            <span>SEO-Grundoptimierung für lokale Suchen</span>
-                        </li>
-                        <li class="loesung-item">
-                            <i data-lucide="check" class="loesung-check" aria-hidden="true"></i>
-                            <span>DSGVO-konform mit Cookie-Management</span>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </section>
@@ -825,6 +848,123 @@
         </section>
 
 
+        <!-- Replace with niche-specific demo when available -->
+        <section id="demo">
+            <div class="section-wrap">
+                <div class="niche-intro">
+                    <span class="mono-label">Demo</span>
+                    <h2 class="section-h2">So können Website und Rechner für planbare Anfragen aussehen.</h2>
+                    <p class="section-sub">
+                        Zwei kompakte Vorschauen statt einer schweren Vollansicht. Die Bilder zeigen die Struktur. Im Projekt wird die Anfrageführung auf Ihre Leistungen, Ihr Einsatzgebiet und Ihre Prioritäten angepasst.
+                    </p>
+                </div>
+                <div class="demo-grid">
+                    <article class="demo-card">
+                        <div>
+                            <span class="demo-kicker">Beispiel-Website</span>
+                            <h3 class="demo-title">Die komplette Seite für Installation, Sanierung und Rückrufweg.</h3>
+                            <p class="demo-copy">Diese Vorschau zeigt den Aufbau. Im Projekt werden Leistungen, Texte und Auswahlwege auf Ihren Betrieb angepasst, damit planbare Anfragen nicht untergehen.</p>
+                        </div>
+                        <ul class="demo-list">
+                            <li>klare Leistungsseiten für planbare Arbeiten</li>
+                            <li>saubere Anfrageführung statt Sammelkontakt</li>
+                            <li>Referenzen und Einsatzgebiet vor dem Rückruf</li>
+                        </ul>
+                        <a href="https://ritz-ai.solutions/elektriker.html" target="_blank" rel="noopener" class="demo-frame-shell" aria-label="Beispielseite in neuem Tab öffnen">
+                            <div class="demo-browser-bar">
+                                <div class="demo-browser-dots" aria-hidden="true">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <span class="demo-browser-label">Beispielseite: Leistungen, Anfrageweg und Rückruflogik</span>
+                                <span class="demo-open-label">Beispielseite öffnen ↗</span>
+                            </div>
+                            <img src="images/fliesenweber-demo-preview.png" alt="Vorschau einer Beispiel-Website für einen Handwerksbetrieb" class="demo-image">
+                        </a>
+                        <div class="demo-links">
+                            <a href="https://ritz-ai.solutions/elektriker.html" target="_blank" rel="noopener" class="demo-link">Live-Seite öffnen ↗</a>
+                        </div>
+                    </article>
+
+                    <article class="demo-card">
+                        <div>
+                            <span class="demo-kicker">Beispiel-Rechner</span>
+                            <h3 class="demo-title">Der Rechner ist für planbare Leistungen gedacht, nicht für Störungen.</h3>
+                            <p class="demo-copy">Die Vorschau zeigt den Typ Rechner. Im Projekt wird er nur dort eingesetzt, wo eine erste Orientierung sinnvoll ist, zum Beispiel bei Wallbox, Unterverteilung oder Teilsanierung.</p>
+                        </div>
+                        <ul class="demo-list">
+                            <li>erste Orientierung für planbare Leistungen</li>
+                            <li>klare Abfrage von Objektart und Leistungsumfang</li>
+                            <li>bessere Vorbereitung vor dem Rückruf</li>
+                        </ul>
+                        <div class="demo-frame-shell demo-frame-shell--interactive" aria-label="Interaktiver Beispiel-Rechner">
+                            <div class="demo-browser-bar">
+                                <div class="demo-browser-dots" aria-hidden="true">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <span class="demo-browser-label">Beispiel-Rechner: planbare Leistung statt Störung</span>
+                                <span class="demo-open-label">Interaktiv</span>
+                            </div>
+                            <div class="calculator-preview">
+                                <div class="calculator-card" data-calc="elektriker">
+                                    <label class="calculator-field">
+                                        <span class="calculator-field-label">Planbare Leistung</span>
+                                        <select class="calculator-select" data-role="service">
+                                            <option value="1370">Wallbox</option>
+                                            <option value="1840">Unterverteilung</option>
+                                            <option value="3290">Teilsanierung</option>
+                                        </select>
+                                    </label>
+                                    <label class="calculator-field">
+                                        <span class="calculator-field-label">Objektart</span>
+                                        <select class="calculator-select" data-role="object">
+                                            <option value="1">Einfamilienhaus</option>
+                                            <option value="1.12">Mehrfamilienhaus</option>
+                                            <option value="1.24">Gewerbe</option>
+                                        </select>
+                                    </label>
+                                    <div class="calculator-toggle-grid">
+                                        <button type="button" class="calculator-toggle is-active" data-role="extra" data-label="Leitung bis Montageort" data-add="180">
+                                            <span>Leitung bis Montageort</span>
+                                            <span>+180 EUR</span>
+                                        </button>
+                                        <button type="button" class="calculator-toggle is-active" data-role="extra" data-label="Absicherung / Prüfung" data-add="140">
+                                            <span>Absicherung / Prüfung</span>
+                                            <span>+140 EUR</span>
+                                        </button>
+                                    </div>
+                                    <div class="calculator-row">
+                                        <span class="calculator-label">Leistung</span>
+                                        <span class="calculator-value" data-output="serviceLabel">Wallbox</span>
+                                    </div>
+                                    <div class="calculator-row">
+                                        <span class="calculator-label">Objekt</span>
+                                        <span class="calculator-value" data-output="objectLabel">Einfamilienhaus</span>
+                                    </div>
+                                    <div class="calculator-row">
+                                        <span class="calculator-label">Zusatzaufwand</span>
+                                        <span class="calculator-value" data-output="extrasLabel">Leitung bis Montageort + Absicherung / Prüfung</span>
+                                    </div>
+                                    <div class="calculator-total">
+                                        <span>Erste Orientierung</span>
+                                        <strong data-output="total">ab 1.690 EUR</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="demo-links">
+                            <a href="#kontakt" class="demo-link">Eigene Rechner-Demo anfordern</a>
+                        </div>
+                    </article>
+                </div>
+                <p class="demo-note">Die Website-Vorschau zeigt nur den Aufbau. Der Rechner daneben bleibt interaktiv und wird im Projekt auf Ihre Leistungen, Auswahlwege und Preislogik angepasst.</p>
+            </div>
+        </section>
+
+
         <section id="ablauf">
             <div class="section-wrap">
                 <div class="ablauf-header">
@@ -848,97 +988,6 @@
                         <p class="ablauf-body">Nach Freigabe geht die Seite live. Danach sind noch 14 Tage technischer Support enthalten, damit alles sauber läuft.</p>
                     </div>
                 </div>
-            </div>
-        </section>
-
-
-        <!-- Replace with niche-specific demo when available -->
-        <section id="demo">
-            <div class="section-wrap">
-                <div class="niche-intro">
-                    <span class="mono-label">Demo</span>
-                    <h2 class="section-h2">So können Website und Rechner für planbare Anfragen aussehen.</h2>
-                    <p class="section-sub">
-                        Zwei kompakte Vorschauen statt einer schweren Vollansicht. Die Bilder zeigen die Struktur. Im Projekt wird die Anfrageführung auf Ihre Leistungen, Ihr Einsatzgebiet und Ihre Prioritäten angepasst.
-                    </p>
-                </div>
-                <div class="demo-grid">
-                    <article class="demo-card">
-                        <div>
-                            <span class="demo-kicker">Beispiel-Website</span>
-                            <h3 class="demo-title">Die komplette Seite für Installation, Sanierung und Rückrufweg.</h3>
-                            <p class="demo-copy">Diese Vorschau zeigt den Aufbau. Im Projekt werden Leistungen, Texte und Auswahlwege auf Ihren Betrieb angepasst, damit planbare Anfragen nicht untergehen.</p>
-                        </div>
-                        <ul class="demo-list">
-                            <li>klare Leistungsseiten für planbare Arbeiten</li>
-                            <li>saubere Anfrageführung statt Sammelkontakt</li>
-                            <li>Referenzen und Einsatzgebiet vor dem Rückruf</li>
-                        </ul>
-                        <div class="demo-frame-shell" aria-label="Statische Vorschau einer Beispiel-Website">
-                            <div class="demo-browser-bar">
-                                <div class="demo-browser-dots" aria-hidden="true">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                                <span class="demo-browser-label">Beispielseite: Leistungen, Anfrageweg und Rückruflogik</span>
-                                <span class="demo-open-label">Statische Vorschau</span>
-                            </div>
-                            <img src="images/fliesenweber-demo-preview.png" alt="Vorschau einer Beispiel-Website für einen Handwerksbetrieb" class="demo-image">
-                        </div>
-                        <div class="demo-links">
-                            <a href="#kontakt" class="demo-link">Eigene Website-Demo anfordern</a>
-                        </div>
-                    </article>
-
-                    <article class="demo-card">
-                        <div>
-                            <span class="demo-kicker">Beispiel-Rechner</span>
-                            <h3 class="demo-title">Der Rechner ist für planbare Leistungen gedacht, nicht für Störungen.</h3>
-                            <p class="demo-copy">Die Vorschau zeigt den Typ Rechner. Im Projekt wird er nur dort eingesetzt, wo eine erste Orientierung sinnvoll ist, zum Beispiel bei Wallbox, Unterverteilung oder Teilsanierung.</p>
-                        </div>
-                        <ul class="demo-list">
-                            <li>erste Orientierung für planbare Leistungen</li>
-                            <li>klare Abfrage von Objektart und Leistungsumfang</li>
-                            <li>bessere Vorbereitung vor dem Rückruf</li>
-                        </ul>
-                        <div class="demo-frame-shell" aria-label="Statische Vorschau eines Beispiel-Rechners">
-                            <div class="demo-browser-bar">
-                                <div class="demo-browser-dots" aria-hidden="true">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                                <span class="demo-browser-label">Beispiel-Rechner: planbare Leistung statt Störung</span>
-                                <span class="demo-open-label">Statische Vorschau</span>
-                            </div>
-                            <div class="calculator-preview">
-                                <div class="calculator-card">
-                                    <div class="calculator-row">
-                                        <span class="calculator-label">Leistung</span>
-                                        <span class="calculator-value">Wallbox</span>
-                                    </div>
-                                    <div class="calculator-row">
-                                        <span class="calculator-label">Objekt</span>
-                                        <span class="calculator-value">Einfamilienhaus</span>
-                                    </div>
-                                    <div class="calculator-row">
-                                        <span class="calculator-label">Zusatzaufwand</span>
-                                        <span class="calculator-value">Leitung + Absicherung</span>
-                                    </div>
-                                    <div class="calculator-total">
-                                        <span>Erste Orientierung</span>
-                                        <strong>ab 1.690 EUR</strong>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="demo-links">
-                            <a href="#kontakt" class="demo-link">Eigene Rechner-Demo anfordern</a>
-                        </div>
-                    </article>
-                </div>
-                <p class="demo-note">Die Vorschauen sind bewusst statisch gehalten. Entscheidend ist die Struktur. Inhalte, Bilder und Auswahlwege werden im Projekt auf Ihren Betrieb umgebaut.</p>
             </div>
         </section>
 
@@ -1125,6 +1174,50 @@
                 };
                 document.head.appendChild(s);
             });
+        }
+
+        var elektrikerCalc = document.querySelector('[data-calc="elektriker"]');
+        if (elektrikerCalc) {
+            var elektrikerService = elektrikerCalc.querySelector('[data-role="service"]');
+            var elektrikerObject = elektrikerCalc.querySelector('[data-role="object"]');
+            var elektrikerExtras = elektrikerCalc.querySelectorAll('[data-role="extra"]');
+            var elektrikerServiceOutput = elektrikerCalc.querySelector('[data-output="serviceLabel"]');
+            var elektrikerObjectOutput = elektrikerCalc.querySelector('[data-output="objectLabel"]');
+            var elektrikerExtrasOutput = elektrikerCalc.querySelector('[data-output="extrasLabel"]');
+            var elektrikerTotalOutput = elektrikerCalc.querySelector('[data-output="total"]');
+
+            function updateElektrikerCalc() {
+                var base = parseFloat(elektrikerService.value);
+                var objectMultiplier = parseFloat(elektrikerObject.value);
+                var serviceLabel = elektrikerService.options[elektrikerService.selectedIndex].text;
+                var objectLabel = elektrikerObject.options[elektrikerObject.selectedIndex].text;
+                var extrasLabel = [];
+                var extrasTotal = 0;
+
+                elektrikerExtras.forEach(function (button) {
+                    if (!button.classList.contains('is-active')) return;
+                    extrasLabel.push(button.getAttribute('data-label'));
+                    extrasTotal += parseFloat(button.getAttribute('data-add'));
+                });
+
+                var total = Math.round((base * objectMultiplier + extrasTotal) / 10) * 10;
+
+                elektrikerServiceOutput.textContent = serviceLabel;
+                elektrikerObjectOutput.textContent = objectLabel;
+                elektrikerExtrasOutput.textContent = extrasLabel.length ? extrasLabel.join(' + ') : 'keine';
+                elektrikerTotalOutput.textContent = 'ab ' + total.toLocaleString('de-DE') + ' EUR';
+            }
+
+            elektrikerService.addEventListener('change', updateElektrikerCalc);
+            elektrikerObject.addEventListener('change', updateElektrikerCalc);
+            elektrikerExtras.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    button.classList.toggle('is-active');
+                    updateElektrikerCalc();
+                });
+            });
+
+            updateElektrikerCalc();
         }
 
     }());

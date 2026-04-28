@@ -179,13 +179,6 @@
         @media (max-width: 840px) { .zahlen-grid { grid-template-columns: 1fr; border-top: none; } .zahlen-item { padding: 2.25rem 0; border-right: none; border-top: 1px solid var(--border); } .zahlen-item:first-child { padding-top: 0; border-top: none; } .zahlen-item:nth-child(2) { padding-left: 0; } .zahlen-item:last-child { padding-left: 0; } }
 
         /* LÖSUNG */
-        #loesung { padding: 5rem 0; background-color: var(--background); }
-        .loesung-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
-        .loesung-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; padding-top: 0.25rem; }
-        .loesung-item { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.9375rem; line-height: 1.6; color: var(--charcoal); }
-        .loesung-check { display: block; width: 18px; height: 18px; color: var(--pistachio); flex-shrink: 0; margin-top: 2px; }
-        @media (max-width: 840px) { .loesung-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
-
         /* ANGEBOT */
         #angebot { padding: 5rem 0; background-color: var(--surface); }
         .angebot-header { max-width: 640px; margin-bottom: 3rem; }
@@ -225,7 +218,6 @@
         .proof-ext-link { font-size: 0.875rem; color: var(--stone); text-decoration: none; transition: color 0.15s ease; }
         .proof-ext-link:hover { color: var(--charcoal); }
 
-        #loesung { display: none; }
         .demo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
         .demo-card {
             display: flex; flex-direction: column; gap: 1.25rem; padding: 1.5rem;
@@ -247,9 +239,19 @@
         }
         .demo-list li::before { content: "•"; color: var(--pistachio); flex-shrink: 0; }
         .demo-frame-shell {
-            display: block; max-width: 88%; margin: 0 auto; border: 1px solid var(--border);
+            display: block; max-width: 60%; margin: 0 auto; border: 1px solid var(--border);
             border-radius: 16px; overflow: hidden; background-color: #ffffff;
             box-shadow: 0 24px 60px rgba(47, 42, 36, 0.08); text-decoration: none;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+        }
+        .demo-frame-shell:hover {
+            transform: translateY(-2px);
+            border-color: rgba(47, 42, 36, 0.22);
+            box-shadow: 0 28px 70px rgba(47, 42, 36, 0.12);
+        }
+        .demo-frame-shell:focus-visible {
+            outline: 2px solid rgba(207, 106, 58, 0.45);
+            outline-offset: 4px;
         }
         .demo-browser-bar {
             display: flex; align-items: center; gap: 0.75rem; padding: 0.875rem 1rem;
@@ -275,6 +277,60 @@
         .calculator-row:last-of-type { border-bottom: none; }
         .calculator-label { font-size: 0.875rem; color: var(--stone); }
         .calculator-value { font-size: 0.9375rem; font-weight: 600; color: var(--charcoal); text-align: right; }
+        .calculator-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .calculator-field-label {
+            font-size: 0.75rem;
+            line-height: 1.4;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--stone);
+        }
+        .calculator-range { width: 100%; accent-color: var(--orange); }
+        .calculator-field-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            font-size: 0.75rem;
+            color: var(--stone);
+        }
+        .calculator-field-meta strong { font-size: 0.9375rem; color: var(--charcoal); }
+        .calculator-select {
+            width: 100%;
+            padding: 0.75rem 0.875rem;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background-color: #ffffff;
+            font-size: 0.9375rem;
+            color: var(--charcoal);
+        }
+        .calculator-toggle-grid { display: grid; gap: 0.5rem; margin-bottom: 1rem; }
+        .calculator-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            width: 100%;
+            padding: 0.75rem 0.875rem;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background-color: #ffffff;
+            font-size: 0.875rem;
+            color: var(--stone);
+            cursor: pointer;
+            transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+        }
+        .calculator-toggle.is-active {
+            border-color: rgba(207, 106, 58, 0.45);
+            background-color: rgba(207, 106, 58, 0.08);
+            color: var(--charcoal);
+        }
+        .calculator-toggle span:last-child { font-size: 0.75rem; color: inherit; white-space: nowrap; }
         .calculator-total {
             display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem;
             margin-top: 1rem; padding: 1rem; border-radius: 12px; background-color: var(--surface);
@@ -444,11 +500,11 @@
             <div class="hero-content">
                 <span class="hero-label">RAIS - Website für Maler &amp; Lackierer</span>
                 <h1 class="hero-h1">
-                    Wenn Eigentümer am Wochenende Angebote vergleichen,<br>
-                    muss Ihr Betrieb trotzdem präsent sein.
+                    Wenn Sie nicht erreichbar sind,<br>
+                    geht der Auftrag oft an den Betrieb, der greifbarer wirkt.
                 </h1>
                 <p class="hero-sub">
-                    Wir bauen Websites für Maler und Lackierer, die Anfragen auch dann auffangen, wenn Sie auf der Baustelle sind: mit Referenzprojekten, Kostenrechner, sauberem Formular und Terminwunsch bis zur Besichtigung.
+                    Gerade bei Malerarbeiten wird abends, am Wochenende und an Feiertagen verglichen. Wir bauen Websites, die in diesem Moment Vertrauen schaffen, Orientierung geben und den Weg zur Besichtigung übernehmen.
                 </p>
                 <div class="hero-ctas">
                     <a href="#kontakt" class="hero-btn-primary">Demo anfordern</a>
@@ -465,9 +521,9 @@
             <div class="section-wrap">
                 <div class="niche-intro">
                     <span class="mono-label">Das Problem</span>
-                    <h2 class="section-h2">Viele Maleraufträge werden im Vergleich entschieden, bevor jemand anruft.</h2>
+                    <h2 class="section-h2">Viele Maleraufträge wandern weiter, bevor überhaupt ein Gespräch stattfindet.</h2>
                     <p class="section-sub">
-                        Wenn Leistungen, Referenzen und grobe Orientierung fehlen, fragt der Interessent beim nächsten Betrieb weiter. Das passiert oft abends oder am Wochenende, wenn Ihr Telefon gerade nicht hilft.
+                        Nicht weil Ihr Betrieb nicht passt, sondern weil der Interessent im Vergleich gerade mehr Klarheit, mehr Vertrauen oder den einfacheren nächsten Schritt bei jemand anderem findet.
                     </p>
                 </div>
                 <div class="problem-grid">
@@ -493,63 +549,31 @@
 
         <section id="zahlen">
             <div class="section-wrap">
+                <div class="niche-intro">
+                    <span class="mono-label">Was das in Zahlen heißt</span>
+                    <h2 class="section-h2">Schon ein verlorener Renovierungsauftrag kann deutlich teurer sein als diese Website.</h2>
+                    <p class="section-sub">
+                        Bei Malerarbeiten wird oft direkt verglichen: Eindruck, Referenzen, Preisgefühl und nächster Schritt. Wenn Ihre Seite in diesem Moment schwächer wirkt, geht der Auftrag oft leise weiter, ohne dass Sie es überhaupt merken.
+                    </p>
+                </div>
+
                 <div class="zahlen-grid">
                     <div class="zahlen-item">
-                        <span class="zahlen-num">Auf der Baustelle</span>
-                        <p class="zahlen-label">Genau dann geht oft niemand ans Telefon. Die Website muss den Erstkontakt übernehmen, bis Sie zurückrufen können.</p>
+                        <span class="zahlen-num">1 Auftrag</span>
+                        <p class="zahlen-label">Schon ein verlorener Innenraum-, Fassaden- oder Renovierungsauftrag kann den Preis der Website klar übersteigen. Genau deshalb zählt der erste Eindruck hier besonders stark.</p>
                     </div>
                     <div class="zahlen-item">
-                        <span class="zahlen-num">Abends</span>
-                        <p class="zahlen-label">Dann werden Angebote verglichen und erste Preisfragen gestellt. Wer online unklar wirkt, verliert früh Vertrauen.</p>
+                        <span class="zahlen-num">3 Vergleichspunkte</span>
+                        <p class="zahlen-label">Noch vor dem ersten Gespräch werden oft Referenzen, grobe Preisorientierung und der nächste Schritt verglichen. Wenn einer dieser drei Punkte bei Ihnen schwächer wirkt, rutscht die Anfrage schnell weiter.</p>
                     </div>
                     <div class="zahlen-item">
-                        <span class="zahlen-num">Am Wochenende</span>
-                        <p class="zahlen-label">Viele Renovierungen werden samstags oder sonntags geplant. Auch dann sollte eine Anfrage bei Ihnen sauber landen können.</p>
+                        <span class="zahlen-num">24/7</span>
+                        <p class="zahlen-label">Verglichen wird auch abends, am Wochenende und an Feiertagen. Die Website muss deshalb auch ohne Rückruf schon genug Vertrauen und Klarheit aufbauen, damit die Anfrage bei Ihnen bleibt.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-
-        <section id="loesung">
-            <div class="section-wrap">
-                <div class="loesung-grid">
-                    <div class="loesung-text">
-                        <span class="mono-label">Unsere Lösung</span>
-                        <h2 class="section-h2">Eine Website, die vor dem ersten Telefonat Vertrauen und Klarheit schafft.</h2>
-                        <p class="section-sub">
-                            Sie müssen nicht jeden Preis sofort final nennen. Aber Sie sollten zeigen, was Sie machen, für wen Sie arbeiten und wie eine saubere Anfrage bei Ihnen aussieht.
-                        </p>
-                    </div>
-                    <ul class="loesung-list">
-                        <li class="loesung-item">
-                            <i data-lucide="check" class="loesung-check" aria-hidden="true"></i>
-                            <span>Leistungsseiten für Innenräume, Fassade, Lackierarbeiten oder Renovierung</span>
-                        </li>
-                        <li class="loesung-item">
-                            <i data-lucide="check" class="loesung-check" aria-hidden="true"></i>
-                            <span>Erste Preiseinschätzung dort, wo sie für Ihr Angebot sinnvoll ist</span>
-                        </li>
-                        <li class="loesung-item">
-                            <i data-lucide="check" class="loesung-check" aria-hidden="true"></i>
-                            <span>Saubere Anfrage mit Fläche, Objektart und Zeitrahmen</span>
-                        </li>
-                        <li class="loesung-item">
-                            <i data-lucide="check" class="loesung-check" aria-hidden="true"></i>
-                            <span>Besichtigungsanfrage oder Rückrufwunsch passend zu Ihrem Ablauf</span>
-                        </li>
-                        <li class="loesung-item">
-                            <i data-lucide="check" class="loesung-check" aria-hidden="true"></i>
-                            <span>SEO-Grundoptimierung für lokale Suchen</span>
-                        </li>
-                        <li class="loesung-item">
-                            <i data-lucide="check" class="loesung-check" aria-hidden="true"></i>
-                            <span>DSGVO-konform mit Cookie-Management</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
 
 
         <section id="angebot">
@@ -580,6 +604,124 @@
         </section>
 
 
+        <!-- Replace with niche-specific demo when available -->
+        <section id="demo">
+            <div class="section-wrap">
+                <div class="niche-intro">
+                    <span class="mono-label">Demo</span>
+                    <h2 class="section-h2">So können Website und Rechner für Ihren Betrieb aussehen.</h2>
+                    <p class="section-sub">
+                        Zwei kompakte Vorschauen statt einer schweren Vollansicht. Die Bilder zeigen die Struktur. Im Projekt werden Referenzen, Leistungen und Preislogik auf Ihren Betrieb angepasst.
+                    </p>
+                </div>
+                <div class="demo-grid">
+                    <article class="demo-card">
+                        <div>
+                            <span class="demo-kicker">Beispiel-Website</span>
+                            <h3 class="demo-title">Die komplette Seite für Referenzen, Leistungen und Besichtigung.</h3>
+                            <p class="demo-copy">Diese Vorschau zeigt, wie ein sauberer erster Eindruck online wirkt, wenn Eigentümer und Verwalter mehrere Angebote vergleichen.</p>
+                        </div>
+                        <ul class="demo-list">
+                            <li>Referenzen vor dem Erstgespräch</li>
+                            <li>klare Leistungen für Innenraum, Fassade und Lackierung</li>
+                            <li>sauberer Weg von der Anfrage zur Besichtigung</li>
+                        </ul>
+                        <a href="https://ritz-ai.solutions/maler.html" target="_blank" rel="noopener" class="demo-frame-shell" aria-label="Beispielseite in neuem Tab öffnen">
+                            <div class="demo-browser-bar">
+                                <div class="demo-browser-dots" aria-hidden="true">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <span class="demo-browser-label">Beispielseite: Referenzen, Leistungen und Anfrageweg</span>
+                                <span class="demo-open-label">Beispielseite öffnen ↗</span>
+                            </div>
+                            <img src="images/fliesenweber-demo-preview.png" alt="Vorschau einer Beispiel-Website für einen Handwerksbetrieb" class="demo-image">
+                        </a>
+                        <div class="demo-links">
+                            <a href="https://ritz-ai.solutions/maler.html" target="_blank" rel="noopener" class="demo-link">Live-Seite öffnen ↗</a>
+                        </div>
+                    </article>
+
+                    <article class="demo-card">
+                        <div>
+                            <span class="demo-kicker">Beispiel-Rechner</span>
+                            <h3 class="demo-title">Der Rechner schafft Orientierung, bevor es ins Angebot geht.</h3>
+                            <p class="demo-copy">Die Vorschau zeigt den Typ Rechner. Im Projekt werden Flächen, Leistungsarten und Zusatzarbeiten auf Ihren Betrieb angepasst.</p>
+                        </div>
+                        <ul class="demo-list">
+                            <li>erste Preiseinordnung für Räume, Flächen oder Fassaden</li>
+                            <li>saubere Vorqualifizierung vor dem Rückruf</li>
+                            <li>weniger lose Preisfragen im Erstkontakt</li>
+                        </ul>
+                        <div class="demo-frame-shell demo-frame-shell--interactive" aria-label="Interaktiver Beispiel-Rechner">
+                            <div class="demo-browser-bar">
+                                <div class="demo-browser-dots" aria-hidden="true">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <span class="demo-browser-label">Beispiel-Rechner: Fläche, Zusatzarbeiten, erste Orientierung</span>
+                                <span class="demo-open-label">Interaktiv</span>
+                            </div>
+                            <div class="calculator-preview">
+                                <div class="calculator-card" data-calc="maler">
+                                    <label class="calculator-field">
+                                        <span class="calculator-field-label">Fläche in m²</span>
+                                        <input type="range" min="20" max="220" step="1" value="78" class="calculator-range" data-role="area">
+                                        <div class="calculator-field-meta">
+                                            <span>kleiner Auftrag</span>
+                                            <strong data-output="area">78 m²</strong>
+                                            <span>größerer Auftrag</span>
+                                        </div>
+                                    </label>
+                                    <label class="calculator-field">
+                                        <span class="calculator-field-label">Bereich</span>
+                                        <select class="calculator-select" data-role="surface">
+                                            <option value="19" selected>Innenräume</option>
+                                            <option value="24">Fassade</option>
+                                            <option value="21">Lackierarbeiten</option>
+                                        </select>
+                                    </label>
+                                    <div class="calculator-toggle-grid">
+                                        <button type="button" class="calculator-toggle is-active" data-role="extra" data-label="Spachteln" data-rate="4">
+                                            <span>Spachteln</span>
+                                            <span>+ pro m²</span>
+                                        </button>
+                                        <button type="button" class="calculator-toggle is-active" data-role="extra" data-label="Abkleben" data-rate="3">
+                                            <span>Abkleben</span>
+                                            <span>+ pro m²</span>
+                                        </button>
+                                        <button type="button" class="calculator-toggle is-active" data-role="extra" data-label="Altanstrich vorbereiten" data-rate="3">
+                                            <span>Altanstrich vorbereiten</span>
+                                            <span>+ pro m²</span>
+                                        </button>
+                                    </div>
+                                    <div class="calculator-row">
+                                        <span class="calculator-label">Bereich</span>
+                                        <span class="calculator-value" data-output="surfaceLabel">Innenräume</span>
+                                    </div>
+                                    <div class="calculator-row">
+                                        <span class="calculator-label">Vorarbeiten</span>
+                                        <span class="calculator-value" data-output="extrasLabel">Spachteln + Abkleben + Altanstrich vorbereiten</span>
+                                    </div>
+                                    <div class="calculator-total">
+                                        <span>Erste Orientierung</span>
+                                        <strong data-output="total">ab 2.240 EUR</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="demo-links">
+                            <a href="#kontakt" class="demo-link">Eigene Rechner-Demo anfordern</a>
+                        </div>
+                    </article>
+                </div>
+                <p class="demo-note">Die Website-Vorschau zeigt nur den Aufbau. Der Rechner daneben bleibt interaktiv und wird im Projekt auf Ihre Bilder, Texte und Preislogik angepasst.</p>
+            </div>
+        </section>
+
+
         <section id="ablauf">
             <div class="section-wrap">
                 <div class="ablauf-header">
@@ -603,97 +745,6 @@
                         <p class="ablauf-body">Nach Freigabe geht die Seite live. Danach sind noch 14 Tage technischer Support enthalten, damit alles sauber läuft.</p>
                     </div>
                 </div>
-            </div>
-        </section>
-
-
-        <!-- Replace with niche-specific demo when available -->
-        <section id="demo">
-            <div class="section-wrap">
-                <div class="niche-intro">
-                    <span class="mono-label">Demo</span>
-                    <h2 class="section-h2">So können Website und Rechner für Ihren Betrieb aussehen.</h2>
-                    <p class="section-sub">
-                        Zwei kompakte Vorschauen statt einer schweren Vollansicht. Die Bilder zeigen die Struktur. Im Projekt werden Referenzen, Leistungen und Preislogik auf Ihren Betrieb angepasst.
-                    </p>
-                </div>
-                <div class="demo-grid">
-                    <article class="demo-card">
-                        <div>
-                            <span class="demo-kicker">Beispiel-Website</span>
-                            <h3 class="demo-title">Die komplette Seite für Referenzen, Leistungen und Besichtigung.</h3>
-                            <p class="demo-copy">Diese Vorschau zeigt, wie ein sauberer erster Eindruck online wirkt, wenn Eigentümer und Verwalter mehrere Angebote vergleichen.</p>
-                        </div>
-                        <ul class="demo-list">
-                            <li>Referenzen vor dem Erstgespräch</li>
-                            <li>klare Leistungen für Innenraum, Fassade und Lackierung</li>
-                            <li>sauberer Weg von der Anfrage zur Besichtigung</li>
-                        </ul>
-                        <div class="demo-frame-shell" aria-label="Statische Vorschau einer Beispiel-Website">
-                            <div class="demo-browser-bar">
-                                <div class="demo-browser-dots" aria-hidden="true">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                                <span class="demo-browser-label">Beispielseite: Referenzen, Leistungen und Anfrageweg</span>
-                                <span class="demo-open-label">Statische Vorschau</span>
-                            </div>
-                            <img src="images/fliesenweber-demo-preview.png" alt="Vorschau einer Beispiel-Website für einen Handwerksbetrieb" class="demo-image">
-                        </div>
-                        <div class="demo-links">
-                            <a href="#kontakt" class="demo-link">Eigene Website-Demo anfordern</a>
-                        </div>
-                    </article>
-
-                    <article class="demo-card">
-                        <div>
-                            <span class="demo-kicker">Beispiel-Rechner</span>
-                            <h3 class="demo-title">Der Rechner schafft Orientierung, bevor es ins Angebot geht.</h3>
-                            <p class="demo-copy">Die Vorschau zeigt den Typ Rechner. Im Projekt werden Flächen, Leistungsarten und Zusatzarbeiten auf Ihren Betrieb angepasst.</p>
-                        </div>
-                        <ul class="demo-list">
-                            <li>erste Preiseinordnung für Räume, Flächen oder Fassaden</li>
-                            <li>saubere Vorqualifizierung vor dem Rückruf</li>
-                            <li>weniger lose Preisfragen im Erstkontakt</li>
-                        </ul>
-                        <div class="demo-frame-shell" aria-label="Statische Vorschau eines Beispiel-Rechners">
-                            <div class="demo-browser-bar">
-                                <div class="demo-browser-dots" aria-hidden="true">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                                <span class="demo-browser-label">Beispiel-Rechner: Fläche, Zusatzarbeiten, erste Orientierung</span>
-                                <span class="demo-open-label">Statische Vorschau</span>
-                            </div>
-                            <div class="calculator-preview">
-                                <div class="calculator-card">
-                                    <div class="calculator-row">
-                                        <span class="calculator-label">Fläche</span>
-                                        <span class="calculator-value">78 m²</span>
-                                    </div>
-                                    <div class="calculator-row">
-                                        <span class="calculator-label">Bereich</span>
-                                        <span class="calculator-value">Innenräume</span>
-                                    </div>
-                                    <div class="calculator-row">
-                                        <span class="calculator-label">Vorarbeiten</span>
-                                        <span class="calculator-value">Spachteln + Abkleben</span>
-                                    </div>
-                                    <div class="calculator-total">
-                                        <span>Erste Orientierung</span>
-                                        <strong>ab 2.240 EUR</strong>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="demo-links">
-                            <a href="#kontakt" class="demo-link">Eigene Rechner-Demo anfordern</a>
-                        </div>
-                    </article>
-                </div>
-                <p class="demo-note">Die Vorschauen sind bewusst statisch gehalten. Entscheidend ist hier die Struktur. Inhalte, Bilder und Preislogik werden im Projekt auf Ihren Betrieb umgebaut.</p>
             </div>
         </section>
 
@@ -880,6 +931,49 @@
                 };
                 document.head.appendChild(s);
             });
+        }
+
+        var malerCalc = document.querySelector('[data-calc="maler"]');
+        if (malerCalc) {
+            var malerArea = malerCalc.querySelector('[data-role="area"]');
+            var malerSurface = malerCalc.querySelector('[data-role="surface"]');
+            var malerExtras = malerCalc.querySelectorAll('[data-role="extra"]');
+            var malerAreaOutput = malerCalc.querySelector('[data-output="area"]');
+            var malerSurfaceOutput = malerCalc.querySelector('[data-output="surfaceLabel"]');
+            var malerExtrasOutput = malerCalc.querySelector('[data-output="extrasLabel"]');
+            var malerTotalOutput = malerCalc.querySelector('[data-output="total"]');
+
+            function updateMalerCalc() {
+                var area = parseInt(malerArea.value, 10);
+                var surfaceRate = parseFloat(malerSurface.value);
+                var surfaceLabel = malerSurface.options[malerSurface.selectedIndex].text;
+                var extrasLabel = [];
+                var extrasTotal = 0;
+
+                malerExtras.forEach(function (button) {
+                    if (!button.classList.contains('is-active')) return;
+                    extrasLabel.push(button.getAttribute('data-label'));
+                    extrasTotal += area * parseFloat(button.getAttribute('data-rate'));
+                });
+
+                var total = Math.round((area * surfaceRate + extrasTotal) / 10) * 10;
+
+                malerAreaOutput.textContent = area + ' m²';
+                malerSurfaceOutput.textContent = surfaceLabel;
+                malerExtrasOutput.textContent = extrasLabel.length ? extrasLabel.join(' + ') : 'keine';
+                malerTotalOutput.textContent = 'ab ' + total.toLocaleString('de-DE') + ' EUR';
+            }
+
+            malerArea.addEventListener('input', updateMalerCalc);
+            malerSurface.addEventListener('change', updateMalerCalc);
+            malerExtras.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    button.classList.toggle('is-active');
+                    updateMalerCalc();
+                });
+            });
+
+            updateMalerCalc();
         }
 
     }());
