@@ -33,6 +33,19 @@
     }
     </script>
 
+    <!-- Sentry Error Monitoring -->
+    <script
+      src="https://js-de.sentry-cdn.com/f2ddf600721a166c3d4ab0486a3e9cee.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      Sentry.init({
+        dsn: "https://f2ddf600721a166c3d4ab0486a3e9cee@o4511309268189184.ingest.de.sentry.io/4511310256603216",
+        sendDefaultPii: true
+      });
+      myUndefinedFunction();
+    </script>
+
     <!-- CCM19 Cookie Consent -->
     <!-- CCM19 logo size must be adjusted in the CCM19 dashboard under Erscheinungsbild settings. URL: https://cloud.ccm19.de -->
     <script src="https://cloud.ccm19.de/app.js?apiKey=44ff2519f360f540f17d013a2a4094e2019143535dcc7c76&domain=69e29700b6f98fcee101f2d2" referrerpolicy="origin"></script>
