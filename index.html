@@ -1484,6 +1484,15 @@
             align-items: center;
         }
 
+        .mission-label {
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(245, 242, 236, 0.55);
+            margin-bottom: 0.75rem;
+        }
+
         .mission-logo {
             width: 72px;
             height: 72px;
@@ -1502,17 +1511,48 @@
 
         .mission-text {
             font-family: 'Baskerville', 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
+            font-style: italic;
             font-size: clamp(1.125rem, 2.2vw, 1.375rem);
             line-height: 1.82;
             color: rgba(245, 242, 236, 0.82);
-            font-style: normal;
             font-weight: 400;
             letter-spacing: 0.008em;
-            margin-bottom: 2.75rem;
+            margin-bottom: 0;
         }
 
-        .mission-text p + p {
-            margin-top: 1.25rem;
+        .mission-text p {
+            margin-top: 0;
+            margin-bottom: 1.25rem;
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+
+        .mission-text p.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mission-sig-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.75rem;
+            margin-top: 2.75rem;
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+
+        .mission-sig-wrap.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mission-sig-line {
+            width: 32px;
+            height: 1px;
+            background-color: rgba(245, 242, 236, 0.22);
         }
 
         .mission-sig {
@@ -1588,7 +1628,7 @@
 
         .trust-browser-body {
             background-color: var(--background);
-            height: 580px;
+            height: 420px;
             position: relative;
             overflow: hidden;
             display: flex;
@@ -1642,7 +1682,7 @@
 
         @media (max-width: 640px) {
             #trust { padding: 4rem 0; }
-            .trust-browser-body { height: 400px; }
+            .trust-browser-body { height: 320px; }
         }
 
         /* ─────────────────────────────────────────────────────
@@ -1994,7 +2034,7 @@
                         </ul>
                         <p class="leis-card-note"><em>Auf Anfrage — individuell angepasst.</em></p>
                         <a href="#contact" class="leis-card-link">
-                            Gespräch buchen
+                            Demo anfordern
                             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <polyline points="9 18 15 12 9 6"/>
                             </svg>
@@ -2024,7 +2064,7 @@
                         </ul>
                         <p class="leis-card-note"><em>Auf Anfrage — als Erweiterung zur Website.</em></p>
                         <a href="#contact" class="leis-card-link">
-                            Gespräch buchen
+                            Demo anfordern
                             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <polyline points="9 18 15 12 9 6"/>
                             </svg>
@@ -2059,7 +2099,7 @@
                             <i data-lucide="grid-2x2" class="branchen-icon" aria-hidden="true"></i>
                             <h3 class="branchen-title">Fliesenleger &amp; Bodenleger</h3>
                             <p class="branchen-desc">Anfragen oft vage — zu groß, zu klein, falsches Budget. Der Kostenrechner sortiert das, bevor Sie zurückrufen.</p>
-                            <a href="fliesenleger.html" class="branchen-btn">Zum Angebot</a>
+                            <a href="fliesenleger.html#angebot" class="branchen-btn">Zum Angebot</a>
                         </article>
 
                         <article class="carousel-card">
@@ -2067,7 +2107,7 @@
                             <i data-lucide="zap" class="branchen-icon" aria-hidden="true"></i>
                             <h3 class="branchen-title">Elektriker</h3>
                             <p class="branchen-desc">Dringlich oder planbar? Die Seite trennt das sauber — und leitet die Anfrage entsprechend weiter.</p>
-                            <a href="elektriker.html" class="branchen-btn">Zum Angebot</a>
+                            <a href="elektriker.html#angebot" class="branchen-btn">Zum Angebot</a>
                         </article>
 
                         <article class="carousel-card">
@@ -2075,7 +2115,7 @@
                             <i data-lucide="paintbrush" class="branchen-icon" aria-hidden="true"></i>
                             <h3 class="branchen-title">Maler &amp; Lackierer</h3>
                             <p class="branchen-desc">Der erste Eindruck entscheidet, ob ein Interessent anfragt oder weiterschaut. Die Seite macht diesen Eindruck.</p>
-                            <a href="maler.html" class="branchen-btn">Zum Angebot</a>
+                            <a href="maler.html#angebot" class="branchen-btn">Zum Angebot</a>
                         </article>
 
                     </div>
@@ -2176,6 +2216,7 @@
                     height="72"
                     aria-hidden="true"
                 >
+                <span class="mission-label">Unsere Vision</span>
                 <div class="mission-divider" aria-hidden="true"></div>
 
                 <blockquote class="mission-text">
@@ -2186,7 +2227,10 @@
                     <p>Das ist der Maßstab, den wir an jede Website anlegen, die wir bauen.</p>
                 </blockquote>
 
-                <span class="mission-sig">Ritz AI Solutions &middot; Koblenz</span>
+                <div class="mission-sig-wrap">
+                    <div class="mission-sig-line" aria-hidden="true"></div>
+                    <span class="mission-sig">Ritz AI Solutions &middot; Koblenz</span>
+                </div>
 
             </div>
         </section>
@@ -2660,6 +2704,33 @@
             window.addEventListener('scroll', updateStickyCta, { passive: true });
             updateStickyCta();
         }
+
+        /* ── Mission sentence animation ──────────────────────── */
+        (function () {
+            var paragraphs = document.querySelectorAll('.mission-text p');
+            var sigWrap = document.querySelector('.mission-sig-wrap');
+            if (!paragraphs.length || !('IntersectionObserver' in window)) {
+                paragraphs.forEach(function (p) { p.classList.add('is-visible'); });
+                if (sigWrap) sigWrap.classList.add('is-visible');
+                return;
+            }
+            var all = Array.prototype.slice.call(paragraphs);
+            if (sigWrap) all.push(sigWrap);
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        var el = entry.target;
+                        var idx = all.indexOf(el);
+                        setTimeout(function () {
+                            el.classList.add('is-visible');
+                        }, idx * 120);
+                        observer.unobserve(el);
+                    }
+                });
+            }, { threshold: 0.15 });
+            all.forEach(function (el) { observer.observe(el); });
+        }());
+
     }());
     </script>
 
