@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RAIS für Elektriker - Website mit Vorsortierung und planbarem Rechner</title>
+    <meta name="description" content="RAIS baut Websites für Elektriker, die auch dann Anfragen auffangen, wenn Sie im Einsatz, auf der Baustelle oder am Wochenende nicht ans Telefon gehen.">
+
+    <link rel="icon" type="image/png" href="favicon.png?v=3">
+    <link rel="apple-touch-icon" href="favicon.png?v=3">
+
+    <!-- Sentry Error Monitoring -->
+    <script
+      src="https://js-de.sentry-cdn.com/f2ddf600721a166c3d4ab0486a3e9cee.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      Sentry.init({
+        dsn: "https://f2ddf600721a166c3d4ab0486a3e9cee@o4511309268189184.ingest.de.sentry.io/4511310256603216",
+        sendDefaultPii: true
+      });
+    </script>
+
+    <!-- CCM19 Cookie Consent -->
+    <!-- CCM19 logo size must be adjusted in the CCM19 dashboard under Erscheinungsbild settings. URL: https://cloud.ccm19.de -->
+    <script src="https://cloud.ccm19.de/app.js?apiKey=44ff2519f360f540f17d013a2a4094e2019143535dcc7c76&domain=69e29700b6f98fcee101f2d2" referrerpolicy="origin"></script>
+
+    <!-- Fonts & Styles -->
+    <link rel="stylesheet" href="fonts.css">
+    <script src="vendor/lucide.min.js"></script>
+
+    <style>
+
+        :root {
+            --orange:       #EC6A37;
+            --orange-hover: #F37A48;
+            --background:   #F5F2EC;
+            --surface:      #FBF8F3;
+            --sage:         #789464;
+            --pistachio:    #3C5A2A;
+            --charcoal:     #2F2A24;
+            --stone:        #7B746B;
+            --border:       #D9D1C7;
+            --nav-h:        72px;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; color-scheme: light; }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--background);
+            color: var(--charcoal);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body.noscroll { overflow: hidden; }
+        section[id] { scroll-margin-top: var(--nav-h); }
+
+        /* NAVBAR */
+        #navbar {
+            position: fixed; inset: 0 0 auto 0; z-index: 100;
+            height: var(--nav-h);
+            background-color: var(--surface);
+            border-bottom: 1px solid var(--border);
+            transition: box-shadow 0.25s ease;
+        }
+        #navbar.scrolled { box-shadow: 0 2px 24px rgba(47,42,36,0.09); }
+
+        .nav-inner {
+            max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+            height: 100%; display: flex; align-items: center; gap: 2.5rem;
+        }
+
+        .nav-brand {
+            display: flex; align-items: center; gap: 0.625rem;
+            text-decoration: none; flex-shrink: 0; outline-offset: 4px;
+        }
+        .nav-brand img { width: auto; height: 3.25rem; object-fit: contain; display: block; }
+        .nav-brand-words { display: flex; flex-direction: column; line-height: 1; }
+        .nav-wordmark {
+            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
+            font-size: 1.25rem; font-weight: 700; color: var(--charcoal);
+            letter-spacing: 0.065em; line-height: 1.15;
+        }
+        .nav-submark {
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 0.5rem; color: var(--stone);
+            letter-spacing: 0.1em; text-transform: uppercase; margin-top: 2px;
+        }
+
+        .nav-center { flex: 1; display: flex; justify-content: center; }
+        .nav-list { display: flex; align-items: center; gap: 0; list-style: none; }
+
+        .nav-list > li > a,
+        .nav-list > li > button {
+            display: inline-flex; align-items: center; gap: 4px;
+            padding: 0.4375rem 0.875rem;
+            font-family: 'Inter', sans-serif; font-size: 0.9375rem; font-weight: 400;
+            color: var(--stone); text-decoration: none;
+            background: none; border: none; cursor: pointer;
+            border-radius: 7px;
+            transition: color 0.15s ease, background-color 0.15s ease;
+            white-space: nowrap; line-height: 1; letter-spacing: 0;
+        }
+        .nav-list > li > a:hover,
+        .nav-list > li > button:hover {
+            color: var(--charcoal);
+            background-color: rgba(47,42,36,0.05);
+        }
+
+        .nav-dropdown { position: relative; }
+        .dropdown-chevron {
+            width: 13px; height: 13px;
+            transition: transform 0.2s ease; flex-shrink: 0; opacity: 0.6;
+        }
+        .nav-dropdown.is-open > button .dropdown-chevron { transform: rotate(180deg); }
+
+        .dropdown-panel {
+            position: absolute; top: calc(100% + 10px);
+            left: 50%; transform: translateX(-50%) translateY(-6px);
+            min-width: 238px;
+            background-color: var(--surface); border: 1px solid var(--border);
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(47,42,36,0.11), 0 2px 8px rgba(47,42,36,0.06);
+            padding: 6px; opacity: 0; pointer-events: none;
+            transition: opacity 0.15s ease, transform 0.15s ease; z-index: 10;
+        }
+        .nav-dropdown:hover .dropdown-panel,
+        .nav-dropdown.is-open .dropdown-panel {
+            opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0);
+        }
+
+        .dropdown-item {
+            display: flex; align-items: center; gap: 0.625rem;
+            padding: 0.625rem 0.875rem; font-size: 0.9375rem; font-weight: 400;
+            color: var(--stone); text-decoration: none; border-radius: 8px;
+            transition: color 0.15s ease, background-color 0.15s ease;
+        }
+        .dropdown-item:hover { color: var(--charcoal); background-color: rgba(236,106,55,0.08); }
+        .dropdown-item-icon { width: 1.0625rem; height: 1.0625rem; color: var(--orange); flex-shrink: 0; }
+
+        .nav-right { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; }
+
+        .btn-primary {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 0.5625rem 1.3125rem;
+            background-color: var(--orange); color: #fff;
+            font-family: 'Inter', sans-serif; font-size: 0.9375rem; font-weight: 500;
+            line-height: 1; border-radius: 10px;
+            text-decoration: none; border: none; cursor: pointer;
+            transition: background-color 0.15s ease; white-space: nowrap;
+        }
+        .btn-primary:hover { background-color: var(--orange-hover); }
+
+        .nav-hamburger {
+            display: none; align-items: center; justify-content: center;
+            width: 2.25rem; height: 2.25rem;
+            background: none; border: none; cursor: pointer;
+            color: var(--charcoal); border-radius: 6px; padding: 0;
+            transition: background-color 0.15s ease;
+        }
+        .nav-hamburger:hover { background-color: rgba(47,42,36,0.06); }
+
+        /* MOBILE OVERLAY */
+        #mobile-overlay {
+            display: none; position: fixed; inset: 0; z-index: 90;
+            background-color: var(--surface); padding-top: var(--nav-h); overflow-y: auto;
+        }
+        #mobile-overlay.is-open { display: block; }
+        .mobile-nav-inner { padding: 1.5rem 1.5rem 3.5rem; max-width: 480px; margin: 0 auto; }
+
+        .mobile-link {
+            display: block; padding: 0.875rem; font-size: 1.0625rem;
+            color: var(--charcoal); text-decoration: none; border-radius: 9px;
+            transition: background-color 0.15s ease;
+        }
+        .mobile-link:hover { background-color: rgba(236,106,55,0.07); }
+
+        .mobile-section-label {
+            display: block; padding: 1.25rem 0.875rem 0.375rem;
+            font-family: 'JetBrains Mono', monospace; font-size: 0.625rem;
+            text-transform: uppercase; letter-spacing: 0.12em; color: var(--stone);
+        }
+        .mobile-sublinks {
+            padding-left: 0.875rem; border-left: 2px solid var(--border);
+            margin: 0.25rem 0 0.5rem 0.875rem;
+        }
+        .mobile-sublinks .mobile-link {
+            font-size: 0.9375rem; color: var(--stone);
+            padding-top: 0.625rem; padding-bottom: 0.625rem;
+        }
+        .mobile-hr { border: none; border-top: 1px solid var(--border); margin: 1rem 0; }
+        .mobile-cta {
+            display: flex; align-items: center; justify-content: center;
+            padding: 0.9375rem 1.5rem;
+            background-color: var(--orange); color: #fff;
+            font-size: 1rem; font-weight: 500; border-radius: 10px;
+            text-decoration: none; margin-top: 0.5rem;
+            transition: background-color 0.15s ease;
+        }
+        .mobile-cta:hover { background-color: var(--orange-hover); }
+
+        /* FOOTER */
+        #footer {
+            background-color: var(--surface); border-top: 1px solid var(--border);
+            padding: 1.75rem 2rem;
+        }
+        .footer-inner {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; flex-wrap: wrap; align-items: center;
+            justify-content: space-between; gap: 1rem;
+        }
+        .footer-brand { display: flex; align-items: center; gap: 0.625rem; text-decoration: none; }
+        .footer-brand img { height: 3rem; width: auto; object-fit: contain; }
+        .footer-wordmark { font-family: 'JetBrains Mono', 'Courier New', monospace; font-size: 1.25rem; font-weight: 700; color: var(--orange); letter-spacing: 0.08em; }
+        .footer-legal { display: flex; align-items: center; gap: 1.5rem; }
+        .footer-legal a {
+            font-size: 0.875rem; color: var(--stone); text-decoration: none;
+            transition: color 0.15s ease;
+        }
+        .footer-legal a:hover { color: var(--charcoal); }
+        .footer-copy { font-size: 0.8125rem; color: var(--stone); }
+
+        /* HERO */
+        #hero {
+            position: relative; min-height: 100vh;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            overflow: hidden; padding: 0;
+        }
+        .hero-slides { position: absolute; inset: 0; z-index: 0; }
+        .hero-slide {
+            position: absolute; inset: 0; opacity: 0;
+            transition: opacity 1.5s ease;
+            background-size: cover; background-position: center;
+        }
+        .hero-slide.is-active { opacity: 1; }
+        .hero-scrim { position: absolute; inset: 0; z-index: 1; background-color: rgba(30,26,22,0.52); }
+        .hero-content {
+            position: relative; z-index: 2;
+            text-align: center; display: flex; flex-direction: column; align-items: center;
+            gap: 1.5rem; max-width: 860px;
+            padding: calc(var(--nav-h) + 3rem) 2rem 4rem;
+        }
+        .hero-label {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace; font-size: 0.6875rem;
+            letter-spacing: 0.13em; text-transform: uppercase;
+            color: rgba(255,255,255,0.6);
+            border: 1px solid rgba(255,255,255,0.22);
+            padding: 0.375rem 0.9375rem; border-radius: 100px;
+        }
+        .hero-h1 {
+            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
+            font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700;
+            line-height: 1.17; color: #fff; letter-spacing: -0.01em;
+        }
+        .hero-sub {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(1rem, 2.25vw, 1.1875rem);
+            line-height: 1.65; color: rgba(255,255,255,0.82); max-width: 560px;
+        }
+        .hero-ctas {
+            display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+            gap: 0.875rem; margin-top: 0.375rem;
+        }
+        .hero-btn-primary {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 0.875rem 1.875rem; background-color: var(--orange); color: #fff;
+            font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 500;
+            border-radius: 10px; text-decoration: none;
+            transition: background-color 0.15s ease; white-space: nowrap;
+        }
+        .hero-btn-primary:hover { background-color: var(--orange-hover); }
+        .hero-btn-outline {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 0.875rem 1.875rem; background-color: transparent;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 500;
+            border-radius: 10px; text-decoration: none;
+            border: 1.5px solid rgba(255,255,255,0.5);
+            transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease;
+            white-space: nowrap;
+        }
+        .hero-btn-outline:hover {
+            border-color: rgba(255,255,255,0.9); color: #ffffff;
+            background-color: rgba(255,255,255,0.08);
+        }
+        .hero-scroll-cue {
+            position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+            z-index: 2; color: rgba(255,255,255,0.35);
+            animation: hero-bounce 2.8s ease-in-out infinite;
+        }
+        @keyframes hero-bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50%       { transform: translateX(-50%) translateY(7px); }
+        }
+        @media (max-width: 600px) {
+            .hero-ctas { flex-direction: column; align-items: stretch; width: 100%; max-width: 320px; }
+            .hero-btn-primary, .hero-btn-outline { justify-content: center; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .hero-slide { transition: none; }
+        }
+
+        /* SHARED SECTION UTILITIES */
+        .section-wrap { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .mono-label {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace; font-size: 0.625rem;
+            letter-spacing: 0.14em; text-transform: uppercase;
+            color: var(--pistachio); margin-bottom: 0.875rem;
+        }
+        .section-h2 {
+            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
+            font-size: clamp(1.625rem, 3vw, 2.5rem); font-weight: 700;
+            line-height: 1.2; color: var(--charcoal);
+            letter-spacing: -0.01em; margin-bottom: 1rem;
+        }
+        .section-sub { font-size: 1rem; line-height: 1.72; color: var(--stone); }
+        .niche-intro { max-width: 640px; margin-bottom: 3.5rem; }
+
+        /* PROBLEM */
+        #problem { padding: 5rem 0; background-color: var(--background); }
+        .problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .problem-item {
+            padding: 2rem; background-color: var(--surface);
+            border: 1px solid var(--border); border-radius: 14px;
+        }
+        .problem-icon { display: block; width: 28px; height: 28px; color: var(--pistachio); margin-bottom: 1rem; }
+        .problem-title {
+            font-family: 'Baskerville', Georgia, serif; font-size: 1.0625rem;
+            font-weight: 700; color: var(--charcoal); line-height: 1.28; margin-bottom: 0.75rem;
+        }
+        .problem-body { font-size: 0.9375rem; line-height: 1.72; color: var(--stone); }
+        @media (max-width: 840px) { .problem-grid { grid-template-columns: 1fr; gap: 1.25rem; } }
+
+        /* ZAHLEN */
+        #zahlen { padding: 5rem 0; background-color: var(--surface); }
+        .zahlen-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--border); }
+        .zahlen-item { padding: 3rem 2.5rem 3rem 0; border-right: 1px solid var(--border); }
+        .zahlen-item:first-child { padding-left: 0; }
+        .zahlen-item:last-child { padding-left: 2.5rem; padding-right: 0; border-right: none; }
+        .zahlen-item:nth-child(2) { padding-left: 2.5rem; }
+        .zahlen-num {
+            display: block;
+            font-family: 'Baskerville', Georgia, serif;
+            font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700;
+            color: var(--pistachio); line-height: 1; margin-bottom: 0.875rem; letter-spacing: -0.02em;
+        }
+        .zahlen-label { font-size: 0.9375rem; line-height: 1.65; color: var(--stone); }
+        @media (max-width: 840px) {
+            .zahlen-grid { grid-template-columns: 1fr; border-top: none; }
+            .zahlen-item { padding: 2.25rem 0; border-right: none; border-top: 1px solid var(--border); }
+            .zahlen-item:first-child { padding-top: 0; border-top: none; }
+            .zahlen-item:nth-child(2) { padding-left: 0; }
+            .zahlen-item:last-child { padding-left: 0; }
+        }
+
+        /* LÖSUNG */
+        /* ANGEBOT */
+        #angebot { padding: 5rem 0; background-color: var(--surface); }
+        .angebot-header { max-width: 640px; margin-bottom: 3rem; }
+        .angebot-card {
+            background-color: var(--background); border: 1px solid var(--border);
+            border-left: 4px solid var(--pistachio); border-radius: 14px;
+            padding: 2.5rem; max-width: 720px;
+        }
+        .angebot-price-row {
+            display: flex; flex-wrap: wrap; align-items: flex-end; gap: 2.5rem;
+            margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border);
+        }
+        .angebot-price {
+            display: block;
+            font-family: 'Baskerville', Georgia, serif;
+            font-size: clamp(2rem, 4vw, 3rem); font-weight: 700;
+            color: var(--charcoal); line-height: 1; letter-spacing: -0.02em;
+        }
+        .angebot-price-note { display: block; font-size: 0.875rem; color: var(--stone); margin-top: 0.25rem; }
+        .angebot-laufend-num {
+            display: block;
+            font-family: 'Baskerville', Georgia, serif;
+            font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 700;
+            color: var(--stone); line-height: 1;
+        }
+        .angebot-laufend-label { display: block; font-size: 0.8125rem; color: var(--stone); margin-top: 0.25rem; }
+        .angebot-list {
+            list-style: none; display: flex; flex-direction: column; gap: 0.875rem; margin-bottom: 2rem;
+        }
+        .angebot-list li { display: flex; align-items: center; gap: 0.625rem; font-size: 0.9375rem; color: var(--charcoal); }
+        .angebot-list li svg { width: 16px; height: 16px; color: var(--pistachio); flex-shrink: 0; stroke-width: 2.5; }
+        .angebot-cta {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 0.875rem 1.875rem; background-color: var(--orange); color: #fff;
+            font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 500;
+            border-radius: 10px; text-decoration: none; transition: background-color 0.15s ease;
+        }
+        .angebot-cta:hover { background-color: var(--orange-hover); }
+
+        /* ABLAUF */
+        #ablauf { padding: 5rem 0; background-color: var(--background); }
+        .ablauf-header { max-width: 640px; margin-bottom: 3.5rem; }
+        .ablauf-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--border); }
+        .ablauf-step { padding: 2.5rem 2.5rem 2.5rem 0; border-right: 1px solid var(--border); }
+        .ablauf-step:first-child { padding-left: 0; }
+        .ablauf-step:last-child { padding-left: 2.5rem; padding-right: 0; border-right: none; }
+        .ablauf-step:nth-child(2) { padding-left: 2.5rem; }
+        .ablauf-num {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace; font-size: 0.625rem;
+            letter-spacing: 0.16em; color: var(--pistachio); margin-bottom: 1.25rem;
+        }
+        .ablauf-title {
+            font-family: 'Baskerville', Georgia, serif; font-size: 1.25rem;
+            font-weight: 700; color: var(--charcoal); margin-bottom: 0.75rem;
+        }
+        .ablauf-body { font-size: 0.9375rem; line-height: 1.72; color: var(--stone); }
+        @media (max-width: 840px) {
+            .ablauf-grid { grid-template-columns: 1fr; border-top: none; }
+            .ablauf-step { padding: 2rem 0; border-right: none; border-top: 1px solid var(--border); }
+            .ablauf-step:first-child { padding-top: 0; border-top: none; }
+            .ablauf-step:nth-child(2) { padding-left: 0; }
+            .ablauf-step:last-child { padding-left: 0; }
+        }
+
+        /* DEMO */
+        #demo { padding: 5rem 0; background-color: var(--surface); }
+        .proof-wrap {
+            position: relative; border: 1px solid var(--border);
+            border-radius: 12px; overflow: hidden; background-color: var(--background);
+        }
+        .proof-skeleton {
+            position: absolute; inset: 0; z-index: 2;
+            background: linear-gradient(90deg, #EDE8E1 0%, #F5F2EC 50%, #EDE8E1 100%);
+            background-size: 200% 100%;
+            animation: skeleton-pulse 1.8s ease-in-out infinite;
+            transition: opacity 0.4s ease;
+        }
+        @keyframes skeleton-pulse {
+            0%   { background-position: 200% center; }
+            100% { background-position: -200% center; }
+        }
+        .proof-iframe { position: relative; z-index: 1; width: 100%; height: 600px; border: 0; display: block; }
+        @media (max-width: 640px) { .proof-iframe { height: 380px; } }
+        .proof-ext-link-wrap { padding: 0.875rem 1rem; text-align: center; }
+        .proof-ext-link { font-size: 0.875rem; color: var(--stone); text-decoration: none; transition: color 0.15s ease; }
+        .proof-ext-link:hover { color: var(--charcoal); }
+
+        .demo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+        .demo-card {
+            display: flex; flex-direction: column; gap: 1.25rem; padding: 1.5rem;
+            background-color: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+        }
+        .demo-kicker {
+            display: inline-block; font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 0.625rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--pistachio); margin-bottom: 0.625rem;
+        }
+        .demo-title {
+            font-family: 'Baskerville', Georgia, serif; font-size: 1.375rem;
+            line-height: 1.18; color: var(--charcoal); margin-bottom: 0.75rem;
+        }
+        .demo-copy { font-size: 0.9375rem; line-height: 1.72; color: var(--stone); }
+        .demo-list { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
+        .demo-list li {
+            display: flex; align-items: flex-start; gap: 0.625rem;
+            font-size: 0.9375rem; line-height: 1.6; color: var(--charcoal);
+        }
+        .demo-list li::before { content: "•"; color: var(--pistachio); flex-shrink: 0; }
+        .demo-frame-shell {
+            display: block; max-width: 60%; margin: 0 auto; border: 1px solid var(--border);
+            border-radius: 16px; overflow: hidden; background-color: #ffffff;
+            box-shadow: 0 24px 60px rgba(47, 42, 36, 0.08); text-decoration: none;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+        }
+        .demo-frame-shell:hover {
+            transform: translateY(-2px);
+            border-color: rgba(47, 42, 36, 0.22);
+            box-shadow: 0 28px 70px rgba(47, 42, 36, 0.12);
+        }
+        .demo-frame-shell:focus-visible {
+            outline: 2px solid rgba(207, 106, 58, 0.45);
+            outline-offset: 4px;
+        }
+        .demo-browser-bar {
+            display: flex; align-items: center; gap: 0.75rem; padding: 0.875rem 1rem;
+            border-bottom: 1px solid var(--border); background-color: var(--background);
+        }
+        .demo-browser-dots { display: flex; gap: 0.375rem; flex-shrink: 0; }
+        .demo-browser-dots span { width: 0.5rem; height: 0.5rem; border-radius: 999px; background-color: #d8d0c4; }
+        .demo-browser-label {
+            flex: 1; min-width: 0; font-size: 0.75rem; color: var(--stone);
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .demo-open-label { font-size: 0.75rem; color: var(--charcoal); white-space: nowrap; }
+        .demo-image {
+            display: block; width: 100%; aspect-ratio: 16 / 10;
+            object-fit: cover; object-position: top center; background-color: #ffffff;
+        }
+        .calculator-preview { padding: 1.125rem; background: linear-gradient(180deg, #f4efe7 0%, #fbf8f4 100%); }
+        .calculator-card { padding: 1rem; background-color: #ffffff; border: 1px solid var(--border); border-radius: 14px; }
+        .calculator-row {
+            display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+            padding: 0.875rem 0; border-bottom: 1px solid var(--border);
+        }
+        .calculator-row:last-of-type { border-bottom: none; }
+        .calculator-label { font-size: 0.875rem; color: var(--stone); }
+        .calculator-value { font-size: 0.9375rem; font-weight: 600; color: var(--charcoal); text-align: right; }
+        .calculator-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .calculator-field-label {
+            font-size: 0.75rem;
+            line-height: 1.4;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--stone);
+        }
+        .calculator-range { width: 100%; accent-color: var(--orange); }
+        .calculator-field-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            font-size: 0.75rem;
+            color: var(--stone);
+        }
+        .calculator-field-meta strong { font-size: 0.9375rem; color: var(--charcoal); }
+        .calculator-select {
+            width: 100%;
+            padding: 0.75rem 0.875rem;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background-color: #ffffff;
+            font-size: 0.9375rem;
+            color: var(--charcoal);
+        }
+        .calculator-toggle-grid { display: grid; gap: 0.5rem; margin-bottom: 1rem; }
+        .calculator-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            width: 100%;
+            padding: 0.75rem 0.875rem;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background-color: #ffffff;
+            font-size: 0.875rem;
+            color: var(--stone);
+            cursor: pointer;
+            transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+        }
+        .calculator-toggle.is-active {
+            border-color: rgba(207, 106, 58, 0.45);
+            background-color: rgba(207, 106, 58, 0.08);
+            color: var(--charcoal);
+        }
+        .calculator-toggle span:last-child { font-size: 0.75rem; color: inherit; white-space: nowrap; }
+        .calculator-total {
+            display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem;
+            margin-top: 1rem; padding: 1rem; border-radius: 12px; background-color: var(--surface);
+        }
+        .calculator-total span {
+            font-size: 0.75rem; line-height: 1.5; letter-spacing: 0.08em;
+            text-transform: uppercase; color: var(--stone);
+        }
+        .calculator-total strong {
+            font-family: 'Baskerville', Georgia, serif; font-size: 1.75rem; line-height: 1; color: var(--charcoal);
+        }
+        .demo-links { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+        .demo-link {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 0.75rem 1.125rem; border-radius: 10px; border: 1px solid var(--border);
+            text-decoration: none; font-size: 0.9375rem; color: var(--charcoal);
+            transition: background-color 0.15s ease, border-color 0.15s ease;
+        }
+        .demo-link:hover { background-color: rgba(47, 42, 36, 0.04); border-color: rgba(47, 42, 36, 0.2); }
+        .demo-note { font-size: 0.875rem; line-height: 1.7; color: var(--stone); margin-top: 1.25rem; }
+
+        #trust { padding: 5rem 0; background-color: var(--surface); }
+        .trust-grid {
+            display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+            gap: 2rem; align-items: start;
+        }
+        .trust-copy {
+            max-width: 42rem; margin-top: 1.5rem; font-size: 1rem;
+            line-height: 1.78; color: var(--stone);
+        }
+        .trust-card {
+            padding: 1.75rem; background-color: var(--background);
+            border: 1px solid var(--border); border-radius: 16px;
+        }
+        .trust-person {
+            display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem;
+        }
+        .trust-avatar {
+            width: 4.75rem; height: 4.75rem; border-radius: 18px; flex-shrink: 0;
+            display: grid; place-items: center;
+            background: linear-gradient(135deg, rgba(207, 106, 58, 0.18), rgba(118, 132, 90, 0.12));
+            border: 1px solid rgba(207, 106, 58, 0.18);
+            color: var(--charcoal); font-family: 'Baskerville', Georgia, serif;
+            font-size: 1.5rem; font-weight: 700;
+        }
+        .trust-person-meta { display: flex; flex-direction: column; gap: 0.25rem; min-width: 0; }
+        .trust-person-name { font-size: 1rem; font-weight: 600; color: var(--charcoal); }
+        .trust-person-role { font-size: 0.875rem; line-height: 1.5; color: var(--stone); }
+        .trust-card-kicker {
+            display: inline-block; font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 0.625rem; letter-spacing: 0.16em; text-transform: uppercase;
+            color: var(--pistachio); margin-bottom: 0.875rem;
+        }
+        .trust-card-title {
+            font-family: 'Baskerville', Georgia, serif; font-size: 1.5rem;
+            line-height: 1.18; color: var(--charcoal); margin-bottom: 0.875rem;
+        }
+        .trust-card-copy { font-size: 0.9375rem; line-height: 1.72; color: var(--stone); }
+        .trust-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.25rem; }
+        .trust-list li {
+            display: flex; align-items: flex-start; gap: 0.625rem;
+            font-size: 0.9375rem; line-height: 1.6; color: var(--charcoal);
+        }
+        .trust-list li::before { content: "•"; color: var(--pistachio); flex-shrink: 0; }
+        .trust-card .contact-details { margin-top: 1.5rem; padding-top: 1.5rem; }
+
+        /* KONTAKT */
+        #kontakt { padding: 5rem 0; background-color: var(--background); }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+        .contact-copy { font-size: 1rem; line-height: 1.78; color: var(--stone); margin-top: 1.5rem; }
+        .cal-embed-wrap { width: 100%; }
+        .cal-load-btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 0.875rem 1.875rem; background-color: var(--orange);
+            color: #ffffff; font-family: 'Inter', sans-serif; font-size: 1rem;
+            font-weight: 500; border-radius: 10px; border: none; cursor: pointer;
+            transition: background-color 0.15s ease; white-space: nowrap;
+            width: 100%; margin-bottom: 0.75rem;
+        }
+        .cal-load-btn:hover:not(:disabled) { background-color: var(--orange-hover); }
+        .cal-load-btn:disabled { opacity: 0.65; cursor: not-allowed; }
+        .cal-error { font-size: 0.9375rem; color: var(--stone); margin-bottom: 0.5rem; }
+        .cal-error a { color: var(--orange); text-decoration: underline; }
+        .cal-ext-link {
+            display: block; margin-top: 0.75rem; font-size: 0.8125rem;
+            color: var(--stone); text-decoration: none; text-align: center;
+            transition: color 0.15s ease;
+        }
+        .cal-ext-link:hover { color: var(--charcoal); }
+        .contact-details {
+            margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid var(--border);
+            display: flex; flex-wrap: wrap; gap: 2rem;
+        }
+        .contact-detail { display: flex; align-items: center; gap: 0.5625rem; }
+        .contact-detail-icon { width: 1rem; height: 1rem; color: var(--pistachio); flex-shrink: 0; }
+        .contact-detail-link {
+            font-size: 0.9375rem; color: var(--charcoal); text-decoration: none;
+            transition: color 0.15s ease;
+        }
+        .contact-detail-link:hover { color: var(--orange); }
+
+        /* RESPONSIVE */
+        @media (max-width: 860px) {
+            .nav-center, .btn-primary { display: none; }
+            .nav-hamburger { display: flex; }
+            .nav-inner { padding: 0 1.25rem; gap: 0; justify-content: space-between; }
+        }
+        @media (max-width: 840px) {
+            .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .demo-grid, .trust-grid { grid-template-columns: 1fr; }
+            .demo-frame-shell { max-width: 100%; width: 100%; }
+            #problem, #zahlen, #angebot, #ablauf, #demo, #kontakt, #trust { padding: 4rem 0; }
+        }
+        @media (max-width: 520px) {
+            .demo-card { padding: 1.25rem; }
+            .demo-browser-bar { flex-wrap: wrap; align-items: flex-start; padding: 0.75rem 0.875rem; }
+            .demo-browser-label, .demo-open-label { white-space: normal; overflow: visible; text-overflow: unset; }
+            .demo-open-label { width: 100%; }
+            .calculator-preview, .calculator-card { padding: 0.875rem; }
+            .calculator-field-meta { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+            .calculator-row { flex-direction: column; align-items: flex-start; gap: 0.375rem; }
+            .calculator-value { width: 100%; text-align: left; overflow-wrap: anywhere; }
+            .calculator-toggle { flex-direction: column; align-items: flex-start; }
+            .calculator-toggle span:last-child { white-space: normal; }
+            .trust-person { align-items: flex-start; }
+            .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <nav id="navbar" aria-label="Hauptnavigation">
+        <div class="nav-inner">
+
+            <a href="/" class="nav-brand" aria-label="RAIS — Zur Startseite">
+                <img src="RAIS_LOGO_PICTOGRAM.png" alt="" width="52" height="52" aria-hidden="true">
+                <div class="nav-brand-words">
+                    <span class="nav-wordmark">RAIS</span>
+                    <span class="nav-submark">Ritz AI Solutions</span>
+                </div>
+            </a>
+
+            <div class="nav-center" role="none">
+                <ul class="nav-list" role="list">
+                    <li><a href="#angebot">Leistungen</a></li>
+                    <li class="nav-dropdown">
+                        <button type="button" id="branchen-btn" aria-haspopup="true" aria-expanded="false" aria-controls="branchen-panel">
+                            Branchen
+                            <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                        <div class="dropdown-panel" id="branchen-panel" role="menu" aria-labelledby="branchen-btn">
+                            <a href="fliesenleger.html" class="dropdown-item" role="menuitem">
+                                <svg class="dropdown-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                                Fliesenleger &amp; Bodenleger
+                            </a>
+                            <a href="elektriker.html" class="dropdown-item" role="menuitem">
+                                <svg class="dropdown-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                                Elektriker
+                            </a>
+                            <a href="maler.html" class="dropdown-item" role="menuitem">
+                                <svg class="dropdown-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.06 11.9l8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08"/><path d="M7.07 14.94c-1.66 0-3 1.35-3 3.02 0 1.33-2.5 1.52-2 2.45.63 1.24 2.49.97 3.35.64 1.07-.42 1.65-1.62 1.65-2.73v-1.38z"/></svg>
+                                Maler
+                            </a>
+                        </div>
+                    </li>
+                    <li><a href="#trust">Über uns</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-right">
+                <a href="#kontakt" class="btn-primary">Demo anfordern</a>
+                <button class="nav-hamburger" id="hamburger-btn" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-overlay">
+                    <svg id="hamburger-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <line x1="3" y1="12" x2="21" y2="12"/>
+                        <line x1="3" y1="18" x2="21" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+    </nav>
+
+    <div id="mobile-overlay" role="dialog" aria-label="Navigation" aria-modal="true">
+        <div class="mobile-nav-inner">
+            <a href="#angebot" class="mobile-link" data-close-menu>Leistungen</a>
+            <span class="mobile-section-label">Branchen</span>
+            <div class="mobile-sublinks">
+                <a href="fliesenleger.html" class="mobile-link" data-close-menu>Fliesenleger &amp; Bodenleger</a>
+                <a href="elektriker.html"   class="mobile-link" data-close-menu>Elektriker</a>
+                <a href="maler.html"        class="mobile-link" data-close-menu>Maler</a>
+            </div>
+            <a href="#trust" class="mobile-link" data-close-menu>Über uns</a>
+            <a href="#kontakt"             class="mobile-link" data-close-menu>Kontakt</a>
+            <hr class="mobile-hr">
+            <a href="#kontakt" class="mobile-cta" data-close-menu>Demo anfordern</a>
+        </div>
+    </div>
+
+    <main>
+
+        <section id="hero">
+            <div class="hero-slides" aria-hidden="true">
+                <!-- SLIDESHOW SLIDE 1: Replace URL with licensed or owned photo when available -->
+                <div class="hero-slide is-active" style="background-image: url('https://images.unsplash.com/photo-1758101755915-462eddc23f57?w=1920&q=80&auto=format&fit=crop');"></div>
+                <!-- SLIDESHOW SLIDE 2: Replace URL with licensed or owned photo when available -->
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1635335874521-7987db781153?w=1920&q=80&auto=format&fit=crop');"></div>
+                <!-- SLIDESHOW SLIDE 3: Replace URL with licensed or owned photo when available -->
+                <div class="hero-slide" style="background-image: url('https://plus.unsplash.com/premium_photo-1682928136660-8cbeaf4941b2?w=1920&q=80&auto=format&fit=crop');"></div>
+                <!-- SLIDESHOW SLIDE 4: Replace URL with licensed or owned photo when available -->
+                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1682345262055-8f95f3c513ea?w=1920&q=80&auto=format&fit=crop');"></div>
+            </div>
+            <div class="hero-scrim" aria-hidden="true"></div>
+            <div class="hero-content">
+                <span class="hero-label">RAIS - Website für Elektriker</span>
+                <h1 class="hero-h1">
+                    Wenn Sie im Einsatz nicht erreichbar sind,<br>
+                    geht die Anfrage oft an den Elektriker, der es ist.
+                </h1>
+                <p class="hero-sub">
+                    Bei Elektrothemen wird oft sofort weitertelefoniert. Die Website muss Anfragen vorsortieren, Vertrauen schaffen und planbare Projekte festhalten, bevor sie weiterwandern.
+                </p>
+                <div class="hero-ctas">
+                    <a href="#kontakt" class="hero-btn-primary">Demo anfordern</a>
+                    <a href="#demo"    class="hero-btn-outline">Beispiel ansehen</a>
+                </div>
+            </div>
+            <div class="hero-scroll-cue" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+        </section>
+
+
+        <section id="problem">
+            <div class="section-wrap">
+                <div class="niche-intro">
+                    <span class="mono-label">Das Problem</span>
+                    <h2 class="section-h2">Gute Anfragen gehen verloren, wenn in diesem Moment niemand greifbar ist.</h2>
+                    <p class="section-sub">
+                        Wenn Störung, Kleinauftrag und planbares Projekt gleich aussehen, wandert auch ein guter Auftrag schnell weiter.
+                    </p>
+                </div>
+                <div class="problem-grid">
+                    <div class="problem-item">
+                        <i data-lucide="phone-off" class="problem-icon" aria-hidden="true"></i>
+                        <h3 class="problem-title">Alles kommt ungefiltert rein</h3>
+                        <p class="problem-body">Störung, Kleinauftrag und größere Installation laufen über denselben Kanal.</p>
+                    </div>
+                    <div class="problem-item">
+                        <i data-lucide="inbox" class="problem-icon" aria-hidden="true"></i>
+                        <h3 class="problem-title">Dringendes und Planbares vermischt sich</h3>
+                        <p class="problem-body">Ohne klare Sortierung geht auch eine gute Projektanfrage im Alltag unter.</p>
+                    </div>
+                    <div class="problem-item">
+                        <i data-lucide="shield-off" class="problem-icon" aria-hidden="true"></i>
+                        <h3 class="problem-title">Rückrufe dauern unnötig lange</h3>
+                        <p class="problem-body">Ohne Anliegen, Objektart und Dringlichkeit beginnt jeder Rückruf mit Sortierarbeit.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="zahlen">
+            <div class="section-wrap">
+                <div class="niche-intro">
+                    <span class="mono-label">Was das in Zahlen heißt</span>
+                    <h2 class="section-h2">Schon ein planbares Projekt mehr kann die Website sehr schnell rechtfertigen.</h2>
+                    <p class="section-sub">
+                        Bei Elektrik geht oft vieles gleichzeitig ein: Störung, Rückrufbitte und planbares Projekt. Wenn die erste Einordnung fehlt, verlieren Sie nicht nur Zeit, sondern unter Umständen genau die Anfrage, die eigentlich interessant gewesen wäre.
+                    </p>
+                </div>
+
+                <div class="zahlen-grid">
+                    <div class="zahlen-item">
+                        <span class="zahlen-num">1 Projekt</span>
+                        <p class="zahlen-label">Schon eine zusätzliche Wallbox, Unterverteilung oder Teilsanierung kann mehr wert sein als die komplette Website. Deshalb muss ein gutes Projekt sauber auffindbar und erfassbar sein.</p>
+                    </div>
+                    <div class="zahlen-item">
+                        <span class="zahlen-num">3 Fragen</span>
+                        <p class="zahlen-label">Wenn Anliegen, Objektart und Dringlichkeit im Erstkontakt fehlen, ist selbst eine gute Anfrage erst einmal unklar. Genau diese drei Punkte sollte die Website vorsortieren, bevor Sie zurückrufen.</p>
+                    </div>
+                    <div class="zahlen-item">
+                        <span class="zahlen-num">24/7</span>
+                        <p class="zahlen-label">Anfragen kommen auch dann rein, wenn gerade niemand rangehen kann. Die Website muss deshalb jederzeit vorsortieren, Rückrufwünsche festhalten und planbare Leistungen klarer machen.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="angebot">
+            <div class="section-wrap">
+                <div class="angebot-header">
+                    <span class="mono-label">Angebot</span>
+                    <h2 class="section-h2">Was auf der Website für Ihren Betrieb konkret enthalten ist.</h2>
+                </div>
+                <div class="angebot-card">
+                    <div class="angebot-price-row">
+                        <div>
+                            <span class="angebot-price">1.800 EUR</span>
+                            <span class="angebot-price-note">einmalig</span>
+                        </div>
+                    </div>
+                    <ul class="angebot-list">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Individuelle Website mit bis zu 7 Seiten: Start, Leistungen, Referenzen, Rechner, Kontakt, Impressum und Datenschutz</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Rechner für planbare Leistungen wie Wallbox, Unterverteilung oder Teilsanierung</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Online-Terminwunsch oder Rückrufanfrage</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Kontaktformular mit Anliegen, Objektart, Ort und Dringlichkeit</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Einbindung von bis zu 15 Referenzfotos aus Ihrem Betrieb</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Bis zu 2 Revisionsrunden vor dem Livegang</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Domain-Setup, Livegang und 14 Tage technischer Support</li>
+                    </ul>
+                    <a href="#kontakt" class="angebot-cta">Demo anfordern</a>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Replace with niche-specific demo when available -->
+        <section id="demo">
+            <div class="section-wrap">
+                <div class="niche-intro">
+                    <span class="mono-label">Demo</span>
+                    <h2 class="section-h2">So können Website und Rechner für planbare Anfragen aussehen.</h2>
+                    <p class="section-sub">
+                        Zwei kleine Vorschauen: die Seite und der Rechner. Beides wird auf Ihre Leistungen und Ihren Anfrageweg angepasst.
+                    </p>
+                </div>
+                <div class="demo-grid">
+                    <article class="demo-card">
+                        <div>
+                            <span class="demo-kicker">Beispiel-Website</span>
+                            <h3 class="demo-title">Die komplette Seite für Installation, Sanierung und Rückrufweg.</h3>
+                            <p class="demo-copy">Hier entscheidet sich, ob eine planbare Anfrage bei Ihnen bleibt oder weitertelefoniert wird.</p>
+                        </div>
+                        <ul class="demo-list">
+                            <li>klare Leistungsseiten für planbare Arbeiten</li>
+                            <li>saubere Anfrageführung statt Sammelkontakt</li>
+                            <li>Referenzen und Einsatzgebiet vor dem Rückruf</li>
+                        </ul>
+                        <a href="https://ritz-ai.solutions/elektriker.html" target="_blank" rel="noopener" class="demo-frame-shell" aria-label="Beispielseite in neuem Tab öffnen">
+                            <div class="demo-browser-bar">
+                                <div class="demo-browser-dots" aria-hidden="true">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <span class="demo-browser-label">Beispielseite: Leistungen, Anfrageweg und Rückruflogik</span>
+                                <span class="demo-open-label">Beispielseite öffnen ↗</span>
+                            </div>
+                            <div class="demo-image" style="display:flex; align-items:center; justify-content:center; background:#f0f0f0; font-size:0.8rem; color:#999; font-style:italic;">Demo-Vorschau folgt</div>
+                        </a>
+                        <div class="demo-links">
+                            <a href="https://ritz-ai.solutions/elektriker.html" target="_blank" rel="noopener" class="demo-link">Live-Seite öffnen ↗</a>
+                        </div>
+                    </article>
+
+                    <article class="demo-card">
+                        <div>
+                            <span class="demo-kicker">Beispiel-Rechner</span>
+                            <h3 class="demo-title">Der Rechner ist für planbare Leistungen gedacht, nicht für Störungen.</h3>
+                            <p class="demo-copy">Er gibt Orientierung bei planbaren Leistungen und spart Rückfragearbeit vor dem Rückruf.</p>
+                        </div>
+                        <ul class="demo-list">
+                            <li>erste Orientierung für planbare Leistungen</li>
+                            <li>klare Abfrage von Objektart und Leistungsumfang</li>
+                            <li>bessere Vorbereitung vor dem Rückruf</li>
+                        </ul>
+                        <div class="demo-frame-shell demo-frame-shell--interactive" aria-label="Interaktiver Beispiel-Rechner">
+                            <div class="demo-browser-bar">
+                                <div class="demo-browser-dots" aria-hidden="true">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <span class="demo-browser-label">Beispiel-Rechner: planbare Leistung statt Störung</span>
+                                <span class="demo-open-label">Interaktiv</span>
+                            </div>
+                            <div class="calculator-preview">
+                                <div class="calculator-card" data-calc="elektriker">
+                                    <label class="calculator-field">
+                                        <span class="calculator-field-label">Planbare Leistung</span>
+                                        <select class="calculator-select" data-role="service">
+                                            <option value="1370">Wallbox</option>
+                                            <option value="1840">Unterverteilung</option>
+                                            <option value="3290">Teilsanierung</option>
+                                        </select>
+                                    </label>
+                                    <label class="calculator-field">
+                                        <span class="calculator-field-label">Objektart</span>
+                                        <select class="calculator-select" data-role="object">
+                                            <option value="1">Einfamilienhaus</option>
+                                            <option value="1.12">Mehrfamilienhaus</option>
+                                            <option value="1.24">Gewerbe</option>
+                                        </select>
+                                    </label>
+                                    <div class="calculator-toggle-grid">
+                                        <button type="button" class="calculator-toggle is-active" data-role="extra" data-label="Leitung bis Montageort" data-add="180">
+                                            <span>Leitung bis Montageort</span>
+                                            <span>+180 EUR</span>
+                                        </button>
+                                        <button type="button" class="calculator-toggle is-active" data-role="extra" data-label="Absicherung / Prüfung" data-add="140">
+                                            <span>Absicherung / Prüfung</span>
+                                            <span>+140 EUR</span>
+                                        </button>
+                                    </div>
+                                    <div class="calculator-row">
+                                        <span class="calculator-label">Leistung</span>
+                                        <span class="calculator-value" data-output="serviceLabel">Wallbox</span>
+                                    </div>
+                                    <div class="calculator-row">
+                                        <span class="calculator-label">Objekt</span>
+                                        <span class="calculator-value" data-output="objectLabel">Einfamilienhaus</span>
+                                    </div>
+                                    <div class="calculator-row">
+                                        <span class="calculator-label">Zusatzaufwand</span>
+                                        <span class="calculator-value" data-output="extrasLabel">Leitung bis Montageort + Absicherung / Prüfung</span>
+                                    </div>
+                                    <div class="calculator-total">
+                                        <span>Erste Orientierung</span>
+                                        <strong data-output="total">ab 1.690 EUR</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="demo-links">
+                            <a href="#kontakt" class="demo-link">Eigene Demo im 15-Minuten-Call anfragen</a>
+                        </div>
+                    </article>
+                </div>
+                <p class="demo-note">Die Website-Vorschau ist statisch. Der Rechner bleibt interaktiv und wird im Projekt auf Ihre Logik angepasst.</p>
+            </div>
+        </section>
+
+
+        <section id="ablauf">
+            <div class="section-wrap">
+                <div class="ablauf-header">
+                    <span class="mono-label">Nächste Schritte</span>
+                    <h2 class="section-h2">So geht es nach dem 15-Minuten-Call weiter.</h2>
+                </div>
+                <div class="ablauf-grid">
+                    <div class="ablauf-step">
+                        <span class="ablauf-num">01</span>
+                        <h3 class="ablauf-title">15-Minuten-Call</h3>
+                        <p class="ablauf-body">Wir klären, welche Anfragen sichtbar bleiben müssen und was die Seite vor dem Rückruf schon sortieren soll.</p>
+                    </div>
+                    <div class="ablauf-step">
+                        <span class="ablauf-num">02</span>
+                        <h3 class="ablauf-title">Umsetzung</h3>
+                        <p class="ablauf-body">Sie liefern Fotos, Firmendaten und Leistungslogik. Daraus bauen wir Seite, Rechner und Anfrageweg.</p>
+                    </div>
+                    <div class="ablauf-step">
+                        <span class="ablauf-num">03</span>
+                        <h3 class="ablauf-title">Livegang</h3>
+                        <p class="ablauf-body">Nach Freigabe geht die Seite live. Danach sind 14 Tage technischer Support enthalten.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="kontakt">
+            <div class="section-wrap">
+                <div class="contact-grid">
+                    <div class="contact-text-col">
+                        <span class="mono-label">Demo anfordern</span>
+                        <h2 class="section-h2">Im 15-Minuten-Call sehen Sie, wie Website, Rechner und Anfrageweg für Ihren Betrieb aussehen können.</h2>
+                        <p class="contact-copy">
+                            Wir gehen kurz durch, wo heute Anfragen verloren gehen und wie die Seite planbare Projekte sauberer festhält.
+                        </p>
+                    </div>
+                    <!-- CALENDLY: Loads only on user click.
+                         DSGVO-konform: kein Request vor Nutzerinteraktion.
+                         Disclose Calendly in Datenschutz as third-party tool. -->
+                    <div class="cal-embed-wrap">
+                        <div id="calWidget" style="display:none; min-width:320px; height:700px;"></div>
+                        <button type="button" id="calLoadBtn" class="cal-load-btn">15-Minuten-Demo anfragen</button>
+                        <p id="calError" class="cal-error" style="display:none;">
+                            Kalender konnte nicht geladen werden. <a href="https://calendly.com/ritzaisolutions/erstgesprach-mit-rais" target="_blank" rel="noopener">Direkt öffnen ↗</a>
+                        </p>
+                        <a href="https://calendly.com/ritzaisolutions/erstgesprach-mit-rais" target="_blank" rel="noopener" class="cal-ext-link">
+                            Termin extern öffnen ↗
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-details">
+                    <div class="contact-detail">
+                        <svg class="contact-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                        <a href="mailto:kevin@ritz-ai.solutions" class="contact-detail-link">kevin@ritz-ai.solutions</a>
+                    </div>
+                    <div class="contact-detail">
+                        <svg class="contact-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.28h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.99a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.28 16"/></svg>
+                        <a href="tel:+4915129755134" class="contact-detail-link">+49 151 297 551 34</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="trust">
+            <div class="section-wrap">
+                <div class="trust-grid">
+                    <div>
+                        <span class="mono-label">Vertrauen</span>
+                        <h2 class="section-h2">Direkter Ansprechpartner. Klarer Rahmen.</h2>
+                        <p class="trust-copy">
+                            Sie sprechen direkt mit Kevin Ritz. RAIS bündelt Struktur, Copy, Rechner und technische Umsetzung für diese spezialisierten Handwerksseiten.
+                        </p>
+                    </div>
+
+                    <aside class="trust-card">
+                        <span class="trust-card-kicker">RAIS / Kevin Ritz</span>
+                        <div class="trust-person">
+                            <div class="trust-avatar" aria-hidden="true">KR</div>
+                            <div class="trust-person-meta">
+                                <span class="trust-person-name">Kevin Ritz</span>
+                                <span class="trust-person-role">Direkter Ansprechpartner bei RAIS</span>
+                            </div>
+                        </div>
+                        <h3 class="trust-card-title">Persönlich im Kontakt, sauber im Aufbau.</h3>
+                        <p class="trust-card-copy">Ein Ansprechpartner, ein klarer Scope, ein sauberer Livegang.</p>
+                        <ul class="trust-list">
+                            <li>Direkter Kontakt statt Vertriebskette</li>
+                            <li>Fokus auf ausgewählte Handwerksbereiche statt alles für alle</li>
+                            <li>Website, Rechner, Copy und technischer Aufbau aus einer Hand</li>
+                            <li>14 Tage technischer Support nach dem Livegang</li>
+                        </ul>
+                        <div class="contact-details">
+                            <div class="contact-detail">
+                                <svg class="contact-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                                <a href="mailto:kevin@ritz-ai.solutions" class="contact-detail-link">kevin@ritz-ai.solutions</a>
+                            </div>
+                            <div class="contact-detail">
+                                <svg class="contact-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.28h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.99a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.28 16"/></svg>
+                                <a href="tel:+4915129755134" class="contact-detail-link">+49 151 297 551 34</a>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="footer">
+        <div class="footer-inner">
+            <a href="/" class="footer-brand" aria-label="RAIS Startseite">
+                <img src="RAIS-Logo-transparent.png" alt="" width="48" height="48" aria-hidden="true">
+                <span class="footer-wordmark">RAIS</span>
+            </a>
+            <nav class="footer-legal" aria-label="Rechtliche Links">
+                <a href="impressum.html">Impressum</a>
+                <a href="datenschutz.html">Datenschutz</a>
+            </nav>
+            <span class="footer-copy">© 2026 Ritz AI Solutions, Koblenz</span>
+        </div>
+    </footer>
+
+    <script>
+    (function () {
+        'use strict';
+
+        var navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', function () {
+            navbar.classList.toggle('scrolled', window.scrollY > 8);
+        }, { passive: true });
+
+        var hamburgerBtn  = document.getElementById('hamburger-btn');
+        var hamburgerIcon = document.getElementById('hamburger-icon');
+        var mobileOverlay = document.getElementById('mobile-overlay');
+
+        var SVG_MENU  = '<line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>';
+        var SVG_CLOSE = '<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>';
+
+        function openMenu() {
+            mobileOverlay.classList.add('is-open');
+            document.body.classList.add('noscroll');
+            hamburgerBtn.setAttribute('aria-expanded', 'true');
+            hamburgerBtn.setAttribute('aria-label', 'Menü schließen');
+            hamburgerIcon.innerHTML = SVG_CLOSE;
+        }
+        function closeMenu() {
+            mobileOverlay.classList.remove('is-open');
+            document.body.classList.remove('noscroll');
+            hamburgerBtn.setAttribute('aria-expanded', 'false');
+            hamburgerBtn.setAttribute('aria-label', 'Menü öffnen');
+            hamburgerIcon.innerHTML = SVG_MENU;
+        }
+
+        hamburgerBtn.addEventListener('click', function () {
+            mobileOverlay.classList.contains('is-open') ? closeMenu() : openMenu();
+        });
+        document.querySelectorAll('[data-close-menu]').forEach(function (el) {
+            el.addEventListener('click', closeMenu);
+        });
+
+        var branchenBtn      = document.getElementById('branchen-btn');
+        var branchenDropdown = branchenBtn && branchenBtn.closest('.nav-dropdown');
+
+        function openDropdown()  { if (!branchenDropdown) return; branchenDropdown.classList.add('is-open');    branchenBtn.setAttribute('aria-expanded', 'true'); }
+        function closeDropdown() { if (!branchenDropdown) return; branchenDropdown.classList.remove('is-open'); branchenBtn.setAttribute('aria-expanded', 'false'); }
+
+        if (branchenBtn) {
+            branchenBtn.addEventListener('click', function () {
+                branchenDropdown.classList.contains('is-open') ? closeDropdown() : openDropdown();
+            });
+        }
+        document.addEventListener('click', function (e) {
+            if (branchenDropdown && !branchenDropdown.contains(e.target)) closeDropdown();
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') { closeMenu(); closeDropdown(); }
+        });
+
+        if (typeof lucide !== 'undefined' && typeof lucide.createIcons === 'function') {
+            lucide.createIcons();
+        }
+
+        var heroSlides = document.querySelectorAll('.hero-slide');
+        var slideIndex = 0;
+        if (heroSlides.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            setInterval(function () {
+                heroSlides[slideIndex].classList.remove('is-active');
+                slideIndex = (slideIndex + 1) % heroSlides.length;
+                heroSlides[slideIndex].classList.add('is-active');
+            }, 6000);
+        }
+
+        /* ── Calendly click-to-load ──────────────────────────── */
+        var calBtn = document.getElementById('calLoadBtn');
+        if (calBtn) {
+            calBtn.addEventListener('click', function () {
+                calBtn.textContent = 'Wird geladen…';
+                calBtn.disabled = true;
+                var s = document.createElement('script');
+                s.src = 'https://assets.calendly.com/assets/external/widget.js';
+                s.onload = function () {
+                    var widget = document.getElementById('calWidget');
+                    Calendly.initInlineWidget({
+                        url: 'https://calendly.com/ritzaisolutions/erstgesprach-mit-rais',
+                        parentElement: widget
+                    });
+                    widget.style.display = 'block';
+                    calBtn.style.display = 'none';
+                };
+                s.onerror = function () {
+                    calBtn.style.display = 'none';
+                    document.getElementById('calError').style.display = 'block';
+                };
+                document.head.appendChild(s);
+            });
+        }
+
+        var elektrikerCalc = document.querySelector('[data-calc="elektriker"]');
+        if (elektrikerCalc) {
+            var elektrikerService = elektrikerCalc.querySelector('[data-role="service"]');
+            var elektrikerObject = elektrikerCalc.querySelector('[data-role="object"]');
+            var elektrikerExtras = elektrikerCalc.querySelectorAll('[data-role="extra"]');
+            var elektrikerServiceOutput = elektrikerCalc.querySelector('[data-output="serviceLabel"]');
+            var elektrikerObjectOutput = elektrikerCalc.querySelector('[data-output="objectLabel"]');
+            var elektrikerExtrasOutput = elektrikerCalc.querySelector('[data-output="extrasLabel"]');
+            var elektrikerTotalOutput = elektrikerCalc.querySelector('[data-output="total"]');
+
+            function updateElektrikerCalc() {
+                var base = parseFloat(elektrikerService.value);
+                var objectMultiplier = parseFloat(elektrikerObject.value);
+                var serviceLabel = elektrikerService.options[elektrikerService.selectedIndex].text;
+                var objectLabel = elektrikerObject.options[elektrikerObject.selectedIndex].text;
+                var extrasLabel = [];
+                var extrasTotal = 0;
+
+                elektrikerExtras.forEach(function (button) {
+                    if (!button.classList.contains('is-active')) return;
+                    extrasLabel.push(button.getAttribute('data-label'));
+                    extrasTotal += parseFloat(button.getAttribute('data-add'));
+                });
+
+                var total = Math.round((base * objectMultiplier + extrasTotal) / 10) * 10;
+
+                elektrikerServiceOutput.textContent = serviceLabel;
+                elektrikerObjectOutput.textContent = objectLabel;
+                elektrikerExtrasOutput.textContent = extrasLabel.length ? extrasLabel.join(' + ') : 'keine';
+                elektrikerTotalOutput.textContent = 'ab ' + total.toLocaleString('de-DE') + ' EUR';
+            }
+
+            elektrikerService.addEventListener('change', updateElektrikerCalc);
+            elektrikerObject.addEventListener('change', updateElektrikerCalc);
+            elektrikerExtras.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    button.classList.toggle('is-active');
+                    updateElektrikerCalc();
+                });
+            });
+
+            updateElektrikerCalc();
+        }
+
+    }());
+    </script>
+
+</body>
+</html>
