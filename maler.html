@@ -27,7 +27,8 @@
     <script src="https://cloud.ccm19.de/app.js?apiKey=44ff2519f360f540f17d013a2a4094e2019143535dcc7c76&domain=69e29700b6f98fcee101f2d2" referrerpolicy="origin"></script>
 
     <!-- Fonts & Styles -->
-    <link rel="stylesheet" href="fonts.css">
+    <link rel='stylesheet' href='fonts.css'>
+    <link rel='stylesheet' href='styles/antigravity-polish.css'>
     <script src="vendor/lucide.min.js"></script>
 
     <style>
@@ -451,7 +452,6 @@
             .trust-person { align-items: flex-start; }
             .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
         }
-
     </style>
 </head>
 
@@ -890,8 +890,68 @@
 
         var navbar = document.getElementById('navbar');
         window.addEventListener('scroll', function () {
-            navbar.classList.toggle('scrolled', window.scrollY > 8);
+            navbar.classList.toggle('scrolled', window.scrollY > 10);
         }, { passive: true });
+
+        /* ── Active nav state on scroll ──────────────────────── */
+        var navAnchorGroups = [
+            document.querySelectorAll('.nav-list a[href^="#"]'),
+            document.querySelectorAll('.mobile-link[href^="#"]')
+        ];
+
+        var navTargets = [];
+        Array.prototype.forEach.call(document.querySelectorAll('.nav-list a[href^="#"]'), function(anchor) {
+            var id = anchor.getAttribute('href');
+            if (!id || id.length < 2) return;
+            var target = document.querySelector(id);
+            if (target) {
+                navTargets.push({ id: id, target: target });
+            }
+        });
+
+        function setActiveNav(id) {
+            navAnchorGroups.forEach(function(group) {
+                Array.prototype.forEach.call(group, function(link) {
+                    var isActive = link.getAttribute('href') === id;
+                    link.classList.toggle('is-active', isActive);
+                    if (isActive) {
+                        link.setAttribute('aria-current', 'page');
+                    } else {
+                        link.removeAttribute('aria-current');
+                    }
+                });
+            });
+        }
+
+        function updateActiveNav() {
+            if (!navTargets.length) return;
+            var offset = (navbar ? navbar.offsetHeight : 72) + 26;
+            var scrollMarker = window.scrollY + offset;
+            var activeId = navTargets[0].id;
+
+            navTargets.forEach(function(item) {
+                if (scrollMarker >= item.target.offsetTop) {
+                    activeId = item.id;
+                }
+            });
+
+            setActiveNav(activeId);
+        }
+
+        var activeNavTicking = false;
+        function requestActiveNavUpdate() {
+            if (activeNavTicking) return;
+            activeNavTicking = true;
+            window.requestAnimationFrame(function() {
+                updateActiveNav();
+                activeNavTicking = false;
+            });
+        }
+
+        window.addEventListener('scroll', requestActiveNavUpdate, { passive: true });
+        window.addEventListener('resize', requestActiveNavUpdate);
+        window.addEventListener('hashchange', requestActiveNavUpdate);
+        requestActiveNavUpdate();
 
         var hamburgerBtn  = document.getElementById('hamburger-btn');
         var hamburgerIcon = document.getElementById('hamburger-icon');
@@ -952,6 +1012,43 @@
                 slideIndex = (slideIndex + 1) % heroSlides.length;
                 heroSlides[slideIndex].classList.add('is-active');
             }, 6000);
+        }
+
+        /* ── Antigravity reveal orchestration ───────────────── */
+        var revealTargets = document.querySelectorAll([
+            '.niche-intro', '.leis-intro', '.branchen-intro', '.ueberuns-grid > div',
+            '.problem-item', '.zahlen-item', '.angebot-card', '.ablauf-step', '.demo-card',
+            '.contact-text-col', '.contact-detail', '.cal-embed-wrap', '.proof-wrap'
+        ].join(','));
+
+        revealTargets.forEach(function (el, index) {
+            if (!el.classList.contains('reveal')) {
+                el.classList.add('reveal');
+            }
+            if (!el.classList.contains('reveal-delay-1') && !el.classList.contains('reveal-delay-2') && !el.classList.contains('reveal-delay-3')) {
+                var stagger = index % 3;
+                if (stagger === 1) el.classList.add('reveal-delay-1');
+                if (stagger === 2) el.classList.add('reveal-delay-2');
+            }
+        });
+
+        if ('IntersectionObserver' in window) {
+            var revealObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.14, rootMargin: '0px 0px -4% 0px' });
+
+            document.querySelectorAll('.reveal').forEach(function(el) {
+                revealObserver.observe(el);
+            });
+        } else {
+            document.querySelectorAll('.reveal').forEach(function(el) {
+                el.classList.add('active');
+            });
         }
 
         /* ── Calendly click-to-load ──────────────────────────── */
