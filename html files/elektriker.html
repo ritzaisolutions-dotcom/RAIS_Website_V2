@@ -7,6 +7,21 @@
     <title>RAIS für Elektriker - Website mit Vorsortierung und planbarem Rechner</title>
     <meta name="description" content="RAIS baut Websites für Elektriker, die auch dann Anfragen auffangen, wenn Sie im Einsatz, auf der Baustelle oder am Wochenende nicht ans Telefon gehen.">
 
+    <!-- OpenGraph -->
+    <meta property="og:title" content="RAIS für Elektriker – Website mit Vorsortierung und planbarem Rechner">
+    <meta property="og:description" content="Spezialisierte Website für Elektriker: Kostenrechner, klarer Anfrageweg, 1.200 EUR Festpreis.">
+    <meta property="og:url" content="https://ritz-ai.solutions/elektriker.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://ritz-ai.solutions/images/fliesenweber-demo-preview.png">
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="720">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="RAIS für Elektriker – Website mit Vorsortierung und planbarem Rechner">
+    <meta name="twitter:description" content="Spezialisierte Website für Elektriker: Kostenrechner, klarer Anfrageweg, 1.200 EUR Festpreis.">
+    <meta name="twitter:image" content="https://ritz-ai.solutions/images/fliesenweber-demo-preview.png">
+
     <link rel="icon" type="image/png" href="favicon.png?v=3">
     <link rel="apple-touch-icon" href="favicon.png?v=3">
 
@@ -17,8 +32,7 @@
     ></script>
     <script>
       Sentry.init({
-        dsn: "https://f2ddf600721a166c3d4ab0486a3e9cee@o4511309268189184.ingest.de.sentry.io/4511310256603216",
-        sendDefaultPii: true
+        dsn: "https://f2ddf600721a166c3d4ab0486a3e9cee@o4511309268189184.ingest.de.sentry.io/4511310256603216"
       });
     </script>
 
@@ -27,7 +41,8 @@
     <script src="https://cloud.ccm19.de/app.js?apiKey=44ff2519f360f540f17d013a2a4094e2019143535dcc7c76&domain=69e29700b6f98fcee101f2d2" referrerpolicy="origin"></script>
 
     <!-- Fonts & Styles -->
-    <link rel="stylesheet" href="fonts.css">
+    <link rel='stylesheet' href='fonts.css'>
+    <link rel='stylesheet' href='styles/antigravity-polish.css'>
     <script src="vendor/lucide.min.js"></script>
 
     <style>
@@ -65,11 +80,7 @@
         #navbar {
             position: fixed; inset: 0 0 auto 0; z-index: 100;
             height: var(--nav-h);
-            background-color: var(--surface);
-            border-bottom: 1px solid var(--border);
-            transition: box-shadow 0.25s ease;
         }
-        #navbar.scrolled { box-shadow: 0 2px 24px rgba(47,42,36,0.09); }
 
         .nav-inner {
             max-width: 1200px; margin: 0 auto; padding: 0 2rem;
@@ -450,11 +461,14 @@
         .proof-ext-link { font-size: 0.875rem; color: var(--stone); text-decoration: none; transition: color 0.15s ease; }
         .proof-ext-link:hover { color: var(--charcoal); }
 
-        .demo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+        .demo-grid { display: flex; flex-direction: column; margin-top: 2.5rem; }
         .demo-card {
-            display: flex; flex-direction: column; gap: 1.25rem; padding: 1.5rem;
+            display: flex; flex-direction: column; gap: 1.25rem; padding: 2rem;
             background-color: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+            max-width: 700px;
         }
+        .demo-card:nth-child(1) { margin-right: auto; }
+        .demo-card:nth-child(2) { margin-left: auto; margin-top: 3rem; }
         .demo-kicker {
             display: inline-block; font-family: 'JetBrains Mono', 'Courier New', monospace;
             font-size: 0.625rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--pistachio); margin-bottom: 0.625rem;
@@ -672,7 +686,8 @@
         }
         @media (max-width: 840px) {
             .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-            .demo-grid, .trust-grid { grid-template-columns: 1fr; }
+            .demo-card:nth-child(1), .demo-card:nth-child(2) { max-width: 100%; margin-left: 0; margin-right: 0; margin-top: 0; }
+            .demo-card:nth-child(2) { margin-top: 1.5rem; }
             .demo-frame-shell { max-width: 100%; width: 100%; }
             #problem, #zahlen, #angebot, #ablauf, #demo, #kontakt, #trust { padding: 4rem 0; }
         }
@@ -690,7 +705,6 @@
             .trust-person { align-items: flex-start; }
             .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
         }
-
     </style>
 </head>
 
@@ -769,14 +783,10 @@
 
         <section id="hero">
             <div class="hero-slides" aria-hidden="true">
-                <!-- SLIDESHOW SLIDE 1: Replace URL with licensed or owned photo when available -->
-                <div class="hero-slide is-active" style="background-image: url('https://images.unsplash.com/photo-1758101755915-462eddc23f57?w=1920&q=80&auto=format&fit=crop');"></div>
-                <!-- SLIDESHOW SLIDE 2: Replace URL with licensed or owned photo when available -->
-                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1635335874521-7987db781153?w=1920&q=80&auto=format&fit=crop');"></div>
-                <!-- SLIDESHOW SLIDE 3: Replace URL with licensed or owned photo when available -->
-                <div class="hero-slide" style="background-image: url('https://plus.unsplash.com/premium_photo-1682928136660-8cbeaf4941b2?w=1920&q=80&auto=format&fit=crop');"></div>
-                <!-- SLIDESHOW SLIDE 4: Replace URL with licensed or owned photo when available -->
-                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1682345262055-8f95f3c513ea?w=1920&q=80&auto=format&fit=crop');"></div>
+                <div class="hero-slide is-active" style="background-image: url('images/hero-elektriker-1.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('images/hero-elektriker-2.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('images/hero-elektriker-3.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('images/hero-elektriker-4.jpg');"></div>
             </div>
             <div class="hero-scrim" aria-hidden="true"></div>
             <div class="hero-content">
@@ -866,7 +876,7 @@
                 <div class="angebot-card">
                     <div class="angebot-price-row">
                         <div>
-                            <span class="angebot-price">1.800 EUR</span>
+                            <span class="angebot-price">1.200 EUR</span>
                             <span class="angebot-price-note">einmalig</span>
                         </div>
                     </div>
@@ -1131,8 +1141,68 @@
 
         var navbar = document.getElementById('navbar');
         window.addEventListener('scroll', function () {
-            navbar.classList.toggle('scrolled', window.scrollY > 8);
+            navbar.classList.toggle('scrolled', window.scrollY > 10);
         }, { passive: true });
+
+        /* ── Active nav state on scroll ──────────────────────── */
+        var navAnchorGroups = [
+            document.querySelectorAll('.nav-list a[href^="#"]'),
+            document.querySelectorAll('.mobile-link[href^="#"]')
+        ];
+
+        var navTargets = [];
+        Array.prototype.forEach.call(document.querySelectorAll('.nav-list a[href^="#"]'), function(anchor) {
+            var id = anchor.getAttribute('href');
+            if (!id || id.length < 2) return;
+            var target = document.querySelector(id);
+            if (target) {
+                navTargets.push({ id: id, target: target });
+            }
+        });
+
+        function setActiveNav(id) {
+            navAnchorGroups.forEach(function(group) {
+                Array.prototype.forEach.call(group, function(link) {
+                    var isActive = link.getAttribute('href') === id;
+                    link.classList.toggle('is-active', isActive);
+                    if (isActive) {
+                        link.setAttribute('aria-current', 'page');
+                    } else {
+                        link.removeAttribute('aria-current');
+                    }
+                });
+            });
+        }
+
+        function updateActiveNav() {
+            if (!navTargets.length) return;
+            var offset = (navbar ? navbar.offsetHeight : 72) + 26;
+            var scrollMarker = window.scrollY + offset;
+            var activeId = navTargets[0].id;
+
+            navTargets.forEach(function(item) {
+                if (scrollMarker >= item.target.offsetTop) {
+                    activeId = item.id;
+                }
+            });
+
+            setActiveNav(activeId);
+        }
+
+        var activeNavTicking = false;
+        function requestActiveNavUpdate() {
+            if (activeNavTicking) return;
+            activeNavTicking = true;
+            window.requestAnimationFrame(function() {
+                updateActiveNav();
+                activeNavTicking = false;
+            });
+        }
+
+        window.addEventListener('scroll', requestActiveNavUpdate, { passive: true });
+        window.addEventListener('resize', requestActiveNavUpdate);
+        window.addEventListener('hashchange', requestActiveNavUpdate);
+        requestActiveNavUpdate();
 
         var hamburgerBtn  = document.getElementById('hamburger-btn');
         var hamburgerIcon = document.getElementById('hamburger-icon');
@@ -1193,6 +1263,43 @@
                 slideIndex = (slideIndex + 1) % heroSlides.length;
                 heroSlides[slideIndex].classList.add('is-active');
             }, 6000);
+        }
+
+        /* ── Antigravity reveal orchestration ───────────────── */
+        var revealTargets = document.querySelectorAll([
+            '.niche-intro', '.leis-intro', '.branchen-intro', '.ueberuns-grid > div',
+            '.problem-item', '.zahlen-item', '.angebot-card', '.ablauf-step', '.demo-card',
+            '.contact-text-col', '.contact-detail', '.cal-embed-wrap', '.proof-wrap'
+        ].join(','));
+
+        revealTargets.forEach(function (el, index) {
+            if (!el.classList.contains('reveal')) {
+                el.classList.add('reveal');
+            }
+            if (!el.classList.contains('reveal-delay-1') && !el.classList.contains('reveal-delay-2') && !el.classList.contains('reveal-delay-3')) {
+                var stagger = index % 3;
+                if (stagger === 1) el.classList.add('reveal-delay-1');
+                if (stagger === 2) el.classList.add('reveal-delay-2');
+            }
+        });
+
+        if ('IntersectionObserver' in window) {
+            var revealObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.14, rootMargin: '0px 0px -4% 0px' });
+
+            document.querySelectorAll('.reveal').forEach(function(el) {
+                revealObserver.observe(el);
+            });
+        } else {
+            document.querySelectorAll('.reveal').forEach(function(el) {
+                el.classList.add('active');
+            });
         }
 
         /* ── Calendly click-to-load ──────────────────────────── */

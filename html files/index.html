@@ -4,22 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>RAIS - Websites für Fliesenleger, Elektriker und Maler</title>
-    <meta name="description" content="RAIS baut spezialisierte Seiten für Fliesenleger, Elektriker und Maler. Jede Seite hat eigenen Anfrageweg, klares Angebot und 1.800 EUR Festpreis.">
+    <title>RAIS – KI Lösungen für Handwerksbetriebe</title>
+    <meta name="description" content="RAIS baut spezialisierte Seiten für Fliesenleger, Elektriker und Maler. Jede Seite hat eigenen Anfrageweg, klares Angebot und 1.200 EUR Festpreis.">
 
     <link rel="icon" type="image/png" href="favicon.png?v=3">
     <link rel="apple-touch-icon" href="favicon.png?v=3">
 
     <!-- OpenGraph -->
     <meta property="og:title" content="RAIS - Websites für Fliesenleger, Elektriker und Maler">
-    <meta property="og:description" content="Spezialisierte Branchenseiten mit passendem Anfrageweg, klarem Angebot und 1.800 EUR Festpreis.">
+    <meta property="og:description" content="Spezialisierte Branchenseiten mit passendem Anfrageweg, klarem Angebot und 1.200 EUR Festpreis.">
     <meta property="og:url" content="https://ritz-ai.solutions">
     <meta property="og:type" content="website">
+    <meta property="og:image" content="https://ritz-ai.solutions/images/fliesenweber-demo-preview.png">
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="720">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="RAIS - Websites für Fliesenleger, Elektriker und Maler">
-    <meta name="twitter:description" content="Spezialisierte Branchenseiten mit passendem Anfrageweg, klarem Angebot und 1.800 EUR Festpreis.">
+    <meta name="twitter:description" content="Spezialisierte Branchenseiten mit passendem Anfrageweg, klarem Angebot und 1.200 EUR Festpreis.">
+    <meta name="twitter:image" content="https://ritz-ai.solutions/images/fliesenweber-demo-preview.png">
 
     <!-- Schema.org -->
     <script type="application/ld+json">
@@ -40,8 +44,7 @@
     ></script>
     <script>
       Sentry.init({
-        dsn: "https://f2ddf600721a166c3d4ab0486a3e9cee@o4511309268189184.ingest.de.sentry.io/4511310256603216",
-        sendDefaultPii: true
+        dsn: "https://f2ddf600721a166c3d4ab0486a3e9cee@o4511309268189184.ingest.de.sentry.io/4511310256603216"
       });
 </script>
 
@@ -50,7 +53,8 @@
     <script src="https://cloud.ccm19.de/app.js?apiKey=44ff2519f360f540f17d013a2a4094e2019143535dcc7c76&domain=69e29700b6f98fcee101f2d2" referrerpolicy="origin"></script>
 
     <!-- Fonts & Styles -->
-    <link rel="stylesheet" href="fonts.css">
+    <link rel='stylesheet' href='fonts.css'>
+    <link rel='stylesheet' href='styles/antigravity-polish.css'>
     <link rel="stylesheet" href="styles/tailwind.generated.css">
     <script src="vendor/lucide.min.js"></script>
 
@@ -111,14 +115,29 @@
             inset: 0 0 auto 0;
             z-index: 100;
             height: var(--nav-h);
-            background-color: var(--surface);
+            background-color: rgba(251, 248, 243, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
-            transition: box-shadow 0.25s ease;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         #navbar.scrolled {
-            box-shadow: 0 2px 24px rgba(47, 42, 36, 0.09);
+            inset: 12px 20px auto 20px;
+            height: 64px;
+            background-color: rgba(251, 248, 243, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(47, 42, 36, 0.12);
         }
+
+        @media (max-width: 860px) {
+            #navbar.scrolled {
+                inset: 8px 12px auto 12px;
+            }
+        }
+
+
 
         .nav-inner {
             max-width: 1200px;
@@ -305,12 +324,31 @@
             text-decoration: none;
             border: none;
             cursor: pointer;
-            transition: background-color 0.15s ease;
+            transition: all 0.3s ease;
             white-space: nowrap;
             letter-spacing: 0;
+            position: relative;
+            overflow: hidden;
         }
 
-        .btn-primary:hover { background-color: var(--orange-hover); }
+        .btn-primary::after {
+            content: '→';
+            position: absolute;
+            right: -20px;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--orange-hover);
+            padding-right: 2.2rem;
+            transform: translateY(-1px);
+        }
+
+        .btn-primary:hover::after {
+            right: 1rem;
+            opacity: 1;
+        }
 
         .nav-hamburger {
             display: none;
@@ -507,7 +545,7 @@
             justify-content: center;
             overflow: hidden;
             padding: calc(var(--nav-h) + 2rem) 2rem 3rem;
-            background-image: url('../images/mark-koch-KiRlN3jjVNU-unsplash.jpg');
+            background-image: url('images/mark-koch-KiRlN3jjVNU-unsplash.jpg');
             background-size: cover;
             background-position: center 38%;
         }
@@ -532,14 +570,14 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1.65rem;
-            max-width: 860px;
+            gap: 1.25rem;
+            max-width: 760px;
             width: 100%;
-            padding: 3.25rem 3.5rem;
-            background: rgba(251, 248, 243, 0.74);
-            backdrop-filter: blur(22px) saturate(1.3);
-            -webkit-backdrop-filter: blur(22px) saturate(1.3);
-            border: 1px solid rgba(255, 255, 255, 0.52);
+            padding: 2.5rem 3rem;
+            background: rgba(251, 248, 243, 0.55);
+            backdrop-filter: blur(12px) saturate(1.2);
+            -webkit-backdrop-filter: blur(12px) saturate(1.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             border-radius: 20px;
             box-shadow:
                 0 16px 64px rgba(18, 16, 12, 0.28),
@@ -579,43 +617,6 @@
             max-width: 700px;
         }
 
-        .hero-route {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            gap: 0.65rem;
-            max-width: 760px;
-        }
-
-        .hero-route-label {
-            font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
-            font-size: 0.72rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--stone);
-        }
-
-        .hero-route-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.65rem 1rem;
-            border: 1px solid rgba(217, 209, 199, 0.9);
-            border-radius: 999px;
-            background-color: rgba(251, 248, 243, 0.68);
-            color: var(--charcoal);
-            text-decoration: none;
-            font-size: 0.9375rem;
-            line-height: 1;
-            transition: border-color 0.15s ease, background-color 0.15s ease, transform 0.15s ease;
-        }
-
-        .hero-route-link:hover {
-            border-color: rgba(236, 106, 55, 0.55);
-            background-color: rgba(255, 255, 255, 0.92);
-            transform: translateY(-1px);
-        }
 
         /* CTA row */
         .hero-ctas {
@@ -639,11 +640,31 @@
             font-weight: 500;
             border-radius: 10px;
             text-decoration: none;
-            transition: background-color 0.15s ease;
+            transition: all 0.3s ease;
             white-space: nowrap;
+            position: relative;
+            overflow: hidden;
         }
 
-        .hero-btn-primary:hover { background-color: var(--orange-hover); }
+        .hero-btn-primary::after {
+            content: '→';
+            position: absolute;
+            right: -20px;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .hero-btn-primary:hover {
+            background-color: var(--orange-hover);
+            padding-right: 2.8rem;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(236, 106, 55, 0.3);
+        }
+
+        .hero-btn-primary:hover::after {
+            right: 1.25rem;
+            opacity: 1;
+        }
 
         .hero-btn-outline {
             display: inline-flex;
@@ -710,18 +731,6 @@
                 line-height: 1.62;
             }
 
-            .hero-route {
-                width: 100%;
-                max-width: 320px;
-                gap: 0.5rem;
-            }
-
-            .hero-route-label {
-                width: 100%;
-                text-align: center;
-            }
-
-            .hero-route-link { width: 100%; }
 
             .hero-ctas {
                 flex-direction: column;
@@ -789,10 +798,10 @@
             margin-bottom: 3.5rem;
         }
 
-        /* Two equal pillars */
+        /* Three equal pillars */
         .leis-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(3, 1fr);
             gap: 1.25rem;
             align-items: stretch;
         }
@@ -805,7 +814,14 @@
             padding: 2.5rem;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 4px 28px rgba(47, 42, 36, 0.06);
+            box-shadow: 0 4px 28px rgba(47, 42, 36, 0.04);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .leis-pillar:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(47, 42, 36, 0.1);
+            border-color: rgba(236, 106, 55, 0.3);
         }
 
         /* Main pillar — pistachio left accent */
@@ -953,7 +969,7 @@
 
 
         /* ─────────────────────────────────────────────────────
-           BRANCHEN
+           BRANCHEN — CAROUSEL
         ───────────────────────────────────────────────────── */
 
         #branchen {
@@ -961,40 +977,134 @@
             background-color: var(--surface);
         }
 
-        .branchen-intro {
-            max-width: 600px;
-            margin-bottom: 4rem;
+        .branchen-header { margin-bottom: 3rem; }
+        .branchen-intro { max-width: 540px; }
+
+        /* ── Carousel footer: dots + quick-select ─────────── */
+
+        .carousel-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 2rem;
         }
 
-        /* Three-column grid, zero gap — dividers are borders */
-        .branchen-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            border-top: 1px solid var(--border);
+        /* ── Quick-select dropdown ────────────────────────── */
+
+        .branchen-select { position: relative; }
+
+        .branchen-select-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 0.5rem 0.9375rem;
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 0.5625rem;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            color: var(--stone);
+            background: rgba(251, 248, 243, 0.7);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: color 0.15s ease, border-color 0.15s ease;
+            white-space: nowrap;
         }
 
-        .branchen-block {
+        .branchen-select-btn:hover {
+            color: var(--charcoal);
+            border-color: var(--stone);
+        }
+
+        .branchen-select-chevron {
+            width: 11px;
+            height: 11px;
+            transition: transform 0.2s ease;
+            opacity: 0.5;
+        }
+
+        .branchen-select.is-open .branchen-select-chevron { transform: rotate(180deg); }
+
+        .branchen-select-panel {
+            position: absolute;
+            bottom: calc(100% + 8px);
+            right: 0;
+            min-width: 252px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 6px;
+            box-shadow: 0 8px 32px rgba(47,42,36,0.11), 0 2px 8px rgba(47,42,36,0.06);
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(6px);
+            transition: opacity 0.15s ease, transform 0.15s ease;
+            z-index: 20;
+        }
+
+        .branchen-select.is-open .branchen-select-panel {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .branchen-select-item {
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+            padding: 0.625rem 0.875rem;
+            font-size: 0.9375rem;
+            color: var(--stone);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: color 0.15s ease, background-color 0.15s ease;
+        }
+
+        .branchen-select-item:hover {
+            color: var(--charcoal);
+            background-color: rgba(236, 106, 55, 0.08);
+        }
+
+        .branchen-select-item-icon {
+            width: 1rem;
+            height: 1rem;
+            color: var(--orange);
+            flex-shrink: 0;
+        }
+
+        /* ── Carousel ──────────────────────────────────────── */
+
+        .carousel-viewport {
+            overflow: hidden;
+            margin-left: -2rem;
+            margin-right: -2rem;
+            padding-left: 2rem;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 1.25rem;
+            transition: transform 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
+            touch-action: pan-y;
+        }
+
+        .carousel-card {
+            flex: 0 0 min(600px, 62vw);
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem;
             display: flex;
             flex-direction: column;
-            padding: 2.75rem 2.5rem 2.75rem 0;
-            border-right: 1px solid var(--border);
+            transition: border-color 0.4s ease, box-shadow 0.4s ease;
         }
 
-        .branchen-block:first-child {
-            padding-left: 0;
+        .carousel-card.is-active {
+            border-color: rgba(236, 106, 55, 0.28);
+            box-shadow: 0 8px 32px rgba(47, 42, 36, 0.07);
         }
 
-        .branchen-block:last-child {
-            padding-left: 2.5rem;
-            padding-right: 0;
-            border-right: none;
-        }
-
-        .branchen-block:nth-child(2) {
-            padding-left: 2.5rem;
-        }
-
-        /* Mono number */
         .branchen-num {
             display: inline-block;
             font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
@@ -1004,7 +1114,6 @@
             margin-bottom: 1.375rem;
         }
 
-        /* Lucide icon per niche */
         .branchen-icon {
             display: block;
             width: 32px;
@@ -1013,7 +1122,6 @@
             margin-bottom: 1rem;
         }
 
-        /* Niche title */
         .branchen-title {
             font-family: 'Baskerville', 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
             font-size: clamp(1.5rem, 2.5vw, 2.125rem);
@@ -1023,7 +1131,6 @@
             margin-bottom: 1rem;
         }
 
-        /* Description */
         .branchen-desc {
             font-size: 0.9375rem;
             line-height: 1.72;
@@ -1032,7 +1139,6 @@
             margin-bottom: 2rem;
         }
 
-        /* Outline CTA button */
         .branchen-btn {
             display: inline-flex;
             align-items: center;
@@ -1050,31 +1156,42 @@
             white-space: nowrap;
         }
 
-        .branchen-btn:hover {
-            background-color: var(--orange);
-            color: #ffffff;
+        .branchen-btn:hover { background-color: var(--orange); color: #ffffff; }
+
+        /* ── Dot navigation ────────────────────────────────── */
+
+        .carousel-dots {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        /* Responsive */
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 4px;
+            background-color: var(--border);
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            transition: background-color 0.25s ease, width 0.3s cubic-bezier(0.16,1,0.3,1);
+        }
+
+        .carousel-dot.is-active {
+            background-color: var(--orange);
+            width: 22px;
+        }
+
+        /* ── Responsive ─────────────────────────────────────── */
+
         @media (max-width: 840px) {
-            .branchen-grid {
-                grid-template-columns: 1fr;
-                border-top: none;
-            }
-
-            .branchen-block {
-                padding: 2.25rem 0;
-                border-right: none;
-                border-top: 1px solid var(--border);
-            }
-
-            .branchen-block:first-child  { padding-top: 0; border-top: none; }
-            .branchen-block:nth-child(2) { padding-left: 0; }
-            .branchen-block:last-child   { padding-left: 0; border-bottom: none; }
+            .branchen-header { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+            .carousel-card { flex: 0 0 min(480px, 82vw); }
         }
 
         @media (max-width: 520px) {
             #branchen { padding: 4rem 0; }
+            .carousel-card { flex: 0 0 88vw; padding: 1.75rem; }
         }
 
 
@@ -1272,6 +1389,319 @@
             #contact { padding: 4rem 0; }
         }
 
+        /* Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger reveals */
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+
+        /* ─────────────────────────────────────────────────────
+           PROBLEM SECTION
+        ───────────────────────────────────────────────────── */
+
+        #problem {
+            padding: 6rem 0;
+            background-color: var(--surface);
+        }
+
+        .problem-intro {
+            max-width: 640px;
+            margin-bottom: 3.5rem;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            border-top: 1px solid var(--border);
+            border-left: 1px solid var(--border);
+        }
+
+        .problem-item {
+            padding: 2.5rem;
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .problem-icon {
+            display: block;
+            width: 1.625rem;
+            height: 1.625rem;
+            color: var(--orange);
+            margin-bottom: 1.125rem;
+            flex-shrink: 0;
+        }
+
+        .problem-title {
+            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            line-height: 1.28;
+            margin-bottom: 0.5rem;
+        }
+
+        .problem-body {
+            font-size: 0.9rem;
+            line-height: 1.65;
+            color: var(--stone);
+        }
+
+        @media (max-width: 640px) {
+            #problem { padding: 4rem 0; }
+            .problem-grid {
+                grid-template-columns: 1fr;
+                border-left: none;
+            }
+            .problem-item { border-right: none; }
+        }
+
+        /* ─────────────────────────────────────────────────────
+           MISSION SECTION
+        ───────────────────────────────────────────────────── */
+
+        #mission {
+            padding: 7rem 2rem;
+            background-color: var(--charcoal);
+            text-align: center;
+        }
+
+        .mission-inner {
+            max-width: 680px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .mission-logo {
+            width: 72px;
+            height: 72px;
+            object-fit: contain;
+            margin-bottom: 2rem;
+            filter: brightness(0) invert(1);
+            opacity: 0.88;
+        }
+
+        .mission-divider {
+            width: 32px;
+            height: 1px;
+            background-color: rgba(245, 242, 236, 0.22);
+            margin-bottom: 2.75rem;
+        }
+
+        .mission-text {
+            font-family: 'Baskerville', 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
+            font-size: clamp(1.125rem, 2.2vw, 1.375rem);
+            line-height: 1.82;
+            color: rgba(245, 242, 236, 0.82);
+            font-style: normal;
+            font-weight: 400;
+            letter-spacing: 0.008em;
+            margin-bottom: 2.75rem;
+        }
+
+        .mission-text p + p {
+            margin-top: 1.25rem;
+        }
+
+        .mission-sig {
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 0.5625rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(245, 242, 236, 0.32);
+        }
+
+        @media (max-width: 520px) {
+            #mission { padding: 5rem 1.5rem; }
+            .mission-text { font-size: 1.0625rem; }
+        }
+
+        /* ─────────────────────────────────────────────────────
+           TRUST SECTION
+        ───────────────────────────────────────────────────── */
+
+        #trust {
+            padding: 6rem 0;
+            background-color: var(--surface);
+        }
+
+        .trust-intro {
+            max-width: 640px;
+            margin-bottom: 3rem;
+        }
+
+        .trust-browser {
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            box-shadow:
+                0 24px 64px rgba(47, 42, 36, 0.12),
+                0 4px 16px rgba(47, 42, 36, 0.06);
+        }
+
+        .trust-browser-bar {
+            background-color: var(--background);
+            border-bottom: 1px solid var(--border);
+            padding: 0.6875rem 1.125rem;
+            display: flex;
+            align-items: center;
+            gap: 0.875rem;
+        }
+
+        .trust-browser-dots {
+            display: flex;
+            gap: 5px;
+            flex-shrink: 0;
+        }
+
+        .trust-browser-dots span {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+        }
+
+        .trust-browser-dots span:nth-child(1) { background-color: #FC5F57; }
+        .trust-browser-dots span:nth-child(2) { background-color: #FDBC2C; }
+        .trust-browser-dots span:nth-child(3) { background-color: #2BC840; }
+
+        .trust-browser-url {
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 0.6875rem;
+            color: var(--stone);
+            letter-spacing: 0.04em;
+            background-color: rgba(47, 42, 36, 0.06);
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+        }
+
+        .trust-browser-body {
+            background-color: var(--background);
+            height: 580px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .trust-load-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.9375rem 2rem;
+            background-color: var(--orange);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.15s ease, transform 0.15s ease;
+        }
+
+        .trust-load-btn:hover {
+            background-color: var(--orange-hover);
+            transform: translateY(-1px);
+        }
+
+        .trust-browser-body iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        .trust-ext-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3125rem;
+            margin-top: 1rem;
+            font-size: 0.875rem;
+            color: var(--stone);
+            text-decoration: none;
+            transition: color 0.15s ease;
+        }
+
+        .trust-ext-link:hover { color: var(--charcoal); }
+
+        @media (max-width: 640px) {
+            #trust { padding: 4rem 0; }
+            .trust-browser-body { height: 400px; }
+        }
+
+        /* ─────────────────────────────────────────────────────
+           MOBILE STICKY CTA
+        ───────────────────────────────────────────────────── */
+
+        #sticky-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 80;
+            padding: 0.875rem 1.25rem;
+            padding-bottom: calc(0.875rem + env(safe-area-inset-bottom, 0px));
+            background-color: rgba(251, 248, 243, 0.94);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-top: 1px solid var(--border);
+            transform: translateY(100%);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        #sticky-cta.is-visible { transform: translateY(0); }
+
+        .sticky-cta-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.9375rem 1.5rem;
+            background-color: var(--orange);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: background-color 0.15s ease;
+        }
+
+        .sticky-cta-btn:hover { background-color: var(--orange-hover); }
+
+        @media (max-width: 860px) {
+            #sticky-cta { display: block; }
+        }
+
+        /* Branchen demo link */
+        .branchen-demo-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3125rem;
+            margin-top: 0.875rem;
+            font-size: 0.875rem;
+            color: var(--stone);
+            text-decoration: none;
+            transition: color 0.15s ease;
+        }
+
+        .branchen-demo-link:hover { color: var(--charcoal); }
     </style>
 </head>
 
@@ -1285,7 +1715,7 @@
 
             <!-- Brand -->
             <a href="/" class="nav-brand" aria-label="RAIS — Zur Startseite">
-                <img src="RAIS_LOGO_PICTOGRAM.png" alt="" width="52" height="52" aria-hidden="true">
+                <img src="images/RAIS_LOGO_PICTOGRAM.png" alt="" width="52" height="52" aria-hidden="true">
                 <div class="nav-brand-words">
                     <span class="nav-wordmark">RAIS</span>
                     <span class="nav-submark">Ritz AI Solutions</span>
@@ -1348,6 +1778,10 @@
                     </li>
 
                     <li>
+                        <a href="#mission">Mission</a>
+                    </li>
+
+                    <li>
                         <a href="#ueber-uns">Über uns</a>
                     </li>
 
@@ -1360,7 +1794,7 @@
 
             <!-- Right: CTA + hamburger -->
             <div class="nav-right">
-                <a href="#contact" class="btn-primary">Gespräch buchen</a>
+                <a href="#contact" class="btn-primary">Demo anfordern</a>
 
                 <button
                     class="nav-hamburger"
@@ -1397,12 +1831,13 @@
                 <a href="maler.html"        class="mobile-link" data-close-menu>Maler</a>
             </div>
 
+            <a href="#mission"   class="mobile-link" data-close-menu>Mission</a>
             <a href="#ueber-uns" class="mobile-link" data-close-menu>Über uns</a>
             <a href="#contact"   class="mobile-link" data-close-menu>Kontakt</a>
 
             <hr class="mobile-hr">
 
-            <a href="#contact" class="mobile-cta" data-close-menu>Gespräch buchen</a>
+            <a href="#contact" class="mobile-cta" data-close-menu>Demo anfordern</a>
 
         </div>
     </div>
@@ -1431,16 +1866,9 @@
                     Wenn auf der Baustelle, abends oder am Wochenende niemand rangeht, entscheidet oft nicht Qualität, sondern der erste klare Eindruck. RAIS baut dafür spezialisierte Websites mit Rechner, Anfrageweg und Terminbuchung.
                         </p>
 
-                        <div class="hero-route" aria-label="Direkt zu den passenden Seiten">
-                            <span class="hero-route-label">Direkt zu:</span>
-                            <a href="fliesenleger.html" class="hero-route-link">Fliesenleger</a>
-                            <a href="elektriker.html" class="hero-route-link">Elektriker</a>
-                            <a href="maler.html" class="hero-route-link">Maler</a>
-                        </div>
-
                         <div class="hero-ctas">
-                    <a href="#leistungen" class="hero-btn-primary">Leistungsumfang ansehen</a>
-                    <a href="#contact" class="hero-btn-outline">Erstgespräch buchen</a>
+                    <a href="#contact" class="hero-btn-primary">Demo anfordern</a>
+                    <a href="#leistungen" class="hero-btn-outline">Wie es funktioniert</a>
                         </div>
 
             </div>
@@ -1454,23 +1882,68 @@
 
         </section>
 
+        <!-- ═══════════════════════════════════════════════════
+             PROBLEM
+        ═══════════════════════════════════════════════════ -->
+        <section id="problem">
+            <div class="section-wrap">
+
+                <div class="problem-intro reveal">
+                    <span class="mono-label">Das eigentliche Problem</span>
+                    <h2 class="section-h2">Ihre Qualität verliert nicht.<br>Ihre Sichtbarkeit tut es.</h2>
+                    <p class="section-sub">
+                        Gute Handwerker verlieren Aufträge nicht an bessere Betriebe. Sie verlieren sie an greifbarere — an jene, die zuerst antworten, einen klaren ersten Eindruck machen und den Anruf am Abend auffangen.
+                    </p>
+                </div>
+
+                <div class="problem-grid">
+
+                    <div class="problem-item reveal reveal-delay-1">
+                        <i data-lucide="phone-missed" class="problem-icon" aria-hidden="true"></i>
+                        <h3 class="problem-title">Niemand geht ran</h3>
+                        <p class="problem-body">Anfragen kommen abends und am Wochenende. Keine Antwort — der Interessent ruft woanders an.</p>
+                    </div>
+
+                    <div class="problem-item reveal reveal-delay-2">
+                        <i data-lucide="layout-template" class="problem-icon" aria-hidden="true"></i>
+                        <h3 class="problem-title">Keine Vorfilterung</h3>
+                        <p class="problem-body">Kein Kostenrahmen, keine Dringlichkeit. Sie rufen zurück — und merken, der Auftrag hätte sowieso nicht gepasst.</p>
+                    </div>
+
+                    <div class="problem-item reveal reveal-delay-3">
+                        <i data-lucide="eye" class="problem-icon" aria-hidden="true"></i>
+                        <h3 class="problem-title">Erster Eindruck verloren</h3>
+                        <p class="problem-body">Kunden vergleichen. Wer klarer wirkt, bekommt die Anfrage — oft bevor ein Gespräch stattfindet.</p>
+                    </div>
+
+                    <div class="problem-item reveal">
+                        <i data-lucide="timer" class="problem-icon" aria-hidden="true"></i>
+                        <h3 class="problem-title">Verwaltung frisst Zeit</h3>
+                        <p class="problem-body">Rückrufe, Termine, Angebote — Stunden pro Woche, die auf der Baustelle fehlen.</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
         <section id="leistungen">
             <div class="section-wrap">
 
                 <!-- Section intro -->
-                <div class="leis-intro">
+                <div class="leis-intro reveal">
                     <span class="mono-label">Was wir tun</span>
-                    <h2 class="section-h2">Zwei Leistungen. Ein klarer Fokus.</h2>
+                    <h2 class="section-h2">Drei Leistungen. Ein klarer Fokus.</h2>
                     <p class="section-sub">
                         Im Zentrum steht Ihre spezialisierte Website. Automation und KI-Agenten greifen dort ein, wo Anfragen liegenbleiben oder Abläufe Zeit kosten.
                     </p>
                 </div>
 
-                <!-- Two-pillar layout -->
+                <!-- Three-pillar layout -->
                 <div class="leis-grid">
 
                     <!-- Pillar 1 — Website (Hauptleistung) -->
-                    <article class="leis-pillar leis-pillar--main">
+                    <article class="leis-pillar leis-pillar--main reveal reveal-delay-1">
                         <!-- Monitor icon -->
                         <svg class="leis-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <rect x="2" y="3" width="20" height="14" rx="2"/>
@@ -1478,18 +1951,18 @@
                             <line x1="12" y1="17" x2="12" y2="21"/>
                         </svg>
                         <span class="leis-card-badge">Hauptleistung</span>
-                        <h3 class="leis-card-title">Spezialisierte Website mit Kostenrechner und Terminbuchung.</h3>
+                        <h3 class="leis-card-title">Spezialisierte Website</h3>
                         <p class="leis-card-body">
-                            Jede Seite ist auf ein Gewerk zugeschnitten — mit Kostenrechner, klarem Anfrageweg und Terminbuchung. Damit neue Aufträge sauber ankommen, auch wenn Sie gerade nicht erreichbar sind.
+                            Jede Seite ist auf ein Gewerk zugeschnitten — mit Kostenrechner, klarem Anfrageweg und Terminbuchung.
                         </p>
                         <ul class="leis-card-list">
                             <li>Leistungen, Referenzen und klarer Anfrageweg</li>
                             <li>Individueller Kostenrechner auf Basis Ihrer Preise</li>
-                            <li>Terminbuchung für Rückruf, Besichtigung oder Erstgespräch</li>
+                            <li>Terminbuchung für Rückruf oder Erstgespräch</li>
                         </ul>
-                        <p class="leis-card-note"><em>Optional: laufende Wartung &amp; Pflege ab 100 EUR / Monat.</em></p>
+                        <p class="leis-card-note"><em>Optional: Wartung ab 100 EUR / Monat.</em></p>
                         <div class="leis-pillar-price">
-                            <span class="leis-price-amount">1.800 EUR</span>
+                            <span class="leis-price-amount">1.200 EUR</span>
                             <span class="leis-price-note">einmalig &middot; keine laufenden Drittkosten</span>
                         </div>
                         <a href="#branchen" class="leis-card-link">
@@ -1500,9 +1973,9 @@
                         </a>
                     </article>
 
-                    <!-- Pillar 2 — Automation & KI-Agenten -->
-                    <article class="leis-pillar">
-                        <!-- Bot / flow icon -->
+                    <!-- Pillar 2 — Prozessautomatisierung -->
+                    <article class="leis-pillar reveal reveal-delay-2">
+                        <!-- Flow icon -->
                         <svg class="leis-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <rect x="3" y="11" width="18" height="10" rx="2"/>
                             <path d="M12 11V7"/>
@@ -1510,14 +1983,44 @@
                             <path d="M8 15h.01M12 15h.01M16 15h.01"/>
                         </svg>
                         <span class="leis-card-badge leis-card-badge--ext">Erweiterung</span>
-                        <h3 class="leis-card-title">Automation &amp; KI-Agenten.</h3>
+                        <h3 class="leis-card-title">Prozessautomatisierung</h3>
                         <p class="leis-card-body">
-                            Automatisierte Abläufe, die Anfragen auffangen, vorqualifizieren und weiterleiten — auch wenn Sie gerade nicht erreichbar sind.
+                            Automatisierte Abläufe, die Anfragen auffangen, vorqualifizieren und nahtlos in Ihre Systeme weiterleiten.
                         </p>
                         <ul class="leis-card-list">
                             <li>Vorqualifizierung bei Anfrageeingang</li>
                             <li>Auffang für verpasste Anrufe und Nachrichten</li>
-                            <li>Weiterleitung nach Dringlichkeit und Projekttyp</li>
+                            <li>CRM & Termin-Integration</li>
+                        </ul>
+                        <p class="leis-card-note"><em>Auf Anfrage — individuell angepasst.</em></p>
+                        <a href="#contact" class="leis-card-link">
+                            Gespräch buchen
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <polyline points="9 18 15 12 9 6"/>
+                            </svg>
+                        </a>
+                    </article>
+
+                    <!-- Pillar 3 — KI Agenten -->
+                    <article class="leis-pillar reveal reveal-delay-3">
+                        <!-- Bot icon -->
+                        <svg class="leis-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M12 8V4H8"/>
+                            <rect width="16" height="12" x="4" y="8" rx="2"/>
+                            <path d="M2 14h2"/>
+                            <path d="M20 14h2"/>
+                            <path d="M15 13v2"/>
+                            <path d="M9 13v2"/>
+                        </svg>
+                        <span class="leis-card-badge leis-card-badge--ext">Erweiterung</span>
+                        <h3 class="leis-card-title">KI Agenten</h3>
+                        <p class="leis-card-body">
+                            Intelligente Assistenten, die rund um die Uhr Kundenfragen beantworten und qualifizierte Leads sammeln.
+                        </p>
+                        <ul class="leis-card-list">
+                            <li>24/7 Erreichbarkeit auf der Webseite</li>
+                            <li>Beantwortung von Fachfragen</li>
+                            <li>Terminvereinbarung per Chat</li>
                         </ul>
                         <p class="leis-card-note"><em>Auf Anfrage — als Erweiterung zur Website.</em></p>
                         <a href="#contact" class="leis-card-link">
@@ -1536,52 +2039,154 @@
         <section id="branchen">
             <div class="section-wrap">
 
-                <!-- Section intro -->
-                <div class="branchen-intro">
-                        <span class="mono-label">Start auf der richtigen Seite</span>
-                        <h2 class="section-h2">Drei Seiten. Drei unterschiedliche Verkaufslogiken.</h2>
+                <!-- Header -->
+                <div class="branchen-header reveal">
+                    <div class="branchen-intro">
+                        <span class="mono-label">Für wen wir bauen</span>
+                        <h2 class="section-h2">Spezialisiert.<br>Nicht generisch.</h2>
                         <p class="section-sub">
-                        Die Startseite ist nur der Einstieg. Die eigentliche Verkaufslogik liegt auf den drei Branchenseiten, weil Preisfrage, Rückrufweg und Vertrauensaufbau je nach Bereich unterschiedlich funktionieren.
+                            Jede Branche hat eine andere Verkaufslogik. Kostenrechner, Anfrageweg und Vertrauensaufbau funktionieren für Fliesenleger anders als für Elektriker oder Maler.
                         </p>
+                    </div>
                 </div>
 
-                <!-- Niche blocks -->
-                <div class="branchen-grid">
+                <!-- Carousel -->
+                <div class="carousel-viewport" id="carouselViewport">
+                    <div class="carousel-track" id="carouselTrack">
 
-                    <!-- Block 01 — Fliesenleger & Bodenleger -->
-                    <div class="branchen-block">
-                        <span class="branchen-num">01</span>
-                        <i data-lucide="grid-2x2" class="branchen-icon" aria-hidden="true"></i>
-                        <h3 class="branchen-title">Fliesenleger &amp; Bodenleger</h3>
-                        <p class="branchen-desc">
-                            Anfragen oft vage — zu groß, zu klein, falsches Budget. Der Kostenrechner sortiert das, bevor Sie zurückrufen.
-                        </p>
-                        <a href="fliesenleger.html" class="branchen-btn">Zum Angebot</a>
+                        <article class="carousel-card is-active">
+                            <span class="branchen-num">01</span>
+                            <i data-lucide="grid-2x2" class="branchen-icon" aria-hidden="true"></i>
+                            <h3 class="branchen-title">Fliesenleger &amp; Bodenleger</h3>
+                            <p class="branchen-desc">Anfragen oft vage — zu groß, zu klein, falsches Budget. Der Kostenrechner sortiert das, bevor Sie zurückrufen.</p>
+                            <a href="fliesenleger.html" class="branchen-btn">Zum Angebot</a>
+                        </article>
+
+                        <article class="carousel-card">
+                            <span class="branchen-num">02</span>
+                            <i data-lucide="zap" class="branchen-icon" aria-hidden="true"></i>
+                            <h3 class="branchen-title">Elektriker</h3>
+                            <p class="branchen-desc">Dringlich oder planbar? Die Seite trennt das sauber — und leitet die Anfrage entsprechend weiter.</p>
+                            <a href="elektriker.html" class="branchen-btn">Zum Angebot</a>
+                        </article>
+
+                        <article class="carousel-card">
+                            <span class="branchen-num">03</span>
+                            <i data-lucide="paintbrush" class="branchen-icon" aria-hidden="true"></i>
+                            <h3 class="branchen-title">Maler &amp; Lackierer</h3>
+                            <p class="branchen-desc">Der erste Eindruck entscheidet, ob ein Interessent anfragt oder weiterschaut. Die Seite macht diesen Eindruck.</p>
+                            <a href="maler.html" class="branchen-btn">Zum Angebot</a>
+                        </article>
+
+                    </div>
+                </div>
+
+                <!-- Footer: dots + quick-select -->
+                <div class="carousel-footer">
+                    <div class="carousel-dots" role="tablist" aria-label="Branche wählen">
+                        <button class="carousel-dot is-active" role="tab" aria-selected="true"  data-index="0" aria-label="Fliesenleger"></button>
+                        <button class="carousel-dot"           role="tab" aria-selected="false" data-index="1" aria-label="Elektriker"></button>
+                        <button class="carousel-dot"           role="tab" aria-selected="false" data-index="2" aria-label="Maler"></button>
                     </div>
 
-                    <!-- Block 02 — Elektriker -->
-                    <div class="branchen-block">
-                        <span class="branchen-num">02</span>
-                        <i data-lucide="zap" class="branchen-icon" aria-hidden="true"></i>
-                        <h3 class="branchen-title">Elektriker</h3>
-                        <p class="branchen-desc">
-                            Dringlich oder planbar? Die Seite trennt das sauber — und leitet die Anfrage entsprechend weiter.
-                        </p>
-                        <a href="elektriker.html" class="branchen-btn">Zum Angebot</a>
-                    </div>
-
-                    <!-- Block 03 — Maler & Lackierer -->
-                    <div class="branchen-block">
-                        <span class="branchen-num">03</span>
-                        <i data-lucide="paintbrush" class="branchen-icon" aria-hidden="true"></i>
-                        <h3 class="branchen-title">Maler &amp; Lackierer</h3>
-                        <p class="branchen-desc">
-                            Der erste Eindruck entscheidet, ob ein Interessent anfragt oder weiterschaut. Die Seite macht diesen Eindruck.
-                        </p>
-                        <a href="maler.html" class="branchen-btn">Zum Angebot</a>
+                    <div class="branchen-select" id="branchenSelect">
+                        <button type="button" class="branchen-select-btn" id="branchenSelectBtn" aria-haspopup="true" aria-expanded="false">
+                            Direkt zur Branche
+                            <svg class="branchen-select-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </button>
+                        <div class="branchen-select-panel" role="menu">
+                            <a href="fliesenleger.html" class="branchen-select-item" role="menuitem">
+                                <svg class="branchen-select-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+                                </svg>
+                                Fliesenleger &amp; Bodenleger
+                            </a>
+                            <a href="elektriker.html" class="branchen-select-item" role="menuitem">
+                                <svg class="branchen-select-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                                </svg>
+                                Elektriker
+                            </a>
+                            <a href="maler.html" class="branchen-select-item" role="menuitem">
+                                <svg class="branchen-select-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                    <path d="M9.06 11.9l8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08"/><path d="M7.07 14.94c-1.66 0-3 1.35-3 3.02 0 1.33-2.5 1.52-2 2.45.63 1.24 2.49.97 3.35.64 1.07-.42 1.65-1.62 1.65-2.73v-1.38z"/>
+                                </svg>
+                                Maler &amp; Lackierer
+                            </a>
+                        </div>
                     </div>
 
                 </div>
+
+
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════
+             TRUST / REFERENZ
+        ═══════════════════════════════════════════════════ -->
+        <section id="trust">
+            <div class="section-wrap">
+
+                <div class="trust-intro reveal">
+                    <span class="mono-label">Referenz</span>
+                    <h2 class="section-h2">Nicht ein Konzept. Eine fertige Seite.</h2>
+                    <p class="section-sub">
+                        Fliesen Weber ist live — mit Kostenrechner, Anfrageweg und Terminbuchung. Das ist der Standard, den jede RAIS-Website hat.
+                    </p>
+                </div>
+
+                <div class="trust-browser reveal">
+                    <div class="trust-browser-bar" aria-hidden="true">
+                        <div class="trust-browser-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <div class="trust-browser-url">fliesen-weber.vercel.app</div>
+                    </div>
+                    <div class="trust-browser-body" id="trustBrowserBody">
+                        <button type="button" id="trustLoadBtn" class="trust-load-btn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <polygon points="5 3 19 12 5 21 5 3"/>
+                            </svg>
+                            Live-Demo laden
+                        </button>
+                    </div>
+                </div>
+
+                <a href="https://fliesen-weber.vercel.app/" target="_blank" rel="noopener" class="trust-ext-link">
+                    In neuem Tab öffnen ↗
+                </a>
+
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════
+             MISSION
+        ═══════════════════════════════════════════════════ -->
+        <section id="mission">
+            <div class="mission-inner">
+
+                <img
+                    src="images/RAIS_LOGO_PICTOGRAM.png"
+                    alt="RAIS"
+                    class="mission-logo"
+                    width="72"
+                    height="72"
+                    aria-hidden="true"
+                >
+                <div class="mission-divider" aria-hidden="true"></div>
+
+                <blockquote class="mission-text">
+                    <p>Wir glauben, dass handwerkliche Qualität eine digitale Präsenz verdient, die genauso präzise ist wie die Arbeit selbst.</p>
+                    <p>RAIS baut keine generischen Websites — wir bauen spezialisierte Systeme, die Anfragen auffangen und vorqualifizieren, solange Sie arbeiten.</p>
+                    <p>Unser Ansatz ist direkt, branchenspezifisch und ohne Mittelmann — weil gute Arbeit keinen Umweg braucht.</p>
+                    <p>Wir verbinden technisches Können mit echtem Verständnis für den Alltag auf der Baustelle.</p>
+                    <p>Das ist der Maßstab, den wir an jede Website anlegen, die wir bauen.</p>
+                </blockquote>
+
+                <span class="mission-sig">Ritz AI Solutions &middot; Koblenz</span>
 
             </div>
         </section>
@@ -1636,10 +2241,10 @@
 
                     <!-- Copy column -->
                     <div class="contact-text-col">
-                        <span class="mono-label">Nächster Schritt</span>
-                        <h2 class="section-h2">Im Erstgespräch klären wir, was Ihre Website wirklich können muss.</h2>
+                        <span class="mono-label">Demo anfordern</span>
+                        <h2 class="section-h2">In 15 Minuten sehen Sie, wie Ihre Seite aussehen könnte.</h2>
                         <p class="contact-copy">
-                            Wir schauen auf Ihre Leistungen und Ihren aktuellen Auftritt. Danach sehen Sie schnell, ob bei Ihnen eher ein Kostenrechner, eine saubere Rückrufmöglichkeit oder einfach eine klarere Website den Unterschied macht.
+                            Ich zeige Ihnen eine live Demo auf Ihr Gewerk zugeschnitten — mit Kostenrechner, Anfrageweg und Terminbuchung. Kein Pitch, kein Umweg. Sie sehen konkret, was Sie bekommen.
                         </p>
                     </div>
 
@@ -1648,7 +2253,7 @@
                          Disclose Calendly in Datenschutz as third-party tool. -->
                     <div class="cal-embed-wrap">
                         <div id="calWidget" style="display:none; min-width:320px; height:700px;"></div>
-                        <button type="button" id="calLoadBtn" class="cal-load-btn">15-Minuten-Gespräch buchen</button>
+                        <button type="button" id="calLoadBtn" class="cal-load-btn">Kostenlose Demo buchen – 15 min</button>
                         <p id="calError" class="cal-error" style="display:none;">
                             Kalender konnte nicht geladen werden. <a href="https://calendly.com/ritzaisolutions/erstgesprach-mit-rais" target="_blank" rel="noopener">Direkt öffnen ↗</a>
                         </p>
@@ -1685,12 +2290,19 @@
 
 
     <!-- ═══════════════════════════════════════════════════════
+         MOBILE STICKY CTA
+    ═══════════════════════════════════════════════════════ -->
+    <div id="sticky-cta" aria-hidden="true">
+        <a href="#contact" class="sticky-cta-btn">Demo anfordern</a>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
          FOOTER
     ═══════════════════════════════════════════════════════ -->
     <footer id="footer">
         <div class="footer-inner">
             <a href="/" class="footer-brand" aria-label="RAIS Startseite">
-                <img src="RAIS-Logo-transparent.png" alt="" width="48" height="48" aria-hidden="true">
+                <img src="images/RAIS-Logo-transparent.png" alt="" width="48" height="48" aria-hidden="true">
                 <span class="footer-wordmark">RAIS</span>
             </a>
             <nav class="footer-legal" aria-label="Rechtliche Links">
@@ -1713,8 +2325,68 @@
         var navbar = document.getElementById('navbar');
 
         window.addEventListener('scroll', function () {
-            navbar.classList.toggle('scrolled', window.scrollY > 8);
+            navbar.classList.toggle('scrolled', window.scrollY > 10);
         }, { passive: true });
+
+        /* ── Active nav state on scroll ──────────────────────── */
+        var navAnchorGroups = [
+            document.querySelectorAll('.nav-list a[href^="#"]'),
+            document.querySelectorAll('.mobile-link[href^="#"]')
+        ];
+
+        var navTargets = [];
+        Array.prototype.forEach.call(document.querySelectorAll('.nav-list a[href^="#"]'), function(anchor) {
+            var id = anchor.getAttribute('href');
+            if (!id || id.length < 2) return;
+            var target = document.querySelector(id);
+            if (target) {
+                navTargets.push({ id: id, target: target });
+            }
+        });
+
+        function setActiveNav(id) {
+            navAnchorGroups.forEach(function(group) {
+                Array.prototype.forEach.call(group, function(link) {
+                    var isActive = link.getAttribute('href') === id;
+                    link.classList.toggle('is-active', isActive);
+                    if (isActive) {
+                        link.setAttribute('aria-current', 'page');
+                    } else {
+                        link.removeAttribute('aria-current');
+                    }
+                });
+            });
+        }
+
+        function updateActiveNav() {
+            if (!navTargets.length) return;
+            var offset = (navbar ? navbar.offsetHeight : 72) + 26;
+            var scrollMarker = window.scrollY + offset;
+            var activeId = navTargets[0].id;
+
+            navTargets.forEach(function(item) {
+                if (scrollMarker >= item.target.offsetTop) {
+                    activeId = item.id;
+                }
+            });
+
+            setActiveNav(activeId);
+        }
+
+        var activeNavTicking = false;
+        function requestActiveNavUpdate() {
+            if (activeNavTicking) return;
+            activeNavTicking = true;
+            window.requestAnimationFrame(function() {
+                updateActiveNav();
+                activeNavTicking = false;
+            });
+        }
+
+        window.addEventListener('scroll', requestActiveNavUpdate, { passive: true });
+        window.addEventListener('resize', requestActiveNavUpdate);
+        window.addEventListener('hashchange', requestActiveNavUpdate);
+        requestActiveNavUpdate();
 
         /* ── Mobile menu ─────────────────────────────────────── */
         var hamburgerBtn    = document.getElementById('hamburger-btn');
@@ -1798,8 +2470,45 @@
 
 
         /* ── Init Lucide icons ───────────────────────────────── */
-        if (typeof lucide !== 'undefined' && typeof lucide.createIcons === 'function') {
-            lucide.createIcons();
+        if (window.lucide) {
+            window.lucide.createIcons();
+        }
+
+        /* ── Antigravity reveal orchestration ───────────────── */
+        var revealTargets = document.querySelectorAll([
+            '.niche-intro', '.leis-intro', '.branchen-intro', '.ueberuns-grid > div',
+            '.problem-item', '.zahlen-item', '.angebot-card', '.ablauf-step', '.demo-card',
+            '.contact-text-col', '.contact-detail', '.cal-embed-wrap', '.proof-wrap'
+        ].join(','));
+
+        revealTargets.forEach(function (el, index) {
+            if (!el.classList.contains('reveal')) {
+                el.classList.add('reveal');
+            }
+            if (!el.classList.contains('reveal-delay-1') && !el.classList.contains('reveal-delay-2') && !el.classList.contains('reveal-delay-3')) {
+                var stagger = index % 3;
+                if (stagger === 1) el.classList.add('reveal-delay-1');
+                if (stagger === 2) el.classList.add('reveal-delay-2');
+            }
+        });
+
+        if ('IntersectionObserver' in window) {
+            var revealObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.14, rootMargin: '0px 0px -4% 0px' });
+
+            document.querySelectorAll('.reveal').forEach(function(el) {
+                revealObserver.observe(el);
+            });
+        } else {
+            document.querySelectorAll('.reveal').forEach(function(el) {
+                el.classList.add('active');
+            });
         }
 
 
@@ -1829,7 +2538,128 @@
         }
 
 
-        /* ── Demo iframe: IntersectionObserver lazy-load ────────── */
+        /* ── Branchen carousel ───────────────────────────────── */
+        (function () {
+            var track    = document.getElementById('carouselTrack');
+            var viewport = document.getElementById('carouselViewport');
+            var dotBtns  = document.querySelectorAll('.carousel-dot');
+            if (!track) return;
+
+            var cards      = track.querySelectorAll('.carousel-card');
+            var total      = cards.length;
+            var current    = 0;
+            var autoTimer  = null;
+            var GAP        = 20; // matches 1.25rem gap
+
+            function cardWidth() { return cards[0].offsetWidth; }
+
+            function goTo(idx) {
+                current = ((idx % total) + total) % total;
+                track.style.transform = 'translateX(-' + (current * (cardWidth() + GAP)) + 'px)';
+                dotBtns.forEach(function (d, i) {
+                    var a = i === current;
+                    d.classList.toggle('is-active', a);
+                    d.setAttribute('aria-selected', a ? 'true' : 'false');
+                });
+                Array.prototype.forEach.call(cards, function (c, i) {
+                    c.classList.toggle('is-active', i === current);
+                });
+            }
+
+            function startAuto() {
+                stopAuto();
+                autoTimer = setInterval(function () { goTo(current + 1); }, 4500);
+            }
+            function stopAuto() { clearInterval(autoTimer); }
+
+            goTo(0);
+            startAuto();
+
+            if (viewport) {
+                viewport.addEventListener('mouseenter', stopAuto);
+                viewport.addEventListener('mouseleave', startAuto);
+            }
+
+            dotBtns.forEach(function (dot) {
+                dot.addEventListener('click', function () {
+                    stopAuto();
+                    goTo(parseInt(dot.getAttribute('data-index'), 10));
+                    startAuto();
+                });
+            });
+
+            /* Touch / pointer drag */
+            var dragX = null;
+            track.addEventListener('pointerdown', function (e) {
+                dragX = e.clientX;
+                track.setPointerCapture(e.pointerId);
+                stopAuto();
+            });
+            track.addEventListener('pointerup', function (e) {
+                if (dragX !== null) {
+                    var diff = dragX - e.clientX;
+                    if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1));
+                    dragX = null;
+                }
+                startAuto();
+            });
+        }());
+
+        /* ── Branchen quick-select dropdown ─────────────────── */
+        (function () {
+            var wrap = document.getElementById('branchenSelect');
+            var btn  = document.getElementById('branchenSelectBtn');
+            if (!wrap || !btn) return;
+
+            function close() {
+                wrap.classList.remove('is-open');
+                btn.setAttribute('aria-expanded', 'false');
+            }
+
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                var open = wrap.classList.toggle('is-open');
+                btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+
+            document.addEventListener('click', close);
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') close();
+            });
+        }());
+
+        /* ── Trust iframe: click-to-load ────────────────────── */
+        var trustLoadBtn = document.getElementById('trustLoadBtn');
+        var trustBrowserBody = document.getElementById('trustBrowserBody');
+        if (trustLoadBtn && trustBrowserBody) {
+            trustLoadBtn.addEventListener('click', function () {
+                var iframe = document.createElement('iframe');
+                iframe.src = 'https://fliesen-weber.vercel.app/';
+                iframe.title = 'Live-Demo: Fliesen Weber Website';
+                iframe.loading = 'lazy';
+                trustBrowserBody.innerHTML = '';
+                trustBrowserBody.appendChild(iframe);
+            });
+        }
+
+        /* ── Mobile sticky CTA ───────────────────────────────── */
+        var stickyCta = document.getElementById('sticky-cta');
+        var contactEl = document.getElementById('contact');
+        if (stickyCta && contactEl) {
+            function updateStickyCta() {
+                var scrolled = window.scrollY > 520;
+                var contactVisible = contactEl.getBoundingClientRect().top < window.innerHeight * 0.85;
+                if (scrolled && !contactVisible) {
+                    stickyCta.classList.add('is-visible');
+                    stickyCta.removeAttribute('aria-hidden');
+                } else {
+                    stickyCta.classList.remove('is-visible');
+                    stickyCta.setAttribute('aria-hidden', 'true');
+                }
+            }
+            window.addEventListener('scroll', updateStickyCta, { passive: true });
+            updateStickyCta();
+        }
     }());
     </script>
 

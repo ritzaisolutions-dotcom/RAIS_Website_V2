@@ -7,6 +7,21 @@
     <title>RAIS für Fliesenleger &amp; Bodenleger - Website mit Kostenrechner und sauberem Anfrageweg</title>
     <meta name="description" content="RAIS baut Websites für Fliesenleger und Bodenleger, die auch dann Anfragen auffangen, wenn Sie auf der Baustelle oder am Wochenende nicht ans Telefon gehen.">
 
+    <!-- OpenGraph -->
+    <meta property="og:title" content="RAIS für Fliesenleger – Website mit Kostenrechner und sauberem Anfrageweg">
+    <meta property="og:description" content="Spezialisierte Website für Fliesenleger: Kostenrechner, klarer Anfrageweg, 1.200 EUR Festpreis.">
+    <meta property="og:url" content="https://ritz-ai.solutions/fliesenleger.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://ritz-ai.solutions/images/fliesenweber-demo-preview.png">
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="720">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="RAIS für Fliesenleger – Website mit Kostenrechner und sauberem Anfrageweg">
+    <meta name="twitter:description" content="Spezialisierte Website für Fliesenleger: Kostenrechner, klarer Anfrageweg, 1.200 EUR Festpreis.">
+    <meta name="twitter:image" content="https://ritz-ai.solutions/images/fliesenweber-demo-preview.png">
+
     <link rel="icon" type="image/png" href="favicon.png?v=3">
     <link rel="apple-touch-icon" href="favicon.png?v=3">
 
@@ -17,8 +32,7 @@
     ></script>
     <script>
       Sentry.init({
-        dsn: "https://f2ddf600721a166c3d4ab0486a3e9cee@o4511309268189184.ingest.de.sentry.io/4511310256603216",
-        sendDefaultPii: true
+        dsn: "https://f2ddf600721a166c3d4ab0486a3e9cee@o4511309268189184.ingest.de.sentry.io/4511310256603216"
       });
     </script>
 
@@ -87,13 +101,6 @@
             inset: 0 0 auto 0;
             z-index: 100;
             height: var(--nav-h);
-            background-color: var(--surface);
-            border-bottom: 1px solid var(--border);
-            transition: box-shadow 0.25s ease;
-        }
-
-        #navbar.scrolled {
-            box-shadow: 0 2px 24px rgba(47, 42, 36, 0.09);
         }
 
         .nav-inner {
@@ -1003,9 +1010,8 @@
         .proof-ext-link:hover { color: var(--charcoal); }
 
         .demo-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 1.5rem;
+            display: flex;
+            flex-direction: column;
             margin-top: 2.5rem;
         }
 
@@ -1013,10 +1019,20 @@
             display: flex;
             flex-direction: column;
             gap: 1.25rem;
-            padding: 1.5rem;
+            padding: 2rem;
             background-color: var(--surface);
             border: 1px solid var(--border);
             border-radius: 16px;
+            max-width: 700px;
+        }
+
+        .demo-card:nth-child(1) {
+            margin-right: auto;
+        }
+
+        .demo-card:nth-child(2) {
+            margin-left: auto;
+            margin-top: 3rem;
         }
 
         .demo-kicker {
@@ -1533,10 +1549,15 @@
                 gap: 2.5rem;
             }
 
-            .demo-grid,
-            .trust-grid {
-                grid-template-columns: 1fr;
+            .demo-card:nth-child(1),
+            .demo-card:nth-child(2) {
+                max-width: 100%;
+                margin-left: 0;
+                margin-right: 0;
+                margin-top: 0;
             }
+
+            .demo-card:nth-child(2) { margin-top: 1.5rem; }
 
             .demo-frame-shell {
                 max-width: 100%;
@@ -1760,14 +1781,10 @@
         <section id="hero">
 
             <div class="hero-slides" aria-hidden="true">
-                <!-- SLIDESHOW SLIDE 1: Replace URL with licensed or owned photo when available -->
-                <div class="hero-slide is-active" style="background-image: url('https://plus.unsplash.com/premium_photo-1683121250314-f5e3bb80aa75?w=1920&q=80&auto=format&fit=crop');"></div>
-                <!-- SLIDESHOW SLIDE 2: Replace URL with licensed or owned photo when available -->
-                <div class="hero-slide" style="background-image: url('https://plus.unsplash.com/premium_photo-1664301210513-76167b070179?w=1920&q=80&auto=format&fit=crop');"></div>
-                <!-- SLIDESHOW SLIDE 3: Replace URL with licensed or owned photo when available -->
-                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1523413555809-0fb1d4da238d?w=1920&q=80&auto=format&fit=crop');"></div>
-                <!-- SLIDESHOW SLIDE 4: Replace URL with licensed or owned photo when available -->
-                <div class="hero-slide" style="background-image: url('https://plus.unsplash.com/premium_photo-1683121910935-9df51a09e93f?w=1920&q=80&auto=format&fit=crop');"></div>
+                <div class="hero-slide is-active" style="background-image: url('images/hero-fliesenleger-1.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('images/hero-fliesenleger-2.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('images/hero-fliesenleger-3.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('images/hero-fliesenleger-4.jpg');"></div>
             </div>
 
             <div class="hero-scrim" aria-hidden="true"></div>
@@ -1893,7 +1910,7 @@
                 <div class="angebot-card">
                     <div class="angebot-price-row">
                         <div>
-                            <span class="angebot-price">1.800 EUR</span>
+                            <span class="angebot-price">1.200 EUR</span>
                             <span class="angebot-price-note">einmalig</span>
                         </div>
                     </div>
