@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /datenschutz.html
+Disallow: /impressum.html
+Disallow: /html files/
+Disallow: /rais_rechtstexte/
+Disallow: /live_scs/
+Allow: /
+
+Sitemap: https://ritz-ai.solutions/sitemap.xml

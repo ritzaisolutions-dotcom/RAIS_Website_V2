@@ -7,6 +7,21 @@
     <title>RAIS für Maler &amp; Lackierer - Website mit Referenzen, Rechner und klarer Anfrage</title>
     <meta name="description" content="RAIS baut Websites für Maler und Lackierer, die auch dann Anfragen auffangen, wenn Sie auf der Baustelle oder am Wochenende nicht erreichbar sind.">
 
+    <!-- OpenGraph -->
+    <meta property="og:title" content="RAIS für Maler & Lackierer – Website mit Referenzen, Rechner und klarer Anfrage">
+    <meta property="og:description" content="Spezialisierte Website für Maler und Lackierer: Kostenrechner, klarer Anfrageweg, 1.200 EUR Festpreis.">
+    <meta property="og:url" content="https://ritz-ai.solutions/maler.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://ritz-ai.solutions/images/fliesenweber-demo-preview.png">
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="720">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="RAIS für Maler & Lackierer – Website mit Referenzen, Rechner und klarer Anfrage">
+    <meta name="twitter:description" content="Spezialisierte Website für Maler und Lackierer: Kostenrechner, klarer Anfrageweg, 1.200 EUR Festpreis.">
+    <meta name="twitter:image" content="https://ritz-ai.solutions/images/fliesenweber-demo-preview.png">
+
     <link rel="icon" type="image/png" href="favicon.png?v=3">
     <link rel="apple-touch-icon" href="favicon.png?v=3">
 
@@ -25,8 +40,7 @@
     ></script>
     <script type="text/plain" data-type="application/javascript" data-name="sentry">
       Sentry.init({
-        dsn: "https://f2ddf600721a166c3d4ab0486a3e9cee@o4511309268189184.ingest.de.sentry.io/4511310256603216",
-        sendDefaultPii: true
+        dsn: "https://f2ddf600721a166c3d4ab0486a3e9cee@o4511309268189184.ingest.de.sentry.io/4511310256603216"
       });
     </script>
 
@@ -63,10 +77,8 @@
         /* NAVBAR */
         #navbar {
             position: fixed; inset: 0 0 auto 0; z-index: 100;
-            height: var(--nav-h); background-color: var(--surface);
-            border-bottom: 1px solid var(--border); transition: box-shadow 0.25s ease;
+            height: var(--nav-h);
         }
-        #navbar.scrolled { box-shadow: 0 2px 24px rgba(47,42,36,0.09); }
         .nav-inner {
             max-width: 1200px; margin: 0 auto; padding: 0 2rem;
             height: 100%; display: flex; align-items: center; gap: 2.5rem;
@@ -235,11 +247,14 @@
         .proof-ext-link { font-size: 0.875rem; color: var(--stone); text-decoration: none; transition: color 0.15s ease; }
         .proof-ext-link:hover { color: var(--charcoal); }
 
-        .demo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+        .demo-grid { display: flex; flex-direction: column; margin-top: 2.5rem; }
         .demo-card {
-            display: flex; flex-direction: column; gap: 1.25rem; padding: 1.5rem;
+            display: flex; flex-direction: column; gap: 1.25rem; padding: 2rem;
             background-color: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+            max-width: 700px;
         }
+        .demo-card:nth-child(1) { margin-right: auto; }
+        .demo-card:nth-child(2) { margin-left: auto; margin-top: 3rem; }
         .demo-kicker {
             display: inline-block; font-family: 'JetBrains Mono', 'Courier New', monospace;
             font-size: 0.625rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--pistachio); margin-bottom: 0.625rem;
@@ -441,7 +456,7 @@
 
         /* RESPONSIVE */
         @media (max-width: 860px) { .nav-center, .btn-primary { display: none; } .nav-hamburger { display: flex; } .nav-inner { padding: 0 1.25rem; gap: 0; justify-content: space-between; } }
-        @media (max-width: 840px) { .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; } .demo-grid, .trust-grid { grid-template-columns: 1fr; } .demo-frame-shell { max-width: 100%; width: 100%; } #problem, #zahlen, #angebot, #ablauf, #demo, #kontakt, #trust { padding: 4rem 0; } }
+        @media (max-width: 840px) { .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; } .demo-card:nth-child(1), .demo-card:nth-child(2) { max-width: 100%; margin-left: 0; margin-right: 0; margin-top: 0; } .demo-card:nth-child(2) { margin-top: 1.5rem; } .demo-frame-shell { max-width: 100%; width: 100%; } #problem, #zahlen, #angebot, #ablauf, #demo, #kontakt, #trust { padding: 4rem 0; } }
         @media (max-width: 520px) {
             .demo-card { padding: 1.25rem; }
             .demo-browser-bar { flex-wrap: wrap; align-items: flex-start; padding: 0.75rem 0.875rem; }
@@ -530,14 +545,10 @@
 
         <section id="hero">
             <div class="hero-slides" aria-hidden="true">
-                <!-- SLIDESHOW SLIDE 1: Replace URL with licensed or owned photo when available -->
-                <div class="hero-slide is-active" style="background-image: url('https://images.unsplash.com/photo-1717281234297-3def5ae3eee1?w=1920&q=80&auto=format&fit=crop');"></div>
-                <!-- SLIDESHOW SLIDE 2: Replace URL with licensed or owned photo when available -->
-                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1693985120993-e9b203ce7631?w=1920&q=80&auto=format&fit=crop');"></div>
-                <!-- SLIDESHOW SLIDE 3: Replace URL with licensed or owned photo when available -->
-                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1742900280861-32bed068938b?w=1920&q=80&auto=format&fit=crop');"></div>
-                <!-- SLIDESHOW SLIDE 4: Replace URL with licensed or owned photo when available -->
-                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1652829069629-959f8927f608?w=1920&q=80&auto=format&fit=crop');"></div>
+                <div class="hero-slide is-active" style="background-image: url('images/hero-maler-1.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('images/hero-maler-2.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('images/hero-maler-3.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('images/hero-maler-4.jpg');"></div>
             </div>
             <div class="hero-scrim" aria-hidden="true"></div>
             <div class="hero-content">
@@ -628,7 +639,7 @@
                 <div class="angebot-card">
                     <div class="angebot-price-row">
                         <div>
-                            <span class="angebot-price">1.800 EUR</span>
+                            <span class="angebot-price">1.200 EUR</span>
                             <span class="angebot-price-note">einmalig</span>
                         </div>
                     </div>

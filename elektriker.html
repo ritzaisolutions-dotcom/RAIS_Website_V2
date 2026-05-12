@@ -7,6 +7,21 @@
     <title>RAIS für Elektriker - Website mit Vorsortierung und planbarem Rechner</title>
     <meta name="description" content="RAIS baut Websites für Elektriker, die auch dann Anfragen auffangen, wenn Sie im Einsatz, auf der Baustelle oder am Wochenende nicht ans Telefon gehen.">
 
+    <!-- OpenGraph -->
+    <meta property="og:title" content="RAIS für Elektriker – Website mit Vorsortierung und planbarem Rechner">
+    <meta property="og:description" content="Spezialisierte Website für Elektriker: Kostenrechner, klarer Anfrageweg, 1.200 EUR Festpreis.">
+    <meta property="og:url" content="https://ritz-ai.solutions/elektriker.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://ritz-ai.solutions/images/fliesenweber-demo-preview.png">
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="720">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="RAIS für Elektriker – Website mit Vorsortierung und planbarem Rechner">
+    <meta name="twitter:description" content="Spezialisierte Website für Elektriker: Kostenrechner, klarer Anfrageweg, 1.200 EUR Festpreis.">
+    <meta name="twitter:image" content="https://ritz-ai.solutions/images/fliesenweber-demo-preview.png">
+
     <link rel="icon" type="image/png" href="favicon.png?v=3">
     <link rel="apple-touch-icon" href="favicon.png?v=3">
 
@@ -25,8 +40,7 @@
     ></script>
     <script type="text/plain" data-type="application/javascript" data-name="sentry">
       Sentry.init({
-        dsn: "https://f2ddf600721a166c3d4ab0486a3e9cee@o4511309268189184.ingest.de.sentry.io/4511310256603216",
-        sendDefaultPii: true
+        dsn: "https://f2ddf600721a166c3d4ab0486a3e9cee@o4511309268189184.ingest.de.sentry.io/4511310256603216"
       });
     </script>
 
@@ -70,11 +84,7 @@
         #navbar {
             position: fixed; inset: 0 0 auto 0; z-index: 100;
             height: var(--nav-h);
-            background-color: var(--surface);
-            border-bottom: 1px solid var(--border);
-            transition: box-shadow 0.25s ease;
         }
-        #navbar.scrolled { box-shadow: 0 2px 24px rgba(47,42,36,0.09); }
 
         .nav-inner {
             max-width: 1200px; margin: 0 auto; padding: 0 2rem;
@@ -455,11 +465,14 @@
         .proof-ext-link { font-size: 0.875rem; color: var(--stone); text-decoration: none; transition: color 0.15s ease; }
         .proof-ext-link:hover { color: var(--charcoal); }
 
-        .demo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+        .demo-grid { display: flex; flex-direction: column; margin-top: 2.5rem; }
         .demo-card {
-            display: flex; flex-direction: column; gap: 1.25rem; padding: 1.5rem;
+            display: flex; flex-direction: column; gap: 1.25rem; padding: 2rem;
             background-color: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+            max-width: 700px;
         }
+        .demo-card:nth-child(1) { margin-right: auto; }
+        .demo-card:nth-child(2) { margin-left: auto; margin-top: 3rem; }
         .demo-kicker {
             display: inline-block; font-family: 'JetBrains Mono', 'Courier New', monospace;
             font-size: 0.625rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--pistachio); margin-bottom: 0.625rem;
@@ -677,7 +690,8 @@
         }
         @media (max-width: 840px) {
             .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-            .demo-grid, .trust-grid { grid-template-columns: 1fr; }
+            .demo-card:nth-child(1), .demo-card:nth-child(2) { max-width: 100%; margin-left: 0; margin-right: 0; margin-top: 0; }
+            .demo-card:nth-child(2) { margin-top: 1.5rem; }
             .demo-frame-shell { max-width: 100%; width: 100%; }
             #problem, #zahlen, #angebot, #ablauf, #demo, #kontakt, #trust { padding: 4rem 0; }
         }
@@ -773,14 +787,10 @@
 
         <section id="hero">
             <div class="hero-slides" aria-hidden="true">
-                <!-- SLIDESHOW SLIDE 1: Replace URL with licensed or owned photo when available -->
-                <div class="hero-slide is-active" style="background-image: url('https://images.unsplash.com/photo-1758101755915-462eddc23f57?w=1920&q=80&auto=format&fit=crop');"></div>
-                <!-- SLIDESHOW SLIDE 2: Replace URL with licensed or owned photo when available -->
-                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1635335874521-7987db781153?w=1920&q=80&auto=format&fit=crop');"></div>
-                <!-- SLIDESHOW SLIDE 3: Replace URL with licensed or owned photo when available -->
-                <div class="hero-slide" style="background-image: url('https://plus.unsplash.com/premium_photo-1682928136660-8cbeaf4941b2?w=1920&q=80&auto=format&fit=crop');"></div>
-                <!-- SLIDESHOW SLIDE 4: Replace URL with licensed or owned photo when available -->
-                <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1682345262055-8f95f3c513ea?w=1920&q=80&auto=format&fit=crop');"></div>
+                <div class="hero-slide is-active" style="background-image: url('images/hero-elektriker-1.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('images/hero-elektriker-2.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('images/hero-elektriker-3.jpg');"></div>
+                <div class="hero-slide" style="background-image: url('images/hero-elektriker-4.jpg');"></div>
             </div>
             <div class="hero-scrim" aria-hidden="true"></div>
             <div class="hero-content">
@@ -870,7 +880,7 @@
                 <div class="angebot-card">
                     <div class="angebot-price-row">
                         <div>
-                            <span class="angebot-price">1.800 EUR</span>
+                            <span class="angebot-price">1.200 EUR</span>
                             <span class="angebot-price-note">einmalig</span>
                         </div>
                     </div>
