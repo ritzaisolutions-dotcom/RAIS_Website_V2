@@ -1585,17 +1585,18 @@
         .mission-text {
             font-family: 'Baskerville', 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
             font-style: italic;
-            font-size: clamp(1.125rem, 2.2vw, 1.375rem);
-            line-height: 1.82;
-            color: rgba(245, 242, 236, 0.82);
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            line-height: 1.6;
+            color: rgba(245, 242, 236, 0.92);
             font-weight: 400;
-            letter-spacing: 0.008em;
+            letter-spacing: 0.012em;
+            text-align: center;
             margin-bottom: 0;
         }
 
         .mission-text p {
             margin-top: 0;
-            margin-bottom: 1.25rem;
+            margin-bottom: 0;
             opacity: 0;
             transform: translateY(14px);
             transition: opacity 0.65s ease, transform 0.65s ease;
@@ -1605,6 +1606,21 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        .mission-hook {
+            font-family: 'Inter', system-ui, sans-serif;
+            font-style: normal;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--orange);
+            letter-spacing: 0.01em;
+            text-align: center;
+            margin-top: 1.75rem;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.65s ease 0.2s, transform 0.65s ease 0.2s;
+        }
+        .mission-hook.is-visible { opacity: 1; transform: translateY(0); }
 
         .mission-sig-wrap {
             display: flex;
@@ -2475,12 +2491,10 @@
                 <div class="mission-divider" aria-hidden="true"></div>
 
                 <blockquote class="mission-text">
-                    <p>Wir glauben, dass handwerkliche Qualität eine digitale Präsenz verdient, die genauso präzise ist wie die Arbeit selbst.</p>
-                    <p>RAIS baut keine generischen Websites — wir bauen spezialisierte Systeme, die Anfragen auffangen und vorqualifizieren, solange Sie arbeiten.</p>
-                    <p>Unser Ansatz ist direkt, branchenspezifisch und ohne Mittelmann — weil gute Arbeit keinen Umweg braucht.</p>
-                    <p>Wir verbinden technisches Können mit echtem Verständnis für den Alltag auf der Baustelle.</p>
-                    <p>Das ist der Maßstab, den wir an jede Website anlegen, die wir bauen.</p>
+                    <p>Handwerk ist Präzision. Ihre digitale Präsenz sollte es auch sein — spezialisiert, klar und ohne Umwege.</p>
                 </blockquote>
+
+                <p class="mission-hook">Handwerksbetriebe verlieren täglich Anfragen, weil niemand rangeht. RAIS behebt das.</p>
 
                 <div class="mission-sig-wrap">
                     <div class="mission-sig-line" aria-hidden="true"></div>
@@ -2967,13 +2981,16 @@
         /* ── Mission sentence animation ──────────────────────── */
         (function () {
             var paragraphs = document.querySelectorAll('.mission-text p');
+            var hook    = document.querySelector('.mission-hook');
             var sigWrap = document.querySelector('.mission-sig-wrap');
             if (!paragraphs.length || !('IntersectionObserver' in window)) {
                 paragraphs.forEach(function (p) { p.classList.add('is-visible'); });
+                if (hook)    hook.classList.add('is-visible');
                 if (sigWrap) sigWrap.classList.add('is-visible');
                 return;
             }
             var all = Array.prototype.slice.call(paragraphs);
+            if (hook)    all.push(hook);
             if (sigWrap) all.push(sigWrap);
             var observer = new IntersectionObserver(function (entries) {
                 entries.forEach(function (entry) {
