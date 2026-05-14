@@ -1746,6 +1746,184 @@
         }
 
         .branchen-demo-link:hover { color: var(--charcoal); }
+
+        /* ─────────────────────────────────────────────────────
+           BOOKING MODAL
+        ───────────────────────────────────────────────────── */
+
+        #booking-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        #booking-modal.is-open { display: flex; }
+
+        .bm-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(47, 42, 36, 0.55);
+            backdrop-filter: blur(3px);
+        }
+
+        .bm-box {
+            position: relative;
+            background: var(--surface);
+            border-radius: 1.25rem;
+            width: 100%;
+            max-width: 540px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2.5rem 2rem 2rem;
+            box-shadow: 0 24px 64px rgba(47,42,36,0.18);
+        }
+
+        .bm-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--stone);
+            line-height: 1;
+            padding: 0.25rem;
+            transition: color 0.15s;
+        }
+        .bm-close:hover { color: var(--charcoal); }
+
+        .bm-step { display: none; }
+        .bm-step.is-active { display: block; }
+
+        .bm-progress {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 2rem;
+        }
+        .bm-dot {
+            flex: 1;
+            height: 3px;
+            border-radius: 2px;
+            background: var(--border);
+            transition: background 0.25s;
+        }
+        .bm-dot.done { background: var(--orange); }
+
+        .bm-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--stone);
+            margin-bottom: 0.5rem;
+        }
+        .bm-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            margin-bottom: 0.35rem;
+            line-height: 1.3;
+        }
+        .bm-sub {
+            font-size: 0.9rem;
+            color: var(--stone);
+            margin-bottom: 1.75rem;
+        }
+
+        .bm-field { margin-bottom: 1.1rem; }
+        .bm-field label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 0.35rem;
+        }
+        .bm-field input {
+            width: 100%;
+            padding: 0.65rem 0.85rem;
+            border: 1.5px solid var(--border);
+            border-radius: 0.5rem;
+            background: #fff;
+            font-size: 0.95rem;
+            color: var(--charcoal);
+            font-family: inherit;
+            transition: border-color 0.15s;
+            outline: none;
+        }
+        .bm-field input:focus { border-color: var(--orange); }
+        .bm-field input.bm-error { border-color: #d94f3b; }
+
+        .bm-options {
+            display: grid;
+            gap: 0.6rem;
+            margin-bottom: 1.75rem;
+        }
+        .bm-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            border: 1.5px solid var(--border);
+            border-radius: 0.6rem;
+            cursor: pointer;
+            background: #fff;
+            font-size: 0.92rem;
+            color: var(--charcoal);
+            font-family: inherit;
+            text-align: left;
+            transition: border-color 0.15s, background 0.15s;
+            width: 100%;
+        }
+        .bm-option:hover { border-color: var(--orange); background: #fff8f4; }
+        .bm-option.selected { border-color: var(--orange); background: #fff8f4; font-weight: 600; }
+        .bm-option-icon { font-size: 1.15rem; flex-shrink: 0; }
+
+        .bm-actions {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: flex-end;
+            margin-top: 0.5rem;
+        }
+        .bm-btn-back {
+            background: none;
+            border: 1.5px solid var(--border);
+            border-radius: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            font-size: 0.9rem;
+            color: var(--stone);
+            cursor: pointer;
+            font-family: inherit;
+            transition: border-color 0.15s, color 0.15s;
+        }
+        .bm-btn-back:hover { border-color: var(--charcoal); color: var(--charcoal); }
+        .bm-btn-next {
+            background: var(--orange);
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.6rem 1.5rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #fff;
+            cursor: pointer;
+            font-family: inherit;
+            transition: background 0.15s;
+        }
+        .bm-btn-next:hover { background: var(--orange-hover); }
+
+        .bm-calendly-wrap {
+            min-height: 600px;
+            margin: 0 -2rem -2rem;
+            border-radius: 0 0 1.25rem 1.25rem;
+            overflow: hidden;
+        }
+
+        @media (max-width: 480px) {
+            .bm-box { padding: 2rem 1.25rem 1.25rem; border-radius: 1rem; }
+            .bm-calendly-wrap { margin: 0 -1.25rem -1.25rem; }
+        }
     </style>
 </head>
 
@@ -1838,7 +2016,7 @@
 
             <!-- Right: CTA + hamburger -->
             <div class="nav-right">
-                <a href="#contact" class="btn-primary">Demo anfordern</a>
+                <button type="button" class="btn-primary" id="nav-demo-btn">Demo anfordern</button>
 
                 <button
                     class="nav-hamburger"
@@ -1881,7 +2059,7 @@
 
             <hr class="mobile-hr">
 
-            <a href="#contact" class="mobile-cta" data-close-menu>Demo anfordern</a>
+            <button type="button" class="mobile-cta" id="mobile-demo-btn" data-close-menu>Demo anfordern</button>
 
         </div>
     </div>
@@ -1911,7 +2089,7 @@
                         </p>
 
                         <div class="hero-ctas">
-                    <a href="#contact" class="hero-btn-primary">Demo anfordern</a>
+                    <button type="button" class="hero-btn-primary" id="hero-demo-btn">Demo anfordern</button>
                     <a href="#leistungen" class="hero-btn-outline">Wie es funktioniert</a>
                         </div>
 
@@ -2296,18 +2474,8 @@
                         </p>
                     </div>
 
-                    <!-- CALENDLY: Loads only on user click.
-                         DSGVO-konform: kein Request vor Nutzerinteraktion.
-                         Disclose Calendly in Datenschutz as third-party tool. -->
                     <div class="cal-embed-wrap">
-                        <div id="calWidget" style="display:none; min-width:320px; height:700px;"></div>
-                        <button type="button" id="calLoadBtn" class="cal-load-btn">Kostenlose Demo buchen – 15 min</button>
-                        <p id="calError" class="cal-error" style="display:none;">
-                            Kalender konnte nicht geladen werden. <a href="https://calendly.com/ritzaisolutions/erstgesprach-mit-rais" target="_blank" rel="noopener">Direkt öffnen ↗</a>
-                        </p>
-                        <a href="https://calendly.com/ritzaisolutions/erstgesprach-mit-rais" target="_blank" rel="noopener" class="cal-ext-link">
-                            Kalender extern öffnen ↗
-                        </a>
+                        <button type="button" id="contact-demo-btn" class="cal-load-btn">Kostenlose Demo buchen – 15 min</button>
                     </div>
 
                 </div>
@@ -2341,7 +2509,7 @@
          MOBILE STICKY CTA
     ═══════════════════════════════════════════════════════ -->
     <div id="sticky-cta" aria-hidden="true">
-        <a href="#contact" class="sticky-cta-btn">Demo anfordern</a>
+        <button type="button" class="sticky-cta-btn" id="sticky-demo-btn">Demo anfordern</button>
     </div>
 
     <!-- ═══════════════════════════════════════════════════════
@@ -2560,32 +2728,6 @@
         }
 
 
-        /* ── Calendly click-to-load ──────────────────────────── */
-        var calBtn = document.getElementById('calLoadBtn');
-        if (calBtn) {
-            calBtn.addEventListener('click', function () {
-                calBtn.textContent = 'Wird geladen…';
-                calBtn.disabled = true;
-                var s = document.createElement('script');
-                s.src = 'https://assets.calendly.com/assets/external/widget.js';
-                s.onload = function () {
-                    var widget = document.getElementById('calWidget');
-                    Calendly.initInlineWidget({
-                        url: 'https://calendly.com/ritzaisolutions/erstgesprach-mit-rais',
-                        parentElement: widget
-                    });
-                    widget.style.display = 'block';
-                    calBtn.style.display = 'none';
-                };
-                s.onerror = function () {
-                    calBtn.style.display = 'none';
-                    document.getElementById('calError').style.display = 'block';
-                };
-                document.head.appendChild(s);
-            });
-        }
-
-
         /* ── Branchen carousel ───────────────────────────────── */
         (function () {
             var track    = document.getElementById('carouselTrack');
@@ -2735,6 +2877,195 @@
             all.forEach(function (el) { observer.observe(el); });
         }());
 
+    }());
+    </script>
+
+    <!-- ═══════════════════════════════════════════════════════
+         BOOKING MODAL
+    ═══════════════════════════════════════════════════════ -->
+    <div id="booking-modal" role="dialog" aria-modal="true" aria-label="Demo buchen">
+        <div class="bm-backdrop" id="bm-backdrop"></div>
+        <div class="bm-box">
+
+            <button class="bm-close" id="bm-close" aria-label="Schließen">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+
+            <div class="bm-progress" id="bm-progress">
+                <div class="bm-dot" data-step="0"></div>
+                <div class="bm-dot" data-step="1"></div>
+                <div class="bm-dot" data-step="2"></div>
+                <div class="bm-dot" data-step="3"></div>
+            </div>
+
+            <!-- Step 1: Name & Email -->
+            <div class="bm-step is-active" id="bm-step-0">
+                <p class="bm-label">Schritt 1 von 3</p>
+                <h2 class="bm-title">Kurz vorstellen</h2>
+                <p class="bm-sub">Damit ich die Demo auf Sie abstimmen kann.</p>
+                <div class="bm-field">
+                    <label for="bm-name">Ihr Name</label>
+                    <input type="text" id="bm-name" placeholder="Max Mustermann" autocomplete="name">
+                </div>
+                <div class="bm-field">
+                    <label for="bm-email">E-Mail-Adresse</label>
+                    <input type="email" id="bm-email" placeholder="max@muster.de" autocomplete="email">
+                </div>
+                <div class="bm-actions">
+                    <button type="button" class="bm-btn-next" id="bm-next-0">Weiter →</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Aktuelle Website -->
+            <div class="bm-step" id="bm-step-1">
+                <p class="bm-label">Schritt 2 von 3</p>
+                <h2 class="bm-title">Ihre aktuelle Online-Präsenz</h2>
+                <p class="bm-sub">Haben Sie bereits eine Website?</p>
+                <div class="bm-options" id="bm-options-website">
+                    <button type="button" class="bm-option" data-value="keine"><span class="bm-option-icon">🚫</span> Noch keine Website</button>
+                    <button type="button" class="bm-option" data-value="veraltet"><span class="bm-option-icon">🕰️</span> Ja, aber veraltet</button>
+                    <button type="button" class="bm-option" data-value="nur-social"><span class="bm-option-icon">📱</span> Nur Social Media</button>
+                    <button type="button" class="bm-option" data-value="zufrieden"><span class="bm-option-icon">✅</span> Ja, bin zufrieden</button>
+                </div>
+                <div class="bm-actions">
+                    <button type="button" class="bm-btn-back" id="bm-back-1">← Zurück</button>
+                    <button type="button" class="bm-btn-next" id="bm-next-1">Weiter →</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Größte Herausforderung -->
+            <div class="bm-step" id="bm-step-2">
+                <p class="bm-label">Schritt 3 von 3</p>
+                <h2 class="bm-title">Ihre größte Herausforderung</h2>
+                <p class="bm-sub">Was beschäftigt Sie aktuell am meisten?</p>
+                <div class="bm-options" id="bm-options-challenge">
+                    <button type="button" class="bm-option" data-value="zu-wenig-anfragen"><span class="bm-option-icon">📉</span> Zu wenig Anfragen</button>
+                    <button type="button" class="bm-option" data-value="keine-zeit"><span class="bm-option-icon">⏱️</span> Keine Zeit für Verwaltung</button>
+                    <button type="button" class="bm-option" data-value="sichtbarkeit"><span class="bm-option-icon">🔍</span> Schlechte Sichtbarkeit online</button>
+                    <button type="button" class="bm-option" data-value="anderes"><span class="bm-option-icon">💬</span> Anderes</button>
+                </div>
+                <div class="bm-actions">
+                    <button type="button" class="bm-btn-back" id="bm-back-2">← Zurück</button>
+                    <button type="button" class="bm-btn-next" id="bm-next-2">Termin buchen →</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Calendly -->
+            <div class="bm-step" id="bm-step-3">
+                <p class="bm-label">Fast geschafft</p>
+                <h2 class="bm-title">Wählen Sie Ihren Termin</h2>
+                <p class="bm-sub">15 Minuten — kostenlos und unverbindlich.</p>
+                <div class="bm-calendly-wrap" id="bm-calendly-wrap"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+    (function () {
+        var SUPABASE_URL  = 'https://qdywaenmojdxhfxqbvun.supabase.co';
+        var SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFkeXdhZW5tb2pkeGhmeHFidnVuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0MDYwMTYsImV4cCI6MjA5MDk4MjAxNn0.rfIzS2eY3yZCvap0pKdB7V-AfKmnvQLx_QLaFEi1gts';
+        var CAL_URL       = 'https://calendly.com/ritzaisolutions/erstgesprach-mit-rais';
+
+        var modal    = document.getElementById('booking-modal');
+        var backdrop = document.getElementById('bm-backdrop');
+        var closeBtn = document.getElementById('bm-close');
+        var steps    = [0,1,2,3].map(function(i){ return document.getElementById('bm-step-'+i); });
+        var dots     = document.querySelectorAll('.bm-dot');
+
+        var state = { step: 0, name: '', email: '', website: '', challenge: '', calLoaded: false };
+
+        function openModal() {
+            modal.classList.add('is-open');
+            document.body.classList.add('noscroll');
+            goTo(0);
+        }
+        function closeModal() {
+            modal.classList.remove('is-open');
+            document.body.classList.remove('noscroll');
+        }
+
+        ['nav-demo-btn','hero-demo-btn','contact-demo-btn','sticky-demo-btn','mobile-demo-btn'].forEach(function(id){
+            var el = document.getElementById(id);
+            if (el) el.addEventListener('click', openModal);
+        });
+        closeBtn.addEventListener('click', closeModal);
+        backdrop.addEventListener('click', closeModal);
+        document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
+
+        function goTo(n) {
+            steps.forEach(function(s,i){ s.classList.toggle('is-active', i===n); });
+            dots.forEach(function(d,i){ d.classList.toggle('done', i<=n); });
+            state.step = n;
+        }
+
+        function bindOptions(groupId, key) {
+            document.querySelectorAll('#'+groupId+' .bm-option').forEach(function(btn){
+                btn.addEventListener('click', function(){
+                    document.querySelectorAll('#'+groupId+' .bm-option').forEach(function(b){ b.classList.remove('selected'); });
+                    btn.classList.add('selected');
+                    state[key] = btn.dataset.value;
+                });
+            });
+        }
+        bindOptions('bm-options-website',   'website');
+        bindOptions('bm-options-challenge', 'challenge');
+
+        document.getElementById('bm-next-0').addEventListener('click', function(){
+            var nameEl  = document.getElementById('bm-name');
+            var emailEl = document.getElementById('bm-email');
+            var ok = true;
+            if (!nameEl.value.trim()) { nameEl.classList.add('bm-error'); ok = false; } else { nameEl.classList.remove('bm-error'); }
+            if (!emailEl.value.trim() || !emailEl.value.includes('@')) { emailEl.classList.add('bm-error'); ok = false; } else { emailEl.classList.remove('bm-error'); }
+            if (!ok) return;
+            state.name  = nameEl.value.trim();
+            state.email = emailEl.value.trim();
+            goTo(1);
+        });
+
+        document.getElementById('bm-back-1').addEventListener('click', function(){ goTo(0); });
+        document.getElementById('bm-next-1').addEventListener('click', function(){ goTo(2); });
+        document.getElementById('bm-back-2').addEventListener('click', function(){ goTo(1); });
+        document.getElementById('bm-next-2').addEventListener('click', function(){ saveLeadAndShowCalendly(); });
+
+        function saveLeadAndShowCalendly() {
+            fetch(SUPABASE_URL + '/rest/v1/inbound_leads', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'apikey': SUPABASE_ANON,
+                    'Authorization': 'Bearer ' + SUPABASE_ANON,
+                    'Prefer': 'return=minimal'
+                },
+                body: JSON.stringify({
+                    name:              state.name,
+                    email:             state.email,
+                    website_status:    state.website   || null,
+                    biggest_challenge: state.challenge || null
+                })
+            }).catch(function(){});
+
+            goTo(3);
+            loadCalendly();
+        }
+
+        function loadCalendly() {
+            if (state.calLoaded) return;
+            state.calLoaded = true;
+            var wrap = document.getElementById('bm-calendly-wrap');
+            var calUrl = CAL_URL +
+                '?name='  + encodeURIComponent(state.name) +
+                '&email=' + encodeURIComponent(state.email);
+
+            if (typeof Calendly !== 'undefined') {
+                Calendly.initInlineWidget({ url: calUrl, parentElement: wrap });
+            } else {
+                var s = document.createElement('script');
+                s.src = 'https://assets.calendly.com/assets/external/widget.js';
+                s.onload = function(){ Calendly.initInlineWidget({ url: calUrl, parentElement: wrap }); };
+                document.head.appendChild(s);
+            }
+        }
     }());
     </script>
 
