@@ -1345,12 +1345,6 @@
            CONTACT
         ───────────────────────────────────────────────────── */
 
-        #contact {
-            padding: 6rem 0;
-            background-color: var(--background);
-        }
-
-        /* Two equal columns: copy left, Calendly right */
         /* ── Contact section — dark hero treatment ── */
         #contact {
             background: var(--charcoal);
@@ -1412,25 +1406,26 @@
             flex-shrink: 0;
         }
 
-        /* Right column card */
+        /* Right column card — glass */
         .cal-embed-wrap {
-            background: var(--surface);
+            background: rgba(251, 248, 243, 0.08);
+            backdrop-filter: blur(18px) saturate(1.3);
+            -webkit-backdrop-filter: blur(18px) saturate(1.3);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 1.25rem;
             padding: 2.25rem 2rem;
             width: 100%;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+            box-shadow: 0 8px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
         }
-        .cal-card-title { color: var(--charcoal); }
-        .cal-card-sub { color: var(--stone); }
         .cal-card-title {
             font-size: 1.05rem;
             font-weight: 700;
-            color: var(--charcoal);
+            color: #fff;
             margin-bottom: 0.35rem;
         }
         .cal-card-sub {
             font-size: 0.875rem;
-            color: var(--stone);
+            color: rgba(255,255,255,0.6);
             margin-bottom: 1.5rem;
             line-height: 1.5;
         }
@@ -1470,9 +1465,9 @@
             align-items: center;
             gap: 0.35rem;
             font-size: 0.78rem;
-            color: var(--stone);
+            color: rgba(255,255,255,0.5);
         }
-        .cal-trust-item svg { color: var(--pistachio); flex-shrink: 0; }
+        .cal-trust-item svg { color: var(--sage); flex-shrink: 0; }
 
         /* Contact details strip */
         .contact-details {
