@@ -1623,121 +1623,7 @@
             .problem-item { border-right: none; }
         }
 
-        /* ─────────────────────────────────────────────────────
-           MISSION SECTION
-        ───────────────────────────────────────────────────── */
-
-        #mission {
-            padding: 7rem 2rem;
-            background-color: var(--charcoal);
-            text-align: center;
-        }
-
-        .mission-inner {
-            max-width: 680px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .mission-label {
-            font-family: 'JetBrains Mono', 'Courier New', monospace;
-            font-size: 0.75rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: rgba(245, 242, 236, 0.55);
-            margin-bottom: 0.75rem;
-        }
-
-        .mission-logo {
-            width: 72px;
-            height: 72px;
-            object-fit: contain;
-            margin-bottom: 2rem;
-            filter: brightness(0) invert(1);
-            opacity: 0.88;
-        }
-
-        .mission-divider {
-            width: 32px;
-            height: 1px;
-            background-color: rgba(245, 242, 236, 0.22);
-            margin-bottom: 2.75rem;
-        }
-
-        .mission-text {
-            font-family: 'Baskerville', 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
-            font-style: italic;
-            font-size: clamp(1.4rem, 3vw, 2rem);
-            line-height: 1.6;
-            color: rgba(245, 242, 236, 0.92);
-            font-weight: 400;
-            letter-spacing: 0.012em;
-            text-align: center;
-            margin-bottom: 0;
-        }
-
-        .mission-text p {
-            margin-top: 0;
-            margin-bottom: 0;
-            opacity: 0;
-            transform: translateY(14px);
-            transition: opacity 0.65s ease, transform 0.65s ease;
-        }
-
-        .mission-text p.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .mission-hook {
-            font-family: 'Inter', system-ui, sans-serif;
-            font-style: normal;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--orange);
-            letter-spacing: 0.01em;
-            text-align: center;
-            margin-top: 1.75rem;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.65s ease 0.2s, transform 0.65s ease 0.2s;
-        }
-        .mission-hook.is-visible { opacity: 1; transform: translateY(0); }
-
-        .mission-sig-wrap {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.75rem;
-            margin-top: 2.75rem;
-            opacity: 0;
-            transform: translateY(14px);
-            transition: opacity 0.65s ease, transform 0.65s ease;
-        }
-
-        .mission-sig-wrap.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .mission-sig-line {
-            width: 32px;
-            height: 1px;
-            background-color: rgba(245, 242, 236, 0.22);
-        }
-
-        .mission-sig {
-            font-family: 'JetBrains Mono', 'Courier New', monospace;
-            font-size: 0.5625rem;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: rgba(245, 242, 236, 0.32);
-        }
-
         @media (max-width: 520px) {
-            #mission { padding: 5rem 1.5rem; }
             .mission-text { font-size: 1.0625rem; }
         }
 
@@ -2173,10 +2059,6 @@
                     </li>
 
                     <li>
-                        <a href="#mission">Mission</a>
-                    </li>
-
-                    <li>
                         <a href="#ueber-uns">Über uns</a>
                     </li>
 
@@ -2226,7 +2108,6 @@
                 <a href="maler.html"        class="mobile-link" data-close-menu>Maler</a>
             </div>
 
-            <a href="#mission"   class="mobile-link" data-close-menu>Mission</a>
             <a href="#ueber-uns" class="mobile-link" data-close-menu>Über uns</a>
             <a href="#contact"   class="mobile-link" data-close-menu>Kontakt</a>
 
@@ -2557,40 +2438,6 @@
             </div>
         </section>
 
-        <!-- ═══════════════════════════════════════════════════
-             MISSION
-        ═══════════════════════════════════════════════════ -->
-        <section id="mission">
-            <div class="mission-inner">
-
-                <img
-                    src="images/RAIS_LOGO_PICTOGRAM.png"
-                    alt="RAIS"
-                    class="mission-logo"
-                    width="72"
-                    height="72"
-                    aria-hidden="true"
-                >
-                <span class="mission-label">Unsere Vision</span>
-                <div class="mission-divider" aria-hidden="true"></div>
-
-                <blockquote class="mission-text">
-                    <p>Handwerk ist Präzision. Ihre digitale Präsenz sollte es auch sein — spezialisiert, klar und ohne Umwege.</p>
-                </blockquote>
-
-                <p class="mission-hook">Handwerksbetriebe verlieren täglich Anfragen, weil niemand rangeht. RAIS behebt das.</p>
-
-                <div class="mission-sig-wrap">
-                    <div class="mission-sig-line" aria-hidden="true"></div>
-                    <span class="mission-sig">Ritz AI Solutions &middot; Koblenz</span>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ═══════════════════════════════════════════════════
-             VISION
-        ═══════════════════════════════════════════════════ -->
         <!-- ═══════════════════════════════════════════════════
              ÜBER UNS
         ═══════════════════════════════════════════════════ -->
@@ -3063,34 +2910,6 @@
             updateStickyCta();
         }
 
-        /* ── Mission sentence animation ──────────────────────── */
-        (function () {
-            var paragraphs = document.querySelectorAll('.mission-text p');
-            var hook    = document.querySelector('.mission-hook');
-            var sigWrap = document.querySelector('.mission-sig-wrap');
-            if (!paragraphs.length || !('IntersectionObserver' in window)) {
-                paragraphs.forEach(function (p) { p.classList.add('is-visible'); });
-                if (hook)    hook.classList.add('is-visible');
-                if (sigWrap) sigWrap.classList.add('is-visible');
-                return;
-            }
-            var all = Array.prototype.slice.call(paragraphs);
-            if (hook)    all.push(hook);
-            if (sigWrap) all.push(sigWrap);
-            var observer = new IntersectionObserver(function (entries) {
-                entries.forEach(function (entry) {
-                    if (entry.isIntersecting) {
-                        var el = entry.target;
-                        var idx = all.indexOf(el);
-                        setTimeout(function () {
-                            el.classList.add('is-visible');
-                        }, idx * 120);
-                        observer.unobserve(el);
-                    }
-                });
-            }, { threshold: 0.15 });
-            all.forEach(function (el) { observer.observe(el); });
-        }());
 
     }());
     </script>
