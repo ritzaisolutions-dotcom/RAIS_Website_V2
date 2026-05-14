@@ -1473,7 +1473,7 @@
         .contact-details {
             margin-top: 3.5rem;
             padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255,255,255,0.18);
             display: flex;
             flex-wrap: wrap;
             gap: 2rem;
@@ -1535,6 +1535,10 @@
                 grid-template-columns: 1fr;
                 gap: 2.5rem;
             }
+
+            /* Text first, booking card second on mobile */
+            .contact-text-col { order: 1; }
+            .cal-embed-wrap { order: 2; }
 
             #ueber-uns,
             #trust,
@@ -1618,9 +1622,6 @@
             .problem-item { border-right: none; }
         }
 
-        @media (max-width: 520px) {
-            .mission-text { font-size: 1.0625rem; }
-        }
 
         /* ─────────────────────────────────────────────────────
            TRUST SECTION
