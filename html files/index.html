@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>RAIS – KI Lösungen für Handwerksbetriebe</title>
+    <title>RAIS – Websites für Fliesenleger, Elektriker und Maler</title>
     <meta name="description" content="RAIS baut spezialisierte Seiten für Fliesenleger, Elektriker und Maler. Jede Seite hat eigenen Anfrageweg, klares Angebot und 1.200 EUR Festpreis.">
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -915,6 +915,32 @@
             font-size: 0.875rem;
             line-height: 1.7;
             color: var(--stone);
+        }
+        .leis-price-details {
+            margin-top: 0.75rem;
+            font-size: 0.875rem;
+            color: var(--stone);
+        }
+        .leis-price-details summary {
+            cursor: pointer;
+            color: var(--stone);
+            list-style: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3em;
+        }
+        .leis-price-details summary::after {
+            content: '›';
+            display: inline-block;
+            transition: transform 0.2s;
+        }
+        .leis-price-details[open] summary::after {
+            transform: rotate(90deg);
+        }
+        .leis-price-details p {
+            margin-top: 0.4rem;
+            color: var(--stone);
+            line-height: 1.6;
         }
 
         /* Price block — main pillar only */
@@ -2148,11 +2174,14 @@
                             <li>Individueller Kostenrechner auf Basis Ihrer Preise</li>
                             <li>Terminbuchung für Rückruf oder Erstgespräch</li>
                         </ul>
-                        <p class="leis-card-note"><em>Monatliche Wartung: 150 EUR / Monat &middot; Mindestlaufzeit 12 Monate.</em></p>
                         <div class="leis-pillar-price">
                             <span class="leis-price-amount">1.200 EUR</span>
-                            <span class="leis-price-note">einmalig &middot; zzgl. 150 EUR / Monat Wartung</span>
+                            <span class="leis-price-note">einmalig — Details auf Anfrage</span>
                         </div>
+                        <details class="leis-price-details">
+                            <summary>Laufende Kosten</summary>
+                            <p>Monatliche Wartung: 150 EUR / Monat &middot; Mindestlaufzeit 12 Monate.</p>
+                        </details>
                         <a href="#branchen" class="leis-card-link">
                             Branchen ansehen
                             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -2319,10 +2348,10 @@
             <div class="section-wrap">
 
                 <div class="trust-intro reveal">
-                    <span class="mono-label">Referenz</span>
+                    <span class="mono-label">Live-Beispiel</span>
                     <h2 class="section-h2">Nicht ein Konzept. Eine fertige Seite.</h2>
                     <p class="section-sub">
-                        Fliesen Weber ist live — mit Kostenrechner, Anfrageweg und Terminbuchung. Das ist der Standard, den jede RAIS-Website hat.
+                        Fliesen Weber ist live — mit Kostenrechner, Anfrageweg und Terminbuchung. Kein Dummy, keine Vorlage. Das ist der Standard für jede RAIS-Website.
                     </p>
                 </div>
 

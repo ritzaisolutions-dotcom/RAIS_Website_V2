@@ -14,7 +14,7 @@
 ## Generator-supported baseline
 
 - Hosting
-- CCM19
+- Klaro (self-hosted, localStorage only)
 - Calendly
 - Google Gemini API
 - Local Google Fonts

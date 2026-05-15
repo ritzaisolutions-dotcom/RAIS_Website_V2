@@ -7,7 +7,9 @@
     <meta name="robots" content="noindex, follow" />
     <link rel="icon" type="image/png" href="favicon.png?v=3" />
     <link rel="stylesheet" href="fonts.css" />
-    <script src="https://cloud.ccm19.de/app.js?apiKey=44ff2519f360f540f17d013a2a4094e2019143535dcc7c76&domain=69e29700b6f98fcee101f2d2" referrerpolicy="origin"></script>
+    <script src="klaro-config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/klaro/dist/klaro.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/klaro/dist/klaro.min.css">
     <style>
         :root {
             --background: 40 29% 94%;
@@ -249,9 +251,9 @@
             <section aria-labelledby="rais-custom-services">
                 <h2 id="rais-custom-services">Additional notes on the services actually in use</h2>
 
-                <h3>Consent management tool CCM19</h3>
-                <p>We use the consent management tool CCM19 on this website in order to manage consent decisions for services requiring consent, document these decisions and technically enable withdrawals. The provider is Papoo Software &amp; Media GmbH, Auguststr. 4, 53229 Bonn, Germany. This may involve the processing of your consent choices, technical device information, shortened IP addresses and time stamps.</p>
-                <p>This use serves the fulfillment of our legal obligations regarding consent management and documentation and is based on Art. 6(1)(c) GDPR, Art. 6(1)(f) GDPR and, where access to end-device information is concerned, Section 25(2) No. 2 TDDDG.</p>
+                <h3>Consent management tool Klaro</h3>
+                <p>We use the open-source consent management tool Klaro on this website in order to manage and document consent decisions for services requiring consent. Klaro is self-hosted; consent decisions are stored exclusively in your browser's localStorage and are not transmitted to external servers. No personal data is transferred to third parties by the consent tool itself.</p>
+                <p>This use serves the fulfillment of our legal obligations regarding consent management and documentation and is based on Art. 6(1)(c) GDPR and, where access to end-device information is concerned, Section 25 TDDDG.</p>
 
                 <h3>Calendly only after deliberate user action</h3>
                 <p>The external Calendly embed is not loaded on this website on the mere basis of opening the page. The widget is only loaded after an explicit user action in the booking section. Without that click, only an external link to Calendly remains available.</p>

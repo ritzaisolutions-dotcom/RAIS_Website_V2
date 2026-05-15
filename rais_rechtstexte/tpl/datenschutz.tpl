@@ -7,7 +7,9 @@
     <meta name="robots" content="noindex, follow" />
     <link rel="icon" type="image/png" href="favicon.png?v=3" />
     <link rel="stylesheet" href="fonts.css" />
-    <script src="https://cloud.ccm19.de/app.js?apiKey=44ff2519f360f540f17d013a2a4094e2019143535dcc7c76&domain=69e29700b6f98fcee101f2d2" referrerpolicy="origin"></script>
+    <script src="klaro-config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/klaro/dist/klaro.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/klaro/dist/klaro.min.css">
     <style>
         :root {
             --background: 40 29% 94%;
@@ -249,9 +251,9 @@
             <section aria-labelledby="rais-custom-services">
                 <h2 id="rais-custom-services">Ergänzende Hinweise zu den tatsächlich eingesetzten Diensten</h2>
 
-                <h3>Consent-Tool CCM19</h3>
-                <p>Wir nutzen auf dieser Website das Consent-Management-Tool CCM19, um Einwilligungen für einwilligungsbedürftige Dienste zu verwalten, zu dokumentieren und Widerrufe technisch abzubilden. Anbieter ist die Papoo Software &amp; Media GmbH, Auguststr. 4, 53229 Bonn. Dabei können insbesondere die von Ihnen getroffenen Einwilligungsentscheidungen, technische Geräteinformationen, gekürzte IP-Adressen sowie Zeitstempel verarbeitet werden.</p>
-                <p>Die Nutzung erfolgt zur Erfüllung unserer gesetzlichen Verpflichtungen im Zusammenhang mit Einwilligungs- und Nachweispflichten sowie auf Grundlage von Art. 6 Abs. 1 lit. c DSGVO, Art. 6 Abs. 1 lit. f DSGVO und, soweit der Zugriff auf Endgeräteinformationen betroffen ist, § 25 Abs. 2 Nr. 2 TDDDG.</p>
+                <h3>Consent-Tool Klaro</h3>
+                <p>Wir nutzen auf dieser Website das Open-Source-Consent-Management-Tool Klaro, um Einwilligungen für einwilligungsbedürftige Dienste zu verwalten und zu dokumentieren. Klaro wird selbst gehostet; Einwilligungsentscheidungen werden ausschließlich im localStorage Ihres Browsers gespeichert und nicht an externe Server übermittelt. Eine Datenübertragung an Dritte findet durch das Consent-Tool selbst nicht statt.</p>
+                <p>Die Nutzung erfolgt zur Erfüllung unserer gesetzlichen Verpflichtungen im Zusammenhang mit Einwilligungs- und Nachweispflichten sowie auf Grundlage von Art. 6 Abs. 1 lit. c DSGVO und, soweit der Zugriff auf Endgeräteinformationen betroffen ist, § 25 TDDDG.</p>
 
                 <h3>Calendly erst nach bewusster Nutzeraktion</h3>
                 <p>Die externe Calendly-Einbindung wird auf dieser Website nicht bereits beim bloßen Seitenaufruf geladen. Das Widget wird erst nach einer ausdrücklichen Nutzeraktion in der Buchungssektion nachgeladen. Ohne diesen Klick bleibt es bei einem externen Link zu Calendly.</p>
