@@ -91,6 +91,7 @@
         html {
             scroll-behavior: smooth;
             color-scheme: light;           /* prevents browser dark-mode override */
+            overflow-x: hidden;
         }
 
         body {
@@ -100,6 +101,7 @@
             line-height: 1.65;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
         }
 
         body.noscroll { overflow: hidden; }
@@ -546,21 +548,26 @@
             justify-content: center;
             overflow: hidden;
             padding: calc(var(--nav-h) + 2rem) 2rem 3rem;
-            background-image: url('images/mark-koch-KiRlN3jjVNU-unsplash.jpg');
-            background-size: cover;
-            background-position: center 38%;
+            background: linear-gradient(
+                145deg,
+                #1A1410 0%,
+                #2A2018 35%,
+                #1C1A14 65%,
+                #120E0A 100%
+            );
         }
 
-        /* Dark warm overlay for drama + readability */
+        /* Subtle grid pattern overlay */
         .hero-overlay {
             position: absolute;
             inset: 0;
             z-index: 1;
-            background: linear-gradient(
-                155deg,
-                rgba(47, 42, 36, 0.20) 0%,
-                rgba(18, 16, 12, 0.52) 100%
-            );
+            background-image:
+                linear-gradient(rgba(236, 106, 55, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(236, 106, 55, 0.04) 1px, transparent 1px);
+            background-size: 48px 48px;
+            mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 100%);
+            -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 100%);
         }
 
         /* Glass content panel */
@@ -756,6 +763,10 @@
             padding: 0 2rem;
         }
 
+        @media (max-width: 600px) {
+            .section-wrap { padding: 0 1.25rem; }
+        }
+
         /* Mono section label (pistachio by default) */
         .mono-label {
             display: inline-block;
@@ -912,60 +923,6 @@
             line-height: 1.7;
             color: var(--stone);
         }
-        .leis-price-details {
-            margin-top: 0.75rem;
-            font-size: 0.875rem;
-            color: var(--stone);
-        }
-        .leis-price-details summary {
-            cursor: pointer;
-            color: var(--stone);
-            list-style: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3em;
-        }
-        .leis-price-details summary::after {
-            content: '›';
-            display: inline-block;
-            transition: transform 0.2s;
-        }
-        .leis-price-details[open] summary::after {
-            transform: rotate(90deg);
-        }
-        .leis-price-details p {
-            margin-top: 0.4rem;
-            color: var(--stone);
-            line-height: 1.6;
-        }
-
-        /* Price block — main pillar only */
-        .leis-pillar-price {
-            display: flex;
-            flex-direction: column;
-            gap: 0.3rem;
-            margin-top: 1.5rem;
-            padding-top: 1.25rem;
-            border-top: 1px solid rgba(217, 209, 199, 0.85);
-        }
-
-        .leis-price-amount {
-            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
-            font-size: 1.875rem;
-            font-weight: 700;
-            color: var(--charcoal);
-            letter-spacing: -0.02em;
-            line-height: 1.1;
-        }
-
-        .leis-price-note {
-            font-family: 'JetBrains Mono', 'Courier New', monospace;
-            font-size: 0.5625rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--stone);
-        }
-
         /* Card inline CTA link */
         .leis-card-link {
             display: inline-flex;
@@ -1089,6 +1046,7 @@
             align-items: center;
             justify-content: center;
             padding: 0.625rem 1.375rem;
+            min-height: 44px;
             border: 1.5px solid var(--orange);
             color: var(--orange);
             font-family: 'Inter', sans-serif;
@@ -1139,6 +1097,58 @@
             .carousel-card { flex: 0 0 88vw; padding: 1.75rem; }
         }
 
+
+        /* ── Ergebnisse Grid ──────────────────────────────── */
+
+        .erg-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            align-items: stretch;
+        }
+
+        .erg-card {
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .erg-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(236, 106, 55, 0.3);
+            box-shadow: 0 16px 36px rgba(47, 42, 36, 0.09);
+        }
+
+        .erg-metric {
+            font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            color: var(--orange);
+            line-height: 1;
+            margin-bottom: 0.375rem;
+        }
+
+        .erg-metric-label {
+            font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
+            font-size: 0.625rem;
+            letter-spacing: 0.14em;
+            color: var(--pistachio);
+            text-transform: uppercase;
+            margin-bottom: 1.375rem;
+        }
+
+        @media (max-width: 840px) {
+            .erg-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 600px) {
+            .erg-card    { padding: 1.5rem; }
+            .leis-pillar { padding: 1.75rem; }
+        }
 
         /* ─────────────────────────────────────────────────────
            VISION SECTION
@@ -1210,6 +1220,137 @@
             font-style: normal;
             font-weight: 700;
         }
+
+        /* ─────────────────────────────────────────────────────
+           ÜBER UNS
+        ───────────────────────────────────────────────────── */
+
+        /* ─────────────────────────────────────────────────────
+           PROJEKTE SECTION
+        ───────────────────────────────────────────────────── */
+
+        #projekte {
+            padding: 6rem 0;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+        }
+
+        .projekte-intro {
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+        }
+
+        .projekte-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+        }
+
+        @media (min-width: 841px) {
+            .proj-card:nth-child(4) { grid-column: 1; }
+            .proj-card:nth-child(5) { grid-column: 2; }
+        }
+
+        @media (max-width: 840px) {
+            .projekte-grid { grid-template-columns: repeat(2, 1fr); }
+            .proj-card:nth-child(5) { grid-column: span 2; max-width: 50%; margin: 0 auto; }
+        }
+
+        @media (max-width: 540px) {
+            .projekte-grid { grid-template-columns: 1fr; }
+            .proj-card:nth-child(5) { grid-column: auto; max-width: none; margin: 0; }
+            .proj-card { padding: 1.5rem; }
+        }
+
+        .proj-card {
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .proj-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(236, 106, 55, 0.28);
+            box-shadow: 0 12px 32px rgba(47, 42, 36, 0.08);
+        }
+
+        .proj-badge {
+            display: inline-block;
+            font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
+            font-size: 0.625rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.25rem 0.625rem;
+            border-radius: 6px;
+            align-self: flex-start;
+        }
+
+        .proj-badge--website   { background: rgba(60, 90, 42, 0.1);   color: var(--pistachio); }
+        .proj-badge--webapp    { background: rgba(236, 106, 55, 0.1); color: var(--orange); }
+        .proj-badge--crm       { background: rgba(120, 148, 100, 0.1);color: var(--sage); }
+        .proj-badge--cms       { background: rgba(47, 42, 36, 0.1);   color: var(--charcoal); }
+        .proj-badge--dashboard { background: rgba(60, 90, 42, 0.1);   color: var(--pistachio); }
+
+        .proj-title {
+            font-family: 'Baskerville', 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            line-height: 1.25;
+            margin: 0;
+        }
+
+        .proj-desc {
+            font-size: 0.9rem;
+            line-height: 1.65;
+            color: var(--stone);
+            flex: 1;
+            margin: 0;
+        }
+
+        .proj-links {
+            display: flex;
+            gap: 0.625rem;
+            margin-top: auto;
+            padding-top: 0.375rem;
+            flex-wrap: wrap;
+        }
+
+        .proj-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-decoration: none;
+            min-height: 44px;
+            transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+            cursor: pointer;
+        }
+
+        .proj-btn--ghost {
+            border: 1.5px solid var(--border);
+            color: var(--stone);
+            background: transparent;
+        }
+
+        .proj-btn--ghost:hover { border-color: var(--charcoal); color: var(--charcoal); }
+
+        .proj-btn--solid {
+            background: var(--orange);
+            color: #fff;
+            border: 1.5px solid var(--orange);
+        }
+
+        .proj-btn--solid:hover { background: var(--orange-hover); border-color: var(--orange-hover); }
 
         /* ─────────────────────────────────────────────────────
            ÜBER UNS
@@ -1504,6 +1645,110 @@
         .reveal-delay-3 { transition-delay: 0.3s; }
 
         /* ─────────────────────────────────────────────────────
+           KENNZAHLEN-BAR
+        ───────────────────────────────────────────────────── */
+
+        #zahlen-bar {
+            padding: 3rem 0;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .zahlen-grid {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .zahlen-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex: 1;
+        }
+
+        .zahlen-zahl {
+            font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
+            font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+            font-weight: 700;
+            color: var(--orange);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .zahlen-label {
+            font-size: 0.8125rem;
+            color: var(--stone);
+            line-height: 1.4;
+            max-width: 12ch;
+        }
+
+        .zahlen-divider {
+            width: 1px;
+            height: 3rem;
+            background: var(--border);
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 680px) {
+            .zahlen-grid { flex-wrap: wrap; justify-content: center; gap: 2rem 3rem; }
+            .zahlen-divider { display: none; }
+            .zahlen-item { flex: 0 0 40%; }
+            .zahlen-label { max-width: none; }
+        }
+
+        /* ─────────────────────────────────────────────────────
+           TECH STACK TICKER
+        ───────────────────────────────────────────────────── */
+
+        #ticker {
+            padding: 1.75rem 0;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+            background: var(--surface);
+        }
+
+        .ticker-wrapper {
+            overflow: hidden;
+        }
+
+        .ticker-wrapper:hover .ticker-track {
+            animation-play-state: paused;
+        }
+
+        .ticker-track {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            width: max-content;
+            animation: ticker-scroll 32s linear infinite;
+        }
+
+        .ticker-item {
+            font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
+            font-size: 0.8125rem;
+            color: var(--stone);
+            letter-spacing: 0.04em;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .ticker-sep {
+            color: var(--border);
+            flex-shrink: 0;
+            font-size: 0.8125rem;
+            line-height: 1;
+        }
+
+        @keyframes ticker-scroll {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+
+        /* ─────────────────────────────────────────────────────
            PROBLEM SECTION
         ───────────────────────────────────────────────────── */
 
@@ -1630,6 +1875,80 @@
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        .trust-flow {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 0 1rem;
+        }
+
+        .trust-flow-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.625rem;
+            text-align: center;
+        }
+
+        .trust-flow-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--surface);
+            border: 1.5px solid var(--border);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--orange);
+        }
+
+        .trust-flow-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .trust-flow-text {
+            display: flex;
+            flex-direction: column;
+            gap: 0.125rem;
+        }
+
+        .trust-flow-text strong {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--charcoal);
+        }
+
+        .trust-flow-text span {
+            font-size: 0.75rem;
+            color: var(--stone);
+        }
+
+        .trust-flow-arrow {
+            font-size: 1.5rem;
+            color: var(--pistachio);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .trust-flow-time {
+            width: 100%;
+            text-align: center;
+            margin-top: 2rem;
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 0.8125rem;
+            color: var(--stone);
+            letter-spacing: 0.02em;
+        }
+
+        @media (max-width: 600px) {
+            .trust-flow { flex-direction: column; }
+            .trust-flow-arrow { transform: rotate(90deg); }
         }
 
         .trust-load-btn {
@@ -1936,7 +2255,7 @@
                 <img src="images/RAIS_LOGO_PICTOGRAM.png" alt="" width="52" height="52" aria-hidden="true">
                 <div class="nav-brand-words">
                     <span class="nav-wordmark">RAIS</span>
-                    <span class="nav-submark">Ritz AI Solutions</span>
+                    <span class="nav-submark">Strategische Gestaltung effizienter Betriebsprozesse</span>
                 </div>
             </a>
 
@@ -2041,6 +2360,94 @@
                 </svg>
             </div>
 
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════
+             KENNZAHLEN-BAR
+        ═══════════════════════════════════════════════════ -->
+        <section id="zahlen-bar" aria-label="Kennzahlen">
+            <div class="section-wrap">
+                <div class="zahlen-grid reveal">
+                    <div class="zahlen-item">
+                        <div class="zahlen-zahl">&lt; 4 Min.</div>
+                        <div class="zahlen-label">vollautomatisches Onboarding</div>
+                    </div>
+                    <div class="zahlen-divider" aria-hidden="true"></div>
+                    <div class="zahlen-item">
+                        <div class="zahlen-zahl">0</div>
+                        <div class="zahlen-label">manuelle Schritte nach Vertragsabschluss</div>
+                    </div>
+                    <div class="zahlen-divider" aria-hidden="true"></div>
+                    <div class="zahlen-item">
+                        <div class="zahlen-zahl">100%</div>
+                        <div class="zahlen-label">Follow-up ohne manuellen Aufwand</div>
+                    </div>
+                    <div class="zahlen-divider" aria-hidden="true"></div>
+                    <div class="zahlen-item">
+                        <div class="zahlen-zahl">24/7</div>
+                        <div class="zahlen-label">Anfragenbeantwortung per KI-Agent</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════
+             TECH STACK TICKER
+        ═══════════════════════════════════════════════════ -->
+        <section id="ticker" aria-label="Eingesetzte Technologien">
+            <div class="ticker-wrapper" aria-hidden="true">
+                <div class="ticker-track">
+                    <span class="ticker-item">n8n</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item">Supabase</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item">Google Cloud</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item">Microsoft 365</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item">DocuSign</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item">HubSpot</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item">Python</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item">TypeScript</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item">OpenAI</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item">Claude</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item">Vercel</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item">PostgreSQL</span>
+                    <span class="ticker-sep">·</span>
+                    <!-- Duplicate set for seamless loop -->
+                    <span class="ticker-item">n8n</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item">Supabase</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item">Google Cloud</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item">Microsoft 365</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item">DocuSign</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item">HubSpot</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item">Python</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item">TypeScript</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item">OpenAI</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item">Claude</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item">Vercel</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item">PostgreSQL</span>
+                    <span class="ticker-sep">·</span>
+                </div>
+            </div>
         </section>
 
         <!-- ═══════════════════════════════════════════════════
@@ -2209,41 +2616,114 @@
                     </div>
                 </div>
 
-                <!-- Carousel -->
-                <div class="carousel-viewport" id="carouselViewport">
-                    <div class="carousel-track" id="carouselTrack">
+                <!-- Ergebnisse Grid -->
+                <div class="erg-grid">
 
-                        <article class="carousel-card is-active">
-                            <span class="branchen-num">01</span>
-                            <i data-lucide="timer" class="branchen-icon" aria-hidden="true"></i>
-                            <h3 class="branchen-title">Onboarding in unter 4 Minuten</h3>
-                            <p class="branchen-desc">Was vorher 2 bis 3 Stunden manueller Arbeit gekostet hat: Ordner anlegen, Dokumente verschicken, CRM-Eintrag, interne Benachrichtigung. Das läuft jetzt vollautomatisch ab. Ausgelöst durch eine Unterschrift.</p>
-                        </article>
+                    <article class="erg-card reveal">
+                        <div class="erg-metric">&lt; 4 Min.</div>
+                        <div class="erg-metric-label">vollautomatisches Onboarding</div>
+                        <i data-lucide="timer" class="branchen-icon" aria-hidden="true"></i>
+                        <h3 class="branchen-title">Onboarding in unter 4 Minuten</h3>
+                        <p class="branchen-desc">Was vorher 2 bis 3 Stunden manueller Arbeit gekostet hat: Ordner anlegen, Dokumente verschicken, CRM-Eintrag, interne Benachrichtigung. Das läuft jetzt vollautomatisch ab. Ausgelöst durch eine Unterschrift.</p>
+                        <button type="button" class="branchen-btn" onclick="openModal()">Demo anfordern</button>
+                    </article>
 
-                        <article class="carousel-card">
-                            <span class="branchen-num">02</span>
-                            <i data-lucide="user-check" class="branchen-icon" aria-hidden="true"></i>
-                            <h3 class="branchen-title">Kein verlorener Kontakt mehr</h3>
-                            <p class="branchen-desc">Jeder Interessent der einen Termin bucht wird automatisch bis zum Gespräch warmgehalten. Personalisierte Nachrichten, keine manuelle Nachverfolgung nötig.</p>
-                        </article>
+                    <article class="erg-card reveal reveal-delay-1">
+                        <div class="erg-metric">0</div>
+                        <div class="erg-metric-label">verlorene Kontakte</div>
+                        <i data-lucide="user-check" class="branchen-icon" aria-hidden="true"></i>
+                        <h3 class="branchen-title">Kein verlorener Kontakt mehr</h3>
+                        <p class="branchen-desc">Jeder Interessent der einen Termin bucht wird automatisch bis zum Gespräch warmgehalten. Personalisierte Nachrichten, keine manuelle Nachverfolgung nötig.</p>
+                        <button type="button" class="branchen-btn" onclick="openModal()">Demo anfordern</button>
+                    </article>
 
-                        <article class="carousel-card">
-                            <span class="branchen-num">03</span>
-                            <i data-lucide="repeat" class="branchen-icon" aria-hidden="true"></i>
-                            <h3 class="branchen-title">Bestandskunden aktiv halten</h3>
-                            <p class="branchen-desc">Automatisierte Kampagnen die Bestandskunden auf Basis ihres Profils ansprechen. Zur richtigen Zeit, mit dem richtigen Angebot.</p>
-                        </article>
+                    <article class="erg-card reveal reveal-delay-2">
+                        <div class="erg-metric">3×</div>
+                        <div class="erg-metric-label">mehr Reaktionen bei Bestandskunden</div>
+                        <i data-lucide="repeat" class="branchen-icon" aria-hidden="true"></i>
+                        <h3 class="branchen-title">Bestandskunden aktiv halten</h3>
+                        <p class="branchen-desc">Automatisierte Kampagnen die Bestandskunden auf Basis ihres Profils ansprechen. Zur richtigen Zeit, mit dem richtigen Angebot.</p>
+                        <button type="button" class="branchen-btn" onclick="openModal()">Demo anfordern</button>
+                    </article>
 
-                    </div>
                 </div>
 
-                <!-- Footer: dots -->
-                <div class="carousel-footer">
-                    <div class="carousel-dots" role="tablist" aria-label="Ergebnis wählen">
-                        <button class="carousel-dot is-active" role="tab" aria-selected="true"  data-index="0" aria-label="Onboarding"></button>
-                        <button class="carousel-dot"           role="tab" aria-selected="false" data-index="1" aria-label="Nachverfolgung"></button>
-                        <button class="carousel-dot"           role="tab" aria-selected="false" data-index="2" aria-label="Bestandskunden"></button>
-                    </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════
+             PROJEKTE
+        ═══════════════════════════════════════════════════ -->
+        <section id="projekte">
+            <div class="section-wrap">
+
+                <div class="projekte-intro reveal">
+                    <span class="mono-label">Ausgewählte Projekte</span>
+                    <h2 class="section-h2">Ausgewählte Projekte</h2>
+                    <p class="section-sub">Interne Systeme, Demo-Projekte und produktive Lösungen — von der einfachen Website bis zum maßgeschneiderten CRM.</p>
+                </div>
+
+                <div class="projekte-grid">
+
+                    <article class="proj-card reveal">
+                        <span class="proj-badge proj-badge--website">Website</span>
+                        <h3 class="proj-title">Fliesen Weber</h3>
+                        <p class="proj-desc">Branchenspezifische Website für einen Fliesenlegerbetrieb — mit integriertem Kostenrechner, Calendly-Terminbuchung und Web3Forms-Kontaktformular. Vollständig statisch, SEO-optimiert und live deployed.</p>
+                        <div class="proj-links">
+                            <!-- REPLACE: GitHub URL für Fliesen Weber Repo -->
+                            <a href="#" data-replace="GitHub URL Fliesen Weber" target="_blank" rel="noopener noreferrer" class="proj-btn proj-btn--ghost">GitHub ↗</a>
+                            <a href="https://fliesen-weber.vercel.app" target="_blank" rel="noopener noreferrer" class="proj-btn proj-btn--solid">Live ↗</a>
+                        </div>
+                    </article>
+
+                    <article class="proj-card reveal reveal-delay-1">
+                        <span class="proj-badge proj-badge--webapp">Webapp</span>
+                        <h3 class="proj-title">Restaurant Reservierungs- &amp; Bestellsystem</h3>
+                        <p class="proj-desc">Vollständiges digitales System für einen Gastronomiebetrieb — Online-Reservierung, digitale Speisekarte und Bestellabwicklung in einer integrierten Plattform. Demo-Projekt mit realer Systemarchitektur.</p>
+                        <div class="proj-links">
+                            <!-- REPLACE: GitHub URL Restaurant System -->
+                            <a href="#" data-replace="GitHub URL Restaurant System" target="_blank" rel="noopener noreferrer" class="proj-btn proj-btn--ghost">GitHub ↗</a>
+                            <!-- REPLACE: Vercel URL Restaurant System -->
+                            <a href="#" data-replace="Vercel URL Restaurant System" target="_blank" rel="noopener noreferrer" class="proj-btn proj-btn--solid">Live ↗</a>
+                        </div>
+                    </article>
+
+                    <article class="proj-card reveal reveal-delay-2">
+                        <span class="proj-badge proj-badge--crm">CRM System</span>
+                        <h3 class="proj-title">RAIS CRM</h3>
+                        <p class="proj-desc">Intern entwickeltes Customer-Relationship-System zur Verwaltung von Leads, Projektstatus und Kundenkommunikation — maßgeschneidert für eine kleine Agentur ohne Overhead großer SaaS-Lösungen.</p>
+                        <div class="proj-links">
+                            <!-- REPLACE: GitHub URL RAIS CRM -->
+                            <a href="#" data-replace="GitHub URL RAIS CRM" target="_blank" rel="noopener noreferrer" class="proj-btn proj-btn--ghost">GitHub ↗</a>
+                            <!-- REPLACE: Vercel URL RAIS CRM -->
+                            <a href="#" data-replace="Vercel URL RAIS CRM" target="_blank" rel="noopener noreferrer" class="proj-btn proj-btn--solid">Live ↗</a>
+                        </div>
+                    </article>
+
+                    <article class="proj-card reveal reveal-delay-1">
+                        <span class="proj-badge proj-badge--cms">CMS</span>
+                        <h3 class="proj-title">Eckstein Content CMS</h3>
+                        <p class="proj-desc">Maßgeschneidertes Content-Management-System für einen Podcast-Betrieb — mit Episodenverwaltung, Redaktionsplanung und strukturiertem Publishing-Workflow. Gebaut für redaktionellen Alltag, nicht für Entwickler.</p>
+                        <div class="proj-links">
+                            <!-- REPLACE: GitHub URL Eckstein CMS -->
+                            <a href="#" data-replace="GitHub URL Eckstein CMS" target="_blank" rel="noopener noreferrer" class="proj-btn proj-btn--ghost">GitHub ↗</a>
+                            <!-- REPLACE: Vercel URL Eckstein CMS -->
+                            <a href="#" data-replace="Vercel URL Eckstein CMS" target="_blank" rel="noopener noreferrer" class="proj-btn proj-btn--solid">Live ↗</a>
+                        </div>
+                    </article>
+
+                    <article class="proj-card reveal reveal-delay-2">
+                        <span class="proj-badge proj-badge--dashboard">Dashboard</span>
+                        <h3 class="proj-title">Effizienz- &amp; Habittracker</h3>
+                        <p class="proj-desc">Datengetriebenes Dashboard zur Verfolgung persönlicher KPIs, Gewohnheiten und Produktivitätsziele — mit Visualisierungen, Trendanalyse und täglichem Tracking. Gebaut für messbaren persönlichen Output.</p>
+                        <div class="proj-links">
+                            <!-- REPLACE: GitHub URL Habittracker -->
+                            <a href="#" data-replace="GitHub URL Habittracker" target="_blank" rel="noopener noreferrer" class="proj-btn proj-btn--ghost">GitHub ↗</a>
+                            <!-- REPLACE: Vercel URL Habittracker -->
+                            <a href="#" data-replace="Vercel URL Habittracker" target="_blank" rel="noopener noreferrer" class="proj-btn proj-btn--solid">Live ↗</a>
+                        </div>
+                    </article>
+
                 </div>
 
             </div>
@@ -2268,16 +2748,51 @@
                         <div class="trust-browser-dots">
                             <span></span><span></span><span></span>
                         </div>
-                        <div class="trust-browser-url">Demo im Gespräch verfügbar</div>
+                        <div class="trust-browser-url">onboarding.ritz-ai.solutions</div>
                     </div>
                     <div class="trust-browser-body" id="trustBrowserBody">
-                        <button type="button" id="trustLoadBtn" class="trust-load-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <path d="M15 10l4.553-2.069A1 1 0 0 1 21 8.82v6.36a1 1 0 0 1-1.447.89L15 14"/>
-                                <rect x="1" y="6" width="14" height="12" rx="2"/>
-                            </svg>
-                            Demo im Gespräch anfordern
-                        </button>
+                        <div class="trust-flow">
+                            <div class="trust-flow-step">
+                                <div class="trust-flow-icon">
+                                    <i data-lucide="pen-line" aria-hidden="true"></i>
+                                </div>
+                                <div class="trust-flow-text">
+                                    <strong>Unterschrift</strong>
+                                    <span>Vertrag digital unterzeichnet</span>
+                                </div>
+                            </div>
+                            <div class="trust-flow-arrow" aria-hidden="true">→</div>
+                            <div class="trust-flow-step">
+                                <div class="trust-flow-icon">
+                                    <i data-lucide="folder-plus" aria-hidden="true"></i>
+                                </div>
+                                <div class="trust-flow-text">
+                                    <strong>Ordner</strong>
+                                    <span>Automatisch angelegt</span>
+                                </div>
+                            </div>
+                            <div class="trust-flow-arrow" aria-hidden="true">→</div>
+                            <div class="trust-flow-step">
+                                <div class="trust-flow-icon">
+                                    <i data-lucide="mail-check" aria-hidden="true"></i>
+                                </div>
+                                <div class="trust-flow-text">
+                                    <strong>E-Mail</strong>
+                                    <span>Dokumente versendet</span>
+                                </div>
+                            </div>
+                            <div class="trust-flow-arrow" aria-hidden="true">→</div>
+                            <div class="trust-flow-step">
+                                <div class="trust-flow-icon">
+                                    <i data-lucide="database" aria-hidden="true"></i>
+                                </div>
+                                <div class="trust-flow-text">
+                                    <strong>CRM</strong>
+                                    <span>Eintrag erstellt</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="trust-flow-time">Gesamtdauer: unter 4 Minuten. Kein manueller Schritt.</div>
                     </div>
                 </div>
 
@@ -2433,7 +2948,7 @@
                 <a href="impressum.html">Impressum</a>
                 <a href="datenschutz.html">Datenschutz</a>
             </nav>
-            <span class="footer-copy">© 2026 Ritz AI Solutions, Koblenz</span>
+            <span class="footer-copy">© 2026 RAIS · Strategische Gestaltung effizienter Betriebsprozesse für Mittelstandunternehmen · Koblenz</span>
         </div>
     </footer>
 
@@ -2568,7 +3083,7 @@
 
         /* ── Antigravity reveal orchestration ───────────────── */
         var revealTargets = document.querySelectorAll([
-            '.leis-intro', '.branchen-intro', '.ueberuns-grid > div',
+            '.leis-intro', '.projekte-intro', '.ueberuns-grid > div',
             '.problem-item', '.contact-text-col', '.contact-detail', '.cal-embed-wrap'
         ].join(','));
 
@@ -2698,7 +3213,7 @@
     <!-- ═══════════════════════════════════════════════════════
          BOOKING MODAL
     ═══════════════════════════════════════════════════════ -->
-    <div id="booking-modal" role="dialog" aria-modal="true" aria-label="Demo buchen">
+    <div id="booking-modal" role="dialog" aria-modal="true" aria-label="Kostenloses Erstgespräch buchen">
         <div class="bm-backdrop" id="bm-backdrop"></div>
         <div class="bm-box">
 
@@ -2732,16 +3247,17 @@
                 </div>
             </div>
 
-            <!-- Step 2: Aktuelle Website -->
+            <!-- Step 2: Pain Point -->
             <div class="bm-step" id="bm-step-1">
                 <p class="bm-label">Schritt 2 von 3</p>
-                <h2 class="bm-title">Ihre aktuelle Online-Präsenz</h2>
-                <p class="bm-sub">Haben Sie bereits eine Website?</p>
-                <div class="bm-options" id="bm-options-website">
-                    <button type="button" class="bm-option" data-value="keine"><span class="bm-option-icon">🚫</span> Noch keine Website</button>
-                    <button type="button" class="bm-option" data-value="veraltet"><span class="bm-option-icon">🕰️</span> Ja, aber veraltet</button>
-                    <button type="button" class="bm-option" data-value="nur-social"><span class="bm-option-icon">📱</span> Nur Social Media</button>
-                    <button type="button" class="bm-option" data-value="zufrieden"><span class="bm-option-icon">✅</span> Ja, bin zufrieden</button>
+                <h2 class="bm-title">Was kostet Sie am meisten Zeit?</h2>
+                <p class="bm-sub">So kann ich das Gespräch gezielt vorbereiten.</p>
+                <div class="bm-options" id="bm-options-pain">
+                    <button type="button" class="bm-option" data-value="onboarding"><span class="bm-option-icon">📋</span> Kundenonboarding</button>
+                    <button type="button" class="bm-option" data-value="nachverfolgung"><span class="bm-option-icon">🔔</span> Nachverfolgung von Interessenten</button>
+                    <button type="button" class="bm-option" data-value="kommunikation"><span class="bm-option-icon">💬</span> Kundenkommunikation / Anfragen</button>
+                    <button type="button" class="bm-option" data-value="dokumentation"><span class="bm-option-icon">🗂️</span> Internes Dokumentenmanagement</button>
+                    <button type="button" class="bm-option" data-value="anderes"><span class="bm-option-icon">✏️</span> Anderes</button>
                 </div>
                 <div class="bm-actions">
                     <button type="button" class="bm-btn-back" id="bm-back-1">← Zurück</button>
@@ -2749,16 +3265,16 @@
                 </div>
             </div>
 
-            <!-- Step 3: Größte Herausforderung -->
+            <!-- Step 3: Unternehmensgröße -->
             <div class="bm-step" id="bm-step-2">
                 <p class="bm-label">Schritt 3 von 3</p>
-                <h2 class="bm-title">Ihre größte Herausforderung</h2>
-                <p class="bm-sub">Was beschäftigt Sie aktuell am meisten?</p>
-                <div class="bm-options" id="bm-options-challenge">
-                    <button type="button" class="bm-option" data-value="zu-wenig-anfragen"><span class="bm-option-icon">📉</span> Zu wenig Anfragen</button>
-                    <button type="button" class="bm-option" data-value="keine-zeit"><span class="bm-option-icon">⏱️</span> Keine Zeit für Verwaltung</button>
-                    <button type="button" class="bm-option" data-value="sichtbarkeit"><span class="bm-option-icon">🔍</span> Schlechte Sichtbarkeit online</button>
-                    <button type="button" class="bm-option" data-value="anderes"><span class="bm-option-icon">💬</span> Anderes</button>
+                <h2 class="bm-title">Wie groß ist Ihr Team?</h2>
+                <p class="bm-sub">Damit ich die richtige Lösung einschätzen kann.</p>
+                <div class="bm-options" id="bm-options-size">
+                    <button type="button" class="bm-option" data-value="solo"><span class="bm-option-icon">🧑</span> Solo</button>
+                    <button type="button" class="bm-option" data-value="2-5"><span class="bm-option-icon">👥</span> 2–5 Personen</button>
+                    <button type="button" class="bm-option" data-value="6-20"><span class="bm-option-icon">🏢</span> 6–20 Personen</button>
+                    <button type="button" class="bm-option" data-value="20+"><span class="bm-option-icon">🏗️</span> Mehr als 20</button>
                 </div>
                 <div class="bm-actions">
                     <button type="button" class="bm-btn-back" id="bm-back-2">← Zurück</button>
@@ -2789,7 +3305,7 @@
         var steps    = [0,1,2,3].map(function(i){ return document.getElementById('bm-step-'+i); });
         var dots     = document.querySelectorAll('.bm-dot');
 
-        var state = { step: 0, name: '', email: '', website: '', challenge: '', calLoaded: false };
+        var state = { step: 0, name: '', email: '', pain_point: '', team_size: '', calLoaded: false };
 
         /* ── open / close ── */
         function openModal() {
@@ -2827,8 +3343,8 @@
                 });
             });
         }
-        bindOptions('bm-options-website',   'website');
-        bindOptions('bm-options-challenge', 'challenge');
+        bindOptions('bm-options-pain', 'pain_point');
+        bindOptions('bm-options-size', 'team_size');
 
         /* ── step 1 → 2 ── */
         document.getElementById('bm-next-0').addEventListener('click', function(){
@@ -2863,10 +3379,10 @@
                     'Prefer': 'return=minimal'
                 },
                 body: JSON.stringify({
-                    name:              state.name,
-                    email:             state.email,
-                    website_status:    state.website   || null,
-                    biggest_challenge: state.challenge || null
+                    name:       state.name,
+                    email:      state.email,
+                    pain_point: state.pain_point || null,
+                    team_size:  state.team_size  || null
                 })
             }).catch(function(){});
 
