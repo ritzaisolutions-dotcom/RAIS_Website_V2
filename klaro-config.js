@@ -38,15 +38,25 @@
   var SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFkeXdhZW5tb2pkeGhmeHFidnVuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0MDYwMTYsImV4cCI6MjA5MDk4MjAxNn0.rfIzS2eY3yZCvap0pKdB7V-AfKmnvQLx_QLaFEi1gts';
 
   /* Unveränderliche Browser-ID (kein Personenbezug, nur zur Deduplizierung) */
+  function generateUUID() {
+    if (window.crypto && window.crypto.randomUUID) {
+      return window.crypto.randomUUID();
+    }
+    var bytes = new Uint8Array(16);
+    window.crypto.getRandomValues(bytes);
+    bytes[6] = (bytes[6] & 0x0f) | 0x40;
+    bytes[8] = (bytes[8] & 0x3f) | 0x80;
+    var hex = Array.from(bytes).map(function (b) { return b.toString(16).padStart(2, '0'); }).join('');
+    return hex.slice(0,8)+'-'+hex.slice(8,12)+'-'+hex.slice(12,16)+'-'+hex.slice(16,20)+'-'+hex.slice(20);
+  }
+
   function getConsentId() {
     var key = 'rais_cid';
-    var id = localStorage.getItem(key);
+    var id;
+    try { id = localStorage.getItem(key); } catch (e) { return 'anonymous'; }
     if (!id) {
-      id = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-        var r = Math.random() * 16 | 0;
-        return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
-      });
-      localStorage.setItem(key, id);
+      id = generateUUID();
+      try { localStorage.setItem(key, id); } catch (e) { /* quota exceeded — proceed without persistence */ }
     }
     return id;
   }
@@ -68,14 +78,18 @@
     }).catch(function () { /* silent fail — Consent ist im localStorage */ });
   }
 
-  /* localStorage.setItem abfangen: Klaro schreibt unter dem Key 'klaro' */
-  var _origSetItem = localStorage.setItem.bind(localStorage);
-  localStorage.setItem = function (key, value) {
-    _origSetItem(key, value);
-    if (key === 'klaro') {
-      try { sendConsent(JSON.parse(value)); } catch (e) { /* ignore */ }
+  /* Klaro-Consent abfangen via Storage.prototype.setItem-Intercept */
+  var _origSetItem = Storage.prototype.setItem;
+  Object.defineProperty(Storage.prototype, 'setItem', {
+    configurable: true,
+    writable: true,
+    value: function (key, value) {
+      try { _origSetItem.call(this, key, value); } catch (e) { /* QuotaExceeded — swallow */ }
+      if (this === localStorage && key === 'klaro') {
+        try { sendConsent(JSON.parse(value)); } catch (e) { /* malformed JSON — safe to ignore */ }
+      }
     }
-  };
+  });
 })();
 
 

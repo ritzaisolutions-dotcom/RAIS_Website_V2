@@ -18,6 +18,21 @@ Options -Indexes
     RewriteRule ^temp_zip_content/ - [F,L]
     RewriteRule ^RAIS_WEBSITE_LIVE/ - [F,L]
     RewriteRule ^\.git/ - [F,L]
+
+    # Deindexierte Branchenseiten — 410 Gone
+    RewriteRule ^elektriker\.html$ - [G,L]
+    RewriteRule ^fliesenleger\.html$ - [G,L]
+    RewriteRule ^maler\.html$ - [G,L]
+</IfModule>
+
+# Security Headers
+<IfModule mod_headers.c>
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+    Header always set Content-Security-Policy-Report-Only "default-src 'self'; script-src 'self' 'unsafe-inline' cdn.jsdelivr.net js-de.sentry-cdn.com assets.calendly.com *.google-analytics.com *.googletagmanager.com connect.facebook.net; style-src 'self' 'unsafe-inline' cdn.jsdelivr.net fonts.googleapis.com; img-src 'self' data: *.google-analytics.com *.googletagmanager.com *.facebook.com; font-src 'self' fonts.gstatic.com; connect-src 'self' *.ingest.de.sentry.io *.google-analytics.com *.googletagmanager.com qdywaenmojdxhfxqbvun.supabase.co connect.facebook.net; frame-src calendly.com *.calendly.com; object-src 'none'; base-uri 'self'"
 </IfModule>
 
 # Cache Control for v3.0 release

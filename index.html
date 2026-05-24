@@ -4,27 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>RAIS – Websites für Fliesenleger, Elektriker und Maler</title>
-    <meta name="description" content="RAIS baut spezialisierte Seiten für Fliesenleger, Elektriker und Maler. Jede Seite hat eigenen Anfrageweg, klares Angebot und 1.200 EUR Festpreis.">
+    <title>RAIS – Prozessautomatisierung &amp; KI-Lösungen für kleine Unternehmen</title>
+    <meta name="description" content="RAIS automatisiert manuelle Prozesse in kleinen Unternehmen. KI-Agenten, Workflow-Automation und digitale Lösungen die messbaren Mehrwert liefern.">
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/png" href="favicon.png?v=3">
     <link rel="apple-touch-icon" href="favicon.png?v=3">
 
     <!-- OpenGraph -->
-    <meta property="og:title" content="RAIS - Websites für Fliesenleger, Elektriker und Maler">
-    <meta property="og:description" content="Spezialisierte Branchenseiten mit passendem Anfrageweg, klarem Angebot und 1.200 EUR Festpreis.">
+    <meta property="og:title" content="RAIS – Weniger manuelle Arbeit. Mehr Zeit für das Wesentliche.">
+    <meta property="og:description" content="RAIS automatisiert manuelle Prozesse in kleinen Unternehmen. KI-Agenten, Workflow-Automation und digitale Lösungen die messbaren Mehrwert liefern.">
     <meta property="og:url" content="https://ritz-ai.solutions">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://ritz-ai.solutions/images/fliesenweber-demo-preview.png">
-    <meta property="og:image:width" content="1280">
-    <meta property="og:image:height" content="720">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="RAIS - Websites für Fliesenleger, Elektriker und Maler">
-    <meta name="twitter:description" content="Spezialisierte Branchenseiten mit passendem Anfrageweg, klarem Angebot und 1.200 EUR Festpreis.">
-    <meta name="twitter:image" content="https://ritz-ai.solutions/images/fliesenweber-demo-preview.png">
+    <meta name="twitter:title" content="RAIS – Weniger manuelle Arbeit. Mehr Zeit für das Wesentliche.">
+    <meta name="twitter:description" content="RAIS automatisiert manuelle Prozesse in kleinen Unternehmen. KI-Agenten, Workflow-Automation und digitale Lösungen die messbaren Mehrwert liefern.">
 
     <!-- Schema.org -->
     <script type="application/ld+json">
@@ -33,7 +29,7 @@
       "@type": "ProfessionalService",
       "name": "RAIS (Ritz AI Solutions)",
       "url": "https://ritz-ai.solutions",
-      "description": "Spezialisierte Branchenseiten für Fliesenleger, Elektriker und Maler mit klarem Anfrageweg und sauberem Erstkontakt.",
+      "description": "Prozessautomatisierung und KI-Lösungen für kleine Unternehmen. Messbar, direkt, ohne Umweg.",
       "brand": { "@type": "Brand", "name": "RAIS" }
     }
     </script>
@@ -1011,7 +1007,7 @@
         .branchen-header { margin-bottom: 3rem; }
         .branchen-intro { max-width: 540px; }
 
-        /* ── Carousel footer: dots + quick-select ─────────── */
+        /* ── Carousel footer: dots ────────────────────────── */
 
         .carousel-footer {
             display: flex;
@@ -1020,88 +1016,6 @@
             margin-top: 2rem;
         }
 
-        /* ── Quick-select dropdown ────────────────────────── */
-
-        .branchen-select { position: relative; }
-
-        .branchen-select-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            padding: 0.5rem 0.9375rem;
-            font-family: 'JetBrains Mono', 'Courier New', monospace;
-            font-size: 0.5625rem;
-            letter-spacing: 0.13em;
-            text-transform: uppercase;
-            color: var(--stone);
-            background: rgba(251, 248, 243, 0.7);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: color 0.15s ease, border-color 0.15s ease;
-            white-space: nowrap;
-        }
-
-        .branchen-select-btn:hover {
-            color: var(--charcoal);
-            border-color: var(--stone);
-        }
-
-        .branchen-select-chevron {
-            width: 11px;
-            height: 11px;
-            transition: transform 0.2s ease;
-            opacity: 0.5;
-        }
-
-        .branchen-select.is-open .branchen-select-chevron { transform: rotate(180deg); }
-
-        .branchen-select-panel {
-            position: absolute;
-            bottom: calc(100% + 8px);
-            right: 0;
-            min-width: 252px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 6px;
-            box-shadow: 0 8px 32px rgba(47,42,36,0.11), 0 2px 8px rgba(47,42,36,0.06);
-            opacity: 0;
-            pointer-events: none;
-            transform: translateY(6px);
-            transition: opacity 0.15s ease, transform 0.15s ease;
-            z-index: 20;
-        }
-
-        .branchen-select.is-open .branchen-select-panel {
-            opacity: 1;
-            pointer-events: auto;
-            transform: translateY(0);
-        }
-
-        .branchen-select-item {
-            display: flex;
-            align-items: center;
-            gap: 0.625rem;
-            padding: 0.625rem 0.875rem;
-            font-size: 0.9375rem;
-            color: var(--stone);
-            text-decoration: none;
-            border-radius: 8px;
-            transition: color 0.15s ease, background-color 0.15s ease;
-        }
-
-        .branchen-select-item:hover {
-            color: var(--charcoal);
-            background-color: rgba(236, 106, 55, 0.08);
-        }
-
-        .branchen-select-item-icon {
-            width: 1rem;
-            height: 1rem;
-            color: var(--orange);
-            flex-shrink: 0;
-        }
 
         /* ── Carousel ──────────────────────────────────────── */
 
@@ -2018,7 +1932,7 @@
         <div class="nav-inner">
 
             <!-- Brand -->
-            <a href="/" class="nav-brand" aria-label="RAIS — Zur Startseite">
+            <a href="/" class="nav-brand" aria-label="RAIS zur Startseite">
                 <img src="images/RAIS_LOGO_PICTOGRAM.png" alt="" width="52" height="52" aria-hidden="true">
                 <div class="nav-brand-words">
                     <span class="nav-wordmark">RAIS</span>
@@ -2034,51 +1948,8 @@
                         <a href="#leistungen">Leistungen</a>
                     </li>
 
-                    <li class="nav-dropdown">
-                        <button
-                            type="button"
-                            id="branchen-btn"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                            aria-controls="branchen-panel"
-                        >
-                            Branchen
-                            <svg class="dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <polyline points="6 9 12 15 18 9"/>
-                            </svg>
-                        </button>
-
-                        <div class="dropdown-panel" id="branchen-panel" role="menu" aria-labelledby="branchen-btn">
-
-                            <a href="fliesenleger.html" class="dropdown-item" role="menuitem">
-                                <!-- Tile / grid icon -->
-                                <svg class="dropdown-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <rect x="3"  y="3"  width="7" height="7" rx="1"/>
-                                    <rect x="14" y="3"  width="7" height="7" rx="1"/>
-                                    <rect x="3"  y="14" width="7" height="7" rx="1"/>
-                                    <rect x="14" y="14" width="7" height="7" rx="1"/>
-                                </svg>
-                                Fliesenleger &amp; Bodenleger
-                            </a>
-
-                            <a href="elektriker.html" class="dropdown-item" role="menuitem">
-                                <!-- Lightning bolt -->
-                                <svg class="dropdown-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-                                </svg>
-                                Elektriker
-                            </a>
-
-                            <a href="maler.html" class="dropdown-item" role="menuitem">
-                                <!-- Paintbrush -->
-                                <svg class="dropdown-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <path d="M9.06 11.9l8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08"/>
-                                    <path d="M7.07 14.94c-1.66 0-3 1.35-3 3.02 0 1.33-2.5 1.52-2 2.45.63 1.24 2.49.97 3.35.64 1.07-.42 1.65-1.62 1.65-2.73v-1.38z"/>
-                                </svg>
-                                Maler
-                            </a>
-
-                        </div>
+                    <li>
+                        <a href="#ergebnisse">Ergebnisse</a>
                     </li>
 
                     <li>
@@ -2123,16 +1994,9 @@
         <div class="mobile-nav-inner">
 
             <a href="#leistungen" class="mobile-link" data-close-menu>Leistungen</a>
-
-            <span class="mobile-section-label">Branchen</span>
-            <div class="mobile-sublinks">
-                <a href="fliesenleger.html" class="mobile-link" data-close-menu>Fliesenleger &amp; Bodenleger</a>
-                <a href="elektriker.html"   class="mobile-link" data-close-menu>Elektriker</a>
-                <a href="maler.html"        class="mobile-link" data-close-menu>Maler</a>
-            </div>
-
-            <a href="#ueber-uns" class="mobile-link" data-close-menu>Über uns</a>
-            <a href="#contact"   class="mobile-link" data-close-menu>Kontakt</a>
+            <a href="#ergebnisse" class="mobile-link" data-close-menu>Ergebnisse</a>
+            <a href="#ueber-uns"  class="mobile-link" data-close-menu>Über uns</a>
+            <a href="#contact"    class="mobile-link" data-close-menu>Kontakt</a>
 
             <hr class="mobile-hr">
 
@@ -2154,15 +2018,13 @@
 
             <!-- Glass content panel -->
             <div class="hero-content">
-                        <span class="hero-label">RAIS - Spezialisierte Websites für Fliesenleger, Elektriker und Maler</span>
-
                         <h1 class="hero-h1">
-                    Sie verlieren Aufträge nicht an bessere Betriebe.<br>
-                    Sie verlieren sie an greifbarere.
+                    Sie verlieren keine Zeit an schlechte Prozesse.<br>
+                    Sie verlieren sie an vermeidbare.
                         </h1>
 
                         <p class="hero-sub">
-                    Wenn auf der Baustelle, abends oder am Wochenende niemand rangeht, entscheidet oft nicht Qualität, sondern der erste klare Eindruck. RAIS baut dafür spezialisierte Websites mit Rechner, Anfrageweg und Terminbuchung.
+                    Manuelle Abläufe kosten kleine Unternehmen Stunden pro Woche. Für Aufgaben die längst automatisiert laufen könnten. RAIS baut die Systeme die das ändern.
                         </p>
 
                         <div class="hero-ctas">
@@ -2189,36 +2051,36 @@
 
                 <div class="problem-intro reveal">
                     <span class="mono-label">Das eigentliche Problem</span>
-                    <h2 class="section-h2">Ihre Qualität verliert nicht.<br>Ihre Sichtbarkeit tut es.</h2>
+                    <h2 class="section-h2">Das eigentliche Problem ist nicht Zeitmangel.<br>Es ist vermeidbare Arbeit.</h2>
                     <p class="section-sub">
-                        Gute Handwerker verlieren Aufträge nicht an bessere Betriebe. Sie verlieren sie an greifbarere — an jene, die zuerst antworten, einen klaren ersten Eindruck machen und den Anruf am Abend auffangen.
+                        Kleine Unternehmen verlieren keine Aufträge an größere Konkurrenten. Sie verlieren Zeit an Prozesse die niemand je hinterfragt hat.
                     </p>
                 </div>
 
                 <div class="problem-grid">
 
                     <div class="problem-item reveal reveal-delay-1">
-                        <i data-lucide="phone-missed" class="problem-icon" aria-hidden="true"></i>
-                        <h3 class="problem-title">Niemand geht ran</h3>
-                        <p class="problem-body">Anfragen kommen abends und am Wochenende. Keine Antwort — der Interessent ruft woanders an.</p>
+                        <i data-lucide="clipboard-list" class="problem-icon" aria-hidden="true"></i>
+                        <h3 class="problem-title">Manuelles Onboarding</h3>
+                        <p class="problem-body">Neuer Kunde, Vertrag unterschrieben. Und dann beginnt die manuelle Arbeit. Ordner anlegen, Dokumente verschicken, CRM-Eintrag machen, intern weiterleiten. Jedes Mal. Von Hand.</p>
                     </div>
 
                     <div class="problem-item reveal reveal-delay-2">
-                        <i data-lucide="layout-template" class="problem-icon" aria-hidden="true"></i>
-                        <h3 class="problem-title">Keine Vorfilterung</h3>
-                        <p class="problem-body">Kein Kostenrahmen, keine Dringlichkeit. Sie rufen zurück — und merken, der Auftrag hätte sowieso nicht gepasst.</p>
+                        <i data-lucide="bell-off" class="problem-icon" aria-hidden="true"></i>
+                        <h3 class="problem-title">Keine Nachverfolgung</h3>
+                        <p class="problem-body">Interessenten die nicht sofort antworten werden vergessen. Kein automatischer Follow-up, kein System das warmhält. Der Auftrag geht woanders hin.</p>
                     </div>
 
                     <div class="problem-item reveal reveal-delay-3">
-                        <i data-lucide="eye" class="problem-icon" aria-hidden="true"></i>
-                        <h3 class="problem-title">Erster Eindruck verloren</h3>
-                        <p class="problem-body">Kunden vergleichen. Wer klarer wirkt, bekommt die Anfrage — oft bevor ein Gespräch stattfindet.</p>
+                        <i data-lucide="copy" class="problem-icon" aria-hidden="true"></i>
+                        <h3 class="problem-title">Doppelarbeit</h3>
+                        <p class="problem-body">Dieselben Informationen werden mehrfach eingetragen: ins CRM, ins Sheet, in die Email. Fehleranfällig, zeitaufwendig, unnötig.</p>
                     </div>
 
                     <div class="problem-item reveal">
-                        <i data-lucide="timer" class="problem-icon" aria-hidden="true"></i>
-                        <h3 class="problem-title">Verwaltung frisst Zeit</h3>
-                        <p class="problem-body">Rückrufe, Termine, Angebote — Stunden pro Woche, die auf der Baustelle fehlen.</p>
+                        <i data-lucide="message-circle-off" class="problem-icon" aria-hidden="true"></i>
+                        <h3 class="problem-title">Verpasste Anfragen</h3>
+                        <p class="problem-body">Anfragen kommen abends, am Wochenende, zwischen Terminen. Ohne automatische Antwort entscheidet die Reaktionszeit. Nicht die Qualität.</p>
                     </div>
 
                 </div>
@@ -2232,51 +2094,17 @@
                 <!-- Section intro -->
                 <div class="leis-intro reveal">
                     <span class="mono-label">Was wir tun</span>
-                    <h2 class="section-h2">Drei Leistungen. Ein klarer Fokus.</h2>
+                    <h2 class="section-h2">Drei Hebel. Ein Ziel: weniger manuelle Arbeit.</h2>
                     <p class="section-sub">
-                        Im Zentrum steht Ihre spezialisierte Website. Automation und KI-Agenten greifen dort ein, wo Anfragen liegenbleiben oder Abläufe Zeit kosten.
+                        Je nach Situation greifen wir dort ein wo der größte Zeitverlust entsteht. Mit Automatisierung, KI oder einer digitalen Präsenz die Arbeit abnimmt.
                     </p>
                 </div>
 
                 <!-- Three-pillar layout -->
                 <div class="leis-grid">
 
-                    <!-- Pillar 1 — Website (Hauptleistung) -->
+                    <!-- Pillar 1 — Prozessautomatisierung (Hauptleistung) -->
                     <article class="leis-pillar leis-pillar--main reveal reveal-delay-1">
-                        <!-- Monitor icon -->
-                        <svg class="leis-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <rect x="2" y="3" width="20" height="14" rx="2"/>
-                            <line x1="8" y1="21" x2="16" y2="21"/>
-                            <line x1="12" y1="17" x2="12" y2="21"/>
-                        </svg>
-                        <span class="leis-card-badge">Hauptleistung</span>
-                        <h3 class="leis-card-title">Spezialisierte Website</h3>
-                        <p class="leis-card-body">
-                            Jede Seite ist auf ein Gewerk zugeschnitten — mit Kostenrechner, klarem Anfrageweg und Terminbuchung.
-                        </p>
-                        <ul class="leis-card-list">
-                            <li>Leistungen, Referenzen und klarer Anfrageweg</li>
-                            <li>Individueller Kostenrechner auf Basis Ihrer Preise</li>
-                            <li>Terminbuchung für Rückruf oder Erstgespräch</li>
-                        </ul>
-                        <div class="leis-pillar-price">
-                            <span class="leis-price-amount">1.200 EUR</span>
-                            <span class="leis-price-note">einmalig — Details auf Anfrage</span>
-                        </div>
-                        <details class="leis-price-details">
-                            <summary>Laufende Kosten</summary>
-                            <p>Monatliche Wartung: 150 EUR / Monat &middot; Mindestlaufzeit 12 Monate.</p>
-                        </details>
-                        <a href="#branchen" class="leis-card-link">
-                            Branchen ansehen
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <polyline points="9 18 15 12 9 6"/>
-                            </svg>
-                        </a>
-                    </article>
-
-                    <!-- Pillar 2 — Prozessautomatisierung -->
-                    <article class="leis-pillar reveal reveal-delay-2">
                         <!-- Flow icon -->
                         <svg class="leis-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <rect x="3" y="11" width="18" height="10" rx="2"/>
@@ -2284,17 +2112,18 @@
                             <circle cx="12" cy="5" r="2"/>
                             <path d="M8 15h.01M12 15h.01M16 15h.01"/>
                         </svg>
-                        <span class="leis-card-badge leis-card-badge--ext">Erweiterung</span>
+                        <span class="leis-card-badge">Hauptleistung</span>
                         <h3 class="leis-card-title">Prozessautomatisierung</h3>
                         <p class="leis-card-body">
-                            Automatisierte Abläufe, die Anfragen auffangen, vorqualifizieren und nahtlos in Ihre Systeme weiterleiten.
+                            Wir analysieren Ihre manuellen Abläufe und automatisieren sie. Von der ersten Kundenanfrage bis zum abgeschlossenen Onboarding.
                         </p>
                         <ul class="leis-card-list">
-                            <li>Vorqualifizierung bei Anfrageeingang</li>
-                            <li>Auffang für verpasste Anrufe und Nachrichten</li>
-                            <li>CRM & Termin-Integration</li>
+                            <li>Automatisches Onboarding bei Vertragsabschluss</li>
+                            <li>CRM-Integration, Ordnererstellung, Dokumentenversand</li>
+                            <li>Follow-up Sequenzen die Interessenten warmhalten</li>
+                            <li>Anbindung an bestehende Tools (Google Workspace, Microsoft 365, HubSpot u.a.)</li>
                         </ul>
-                        <p class="leis-card-note"><em>Auf Anfrage — individuell angepasst.</em></p>
+                        <p class="leis-card-note"><em>Individuell konzipiert. Auf Anfrage.</em></p>
                         <a href="#contact" class="leis-card-link">
                             Demo anfordern
                             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -2303,8 +2132,8 @@
                         </a>
                     </article>
 
-                    <!-- Pillar 3 — KI Agenten -->
-                    <article class="leis-pillar reveal reveal-delay-3">
+                    <!-- Pillar 2 — KI-Agenten -->
+                    <article class="leis-pillar reveal reveal-delay-2">
                         <!-- Bot icon -->
                         <svg class="leis-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M12 8V4H8"/>
@@ -2315,16 +2144,45 @@
                             <path d="M9 13v2"/>
                         </svg>
                         <span class="leis-card-badge leis-card-badge--ext">Erweiterung</span>
-                        <h3 class="leis-card-title">KI Agenten</h3>
+                        <h3 class="leis-card-title">KI-Agenten</h3>
                         <p class="leis-card-body">
-                            Intelligente Assistenten, die rund um die Uhr Kundenfragen beantworten und qualifizierte Leads sammeln.
+                            Intelligente Assistenten die rund um die Uhr Anfragen beantworten, vorqualifizieren und weiterleiten. Ohne dass jemand eingreifen muss.
                         </p>
                         <ul class="leis-card-list">
-                            <li>24/7 Erreichbarkeit auf der Webseite</li>
-                            <li>Beantwortung von Fachfragen</li>
-                            <li>Terminvereinbarung per Chat</li>
+                            <li>24/7 Erreichbarkeit per Chat oder WhatsApp</li>
+                            <li>Automatische Beantwortung wiederkehrender Fragen</li>
+                            <li>Qualifizierung und Weiterleitung an die richtige Person</li>
+                            <li>DSGVO-konform konfigurierbar</li>
                         </ul>
-                        <p class="leis-card-note"><em>Auf Anfrage — als Erweiterung zur Website.</em></p>
+                        <p class="leis-card-note"><em>Als eigenständige Lösung oder Erweiterung. Auf Anfrage.</em></p>
+                        <a href="#contact" class="leis-card-link">
+                            Demo anfordern
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <polyline points="9 18 15 12 9 6"/>
+                            </svg>
+                        </a>
+                    </article>
+
+                    <!-- Pillar 3 — Digitale Präsenz -->
+                    <article class="leis-pillar reveal reveal-delay-3">
+                        <!-- Monitor icon -->
+                        <svg class="leis-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="2" y="3" width="20" height="14" rx="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                        <span class="leis-card-badge leis-card-badge--ext">Erweiterung</span>
+                        <h3 class="leis-card-title">Digitale Präsenz</h3>
+                        <p class="leis-card-body">
+                            Eine professionelle Website die nicht nur gut aussieht. Sie fängt Anfragen auf, qualifiziert sie vor und leitet sie direkt in Ihre Prozesse weiter.
+                        </p>
+                        <ul class="leis-card-list">
+                            <li>Klarer Anfrageweg und Terminbuchung</li>
+                            <li>Integrierter Kostenrechner oder Konfigurator</li>
+                            <li>Direkte Anbindung an Ihre Automatisierungen</li>
+                            <li>Schnell live, ohne langen Entwicklungsprozess</li>
+                        </ul>
+                        <p class="leis-card-note"><em>Als Ergänzung zur Prozessautomatisierung. Auf Anfrage.</em></p>
                         <a href="#contact" class="leis-card-link">
                             Demo anfordern
                             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -2338,16 +2196,15 @@
             </div>
         </section>
 
-        <section id="branchen">
+        <section id="ergebnisse">
             <div class="section-wrap">
 
                 <!-- Header -->
                 <div class="branchen-header reveal">
                     <div class="branchen-intro">
-                        <span class="mono-label">Für wen wir bauen</span>
-                        <h2 class="section-h2">Spezialisiert.<br>Nicht generisch.</h2>
+                        <h2 class="section-h2">Was konkret passiert wenn manuelle Prozesse wegfallen.</h2>
                         <p class="section-sub">
-                            Jede Branche hat eine andere Verkaufslogik. Kostenrechner, Anfrageweg und Vertrauensaufbau funktionieren für Fliesenleger anders als für Elektriker oder Maler.
+                            Kein Versprechen ohne Grundlage. Das sind die Abläufe die wir bereits automatisiert haben.
                         </p>
                     </div>
                 </div>
@@ -2358,70 +2215,36 @@
 
                         <article class="carousel-card is-active">
                             <span class="branchen-num">01</span>
-                            <i data-lucide="grid-2x2" class="branchen-icon" aria-hidden="true"></i>
-                            <h3 class="branchen-title">Fliesenleger &amp; Bodenleger</h3>
-                            <p class="branchen-desc">Anfragen oft vage — zu groß, zu klein, falsches Budget. Der Kostenrechner sortiert das, bevor Sie zurückrufen.</p>
-                            <a href="fliesenleger.html#angebot" class="branchen-btn">Zum Angebot</a>
+                            <i data-lucide="timer" class="branchen-icon" aria-hidden="true"></i>
+                            <h3 class="branchen-title">Onboarding in unter 4 Minuten</h3>
+                            <p class="branchen-desc">Was vorher 2 bis 3 Stunden manueller Arbeit gekostet hat: Ordner anlegen, Dokumente verschicken, CRM-Eintrag, interne Benachrichtigung. Das läuft jetzt vollautomatisch ab. Ausgelöst durch eine Unterschrift.</p>
                         </article>
 
                         <article class="carousel-card">
                             <span class="branchen-num">02</span>
-                            <i data-lucide="zap" class="branchen-icon" aria-hidden="true"></i>
-                            <h3 class="branchen-title">Elektriker</h3>
-                            <p class="branchen-desc">Dringlich oder planbar? Die Seite trennt das sauber — und leitet die Anfrage entsprechend weiter.</p>
-                            <a href="elektriker.html#angebot" class="branchen-btn">Zum Angebot</a>
+                            <i data-lucide="user-check" class="branchen-icon" aria-hidden="true"></i>
+                            <h3 class="branchen-title">Kein verlorener Kontakt mehr</h3>
+                            <p class="branchen-desc">Jeder Interessent der einen Termin bucht wird automatisch bis zum Gespräch warmgehalten. Personalisierte Nachrichten, keine manuelle Nachverfolgung nötig.</p>
                         </article>
 
                         <article class="carousel-card">
                             <span class="branchen-num">03</span>
-                            <i data-lucide="paintbrush" class="branchen-icon" aria-hidden="true"></i>
-                            <h3 class="branchen-title">Maler &amp; Lackierer</h3>
-                            <p class="branchen-desc">Der erste Eindruck entscheidet, ob ein Interessent anfragt oder weiterschaut. Die Seite macht diesen Eindruck.</p>
-                            <a href="maler.html#angebot" class="branchen-btn">Zum Angebot</a>
+                            <i data-lucide="repeat" class="branchen-icon" aria-hidden="true"></i>
+                            <h3 class="branchen-title">Bestandskunden aktiv halten</h3>
+                            <p class="branchen-desc">Automatisierte Kampagnen die Bestandskunden auf Basis ihres Profils ansprechen. Zur richtigen Zeit, mit dem richtigen Angebot.</p>
                         </article>
 
                     </div>
                 </div>
 
-                <!-- Footer: dots + quick-select -->
+                <!-- Footer: dots -->
                 <div class="carousel-footer">
-                    <div class="carousel-dots" role="tablist" aria-label="Branche wählen">
-                        <button class="carousel-dot is-active" role="tab" aria-selected="true"  data-index="0" aria-label="Fliesenleger"></button>
-                        <button class="carousel-dot"           role="tab" aria-selected="false" data-index="1" aria-label="Elektriker"></button>
-                        <button class="carousel-dot"           role="tab" aria-selected="false" data-index="2" aria-label="Maler"></button>
+                    <div class="carousel-dots" role="tablist" aria-label="Ergebnis wählen">
+                        <button class="carousel-dot is-active" role="tab" aria-selected="true"  data-index="0" aria-label="Onboarding"></button>
+                        <button class="carousel-dot"           role="tab" aria-selected="false" data-index="1" aria-label="Nachverfolgung"></button>
+                        <button class="carousel-dot"           role="tab" aria-selected="false" data-index="2" aria-label="Bestandskunden"></button>
                     </div>
-
-                    <div class="branchen-select" id="branchenSelect">
-                        <button type="button" class="branchen-select-btn" id="branchenSelectBtn" aria-haspopup="true" aria-expanded="false">
-                            Direkt zur Branche
-                            <svg class="branchen-select-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <polyline points="6 9 12 15 18 9"/>
-                            </svg>
-                        </button>
-                        <div class="branchen-select-panel" role="menu">
-                            <a href="fliesenleger.html" class="branchen-select-item" role="menuitem">
-                                <svg class="branchen-select-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
-                                </svg>
-                                Fliesenleger &amp; Bodenleger
-                            </a>
-                            <a href="elektriker.html" class="branchen-select-item" role="menuitem">
-                                <svg class="branchen-select-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-                                </svg>
-                                Elektriker
-                            </a>
-                            <a href="maler.html" class="branchen-select-item" role="menuitem">
-                                <svg class="branchen-select-item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                    <path d="M9.06 11.9l8.07-8.06a2.85 2.85 0 1 1 4.03 4.03l-8.06 8.08"/><path d="M7.07 14.94c-1.66 0-3 1.35-3 3.02 0 1.33-2.5 1.52-2 2.45.63 1.24 2.49.97 3.35.64 1.07-.42 1.65-1.62 1.65-2.73v-1.38z"/>
-                                </svg>
-                                Maler &amp; Lackierer
-                            </a>
-                        </div>
-                    </div>
-
                 </div>
-
 
             </div>
         </section>
@@ -2433,10 +2256,10 @@
             <div class="section-wrap">
 
                 <div class="trust-intro reveal">
-                    <span class="mono-label">Live-Beispiel</span>
-                    <h2 class="section-h2">Nicht ein Konzept. Eine fertige Seite.</h2>
+                    <span class="mono-label">Live-System</span>
+                    <h2 class="section-h2">Nicht ein Konzept. Ein laufendes System.</h2>
                     <p class="section-sub">
-                        Fliesen Weber ist live — mit Kostenrechner, Anfrageweg und Terminbuchung. Kein Dummy, keine Vorlage. Das ist der Standard für jede RAIS-Website.
+                        Das Onboarding-System läuft live. Eine Vertragsunterzeichnung löst automatisch Ordnererstellung, Dokumentenversand, CRM-Eintrag und Willkommens-Email aus. Keine manuelle Arbeit, kein vergessener Schritt.
                     </p>
                 </div>
 
@@ -2445,21 +2268,18 @@
                         <div class="trust-browser-dots">
                             <span></span><span></span><span></span>
                         </div>
-                        <div class="trust-browser-url">fliesen-weber.vercel.app</div>
+                        <div class="trust-browser-url">Demo im Gespräch verfügbar</div>
                     </div>
                     <div class="trust-browser-body" id="trustBrowserBody">
-                        <button type="button" id="trustLoadBtn" class="trust-load-btn">
+                        <button type="button" id="trustLoadBtn" class="trust-load-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <polygon points="5 3 19 12 5 21 5 3"/>
+                                <path d="M15 10l4.553-2.069A1 1 0 0 1 21 8.82v6.36a1 1 0 0 1-1.447.89L15 14"/>
+                                <rect x="1" y="6" width="14" height="12" rx="2"/>
                             </svg>
-                            Live-Demo laden
+                            Demo im Gespräch anfordern
                         </button>
                     </div>
                 </div>
-
-                <a href="https://fliesen-weber.vercel.app/" target="_blank" rel="noopener" class="trust-ext-link">
-                    In neuem Tab öffnen ↗
-                </a>
 
             </div>
         </section>
@@ -2476,7 +2296,10 @@
                         <span class="mono-label">Wer dahinter steckt</span>
                         <h2 class="section-h2">Direkt. Kein Umweg.</h2>
                         <p class="ueberuns-copy">
-                            RAIS ist Kevin Ritz — Koblenz. Ich entwickle spezialisierte Websites für Fliesenleger, Elektriker und Maler: mit passendem Anfrageweg, klarem Angebot und einer Struktur, die zum Gewerk passt. Jedes Projekt läuft direkt mit mir — kein Account-Manager, kein Wiederverkäufer.
+                            RAIS ist Kevin Ritz aus Koblenz. Ich konzipiere und baue Automatisierungslösungen für kleine Unternehmen: von der ersten Analyse bis zum laufenden System. Kein Account-Manager, kein Wiederverkäufer. Sie sprechen direkt mit der Person die Ihre Lösung baut.
+                        </p>
+                        <p class="ueberuns-copy">
+                            Mein Hintergrund liegt in Datenanalyse, KI-Agenten und Prozessautomatisierung. Was ich baue muss messbar funktionieren. Nicht gut klingen.
                         </p>
                     </div>
 
@@ -2490,7 +2313,7 @@
                             height="340"
                         >
                         <p class="founder-name">Kevin Ritz</p>
-                        <p class="founder-role">Gründer — Ritz AI Solutions, Koblenz</p>
+                        <p class="founder-role">Gründer, Ritz AI Solutions, Koblenz</p>
                         <a href="tel:+4915129755134" class="founder-link">+49 151 297 551 34</a>
                         <a href="mailto:kevin@ritz-ai.solutions" class="founder-link">kevin@ritz-ai.solutions</a>
                     </div>
@@ -2514,40 +2337,40 @@
 
                     <!-- Copy column -->
                     <div class="contact-text-col">
-                        <span class="mono-label">Demo anfordern</span>
-                        <h2 class="section-h2">In 15 Minuten sehen Sie, wie Ihre Seite aussehen könnte.</h2>
+                        <span class="mono-label">Erstgespräch</span>
+                        <h2 class="section-h2">In 15 Minuten sehen Sie wo bei Ihnen Zeit verloren geht.</h2>
                         <p class="contact-copy">
-                            Ich zeige Ihnen eine live Demo auf Ihr Gewerk zugeschnitten — mit Kostenrechner, Anfrageweg und Terminbuchung. Kein Pitch, kein Umweg. Sie sehen konkret, was Sie bekommen.
+                            Ich schaue mir Ihre aktuellen Abläufe an und zeige Ihnen konkret was automatisierbar ist und was es bringen würde. Kein Pitch, kein Umweg.
                         </p>
                         <div class="contact-steps">
                             <div class="contact-step">
                                 <span class="contact-step-num">1</span>
-                                Kurz vorstellen — Name &amp; E-Mail
+                                Name &amp; E-Mail
                             </div>
                             <div class="contact-step">
                                 <span class="contact-step-num">2</span>
-                                Ihre aktuelle Online-Präsenz
+                                Was kostet Sie aktuell am meisten Zeit?
                             </div>
                             <div class="contact-step">
                                 <span class="contact-step-num">3</span>
-                                Ihre größte Herausforderung
+                                Termin wählen
                             </div>
                             <div class="contact-step">
                                 <span class="contact-step-num">
                                     <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                                 </span>
-                                Termin im Kalender wählen
+                                15 Minuten · Kostenlos · Kein Verkaufsdruck
                             </div>
                         </div>
                     </div>
 
                     <!-- Booking card -->
                     <div class="cal-embed-wrap">
-                        <p class="cal-card-title">Kostenlose Demo buchen</p>
-                        <p class="cal-card-sub">15 Minuten, unverbindlich. Wir zeigen Ihnen konkret, was RAIS für Ihren Betrieb bauen würde.</p>
+                        <p class="cal-card-title">Kostenloses Erstgespräch buchen</p>
+                        <p class="cal-card-sub">15 Minuten, unverbindlich. Ich zeige Ihnen konkret wo bei Ihnen Zeit verloren geht und was sich automatisieren lässt.</p>
                         <button type="button" id="contact-demo-btn" class="cal-load-btn">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                            Termin auswählen →
+                            Kostenloses Erstgespräch buchen
                         </button>
                         <div class="cal-trust-row">
                             <span class="cal-trust-item">
@@ -2560,7 +2383,7 @@
                             </span>
                             <span class="cal-trust-item">
                                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Live auf Ihr Gewerk zugeschnitten
+                                15 Minuten · Kostenlos
                             </span>
                         </div>
                     </div>
@@ -2730,42 +2553,10 @@
         });
 
 
-        /* ── Branchen dropdown: click + keyboard ─────────────── */
-        var branchenBtn      = document.getElementById('branchen-btn');
-        var branchenDropdown = branchenBtn && branchenBtn.closest('.nav-dropdown');
-
-        function openDropdown() {
-            if (!branchenDropdown) return;
-            branchenDropdown.classList.add('is-open');
-            branchenBtn.setAttribute('aria-expanded', 'true');
-        }
-
-        function closeDropdown() {
-            if (!branchenDropdown) return;
-            branchenDropdown.classList.remove('is-open');
-            branchenBtn.setAttribute('aria-expanded', 'false');
-        }
-
-        if (branchenBtn) {
-            branchenBtn.addEventListener('click', function () {
-                branchenDropdown.classList.contains('is-open')
-                    ? closeDropdown()
-                    : openDropdown();
-            });
-        }
-
-        /* Close dropdown when clicking outside */
-        document.addEventListener('click', function (e) {
-            if (branchenDropdown && !branchenDropdown.contains(e.target)) {
-                closeDropdown();
-            }
-        });
-
-        /* Escape closes both */
+        /* Escape closes mobile menu */
         document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') {
                 closeMenu();
-                closeDropdown();
             }
         });
 
@@ -2777,9 +2568,8 @@
 
         /* ── Antigravity reveal orchestration ───────────────── */
         var revealTargets = document.querySelectorAll([
-            '.niche-intro', '.leis-intro', '.branchen-intro', '.ueberuns-grid > div',
-            '.problem-item', '.zahlen-item', '.angebot-card', '.ablauf-step', '.demo-card',
-            '.contact-text-col', '.contact-detail', '.cal-embed-wrap', '.proof-wrap'
+            '.leis-intro', '.branchen-intro', '.ueberuns-grid > div',
+            '.problem-item', '.contact-text-col', '.contact-detail', '.cal-embed-wrap'
         ].join(','));
 
         revealTargets.forEach(function (el, index) {
@@ -2880,42 +2670,7 @@
             });
         }());
 
-        /* ── Branchen quick-select dropdown ─────────────────── */
-        (function () {
-            var wrap = document.getElementById('branchenSelect');
-            var btn  = document.getElementById('branchenSelectBtn');
-            if (!wrap || !btn) return;
 
-            function close() {
-                wrap.classList.remove('is-open');
-                btn.setAttribute('aria-expanded', 'false');
-            }
-
-            btn.addEventListener('click', function (e) {
-                e.stopPropagation();
-                var open = wrap.classList.toggle('is-open');
-                btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-            });
-
-            document.addEventListener('click', close);
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape') close();
-            });
-        }());
-
-        /* ── Trust iframe: click-to-load ────────────────────── */
-        var trustLoadBtn = document.getElementById('trustLoadBtn');
-        var trustBrowserBody = document.getElementById('trustBrowserBody');
-        if (trustLoadBtn && trustBrowserBody) {
-            trustLoadBtn.addEventListener('click', function () {
-                var iframe = document.createElement('iframe');
-                iframe.src = 'https://fliesen-weber.vercel.app/';
-                iframe.title = 'Live-Demo: Fliesen Weber Website';
-                iframe.loading = 'lazy';
-                trustBrowserBody.innerHTML = '';
-                trustBrowserBody.appendChild(iframe);
-            });
-        }
 
         /* ── Mobile sticky CTA ───────────────────────────────── */
         var stickyCta = document.getElementById('sticky-cta');
@@ -3015,7 +2770,7 @@
             <div class="bm-step" id="bm-step-3">
                 <p class="bm-label">Fast geschafft</p>
                 <h2 class="bm-title">Wählen Sie Ihren Termin</h2>
-                <p class="bm-sub">15 Minuten — kostenlos und unverbindlich.</p>
+                <p class="bm-sub">15 Minuten, kostenlos und unverbindlich.</p>
                 <div class="bm-calendly-wrap" id="bm-calendly-wrap"></div>
             </div>
 
