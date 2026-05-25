@@ -132,8 +132,6 @@ var klaroConfig = {
       purposes: {
         security: 'Sicherheit & Fehlerbehebung',
         functional: 'Funktional',
-        analytics: 'Analyse',
-        marketing: 'Marketing & Werbung',
       },
     },
   },
@@ -156,26 +154,6 @@ var klaroConfig = {
       purposes: ['functional'],
       required: false,
       optOut: false,
-    },
-    {
-      name: 'google-analytics',
-      title: 'Google Analytics (GA4)',
-      description:
-        'Analysiert das Nutzungsverhalten auf dieser Website. Daten werden an Google-Server übertragen, ggf. in die USA. Anbieter: Google Ireland Ltd., Dublin.',
-      purposes: ['analytics'],
-      required: false,
-      optOut: false,
-      cookies: [/^_ga/, /^_gid/, /^_gat/],
-    },
-    {
-      name: 'meta-pixel',
-      title: 'Meta Pixel (Facebook/Instagram)',
-      description:
-        'Misst die Wirksamkeit von Werbeanzeigen auf Facebook und Instagram. Anbieter: Meta Platforms Ireland Ltd., Dublin.',
-      purposes: ['marketing'],
-      required: false,
-      optOut: false,
-      cookies: ['_fbp', '_fbc'],
     },
   ],
 };
