@@ -1066,9 +1066,9 @@
         }
 
         .carousel-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 4px;
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
             background-color: var(--border);
             border: none;
             cursor: pointer;
@@ -1078,7 +1078,21 @@
 
         .carousel-dot.is-active {
             background-color: var(--orange);
-            width: 22px;
+            width: 28px;
+        }
+
+        .proj-swipe-hint {
+            display: none;
+            text-align: center;
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 0.625rem;
+            letter-spacing: 0.06em;
+            color: var(--stone);
+            opacity: 0.5;
+            margin-top: 0.75rem;
+        }
+        @media (max-width: 700px) {
+            .proj-swipe-hint { display: block; }
         }
 
         /* ── Responsive ─────────────────────────────────────── */
@@ -2472,8 +2486,8 @@
             <!-- Glass content panel -->
             <div class="hero-content">
                         <h1 class="hero-h1">
-                    Sie verlieren keine Zeit an schlechte Prozesse.<br>
-                    Sie verlieren sie an vermeidbare.
+                    Manuelle Prozesse kosten Stunden pro Woche.<br>
+                    Wir automatisieren sie.
                         </h1>
 
                         <p class="hero-sub">
@@ -2482,7 +2496,7 @@
 
                         <div class="hero-ctas">
                     <button type="button" class="hero-btn-primary" id="hero-demo-btn">Kostenloser Audit</button>
-                    <a href="#leistungen" class="hero-btn-outline">Wie es funktioniert</a>
+                    <a href="#trust" class="hero-btn-outline">Wie es funktioniert</a>
                         </div>
 
             </div>
@@ -2496,34 +2510,6 @@
 
         </section>
 
-        <!-- ═══════════════════════════════════════════════════
-             KENNZAHLEN-BAR
-        ═══════════════════════════════════════════════════ -->
-        <section id="zahlen-bar" aria-label="Kennzahlen">
-            <div class="section-wrap">
-                <div class="zahlen-grid reveal">
-                    <div class="zahlen-item">
-                        <div class="zahlen-zahl">&lt; 4 Min.</div>
-                        <div class="zahlen-label">vollautomatisches Onboarding</div>
-                    </div>
-                    <div class="zahlen-divider" aria-hidden="true"></div>
-                    <div class="zahlen-item">
-                        <div class="zahlen-zahl">0</div>
-                        <div class="zahlen-label">manuelle Schritte nach Vertragsabschluss</div>
-                    </div>
-                    <div class="zahlen-divider" aria-hidden="true"></div>
-                    <div class="zahlen-item">
-                        <div class="zahlen-zahl">100%</div>
-                        <div class="zahlen-label">Follow-up ohne manuellen Aufwand</div>
-                    </div>
-                    <div class="zahlen-divider" aria-hidden="true"></div>
-                    <div class="zahlen-item">
-                        <div class="zahlen-zahl">24/7</div>
-                        <div class="zahlen-label">Anfragenbeantwortung per KI-Agent</div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- ═══════════════════════════════════════════════════
              TECH STACK TICKER
@@ -2665,7 +2651,6 @@
                             <li>Follow-up Sequenzen die Interessenten warmhalten</li>
                             <li>Anbindung an bestehende Tools (Google Workspace, Microsoft 365, HubSpot u.a.)</li>
                         </ul>
-                        <p class="leis-card-note"><em>Individuell konzipiert. Auf Anfrage.</em></p>
                         <a href="#contact" class="leis-card-link">
                             Kostenloser Audit
                             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -2696,7 +2681,6 @@
                             <li>Qualifizierung und Weiterleitung an die richtige Person</li>
                             <li>DSGVO-konform konfigurierbar</li>
                         </ul>
-                        <p class="leis-card-note"><em>Als eigenständige Lösung oder Erweiterung. Auf Anfrage.</em></p>
                         <a href="#contact" class="leis-card-link">
                             Kostenloser Audit
                             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -2724,7 +2708,6 @@
                             <li>Direkte Anbindung an Ihre Automatisierungen</li>
                             <li>Schnell live, ohne langen Entwicklungsprozess</li>
                         </ul>
-                        <p class="leis-card-note"><em>Als Ergänzung zur Prozessautomatisierung. Auf Anfrage.</em></p>
                         <a href="#contact" class="leis-card-link">
                             Kostenloser Audit
                             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -2981,6 +2964,7 @@
                 </div>
 
                 <div class="proj-dots" id="projDots" role="tablist" aria-label="Projekt wählen"></div>
+                <p class="proj-swipe-hint">← scrollen für mehr →</p>
 
             </div>
         </section>
@@ -3200,7 +3184,9 @@
                 <img src="images/RAIS-Logo-transparent.png" alt="" width="48" height="48" aria-hidden="true">
                 <span class="footer-wordmark">RAIS</span>
             </a>
-            <nav class="footer-legal" aria-label="Rechtliche Links">
+            <nav class="footer-legal" aria-label="Seitenlinks">
+                <a href="#projekte">Projekte</a>
+                <a href="#contact">Kontakt</a>
                 <a href="impressum.html">Impressum</a>
                 <a href="datenschutz.html">Datenschutz</a>
             </nav>
@@ -3557,7 +3543,7 @@
             <div class="bm-step is-active" id="bm-step-0">
                 <p class="bm-label">Schritt 1 von 3</p>
                 <h2 class="bm-title">Kurz vorstellen</h2>
-                <p class="bm-sub">Damit ich die Demo auf Sie abstimmen kann.</p>
+                <p class="bm-sub">Damit ich den Audit gezielt vorbereiten kann.</p>
                 <div class="bm-field">
                     <label for="bm-name">Ihr Name</label>
                     <input type="text" id="bm-name" placeholder="Max Mustermann" autocomplete="name">
