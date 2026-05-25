@@ -1320,6 +1320,20 @@
             align-self: flex-start;
         }
 
+        /* CRM screenshot: blur overlay covers lead table rows */
+        .proj-img-wrap--censored { position: relative; }
+        .proj-censor-bar {
+            position: absolute;
+            left: 0; right: 0;
+            bottom: 0;
+            height: 62%;
+            backdrop-filter: blur(7px);
+            -webkit-backdrop-filter: blur(7px);
+            background: rgba(10, 8, 6, 0.35);
+            border-radius: 0 0 10px 10px;
+            pointer-events: none;
+        }
+
         .proj-badge--auto      { background: rgba(236, 106, 55, 0.1); color: var(--orange); }
         .proj-badge--website   { background: rgba(60, 90, 42, 0.1);   color: var(--pistachio); }
         .proj-badge--webapp    { background: rgba(236, 106, 55, 0.1); color: var(--orange); }
@@ -2833,9 +2847,9 @@
 
                         <!-- Karte 5: RAIS CRM -->
                         <article class="proj-card">
-                            <div class="proj-img-wrap">
-                                <!-- REPLACE: Screenshot RAIS CRM -->
-                                <div class="proj-img-placeholder">Screenshot folgt</div>
+                            <div class="proj-img-wrap proj-img-wrap--censored">
+                                <img src="images/RAIS CRM Screenshot.png" alt="RAIS CRM Dashboard: Leads, Status und Pipeline-Übersicht" loading="lazy" class="proj-img">
+                                <div class="proj-censor-bar"></div>
                             </div>
                             <div class="proj-body">
                                 <span class="proj-badge proj-badge--crm">CRM System</span>
@@ -2858,8 +2872,7 @@
                         <!-- Karte 6: Eckstein CMS -->
                         <article class="proj-card">
                             <div class="proj-img-wrap">
-                                <!-- REPLACE: Screenshot Eckstein CMS -->
-                                <div class="proj-img-placeholder">Screenshot folgt</div>
+                                <img src="images/Eckstein CMS Screenshot.png" alt="Eckstein CMS: Redaktions-Dashboard mit Episode-Pipeline" loading="lazy" class="proj-img">
                             </div>
                             <div class="proj-body">
                                 <span class="proj-badge proj-badge--cms">CMS</span>
@@ -2882,8 +2895,7 @@
                         <!-- Karte 7: Habittracker -->
                         <article class="proj-card">
                             <div class="proj-img-wrap">
-                                <!-- REPLACE: Screenshot Habittracker -->
-                                <div class="proj-img-placeholder">Screenshot folgt</div>
+                                <img src="images/RAIS performance Screenshot.png" alt="RAIS Performance Dashboard: Deep Work, Effizienz und Habit-Tracking" loading="lazy" class="proj-img">
                             </div>
                             <div class="proj-body">
                                 <span class="proj-badge proj-badge--dashboard">Dashboard</span>
