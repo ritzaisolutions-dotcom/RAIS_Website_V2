@@ -152,317 +152,9 @@
 
 
 
-        .nav-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            gap: 2.5rem;
-        }
-
-        /* ── Brand ──────────────────────────────────────────── */
-
-        .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 0.625rem;
-            text-decoration: none;
-            flex-shrink: 0;
-            outline-offset: 4px;
-        }
-
-        .nav-brand img {
-            width: auto;
-            height: 3.25rem;
-            object-fit: contain;
-            display: block;
-        }
-
-        .nav-brand-words {
-            display: flex;
-            flex-direction: column;
-            line-height: 1;
-        }
-
-        .nav-wordmark {
-            font-family: 'Baskerville', 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--charcoal);
-            letter-spacing: 0.065em;
-            line-height: 1.15;
-        }
-
-        .nav-submark {
-            font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
-            font-size: 0.5rem;
-            color: var(--stone);
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-top: 2px;
-        }
-
-        /* ── Desktop links ──────────────────────────────────── */
-
-        .nav-center {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-        }
-
-        .nav-list {
-            display: flex;
-            align-items: center;
-            gap: 0;
-            list-style: none;
-        }
-
-        .nav-list > li > a,
-        .nav-list > li > button {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            padding: 0.4375rem 0.875rem;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9375rem;
-            font-weight: 400;
-            color: var(--stone);
-            text-decoration: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            border-radius: 7px;
-            transition: color 0.15s ease, background-color 0.15s ease;
-            white-space: nowrap;
-            line-height: 1;
-            letter-spacing: 0;
-        }
-
-        .nav-list > li > a:hover,
-        .nav-list > li > button:hover {
-            color: var(--charcoal);
-            background-color: rgba(47, 42, 36, 0.05);
-        }
-
-        /* ── Branchen dropdown ──────────────────────────────── */
-
-        .nav-dropdown { position: relative; }
-
-        .dropdown-chevron {
-            width: 13px;
-            height: 13px;
-            transition: transform 0.2s ease;
-            flex-shrink: 0;
-            opacity: 0.6;
-        }
-
-        .nav-dropdown.is-open > button .dropdown-chevron {
-            transform: rotate(180deg);
-        }
-
-        .dropdown-panel {
-            position: absolute;
-            top: calc(100% + 10px);
-            left: 50%;
-            transform: translateX(-50%) translateY(-6px);
-            min-width: 238px;
-            background-color: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            box-shadow:
-                0 8px 32px rgba(47, 42, 36, 0.11),
-                0 2px 8px  rgba(47, 42, 36, 0.06);
-            padding: 6px;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.15s ease, transform 0.15s ease;
-            z-index: 10;
-        }
-
-        .nav-dropdown:hover .dropdown-panel,
-        .nav-dropdown.is-open .dropdown-panel {
-            opacity: 1;
-            pointer-events: auto;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        .dropdown-item {
-            display: flex;
-            align-items: center;
-            gap: 0.625rem;
-            padding: 0.625rem 0.875rem;
-            font-size: 0.9375rem;
-            font-weight: 400;
-            color: var(--stone);
-            text-decoration: none;
-            border-radius: 8px;
-            transition: color 0.15s ease, background-color 0.15s ease;
-        }
-
-        .dropdown-item:hover {
-            color: var(--charcoal);
-            background-color: rgba(236, 106, 55, 0.08);
-        }
-
-        .dropdown-item-icon {
-            width: 1.0625rem;
-            height: 1.0625rem;
-            color: var(--orange);
-            flex-shrink: 0;
-        }
-
-        /* ── Right: CTA + hamburger ─────────────────────────── */
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            flex-shrink: 0;
-        }
-
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.5625rem 1.3125rem;
-            background-color: var(--orange);
-            color: #ffffff;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9375rem;
-            font-weight: 500;
-            line-height: 1;
-            border-radius: 10px;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-            letter-spacing: 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary::after {
-            content: '→';
-            position: absolute;
-            right: -20px;
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--orange-hover);
-            padding-right: 2.2rem;
-            transform: translateY(-1px);
-        }
-
-        .btn-primary:hover::after {
-            right: 1rem;
-            opacity: 1;
-        }
-
-        .nav-hamburger {
-            display: none;
-            align-items: center;
-            justify-content: center;
-            width: 2.25rem;
-            height: 2.25rem;
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: var(--charcoal);
-            border-radius: 6px;
-            padding: 0;
-            transition: background-color 0.15s ease;
-        }
-
-        .nav-hamburger:hover { background-color: rgba(47, 42, 36, 0.06); }
-
-        /* ─────────────────────────────────────────────────────
-           MOBILE OVERLAY
-        ───────────────────────────────────────────────────── */
-
-        #mobile-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 90;
-            background-color: var(--surface);
-            padding-top: var(--nav-h);
-            overflow-y: auto;
-        }
-
-        #mobile-overlay.is-open { display: block; }
-
-        .mobile-nav-inner {
-            padding: 1.5rem 1.5rem 3.5rem;
-            max-width: 480px;
-            margin: 0 auto;
-        }
-
-        .mobile-link {
-            display: block;
-            padding: 0.875rem 0.875rem;
-            font-size: 1.0625rem;
-            color: var(--charcoal);
-            text-decoration: none;
-            border-radius: 9px;
-            transition: background-color 0.15s ease;
-        }
-
-        .mobile-link:hover { background-color: rgba(236, 106, 55, 0.07); }
-
-        .mobile-section-label {
-            display: block;
-            padding: 1.25rem 0.875rem 0.375rem;
-            font-family: 'JetBrains Mono', 'Courier New', monospace;
-            font-size: 0.625rem;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--stone);
-        }
-
-        .mobile-sublinks {
-            padding-left: 0.875rem;
-            border-left: 2px solid var(--border);
-            margin: 0.25rem 0 0.5rem 0.875rem;
-        }
-
-        .mobile-sublinks .mobile-link {
-            font-size: 0.9375rem;
-            color: var(--stone);
-            padding-top: 0.625rem;
-            padding-bottom: 0.625rem;
-        }
-
-        .mobile-hr {
-            border: none;
-            border-top: 1px solid var(--border);
-            margin: 1rem 0;
-        }
-
-        .mobile-cta {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.9375rem 1.5rem;
-            background-color: var(--orange);
-            color: #ffffff;
-            font-size: 1rem;
-            font-weight: 500;
-            border-radius: 10px;
-            text-decoration: none;
-            margin-top: 0.5rem;
-            transition: background-color 0.15s ease;
-        }
-
-        .mobile-cta:hover { background-color: var(--orange-hover); }
-
         /* ─────────────────────────────────────────────────────
            SECTION STUBS  (removed once sections are filled)
-        ───────────────────────────────────────────────────── */
+           ───────────────────────────────────────────────────── */
 
         .section-stub { padding: 5rem 1.5rem; }
 
@@ -2406,7 +2098,7 @@
 
             <!-- Brand -->
             <a href="/" class="nav-brand" aria-label="RAIS zur Startseite">
-                <img src="images/RAIS_LOGO_PICTOGRAM.png" alt="" width="52" height="52" aria-hidden="true">
+                <img src="favicon.svg" alt="" width="52" height="52" aria-hidden="true">
                 <div class="nav-brand-words">
                     <span class="nav-wordmark">RAIS</span>
                     <span class="nav-submark">Strategische Gestaltung effizienter Betriebsprozesse</span>
@@ -2491,8 +2183,11 @@
 
             <!-- Transparent content panel (Box removed for premium layout) -->
             <div class="hero-content">
-                        <span class="hero-label">Ritz AI Solutions</span>
-                        <h1 class="hero-h1">
+                <div class="hero-brand-emblem" style="display: inline-flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
+                    <img src="favicon.svg" alt="" width="36" height="36" style="filter: drop-shadow(0 2px 8px rgba(236,106,55,0.3));">
+                    <span style="font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif; font-size: 1.6rem; font-weight: 300; color: var(--orange); letter-spacing: 0.2em; text-transform: uppercase;">RAIS</span>
+                </div>
+                <h1 class="hero-h1">
                     Wir helfen Betrieben, Zeit und Geld durch die Automatisierung vermeidbarer Abläufe und strategische Prozesse zu sichern.
                         </h1>
 
@@ -2787,256 +2482,81 @@
                     <p class="section-sub">Echte Systeme. Kein Konzept. Jedes Projekt löst ein konkretes Business-Problem.</p>
                 </div>
 
-                <div class="proj-carousel-wrap">
-                    <button class="proj-arrow proj-arrow--prev" id="projPrev" aria-label="Vorheriges Projekt">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
-                    </button>
-                <div class="proj-viewport">
-                    <div class="proj-track" id="projTrack">
-
-                        <!-- Karte 1: WF1 Automatisches Onboarding -->
-                        <article class="proj-card">
-                            <div class="proj-img-wrap">
-                                <img src="images/automatisches Onboarding system Screenshot.png" alt="n8n Workflow: Automatisches Onboarding nach Vertragsunterzeichnung" loading="lazy" class="proj-img">
-                            </div>
-                            <div class="proj-body">
-                                <p class="proj-name">WF1 — Automatisches Onboarding</p>
-                                <span class="proj-badge proj-badge--auto">Automatisierung</span>
-                                <h3 class="proj-title">Kein manueller Schritt nach Vertragsabschluss</h3>
-                                
-                                <div class="proj-accordion">
-                                    <button type="button" class="proj-accordion-trigger">
-                                        <span>Details anzeigen</span>
-                                        <svg class="proj-accordion-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                            <polyline points="6 9 12 15 18 9"></polyline>
-                                        </svg>
-                                    </button>
-                                    <div class="proj-accordion-content">
-                                        <ul class="proj-bullets">
-                                            <li>Unterschrift → Ordner, Dokumente, CRM, E-Mail in unter 4 Minuten</li>
-                                            <li>Kein Vergessen, kein Doppeleintrag, kein manueller Follow-up</li>
-                                            <li>Ausgelöst durch Webhook — läuft 24/7 ohne Eingriff</li>
-                                            <li>Kleine Teams wirken wie große Unternehmen</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="proj-links">
-                                    <a href="demo.html" class="proj-btn proj-btn--solid">Demo ansehen</a>
+                <div class="expanding-cards-container">
+                    <!-- Card 1: WF1 Onboarding -->
+                    <div class="expanding-card active" data-index="0">
+                        <div class="card-bg-image" style="background-image: url('images/automatisches Onboarding system Screenshot.png');"></div>
+                        <div class="card-gradient-overlay"></div>
+                        <div class="card-content-wrap">
+                            <span class="card-badge">n8n Automation</span>
+                            <h4 class="card-title">WF1 — Automatisches Onboarding</h4>
+                            <div class="card-expanded-content">
+                                <p class="card-desc">Vollautomatisierter n8n-Workflow, der bei Vertragsunterzeichnung Ordnerstrukturen anlegt, CRM-Daten spiegelt und Onboarding-Dokumente versendet.</p>
+                                <ul class="card-bullets">
+                                    <li><span>✔</span> Vertragsabschluss löst Google Drive & CRM-Sync aus</li>
+                                    <li><span>✔</span> Willkommens-E-Mails & Login-Erstellung in &lt; 4 Minuten</li>
+                                    <li><span>✔</span> Vollständige Eliminierung von manuellem Admin-Engpass</li>
+                                </ul>
+                                <div style="margin-top: 1.25rem;">
+                                    <a href="demo.html#booking" class="featured-btn">Fahrplan anfordern &rarr;</a>
                                 </div>
                             </div>
-                        </article>
+                        </div>
+                    </div>
 
-                        <!-- Karte 2: LMLF Lead-Pipeline -->
-                        <article class="proj-card">
-                            <div class="proj-img-wrap">
-                                <img src="images/LMLF wf3 get person screenshot.png" alt="n8n Workflow: Automatische Lead-Pipeline" loading="lazy" class="proj-img">
-                            </div>
-                            <div class="proj-body">
-                                <p class="proj-name">LMLF — Lead Pipeline</p>
-                                <span class="proj-badge proj-badge--auto">Automatisierung</span>
-                                <h3 class="proj-title">Neue Leads in der Zielregion — täglich, automatisch</h3>
-                                
-                                <div class="proj-accordion">
-                                    <button type="button" class="proj-accordion-trigger">
-                                        <span>Details anzeigen</span>
-                                        <svg class="proj-accordion-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                            <polyline points="6 9 12 15 18 9"></polyline>
-                                        </svg>
-                                    </button>
-                                    <div class="proj-accordion-content">
-                                        <ul class="proj-bullets">
-                                            <li>Scraping nach Region und Nische ohne manuellen Aufwand</li>
-                                            <li>Tägliche Ausführung, Duplikate automatisch gefiltert</li>
-                                            <li>Leads direkt ins CRM oder Google Sheet — kein CSV-Export</li>
-                                            <li>Skalierbar auf jede Branche und PLZ</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="proj-links">
-                                    <a href="demo.html" class="proj-btn proj-btn--solid">Demo ansehen</a>
+                    <!-- Card 2: Tekin Gebäudeservice -->
+                    <div class="expanding-card" data-index="1">
+                        <div class="card-bg-image" style="background-image: linear-gradient(135deg, #1e1b18 0%, #2f2a24 100%);">
+                            <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; text-align:center; color:#FBF8F3;">
+                                <div style="padding: 2rem; opacity: 0.85;">
+                                    <span style="font-family:'JetBrains Mono', monospace; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:#ec6a37;">Live-System</span>
+                                    <h5 style="font-family:'Baskerville', serif; font-size:1.5rem; margin-top:0.25rem; font-weight:600;">tekin-gebaeudeservice.de</h5>
                                 </div>
                             </div>
-                        </article>
-
-                        <!-- Karte 3: Fliesen Weber -->
-                        <article class="proj-card">
-                            <div class="proj-img-wrap">
-                                <img src="images/fleisen weber screenshot.png" alt="Fliesen Weber: Website with Kostenrechner and Online-Terminbuchung" loading="lazy" class="proj-img">
-                            </div>
-                            <div class="proj-body">
-                                <p class="proj-name">Fliesen Weber</p>
-                                <span class="proj-badge proj-badge--website">Digitale Präsenz</span>
-                                <h3 class="proj-title">70% der Handwerksanfragen kommen heute online</h3>
-                                
-                                <div class="proj-accordion">
-                                    <button type="button" class="proj-accordion-trigger">
-                                        <span>Details anzeigen</span>
-                                        <svg class="proj-accordion-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                            <polyline points="6 9 12 15 18 9"></polyline>
-                                        </svg>
-                                    </button>
-                                    <div class="proj-accordion-content">
-                                        <ul class="proj-bullets">
-                                            <li>Kostenrechner qualifiziert Kunden vor — nur ernsthafte Anfragen</li>
-                                            <li>Calendly: 24/7 buchbar ohne Telefonat</li>
-                                            <li>SEO-optimiert, unter 1s Ladezeit, live auf Vercel</li>
-                                            <li>Ein-Mann-Betrieb wirkt online seriös und buchbar</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="proj-links">
-                                    <a href="https://fliesen-weber.vercel.app" target="_blank" rel="noopener noreferrer" class="proj-btn proj-btn--solid">Live ↗</a>
+                        </div>
+                        <div class="card-gradient-overlay"></div>
+                        <div class="card-content-wrap">
+                            <span class="card-badge">Premium Website</span>
+                            <h4 class="card-title">Tekin Gebäudeservice</h4>
+                            <div class="card-expanded-content">
+                                <p class="card-desc">Hochkonvertierende Service-Präsenz mit interaktivem Vorher-Nachher-Bildregler, integrierter Schnellanfrage und WhatsApp-Direktkanal.</p>
+                                <ul class="card-bullets">
+                                    <li><span>✔</span> Visueller Bahnsteigreinigung-Livevergleich</li>
+                                    <li><span>✔</span> Direkter, hürdenloser Pfad zu B2B-Anfragen</li>
+                                    <li><span>✔</span> Optimiert für mobile Neukundengewinnung</li>
+                                </ul>
+                                <div style="margin-top: 1.25rem;">
+                                    <a href="https://tekin-gebaeudeservice.vercel.app/" target="_blank" rel="noopener noreferrer" class="featured-btn">Live-Demo ansehen &rarr;</a>
                                 </div>
                             </div>
-                        </article>
+                        </div>
+                    </div>
 
-                        <!-- Karte 4: Clay & Light -->
-                        <article class="proj-card">
-                            <div class="proj-img-wrap">
-                                <img src="images/clay and light screenshot.png" alt="Clay & Light: Online-Reservierung und digitale Speisekarte" loading="lazy" class="proj-img">
-                            </div>
-                            <div class="proj-body">
-                                <p class="proj-name">Clay & Light</p>
-                                <span class="proj-badge proj-badge--webapp">Digitale Präsenz</span>
-                                <h3 class="proj-title">Direkter Umsatz statt Tischreservierung per Telefon</h3>
-                                
-                                <div class="proj-accordion">
-                                    <button type="button" class="proj-accordion-trigger">
-                                        <span>Details anzeigen</span>
-                                        <svg class="proj-accordion-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                            <polyline points="6 9 12 15 18 9"></polyline>
-                                        </svg>
-                                    </button>
-                                    <div class="proj-accordion-content">
-                                        <ul class="proj-bullets">
-                                            <li>Online-Reservierung und digitale Speisekarte in einem System</li>
-                                            <li>Kontaktdaten gespeichert → E-Mail-Kampagnen für Retention</li>
-                                            <li>Rabattcode gegen Newsletter — Kundenbindung automatisiert</li>
-                                            <li>Conversion direkt aus Website — ohne Drittanbieter-Gebühren</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="proj-links">
-                                    <a href="demo.html" class="proj-btn proj-btn--solid">Demo ansehen</a>
+                    <!-- Card 3: RAIS CRM -->
+                    <div class="expanding-card" data-index="2">
+                        <div class="card-bg-image" style="background-image: url('images/RAIS CRM Screenshot.png');"></div>
+                        <div class="card-gradient-overlay"></div>
+                        <div class="card-content-wrap">
+                            <span class="card-badge">Custom CRM App</span>
+                            <h4 class="card-title">RAIS CRM System</h4>
+                            <div class="card-expanded-content">
+                                <p class="card-desc">Internes, maßgeschneidertes Kundenbeziehungs-System für kleine Agenturen. Volle Datenkontrolle ohne monatliche Lizenzgebühren.</p>
+                                <ul class="card-bullets">
+                                    <li><span>✔</span> Perfekt auf das Team abgestimmte Lead-Pipeline</li>
+                                    <li><span>✔</span> Direktes Tracking ohne teuren SaaS-Overhead</li>
+                                    <li><span>✔</span> Volle Anpassbarkeit und Datensouveränität</li>
+                                </ul>
+                                <div style="margin-top: 1.25rem;">
+                                    <a href="demo.html#booking" class="featured-btn">Eigenes CRM planen &rarr;</a>
                                 </div>
                             </div>
-                        </article>
-
-                        <!-- Karte 5: RAIS CRM -->
-                        <article class="proj-card">
-                            <div class="proj-img-wrap proj-img-wrap--censored">
-                                <img src="images/RAIS CRM Screenshot.png" alt="RAIS CRM Dashboard: Leads, Status und Pipeline-Übersicht" loading="lazy" class="proj-img">
-                                <div class="proj-censor-bar"></div>
-                            </div>
-                            <div class="proj-body">
-                                <p class="proj-name">RAIS CRM</p>
-                                <span class="proj-badge proj-badge--crm">CRM System</span>
-                                <h3 class="proj-title">Kein SaaS-Overhead — CRM das genau passt</h3>
-                                
-                                <div class="proj-accordion">
-                                    <button type="button" class="proj-accordion-trigger">
-                                        <span>Details anzeigen</span>
-                                        <svg class="proj-accordion-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                            <polyline points="6 9 12 15 18 9"></polyline>
-                                        </svg>
-                                    </button>
-                                    <div class="proj-accordion-content">
-                                        <ul class="proj-bullets">
-                                            <li>Leads, Projektstatus und Kommunikation in einer Ansicht</li>
-                                            <li>Maßgeschneidert — kein HubSpot-Ballast</li>
-                                            <li>Direkt an Automatisierungen angebunden</li>
-                                            <li>Kein Abo, keine Daten bei Drittanbietern</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="proj-links">
-                                    <a href="demo.html" class="proj-btn proj-btn--solid">Demo ansehen</a>
-                                </div>
-                            </div>
-                        </article>
-
-                        <!-- Karte 6: Eckstein CMS -->
-                        <article class="proj-card">
-                            <div class="proj-img-wrap">
-                                <img src="images/Eckstein CMS Screenshot.png" alt="Eckstein CMS: Redaktions-Dashboard mit Episode-Pipeline" loading="lazy" class="proj-img">
-                            </div>
-                            <div class="proj-body">
-                                <p class="proj-name">Eckstein Studios CMS</p>
-                                <span class="proj-badge proj-badge--cms">CMS</span>
-                                <h3 class="proj-title">Redaktionsplanung ohne Entwickler-Abhängigkeit</h3>
-                                
-                                <div class="proj-accordion">
-                                    <button type="button" class="proj-accordion-trigger">
-                                        <span>Details anzeigen</span>
-                                        <svg class="proj-accordion-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                            <polyline points="6 9 12 15 18 9"></polyline>
-                                        </svg>
-                                    </button>
-                                    <div class="proj-accordion-content">
-                                        <ul class="proj-bullets">
-                                            <li>Episodenverwaltung und Publishing-Workflow für Podcast</li>
-                                            <li>Redakteure arbeiten selbstständig — kein Ticket nötig</li>
-                                            <li>Strukturierter Inhalt statt Word-Dokumente per E-Mail</li>
-                                            <li>Gebaut für den redaktionellen Alltag, nicht für Techniker</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="proj-links">
-                                    <a href="demo.html" class="proj-btn proj-btn--solid">Demo ansehen</a>
-                                </div>
-                            </div>
-                        </article>
-
-                        <!-- Karte 7: Habittracker -->
-                        <article class="proj-card">
-                            <div class="proj-img-wrap">
-                                <img src="images/RAIS performance Screenshot.png" alt="RAIS Performance Dashboard: Deep Work, Effizienz und Habit-Tracking" loading="lazy" class="proj-img">
-                            </div>
-                            <div class="proj-body">
-                                <p class="proj-name">RAIS Performance</p>
-                                <span class="proj-badge proj-badge--dashboard">Dashboard</span>
-                                <h3 class="proj-title">Messbarer Output statt Bauchgefühl</h3>
-                                
-                                <div class="proj-accordion">
-                                    <button type="button" class="proj-accordion-trigger">
-                                        <span>Details anzeigen</span>
-                                        <svg class="proj-accordion-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                            <polyline points="6 9 12 15 18 9"></polyline>
-                                        </svg>
-                                    </button>
-                                    <div class="proj-accordion-content">
-                                        <ul class="proj-bullets">
-                                            <li>KPIs, Gewohnheiten und Ziele täglich getrackt</li>
-                                            <li>Visualisierungen und Trendanalyse — was funktioniert, was nicht</li>
-                                            <li>Datengetrieben statt motivationsabhängig</li>
-                                            <li>Eigenprojekt: gebaut weil kein Tool genau das konnte</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="proj-links">
-                                    <a href="demo.html" class="proj-btn proj-btn--solid">Demo ansehen</a>
-                                </div>
-                            </div>
-                        </article>
-
+                        </div>
                     </div>
                 </div>
 
-                    </div><!-- /.proj-viewport -->
-                    <button class="proj-arrow proj-arrow--next" id="projNext" aria-label="Nächstes Projekt">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-                    </button>
-                </div><!-- /.proj-carousel-wrap -->
-
-                <div class="proj-dots" id="projDots" role="tablist" aria-label="Projekt wählen"></div>
-                <p class="proj-swipe-hint">← scrollen für mehr →</p>
+                <div style="text-align: center; margin-top: 3.5rem;">
+                    <a href="demo.html" class="btn-primary" style="text-decoration: none;">Alle 12 Live-Systeme &amp; Demos ansehen</a>
+                </div>
 
             </div>
         </section>
@@ -3187,7 +2707,7 @@
     <footer id="footer">
         <div class="footer-inner">
             <a href="/" class="footer-brand" aria-label="RAIS Startseite">
-                <img src="images/RAIS-Logo-transparent.png" alt="" width="48" height="48" aria-hidden="true">
+                <img src="favicon.svg" alt="" width="48" height="48" aria-hidden="true">
                 <span class="footer-wordmark">RAIS</span>
             </a>
             <nav class="footer-legal" aria-label="Seitenlinks">
@@ -3454,72 +2974,28 @@
         }());
 
 
-        /* ── Projekt carousel ────────────────────────────────── */
-        (function () {
-            var track         = document.getElementById('projTrack');
-            var dotsContainer = document.getElementById('projDots');
-            if (!track) return;
+        /* ── Expanding Cards (Featured Cases) ────────────────── */
+        (function() {
+            var cards = document.querySelectorAll('.expanding-card');
+            if (cards.length === 0) return;
 
-            var cards   = track.querySelectorAll('.proj-card');
-            var total   = cards.length;
-            var current = 0;
-            var GAP     = 20; // matches 1.25rem gap
-
-            /* Build dots dynamically */
-            var dotBtns = [];
-            for (var d = 0; d < total; d++) {
-                var btn = document.createElement('button');
-                btn.type = 'button';
-                btn.className = 'carousel-dot';
-                btn.setAttribute('role', 'tab');
-                btn.setAttribute('aria-label', 'Projekt ' + (d + 1));
-                btn.setAttribute('data-index', d);
-                dotsContainer.appendChild(btn);
-                dotBtns.push(btn);
+            function activateCard(card) {
+                cards.forEach(function(c) {
+                    c.classList.remove('active');
+                });
+                card.classList.add('active');
             }
 
-            function cardWidth() { return cards[0].offsetWidth; }
-
-            function goTo(idx) {
-                current = ((idx % total) + total) % total;
-                track.style.transform = 'translateX(-' + (current * (cardWidth() + GAP)) + 'px)';
-                dotBtns.forEach(function (btn, i) {
-                    var active = i === current;
-                    btn.classList.toggle('is-active', active);
-                    btn.setAttribute('aria-selected', active ? 'true' : 'false');
+            cards.forEach(function(card) {
+                card.addEventListener('mouseenter', function() {
+                    activateCard(card);
                 });
-            }
 
-            dotBtns.forEach(function (btn) {
-                btn.addEventListener('click', function () {
-                    goTo(parseInt(btn.getAttribute('data-index'), 10));
+                card.addEventListener('click', function(e) {
+                    if (e.target.closest('a')) return;
+                    activateCard(card);
                 });
             });
-
-            var prevBtn = document.getElementById('projPrev');
-            var nextBtn = document.getElementById('projNext');
-            if (prevBtn) prevBtn.addEventListener('click', function () { goTo(current - 1); });
-            if (nextBtn) nextBtn.addEventListener('click', function () { goTo(current + 1); });
-
-            /* Touch / pointer drag */
-            var dragX = null;
-            track.addEventListener('pointerdown', function (e) {
-                dragX = e.clientX;
-                track.setPointerCapture(e.pointerId);
-            });
-            track.addEventListener('pointerup', function (e) {
-                if (dragX !== null) {
-                    var diff = dragX - e.clientX;
-                    if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1));
-                    dragX = null;
-                }
-            });
-            track.addEventListener('pointermove', function (e) {
-                if (dragX === null) return;
-                e.preventDefault();
-            });
-
-            goTo(0);
         }());
 
 

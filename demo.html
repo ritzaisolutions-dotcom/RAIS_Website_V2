@@ -68,7 +68,7 @@
             z-index: 9999;
             pointer-events: none;
             opacity: 0.04;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3联%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
         /* ─────────────────────────────────────────────────────
@@ -115,13 +115,12 @@
            ───────────────────────────────────────────────────── */
         #hero {
             position: relative;
-            min-height: 75vh;
+            min-height: 85vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            padding: calc(var(--nav-h) + 4rem) 2rem 4rem;
+            padding: calc(var(--nav-h) + 5rem) 2rem 5rem;
             background:
                 linear-gradient(145deg, rgba(26,20,16,0.85) 0%, rgba(18,14,10,0.92) 100%),
                 url('images/mark-koch-hero.webp') center/cover no-repeat;
@@ -139,16 +138,53 @@
             -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 100%);
         }
 
-        .hero-content {
+        .hero-container {
             position: relative;
             z-index: 2;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 4.5rem;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .hero-left-col {
+            flex: 1.25;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start;
             gap: 1.5rem;
-            max-width: 840px;
+            text-align: left;
+        }
+
+        .hero-right-col {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             width: 100%;
+        }
+
+        .video-mockup-player:hover {
+            transform: scale(1.02);
+            border-color: rgba(236, 106, 55, 0.4) !important;
+        }
+        .video-mockup-player:hover .play-btn-wrap {
+            transform: translate(-50%, -50%) scale(1.1) !important;
+            background-color: var(--orange-hover) !important;
+            box-shadow: 0 0 45px rgba(236,106,55,0.7) !important;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 3.5rem;
+            }
+            .hero-left-col {
+                align-items: center;
+                text-align: center;
+            }
         }
 
         .hero-label {
@@ -670,183 +706,6 @@
                 padding: 1.5rem;
             }
         }
-
-        /* ═══════════════════════════════════════════════════
-           EXPANDING CARDS (FEATURED CASES)
-           ═══════════════════════════════════════════════════ */
-        .expanding-cards-container {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            width: 100%;
-            min-height: 380px;
-        }
-
-        @media (min-width: 768px) {
-            .expanding-cards-container {
-                flex-direction: row;
-                min-height: 480px;
-            }
-        }
-
-        .expanding-card {
-            position: relative;
-            flex: 1;
-            height: 380px;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            background-color: #1e1b18;
-            cursor: pointer;
-            transition: flex 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
-                        transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 4px 20px rgba(47, 42, 36, 0.05);
-        }
-
-        @media (min-width: 768px) {
-            .expanding-card {
-                height: 480px;
-            }
-            .expanding-card.active {
-                flex: 2.2; /* expanded state */
-                box-shadow: 0 20px 40px rgba(47, 42, 36, 0.15);
-            }
-        }
-
-        .card-bg-image {
-            position: absolute;
-            inset: 0;
-            background-size: cover;
-            background-position: center;
-            opacity: 0.35;
-            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
-                        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .expanding-card:hover .card-bg-image,
-        .expanding-card.active .card-bg-image {
-            opacity: 0.55;
-            transform: scale(1.03);
-        }
-
-        .card-gradient-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(18, 14, 10, 0.95) 0%, rgba(18, 14, 10, 0.6) 50%, rgba(18, 14, 10, 0.1) 100%);
-            z-index: 1;
-        }
-
-        .card-content-wrap {
-            position: absolute;
-            inset: 0;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            z-index: 2;
-        }
-
-        .card-badge {
-            align-self: flex-start;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            background-color: rgba(236, 106, 55, 0.15);
-            color: #ec6a37;
-            padding: 0.35rem 0.75rem;
-            border-radius: 100px;
-            margin-bottom: 0.75rem;
-            border: 1px solid rgba(236, 106, 55, 0.25);
-            opacity: 0.85;
-            transition: opacity 0.4s ease;
-        }
-
-        .card-title {
-            font-family: 'Baskerville', serif;
-            font-size: 1.6rem;
-            font-weight: 600;
-            color: #FBF8F3;
-            margin-bottom: 0.5rem;
-            transition: transform 0.4s ease;
-        }
-
-        /* Expanded content container */
-        .card-expanded-content {
-            max-height: 0;
-            opacity: 0;
-            overflow: hidden;
-            transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
-                        opacity 0.4s ease, 
-                        margin-top 0.4s ease;
-        }
-
-        /* In vertical/mobile view, show a bit of description, or expand on active */
-        .expanding-card.active .card-expanded-content {
-            max-height: 280px;
-            opacity: 1;
-            margin-top: 0.75rem;
-        }
-
-        @media (max-width: 767px) {
-            .expanding-card.active .card-expanded-content {
-                max-height: 320px;
-            }
-        }
-
-        .card-desc {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.925rem;
-            color: rgba(251, 248, 243, 0.8);
-            line-height: 1.5;
-            margin-bottom: 1rem;
-            max-width: 600px;
-        }
-
-        .card-bullets {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 1.25rem 0;
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-        }
-
-        .card-bullets li {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.875rem;
-            color: rgba(251, 248, 243, 0.75);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .card-bullets li span {
-            color: #ec6a37;
-            font-weight: bold;
-        }
-
-        .featured-btn {
-            display: inline-flex;
-            align-items: center;
-            background-color: #ec6a37;
-            color: #FFFFFF;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 600;
-            padding: 0.75rem 1.5rem;
-            border-radius: 10px;
-            text-decoration: none;
-            transition: background-color 0.2s ease, transform 0.2s ease;
-            box-shadow: 0 4px 12px rgba(236, 106, 55, 0.25);
-        }
-
-        .featured-btn:hover {
-            background-color: #f07d4c;
-            transform: translateY(-1px);
-        }
     </style>
 </head>
 <body>
@@ -859,7 +718,7 @@
 
             <!-- Brand -->
             <a href="index.html" class="nav-brand" aria-label="RAIS zur Startseite">
-                <img src="images/RAIS_LOGO_PICTOGRAM.png" alt="" width="52" height="52" aria-hidden="true">
+                <img src="favicon.svg" alt="" width="52" height="52" aria-hidden="true">
                 <div class="nav-brand-words">
                     <span class="nav-wordmark">RAIS</span>
                     <span class="nav-submark">Strategische Gestaltung effizienter Betriebsprozesse</span>
@@ -920,15 +779,46 @@
         ═══════════════════════════════════════════════════ -->
         <section id="hero">
             <div class="hero-overlay" aria-hidden="true"></div>
-            <div class="hero-content">
-                <span class="hero-label">Live Showcase</span>
-                <h1 class="hero-h1">Unsere Systeme live in Aktion.</h1>
-                <p class="hero-sub">
-                    Sehen Sie sich fertige KI-Agenten, hocheffiziente Automatisierungen und performante Custom Software & Websites direkt an.
-                </p>
-                <div class="hero-ctas">
-                    <a href="#demos" class="hero-btn-primary">Demos erkunden</a>
-                    <a href="#booking" class="hero-btn-outline">Gespräch buchen</a>
+            <div class="hero-container">
+                <div class="hero-left-col">
+                    <div class="hero-brand-emblem" style="display: inline-flex; align-items: center; gap: 0.75rem;">
+                        <img src="favicon.svg" alt="" width="36" height="36" style="filter: drop-shadow(0 2px 8px rgba(236,106,55,0.3));">
+                        <span style="font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif; font-size: 1.6rem; font-weight: 300; color: var(--orange); letter-spacing: 0.2em; text-transform: uppercase;">RAIS</span>
+                    </div>
+                    <h1 class="hero-h1">Systeme, die Arbeit abnehmen. Live bewiesen.</h1>
+                    <p class="hero-sub">
+                        Wir reden nicht nur von Effizienz – wir zeigen sie Ihnen. Sehen Sie in diesem 2-Minuten-Video, wie wir manuelle Abläufe wegbauen, und testen Sie unsere Live-Systeme direkt selbst.
+                    </p>
+                    <div class="hero-ctas">
+                        <a href="#demos" class="hero-btn-primary">Demos erkunden</a>
+                        <a href="#booking" class="hero-btn-outline">Gespräch buchen</a>
+                    </div>
+                </div>
+                <div class="hero-right-col">
+                    <!-- Elegant Video Player Mockup -->
+                    <div class="video-mockup-player" style="position: relative; width: 100%; max-width: 520px; aspect-ratio: 16/9; background: #1a1512; border-radius: 16px; overflow: hidden; box-shadow: 0 24px 55px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06); cursor: pointer; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease; border: 1px solid rgba(255,255,255,0.12);">
+                        <!-- Video poster / fallback image (re-using optimized hero image) -->
+                        <img src="images/mark-koch-hero.webp" alt="Video-Erklärung von Kevin" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.55; filter: brightness(0.75) contrast(1.15);">
+                        
+                        <!-- Premium gradient overlay -->
+                        <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(26,21,18,0.85) 100%);"></div>
+                        
+                        <!-- Grid lines representing processes in background of the video -->
+                        <div class="hero-overlay" style="opacity: 0.3;" aria-hidden="true"></div>
+
+                        <!-- Big Glassmorphic Play Button -->
+                        <div class="play-btn-wrap" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; width: 76px; height: 72px; border-radius: 50%; background: rgba(236, 106, 55, 0.95); box-shadow: 0 8px 30px rgba(236,106,55,0.45); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);">
+                            <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" style="color: #ffffff; margin-left: 4px;">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </div>
+
+                        <!-- Label Overlay inside video player -->
+                        <div style="position: absolute; bottom: 20px; left: 20px; text-align: left; display: flex; flex-direction: column; gap: 4px;">
+                            <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--orange); font-weight: 500;">Kevin Ritz — Gründer RAIS</span>
+                            <span style="font-family: 'Baskerville', serif; font-size: 1.25rem; font-weight: 500; color: #ffffff; text-shadow: 0 1px 4px rgba(0,0,0,0.4);">Die RAIS-Methode in 2 Minuten erklärt</span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="hero-scroll-cue" aria-hidden="true">
@@ -937,6 +827,217 @@
                 </svg>
             </div>
         </section>
+
+
+        <!-- ── SECTION: OUTCOMES ── -->
+        <section id="ergebnisse" class="reveal" style="padding: 6rem 0; background: var(--background);">
+            <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+                <div style="text-align: center; margin-bottom: 3.5rem;">
+                    <span class="mono-label" style="color: var(--orange); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;">Messbare Erfolge</span>
+                    <h2 class="section-h2" style="font-family: 'Baskerville', serif; font-size: 2.25rem; color: var(--charcoal); margin-top: 0.5rem; margin-bottom: 1rem; font-weight: 700;">
+                        Was passiert, wenn manuelle Prozesse wegfallen.
+                    </h2>
+                    <p class="section-sub" style="margin: 0 auto; max-width: 600px; color: var(--stone); font-size: 1rem;">
+                        Unsere Automatisierungen sind keine vagen Ideen. Es sind praxiserprobte Systeme, die echten Nutzen stiften.
+                    </p>
+                </div>
+
+                <div class="erg-grid">
+                    <article class="erg-card">
+                        <div class="erg-metric">&lt; 4 Min.</div>
+                        <div class="erg-metric-label">vollautomatisches Onboarding</div>
+                        <i data-lucide="timer" class="branchen-icon" aria-hidden="true" style="margin-bottom: 1rem; color: var(--orange); width: 32px; height: 32px;"></i>
+                        <h3 class="branchen-title" style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem;">Onboarding in unter 4 Minuten</h3>
+                        <p class="branchen-desc" style="font-size: 0.9rem; line-height: 1.6; color: var(--stone); margin-bottom: 1.5rem; flex: 1;">
+                            Was vorher 2 bis 3 Stunden manueller Arbeit gekostet hat: Ordner anlegen, Dokumente verschicken, CRM-Eintrag, interne Benachrichtigung. Das läuft jetzt vollautomatisch ab. Ausgelöst durch eine Unterschrift.
+                        </p>
+                        <a href="#booking" class="branchen-btn" style="width: 100%; text-align: center;">Prozess anfragen</a>
+                    </article>
+
+                    <article class="erg-card">
+                        <div class="erg-metric">0</div>
+                        <div class="erg-metric-label">verlorene Kontakte</div>
+                        <i data-lucide="user-check" class="branchen-icon" aria-hidden="true" style="margin-bottom: 1rem; color: var(--orange); width: 32px; height: 32px;"></i>
+                        <h3 class="branchen-title" style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem;">Kein verlorener Kontakt mehr</h3>
+                        <p class="branchen-desc" style="font-size: 0.9rem; line-height: 1.6; color: var(--stone); margin-bottom: 1.5rem; flex: 1;">
+                            Jeder Interessent, der einen Termin bucht, wird automatisch bis zum Gespräch aufgewärmt. Personalisierte Nachrichten, nützlicher Content, keine manuelle Nachverfolgung nötig.
+                        </p>
+                        <a href="#booking" class="branchen-btn" style="width: 100%; text-align: center;">Prozess anfragen</a>
+                    </article>
+
+                    <article class="erg-card">
+                        <div class="erg-metric">3×</div>
+                        <div class="erg-metric-label">mehr Reaktionen bei Bestandskunden</div>
+                        <i data-lucide="repeat" class="branchen-icon" aria-hidden="true" style="margin-bottom: 1rem; color: var(--orange); width: 32px; height: 32px;"></i>
+                        <h3 class="branchen-title" style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem;">Bestandskunden aktiv halten</h3>
+                        <p class="branchen-desc" style="font-size: 0.9rem; line-height: 1.6; color: var(--stone); margin-bottom: 1.5rem; flex: 1;">
+                            Automatisierte Kampagnen, die Bestandskunden auf Basis ihres Profils ansprechen. Zur richtigen Zeit, mit dem richtigen Angebot – völlig ohne manuellen Aufwand für Ihr Team.
+                        </p>
+                        <a href="#booking" class="branchen-btn" style="width: 100%; text-align: center;">Prozess anfragen</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ── SECTION: PROCESS EXPLAINED ── -->
+        <section id="leistungen" class="reveal" style="padding: 6rem 0; background: var(--surface);">
+            <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+                <div style="text-align: center; margin-bottom: 3.5rem;">
+                    <span class="mono-label" style="color: var(--orange); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;">Drei Hebel</span>
+                    <h2 class="section-h2" style="font-family: 'Baskerville', serif; font-size: 2.25rem; color: var(--charcoal); margin-top: 0.5rem; margin-bottom: 1rem; font-weight: 700;">
+                        Ein Ziel: weniger manuelle Arbeit.
+                    </h2>
+                    <p class="section-sub" style="margin: 0 auto; max-width: 600px; color: var(--stone); font-size: 1rem;">
+                        Je nach Situation greifen wir dort ein, wo der größte Zeitverlust entsteht. Mit Automatisierung, KI oder einer digitalen Präsenz, die Arbeit abnimmt.
+                    </p>
+                </div>
+
+                <div class="leis-grid">
+                    <article class="leis-pillar leis-pillar--main">
+                        <svg class="leis-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--orange);">
+                            <rect x="3" y="11" width="18" height="10" rx="2"/>
+                            <path d="M12 11V7"/>
+                            <circle cx="12" cy="5" r="2"/>
+                            <path d="M8 15h.01M12 15h.01M16 15h.01"/>
+                        </svg>
+                        <span class="leis-card-badge" style="background-color: rgba(236,106,55,0.08); color: var(--orange);">Hauptleistung</span>
+                        <h3 class="leis-card-title">Prozessautomatisierung</h3>
+                        <p class="leis-card-body">
+                            Wir analysieren Ihre manuellen Abläufe und automatisieren sie. Von der ersten Kundenanfrage bis zum abgeschlossenen Onboarding.
+                        </p>
+                        <ul class="leis-card-list">
+                            <li>Automatisches Onboarding bei Vertragsabschluss</li>
+                            <li>CRM-Integration, Ordnererstellung, Dokumentenversand</li>
+                            <li>Follow-up Sequenzen, die Interessenten warmhalten</li>
+                            <li>Anbindung an bestehende Tools (Google Workspace, HubSpot u.a.)</li>
+                        </ul>
+                    </article>
+
+                    <article class="leis-pillar">
+                        <svg class="leis-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--stone);">
+                            <path d="M12 8V4H8"/>
+                            <rect width="16" height="12" x="4" y="8" rx="2"/>
+                            <path d="M2 14h2"/>
+                            <path d="M20 14h2"/>
+                            <path d="M15 13v2"/>
+                            <path d="M9 13v2"/>
+                        </svg>
+                        <span class="leis-card-badge leis-card-badge--ext">Erweiterung</span>
+                        <h3 class="leis-card-title">KI-Agenten</h3>
+                        <p class="leis-card-body">
+                            Intelligente Assistenten, die rund um die Uhr Anfragen beantworten, vorqualifizieren und Termine direkt in Ihren Kalender buchen.
+                        </p>
+                        <ul class="leis-card-list">
+                            <li>24/7 Erreichbarkeit per Chat oder WhatsApp</li>
+                            <li>Automatische Beantwortung wiederkehrender Fragen</li>
+                            <li>Qualifizierung und Weiterleitung an die richtige Person</li>
+                            <li>DSGVO-konform konfiguriert und nahtlos integriert</li>
+                        </ul>
+                    </article>
+
+                    <article class="leis-pillar">
+                        <svg class="leis-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--stone);">
+                            <rect x="2" y="3" width="20" height="14" rx="2"/>
+                            <line x1="8" y1="21" x2="16" y2="21"/>
+                            <line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                        <span class="leis-card-badge leis-card-badge--ext">Erweiterung</span>
+                        <h3 class="leis-card-title">Digitale Präsenz</h3>
+                        <p class="leis-card-body">
+                            Eine professionelle Website, die nicht nur gut aussieht. Sie fängt Anfragen aktiv auf, qualifiziert sie vor und leitet sie direkt in Ihre Prozesse.
+                        </p>
+                        <ul class="leis-card-list">
+                            <li>Klarer, reibungsloser Anfrageweg und Terminbuchung</li>
+                            <li>Integrierte Kostenrechner oder einfache Konfiguratoren</li>
+                            <li>Direkte Anbindung an Ihre Automatisierungssysteme</li>
+                            <li>Schnell live, basierend auf bewährten UX-Strukturen</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ── SECTION: COLLABORATION & DREAM OUTCOME ── -->
+        <section id="zusammenarbeit" class="reveal" style="padding: 6rem 0; background: var(--background); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+            <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+                <div style="display: flex; gap: 4rem; align-items: stretch; flex-wrap: wrap;">
+                    
+                    <!-- Left Column: How We Work (Zusammenarbeit) -->
+                    <div style="flex: 1.1; min-width: 320px; display: flex; flex-direction: column; justify-content: center;">
+                        <span class="mono-label" style="color: var(--orange); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;">Zusammenarbeit</span>
+                        <h2 style="font-family: 'Baskerville', serif; font-size: 2.25rem; color: var(--charcoal); margin-top: 0.5rem; margin-bottom: 1.5rem; font-weight: 700; line-height: 1.2;">
+                            In 3 Schritten zu fehlerfreien Prozessen.
+                        </h2>
+                        <p style="color: var(--stone); margin-bottom: 2rem; font-size: 1rem; line-height: 1.65;">
+                            Wir stülpen Ihnen keine Standard-Software über. Wir analysieren Ihren echten Betrieb, bauen das System maßgeschneidert auf und übergeben es schlüsselfertig.
+                        </p>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                            <!-- Step 1 -->
+                            <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                                <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: rgba(236,106,55,0.1); color: var(--orange); font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.875rem; flex-shrink: 0; margin-top: 2px;">1</div>
+                                <div>
+                                    <h4 style="font-size: 1rem; font-weight: 600; color: var(--charcoal); margin-bottom: 4px;">System- &amp; Engpass-Audit</h4>
+                                    <p style="font-size: 0.875rem; color: var(--stone); line-height: 1.5;">Wir screenen Ihre aktuellen manuellen Abläufe (E-Mails, Tabellen, Dokumente) und decken die größten Zeitfresser auf.</p>
+                                </div>
+                            </div>
+                            <!-- Step 2 -->
+                            <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                                <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: rgba(236,106,55,0.1); color: var(--orange); font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.875rem; flex-shrink: 0; margin-top: 2px;">2</div>
+                                <div>
+                                    <h4 style="font-size: 1rem; font-weight: 600; color: var(--charcoal); margin-bottom: 4px;">Maßgeschneiderter Systembau</h4>
+                                    <p style="font-size: 0.875rem; color: var(--stone); line-height: 1.5;">RAIS entwickelt Ihre Workflows, Datenbanken und KI-Agenten. Alles wird getestet, fehlerfrei verknüpft und schlüsselfertig implementiert.</p>
+                                </div>
+                            </div>
+                            <!-- Step 3 -->
+                            <div style="display: flex; gap: 1rem; align-items: flex-start;">
+                                <div style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: rgba(236,106,55,0.1); color: var(--orange); font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.875rem; flex-shrink: 0; margin-top: 2px;">3</div>
+                                <div>
+                                    <h4 style="font-size: 1rem; font-weight: 600; color: var(--charcoal); margin-bottom: 4px;">100% wartungsfreie Übergabe</h4>
+                                    <p style="font-size: 0.875rem; color: var(--stone); line-height: 1.5;">Ihr System läuft stabil im Hintergrund. Sie zahlen keine teuren Abos, behalten die volle Datenkontrolle und genießen sorgenfreie Effizienz.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Dream Outcome Card -->
+                    <div style="flex: 0.9; min-width: 320px; display: flex; align-items: center; justify-content: center;">
+                        <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; width: 100%; box-shadow: 0 16px 36px rgba(47, 42, 36, 0.05); display: flex; flex-direction: column; gap: 1.5rem; border-left: 4px solid var(--orange);">
+                            <span class="mono-label" style="color: var(--pistachio); background: rgba(60,90,42,0.08); padding: 0.35rem 0.85rem; border-radius: 100px; font-size: 0.65rem; align-self: flex-start; text-transform: uppercase; letter-spacing: 0.1em;">Das Ziel: Sorgenfreie Skalierung</span>
+                            <h3 style="font-family: 'Baskerville', serif; font-size: 1.75rem; font-weight: 700; color: var(--charcoal); line-height: 1.25;">
+                                Ihr Betrieb läuft wie ein präzises Uhrwerk.
+                            </h3>
+                            <p style="color: var(--stone); font-size: 0.9375rem; line-height: 1.6;">
+                                Stellen Sie sich vor, wie viel entspannter Ihr Alltag und der Ihres Teams ist, wenn unproduktive Administrationsaufgaben einfach verschwinden:
+                            </p>
+                            <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.75rem;">
+                                <li style="display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.9rem; color: var(--charcoal); line-height: 1.4;">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="color: var(--pistachio); margin-top: 2px; flex-shrink: 0;"><polyline points="20 6 9 17 4 12"/></svg>
+                                    <span><strong>Fokus auf das Kerngeschäft</strong> — Sie arbeiten am Kunden, nicht an der Ablage.</span>
+                                </li>
+                                <li style="display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.9rem; color: var(--charcoal); line-height: 1.4;">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="color: var(--pistachio); margin-top: 2px; flex-shrink: 0;"><polyline points="20 6 9 17 4 12"/></svg>
+                                    <span><strong>Sichtbare Professionalität</strong> — Kunden erleben blitzschnelle, fehlerfreie Onboardings.</span>
+                                </li>
+                                <li style="display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.9rem; color: var(--charcoal); line-height: 1.4;">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="color: var(--pistachio); margin-top: 2px; flex-shrink: 0;"><polyline points="20 6 9 17 4 12"/></svg>
+                                    <span><strong>Volle Datensouveränität</strong> — Ihre Daten liegen sicher in Ihren eigenen Systemen.</span>
+                                </li>
+                                <li style="display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.9rem; color: var(--charcoal); line-height: 1.4;">
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="color: var(--pistachio); margin-top: 2px; flex-shrink: 0;"><polyline points="20 6 9 17 4 12"/></svg>
+                                    <span><strong>Kostensicherheit</strong> — Keine monatlich steigenden Lizenzkosten je Mitarbeiter.</span>
+                                </li>
+                            </ul>
+                            <a href="#booking" class="btn-primary" style="margin-top: 0.5rem; text-align: center; display: inline-flex; width: 100%; justify-content: center; text-decoration: none;">Gespräch vereinbaren</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
 
         <!-- ═══════════════════════════════════════════════════
              DEMO GRID SECTION
@@ -1605,8 +1706,8 @@
     <footer id="footer" style="background-color: var(--surface); border-top: 1px solid var(--border); padding: 4rem 2rem;">
         <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 2rem;">
             <a href="index.html" class="nav-brand" style="text-decoration: none;">
-                <img src="images/RAIS_LOGO_PICTOGRAM.png" alt="" width="44" height="44">
-                <span class="nav-wordmark" style="font-size: 1.15rem; font-weight: 700; color: var(--charcoal); margin-left: 0.5rem;">RAIS</span>
+                <img src="favicon.svg" alt="" width="44" height="44">
+                <span class="nav-wordmark" style="font-size: 1.15rem; font-weight: 400; color: var(--orange); margin-left: 0.5rem;">RAIS</span>
             </a>
             <div style="display: flex; gap: 1.5rem;">
                 <a href="index.html" style="color: var(--stone); text-decoration: none; font-size: 0.875rem;">Startseite</a>
