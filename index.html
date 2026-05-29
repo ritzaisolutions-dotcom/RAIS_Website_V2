@@ -54,6 +54,9 @@
       });
     </script>
 
+    <!-- Preload critical Hero Image -->
+    <link rel="preload" href="images/mark-koch-hero.webp" as="image" type="image/webp">
+
     <!-- Fonts & Styles -->
     <link rel='stylesheet' href='fonts.css'>
     <link rel='stylesheet' href='styles/antigravity-polish.css'>
@@ -124,9 +127,15 @@
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
         }
 
         #navbar.scrolled {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
             inset: 12px 20px auto 20px;
             height: 64px;
             background-color: rgba(251, 248, 243, 0.75);
@@ -550,8 +559,8 @@
             overflow: hidden;
             padding: calc(var(--nav-h) + 2rem) 2rem 3rem;
             background:
-                linear-gradient(145deg, rgba(26,20,16,0.82) 0%, rgba(18,14,10,0.88) 100%),
-                url('images/mark-koch-KiRlN3jjVNU-unsplash.jpg') center/cover no-repeat;
+                linear-gradient(145deg, rgba(26,20,16,0.85) 0%, rgba(18,14,10,0.92) 100%),
+                url('images/mark-koch-hero.webp') center/cover no-repeat;
         }
 
         /* Subtle grid pattern overlay */
@@ -567,7 +576,7 @@
             -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 100%);
         }
 
-        /* Glass content panel */
+        /* Transparent content panel (Box removed for premium layout) */
         .hero-content {
             position: relative;
             z-index: 2;
@@ -575,18 +584,10 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1.25rem;
-            max-width: 760px;
+            gap: 1.5rem;
+            max-width: 840px;
             width: 100%;
-            padding: 2.5rem 3rem;
-            background: rgba(251, 248, 243, 0.55);
-            backdrop-filter: blur(12px) saturate(1.2);
-            -webkit-backdrop-filter: blur(12px) saturate(1.2);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            border-radius: 20px;
-            box-shadow:
-                0 16px 64px rgba(18, 16, 12, 0.28),
-                inset 0 1px 0 rgba(255, 255, 255, 0.65);
+            padding: 1.5rem 1rem;
         }
 
         /* Mono label pill */
@@ -596,11 +597,13 @@
             font-size: 0.75rem;
             letter-spacing: 0.13em;
             text-transform: uppercase;
-            color: var(--stone);
-            border: 1px solid var(--border);
-            background: rgba(251, 248, 243, 0.55);
+            color: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            background: rgba(255, 255, 255, 0.08);
             padding: 0.5rem 1.125rem;
             border-radius: 100px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
 
         /* H1 */
@@ -609,8 +612,9 @@
             font-size: clamp(2.2rem, 5.8vw, 4.55rem);
             font-weight: 700;
             line-height: 1.08;
-            color: #2F2A24;
+            color: #FFFFFF;
             letter-spacing: -0.025em;
+            text-shadow: 0 2px 14px rgba(0,0,0,0.25);
         }
 
         /* Subline */
@@ -618,8 +622,9 @@
             font-family: 'Inter', sans-serif;
             font-size: clamp(1.05rem, 2.1vw, 1.28rem);
             line-height: 1.7;
-            color: #5a5249;
+            color: rgba(255, 255, 255, 0.88);
             max-width: 700px;
+            text-shadow: 0 1px 8px rgba(0,0,0,0.18);
         }
 
 
@@ -677,20 +682,20 @@
             justify-content: center;
             padding: 0.875rem 1.875rem;
             background-color: transparent;
-            color: var(--charcoal);
+            color: #FFFFFF;
             font-family: 'Inter', sans-serif;
             font-size: 1rem;
             font-weight: 500;
             border-radius: 10px;
             text-decoration: none;
-            border: 1.5px solid rgba(47, 42, 36, 0.28);
+            border: 1.5px solid rgba(255, 255, 255, 0.35);
             transition: border-color 0.15s ease, background-color 0.15s ease;
             white-space: nowrap;
         }
 
         .hero-btn-outline:hover {
-            border-color: var(--stone);
-            background-color: rgba(47, 42, 36, 0.05);
+            border-color: #FFFFFF;
+            background-color: rgba(255, 255, 255, 0.08);
         }
 
         /* Scroll cue */
@@ -2433,7 +2438,7 @@
 
             <!-- Right: CTA + hamburger -->
             <div class="nav-right">
-                <button type="button" class="btn-primary" id="nav-demo-btn">Kostenloser Audit</button>
+                <a href="demo.html" class="btn-primary" id="nav-demo-btn">Demo anfordern</a>
 
                 <button
                     class="nav-hamburger"
@@ -2468,7 +2473,7 @@
 
             <hr class="mobile-hr">
 
-            <button type="button" class="mobile-cta" id="mobile-demo-btn" data-close-menu>Kostenloser Audit</button>
+            <a href="demo.html" class="mobile-cta" id="mobile-demo-btn" style="text-decoration:none; display:flex; align-items:center; justify-content:center;">Demo anfordern</a>
 
         </div>
     </div>
@@ -2484,20 +2489,20 @@
             <!-- Dark warm overlay -->
             <div class="hero-overlay" aria-hidden="true"></div>
 
-            <!-- Glass content panel -->
+            <!-- Transparent content panel (Box removed for premium layout) -->
             <div class="hero-content">
+                        <span class="hero-label">Ritz AI Solutions</span>
                         <h1 class="hero-h1">
-                    Manuelle Prozesse kosten Stunden pro Woche.<br>
-                    Wir automatisieren sie.
+                    Wir helfen Betrieben, Zeit und Geld durch die Automatisierung vermeidbarer Abläufe und strategische Prozesse zu sichern.
                         </h1>
 
                         <p class="hero-sub">
-                    Manuelle Abläufe kosten kleine Unternehmen Stunden pro Woche. Für Aufgaben die längst automatisiert laufen könnten. RAIS baut die Systeme die das ändern.
+                    Kleine Unternehmen verlieren Zeit an Prozesse, die niemand je hinterfragt hat. RAIS baut die Systeme, die das ändern — maßgeschneidert, wartungsfrei und ohne teure Software-Abos.
                         </p>
 
                         <div class="hero-ctas">
-                    <button type="button" class="hero-btn-primary" id="hero-demo-btn">Kostenloser Audit</button>
-                    <a href="#trust" class="hero-btn-outline">Wie es funktioniert</a>
+                    <a href="demo.html" class="hero-btn-primary" id="hero-demo-btn">Live-Demos ansehen</a>
+                    <a href="demo.html#booking" class="hero-btn-outline">Arbeite mit uns</a>
                         </div>
 
             </div>
@@ -2744,7 +2749,7 @@
                         <i data-lucide="timer" class="branchen-icon" aria-hidden="true"></i>
                         <h3 class="branchen-title">Onboarding in unter 4 Minuten</h3>
                         <p class="branchen-desc">Was vorher 2 bis 3 Stunden manueller Arbeit gekostet hat: Ordner anlegen, Dokumente verschicken, CRM-Eintrag, interne Benachrichtigung. Das läuft jetzt vollautomatisch ab. Ausgelöst durch eine Unterschrift.</p>
-                        <button type="button" class="branchen-btn" onclick="openModal()">Kostenloser Audit</button>
+                        <a href="demo.html" class="branchen-btn" style="text-decoration:none; display:flex; align-items:center; justify-content:center;">Kostenloser Audit</a>
                     </article>
 
                     <article class="erg-card reveal reveal-delay-1">
@@ -2753,7 +2758,7 @@
                         <i data-lucide="user-check" class="branchen-icon" aria-hidden="true"></i>
                         <h3 class="branchen-title">Kein verlorener Kontakt mehr</h3>
                         <p class="branchen-desc">Jeder Interessent der einen Termin bucht wird automatisch bis zum Gespräch warmgehalten. Personalisierte Nachrichten, keine manuelle Nachverfolgung nötig.</p>
-                        <button type="button" class="branchen-btn" onclick="openModal()">Kostenloser Audit</button>
+                        <a href="demo.html" class="branchen-btn" style="text-decoration:none; display:flex; align-items:center; justify-content:center;">Kostenloser Audit</a>
                     </article>
 
                     <article class="erg-card reveal reveal-delay-2">
@@ -2762,7 +2767,7 @@
                         <i data-lucide="repeat" class="branchen-icon" aria-hidden="true"></i>
                         <h3 class="branchen-title">Bestandskunden aktiv halten</h3>
                         <p class="branchen-desc">Automatisierte Kampagnen die Bestandskunden auf Basis ihres Profils ansprechen. Zur richtigen Zeit, mit dem richtigen Angebot.</p>
-                        <button type="button" class="branchen-btn" onclick="openModal()">Kostenloser Audit</button>
+                        <a href="demo.html" class="branchen-btn" style="text-decoration:none; display:flex; align-items:center; justify-content:center;">Kostenloser Audit</a>
                     </article>
 
                 </div>
@@ -2798,15 +2803,26 @@
                                 <p class="proj-name">WF1 — Automatisches Onboarding</p>
                                 <span class="proj-badge proj-badge--auto">Automatisierung</span>
                                 <h3 class="proj-title">Kein manueller Schritt nach Vertragsabschluss</h3>
-                                <ul class="proj-bullets">
-                                    <li>Unterschrift → Ordner, Dokumente, CRM, E-Mail in unter 4 Minuten</li>
-                                    <li>Kein Vergessen, kein Doppeleintrag, kein manueller Follow-up</li>
-                                    <li>Ausgelöst durch Webhook — läuft 24/7 ohne Eingriff</li>
-                                    <li>Kleine Teams wirken wie große Unternehmen</li>
-                                </ul>
+                                
+                                <div class="proj-accordion">
+                                    <button type="button" class="proj-accordion-trigger">
+                                        <span>Details anzeigen</span>
+                                        <svg class="proj-accordion-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <polyline points="6 9 12 15 18 9"></polyline>
+                                        </svg>
+                                    </button>
+                                    <div class="proj-accordion-content">
+                                        <ul class="proj-bullets">
+                                            <li>Unterschrift → Ordner, Dokumente, CRM, E-Mail in unter 4 Minuten</li>
+                                            <li>Kein Vergessen, kein Doppeleintrag, kein manueller Follow-up</li>
+                                            <li>Ausgelöst durch Webhook — läuft 24/7 ohne Eingriff</li>
+                                            <li>Kleine Teams wirken wie große Unternehmen</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
                                 <div class="proj-links">
-                                    <button type="button" class="proj-btn proj-btn--solid" onclick="openModal()">Kostenloser Audit</button>
-                                    <a href="#trust" class="proj-btn proj-btn--ghost" onclick="this.closest('section').nextElementSibling && document.getElementById('trust').scrollIntoView({behavior:'smooth'}); return false;">Wie es funktioniert</a>
+                                    <a href="demo.html" class="proj-btn proj-btn--solid">Demo ansehen</a>
                                 </div>
                             </div>
                         </article>
@@ -2820,14 +2836,26 @@
                                 <p class="proj-name">LMLF — Lead Pipeline</p>
                                 <span class="proj-badge proj-badge--auto">Automatisierung</span>
                                 <h3 class="proj-title">Neue Leads in der Zielregion — täglich, automatisch</h3>
-                                <ul class="proj-bullets">
-                                    <li>Scraping nach Region und Nische ohne manuellen Aufwand</li>
-                                    <li>Tägliche Ausführung, Duplikate automatisch gefiltert</li>
-                                    <li>Leads direkt ins CRM oder Google Sheet — kein CSV-Export</li>
-                                    <li>Skalierbar auf jede Branche und PLZ</li>
-                                </ul>
+                                
+                                <div class="proj-accordion">
+                                    <button type="button" class="proj-accordion-trigger">
+                                        <span>Details anzeigen</span>
+                                        <svg class="proj-accordion-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <polyline points="6 9 12 15 18 9"></polyline>
+                                        </svg>
+                                    </button>
+                                    <div class="proj-accordion-content">
+                                        <ul class="proj-bullets">
+                                            <li>Scraping nach Region und Nische ohne manuellen Aufwand</li>
+                                            <li>Tägliche Ausführung, Duplikate automatisch gefiltert</li>
+                                            <li>Leads direkt ins CRM oder Google Sheet — kein CSV-Export</li>
+                                            <li>Skalierbar auf jede Branche und PLZ</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
                                 <div class="proj-links">
-                                    <button type="button" class="proj-btn proj-btn--solid" onclick="openModal()">Kostenloser Audit</button>
+                                    <a href="demo.html" class="proj-btn proj-btn--solid">Demo ansehen</a>
                                 </div>
                             </div>
                         </article>
@@ -2835,18 +2863,30 @@
                         <!-- Karte 3: Fliesen Weber -->
                         <article class="proj-card">
                             <div class="proj-img-wrap">
-                                <img src="images/fleisen weber screenshot.png" alt="Fliesen Weber: Website mit Kostenrechner und Online-Terminbuchung" loading="lazy" class="proj-img">
+                                <img src="images/fleisen weber screenshot.png" alt="Fliesen Weber: Website with Kostenrechner and Online-Terminbuchung" loading="lazy" class="proj-img">
                             </div>
                             <div class="proj-body">
                                 <p class="proj-name">Fliesen Weber</p>
                                 <span class="proj-badge proj-badge--website">Digitale Präsenz</span>
                                 <h3 class="proj-title">70% der Handwerksanfragen kommen heute online</h3>
-                                <ul class="proj-bullets">
-                                    <li>Kostenrechner qualifiziert Kunden vor — nur ernsthafte Anfragen</li>
-                                    <li>Calendly: 24/7 buchbar ohne Telefonat</li>
-                                    <li>SEO-optimiert, unter 1s Ladezeit, live auf Vercel</li>
-                                    <li>Ein-Mann-Betrieb wirkt online seriös und buchbar</li>
-                                </ul>
+                                
+                                <div class="proj-accordion">
+                                    <button type="button" class="proj-accordion-trigger">
+                                        <span>Details anzeigen</span>
+                                        <svg class="proj-accordion-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <polyline points="6 9 12 15 18 9"></polyline>
+                                        </svg>
+                                    </button>
+                                    <div class="proj-accordion-content">
+                                        <ul class="proj-bullets">
+                                            <li>Kostenrechner qualifiziert Kunden vor — nur ernsthafte Anfragen</li>
+                                            <li>Calendly: 24/7 buchbar ohne Telefonat</li>
+                                            <li>SEO-optimiert, unter 1s Ladezeit, live auf Vercel</li>
+                                            <li>Ein-Mann-Betrieb wirkt online seriös und buchbar</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
                                 <div class="proj-links">
                                     <a href="https://fliesen-weber.vercel.app" target="_blank" rel="noopener noreferrer" class="proj-btn proj-btn--solid">Live ↗</a>
                                 </div>
@@ -2862,14 +2902,26 @@
                                 <p class="proj-name">Clay & Light</p>
                                 <span class="proj-badge proj-badge--webapp">Digitale Präsenz</span>
                                 <h3 class="proj-title">Direkter Umsatz statt Tischreservierung per Telefon</h3>
-                                <ul class="proj-bullets">
-                                    <li>Online-Reservierung und digitale Speisekarte in einem System</li>
-                                    <li>Kontaktdaten gespeichert → E-Mail-Kampagnen für Retention</li>
-                                    <li>Rabattcode gegen Newsletter — Kundenbindung automatisiert</li>
-                                    <li>Conversion direkt aus Website — ohne Drittanbieter-Gebühren</li>
-                                </ul>
+                                
+                                <div class="proj-accordion">
+                                    <button type="button" class="proj-accordion-trigger">
+                                        <span>Details anzeigen</span>
+                                        <svg class="proj-accordion-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <polyline points="6 9 12 15 18 9"></polyline>
+                                        </svg>
+                                    </button>
+                                    <div class="proj-accordion-content">
+                                        <ul class="proj-bullets">
+                                            <li>Online-Reservierung und digitale Speisekarte in einem System</li>
+                                            <li>Kontaktdaten gespeichert → E-Mail-Kampagnen für Retention</li>
+                                            <li>Rabattcode gegen Newsletter — Kundenbindung automatisiert</li>
+                                            <li>Conversion direkt aus Website — ohne Drittanbieter-Gebühren</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
                                 <div class="proj-links">
-                                    <button type="button" class="proj-btn proj-btn--solid" onclick="openModal()">Demo anfragen</button>
+                                    <a href="demo.html" class="proj-btn proj-btn--solid">Demo ansehen</a>
                                 </div>
                             </div>
                         </article>
@@ -2884,14 +2936,26 @@
                                 <p class="proj-name">RAIS CRM</p>
                                 <span class="proj-badge proj-badge--crm">CRM System</span>
                                 <h3 class="proj-title">Kein SaaS-Overhead — CRM das genau passt</h3>
-                                <ul class="proj-bullets">
-                                    <li>Leads, Projektstatus und Kommunikation in einer Ansicht</li>
-                                    <li>Maßgeschneidert — kein HubSpot-Ballast</li>
-                                    <li>Direkt an Automatisierungen angebunden</li>
-                                    <li>Kein Abo, keine Daten bei Drittanbietern</li>
-                                </ul>
+                                
+                                <div class="proj-accordion">
+                                    <button type="button" class="proj-accordion-trigger">
+                                        <span>Details anzeigen</span>
+                                        <svg class="proj-accordion-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <polyline points="6 9 12 15 18 9"></polyline>
+                                        </svg>
+                                    </button>
+                                    <div class="proj-accordion-content">
+                                        <ul class="proj-bullets">
+                                            <li>Leads, Projektstatus und Kommunikation in einer Ansicht</li>
+                                            <li>Maßgeschneidert — kein HubSpot-Ballast</li>
+                                            <li>Direkt an Automatisierungen angebunden</li>
+                                            <li>Kein Abo, keine Daten bei Drittanbietern</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
                                 <div class="proj-links">
-                                    <button type="button" class="proj-btn proj-btn--solid" onclick="openModal()">Demo anfragen</button>
+                                    <a href="demo.html" class="proj-btn proj-btn--solid">Demo ansehen</a>
                                 </div>
                             </div>
                         </article>
@@ -2905,14 +2969,26 @@
                                 <p class="proj-name">Eckstein Studios CMS</p>
                                 <span class="proj-badge proj-badge--cms">CMS</span>
                                 <h3 class="proj-title">Redaktionsplanung ohne Entwickler-Abhängigkeit</h3>
-                                <ul class="proj-bullets">
-                                    <li>Episodenverwaltung und Publishing-Workflow für Podcast</li>
-                                    <li>Redakteure arbeiten selbstständig — kein Ticket nötig</li>
-                                    <li>Strukturierter Inhalt statt Word-Dokumente per E-Mail</li>
-                                    <li>Gebaut für den redaktionellen Alltag, nicht für Techniker</li>
-                                </ul>
+                                
+                                <div class="proj-accordion">
+                                    <button type="button" class="proj-accordion-trigger">
+                                        <span>Details anzeigen</span>
+                                        <svg class="proj-accordion-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <polyline points="6 9 12 15 18 9"></polyline>
+                                        </svg>
+                                    </button>
+                                    <div class="proj-accordion-content">
+                                        <ul class="proj-bullets">
+                                            <li>Episodenverwaltung und Publishing-Workflow für Podcast</li>
+                                            <li>Redakteure arbeiten selbstständig — kein Ticket nötig</li>
+                                            <li>Strukturierter Inhalt statt Word-Dokumente per E-Mail</li>
+                                            <li>Gebaut für den redaktionellen Alltag, nicht für Techniker</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
                                 <div class="proj-links">
-                                    <button type="button" class="proj-btn proj-btn--solid" onclick="openModal()">Demo anfragen</button>
+                                    <a href="demo.html" class="proj-btn proj-btn--solid">Demo ansehen</a>
                                 </div>
                             </div>
                         </article>
@@ -2926,14 +3002,26 @@
                                 <p class="proj-name">RAIS Performance</p>
                                 <span class="proj-badge proj-badge--dashboard">Dashboard</span>
                                 <h3 class="proj-title">Messbarer Output statt Bauchgefühl</h3>
-                                <ul class="proj-bullets">
-                                    <li>KPIs, Gewohnheiten und Ziele täglich getrackt</li>
-                                    <li>Visualisierungen und Trendanalyse — was funktioniert, was nicht</li>
-                                    <li>Datengetrieben statt motivationsabhängig</li>
-                                    <li>Eigenprojekt: gebaut weil kein Tool genau das konnte</li>
-                                </ul>
+                                
+                                <div class="proj-accordion">
+                                    <button type="button" class="proj-accordion-trigger">
+                                        <span>Details anzeigen</span>
+                                        <svg class="proj-accordion-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <polyline points="6 9 12 15 18 9"></polyline>
+                                        </svg>
+                                    </button>
+                                    <div class="proj-accordion-content">
+                                        <ul class="proj-bullets">
+                                            <li>KPIs, Gewohnheiten und Ziele täglich getrackt</li>
+                                            <li>Visualisierungen und Trendanalyse — was funktioniert, was nicht</li>
+                                            <li>Datengetrieben statt motivationsabhängig</li>
+                                            <li>Eigenprojekt: gebaut weil kein Tool genau das konnte</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
                                 <div class="proj-links">
-                                    <button type="button" class="proj-btn proj-btn--solid" onclick="openModal()">Demo anfragen</button>
+                                    <a href="demo.html" class="proj-btn proj-btn--solid">Demo ansehen</a>
                                 </div>
                             </div>
                         </article>
@@ -2956,72 +3044,6 @@
         <!-- ═══════════════════════════════════════════════════
              TRUST / REFERENZ
         ═══════════════════════════════════════════════════ -->
-        <section id="trust">
-            <div class="section-wrap">
-
-                <div class="trust-intro reveal">
-                    <span class="mono-label">Live-System</span>
-                    <h2 class="section-h2">Nicht ein Konzept. Ein laufendes System.</h2>
-                    <p class="section-sub">
-                        Das Onboarding-System läuft live. Eine Vertragsunterzeichnung löst automatisch Ordnererstellung, Dokumentenversand, CRM-Eintrag und Willkommens-Email aus. Keine manuelle Arbeit, kein vergessener Schritt.
-                    </p>
-                </div>
-
-                <div class="trust-browser reveal">
-                    <div class="trust-browser-bar" aria-hidden="true">
-                        <div class="trust-browser-dots">
-                            <span></span><span></span><span></span>
-                        </div>
-                        <div class="trust-browser-url">onboarding.ritz-ai.solutions</div>
-                    </div>
-                    <div class="trust-browser-body" id="trustBrowserBody">
-                        <div class="trust-flow">
-                            <div class="trust-flow-step">
-                                <div class="trust-flow-icon">
-                                    <i data-lucide="pen-line" aria-hidden="true"></i>
-                                </div>
-                                <div class="trust-flow-text">
-                                    <strong>Unterschrift</strong>
-                                    <span>Vertrag digital unterzeichnet</span>
-                                </div>
-                            </div>
-                            <div class="trust-flow-arrow" aria-hidden="true">→</div>
-                            <div class="trust-flow-step">
-                                <div class="trust-flow-icon">
-                                    <i data-lucide="folder-plus" aria-hidden="true"></i>
-                                </div>
-                                <div class="trust-flow-text">
-                                    <strong>Ordner</strong>
-                                    <span>Automatisch angelegt</span>
-                                </div>
-                            </div>
-                            <div class="trust-flow-arrow" aria-hidden="true">→</div>
-                            <div class="trust-flow-step">
-                                <div class="trust-flow-icon">
-                                    <i data-lucide="mail-check" aria-hidden="true"></i>
-                                </div>
-                                <div class="trust-flow-text">
-                                    <strong>E-Mail</strong>
-                                    <span>Dokumente versendet</span>
-                                </div>
-                            </div>
-                            <div class="trust-flow-arrow" aria-hidden="true">→</div>
-                            <div class="trust-flow-step">
-                                <div class="trust-flow-icon">
-                                    <i data-lucide="database" aria-hidden="true"></i>
-                                </div>
-                                <div class="trust-flow-text">
-                                    <strong>CRM</strong>
-                                    <span>Eintrag erstellt</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="trust-flow-time">Gesamtdauer: unter 4 Minuten. Kein manueller Schritt.</div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
 
         <!-- ═══════════════════════════════════════════════════
              ÜBER UNS
@@ -3107,10 +3129,10 @@
                     <div class="cal-embed-wrap">
                         <p class="cal-card-title">Kostenloser Audit — Status quo analysieren</p>
                         <p class="cal-card-sub">15 Minuten, unverbindlich. Wir schauen gemeinsam ob und wie wir Ihnen helfen können.</p>
-                        <button type="button" id="contact-demo-btn" class="cal-load-btn">
+                        <a href="demo.html#booking" id="contact-demo-btn" class="cal-load-btn" style="text-decoration:none; display:flex; align-items:center; justify-content:center; gap:0.5rem;">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                             Audit-Termin buchen
-                        </button>
+                        </a>
                         <div class="cal-trust-row">
                             <span class="cal-trust-item">
                                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -3156,7 +3178,7 @@
          MOBILE STICKY CTA
     ═══════════════════════════════════════════════════════ -->
     <div id="sticky-cta" aria-hidden="true">
-        <button type="button" class="sticky-cta-btn" id="sticky-demo-btn">Kostenloser Audit</button>
+        <a href="demo.html" class="sticky-cta-btn" id="sticky-demo-btn" style="text-decoration:none; display:flex; align-items:center; justify-content:center;">Demo anfordern</a>
     </div>
 
     <!-- ═══════════════════════════════════════════════════════
@@ -3192,6 +3214,26 @@
         window.addEventListener('scroll', function () {
             navbar.classList.toggle('scrolled', window.scrollY > 10);
         }, { passive: true });
+
+        /* ── Portfolio Accordion Logic ─────────────────────── */
+        document.addEventListener('click', function (e) {
+            var trigger = e.target.closest('.proj-accordion-trigger');
+            if (!trigger) return;
+            
+            var accordion = trigger.closest('.proj-accordion');
+            if (!accordion) return;
+            
+            var isOpen = accordion.classList.contains('is-open');
+            var content = accordion.querySelector('.proj-accordion-content');
+            
+            if (isOpen) {
+                accordion.classList.remove('is-open');
+                content.style.maxHeight = null;
+            } else {
+                accordion.classList.add('is-open');
+                content.style.maxHeight = content.scrollHeight + 'px';
+            }
+        });
 
         /* ── Active nav state on scroll ──────────────────────── */
         var navAnchorGroups = [
@@ -3700,6 +3742,38 @@
                 s.onload = function(){ Calendly.initInlineWidget({ url: calUrl, parentElement: wrap }); };
                 document.head.appendChild(s);
             }
+        }
+    }());
+    </script>
+
+    <!-- ── 3D Card Tilt Effect ───────────────────────────── -->
+    <script>
+    (function() {
+        if (window.matchMedia('(hover: hover)').matches) {
+            var cards = document.querySelectorAll('.proj-card');
+            cards.forEach(function(card) {
+                card.addEventListener('mouseenter', function() {
+                    card.style.transition = 'transform 0.1s ease, box-shadow 0.1s ease';
+                });
+                
+                card.addEventListener('mousemove', function(e) {
+                    var rect = card.getBoundingClientRect();
+                    var x = e.clientX - rect.left;
+                    var y = e.clientY - rect.top;
+                    
+                    var rX = ((y / rect.height) - 0.5) * -12; // Max 12 degrees
+                    var rY = ((x / rect.width) - 0.5) * 12;   // Max 12 degrees
+                    
+                    card.style.transform = 'perspective(1000px) rotateX(' + rX + 'deg) rotateY(' + rY + 'deg) scale(1.025)';
+                    card.style.boxShadow = (-rY * 1.5) + 'px ' + (rX * 1.5) + 'px 30px rgba(47, 42, 36, 0.15)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    card.style.transition = 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+                    card.style.boxShadow = '';
+                });
+            });
         }
     }());
     </script>

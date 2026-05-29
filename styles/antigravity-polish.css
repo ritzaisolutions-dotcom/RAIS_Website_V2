@@ -37,10 +37,18 @@ main, #navbar, #mobile-overlay, #footer {
                 border-radius var(--ag-medium) var(--ag-ease),
                 border-color var(--ag-medium) var(--ag-ease),
                 box-shadow var(--ag-medium) var(--ag-ease),
-                background-color var(--ag-medium) var(--ag-ease);
+                background-color var(--ag-medium) var(--ag-ease),
+                transform var(--ag-medium) var(--ag-ease),
+                opacity var(--ag-medium) var(--ag-ease);
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
 }
 
 #navbar.scrolled {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
     inset: 12px 20px auto 20px;
     height: 64px;
     border: 1px solid rgba(255, 255, 255, 0.48);
@@ -215,4 +223,56 @@ textarea:focus-visible,
         opacity: 1;
         transform: none;
     }
+}
+
+/* ═══════════════════════════════════════════════════
+   PORTFOLIO ACCORDIONS
+   ═══════════════════════════════════════════════════ */
+.proj-accordion {
+    border-top: 1px solid rgba(47, 42, 36, 0.08);
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+}
+
+.proj-accordion-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.5rem 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--stone);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    outline: none;
+}
+
+.proj-accordion-trigger:hover {
+    color: var(--charcoal);
+}
+
+.proj-accordion-icon {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    color: var(--stone);
+}
+
+.proj-accordion.is-open .proj-accordion-icon {
+    transform: rotate(180deg);
+}
+
+.proj-accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+    opacity: 0;
+}
+
+.proj-accordion.is-open .proj-accordion-content {
+    max-height: 600px; /* high enough to fit bullets */
+    opacity: 1;
+    margin-top: 0.5rem;
 }
