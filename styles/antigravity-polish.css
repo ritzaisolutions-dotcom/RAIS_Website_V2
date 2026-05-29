@@ -151,6 +151,18 @@ main, #navbar, #mobile-overlay, #footer {
     background-color: rgba(47, 42, 36, 0.05);
 }
 
+.nav-list a.nav-active,
+.mobile-link.nav-active {
+    color: var(--orange);
+    font-weight: 500;
+}
+
+button.featured-btn {
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
 /* ── Branchen dropdown ──────────────────────────────── */
 
 .nav-dropdown { position: relative; }
