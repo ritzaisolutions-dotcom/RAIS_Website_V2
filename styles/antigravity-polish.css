@@ -982,3 +982,178 @@ textarea:focus-visible,
     background-color: #f07d4c;
     transform: translateY(-1px);
 }
+
+/* ── Proof strip (Hero KPIs) ─────────────────────────── */
+
+.hero-proof-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem 2rem;
+    margin-top: 2rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.hero-proof-strip--light {
+    border-top-color: var(--border);
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+}
+
+.proof-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    max-width: 720px;
+}
+
+.proof-strip-item {
+    text-align: left;
+}
+
+.proof-strip-item strong {
+    display: block;
+    font-family: 'Baskerville', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--orange);
+    line-height: 1.1;
+}
+
+.hero-proof-strip .proof-strip-item strong {
+    color: #fff;
+}
+
+.proof-strip-item span {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.35;
+}
+
+.proof-strip--light .proof-strip-item span,
+.landing-section .proof-strip-item span {
+    color: var(--stone);
+}
+
+.landing-section .proof-strip-item strong {
+    color: var(--orange);
+}
+
+/* ── Video embed (Landingpage) ───────────────────────── */
+
+.video-embed-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #1a1512;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 24px 55px rgba(0, 0, 0, 0.5);
+}
+
+.video-embed-wrap iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.video-embed-fallback {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.875rem;
+}
+
+.video-embed-fallback img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.45;
+    z-index: 0;
+}
+
+.video-embed-fallback p {
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Testimonials (Landingpage) ──────────────────────── */
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+}
+
+.testimonial-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.testimonial-card blockquote {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: var(--charcoal);
+    font-style: italic;
+}
+
+.testimonial-meta {
+    font-size: 0.8125rem;
+    color: var(--stone);
+    line-height: 1.4;
+}
+
+.testimonial-meta strong {
+    display: block;
+    color: var(--charcoal);
+    font-style: normal;
+    font-weight: 600;
+}
+
+.contact-founder-row {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.contact-founder-row .founder-photo {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+@media (max-width: 720px) {
+    .proof-strip,
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-proof-strip {
+        gap: 1rem;
+    }
+}
