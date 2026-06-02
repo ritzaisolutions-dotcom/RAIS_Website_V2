@@ -2523,41 +2523,71 @@
                         Schritt 1 startet mit dem kostenlosen Erstgespräch — danach transparent bis zum Live-Betrieb.
                     </p>
                 </div>
-                <div class="process-zigzag-wrap">
-                    <svg class="process-zigzag-lines" viewBox="0 0 400 130" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-                        <path d="M 50 32 H 150 H 350 V 98 H 50 H 150 H 250 H 350" />
-                    </svg>
-                    <ol class="process-zigzag" aria-label="Ablauf der Zusammenarbeit">
-                        <li class="process-node">
-                            <span class="process-node__num" aria-hidden="true">1</span>
-                            <span class="process-node__label">Erstgespräch</span>
-                        </li>
-                        <li class="process-node">
-                            <span class="process-node__num" aria-hidden="true">2</span>
-                            <span class="process-node__label">Bottlenecks in Prozessen identifizieren</span>
-                        </li>
-                        <li class="process-node">
-                            <span class="process-node__num" aria-hidden="true">3</span>
-                            <span class="process-node__label">Strategien entwickeln</span>
-                        </li>
-                        <li class="process-node">
-                            <span class="process-node__num" aria-hidden="true">4</span>
-                            <span class="process-node__label">Ressourcen allozieren</span>
-                        </li>
-                        <li class="process-node">
-                            <span class="process-node__num" aria-hidden="true">5</span>
-                            <span class="process-node__label">Dev-Phase</span>
-                        </li>
-                        <li class="process-node">
-                            <span class="process-node__num" aria-hidden="true">6</span>
-                            <span class="process-node__label">Testing</span>
-                        </li>
-                        <li class="process-node">
-                            <span class="process-node__num" aria-hidden="true">7</span>
-                            <span class="process-node__label">Produktion &amp; Monitoring</span>
-                        </li>
-                    </ol>
-                </div>
+                <ol class="process-stepper reveal" aria-label="Ablauf der Zusammenarbeit">
+                    <li class="process-stepper__item">
+                        <div class="process-stepper__trigger">
+                            <span class="process-stepper__indicator" aria-hidden="true">1</span>
+                            <div class="process-stepper__content">
+                                <span class="process-stepper__title">Erstgespräch</span>
+                                <span class="process-stepper__description">Kostenlos — Bedarf, Ziele und Scope klären.</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="process-stepper__item">
+                        <div class="process-stepper__trigger">
+                            <span class="process-stepper__indicator" aria-hidden="true">2</span>
+                            <div class="process-stepper__content">
+                                <span class="process-stepper__title">Bottlenecks identifizieren</span>
+                                <span class="process-stepper__description">Engpässe in Prozessen und Datenflüssen sichtbar machen.</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="process-stepper__item">
+                        <div class="process-stepper__trigger">
+                            <span class="process-stepper__indicator" aria-hidden="true">3</span>
+                            <div class="process-stepper__content">
+                                <span class="process-stepper__title">Strategien entwickeln</span>
+                                <span class="process-stepper__description">Roadmap, Prioritäten und messbare Ziele festlegen.</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="process-stepper__item">
+                        <div class="process-stepper__trigger">
+                            <span class="process-stepper__indicator" aria-hidden="true">4</span>
+                            <div class="process-stepper__content">
+                                <span class="process-stepper__title">Ressourcen allozieren</span>
+                                <span class="process-stepper__description">Kapazitäten, Tools und Timeline abstimmen.</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="process-stepper__item">
+                        <div class="process-stepper__trigger">
+                            <span class="process-stepper__indicator" aria-hidden="true">5</span>
+                            <div class="process-stepper__content">
+                                <span class="process-stepper__title">Dev-Phase</span>
+                                <span class="process-stepper__description">Automatisierung, Integrationen und Systeme bauen.</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="process-stepper__item">
+                        <div class="process-stepper__trigger">
+                            <span class="process-stepper__indicator" aria-hidden="true">6</span>
+                            <div class="process-stepper__content">
+                                <span class="process-stepper__title">Testing</span>
+                                <span class="process-stepper__description">Abnahme, Feinschliff und Übergabe an Ihr Team.</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="process-stepper__item">
+                        <div class="process-stepper__trigger">
+                            <span class="process-stepper__indicator" aria-hidden="true">7</span>
+                            <div class="process-stepper__content">
+                                <span class="process-stepper__title">Produktion &amp; Monitoring</span>
+                                <span class="process-stepper__description">Go-live und laufende Überwachung im Betrieb.</span>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
             </div>
         </section>
 
@@ -2836,7 +2866,7 @@
 
         /* ── Antigravity reveal orchestration ───────────────── */
         var revealTargets = document.querySelectorAll([
-            '.leis-intro', '.projekte-intro', '.process-intro', '.contact-founder-row', '.contact-text-col',
+            '.leis-intro', '.projekte-intro', '.process-intro', '.process-stepper', '.contact-founder-row', '.contact-text-col',
             '.problem-item', '.contact-text-col', '.contact-detail', '.cal-embed-wrap'
         ].join(','));
 

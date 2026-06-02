@@ -1158,7 +1158,7 @@ textarea:focus-visible,
     }
 }
 
-/* ── Zusammenarbeit process zigzag (landing) ─────────── */
+/* ── Zusammenarbeit process stepper (ReUI-style) ─────── */
 
 .process-back-link {
     font-size: 0.875rem;
@@ -1171,42 +1171,41 @@ textarea:focus-visible,
     text-decoration: underline;
 }
 
-.process-zigzag-wrap {
-    position: relative;
-    max-width: 56rem;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.process-zigzag-lines {
-    display: none;
-}
-
-.process-zigzag {
+.process-stepper {
     list-style: none;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
-    position: relative;
-    z-index: 1;
-}
-
-.process-node {
-    position: relative;
+    max-width: 52rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 0.65rem;
-    text-align: center;
-    padding: 0 0.35rem;
+    gap: 0;
 }
 
-.process-node__num {
+.process-stepper__item {
+    position: relative;
+    flex: 1 1 auto;
+}
+
+.process-stepper__trigger {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1rem;
+    text-align: left;
+    padding: 0 0 1.5rem 0;
+}
+
+.process-stepper__item:last-child .process-stepper__trigger {
+    padding-bottom: 0;
+}
+
+.process-stepper__indicator {
     flex-shrink: 0;
-    width: 2.25rem;
-    height: 2.25rem;
+    width: 2rem;
+    height: 2rem;
     border-radius: 50%;
     background: rgba(236, 106, 55, 0.12);
-    border: 2px solid rgba(236, 106, 55, 0.35);
+    border: 2px solid rgba(236, 106, 55, 0.4);
     color: var(--orange);
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.8125rem;
@@ -1214,119 +1213,79 @@ textarea:focus-visible,
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
     z-index: 1;
 }
 
-.process-node__label {
-    font-size: 0.875rem;
-    line-height: 1.35;
-    color: var(--charcoal);
-    max-width: 11rem;
+.process-stepper__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding-top: 0.15rem;
+    min-width: 0;
 }
 
-/* Mobile: vertical timeline */
-@media (max-width: 899px) {
-    .process-zigzag {
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-        padding-left: 0.5rem;
-    }
+.process-stepper__title {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--charcoal);
+}
 
-    .process-node {
+.process-stepper__description {
+    font-size: 0.8125rem;
+    line-height: 1.45;
+    color: var(--stone);
+}
+
+/* Vertical connector between steps */
+.process-stepper__item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 0.98rem;
+    top: 2rem;
+    bottom: 0;
+    width: 2px;
+    background: rgba(236, 106, 55, 0.28);
+    z-index: 0;
+}
+
+/* Wide desktop: horizontal title-description stepper (ReUI-style) */
+@media (min-width: 1100px) {
+    .process-stepper {
         flex-direction: row;
         align-items: flex-start;
-        text-align: left;
-        gap: 1rem;
-        padding: 0 0 1.75rem 1.75rem;
-    }
-
-    .process-node::before {
-        content: '';
-        position: absolute;
-        left: 0.95rem;
-        top: 2.25rem;
-        bottom: 0;
-        width: 2px;
-        background: rgba(236, 106, 55, 0.35);
-    }
-
-    .process-node:last-child::before {
-        display: none;
-    }
-
-    .process-node__label {
         max-width: none;
-        padding-top: 0.35rem;
-    }
-}
-
-/* Desktop: zigzag 3 + 4 */
-@media (min-width: 900px) {
-    .process-zigzag {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        grid-template-rows: auto auto;
-        column-gap: 0;
-        row-gap: 4rem;
-        padding: 0.5rem 0 1rem;
+        gap: 0;
     }
 
-    .process-node:nth-child(1) {
-        grid-column: 1;
-        grid-row: 1;
+    .process-stepper__item:not(:last-child)::after {
+        top: 1rem;
+        bottom: auto;
+        left: calc(50% + 1rem);
+        width: calc(100% - 2rem);
+        height: 2px;
     }
 
-    .process-node:nth-child(2) {
-        grid-column: 2;
-        grid-row: 1;
+    .process-stepper__trigger {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.65rem;
+        padding: 0 0.35rem;
     }
 
-    .process-node:nth-child(3) {
-        grid-column: 4;
-        grid-row: 1;
+    .process-stepper__content {
+        align-items: center;
+        padding-top: 0;
     }
 
-    .process-node:nth-child(4) {
-        grid-column: 1;
-        grid-row: 2;
+    .process-stepper__title {
+        font-size: 0.875rem;
     }
 
-    .process-node:nth-child(5) {
-        grid-column: 2;
-        grid-row: 2;
-    }
-
-    .process-node:nth-child(6) {
-        grid-column: 3;
-        grid-row: 2;
-    }
-
-    .process-node:nth-child(7) {
-        grid-column: 4;
-        grid-row: 2;
-    }
-
-    .process-node__label {
-        max-width: 9.5rem;
+    .process-stepper__description {
         font-size: 0.8125rem;
-    }
-
-    .process-zigzag-lines {
-        display: block;
-        position: absolute;
-        top: 1.125rem;
-        left: 0;
-        width: 100%;
-        height: calc(100% - 2rem);
-        pointer-events: none;
-        z-index: 0;
-    }
-
-    .process-zigzag-lines path {
-        fill: none;
-        stroke: rgba(236, 106, 55, 0.4);
-        stroke-width: 2;
-        vector-effect: non-scaling-stroke;
+        max-width: 10.5rem;
     }
 }
