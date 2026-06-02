@@ -964,7 +964,7 @@
         #zusammenarbeit-prozess .process-intro {
             text-align: center;
             max-width: 40rem;
-            margin: 0 auto 2.5rem;
+            margin: 0 auto 2rem;
         }
 
         .projekte-intro {
@@ -2522,8 +2522,16 @@
                     <p class="section-sub" style="margin-left: auto; margin-right: auto;">
                         Schritt 1 startet mit dem kostenlosen Erstgespräch — danach transparent bis zum Live-Betrieb.
                     </p>
+                    <p class="process-path-tagline">Der Weg einer Zusammenarbeit</p>
                 </div>
-                <ol class="process-stepper reveal" aria-label="Ablauf der Zusammenarbeit">
+                <div class="process-path-wrap reveal">
+                    <svg class="process-path-svg process-path-svg--mobile" viewBox="0 0 48 720" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                        <path class="process-path-line" d="M 24 28 C 38 95, 10 165, 24 232 C 38 300, 8 368, 24 436 C 38 504, 10 572, 24 640 C 36 688, 28 708, 24 712" />
+                    </svg>
+                    <svg class="process-path-svg process-path-svg--desktop" viewBox="0 0 1000 88" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                        <path class="process-path-line" d="M 48 44 C 110 12, 155 76, 220 38 C 285 8, 340 72, 405 42 C 470 18, 525 78, 590 40 C 655 14, 710 74, 775 44 C 840 22, 895 68, 952 44" />
+                    </svg>
+                    <ol class="process-stepper reveal" aria-label="Ablauf der Zusammenarbeit">
                     <li class="process-stepper__item">
                         <div class="process-stepper__trigger">
                             <span class="process-stepper__indicator" aria-hidden="true">1</span>
@@ -2588,6 +2596,7 @@
                         </div>
                     </li>
                 </ol>
+                </div>
             </div>
         </section>
 
@@ -2866,7 +2875,7 @@
 
         /* ── Antigravity reveal orchestration ───────────────── */
         var revealTargets = document.querySelectorAll([
-            '.leis-intro', '.projekte-intro', '.process-intro', '.process-stepper', '.contact-founder-row', '.contact-text-col',
+            '.leis-intro', '.projekte-intro', '.process-intro', '.process-path-wrap', '.process-stepper', '.contact-founder-row', '.contact-text-col',
             '.problem-item', '.contact-text-col', '.contact-detail', '.cal-embed-wrap'
         ].join(','));
 
