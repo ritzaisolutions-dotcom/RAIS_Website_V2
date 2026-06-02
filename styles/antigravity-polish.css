@@ -1158,42 +1158,175 @@ textarea:focus-visible,
     }
 }
 
-/* ── Zusammenarbeit process steps (landing) ──────────── */
+/* ── Zusammenarbeit process zigzag (landing) ─────────── */
 
-.zusammenarbeit-steps {
+.process-back-link {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--orange);
+    text-decoration: none;
+}
+
+.process-back-link:hover {
+    text-decoration: underline;
+}
+
+.process-zigzag-wrap {
+    position: relative;
+    max-width: 56rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.process-zigzag-lines {
+    display: none;
+}
+
+.process-zigzag {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.process-node {
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 0.35rem;
-    margin-top: 1.25rem;
-    counter-reset: zusammenarbeit;
-    list-style: none;
-    padding: 0;
+    align-items: center;
+    gap: 0.65rem;
+    text-align: center;
+    padding: 0 0.35rem;
 }
 
-.zusammenarbeit-step {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-    padding: 0.45rem 0;
-    font-size: 0.9375rem;
-    line-height: 1.4;
-    color: var(--charcoal);
-}
-
-.zusammenarbeit-step::before {
-    counter-increment: zusammenarbeit;
-    content: counter(zusammenarbeit);
+.process-node__num {
     flex-shrink: 0;
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 2.25rem;
+    height: 2.25rem;
     border-radius: 50%;
     background: rgba(236, 106, 55, 0.12);
+    border: 2px solid rgba(236, 106, 55, 0.35);
     color: var(--orange);
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
     font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 0.1rem;
+    z-index: 1;
+}
+
+.process-node__label {
+    font-size: 0.875rem;
+    line-height: 1.35;
+    color: var(--charcoal);
+    max-width: 11rem;
+}
+
+/* Mobile: vertical timeline */
+@media (max-width: 899px) {
+    .process-zigzag {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        padding-left: 0.5rem;
+    }
+
+    .process-node {
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+        gap: 1rem;
+        padding: 0 0 1.75rem 1.75rem;
+    }
+
+    .process-node::before {
+        content: '';
+        position: absolute;
+        left: 0.95rem;
+        top: 2.25rem;
+        bottom: 0;
+        width: 2px;
+        background: rgba(236, 106, 55, 0.35);
+    }
+
+    .process-node:last-child::before {
+        display: none;
+    }
+
+    .process-node__label {
+        max-width: none;
+        padding-top: 0.35rem;
+    }
+}
+
+/* Desktop: zigzag 3 + 4 */
+@media (min-width: 900px) {
+    .process-zigzag {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-rows: auto auto;
+        column-gap: 0;
+        row-gap: 4rem;
+        padding: 0.5rem 0 1rem;
+    }
+
+    .process-node:nth-child(1) {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .process-node:nth-child(2) {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .process-node:nth-child(3) {
+        grid-column: 4;
+        grid-row: 1;
+    }
+
+    .process-node:nth-child(4) {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .process-node:nth-child(5) {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    .process-node:nth-child(6) {
+        grid-column: 3;
+        grid-row: 2;
+    }
+
+    .process-node:nth-child(7) {
+        grid-column: 4;
+        grid-row: 2;
+    }
+
+    .process-node__label {
+        max-width: 9.5rem;
+        font-size: 0.8125rem;
+    }
+
+    .process-zigzag-lines {
+        display: block;
+        position: absolute;
+        top: 1.125rem;
+        left: 0;
+        width: 100%;
+        height: calc(100% - 2rem);
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .process-zigzag-lines path {
+        fill: none;
+        stroke: rgba(236, 106, 55, 0.4);
+        stroke-width: 2;
+        vector-effect: non-scaling-stroke;
+    }
 }
