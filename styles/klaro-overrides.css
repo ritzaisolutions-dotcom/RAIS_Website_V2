@@ -1,0 +1,112 @@
+/* RAIS Klaro overrides — load AFTER klaro.min.css */
+
+/* ── Cookie notice banner (fix white-on-white) ───────── */
+
+.klaro .cookie-notice {
+    background: #ffffff !important;
+    color: #1a1512 !important;
+    border-top: 1px solid #d9d1c7 !important;
+    font-family: Inter, system-ui, sans-serif !important;
+    box-shadow: 0 -4px 24px rgba(47, 42, 36, 0.12) !important;
+}
+
+.klaro .cookie-notice .cn-body,
+.klaro .cookie-notice .cn-notice,
+.klaro .cookie-notice p,
+.klaro .cookie-notice span,
+.klaro .cookie-notice .cn-learn-more {
+    color: #1a1512 !important;
+}
+
+.klaro .cookie-notice a {
+    color: #ec6a37 !important;
+    text-decoration: underline;
+}
+
+.klaro .cookie-notice a:hover {
+    color: #c45528 !important;
+}
+
+/* Buttons in notice */
+.klaro .cookie-notice .cm-btn.cm-btn-success,
+.klaro .cm-btn-success {
+    background: #ec6a37 !important;
+    border-color: #ec6a37 !important;
+    color: #ffffff !important;
+    border-radius: 0.5rem !important;
+}
+
+.klaro .cookie-notice .cm-btn.cm-btn-success:hover,
+.klaro .cm-btn-success:hover {
+    background: #f37a48 !important;
+    border-color: #f37a48 !important;
+    color: #ffffff !important;
+}
+
+.klaro .cookie-notice .cm-btn.cm-btn-decline,
+.klaro .cookie-notice .cm-btn.cm-btn-info,
+.klaro .cm-btn-decline,
+.klaro .cm-btn-info {
+    background: #ffffff !important;
+    border: 1px solid #d9d1c7 !important;
+    color: #2f2a24 !important;
+    border-radius: 0.5rem !important;
+}
+
+.klaro .cookie-notice .cm-btn.cm-btn-decline:hover,
+.klaro .cookie-notice .cm-btn.cm-btn-info:hover,
+.klaro .cm-btn-decline:hover,
+.klaro .cm-btn-info:hover {
+    border-color: #2f2a24 !important;
+    color: #1a1512 !important;
+    background: #f5f2ec !important;
+}
+
+/* ── Settings modal ───────────────────────────────────── */
+
+.klaro .cookie-modal .cm-modal {
+    background: #fbf8f3 !important;
+    color: #2f2a24 !important;
+    font-family: Inter, system-ui, sans-serif !important;
+    border-radius: 1rem !important;
+}
+
+.klaro .cookie-modal .cm-header {
+    border-bottom: 1px solid #d9d1c7 !important;
+}
+
+.klaro .cookie-modal .cm-footer {
+    border-top: 1px solid #d9d1c7 !important;
+}
+
+.klaro .cookie-modal .cm-header h1,
+.klaro .cookie-modal p,
+.klaro .cookie-modal label,
+.klaro .cookie-modal .cm-list-label {
+    color: #2f2a24 !important;
+}
+
+.klaro .cookie-modal .cm-header h1 {
+    font-size: 1.1rem !important;
+}
+
+.klaro .switch input:checked + .slider {
+    background-color: #ec6a37 !important;
+}
+
+.klaro .cm-services .cm-service .cm-service-title {
+    color: #2f2a24 !important;
+    font-weight: 600 !important;
+}
+
+.klaro .cm-purpose .cm-purpose-title {
+    color: #3c5a2a !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    font-size: 0.75rem !important;
+    letter-spacing: 0.05em !important;
+}
+
+.klaro .cookie-modal a {
+    color: #ec6a37 !important;
+}

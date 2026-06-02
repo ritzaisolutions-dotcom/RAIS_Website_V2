@@ -14,6 +14,12 @@
     <!-- Preload critical Hero Image -->
     <link rel="preload" href="images/mark-koch-hero.webp" as="image" type="image/webp">
 
+    <!-- Klaro Consent Manager -->
+    <script src="klaro-config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/klaro/dist/klaro.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/klaro/dist/klaro.min.css">
+    <link rel="stylesheet" href="styles/klaro-overrides.css">
+
     <!-- Fonts & Styles -->
     <link rel='stylesheet' href='fonts.css'>
     <link rel='stylesheet' href='styles/antigravity-polish.css'>
@@ -122,7 +128,7 @@
             overflow: hidden;
             padding: calc(var(--nav-h) + 3rem) 2rem 3.5rem;
             background:
-                linear-gradient(145deg, rgba(26,20,16,0.85) 0%, rgba(18,14,10,0.92) 100%),
+                linear-gradient(145deg, rgba(26,20,16,0.52) 0%, rgba(18,14,10,0.62) 100%),
                 url('images/mark-koch-hero.webp') center/cover no-repeat;
         }
 
@@ -1032,34 +1038,20 @@
                     <!-- Text column -->
                     <div class="booking-text-col">
                         <span class="mono-label">Zusammenarbeit</span>
-                        <h2 class="section-h2">Termin vereinbaren — 15 Min., kostenlos.</h2>
+                        <h2 class="section-h2">So läuft die Zusammenarbeit</h2>
                         <p class="section-sub" style="margin-bottom:0.5rem;">
-                            Kurzer Audit: Wo verlieren Sie Zeit — und lohnt sich eine Umsetzung? Unverbindlich, ohne Pitch.
+                            Schritt 1 startet mit dem kostenlosen Erstgespräch — danach transparent bis zum Live-Betrieb.
                         </p>
-                        
-                        <div class="booking-points">
-                            <div class="booking-point">
-                                <span class="booking-point-icon">✓</span>
-                                <div>
-                                    <strong>Kein Verkaufsdruck</strong>
-                                    <span>Wir klären rein sachlich, ob eine Umsetzung in Ihrem Betrieb rentabel ist.</span>
-                                </div>
-                            </div>
-                            <div class="booking-point">
-                                <span class="booking-point-icon">✓</span>
-                                <div>
-                                    <strong>Konkretes Einsparpotenzial</strong>
-                                    <span>Sie gehen mit mindestens 3 konkreten Workflow-Ideen aus dem Gespräch.</span>
-                                </div>
-                            </div>
-                            <div class="booking-point">
-                                <span class="booking-point-icon">✓</span>
-                                <div>
-                                    <strong>Direkt mit dem Experten</strong>
-                                    <span>Keine Callcenter-Agenten — Sie sprechen direkt mit dem Inhaber.</span>
-                                </div>
-                            </div>
-                        </div>
+
+                        <ol class="zusammenarbeit-steps" aria-label="Ablauf der Zusammenarbeit">
+                            <li class="zusammenarbeit-step">Erstgespräch</li>
+                            <li class="zusammenarbeit-step">Bottlenecks in Prozessen identifizieren</li>
+                            <li class="zusammenarbeit-step">Strategien entwickeln</li>
+                            <li class="zusammenarbeit-step">Ressourcen allozieren</li>
+                            <li class="zusammenarbeit-step">Dev-Phase</li>
+                            <li class="zusammenarbeit-step">Testing</li>
+                            <li class="zusammenarbeit-step">Production and Monitoring</li>
+                        </ol>
                     </div>
                     
                     <!-- Form card -->

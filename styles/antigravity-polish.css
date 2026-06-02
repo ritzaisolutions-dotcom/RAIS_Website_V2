@@ -1157,3 +1157,43 @@ textarea:focus-visible,
         gap: 1rem;
     }
 }
+
+/* ── Zusammenarbeit process steps (landing) ──────────── */
+
+.zusammenarbeit-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-top: 1.25rem;
+    counter-reset: zusammenarbeit;
+    list-style: none;
+    padding: 0;
+}
+
+.zusammenarbeit-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.45rem 0;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    color: var(--charcoal);
+}
+
+.zusammenarbeit-step::before {
+    counter-increment: zusammenarbeit;
+    content: counter(zusammenarbeit);
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background: rgba(236, 106, 55, 0.12);
+    color: var(--orange);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.1rem;
+}

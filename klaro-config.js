@@ -1,34 +1,4 @@
-/* ─────────────────────────────────────────────────────
-   KLARO: Design-Overrides (RAIS Farben)
-───────────────────────────────────────────────────── */
-(function () {
-  var s = document.createElement('style');
-  s.textContent = [
-    /* Banner (unterer Streifen) */
-    '.klaro .cookie-notice { background: #FBF8F3 !important; color: #2F2A24 !important; border-top: 2px solid #EC6A37 !important; font-family: Inter, sans-serif !important; }',
-    /* Modal */
-    '.klaro .cookie-modal .cm-modal { background: #FBF8F3 !important; color: #2F2A24 !important; font-family: Inter, sans-serif !important; border-radius: 1rem !important; }',
-    '.klaro .cookie-modal .cm-header { border-bottom: 1px solid #D9D1C7 !important; }',
-    '.klaro .cookie-modal .cm-footer { border-top: 1px solid #D9D1C7 !important; }',
-    '.klaro .cookie-modal .cm-header h1 { font-size: 1.1rem !important; }',
-    /* Buttons — Akzeptieren */
-    '.klaro .cm-btn-success { background: #EC6A37 !important; border-color: #EC6A37 !important; border-radius: 0.5rem !important; }',
-    '.klaro .cm-btn-success:hover { background: #F37A48 !important; border-color: #F37A48 !important; }',
-    /* Buttons — Ablehnen / Neutral */
-    '.klaro .cm-btn-decline, .klaro .cm-btn-info { background: transparent !important; border: 1px solid #D9D1C7 !important; color: #7B746B !important; border-radius: 0.5rem !important; }',
-    '.klaro .cm-btn-decline:hover, .klaro .cm-btn-info:hover { border-color: #2F2A24 !important; color: #2F2A24 !important; }',
-    /* Toggle-Slider */
-    '.klaro .switch input:checked + .slider { background-color: #EC6A37 !important; }',
-    /* Links */
-    '.klaro a { color: #EC6A37 !important; }',
-    /* Service-Namen */
-    '.klaro .cm-services .cm-service .cm-service-title { color: #2F2A24 !important; font-weight: 600 !important; }',
-    /* Kategorie-Labels */
-    '.klaro .cm-purpose .cm-purpose-title { color: #3C5A2A !important; font-weight: 700 !important; text-transform: uppercase !important; font-size: 0.75rem !important; letter-spacing: 0.05em !important; }',
-  ].join('\n');
-  document.head.appendChild(s);
-})();
-
+/* Klaro design: styles/klaro-overrides.css (loaded after klaro.min.css) */
 
 /* ─────────────────────────────────────────────────────
    SUPABASE: Consent-Logging
