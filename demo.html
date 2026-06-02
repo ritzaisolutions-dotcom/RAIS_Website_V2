@@ -2,19 +2,21 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0;url=landingpage.html">
-    <link rel="canonical" href="landingpage.html">
+    <meta http-equiv="refresh" content="0;url=index.html">
+    <link rel="canonical" href="https://ritz-ai.solutions/">
     <title>Weiterleitung…</title>
     <script>
         (function () {
             var hash = location.hash
-                .replace('#booking', '#zusammenarbeit')
-                .replace('#demos', '#portfolio');
-            location.replace('landingpage.html' + hash);
+                .replace('#booking', '#contact')
+                .replace('#zusammenarbeit', '#contact')
+                .replace('#demos', '#projekte')
+                .replace('#portfolio', '#projekte');
+            location.replace('index.html' + hash);
         }());
     </script>
 </head>
 <body>
-    <p>Weiterleitung zur <a href="landingpage.html">Landingpage</a>.</p>
+    <p>Weiterleitung zur <a href="index.html">Startseite</a>.</p>
 </body>
 </html>
