@@ -2524,78 +2524,97 @@
                     </p>
                     <p class="process-path-tagline">Der Weg einer Zusammenarbeit</p>
                 </div>
-                <div class="process-path-wrap reveal">
-                    <svg class="process-path-svg process-path-svg--mobile" viewBox="0 0 48 720" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-                        <path class="process-path-line" d="M 24 28 C 38 95, 10 165, 24 232 C 38 300, 8 368, 24 436 C 38 504, 10 572, 24 640 C 36 688, 28 708, 24 712" />
-                    </svg>
-                    <svg class="process-path-svg process-path-svg--desktop" viewBox="0 0 1000 88" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-                        <path class="process-path-line" d="M 48 44 C 110 12, 155 76, 220 38 C 285 8, 340 72, 405 42 C 470 18, 525 78, 590 40 C 655 14, 710 74, 775 44 C 840 22, 895 68, 952 44" />
-                    </svg>
-                    <ol class="process-stepper reveal" aria-label="Ablauf der Zusammenarbeit">
-                    <li class="process-stepper__item">
-                        <div class="process-stepper__trigger">
-                            <span class="process-stepper__indicator" aria-hidden="true">1</span>
-                            <div class="process-stepper__content">
-                                <span class="process-stepper__title">Erstgespräch</span>
-                                <span class="process-stepper__description">Kostenlos — Bedarf, Ziele und Scope klären.</span>
-                            </div>
+                <div class="collab-path reveal" id="collab-path" data-active-step="1">
+                    <div class="collab-path__viewport" tabindex="0" role="region" aria-label="Der Weg einer Zusammenarbeit">
+                        <div class="collab-path__track">
+                            <svg class="collab-path__svg collab-path__svg--wave" viewBox="0 0 1200 256" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                                <defs>
+                                    <linearGradient id="collabPathGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#EC6A37" stop-opacity="0.35" />
+                                        <stop offset="35%" stop-color="#C45A2E" stop-opacity="0.5" />
+                                        <stop offset="65%" stop-color="#789464" stop-opacity="0.55" />
+                                        <stop offset="100%" stop-color="#3C5A2A" stop-opacity="0.4" />
+                                    </linearGradient>
+                                </defs>
+                                <path class="collab-path__line collab-path__line--bg" d="M 80 128 C 140 128, 180 32, 240 32 C 300 32, 340 224, 400 224 C 460 224, 500 32, 560 32 C 620 32, 660 224, 720 224 C 780 224, 820 32, 880 32 C 940 32, 980 128, 1040 128 L 1160 128" />
+                                <path class="collab-path__line collab-path__line--dash" d="M 80 128 C 140 128, 180 32, 240 32 C 300 32, 340 224, 400 224 C 460 224, 500 32, 560 32 C 620 32, 660 224, 720 224 C 780 224, 820 32, 880 32 C 940 32, 980 128, 1040 128 L 1160 128" />
+                            </svg>
+                            <svg class="collab-path__svg collab-path__svg--stack" viewBox="0 0 48 720" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                                <path class="collab-path__line collab-path__line--bg" d="M 24 28 C 38 95, 10 165, 24 232 C 38 300, 8 368, 24 436 C 38 504, 10 572, 24 640 C 36 688, 28 708, 24 712" />
+                                <path class="collab-path__line collab-path__line--dash" d="M 24 28 C 38 95, 10 165, 24 232 C 38 300, 8 368, 24 436 C 38 504, 10 572, 24 640 C 36 688, 28 708, 24 712" />
+                            </svg>
+                            <ol class="collab-path__steps" role="list">
+                                <li class="collab-step is-active" role="listitem" data-step="1" data-position="middle">
+                                    <article class="collab-step__inner">
+                                        <button type="button" class="collab-step__btn" data-step-btn="1" aria-current="step"><span class="collab-step__num">1</span></button>
+                                        <div class="collab-step__card">
+                                            <h3 class="collab-step__title">Erstgespräch</h3>
+                                            <p class="collab-step__desc">Kostenloses Erstgespräch — Bedarf, Ziele und Scope klären.</p>
+                                        </div>
+                                    </article>
+                                </li>
+                                <li class="collab-step" role="listitem" data-step="2" data-position="up">
+                                    <article class="collab-step__inner">
+                                        <button type="button" class="collab-step__btn" data-step-btn="2"><span class="collab-step__num">2</span></button>
+                                        <div class="collab-step__card">
+                                            <h3 class="collab-step__title">Bottlenecks in Prozessen identifizieren</h3>
+                                            <p class="collab-step__desc">Engpässe in Prozessen und Datenflüssen sichtbar machen.</p>
+                                        </div>
+                                    </article>
+                                </li>
+                                <li class="collab-step" role="listitem" data-step="3" data-position="down">
+                                    <article class="collab-step__inner">
+                                        <button type="button" class="collab-step__btn" data-step-btn="3"><span class="collab-step__num">3</span></button>
+                                        <div class="collab-step__card">
+                                            <h3 class="collab-step__title">Strategien entwickeln</h3>
+                                            <p class="collab-step__desc">Roadmap, Prioritäten und messbare Ziele festlegen.</p>
+                                        </div>
+                                    </article>
+                                </li>
+                                <li class="collab-step" role="listitem" data-step="4" data-position="up">
+                                    <article class="collab-step__inner">
+                                        <button type="button" class="collab-step__btn" data-step-btn="4"><span class="collab-step__num">4</span></button>
+                                        <div class="collab-step__card">
+                                            <h3 class="collab-step__title">Ressourcen allozieren</h3>
+                                            <p class="collab-step__desc">Kapazitäten, Tools und Timeline abstimmen.</p>
+                                        </div>
+                                    </article>
+                                </li>
+                                <li class="collab-step" role="listitem" data-step="5" data-position="down">
+                                    <article class="collab-step__inner">
+                                        <button type="button" class="collab-step__btn" data-step-btn="5"><span class="collab-step__num">5</span></button>
+                                        <div class="collab-step__card">
+                                            <h3 class="collab-step__title">Dev-Phase</h3>
+                                            <p class="collab-step__desc">Automatisierung, Integrationen und Systeme bauen.</p>
+                                        </div>
+                                    </article>
+                                </li>
+                                <li class="collab-step" role="listitem" data-step="6" data-position="up">
+                                    <article class="collab-step__inner">
+                                        <button type="button" class="collab-step__btn" data-step-btn="6"><span class="collab-step__num">6</span></button>
+                                        <div class="collab-step__card">
+                                            <h3 class="collab-step__title">Testing</h3>
+                                            <p class="collab-step__desc">Abnahme, Feinschliff und Übergabe an Ihr Team.</p>
+                                        </div>
+                                    </article>
+                                </li>
+                                <li class="collab-step" role="listitem" data-step="7" data-position="middle">
+                                    <article class="collab-step__inner">
+                                        <button type="button" class="collab-step__btn" data-step-btn="7"><span class="collab-step__num">7</span></button>
+                                        <div class="collab-step__card">
+                                            <h3 class="collab-step__title">Produktion &amp; Monitoring</h3>
+                                            <p class="collab-step__desc">Go-live und laufende Überwachung im Betrieb.</p>
+                                        </div>
+                                    </article>
+                                </li>
+                            </ol>
                         </div>
-                    </li>
-                    <li class="process-stepper__item">
-                        <div class="process-stepper__trigger">
-                            <span class="process-stepper__indicator" aria-hidden="true">2</span>
-                            <div class="process-stepper__content">
-                                <span class="process-stepper__title">Bottlenecks identifizieren</span>
-                                <span class="process-stepper__description">Engpässe in Prozessen und Datenflüssen sichtbar machen.</span>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="process-stepper__item">
-                        <div class="process-stepper__trigger">
-                            <span class="process-stepper__indicator" aria-hidden="true">3</span>
-                            <div class="process-stepper__content">
-                                <span class="process-stepper__title">Strategien entwickeln</span>
-                                <span class="process-stepper__description">Roadmap, Prioritäten und messbare Ziele festlegen.</span>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="process-stepper__item">
-                        <div class="process-stepper__trigger">
-                            <span class="process-stepper__indicator" aria-hidden="true">4</span>
-                            <div class="process-stepper__content">
-                                <span class="process-stepper__title">Ressourcen allozieren</span>
-                                <span class="process-stepper__description">Kapazitäten, Tools und Timeline abstimmen.</span>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="process-stepper__item">
-                        <div class="process-stepper__trigger">
-                            <span class="process-stepper__indicator" aria-hidden="true">5</span>
-                            <div class="process-stepper__content">
-                                <span class="process-stepper__title">Dev-Phase</span>
-                                <span class="process-stepper__description">Automatisierung, Integrationen und Systeme bauen.</span>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="process-stepper__item">
-                        <div class="process-stepper__trigger">
-                            <span class="process-stepper__indicator" aria-hidden="true">6</span>
-                            <div class="process-stepper__content">
-                                <span class="process-stepper__title">Testing</span>
-                                <span class="process-stepper__description">Abnahme, Feinschliff und Übergabe an Ihr Team.</span>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="process-stepper__item">
-                        <div class="process-stepper__trigger">
-                            <span class="process-stepper__indicator" aria-hidden="true">7</span>
-                            <div class="process-stepper__content">
-                                <span class="process-stepper__title">Produktion &amp; Monitoring</span>
-                                <span class="process-stepper__description">Go-live und laufende Überwachung im Betrieb.</span>
-                            </div>
-                        </div>
-                    </li>
-                </ol>
+                    </div>
+                    <div class="collab-path__controls">
+                        <button type="button" class="collab-path__nav collab-path__nav--prev" id="collab-prev" disabled>Zurück</button>
+                        <p class="collab-path__counter" id="collab-counter" aria-live="polite">Schritt 1 von 7</p>
+                        <button type="button" class="collab-path__nav collab-path__nav--next" id="collab-next">Weiter</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -2875,7 +2894,7 @@
 
         /* ── Antigravity reveal orchestration ───────────────── */
         var revealTargets = document.querySelectorAll([
-            '.leis-intro', '.projekte-intro', '.process-intro', '.process-path-wrap', '.process-stepper', '.contact-founder-row', '.contact-text-col',
+            '.leis-intro', '.projekte-intro', '.process-intro', '.collab-path', '.contact-founder-row', '.contact-text-col',
             '.problem-item', '.contact-text-col', '.contact-detail', '.cal-embed-wrap'
         ].join(','));
 
@@ -3260,6 +3279,7 @@
         }
     }());
     </script>
+    <script src="scripts/collab-path.js" defer></script>
 
 </body>
 </html>
