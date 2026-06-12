@@ -1,234 +1,181 @@
-# RAIS Website — Repositionierung
-*Alle Texte zum direkten Ersetzen. Sektion für Sektion.*
+# RAIS Website — Live-Copy-Referenz
+
+*Stand: Immobilien-Schwerpunkt (dezent), Single-Page `index.html`. Sektion für Sektion.*
 
 ---
 
 ## META / HEAD
 
 **Title:**
-`RAIS – Prozessautomatisierung & KI-Lösungen für kleine Unternehmen`
+`RAIS: Automatisierung und KI für Makler und Hausverwaltungen`
 
 **Meta Description:**
-`RAIS automatisiert manuelle Prozesse in kleinen Unternehmen — mit KI-Agenten, Workflow-Automation und digitalen Lösungen die messbaren Mehrwert liefern.`
+`RAIS automatisiert Anfragen von Immobilienportalen, Objektakten und Team-Kommunikation für Makler und Hausverwaltungen, mit Workflows, internem GPT und eigenen Datenbanken.`
 
-**OG Title:**
-`RAIS – Weniger manuelle Arbeit. Mehr Zeit für das Wesentliche.`
+**OG / Twitter Title:**
+`RAIS: Automatisierung für Makler und Hausverwaltungen`
+
+**JSON-LD description:**
+`Prozessautomatisierung und KI für Makler und Hausverwaltungen: Portal-Anfragen, Objektakten, internes Wissen. Messbar, direkt, ohne Umweg.`
 
 ---
 
 ## NAVIGATION
 
-- Leistungen
-- Ergebnisse
-- Über uns
-- Kontakt
+- Leistungen (`#leistungen`)
+- Projekte (`#projekte`)
+- Kontakt (`#contact`)
+- CTA: Kostenlosen Audit buchen
 
-→ **Branchen-Dropdown komplett entfernen**
+Kein Branchen-Dropdown. Keine separaten Nischen-HTML-Seiten im Repo.
 
 ---
 
 ## HERO
 
 **Headline:**
-> Sie verlieren keine Zeit an schlechte Prozesse.
-> Sie verlieren sie an vermeidbare.
+> Manuelle Admin-Arbeit automatisieren für Makler und Hausverwaltungen. Messbar und ohne SaaS-Ballast.
 
 **Subheadline:**
-> Manuelle Abläufe kosten kleine Unternehmen Stunden pro Woche — für Aufgaben die längst automatisiert laufen könnten. RAIS baut die Systeme die das ändern.
+> Anfragen von Portalen, Objektakten und wiederkehrende Mieter- oder Eigentümerkommunikation kosten täglich Zeit. RAIS baut maßgeschneiderte Systeme mit n8n, KI und eigenen Datenbanken, ohne teure Software-Abos.
 
-**CTA Primary:** Demo anfordern
-**CTA Secondary:** Wie es funktioniert
+**CTA Primary:** Kostenlosen Audit buchen  
+**CTA Secondary:** Use Cases ansehen (`#projekte`)
 
----
-
-## PROBLEM-SEKTION
-
-**Headline:**
-> Das eigentliche Problem ist nicht Zeitmangel.
-> Es ist vermeidbare Arbeit.
-
-**Subheadline:**
-> Kleine Unternehmen verlieren keine Aufträge an größere Konkurrenten. Sie verlieren Zeit an Prozesse die niemand je hinterfragt hat.
-
-**4 Problem-Karten:**
-
-**Karte 1 — Manuelles Onboarding**
-> Neuer Kunde, Vertrag unterschrieben — und dann beginnt die manuelle Arbeit. Ordner anlegen, Dokumente verschicken, CRM-Eintrag machen, intern weiterleiten. Jedes Mal. Von Hand.
-
-**Karte 2 — Keine Nachverfolgung**
-> Interessenten die nicht sofort antworten werden vergessen. Kein automatischer Follow-up, kein System das warmhält. Der Auftrag geht woanders hin.
-
-**Karte 3 — Doppelarbeit**
-> Dieselben Informationen werden mehrfach eingetragen — ins CRM, ins Sheet, in die Email. Fehleranfällig, zeitaufwendig, unnötig.
-
-**Karte 4 — Verpasste Anfragen**
-> Anfragen kommen abends, am Wochenende, zwischen Terminen. Ohne automatische Antwort entscheidet die Reaktionszeit — nicht die Qualität.
+**Proof-Strip:**
+- &lt;5 Min. erste Antwort auf Inseratsanfragen
+- 0 Anfragen ohne Follow-up
+- 24/7 internes Wissen aus Objektdaten
 
 ---
 
-## LEISTUNGEN
+## TECH TICKER (`#ticker`)
 
-**Headline:**
-> Drei Hebel. Ein Ziel: weniger manuelle Arbeit.
-
-**Subheadline:**
-> Je nach Situation greifen wir dort ein wo der größte Zeitverlust entsteht — mit Automatisierung, KI oder einer digitalen Präsenz die Arbeit abnimmt.
+n8n · Supabase · Google Cloud · Microsoft 365 · Make · HubSpot · Python · TypeScript · OpenAI · Claude · Vercel · PostgreSQL
 
 ---
 
-**Leistung 1 — HAUPTLEISTUNG**
-### Prozessautomatisierung
+## LEISTUNGEN (`#leistungen`)
 
-> Wir analysieren Ihre manuellen Abläufe und automatisieren sie — von der ersten Kundenanfrage bis zum abgeschlossenen Onboarding.
+**Label:** Was wir tun  
+**Headline:** Drei Hebel. Ein Ziel: weniger manuelle Arbeit.  
+**Sub:** Je nach Situation greifen wir dort ein, wo der größte Zeitverlust entsteht. Besonders relevant, wenn täglich Anfragen, Akten und Kommunikation parallel laufen.
 
-- Automatisches Onboarding bei Vertragsabschluss
-- CRM-Integration, Ordnererstellung, Dokumentenversand
-- Follow-up Sequenzen die Interessenten warmhalten
-- Anbindung an bestehende Tools (Google Workspace, Microsoft 365, HubSpot u.a.)
+### Säule 1 — Prozessautomatisierung (Hauptleistung)
 
-*Auf Anfrage — individuell konzipiert.*
+> Von der Portal-E-Mail bis zur Aktenanlage und Team-Übergabe: wir automatisieren die Abläufe, die Makler und Verwaltungen täglich ausbremsen.
 
-**CTA:** Demo anfordern
+- ImmoScout24 und Portal-Anfragen per E-Mail erfassen und beantworten
+- Objektakte, Ordner und CRM/Tabellen synchron halten
+- Besichtigungs- und Rückfrage-Follow-ups
+- Anbindung Outlook, Google Workspace, PropStack u. a.
 
----
+### Säule 2 — KI-Agenten (Erweiterung)
 
-**Leistung 2 — ERWEITERUNG**
-### KI-Agenten
+> Internes GPT auf Objektdaten, Exposés, Hausordnung und Vertrags-FAQ. Antworten für Ihr Team, nicht für die Öffentlichkeit.
 
-> Intelligente Assistenten die rund um die Uhr Anfragen beantworten, vorqualifizieren und weiterleiten — ohne dass jemand eingreifen muss.
-
-- 24/7 Erreichbarkeit per Chat oder WhatsApp
-- Automatische Beantwortung wiederkehrender Fragen
-- Qualifizierung und Weiterleitung an die richtige Person
+- Vorqualifizierung von Interessenten
+- Antwortentwürfe für Makler und Verwaltung
+- Wissen aus eigener Datenbank (RAG)
 - DSGVO-konform konfigurierbar
 
-*Auf Anfrage — als eigenständige Lösung oder Erweiterung.*
+### Säule 3 — Digitale Präsenz (Erweiterung)
 
-**CTA:** Demo anfordern
+> Exposé-Landingpages, Anfrageformulare und Besichtigungstermine, digital aufgesetzt und direkt an Ihre Workflows angebunden.
 
----
-
-**Leistung 3 — ERWEITERUNG**
-### Digitale Präsenz
-
-> Eine professionelle Website die nicht nur gut aussieht — sondern Anfragen auffängt, vorqualifiziert und direkt in Ihre Prozesse weiterleitet.
-
-- Klarer Anfrageweg und Terminbuchung
-- Integrierter Kostenrechner oder Konfigurator
+- Exposé-Landing und Anfrageformular
+- Terminbuchung für Besichtigungen
 - Direkte Anbindung an Ihre Automatisierungen
-- Schnell live — ohne langen Entwicklungsprozess
-
-*Auf Anfrage — als Ergänzung zur Prozessautomatisierung.*
-
-**CTA:** Demo anfordern
+- Schnell live, ohne langen Entwicklungsprozess
 
 ---
 
-## BRANCHEN-SEKTION → ERSETZEN DURCH ERGEBNISSE
+## USE CASES (`#projekte`)
 
-**Headline:**
-> Was konkret passiert wenn manuelle Prozesse wegfallen.
+**Label:** Use Cases  
+**Headline:** Was wir für Immobilienteams gebaut haben.  
+**Sub:** Konkrete Abläufe, keine Konzeptfolien. Jedes System löst einen echten Engpass im Tagesgeschäft.
 
-**Subheadline:**
-> Kein Versprechen ohne Grundlage. Das sind die Abläufe die wir bereits automatisiert haben.
+### Karte 1 — Inseratsanfragen
 
-**Ergebnis-Karte 1:**
-### Onboarding in unter 4 Minuten
-> Was vorher 2–3 Stunden manueller Arbeit gekostet hat — Ordner anlegen, Dokumente verschicken, CRM-Eintrag, interne Benachrichtigung — läuft jetzt vollautomatisch ab. Ausgelöst durch eine Unterschrift.
+- Badge: E-Mail-Automation · n8n
+- Titel: Automatische Beantwortung von Inseratsanfragen
+- Eingehende Anfragen von ImmoScout24 per E-Mail werden erfasst, vorqualifiziert und mit passender Erstantwort beantwortet, inklusive Weiterleitung im Team.
+- Visual: Gradient-Placeholder (kein Portal-Logo)
 
-**Ergebnis-Karte 2:**
-### Kein verlorener Kontakt mehr
-> Jeder Interessent der einen Termin bucht wird automatisch bis zum Gespräch warmgehalten. Personalisierte Nachrichten, keine manuelle Nachverfolgung nötig.
+### Karte 2 — Wissensassistent
 
-**Ergebnis-Karte 3:**
-### Bestandskunden aktiv halten
-> Automatisierte Kampagnen die Bestandskunden auf Basis ihres Profils ansprechen — zur richtigen Zeit, mit dem richtigen Angebot.
+- Badge: Internes GPT · RAG
+- Titel: Wissensassistent für Objekte und Prozesse
+- Teaminternes GPT mit Anbindung an Datenbank und Dokumente. Antworten zu Objekten, Mietern und Abläufen ohne Tabellenchaos.
+- Visual: `images/RAIS CRM Screenshot.png`
 
----
+### Karte 3 — Objektakte
 
-## DEMO-SEKTION
+- Badge: Workflow · Dokumente
+- Titel: Objektakte & Übergabe automatisieren
+- Bei Neuvermietung oder Eigentümerwechsel: Ordner, Checklisten, E-Mails und Status, ohne manuelles Copy-Paste zwischen Tools.
+- Visual: `images/automatisches Onboarding system Screenshot.png`
 
-**Headline:**
-> Nicht ein Konzept. Ein laufendes System.
-
-**Subheadline:**
-> Das Onboarding-System läuft live — Vertragsunterzeichnung löst automatisch Ordnererstellung, Dokumentenversand, CRM-Eintrag und Willkommens-Email aus. Keine manuelle Arbeit, kein vergessener Schritt.
-
-**→ Fliesen Weber Demo entfernen**
-**→ Ersetzen durch:** Screen-Recording des Janko-Onboarding-Workflows (90 Sekunden, kein Ton nötig, einfach der Ablauf sichtbar gemacht)
-
-*Bis Screen-Recording fertig: CTA "Demo im Gespräch anfordern" reicht.*
+**CTA unter Karussell:** Use Cases ansehen
 
 ---
 
-## ÜBER UNS
+## ZUSAMMENARBEIT (`#zusammenarbeit-prozess`)
 
-**Headline:**
-> Direkt. Kein Umweg.
+7 Schritte, interaktiver Collab-Path, Tagline: „Der Weg einer Zusammenarbeit“
 
-**Text:**
-> RAIS ist Kevin Ritz — Koblenz. Ich konzipiere und baue Automatisierungslösungen für kleine Unternehmen: von der ersten Analyse bis zum laufenden System. Kein Account-Manager, kein Wiederverkäufer — Sie sprechen direkt mit der Person die Ihre Lösung baut.
->
-> Mein Hintergrund liegt in Datenanalyse, KI-Agenten und Prozessautomatisierung. Was ich baue muss messbar funktionieren — nicht gut klingen.
-
----
-
-## KONTAKT / CTA-SEKTION
-
-**Headline:**
-> In 15 Minuten sehen Sie wo bei Ihnen Zeit verloren geht.
-
-**Subheadline:**
-> Ich schaue mir Ihre aktuellen Abläufe an und zeige Ihnen konkret was automatisierbar ist — und was es bringen würde. Kein Pitch, kein Umweg.
-
-**Formular-Schritte:**
-
-Schritt 1: Name + Email
-Schritt 2: *"Was kostet Sie aktuell am meisten Zeit?"*
-- Kundenonboarding
-- Nachverfolgung von Interessenten
-- Kundenkommunikation / Anfragen
-- Internes Dokumentenmanagement
-- Anderes
-
-Schritt 3: Termin wählen
-
-**CTA Button:** Kostenloses Erstgespräch buchen
-
-**Unter Button:**
-> 15 Minuten · Kostenlos · Kein Verkaufsdruck
+1. Erstgespräch
+2. Bottlenecks in Prozessen identifizieren (Anfragen- und Akten-Engpässe)
+3. Strategien entwickeln
+4. Umsetzung
+5. Test & Abnahme
+6. Live-Betrieb
+7. Betreuung & Optimierung
 
 ---
 
-## FOOTER
+## KONTAKT (`#contact`)
 
-**Tagline entfernen:** "Websites für Fliesenleger, Elektriker und Maler"
-**Ersetzen durch:** "Prozessautomatisierung & KI-Lösungen · Koblenz"
+**Headline:** Direkt. Kein Umweg.
 
----
+**Über uns:**
+> RAIS steht für Ritz AI Solutions, Kevin Ritz aus Koblenz. Ich konzipiere und baue Automatisierungslösungen für Makler, Hausverwaltungen und kleine Teams, von der ersten Analyse bis zum laufenden System. Kein Account-Manager, kein Wiederverkäufer.
 
-## WAS KOMPLETT WEG MUSS
-
-- [ ] Alle Branchenseiten (fliesenleger.html, elektriker.html, maler.html) — deindexieren oder 404
-- [ ] Branchen-Dropdown in Navigation
-- [ ] "1.200 EUR einmalig" — kein Preis auf der Website bis Offer validiert
-- [ ] Fliesen Weber Demo-Embed — ersetzen durch Screen-Recording oder entfernen
-- [ ] OG-Image mit Fliesen Weber Preview
-- [ ] Alle Handwerk-spezifischen Formulierungen (Baustelle, Gewerk, Fliesenleger, Elektriker, Maler)
+**Booking Modal Schritt 2 (Labels):**
+- Inseratsanfragen / Portale (`onboarding`)
+- Objektakten & Dokumente (`nachverfolgung`)
+- Mieter-/Eigentümerkommunikation (`kommunikation`)
+- Internes Dokumentenmanagement (`dokumentation`)
+- Anderes (`anderes`)
 
 ---
 
-## PRIORITÄT DER UMSETZUNG
+## ERLEDIGT / ARCHIV
 
-1. Meta-Title + Meta-Description (5 Min., sofort live)
-2. Hero-Headline + Subheadline (10 Min.)
-3. Branchen-Dropdown aus Nav entfernen (5 Min.)
-4. Leistungen neu ordnen und texten (30 Min.)
-5. Branchen-Sektion → Ergebnisse ersetzen (20 Min.)
-6. Über-uns-Text anpassen (10 Min.)
-7. Kontakt-Formular Frage anpassen (10 Min.)
-8. Demo-Sektion: Fliesen Weber raus, Placeholder rein (10 Min.)
-9. Footer (5 Min.)
-10. Branchenseiten deindexieren (5 Min.)
+- [x] Single-Page: nur `index.html` als Marketing-Seite
+- [x] `landingpage.html` und `demo.html` → 301 auf `/`
+- [x] Branchenseiten → 410 in `.htaccess`
+- [x] Branchen-Dropdown entfernt
+- [x] Immobilien-Use-Cases statt WF1/Tekin/Agentur-CRM
+- [x] Collab-Path (7 Schritte) vor Kontakt
+- [x] Copy ohne Gedankenstriche in sichtbarem Text
 
-**Gesamt: ~2 Stunden. Kann während Calls im Hintergrund laufen.**
+## RECHTLICHES (Hinweis für Copy)
+
+- ImmoScout24 nur als Beispiel-Quelle, kein Partner-Claim
+- Keine KPI-Garantien ohne Beleg
+- Datenschutz nur bei neuen Datenflüssen anpassen
+
+---
+
+## DATEIEN
+
+| Datei | Rolle |
+|-------|-------|
+| `index.html` | Gesamte Marketing-Seite |
+| `styles/antigravity-polish.css` | Collab-Path, Polish |
+| `scripts/collab-path.js` | Schritt-Navigation |
+| `impressum.html`, `datenschutz.html` | Rechtstexte |
+| `Claude_and_brand.md/*` | Brand- und Agent-Kontext |
+| `CLAUDE_CODE_INSTRUCTIONS.md` | Claude Code Kontext |
