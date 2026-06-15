@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0;url=index.html">
+    <link rel="canonical" href="https://ritz-ai.solutions/">
+    <title>Weiterleitung…</title>
+    <script>
+        (function () {
+            var hash = location.hash
+                .replace('#booking', '#contact')
+                .replace('#zusammenarbeit', '#contact')
+                .replace('#demos', '#projekte')
+                .replace('#portfolio', '#projekte');
+            location.replace('index.html' + hash);
+        }());
+    </script>
+</head>
+<body>
+    <p>Weiterleitung zur <a href="index.html">Startseite</a>.</p>
+</body>
+</html>

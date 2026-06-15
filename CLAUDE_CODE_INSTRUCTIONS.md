@@ -11,7 +11,7 @@
 | Website | https://ritz-ai.solutions |
 | Repo | RAIS_Website_V2 |
 | Stack | Vanilla HTML, CSS, JavaScript (kein Framework) |
-| Deployment | **Vercel** (`vercel.json`, Build → `dist/`) |
+| Deployment | **VPS nginx** (Docker, A `@` → `72.60.133.250`); `.htaccess` für Apache/Legacy |
 | Hauptdatei | `index.html` (+ `prozesshandbuch.html` Lead-Magnet) |
 
 ---
@@ -40,8 +40,11 @@ Reihenfolge der Sektionen:
 
 **Navigation:** Leistungen · Projekte · Kontakt · CTA „Kostenlosen Audit buchen“
 
-**Entfernt / Legacy (nicht mehr im Repo):**
-- `landingpage.html`, `demo.html`, Branchenseiten (`fliesenleger`, `elektriker`, `maler`) — gelöscht, keine Redirects mehr nötig
+**Entfernt / Legacy:**
+- `landingpage.html` → 301 auf `/`
+- `demo.html` → 301 auf `/`
+- Branchenseiten (`fliesenleger.html`, `elektriker.html`, `maler.html`) → 410 Gone in `.htaccess`
+- Kein Branchen-Dropdown, keine separaten Nischen-Landingpages im Repo
 
 ---
 
@@ -132,24 +135,27 @@ Reihenfolge der Sektionen:
 
 ---
 
-## Deployment (Vercel)
+## Deployment (VPS nginx)
 
-**Production:** `ritz-ai.solutions` auf **Vercel**. Push auf `main` → automatischer Build (`npm run build` → `dist/`).
+**Production:** `ritz-ai.solutions` auf dem **VPS** (nginx). Repo auf den Server deployen (z. B. `git pull` im Site-Verzeichnis oder bestehender Deploy-Workflow). `.htaccess` mit ausliefern (HTTPS, Legacy-Redirects, 410-Branchenseiten).
 
-### Domain umziehen (VPS → Vercel)
+**DNS:** A-Record `@` → `72.60.133.250` (Vercel-Migration rückgängig). `n8n`-Subdomain bleibt auf dem VPS.
 
-1. [vercel.com](https://vercel.com) → Projekt mit GitHub-Repo `RAIS_Website_V2` verknüpfen
-2. **Settings → Domains** → `ritz-ai.solutions` und `www.ritz-ai.solutions` hinzufügen
-3. DNS beim Domain-Registrar anpassen (Vercel zeigt die exakten Records):
-   - **Empfohlen:** A-Record `@` → `76.76.21.21` und CNAME `www` → `cname.vercel-dns.com`
-   - Oder Nameserver auf Vercel umstellen
-4. Warten bis SSL-Zertifikat aktiv (grün in Vercel)
-5. **VPS:** nginx-Site für `ritz-ai.solutions` deaktivieren (nur noch n8n & Co. auf dem VPS)
+**nginx:** `.htaccess`-Rewrites greifen auf nginx nicht. Für `/prozesshandbuch` im hPanel oder in der Site-Config:
 
-### Routing
+1. **Websites** → `ritz-ai.solutions` → **Redirects** (oder **Erweitert** → **Nginx-Konfiguration**)
+2. Redirect **301** von `/prozesshandbuch` nach `/prozesshandbuch.html`
+3. Optional zweiter Eintrag für `/prozesshandbuch/` (mit Slash)
 
-Clean-URL `/prozesshandbuch` → Rewrite in `vercel.json` (kein nginx nötig).
+Nginx-Snippet (falls Editor verfügbar):
 
-### Assets
+```nginx
+location = /prozesshandbuch {
+  return 301 /prozesshandbuch.html;
+}
+location = /prozesshandbuch/ {
+  return 301 /prozesshandbuch.html;
+}
+```
 
-Video und PDF nur unter `videos/` bzw. `downloads/`. `.htaccess` nur noch Legacy-Referenz für Apache.
+**Assets:** Video und PDF nur unter `videos/` bzw. `downloads/` — keine Duplikate im Repo-Root.
