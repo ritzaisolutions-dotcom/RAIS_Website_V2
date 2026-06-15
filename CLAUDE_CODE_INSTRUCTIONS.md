@@ -138,3 +138,22 @@ Reihenfolge der Sektionen:
 ## Deployment
 
 Push auf `main` → Vercel deployt automatisch. Hostinger-`.htaccess` für HTTPS, Legacy-Redirects und 410-Branchenseiten mit deployen.
+
+**Hostinger (nginx):** `.htaccess`-Rewrites greifen auf dem Live-Server nicht. Für die Clean-URL `/prozesshandbuch` im hPanel anlegen:
+
+1. **Websites** → `ritz-ai.solutions` → **Redirects** (oder **Erweitert** → **Nginx-Konfiguration**)
+2. Redirect **301** von `/prozesshandbuch` nach `/prozesshandbuch.html`
+3. Optional zweiter Eintrag für `/prozesshandbuch/` (mit Slash)
+
+Nginx-Snippet (falls Editor verfügbar):
+
+```nginx
+location = /prozesshandbuch {
+  return 301 /prozesshandbuch.html;
+}
+location = /prozesshandbuch/ {
+  return 301 /prozesshandbuch.html;
+}
+```
+
+**Assets:** Video und PDF nur unter `videos/` bzw. `downloads/` — keine Duplikate im Repo-Root.
