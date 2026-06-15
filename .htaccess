@@ -23,6 +23,9 @@ Options -Indexes
     RewriteRule ^landingpage\.html$ / [R=301,L]
     RewriteRule ^demo\.html$ / [R=301,L]
 
+    # Lead-Magnet Landingpage
+    RewriteRule ^prozesshandbuch/?$ /prozesshandbuch.html [L]
+
     # Deindexierte Branchenseiten — 410 Gone
     RewriteRule ^elektriker\.html$ - [G,L]
     RewriteRule ^fliesenleger\.html$ - [G,L]

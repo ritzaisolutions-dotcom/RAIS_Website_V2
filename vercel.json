@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/prozesshandbuch", "destination": "/prozesshandbuch.html" }
+  ]
+}

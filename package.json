@@ -5,10 +5,11 @@
   "main": "index.html",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/postbuild-copy.mjs",
     "preview": "vite preview",
     "build:tailwind": "tailwindcss -i ./styles/tailwind.input.css -o ./styles/tailwind.generated.css --config ./tailwind.config.js --minify",
-    "test:roi-webhook": "node scripts/roi-lead-smoke-test.mjs"
+    "test:roi-webhook": "node scripts/roi-lead-smoke-test.mjs",
+    "test:lead-magnet-webhook": "node scripts/test-lead-magnet-webhook.mjs"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.17",

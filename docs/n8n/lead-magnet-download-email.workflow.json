@@ -1,0 +1,105 @@
+{
+  "name": "RAIS Lead-Magnet Download → E-Mail",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "lead-magnet-download",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "a1b2c3d4-0001-4000-8000-000000000001",
+      "name": "Webhook Supabase INSERT",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "lead-magnet-download"
+    },
+    {
+      "parameters": {
+        "jsCode": "const input = $input.first().json;\nconst body = input.body ?? input;\nconst record = body.record ?? body;\n\nif (!record || !record.email) {\n  throw new Error('Kein record.email im Webhook-Payload. Keys: ' + Object.keys(body).join(', '));\n}\n\nconst yesNo = (v) => (v ? 'Ja' : 'Nein');\n\nreturn [{\n  json: {\n    subject: 'Neuer Lead-Magnet-Download: RAIS Prozesshandbuch',\n    text: [\n      'Neuer Download auf ritz-ai.solutions/prozesshandbuch',\n      '',\n      'Name: ' + (record.name || '—'),\n      'E-Mail: ' + (record.email || '—'),\n      'Quelle: ' + (record.source || '—'),\n      'Marketing-Einwilligung: ' + yesNo(record.marketing_consent),\n      'Zeitpunkt: ' + (record.created_at || new Date().toISOString()),\n      'Lead-ID: ' + (record.id || '—')\n    ].join('\\n'),\n    record\n  }\n}];"
+      },
+      "id": "a1b2c3d4-0002-4000-8000-000000000002",
+      "name": "Format E-Mail",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [260, 0]
+    },
+    {
+      "parameters": {
+        "fromEmail": "kevin@ritz-ai.solutions",
+        "toEmail": "kevin@ritz-ai.solutions",
+        "subject": "={{ $json.subject }}",
+        "emailFormat": "text",
+        "text": "={{ $json.text }}",
+        "options": {}
+      },
+      "id": "a1b2c3d4-0003-4000-8000-000000000003",
+      "name": "E-Mail senden",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [520, 0],
+      "credentials": {
+        "smtp": {
+          "id": "CONFIGURE_AFTER_IMPORT",
+          "name": "Hostinger SMTP (ritz-ai.solutions)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { ok: true } }}",
+        "options": {}
+      },
+      "id": "a1b2c3d4-0004-4000-8000-000000000004",
+      "name": "Respond OK",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [780, 0]
+    }
+  ],
+  "connections": {
+    "Webhook Supabase INSERT": {
+      "main": [
+        [
+          {
+            "node": "Format E-Mail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format E-Mail": {
+      "main": [
+        [
+          {
+            "node": "E-Mail senden",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "E-Mail senden": {
+      "main": [
+        [
+          {
+            "node": "Respond OK",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": false
+  },
+  "pinData": {},
+  "tags": []
+}

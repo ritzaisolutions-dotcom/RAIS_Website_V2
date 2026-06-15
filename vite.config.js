@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite'
+import { resolve } from 'path'
 
 export default defineConfig({
   server: {
@@ -7,6 +8,14 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    emptyOutDir: true
+    emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        prozesshandbuch: resolve(__dirname, 'prozesshandbuch.html'),
+        impressum: resolve(__dirname, 'impressum.html'),
+        datenschutz: resolve(__dirname, 'datenschutz.html')
+      }
+    }
   }
 })
