@@ -1,5 +1,5 @@
-# RAIS Deployment Configuration
-# This file ensures Hostinger serves the correct root version and handles routing
+# Legacy reference — production runs on Vercel (see vercel.json).
+# Keep only if Apache serves this repo directly.
 
 Options -Indexes
 
@@ -7,32 +7,18 @@ Options -Indexes
     RewriteEngine On
     RewriteBase /
 
-    # Force HTTPS
     RewriteCond %{HTTPS} off
     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-    # Ensure index.html is served from the root
     DirectoryIndex index.html
 
-    # Prevent access to old project zips or subfolders that might contain stale versions
     RewriteRule ^temp_zip_content/ - [F,L]
     RewriteRule ^RAIS_WEBSITE_LIVE/ - [F,L]
     RewriteRule ^\.git/ - [F,L]
 
-    # Legacy funnel URLs → Startseite
-    RewriteRule ^landingpage\.html$ / [R=301,L]
-    RewriteRule ^demo\.html$ / [R=301,L]
-
-    # Lead-Magnet Landingpage
     RewriteRule ^prozesshandbuch/?$ /prozesshandbuch.html [L]
-
-    # Deindexierte Branchenseiten — 410 Gone
-    RewriteRule ^elektriker\.html$ - [G,L]
-    RewriteRule ^fliesenleger\.html$ - [G,L]
-    RewriteRule ^maler\.html$ - [G,L]
 </IfModule>
 
-# Security Headers
 <IfModule mod_headers.c>
     Header always set X-Frame-Options "SAMEORIGIN"
     Header always set X-Content-Type-Options "nosniff"
@@ -42,7 +28,6 @@ Options -Indexes
     Header always set Content-Security-Policy-Report-Only "default-src 'self'; script-src 'self' 'unsafe-inline' cdn.jsdelivr.net js-de.sentry-cdn.com assets.calendly.com; style-src 'self' 'unsafe-inline' cdn.jsdelivr.net fonts.googleapis.com; img-src 'self' data:; font-src 'self' fonts.gstatic.com; connect-src 'self' *.ingest.de.sentry.io qdywaenmojdxhfxqbvun.supabase.co; frame-src calendly.com *.calendly.com; object-src 'none'; base-uri 'self'"
 </IfModule>
 
-# Cache Control: Disable for HTML (fast updates), enable heavily for hashed assets (Vite CSS/JS)
 <FilesMatch "\.html$">
     Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
     Header set Pragma "no-cache"

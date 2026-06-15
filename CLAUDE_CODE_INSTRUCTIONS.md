@@ -11,8 +11,8 @@
 | Website | https://ritz-ai.solutions |
 | Repo | RAIS_Website_V2 |
 | Stack | Vanilla HTML, CSS, JavaScript (kein Framework) |
-| Deployment | Vercel (+ Hostinger mit `.htaccess` für Legacy-Redirects) |
-| Hauptdatei | `index.html` (einzige Marketing-Seite) |
+| Deployment | **Vercel** (`vercel.json`, Build → `dist/`) |
+| Hauptdatei | `index.html` (+ `prozesshandbuch.html` Lead-Magnet) |
 
 ---
 
@@ -40,11 +40,8 @@ Reihenfolge der Sektionen:
 
 **Navigation:** Leistungen · Projekte · Kontakt · CTA „Kostenlosen Audit buchen“
 
-**Entfernt / Legacy:**
-- `landingpage.html` → 301 auf `/`
-- `demo.html` → 301 auf `/`
-- Branchenseiten (`fliesenleger.html`, `elektriker.html`, `maler.html`) → 410 Gone in `.htaccess`
-- Kein Branchen-Dropdown, keine separaten Nischen-Landingpages im Repo
+**Entfernt / Legacy (nicht mehr im Repo):**
+- `landingpage.html`, `demo.html`, Branchenseiten (`fliesenleger`, `elektriker`, `maler`) — gelöscht, keine Redirects mehr nötig
 
 ---
 
@@ -135,25 +132,24 @@ Reihenfolge der Sektionen:
 
 ---
 
-## Deployment
+## Deployment (Vercel)
 
-Push auf `main` → Vercel deployt automatisch. Hostinger-`.htaccess` für HTTPS, Legacy-Redirects und 410-Branchenseiten mit deployen.
+**Production:** `ritz-ai.solutions` auf **Vercel**. Push auf `main` → automatischer Build (`npm run build` → `dist/`).
 
-**Hostinger (nginx):** `.htaccess`-Rewrites greifen auf dem Live-Server nicht. Für die Clean-URL `/prozesshandbuch` im hPanel anlegen:
+### Domain umziehen (VPS → Vercel)
 
-1. **Websites** → `ritz-ai.solutions` → **Redirects** (oder **Erweitert** → **Nginx-Konfiguration**)
-2. Redirect **301** von `/prozesshandbuch` nach `/prozesshandbuch.html`
-3. Optional zweiter Eintrag für `/prozesshandbuch/` (mit Slash)
+1. [vercel.com](https://vercel.com) → Projekt mit GitHub-Repo `RAIS_Website_V2` verknüpfen
+2. **Settings → Domains** → `ritz-ai.solutions` und `www.ritz-ai.solutions` hinzufügen
+3. DNS beim Domain-Registrar anpassen (Vercel zeigt die exakten Records):
+   - **Empfohlen:** A-Record `@` → `76.76.21.21` und CNAME `www` → `cname.vercel-dns.com`
+   - Oder Nameserver auf Vercel umstellen
+4. Warten bis SSL-Zertifikat aktiv (grün in Vercel)
+5. **VPS:** nginx-Site für `ritz-ai.solutions` deaktivieren (nur noch n8n & Co. auf dem VPS)
 
-Nginx-Snippet (falls Editor verfügbar):
+### Routing
 
-```nginx
-location = /prozesshandbuch {
-  return 301 /prozesshandbuch.html;
-}
-location = /prozesshandbuch/ {
-  return 301 /prozesshandbuch.html;
-}
-```
+Clean-URL `/prozesshandbuch` → Rewrite in `vercel.json` (kein nginx nötig).
 
-**Assets:** Video und PDF nur unter `videos/` bzw. `downloads/` — keine Duplikate im Repo-Root.
+### Assets
+
+Video und PDF nur unter `videos/` bzw. `downloads/`. `.htaccess` nur noch Legacy-Referenz für Apache.
