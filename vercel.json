@@ -1,5 +1,8 @@
 {
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "rewrites": [
-    { "source": "/prozesshandbuch", "destination": "/prozesshandbuch.html" }
+    { "source": "/prozesshandbuch", "destination": "/prozesshandbuch.html" },
+    { "source": "/prozesshandbuch/", "destination": "/prozesshandbuch.html" }
   ]
 }
