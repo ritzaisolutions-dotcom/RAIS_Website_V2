@@ -258,13 +258,19 @@
                 <h3>Calendly erst nach bewusster Nutzeraktion</h3>
                 <p>Die externe Calendly-Einbindung wird auf dieser Website nicht bereits beim bloßen Seitenaufruf geladen. Das Widget wird erst nach einer ausdrücklichen Nutzeraktion in der Buchungssektion nachgeladen. Ohne diesen Klick bleibt es bei einem externen Link zu Calendly.</p>
 
+                <h3>Sentry (Fehlerüberwachung)</h3>
+                <p>Zur Erkennung technischer Störungen setzen wir Sentry ein (Functional Software Inc., USA). Der Dienst wird erst nach Einwilligung über Klaro geladen. Die Verarbeitung erfolgt über EU-Server (<code>ingest.de.sentry.io</code>). Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO i. V. m. § 25 Abs. 1 TDDDG. Weitere Informationen: <a href="https://sentry.io/privacy/" target="_blank" rel="noopener">https://sentry.io/privacy/</a>.</p>
+
+                <h3>Supabase Edge Function (Lead-Benachrichtigung)</h3>
+                <p>Nach einem Lead-Magnet-Download kann serverseitig eine Supabase Edge Function ausgelöst werden, um den Websitebetreiber intern zu benachrichtigen (z. B. per E-Mail oder Messenger). Dabei werden nur die für die Benachrichtigung erforderlichen Formulardaten verarbeitet. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO.</p>
+
                 <h3>Supabase als externer Datenbankdienst</h3>
                 <p>Für einzelne Formulare und strukturierte Datenspeicherung auf dieser Website nutzen wir Supabase als externen technischen Dienstleister. Anbieter ist Supabase, Inc., 970 Toa Payoh North, Singapur. Supabase verarbeitet personenbezogene Daten in unserem Auftrag als Auftragsverarbeiter. Dabei kann es insbesondere um Formularinhalte, Kontaktdaten, technisch erforderliche Metadaten und gespeicherte Datensätze gehen, die zur Bearbeitung von Anfragen, zur Bereitstellung von Funktionen oder zur Verwaltung von Leads erforderlich sind.</p>
                 <p>Die Nutzung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, soweit die Verarbeitung für die Durchführung vorvertraglicher Maßnahmen oder die Bearbeitung Ihrer Anfrage erforderlich ist, sowie ergänzend auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO aufgrund unseres berechtigten Interesses an einer zuverlässigen, skalierbaren und sicheren technischen Infrastruktur. Soweit eine Einwilligung abgefragt wird, erfolgt die Verarbeitung auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO.</p>
                 <p>Wir haben einen Vertrag über Auftragsverarbeitung (AVV) mit Supabase geschlossen. Soweit Daten in Drittstaaten verarbeitet werden, erfolgt dies auf Grundlage der Standardvertragsklauseln der EU-Kommission. Weitere Informationen zur Datenverarbeitung durch Supabase finden Sie unter <a href="https://supabase.com/privacy" target="_blank" rel="noopener">https://supabase.com/privacy</a>.</p>
 
                 <h3>Selbst gehostete n8n-Instanz bei Hostinger</h3>
-                <p>Zur technischen Verarbeitung einzelner Website-Anfragen und Automatisierungsabläufe nutzen wir eine von uns selbst betriebene n8n-Instanz. Diese Instanz wird nicht als Cloud-Dienst eines Drittanbieters für Endnutzer eingesetzt, sondern als Teil unserer eigenen technischen Infrastruktur auf Hosting-Systemen bei Hostinger betrieben. Über diese n8n-Instanz können insbesondere Formularanfragen, Chat-Anfragen oder interne Workflow-Schritte verarbeitet und an nachgelagerte Systeme weitergeleitet werden.</p>
+                <p>Zur technischen Verarbeitung einzelner Website-Anfragen und Automatisierungsabläufe nutzen wir eine von uns selbst betriebene n8n-Instanz auf unserem VPS bei Hostinger. Über diese Instanz können insbesondere Formularanfragen und interne Workflow-Schritte verarbeitet und an nachgelagerte Systeme weitergeleitet werden.</p>
                 <p>Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, soweit sie zur Bearbeitung Ihrer Anfrage oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist, sowie auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO aufgrund unseres berechtigten Interesses an einer effizienten, sicheren und nachvollziehbaren technischen Abwicklung unserer Website-Prozesse. Soweit Hosting-Leistungen betroffen sind, erfolgt die technische Bereitstellung über unseren Hosting-Dienstleister Hostinger.</p>
                 <p>Nach der aktuellen Datenschutzerklärung von Hostinger ist Hostinger International Ltd. in Zypern ansässig. Weitere Informationen zur Datenverarbeitung durch Hostinger finden Sie unter <a href="https://www.hostinger.com/legal/privacy-policy" target="_blank" rel="noopener">https://www.hostinger.com/legal/privacy-policy</a>.</p>
 
@@ -276,6 +282,9 @@
                 <h3>Selbst gehostete Medien (Video und PDF)</h3>
                 <p>Auf der Lead-Magnet-Seite stellen wir ein Erklärvideo und eine PDF-Datei direkt von unseren eigenen Servern bereit. Beim Abspielen des Videos oder beim Download der PDF werden technisch erforderliche Verbindungsdaten (z. B. IP-Adresse, Zeitpunkt, Browsertyp) in den Server-Logdateien unseres Hosters verarbeitet. Es werden dabei keine zusätzlichen Tracking- oder Analyse-Cookies gesetzt.</p>
                 <p>Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Bereitstellung unseres Angebots) sowie, soweit Sie den Download durch Formularangaben anfordern, Art. 6 Abs. 1 lit. b DSGVO.</p>
+
+                <h3>Statische Demo-Vorschauen</h3>
+                <p>In einzelnen Bereichen der Website werden statische Vorschaubilder aus unseren eigenen Dateien geladen, um mögliche Website-Aufbauten zu veranschaulichen. Dabei findet keine Verbindung zu externen Demo-Hostern statt. Erst bei aktiver Terminbuchung oder beim Öffnen externer Links können Daten an die jeweils genannten Drittanbieter übermittelt werden.</p>
 
             </section>
         </article>

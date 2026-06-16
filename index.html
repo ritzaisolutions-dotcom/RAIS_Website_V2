@@ -36,24 +36,12 @@
     </script>
 
     <!-- Klaro Consent Manager -->
+    <script src="scripts/public-config.js"></script>
+    <script src="scripts/sentry-klaro-bootstrap.js"></script>
     <script src="klaro-config.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/klaro/dist/klaro.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/klaro/dist/klaro.min.css">
     <link rel="stylesheet" href="styles/klaro-overrides.css">
-
-    <!-- Sentry Error Monitoring (managed by Klaro) -->
-    <script
-      type="text/plain"
-      data-type="application/javascript"
-      data-name="sentry"
-      src="https://js-de.sentry-cdn.com/f2ddf600721a166c3d4ab0486a3e9cee.min.js"
-      crossorigin="anonymous"
-    ></script>
-    <script type="text/plain" data-type="application/javascript" data-name="sentry">
-      Sentry.init({
-        dsn: "https://f2ddf600721a166c3d4ab0486a3e9cee@o4511309268189184.ingest.de.sentry.io/4511310256603216"
-      });
-    </script>
 
     <!-- Preload critical Hero Image -->
     <link rel="preload" href="images/mark-koch-hero.webp" as="image" type="image/webp">
@@ -3167,9 +3155,15 @@
 
     <script>
     (function () {
-        var SUPABASE_URL  = 'https://qdywaenmojdxhfxqbvun.supabase.co';
-        var SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFkeXdhZW5tb2pkeGhmeHFidnVuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0MDYwMTYsImV4cCI6MjA5MDk4MjAxNn0.rfIzS2eY3yZCvap0pKdB7V-AfKmnvQLx_QLaFEi1gts';
-        var CAL_URL       = 'https://calendly.com/ritzaisolutions/erstgesprach-mit-rais';
+        var cfg = window.RAIS_PUBLIC_CONFIG || {};
+        var SUPABASE_URL  = cfg.supabaseUrl || '';
+        var SUPABASE_ANON = cfg.supabaseAnonKey || '';
+        var CAL_URL       = cfg.calendlyUrl || '';
+
+        if (!SUPABASE_URL || !SUPABASE_ANON || !CAL_URL) {
+            console.error('RAIS: scripts/public-config.js fehlt. npm run config ausführen.');
+            return;
+        }
 
         var modal    = document.getElementById('booking-modal');
         var backdrop = document.getElementById('bm-backdrop');

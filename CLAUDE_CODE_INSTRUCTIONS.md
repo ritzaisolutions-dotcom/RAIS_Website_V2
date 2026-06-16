@@ -141,6 +141,8 @@ Reihenfolge der Sektionen:
 
 **DNS:** A-Record `@` → `72.60.133.250` (Vercel-Migration rückgängig). `n8n`-Subdomain bleibt auf dem VPS.
 
+**Secrets / API-Keys:** Nur in `.env` (gitignored). Nach `git pull` auf dem Server: `npm run config` erzeugt `scripts/public-config.js` aus der Server-`.env`. Vorlage: `.env.example`.
+
 **nginx:** `.htaccess`-Rewrites greifen auf nginx nicht. Für `/prozesshandbuch` im hPanel oder in der Site-Config:
 
 1. **Websites** → `ritz-ai.solutions` → **Redirects** (oder **Erweitert** → **Nginx-Konfiguration**)

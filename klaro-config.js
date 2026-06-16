@@ -4,8 +4,9 @@
    SUPABASE: Consent-Logging
 ───────────────────────────────────────────────────── */
 (function () {
-  var SUPABASE_URL = 'https://qdywaenmojdxhfxqbvun.supabase.co';
-  var SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFkeXdhZW5tb2pkeGhmeHFidnVuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0MDYwMTYsImV4cCI6MjA5MDk4MjAxNn0.rfIzS2eY3yZCvap0pKdB7V-AfKmnvQLx_QLaFEi1gts';
+  var cfg = window.RAIS_PUBLIC_CONFIG || {};
+  var SUPABASE_URL = cfg.supabaseUrl || '';
+  var SUPABASE_ANON = cfg.supabaseAnonKey || '';
 
   /* Unveränderliche Browser-ID (kein Personenbezug, nur zur Deduplizierung) */
   function generateUUID() {
@@ -32,6 +33,7 @@
   }
 
   function sendConsent(decisions) {
+    if (!SUPABASE_URL || !SUPABASE_ANON) return;
     fetch(SUPABASE_URL + '/rest/v1/cookie_consents', {
       method: 'POST',
       headers: {

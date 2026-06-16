@@ -4,6 +4,8 @@ dist/
 *.local
 .env
 .env.*
+!.env.example
+scripts/public-config.js
 vite.log
 vite.err.log
 .playwright-cli/
