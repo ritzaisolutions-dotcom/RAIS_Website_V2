@@ -141,7 +141,7 @@ Reihenfolge der Sektionen:
 
 **DNS:** A-Record `@` → `72.60.133.250` (Vercel-Migration rückgängig). `n8n`-Subdomain bleibt auf dem VPS.
 
-**Secrets / API-Keys:** Nur in `.env` (gitignored). Nach `git pull` auf dem Server: `npm run config` erzeugt `scripts/public-config.js` aus der Server-`.env`. Vorlage: `.env.example`.
+**Secrets / API-Keys:** Client-Keys in `.env` → `npm run config` → `scripts/public-config.js`. Die Datei ist im Repo (öffentliche Anon-Keys); SMTP/Telegram nur in `.env` und Supabase Secrets. Nach `git pull` auf dem VPS: `npm run deploy` oder `./scripts/vps-deploy.sh` (falls `.env` auf dem Server liegt).
 
 **nginx:** `.htaccess`-Rewrites greifen auf nginx nicht. Für `/prozesshandbuch` im hPanel oder in der Site-Config:
 

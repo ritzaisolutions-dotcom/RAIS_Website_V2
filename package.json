@@ -5,6 +5,7 @@
   "main": "index.html",
   "scripts": {
     "config": "node scripts/generate-public-config.mjs",
+    "deploy": "npm run config",
     "predev": "npm run config",
     "prebuild": "npm run config",
     "dev": "vite",
