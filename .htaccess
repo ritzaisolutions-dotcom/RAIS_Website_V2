@@ -39,7 +39,7 @@ Options -Indexes
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
     Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
     Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
-    Header always set Content-Security-Policy-Report-Only "default-src 'self'; script-src 'self' 'unsafe-inline' cdn.jsdelivr.net js-de.sentry-cdn.com assets.calendly.com; style-src 'self' 'unsafe-inline' cdn.jsdelivr.net fonts.googleapis.com; img-src 'self' data:; font-src 'self' fonts.gstatic.com; connect-src 'self' *.ingest.de.sentry.io qdywaenmojdxhfxqbvun.supabase.co; frame-src calendly.com *.calendly.com; object-src 'none'; base-uri 'self'"
+    Header always set Content-Security-Policy-Report-Only "default-src 'self'; script-src 'self' 'unsafe-inline' js-de.sentry-cdn.com assets.calendly.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; img-src 'self' data:; font-src 'self' fonts.gstatic.com; connect-src 'self' *.ingest.de.sentry.io qdywaenmojdxhfxqbvun.supabase.co; frame-src calendly.com *.calendly.com; object-src 'none'; base-uri 'self'"
 </IfModule>
 
 # Cache Control: Disable for HTML (fast updates), enable heavily for hashed assets (Vite CSS/JS)

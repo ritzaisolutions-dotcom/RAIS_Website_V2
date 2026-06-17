@@ -24,7 +24,7 @@
   function getConsentId() {
     var key = 'rais_cid';
     var id;
-    try { id = localStorage.getItem(key); } catch (e) { return 'anonymous'; }
+    try { id = localStorage.getItem(key); } catch (e) { return generateUUID(); }
     if (!id) {
       id = generateUUID();
       try { localStorage.setItem(key, id); } catch (e) { /* quota exceeded — proceed without persistence */ }
@@ -50,18 +50,7 @@
     }).catch(function () { /* silent fail — Consent ist im localStorage */ });
   }
 
-  /* Klaro-Consent abfangen via Storage.prototype.setItem-Intercept */
-  var _origSetItem = Storage.prototype.setItem;
-  Object.defineProperty(Storage.prototype, 'setItem', {
-    configurable: true,
-    writable: true,
-    value: function (key, value) {
-      try { _origSetItem.call(this, key, value); } catch (e) { /* QuotaExceeded — swallow */ }
-      if (this === localStorage && key === 'klaro') {
-        try { sendConsent(JSON.parse(value)); } catch (e) { /* malformed JSON — safe to ignore */ }
-      }
-    }
-  });
+  window.raisSendConsent = sendConsent;
 })();
 
 
@@ -75,16 +64,22 @@ var klaroConfig = {
   storageName: 'klaro',
   cookieExpiresAfterDays: 365,
   lang: 'de',
-  mustConsent: false,
+  mustConsent: true,
   acceptAll: true,
   hideDeclineAll: false,
   privacyPolicy: '/datenschutz.html',
+
+  callback: function (consent, service) {
+    if (typeof window.raisSendConsent === 'function') {
+      window.raisSendConsent(consent);
+    }
+  },
 
   translations: {
     de: {
       consentNotice: {
         description:
-          'Wir nutzen Cookies und ähnliche Technologien. Einige sind technisch notwendig, andere helfen uns beim Erkennen von Fehlern oder – mit deiner Einwilligung – bei Analyse und Marketing.',
+          'Wir nutzen Cookies und ähnliche Technologien. Einige sind technisch notwendig, andere helfen uns – mit deiner Einwilligung – bei der Fehlererkennung auf dieser Website.',
         learnMore: 'Einstellungen',
       },
       consentModal: {
@@ -103,7 +98,6 @@ var klaroConfig = {
       poweredBy: 'Verwaltet mit Klaro',
       purposes: {
         security: 'Sicherheit & Fehlerbehebung',
-        functional: 'Funktional',
       },
     },
   },
@@ -115,15 +109,6 @@ var klaroConfig = {
       description:
         'Sentry erfasst technische Fehler, damit wir die Stabilität der Website sicherstellen können. Verarbeitung auf EU-Servern (ingest.de.sentry.io). Anbieter: Functional Software Inc., San Francisco, USA.',
       purposes: ['security'],
-      required: false,
-      optOut: false,
-    },
-    {
-      name: 'calendly',
-      title: 'Calendly (Terminbuchung)',
-      description:
-        'Ermöglicht Online-Terminbuchungen. Das Widget wird erst nach aktiver Nutzerinteraktion geladen — nicht beim bloßen Seitenaufruf.',
-      purposes: ['functional'],
       required: false,
       optOut: false,
     },

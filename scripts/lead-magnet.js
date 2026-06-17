@@ -55,18 +55,6 @@
     }).catch(function () {});
   }
 
-  function notifyEdgeFunction(record) {
-    return fetch(SUPABASE_URL + '/functions/v1/lead-magnet-notify', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'apikey': SUPABASE_ANON,
-        'Authorization': 'Bearer ' + SUPABASE_ANON
-      },
-      body: JSON.stringify({ record: record })
-    }).catch(function () {});
-  }
-
   function showSuccess() {
     form.classList.add('is-hidden');
     success.classList.add('is-visible');
@@ -79,6 +67,9 @@
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     if (!validate()) return;
+
+    var honeypot = document.getElementById('lm-website');
+    if (honeypot && honeypot.value) return;
 
     var nameEl = document.getElementById('lm-name');
     var emailEl = document.getElementById('lm-email');
@@ -115,7 +106,6 @@
     }).then(function (record) {
       showSuccess();
       notifyN8n(record);
-      notifyEdgeFunction(record);
     }).catch(function () {
       submitBtn.disabled = false;
       submitBtn.textContent = 'Prozesshandbuch herunterladen';
@@ -123,4 +113,4 @@
     });
   });
 }());
-
+

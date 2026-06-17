@@ -39,8 +39,8 @@
     <script src="scripts/public-config.js"></script>
     <script src="scripts/sentry-klaro-bootstrap.js"></script>
     <script src="klaro-config.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/klaro/dist/klaro.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/klaro/dist/klaro.min.css">
+    <script src="vendor/klaro/klaro.js"></script>
+    <link rel="stylesheet" href="vendor/klaro/klaro.min.css">
     <link rel="stylesheet" href="styles/klaro-overrides.css">
 
     <!-- Preload critical Hero Image -->
@@ -2033,6 +2033,19 @@
         .bm-field input:focus { border-color: var(--orange); }
         .bm-field input.bm-error { border-color: #d94f3b; }
 
+        .bm-check {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.55rem;
+            font-size: 0.82rem;
+            color: var(--charcoal);
+            margin-bottom: 1.1rem;
+            cursor: pointer;
+        }
+        .bm-check input { margin-top: 0.2rem; flex-shrink: 0; }
+        .bm-check.bm-error { color: #d94f3b; }
+        .bm-check a { color: inherit; text-decoration: underline; }
+
         .bm-options {
             display: grid;
             gap: 0.6rem;
@@ -3102,6 +3115,14 @@
                     <label for="bm-email">E-Mail-Adresse</label>
                     <input type="email" id="bm-email" placeholder="max@muster.de" autocomplete="email">
                 </div>
+                <div class="bm-field" style="position:absolute; left:-9999px;" aria-hidden="true">
+                    <label for="bm-website">Website</label>
+                    <input type="text" id="bm-website" name="website" tabindex="-1" autocomplete="off">
+                </div>
+                <label class="bm-check" for="bm-privacy">
+                    <input type="checkbox" id="bm-privacy" required>
+                    <span>Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a> gelesen.</span>
+                </label>
                 <div class="bm-actions">
                     <button type="button" class="bm-btn-next" id="bm-next-0">Weiter →</button>
                 </div>
@@ -3217,11 +3238,13 @@
 
         /* ── step 1 → 2 ── */
         document.getElementById('bm-next-0').addEventListener('click', function(){
-            var nameEl  = document.getElementById('bm-name');
-            var emailEl = document.getElementById('bm-email');
+            var nameEl    = document.getElementById('bm-name');
+            var emailEl   = document.getElementById('bm-email');
+            var privacyEl = document.getElementById('bm-privacy');
             var ok = true;
             if (!nameEl.value.trim()) { nameEl.classList.add('bm-error'); ok = false; } else { nameEl.classList.remove('bm-error'); }
             if (!emailEl.value.trim() || !emailEl.value.includes('@')) { emailEl.classList.add('bm-error'); ok = false; } else { emailEl.classList.remove('bm-error'); }
+            if (!privacyEl.checked) { privacyEl.closest('.bm-check').classList.add('bm-error'); ok = false; } else { privacyEl.closest('.bm-check').classList.remove('bm-error'); }
             if (!ok) return;
             state.name  = nameEl.value.trim();
             state.email = emailEl.value.trim();
@@ -3238,22 +3261,27 @@
         });
 
         function saveLeadAndShowCalendly() {
-            /* Save to Supabase — fire and forget */
-            fetch(SUPABASE_URL + '/rest/v1/inbound_leads', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'apikey': SUPABASE_ANON,
-                    'Authorization': 'Bearer ' + SUPABASE_ANON,
-                    'Prefer': 'return=minimal'
-                },
-                body: JSON.stringify({
-                    name:       state.name,
-                    email:      state.email,
-                    pain_point: state.pain_point || null,
-                    team_size:  state.team_size  || null
-                })
-            }).catch(function(){});
+            var honeypot = document.getElementById('bm-website');
+            if (!honeypot || !honeypot.value) {
+                /* Save to Supabase — fire and forget */
+                fetch(SUPABASE_URL + '/rest/v1/inbound_leads', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'apikey': SUPABASE_ANON,
+                        'Authorization': 'Bearer ' + SUPABASE_ANON,
+                        'Prefer': 'return=minimal'
+                    },
+                    body: JSON.stringify({
+                        name:        state.name,
+                        email:       state.email,
+                        pain_point:  state.pain_point || null,
+                        team_size:   state.team_size  || null,
+                        privacy_ack: true,
+                        consent_timestamp: new Date().toISOString()
+                    })
+                }).catch(function(){});
+            }
 
             goTo(3);
             loadCalendly();
@@ -3261,12 +3289,12 @@
 
         function loadCalendly() {
             if (state.calLoaded) return;
-            state.calLoaded = true;
             var wrap = document.getElementById('bm-calendly-wrap');
             var calUrl = CAL_URL +
                 '?name='  + encodeURIComponent(state.name) +
                 '&email=' + encodeURIComponent(state.email);
 
+            state.calLoaded = true;
             if (typeof Calendly !== 'undefined') {
                 Calendly.initInlineWidget({ url: calUrl, parentElement: wrap });
             } else {

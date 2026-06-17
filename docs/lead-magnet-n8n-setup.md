@@ -5,44 +5,16 @@ Bei jedem INSERT in `lead_magnet_downloads` → E-Mail an `kevin@ritz-ai.solutio
 ## Architektur
 
 ```
-Website Formular → Supabase INSERT → lead-magnet-notify (Edge Function)
-                                      ├─ Telegram (sofort, wenn konfiguriert)
-                                      └─ n8n Webhook (E-Mail an kevin@ritz-ai.solutions)
+Website Formular → Supabase INSERT → Database Webhook → n8n (E-Mail an kevin@ritz-ai.solutions)
 ```
 
-**Edge Function:** `lead-magnet-notify` (bereits deployed)  
-**URL:** `https://qdywaenmojdxhfxqbvun.supabase.co/functions/v1/lead-magnet-notify`
-
-Die Website ruft diese Function nach erfolgreichem INSERT automatisch auf (`scripts/lead-magnet.js`).
+Der Browser ruft **keine** Supabase Edge Function mehr auf. Die Benachrichtigung erfolgt ausschließlich serverseitig über einen **Supabase Database Webhook** auf INSERT in `lead_magnet_downloads`.
 
 ---
 
-## Schritt 0: Benachrichtigung aktivieren (eine Option reicht)
+## Schritt 0: n8n-Workflow einrichten
 
-### Option A — Direkt per SMTP (empfohlen, ohne n8n)
-
-Supabase Dashboard → **Project Settings** → **Edge Functions** → **Secrets**:
-
-| Secret | Wert |
-|--------|------|
-| `LEAD_MAGNET_SMTP_USER` | `kevin@ritz-ai.solutions` |
-| `LEAD_MAGNET_SMTP_PASS` | Hostinger-Mail-Passwort |
-| `LEAD_MAGNET_SMTP_HOST` | `smtp.hostinger.com` (optional) |
-| `LEAD_MAGNET_SMTP_PORT` | `465` (optional) |
-
-Die Edge Function `lead-magnet-notify` versendet dann E-Mails direkt.
-
-### Option B — Über n8n (falls SMTP in n8n schon läuft)
-
-| Secret | Wert |
-|--------|------|
-| `N8N_LEAD_MAGNET_WEBHOOK_URL` | `https://DEINE-N8N-URL/webhook/lead-magnet-download` |
-
-**Telegram** funktioniert zusätzlich automatisch (bestehende Bot-Secrets).
-
----
-
-## Schritt 1: n8n-Workflow importieren (nur bei Option B)
+### n8n-Workflow importieren
 
 1. n8n öffnen (Hostinger-Instanz)
 2. **Workflows** → **Import from File**
@@ -65,7 +37,7 @@ Die Edge Function `lead-magnet-notify` versendet dann E-Mails direkt.
 
 ---
 
-## Schritt 2: Supabase Database Webhook
+## Schritt 1: Supabase Database Webhook
 
 1. [Supabase Dashboard](https://supabase.com/dashboard/project/qdywaenmojdxhfxqbvun) → **Database** → **Webhooks**
 2. **Create a new hook**
@@ -78,14 +50,14 @@ Die Edge Function `lead-magnet-notify` versendet dann E-Mails direkt.
 | Events | `INSERT` |
 | Type | `HTTP Request` |
 | Method | `POST` |
-| URL | n8n Production-Webhook-URL aus Schritt 1 |
+| URL | n8n Production-Webhook-URL aus Schritt 0 |
 | HTTP Headers | optional: `Content-Type: application/json` |
 
 4. Speichern
 
 ---
 
-## Schritt 3: Test (CLI)
+## Schritt 2: Test (CLI)
 
 ```powershell
 $env:N8N_WEBHOOK_URL="https://DEINE-N8N-URL/webhook/lead-magnet-download"
@@ -97,7 +69,7 @@ Erwartung:
 - n8n: Execution grün
 - Posteingang: E-Mail „Neuer Lead-Magnet-Download: RAIS Prozesshandbuch“
 
-## Schritt 4: End-to-End (Live-Seite)
+## Schritt 3: End-to-End (Live-Seite)
 
 1. `prozesshandbuch.html` öffnen
 2. Formular ausfüllen und absenden

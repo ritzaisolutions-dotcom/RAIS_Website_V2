@@ -8,8 +8,8 @@
     <link rel="icon" type="image/png" href="favicon.png?v=3" />
     <link rel="stylesheet" href="fonts.css" />
     <script src="klaro-config.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/klaro/dist/klaro.js" defer></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/klaro/dist/klaro.min.css">
+    <script src="/vendor/klaro/klaro.js" defer></script>
+    <link rel="stylesheet" href="/vendor/klaro/klaro.min.css">
     <style>
         :root {
             --background: 40 29% 94%;

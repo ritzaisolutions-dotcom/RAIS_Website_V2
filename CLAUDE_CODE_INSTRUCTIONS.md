@@ -14,6 +14,8 @@
 | Deployment | **VPS nginx** (Docker, A `@` → `72.60.133.250`); `.htaccess` für Apache/Legacy |
 | Hauptdatei | `index.html` (+ `prozesshandbuch.html` Lead-Magnet) |
 
+**Security-Header in Produktion:** `.htaccess` greift nur unter Apache, NICHT auf dem nginx-VPS. Die Header (HSTS, X-Frame-Options, CSP, …) müssen manuell aus `deploy/nginx/ritz-ai.solutions.conf` in die nginx-Server-Config eingebunden werden (`include` + `nginx -t && systemctl reload nginx`). Solange das nicht passiert ist, sendet die Live-Seite diese Header nicht.
+
 ---
 
 ## Positionierung (Stand 2026)

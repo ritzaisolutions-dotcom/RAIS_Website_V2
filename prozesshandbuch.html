@@ -16,8 +16,8 @@
   <link rel="stylesheet" href="styles/lead-magnet.css">
   <script src="scripts/public-config.js"></script>
   <script src="klaro-config.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/klaro/dist/klaro.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/klaro/dist/klaro.min.css">
+  <script src="vendor/klaro/klaro.js"></script>
+  <link rel="stylesheet" href="vendor/klaro/klaro.min.css">
   <link rel="stylesheet" href="styles/klaro-overrides.css">
 </head>
 <body>
@@ -103,6 +103,10 @@
             <div class="lp-field">
               <label for="lm-email">E-Mail-Adresse</label>
               <input type="email" id="lm-email" name="email" autocomplete="email" required>
+            </div>
+            <div class="lp-field" style="position:absolute; left:-9999px;" aria-hidden="true">
+              <label for="lm-website">Website</label>
+              <input type="text" id="lm-website" name="website" tabindex="-1" autocomplete="off">
             </div>
             <label class="lp-check">
               <input type="checkbox" id="lm-privacy" required>

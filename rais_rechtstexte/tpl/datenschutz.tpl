@@ -8,8 +8,8 @@
     <link rel="icon" type="image/png" href="favicon.png?v=3" />
     <link rel="stylesheet" href="fonts.css" />
     <script src="klaro-config.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/klaro/dist/klaro.js" defer></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/klaro/dist/klaro.min.css">
+    <script src="/vendor/klaro/klaro.js" defer></script>
+    <link rel="stylesheet" href="/vendor/klaro/klaro.min.css">
     <style>
         :root {
             --background: 40 29% 94%;
@@ -252,17 +252,16 @@
                 <h2 id="rais-custom-services">Ergänzende Hinweise zu den tatsächlich eingesetzten Diensten</h2>
 
                 <h3>Consent-Tool Klaro</h3>
-                <p>Wir nutzen auf dieser Website das Open-Source-Consent-Management-Tool Klaro, um Einwilligungen für einwilligungsbedürftige Dienste zu verwalten und zu dokumentieren. Klaro wird selbst gehostet; Einwilligungsentscheidungen werden ausschließlich im localStorage Ihres Browsers gespeichert und nicht an externe Server übermittelt. Eine Datenübertragung an Dritte findet durch das Consent-Tool selbst nicht statt.</p>
-                <p>Die Nutzung erfolgt zur Erfüllung unserer gesetzlichen Verpflichtungen im Zusammenhang mit Einwilligungs- und Nachweispflichten sowie auf Grundlage von Art. 6 Abs. 1 lit. c DSGVO und, soweit der Zugriff auf Endgeräteinformationen betroffen ist, § 25 TDDDG.</p>
+                <p>Wir verwenden auf dieser Website das Open-Source-Consent-Management-Tool <strong>Klaro</strong>, um Einwilligungen für einwilligungsbedürftige Dienste zu verwalten und technisch abzubilden. Klaro wird von unserem eigenen Server ausgeliefert (selbst gehostet) – es werden keine Consent-Daten an den Klaro-Anbieter oder externe Consent-CDNs übermittelt.</p>
+                <p>Die Consent-Entscheidungen werden im Browser des Nutzers (localStorage) gespeichert und zur Erfüllung unserer Nachweispflicht gemäß Art.&nbsp;7 Abs.&nbsp;1 DSGVO zusätzlich in unserer Supabase-Datenbank synchronisiert (siehe nächster Absatz). Rechtsgrundlage für den Einsatz von Klaro ist Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;c DSGVO sowie Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;f DSGVO (berechtigtes Interesse an der rechtssicheren Verwaltung von Einwilligungen).</p>
+                <p>Weitere Informationen zu Klaro: <a href="https://klaro.org" target="_blank" rel="noopener">https://klaro.org</a>.</p>
+                <p>Zur Erfüllung unserer Nachweispflicht nach Art.&nbsp;7 Abs.&nbsp;1 DSGVO speichern wir Ihre Consent-Entscheidung zusätzlich zur lokalen Speicherung in unserer Supabase-Datenbank (Tabelle für Consent-Nachweise; verarbeitet werden eine zufällig erzeugte, nicht personenbezogene Browser-ID, die getroffene Auswahl je Dienst und die aufgerufene Seite). Die zufällige Browser-ID wird ebenfalls lokal in Ihrem Browser (localStorage) gespeichert, um Mehrfacheinträge zu vermeiden. Rechtsgrundlage ist Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;c DSGVO i.&nbsp;V.&nbsp;m. Art.&nbsp;7 Abs.&nbsp;1 DSGVO.</p>
+
+                <h3>Sentry (Fehlerüberwachung)</h3>
+                <p>Zur Erkennung technischer Störungen setzen wir Sentry ein (Functional Software Inc., USA). Der Dienst wird erst nach Einwilligung über Klaro geladen. Die Verarbeitung erfolgt über EU-Server (<code>ingest.de.sentry.io</code>). Rechtsgrundlage: Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;a DSGVO i.&nbsp;V.&nbsp;m. §&nbsp;25 Abs.&nbsp;1 TDDDG. Weitere Informationen: <a href="https://sentry.io/privacy/" target="_blank" rel="noopener">https://sentry.io/privacy/</a>.</p>
 
                 <h3>Calendly erst nach bewusster Nutzeraktion</h3>
                 <p>Die externe Calendly-Einbindung wird auf dieser Website nicht bereits beim bloßen Seitenaufruf geladen. Das Widget wird erst nach einer ausdrücklichen Nutzeraktion in der Buchungssektion nachgeladen. Ohne diesen Klick bleibt es bei einem externen Link zu Calendly.</p>
-
-                <h3>Sentry (Fehlerüberwachung)</h3>
-                <p>Zur Erkennung technischer Störungen setzen wir Sentry ein (Functional Software Inc., USA). Der Dienst wird erst nach Einwilligung über Klaro geladen. Die Verarbeitung erfolgt über EU-Server (<code>ingest.de.sentry.io</code>). Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO i. V. m. § 25 Abs. 1 TDDDG. Weitere Informationen: <a href="https://sentry.io/privacy/" target="_blank" rel="noopener">https://sentry.io/privacy/</a>.</p>
-
-                <h3>Supabase Edge Function (Lead-Benachrichtigung)</h3>
-                <p>Nach einem Lead-Magnet-Download kann serverseitig eine Supabase Edge Function ausgelöst werden, um den Websitebetreiber intern zu benachrichtigen (z. B. per E-Mail oder Messenger). Dabei werden nur die für die Benachrichtigung erforderlichen Formulardaten verarbeitet. Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO.</p>
 
                 <h3>Supabase als externer Datenbankdienst</h3>
                 <p>Für einzelne Formulare und strukturierte Datenspeicherung auf dieser Website nutzen wir Supabase als externen technischen Dienstleister. Anbieter ist Supabase, Inc., 970 Toa Payoh North, Singapur. Supabase verarbeitet personenbezogene Daten in unserem Auftrag als Auftragsverarbeiter. Dabei kann es insbesondere um Formularinhalte, Kontaktdaten, technisch erforderliche Metadaten und gespeicherte Datensätze gehen, die zur Bearbeitung von Anfragen, zur Bereitstellung von Funktionen oder zur Verwaltung von Leads erforderlich sind.</p>
@@ -277,7 +276,11 @@
                 <h3>Kostenloser Download / Lead-Magnet (Prozesshandbuch)</h3>
                 <p>Auf der Seite <a href="prozesshandbuch.html">ritz-ai.solutions/prozesshandbuch</a> können Sie gegen Angabe Ihres Namens und Ihrer E-Mail-Adresse unser Prozesshandbuch kostenlos herunterladen. Dabei verarbeiten wir die von Ihnen eingegebenen Daten (Name, E-Mail-Adresse, Zeitpunkt der Anfrage, optional eine Quellenangabe aus der URL) zum Zweck der Bereitstellung des Downloads, der Dokumentation Ihrer Anfrage und der internen Bearbeitung als Interessent.</p>
                 <p>Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, soweit Sie mit dem Download ein vorvertragliches Interesse an unseren Leistungen signalisieren, sowie auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO aufgrund unseres berechtigten Interesses an der strukturierten Bearbeitung eingehender Anfragen. Soweit Sie optional in den Erhalt weiterer Informationen per E-Mail einwilligen, erfolgt die Verarbeitung auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO. Die Einwilligung ist jederzeit widerrufbar.</p>
-                <p>Die Daten werden in unserer Supabase-Datenbank gespeichert. Zur internen Bearbeitung kann nach dem Download eine serverseitige Benachrichtigung über eine Supabase Edge Function ausgelöst werden (z. B. E-Mail oder Messenger an den Websitebetreiber). Ergänzend kann ein automatisierter Workflow über unsere selbst gehostete n8n-Instanz genutzt werden. Die Speicherung erfolgt grundsätzlich für bis zu 24 Monate, sofern keine Kundenbeziehung begründet wird oder gesetzliche Aufbewahrungspflichten entgegenstehen.</p>
+                <p>Die Daten werden in unserer Supabase-Datenbank gespeichert. Zur internen Bearbeitung kann ein automatisierter Workflow über unsere selbst gehostete n8n-Instanz genutzt werden (ausgelöst durch einen Supabase Database Webhook). Die Speicherung erfolgt grundsätzlich für bis zu 24 Monate, sofern keine Kundenbeziehung begründet wird oder gesetzliche Aufbewahrungspflichten entgegenstehen.</p>
+
+                <h3>Terminanfrage über das Buchungsmodal</h3>
+                <p>Über das Buchungsmodal auf unserer Startseite können Sie ein unverbindliches Erstgespräch anfragen. Dabei verarbeiten wir die von Ihnen eingegebenen Daten (Name, E-Mail-Adresse, optional die von Ihnen ausgewählte Herausforderung („Pain Point") und Teamgröße) zum Zweck der Vorbereitung und Durchführung des Gesprächs. Die Angabe dieser Daten setzt voraus, dass Sie zuvor bestätigt haben, unsere Datenschutzerklärung gelesen zu haben.</p>
+                <p>Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, da Sie mit der Anfrage die Durchführung vorvertraglicher Maßnahmen anstoßen. Die Daten werden in unserer Supabase-Datenbank gespeichert und im Anschluss an das Gespräch (Calendly-Terminbuchung) zur Vorbereitung genutzt. Die Speicherung erfolgt grundsätzlich für bis zu 24 Monate, sofern keine Kundenbeziehung begründet wird oder gesetzliche Aufbewahrungspflichten entgegenstehen.</p>
 
                 <h3>Selbst gehostete Medien (Video und PDF)</h3>
                 <p>Auf der Lead-Magnet-Seite stellen wir ein Erklärvideo und eine PDF-Datei direkt von unseren eigenen Servern bereit. Beim Abspielen des Videos oder beim Download der PDF werden technisch erforderliche Verbindungsdaten (z. B. IP-Adresse, Zeitpunkt, Browsertyp) in den Server-Logdateien unseres Hosters verarbeitet. Es werden dabei keine zusätzlichen Tracking- oder Analyse-Cookies gesetzt.</p>
