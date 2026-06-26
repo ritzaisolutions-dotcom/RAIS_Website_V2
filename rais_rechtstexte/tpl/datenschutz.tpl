@@ -260,8 +260,8 @@
                 <h3>Sentry (Fehlerüberwachung)</h3>
                 <p>Zur Erkennung technischer Störungen setzen wir Sentry ein (Functional Software Inc., USA). Der Dienst wird erst nach Einwilligung über Klaro geladen. Die Verarbeitung erfolgt über EU-Server (<code>ingest.de.sentry.io</code>). Rechtsgrundlage: Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;a DSGVO i.&nbsp;V.&nbsp;m. §&nbsp;25 Abs.&nbsp;1 TDDDG. Weitere Informationen: <a href="https://sentry.io/privacy/" target="_blank" rel="noopener">https://sentry.io/privacy/</a>.</p>
 
-                <h3>Calendly erst nach bewusster Nutzeraktion</h3>
-                <p>Die externe Calendly-Einbindung wird auf dieser Website nicht bereits beim bloßen Seitenaufruf geladen. Das Widget wird erst nach einer ausdrücklichen Nutzeraktion in der Buchungssektion nachgeladen. Ohne diesen Klick bleibt es bei einem externen Link zu Calendly.</p>
+                <h3>Cal.com erst nach bewusster Nutzeraktion</h3>
+                <p>Die externe Cal.com-Einbindung wird auf dieser Website nicht bereits beim bloßen Seitenaufruf geladen. Das Buchungs-iframe wird erst nach einer ausdrücklichen Nutzeraktion in der Buchungssektion nachgeladen. Ohne diesen Klick bleibt es bei einem externen Link zu Cal.com.</p>
 
                 <h3>Supabase als externer Datenbankdienst</h3>
                 <p>Für einzelne Formulare und strukturierte Datenspeicherung auf dieser Website nutzen wir Supabase als externen technischen Dienstleister. Anbieter ist Supabase, Inc., 970 Toa Payoh North, Singapur. Supabase verarbeitet personenbezogene Daten in unserem Auftrag als Auftragsverarbeiter. Dabei kann es insbesondere um Formularinhalte, Kontaktdaten, technisch erforderliche Metadaten und gespeicherte Datensätze gehen, die zur Bearbeitung von Anfragen, zur Bereitstellung von Funktionen oder zur Verwaltung von Leads erforderlich sind.</p>
@@ -275,7 +275,7 @@
 
                 <h3>Terminanfrage über das Buchungsmodal</h3>
                 <p>Über das Buchungsmodal auf unserer Startseite können Sie ein kostenloses Prozess-Audit (ca. 60 Minuten) anfragen. Dabei verarbeiten wir die von Ihnen eingegebenen Daten (Name, E-Mail-Adresse, optional die von Ihnen ausgewählte Herausforderung („Pain Point"), Teamgröße, optional Ihre Branche als Makler oder Hausverwaltung sowie die Quelle Ihrer Anfrage) zum Zweck der Vorbereitung und Durchführung des Audits. Die Angabe dieser Daten setzt voraus, dass Sie zuvor bestätigt haben, unsere Datenschutzerklärung gelesen zu haben.</p>
-                <p>Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, da Sie mit der Anfrage die Durchführung vorvertraglicher Maßnahmen anstoßen. Die Daten werden in unserer Supabase-Datenbank gespeichert und im Anschluss an die Terminbuchung (Calendly) zur Vorbereitung genutzt. Die Speicherung erfolgt grundsätzlich für bis zu 24 Monate, sofern keine Kundenbeziehung begründet wird oder gesetzliche Aufbewahrungspflichten entgegenstehen.</p>
+                <p>Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, da Sie mit der Anfrage die Durchführung vorvertraglicher Maßnahmen anstoßen. Die Daten werden in unserer Supabase-Datenbank gespeichert und im Anschluss an die Terminbuchung (Cal.com) zur Vorbereitung genutzt. Die Speicherung erfolgt grundsätzlich für bis zu 24 Monate, sofern keine Kundenbeziehung begründet wird oder gesetzliche Aufbewahrungspflichten entgegenstehen.</p>
 
                 <h3>Statische Demo-Vorschauen</h3>
                 <p>In einzelnen Bereichen der Website werden statische Vorschaubilder aus unseren eigenen Dateien geladen, um mögliche Website-Aufbauten zu veranschaulichen. Dabei findet keine Verbindung zu externen Demo-Hostern statt. Erst bei aktiver Terminbuchung oder beim Öffnen externer Links können Daten an die jeweils genannten Drittanbieter übermittelt werden.</p>

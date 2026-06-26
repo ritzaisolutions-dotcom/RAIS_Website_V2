@@ -2,7 +2,7 @@
 window.RAIS_PUBLIC_CONFIG = {
   "supabaseUrl": "https://qdywaenmojdxhfxqbvun.supabase.co",
   "supabaseAnonKey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFkeXdhZW5tb2pkeGhmeHFidnVuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0MDYwMTYsImV4cCI6MjA5MDk4MjAxNn0.rfIzS2eY3yZCvap0pKdB7V-AfKmnvQLx_QLaFEi1gts",
-  "calendlyUrl": "https://calendly.com/ritzaisolutions/erstgesprach-mit-rais",
+  "calComUrl": "https://cal.com/ritzaisolutions/kostenloses-ai-potencials-audit-rais",
   "sentryDsn": "https://f2ddf600721a166c3d4ab0486a3e9cee@o4511309268189184.ingest.de.sentry.io/4511310256603216",
   "sentryLoaderKey": "f2ddf600721a166c3d4ab0486a3e9cee"
 };

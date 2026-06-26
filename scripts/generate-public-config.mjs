@@ -34,7 +34,7 @@ function sentryLoaderKey(dsn) {
 }
 
 const env = loadEnv(envPath);
-const required = ['SUPABASE_URL', 'SUPABASE_ANON_KEY', 'CALENDLY_URL', 'SENTRY_DSN'];
+const required = ['SUPABASE_URL', 'SUPABASE_ANON_KEY', 'CAL_COM_URL', 'SENTRY_DSN'];
 const missing = required.filter((key) => !env[key]);
 
 if (missing.length) {
@@ -48,7 +48,7 @@ if (missing.length) {
 const config = {
   supabaseUrl: env.SUPABASE_URL,
   supabaseAnonKey: env.SUPABASE_ANON_KEY,
-  calendlyUrl: env.CALENDLY_URL,
+  calComUrl: env.CAL_COM_URL,
   sentryDsn: env.SENTRY_DSN,
   sentryLoaderKey: sentryLoaderKey(env.SENTRY_DSN),
 };
