@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>RAIS: Mehr Abschlüsse, weniger Büroarbeit. Automatisierung für Makler und Hausverwaltungen.</title>
-    <meta name="description" content="Portalanfragen, Objektakten und Follow-ups laufen automatisch. RAIS übernimmt den Rest – messbare Automatisierung für Makler und Hausverwaltungen.">
+    <title>RAIS: Lead-Qualification &amp; Booking für Immobilienbetriebe</title>
+    <meta name="description" content="DSGVO-konforme KI-Systeme für Makler und Hausverwaltungen: Inseratsanfragen, Vorqualifizierung, Terminbuchung. Kostenloser 1h-Prozess-Audit mit 3 Use Cases und Blueprint.">
     <meta name="google-site-verification" content="A6q1zlZLweKSa1vIxp-owVoxpEXPyIW-gPWdY6N79ZI">
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -13,15 +13,15 @@
     <link rel="apple-touch-icon" href="favicon.png?v=3">
 
     <!-- OpenGraph -->
-    <meta property="og:title" content="RAIS: Mehr Abschlüsse, weniger Büroarbeit. Automatisierung für Makler und Hausverwaltungen.">
-    <meta property="og:description" content="Portalanfragen, Objektakten und Follow-ups laufen automatisch. RAIS übernimmt den Rest – messbare Automatisierung für Makler und Hausverwaltungen.">
+    <meta property="og:title" content="RAIS: Lead-Qualification &amp; Booking für Immobilienbetriebe">
+    <meta property="og:description" content="DSGVO-konforme KI-Systeme für Makler und Hausverwaltungen. Kostenloser Prozess-Audit: 3 Use Cases mit Umsetzungs-Blueprint.">
     <meta property="og:url" content="https://ritz-ai.solutions">
     <meta property="og:type" content="website">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="RAIS: Mehr Abschlüsse, weniger Büroarbeit. Automatisierung für Makler und Hausverwaltungen.">
-    <meta name="twitter:description" content="Portalanfragen, Objektakten und Follow-ups laufen automatisch. RAIS übernimmt den Rest – messbare Automatisierung für Makler und Hausverwaltungen.">
+    <meta name="twitter:title" content="RAIS: Lead-Qualification &amp; Booking für Immobilienbetriebe">
+    <meta name="twitter:description" content="DSGVO-konforme KI-Systeme für Makler und Hausverwaltungen. Kostenloser Prozess-Audit mit 3 Use Cases und Blueprint.">
 
     <!-- Schema.org -->
     <script type="application/ld+json">
@@ -30,7 +30,7 @@
       "@type": "ProfessionalService",
       "name": "RAIS (Ritz AI Solutions)",
       "url": "https://ritz-ai.solutions",
-      "description": "Prozessautomatisierung und KI für Makler und Hausverwaltungen: Portal-Anfragen, Objektakten, internes Wissen. Messbar, direkt, ohne Umweg.",
+      "description": "Lead-Qualification und Booking für Immobilienbetriebe: Inseratsanfragen, Onboarding, E-Mail-Management, Company GPTs. DSGVO-konform, messbar.",
       "brand": { "@type": "Brand", "name": "RAIS" }
     }
     </script>
@@ -498,10 +498,10 @@
             margin-bottom: 3.5rem;
         }
 
-        /* Three equal pillars */
+        /* Three equal pillars → 2×2 grid for four pillars */
         .leis-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 1.25rem;
             align-items: stretch;
         }
@@ -1201,78 +1201,208 @@
         }
 
         /* ─────────────────────────────────────────────────────
-           ÜBER UNS
+           ZIELGRUPPE — Mit wem wir arbeiten
         ───────────────────────────────────────────────────── */
 
-        #ueber-uns {
-            padding: 6rem 0;
-            background-color: var(--background);
+        #zielgruppe {
+            padding: 5rem 0;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
 
-        /* Two-column: text left, founder card right (fixed 340px) */
-        .ueberuns-grid {
+        .zielgruppe-intro {
+            text-align: center;
+            max-width: 36rem;
+            margin: 0 auto 2.75rem;
+        }
+
+        .zielgruppe-split {
+            position: relative;
             display: grid;
-            grid-template-columns: 1fr 340px;
-            gap: 5rem;
-            align-items: start;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            min-height: 280px;
         }
 
-        .ueberuns-copy {
-            font-size: 1rem;
-            line-height: 1.78;
-            color: var(--stone);
-            margin-top: 1.5rem;
+        .zielgruppe-split__divider {
+            display: none;
         }
 
-        /* Founder photo */
-        .founder-photo {
-            width: 280px;
-            height: 280px;
-            object-fit: cover;
-            object-position: center top;
-            border-radius: 50%;
-            border: 1px solid var(--border);
-            margin-bottom: 1.5rem;
-            box-shadow: 0 8px 32px rgba(47, 42, 36, 0.12);
-            display: block;
+        @media (min-width: 768px) {
+            .zielgruppe-split__divider {
+                display: block;
+                position: absolute;
+                left: 50%;
+                top: 8%;
+                bottom: 8%;
+                width: 2px;
+                margin-left: -1px;
+                background: linear-gradient(180deg, transparent, rgba(236, 106, 55, 0.35) 20%, rgba(236, 106, 55, 0.35) 80%, transparent);
+                transform: rotate(-4deg);
+                transform-origin: center center;
+                z-index: 1;
+                pointer-events: none;
+            }
         }
 
-        .founder-name {
+        .zielgruppe-panel {
+            padding: 2rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transition: background-color 0.25s ease;
+            cursor: default;
+        }
+
+        @media (min-width: 768px) {
+            .zielgruppe-panel--makler { padding-right: 3rem; }
+            .zielgruppe-panel--verwaltung { padding-left: 3rem; }
+        }
+
+        .zielgruppe-panel.is-clickable {
+            cursor: pointer;
+        }
+
+        .zielgruppe-panel.is-clickable:hover {
+            background-color: rgba(236, 106, 55, 0.04);
+        }
+
+        .zielgruppe-panel__label {
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 0.625rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--orange);
+        }
+
+        .zielgruppe-panel__title {
             font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
-            font-size: 1.25rem;
+            font-size: 1.375rem;
             font-weight: 700;
             color: var(--charcoal);
-            margin-bottom: 0.25rem;
+            line-height: 1.25;
         }
 
-        .founder-role {
-            font-family: 'JetBrains Mono', 'Courier New', monospace;
-            font-size: 0.5625rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--stone);
-            margin-bottom: 1.125rem;
+        .zielgruppe-reqs {
+            list-style: none;
+            display: grid;
+            gap: 0.65rem;
+            margin-top: 0.25rem;
         }
 
-        .founder-meta {
-            font-size: 0.875rem;
-            color: var(--stone);
-            margin-bottom: 0.875rem;
-        }
-
-        .founder-link {
-            display: block;
+        .zielgruppe-reqs li {
+            position: relative;
+            padding-left: 1.15rem;
             font-size: 0.9375rem;
-            color: var(--charcoal);
-            text-decoration: none;
-            margin-bottom: 0.3125rem;
-            transition: color 0.15s ease;
+            line-height: 1.6;
+            color: var(--stone);
         }
 
-        .founder-link:hover { color: var(--orange); }
+        .zielgruppe-reqs li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.62em;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--pistachio);
+        }
+
+        .zielgruppe-cta-wrap {
+            text-align: center;
+            margin-top: 2.5rem;
+        }
+
+        @media (max-width: 767px) {
+            .zielgruppe-split {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            .zielgruppe-panel {
+                padding: 1.75rem 0;
+                border-bottom: 1px solid var(--border);
+            }
+            .zielgruppe-panel--verwaltung {
+                border-bottom: none;
+            }
+        }
 
         /* ─────────────────────────────────────────────────────
-           CONTACT
+           WIR — Team-Sektion (Koblenz-Hintergrund)
+        ───────────────────────────────────────────────────── */
+
+        #wir {
+            position: relative;
+            padding: 6rem 0;
+            overflow: hidden;
+            color: #FBF8F3;
+        }
+
+        .wir-bg {
+            position: absolute;
+            inset: 0;
+            background: url('images/WIR_ref.jpg') center/cover no-repeat;
+            animation: wirKenBurns 22s ease-in-out infinite alternate;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .wir-bg { animation: none; }
+        }
+
+        @keyframes wirKenBurns {
+            from { transform: scale(1); }
+            to   { transform: scale(1.05); }
+        }
+
+        .wir-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(145deg, rgba(26, 20, 16, 0.82) 0%, rgba(18, 14, 10, 0.88) 100%);
+        }
+
+        .wir-content {
+            position: relative;
+            z-index: 2;
+            max-width: 40rem;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 1.5rem;
+        }
+
+        .wir-content .mono-label {
+            color: var(--orange);
+        }
+
+        .wir-content .section-h2 {
+            color: #FBF8F3;
+            margin-top: 0.75rem;
+        }
+
+        .wir-copy {
+            font-size: 1rem;
+            line-height: 1.78;
+            color: rgba(251, 248, 243, 0.82);
+            margin-top: 1.25rem;
+        }
+
+        .wir-copy + .wir-copy {
+            margin-top: 1rem;
+        }
+
+        .wir-location {
+            display: inline-block;
+            margin-top: 1.75rem;
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 0.5625rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(251, 248, 243, 0.45);
+        }
+
+        /* ─────────────────────────────────────────────────────
+           ÜBER UNS (legacy — removed)
         ───────────────────────────────────────────────────── */
 
         /* ── Contact section — dark hero treatment ── */
@@ -1460,7 +1590,6 @@
         ───────────────────────────────────────────────────── */
 
         @media (max-width: 840px) {
-            .ueberuns-grid,
             .contact-grid {
                 grid-template-columns: 1fr;
                 gap: 2.5rem;
@@ -1471,7 +1600,7 @@
             .cal-embed-wrap { order: 2; }
 
             #zusammenarbeit-prozess,
-            #ueber-uns,
+            #wir,
             #trust,
             #contact { padding: 4rem 0; }
         }
@@ -1492,6 +1621,7 @@
         .reveal-delay-1 { transition-delay: 0.1s; }
         .reveal-delay-2 { transition-delay: 0.2s; }
         .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
 
         /* ─────────────────────────────────────────────────────
            KENNZAHLEN-BAR
@@ -2147,7 +2277,7 @@
                     </li>
 
                     <li>
-                        <a href="#ueber-uns">Über uns</a>
+                        <a href="#wir">Wir</a>
                     </li>
 
                     <li>
@@ -2159,7 +2289,7 @@
 
             <!-- Right: CTA + hamburger -->
             <div class="nav-right">
-                <button type="button" class="btn-primary" id="nav-demo-btn">Kostenlos beraten lassen</button>
+                <button type="button" class="btn-primary" id="nav-demo-btn">Kostenlosen Audit buchen</button>
 
                 <button
                     class="nav-hamburger"
@@ -2189,12 +2319,12 @@
 
             <a href="#leistungen" class="mobile-link" data-close-menu>Leistungen</a>
             <a href="#projekte"   class="mobile-link" data-close-menu>Projekte</a>
-            <a href="#ueber-uns" class="mobile-link" data-close-menu>Über uns</a>
+            <a href="#wir" class="mobile-link" data-close-menu>Wir</a>
             <a href="#contact"   class="mobile-link" data-close-menu>Kontakt</a>
 
             <hr class="mobile-hr">
 
-            <button type="button" class="mobile-cta" id="mobile-demo-btn">Kostenlos beraten lassen</button>
+            <button type="button" class="mobile-cta" id="mobile-demo-btn">Kostenlosen Audit buchen</button>
 
         </div>
     </div>
@@ -2216,29 +2346,29 @@
                     <img src="favicon.svg" alt="" width="36" height="36" style="filter: drop-shadow(0 2px 8px rgba(236,106,55,0.3));">
                     <span style="font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif; font-size: 1.6rem; font-weight: 300; color: var(--orange); letter-spacing: 0.2em; text-transform: uppercase;">RAIS</span>
                 </div>
-                <h1 class="hero-h1">Mehr Abschlüsse, weniger Büroarbeit. Automatisierung für Makler und Hausverwaltungen.</h1>
+                <h1 class="hero-h1">Wir räumen auf, was in der Immobranche die letzten 15 Jahre verschaffen hat.</h1>
 
                 <p class="hero-sub">
-                    Mehr Zeit für das, was zählt. Wir übernehmen den Rest.
+                    DSGVO-konforme KI-gestützte Systeme, damit Ihr Portfolio sorglos weiter wachsen kann.
                 </p>
 
                 <div class="hero-ctas">
-                    <button type="button" class="hero-btn-primary" id="hero-work-btn">Kostenlos beraten lassen</button>
+                    <button type="button" class="hero-btn-primary" id="hero-work-btn">Kostenlosen Audit buchen</button>
                     <a href="#projekte" class="hero-btn-outline" id="hero-demo-btn">Use Cases ansehen</a>
                 </div>
 
-                <div class="hero-proof-strip proof-strip" aria-label="Ergebnisse aus Projekten">
+                <div class="hero-proof-strip proof-strip" aria-label="Was Sie aus dem Audit mitnehmen">
                     <div class="proof-strip-item">
-                        <strong>&lt;5 Min.</strong>
-                        <span>bis zur automatischen Erstantwort auf Portalanfragen</span>
+                        <strong>1 Std.</strong>
+                        <span>kostenloser Audit Ihrer gesamten Geschäftsprozesse</span>
                     </div>
                     <div class="proof-strip-item">
-                        <strong>0</strong>
-                        <span>Anfragen die ohne automatischen Follow-up bleiben</span>
+                        <strong>3</strong>
+                        <span>konkrete Use Cases — Schritt für Schritt aufgeschlüsselt</span>
                     </div>
                     <div class="proof-strip-item">
-                        <strong>24/7</strong>
-                        <span>Zugriff auf Objektwissen, Mieterinfos und Prozesse</span>
+                        <strong>0&nbsp;€</strong>
+                        <span>Beratung und Umsetzungs-Blueprint inklusive</span>
                     </div>
                 </div>
 
@@ -2281,6 +2411,10 @@
                     <span class="ticker-sep">·</span>
                     <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#D97757"><path d="M17.3041 3.541h-3.6718l6.696 16.918H24Zm-10.6082 0L0 20.459h3.7442l1.3693-3.5527h7.0052l1.3693 3.5528h3.7442L10.5363 3.5409Zm-.3712 10.2232 2.2914-5.9456 2.2914 5.9456Z"/></svg>Claude</span>
                     <span class="ticker-sep">·</span>
+                    <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#FF7000"><path d="M17.3 3.5h-3.67l6.7 16.9H24L17.3 3.5zm-10.6 0L0 20.5h3.74l1.37-3.55h7.01l1.37 3.55h3.74L10.5 3.5h-3.8zm-.37 10.22l2.29-5.95 2.29 5.95H6.33z"/></svg>Mistral</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#FF9900"><path d="M12 2C5.4 2 0 5.4 0 9.7c0 2.2 1.2 4.2 3.2 5.7.3-1 .8-1.9 1.4-2.8-1.4-1-2.3-2.3-2.3-3.7 0-3.2 4.8-5.8 10.7-5.8S23.7 5.2 23.7 8.4c0 1.4-.9 2.7-2.3 3.7.6.9 1.1 1.8 1.4 2.8 2-1.5 3.2-3.5 3.2-5.7C24 5.4 18.6 2 12 2zm-5.5 13.2c3.2 2.4 7.3 3.7 11.5 3.7 1.1 0 2.3-.1 3.4-.3-.3-.5-.7-1-1.1-1.4-3 .6-6.2.2-8.9-1.3-.8-.5-1.6-1-2.3-1.6-.4.3-.9.6-1.4.9z"/></svg>AWS</span>
+                    <span class="ticker-sep">·</span>
                     <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#000000"><path d="M24 22.525H0l12-21.05 12 21.05z"/></svg>Vercel</span>
                     <span class="ticker-sep">·</span>
                     <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#4169E1"><path d="M23.5594 14.7228a.5269.5269 0 0 0-.0563-.1191c-.139-.2632-.4768-.3418-1.0074-.2321-1.6533.3411-2.2935.1312-2.5256-.0191 1.342-2.0482 2.445-4.522 3.0411-6.8297.2714-1.0507.7982-3.5237.1222-4.7316a1.5641 1.5641 0 0 0-.1509-.235C21.6931.9086 19.8007.0248 17.5099.0005c-1.4947-.0158-2.7705.3461-3.1161.4794a9.449 9.449 0 0 0-.5159-.0816 8.044 8.044 0 0 0-1.3114-.1278c-1.1822-.0184-2.2038.2642-3.0498.8406-.8573-.3211-4.7888-1.645-7.2219.0788C.9359 2.1526.3086 3.8733.4302 6.3043c.0409.818.5069 3.334 1.2423 5.7436.4598 1.5065.9387 2.7019 1.4334 3.582.553.9942 1.1259 1.5933 1.7143 1.7895.4474.1491 1.1327.1441 1.8581-.7279.8012-.9635 1.5903-1.8258 1.9446-2.2069.4351.2355.9064.3625 1.39.3772a.0569.0569 0 0 0 .0004.0041 11.0312 11.0312 0 0 0-.2472.3054c-.3389.4302-.4094.5197-1.5002.7443-.3102.064-1.1344.2339-1.1464.8115-.0025.1224.0329.2309.0919.3268.2269.4231.9216.6097 1.015.6331 1.3345.3335 2.5044.092 3.3714-.6787-.017 2.231.0775 4.4174.3454 5.0874.2212.5529.7618 1.9045 2.4692 1.9043.2505 0 .5263-.0291.8296-.0941 1.7819-.3821 2.5557-1.1696 2.855-2.9059.1503-.8707.4016-2.8753.5388-4.1012.0169-.0703.0357-.1207.057-.1362.0007-.0005.0697-.0471.4272.0307a.3673.3673 0 0 0 .0443.0068l.2539.0223.0149.001c.8468.0384 1.9114-.1426 2.5312-.4308.6438-.2988 1.8057-1.0323 1.5951-1.6698z"/></svg>PostgreSQL</span>
@@ -2306,10 +2440,56 @@
                     <span class="ticker-sep">·</span>
                     <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#D97757"><path d="M17.3041 3.541h-3.6718l6.696 16.918H24Zm-10.6082 0L0 20.459h3.7442l1.3693-3.5527h7.0052l1.3693 3.5528h3.7442L10.5363 3.5409Zm-.3712 10.2232 2.2914-5.9456 2.2914 5.9456Z"/></svg>Claude</span>
                     <span class="ticker-sep">·</span>
+                    <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#FF7000"><path d="M17.3 3.5h-3.67l6.7 16.9H24L17.3 3.5zm-10.6 0L0 20.5h3.74l1.37-3.55h7.01l1.37 3.55h3.74L10.5 3.5h-3.8zm-.37 10.22l2.29-5.95 2.29 5.95H6.33z"/></svg>Mistral</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#FF9900"><path d="M12 2C5.4 2 0 5.4 0 9.7c0 2.2 1.2 4.2 3.2 5.7.3-1 .8-1.9 1.4-2.8-1.4-1-2.3-2.3-2.3-3.7 0-3.2 4.8-5.8 10.7-5.8S23.7 5.2 23.7 8.4c0 1.4-.9 2.7-2.3 3.7.6.9 1.1 1.8 1.4 2.8 2-1.5 3.2-3.5 3.2-5.7C24 5.4 18.6 2 12 2zm-5.5 13.2c3.2 2.4 7.3 3.7 11.5 3.7 1.1 0 2.3-.1 3.4-.3-.3-.5-.7-1-1.1-1.4-3 .6-6.2.2-8.9-1.3-.8-.5-1.6-1-2.3-1.6-.4.3-.9.6-1.4.9z"/></svg>AWS</span>
+                    <span class="ticker-sep">·</span>
                     <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#000000"><path d="M24 22.525H0l12-21.05 12 21.05z"/></svg>Vercel</span>
                     <span class="ticker-sep">·</span>
                     <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#4169E1"><path d="M23.5594 14.7228a.5269.5269 0 0 0-.0563-.1191c-.139-.2632-.4768-.3418-1.0074-.2321-1.6533.3411-2.2935.1312-2.5256-.0191 1.342-2.0482 2.445-4.522 3.0411-6.8297.2714-1.0507.7982-3.5237.1222-4.7316a1.5641 1.5641 0 0 0-.1509-.235C21.6931.9086 19.8007.0248 17.5099.0005c-1.4947-.0158-2.7705.3461-3.1161.4794a9.449 9.449 0 0 0-.5159-.0816 8.044 8.044 0 0 0-1.3114-.1278c-1.1822-.0184-2.2038.2642-3.0498.8406-.8573-.3211-4.7888-1.645-7.2219.0788C.9359 2.1526.3086 3.8733.4302 6.3043c.0409.818.5069 3.334 1.2423 5.7436.4598 1.5065.9387 2.7019 1.4334 3.582.553.9942 1.1259 1.5933 1.7143 1.7895.4474.1491 1.1327.1441 1.8581-.7279.8012-.9635 1.5903-1.8258 1.9446-2.2069.4351.2355.9064.3625 1.39.3772a.0569.0569 0 0 0 .0004.0041 11.0312 11.0312 0 0 0-.2472.3054c-.3389.4302-.4094.5197-1.5002.7443-.3102.064-1.1344.2339-1.1464.8115-.0025.1224.0329.2309.0919.3268.2269.4231.9216.6097 1.015.6331 1.3345.3335 2.5044.092 3.3714-.6787-.017 2.231.0775 4.4174.3454 5.0874.2212.5529.7618 1.9045 2.4692 1.9043.2505 0 .5263-.0291.8296-.0941 1.7819-.3821 2.5557-1.1696 2.855-2.9059.1503-.8707.4016-2.8753.5388-4.1012.0169-.0703.0357-.1207.057-.1362.0007-.0005.0697-.0471.4272.0307a.3673.3673 0 0 0 .0443.0068l.2539.0223.0149.001c.8468.0384 1.9114-.1426 2.5312-.4308.6438-.2988 1.8057-1.0323 1.5951-1.6698z"/></svg>PostgreSQL</span>
                     <span class="ticker-sep">·</span>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ═══════════════════════════════════════════════════
+             ZIELGRUPPE — Mit wem wir arbeiten
+        ═══════════════════════════════════════════════════ -->
+        <section id="zielgruppe">
+            <div class="section-wrap">
+                <div class="zielgruppe-intro reveal">
+                    <span class="mono-label">Mit wem wir arbeiten</span>
+                    <h2 class="section-h2">KMU aus der Immobilienbranche.</h2>
+                    <p class="section-sub" style="margin-left: auto; margin-right: auto;">Wir arbeiten mit etablierten Betrieben, bei denen Automatisierung sich rechnet.</p>
+                </div>
+
+                <div class="zielgruppe-split reveal">
+                    <div class="zielgruppe-split__divider" aria-hidden="true"></div>
+
+                    <div class="zielgruppe-panel zielgruppe-panel--makler is-clickable js-zielgruppe-panel" data-icp-segment="makler" tabindex="0" role="button" aria-label="Makler und Vertrieb — Audit buchen">
+                        <span class="zielgruppe-panel__label">Vertrieb</span>
+                        <h3 class="zielgruppe-panel__title">Makler &amp; Vertrieb</h3>
+                        <ul class="zielgruppe-reqs">
+                            <li>Ab <strong>5 Mitarbeitenden</strong> im Team</li>
+                            <li><strong>Vergleichbares Volumen</strong> im Vertrieb — z.&nbsp;B. ab ~50 Abschlüssen/Jahr oder entsprechendem Umsatz</li>
+                            <li>Hohes <strong>Anfragevolumen</strong> über Portale (ImmoScout24, Immowelt &amp; Co.)</li>
+                        </ul>
+                    </div>
+
+                    <div class="zielgruppe-panel zielgruppe-panel--verwaltung is-clickable js-zielgruppe-panel" data-icp-segment="verwaltung" tabindex="0" role="button" aria-label="Hausverwaltungen — Audit buchen">
+                        <span class="zielgruppe-panel__label">Verwaltung</span>
+                        <h3 class="zielgruppe-panel__title">Hausverwaltungen</h3>
+                        <ul class="zielgruppe-reqs">
+                            <li>Ab <strong>5 Mitarbeitenden</strong> im Team</li>
+                            <li>Ab <strong>300 verwalteten Objekten</strong> (WEG, Miete, Sondereigentum)</li>
+                            <li>Wiederkehrende <strong>Prozesse</strong> mit echtem Automatisierungshebel — Mieterkommunikation, Objektakten, Übergaben</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="zielgruppe-cta-wrap reveal">
+                    <button type="button" class="hero-btn-primary js-open-booking" data-source="zielgruppe">Kostenlosen Audit buchen</button>
                 </div>
             </div>
         </section>
@@ -2320,46 +2500,83 @@
                 <!-- Section intro -->
                 <div class="leis-intro reveal">
                     <span class="mono-label">Was wir tun</span>
-                    <h2 class="section-h2">Drei Bereiche. Ein Ergebnis: Ihr Team arbeitet an Abschlüssen, nicht an Verwaltung.</h2>
+                    <h2 class="section-h2">Vier Systeme. Ein Ergebnis: Qualifizierte Anfragen und gebuchte Termine — statt manueller Verwaltung.</h2>
                     <p class="section-sub">
-                        Je nach Situation greifen wir dort ein, wo der größte Zeitverlust entsteht. Besonders relevant, wenn täglich Anfragen, Akten und Kommunikation parallel laufen.
+                        Lead-Qualification und Booking für Immobilienbetriebe — DSGVO-konform, kosteneffizient, ohne SaaS-Ballast der letzten Jahre.
                     </p>
                 </div>
 
-                <!-- Three-pillar layout -->
                 <div class="leis-grid">
 
-                    <!-- Pillar 1 — Prozessautomatisierung (Hauptleistung) -->
                     <article class="leis-pillar leis-pillar--main reveal reveal-delay-1">
-                        <!-- Flow icon -->
                         <svg class="leis-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <rect x="3" y="11" width="18" height="10" rx="2"/>
-                            <path d="M12 11V7"/>
-                            <circle cx="12" cy="5" r="2"/>
-                            <path d="M8 15h.01M12 15h.01M16 15h.01"/>
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
                         </svg>
                         <span class="leis-card-badge">Hauptleistung</span>
-                        <h3 class="leis-card-title">Prozessautomatisierung</h3>
+                        <h3 class="leis-card-title">Inseratsanfragen-Automatisierung</h3>
                         <p class="leis-card-body">
-                            Von der Portal-E-Mail bis zur Aktenanlage und Team-Übergabe: wir automatisieren die Abläufe, die Makler und Verwaltungen täglich ausbremsen.
+                            Portalanfragen von ImmoScout24 und Immowelt erfassen, parsen, vorqualifizieren und mit Erstantwort beantworten — inklusive CRM-Eintrag und Terminvorschlag.
                         </p>
                         <ul class="leis-card-list">
-                            <li>Portalanfragen automatisch empfangen, qualifizieren und beantworten, ohne Handarbeit</li>
-                            <li>Objektakte, CRM und Tabellen stets aktuell, kein manueller Abgleich nötig</li>
-                            <li>Besichtigungs-Follow-ups laufen automatisch, kein Interessent fällt durch das Raster</li>
-                            <li>Verbindet sich mit Outlook, Google Workspace, PropStack und weiteren bestehenden Tools</li>
+                            <li>Parsing der Portal-Mail und Zuordnung zu Objekt und Interessent</li>
+                            <li>Budget- und Bonitäts-Check vor der Weiterleitung ans Team</li>
+                            <li>Automatische Erstantwort und Follow-up-Sequenz</li>
+                            <li>Anbindung an PropStack, Outlook und Google Workspace</li>
                         </ul>
-                        <a href="#contact" class="leis-card-link">
-                            Kostenlos beraten lassen
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <polyline points="9 18 15 12 9 6"/>
-                            </svg>
-                        </a>
+                        <button type="button" class="leis-card-link js-open-booking" style="background:none;border:none;cursor:pointer;font-family:inherit;padding:0;">
+                            Kostenlosen Audit buchen
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+                        </button>
                     </article>
 
-                    <!-- Pillar 2 — KI-Agenten -->
                     <article class="leis-pillar reveal reveal-delay-2">
-                        <!-- Bot icon -->
+                        <svg class="leis-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                        <span class="leis-card-badge">System</span>
+                        <h3 class="leis-card-title">Onboarding-Automatisierung</h3>
+                        <p class="leis-card-body">
+                            Neuvermietung, Eigentümerwechsel, Mieter-Onboarding: Ordner, Checklisten, Status und Team-Übergaben — ohne Copy-Paste zwischen Tools.
+                        </p>
+                        <ul class="leis-card-list">
+                            <li>Trigger aus CRM oder Formular bei Neuvermietung</li>
+                            <li>Dokumentenmappe und Übergabeprotokoll automatisch anlegen</li>
+                            <li>Willkommens-Mail an Mieter und Status für das Team</li>
+                            <li>Checklisten für Verwaltung und Makler synchron halten</li>
+                        </ul>
+                        <button type="button" class="leis-card-link js-open-booking" style="background:none;border:none;cursor:pointer;font-family:inherit;padding:0;">
+                            Kostenlosen Audit buchen
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+                        </button>
+                    </article>
+
+                    <article class="leis-pillar reveal reveal-delay-3">
+                        <svg class="leis-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="2" y="4" width="20" height="16" rx="2"/>
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                        </svg>
+                        <span class="leis-card-badge">System</span>
+                        <h3 class="leis-card-title">E-Mail-Management-Systeme</h3>
+                        <p class="leis-card-body">
+                            Shared Mailbox für Verwaltung und Vertrieb: strukturiertes Routing, SLA-Follow-ups und Besichtigungstermine — ohne Postfach-Chaos.
+                        </p>
+                        <ul class="leis-card-list">
+                            <li>Kategorisierung: Mieter, Eigentümer, Handwerker, Interessenten</li>
+                            <li>Automatisches Routing an zuständige Mitarbeitende</li>
+                            <li>Follow-ups und Erinnerungen nach definierter SLA</li>
+                            <li>Terminbuchung für Besichtigungen direkt aus der Mail</li>
+                        </ul>
+                        <button type="button" class="leis-card-link js-open-booking" style="background:none;border:none;cursor:pointer;font-family:inherit;padding:0;">
+                            Kostenlosen Audit buchen
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+                        </button>
+                    </article>
+
+                    <article class="leis-pillar reveal reveal-delay-4">
                         <svg class="leis-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M12 8V4H8"/>
                             <rect width="16" height="12" x="4" y="8" rx="2"/>
@@ -2368,50 +2585,21 @@
                             <path d="M15 13v2"/>
                             <path d="M9 13v2"/>
                         </svg>
-                        <span class="leis-card-badge leis-card-badge--ext">Erweiterung</span>
-                        <h3 class="leis-card-title">KI-Agenten</h3>
+                        <span class="leis-card-badge">System</span>
+                        <h3 class="leis-card-title">Company GPTs</h3>
                         <p class="leis-card-body">
-                            Internes GPT auf Objektdaten, Exposés, Hausordnung und Vertrags-FAQ. Antworten für Ihr Team, nicht für die Öffentlichkeit.
+                            Internes GPT auf Objektdaten, Exposés, Hausordnung und Vertrags-FAQ — DSGVO-konform, nur für Ihr Team, nicht öffentlich.
                         </p>
                         <ul class="leis-card-list">
-                            <li>Vorqualifizierung von Interessenten</li>
+                            <li>Antworten zu Objekten, Mietern und Abläufen aus eigener Datenbank</li>
+                            <li>RAG auf Exposés, Verträge und interne Prozessdokumente</li>
                             <li>Antwortentwürfe für Makler und Verwaltung</li>
-                            <li>Ihr Team fragt Objekte, Mieter und Abläufe ab, die KI antwortet sofort aus Ihren eigenen Daten</li>
-                            <li>DSGVO-konform konfigurierbar</li>
+                            <li>Hosting in EU-Infrastruktur (AWS, Supabase)</li>
                         </ul>
-                        <a href="#contact" class="leis-card-link">
-                            Kostenlos beraten lassen
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <polyline points="9 18 15 12 9 6"/>
-                            </svg>
-                        </a>
-                    </article>
-
-                    <!-- Pillar 3 — Digitale Präsenz -->
-                    <article class="leis-pillar reveal reveal-delay-3">
-                        <!-- Monitor icon -->
-                        <svg class="leis-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <rect x="2" y="3" width="20" height="14" rx="2"/>
-                            <line x1="8" y1="21" x2="16" y2="21"/>
-                            <line x1="12" y1="17" x2="12" y2="21"/>
-                        </svg>
-                        <span class="leis-card-badge leis-card-badge--ext">Erweiterung</span>
-                        <h3 class="leis-card-title">Digitale Präsenz</h3>
-                        <p class="leis-card-body">
-                            Exposé-Landingpages, Anfrageformulare und Besichtigungstermine, digital aufgesetzt und direkt an Ihre Workflows angebunden.
-                        </p>
-                        <ul class="leis-card-list">
-                            <li>Exposé-Landing und Anfrageformular</li>
-                            <li>Terminbuchung für Besichtigungen</li>
-                            <li>Direkte Anbindung an Ihre Automatisierungen</li>
-                            <li>Innerhalb weniger Tage live, ohne Entwickler-Abhängigkeit danach</li>
-                        </ul>
-                        <a href="#contact" class="leis-card-link">
-                            Kostenlos beraten lassen
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                <polyline points="9 18 15 12 9 6"/>
-                            </svg>
-                        </a>
+                        <button type="button" class="leis-card-link js-open-booking" style="background:none;border:none;cursor:pointer;font-family:inherit;padding:0;">
+                            Kostenlosen Audit buchen
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+                        </button>
                     </article>
 
                 </div>
@@ -2428,75 +2616,85 @@
                 <div class="projekte-intro reveal">
                     <span class="mono-label">Use Cases</span>
                     <h2 class="section-h2">Was wir für Immobilienteams gebaut haben.</h2>
-                    <p class="section-sub">Konkrete Abläufe, keine Konzeptfolien. Jedes System löst einen echten Engpass im Tagesgeschäft.</p>
+                    <p class="section-sub">Konkrete Abläufe für Makler und Hausverwaltungen ab 5 Mitarbeitenden — jedes System löst einen echten Engpass im Tagesgeschäft.</p>
                 </div>
 
                 <div class="expanding-cards-container">
-                    <!-- Card 1: ImmoScout24-Anfragen -->
                     <div class="expanding-card active" data-index="0">
-                        <div class="card-bg-image" style="background-image: linear-gradient(135deg, #1e1b18 0%, #2f2a24 55%, #3c352c 100%);">
-                            <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; text-align:center; color:#FBF8F3;">
-                                <div style="padding: 2rem; opacity: 0.85;">
-                                    <span style="font-family:'JetBrains Mono', monospace; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:#ec6a37;">E-Mail-Automation</span>
-                                    <h5 style="font-family:'Baskerville', serif; font-size:1.5rem; margin-top:0.25rem; font-weight:600;">Portal-Anfragen</h5>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="card-bg-image" style="background-image: url('images/WIR_ref.jpg');"></div>
                         <div class="card-gradient-overlay"></div>
                         <div class="card-content-wrap">
-                            <span class="card-badge">E-Mail-Automation · n8n</span>
-                            <h4 class="card-title">Automatische Beantwortung von Inseratsanfragen</h4>
+                            <span class="card-badge">Lead-Qualification · n8n</span>
+                            <h4 class="card-title">Inseratsanfragen automatisieren</h4>
                             <div class="card-expanded-content">
-                                <p class="card-desc">Eingehende Anfragen von ImmoScout24 per E-Mail werden erfasst, vorqualifiziert und mit passender Erstantwort beantwortet, inklusive Weiterleitung im Team.</p>
+                                <p class="card-desc">ImmoScout24-Mail → Parsing → Budget- und Bonitäts-Check → Erstantwort mit Terminvorschlag → PropStack/CRM-Eintrag. Kein Interessent wartet mehr als fünf Minuten.</p>
                                 <ul class="card-bullets">
-                                    <li><span>✔</span> Parsing der Portal-Mail</li>
-                                    <li><span>✔</span> Objekt- und Interessent zuordnen</li>
-                                    <li><span>✔</span> Erstantwort + CRM/Sheet-Eintrag</li>
+                                    <li><span>✔</span> Portal-Mail parsen und Objekt zuordnen</li>
+                                    <li><span>✔</span> Vorqualifizierung vor Team-Weiterleitung</li>
+                                    <li><span>✔</span> Automatischer CRM-Eintrag und Follow-up</li>
                                 </ul>
                                 <div style="margin-top: 1.25rem;">
-                                    <button type="button" class="featured-btn js-open-booking">Kostenlos beraten lassen &rarr;</button>
+                                    <button type="button" class="featured-btn js-open-booking">Kostenlosen Audit buchen &rarr;</button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Card 2: Internes GPT & Datenbank -->
                     <div class="expanding-card" data-index="1">
-                        <div class="card-bg-image" style="background-image: url('images/RAIS CRM Screenshot.png');"></div>
-                        <div class="card-gradient-overlay"></div>
-                        <div class="card-content-wrap">
-                            <span class="card-badge">Internes GPT · RAG</span>
-                            <h4 class="card-title">Wissensassistent für Objekte und Prozesse</h4>
-                            <div class="card-expanded-content">
-                                <p class="card-desc">Teaminternes GPT mit Anbindung an Datenbank und Dokumente. Antworten zu Objekten, Mietern und Abläufen ohne Tabellenchaos.</p>
-                                <ul class="card-bullets">
-                                    <li><span>✔</span> Supabase/Postgres oder bestehende DB</li>
-                                    <li><span>✔</span> Exposé- und Vertragswissen</li>
-                                    <li><span>✔</span> Nur für Ihr Team, nicht öffentlicher Chatbot</li>
-                                </ul>
-                                <div style="margin-top: 1.25rem;">
-                                    <button type="button" class="featured-btn js-open-booking">Kostenlos beraten lassen &rarr;</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 3: Objektakte & Übergabe -->
-                    <div class="expanding-card" data-index="2">
                         <div class="card-bg-image" style="background-image: url('images/automatisches Onboarding system Screenshot.png');"></div>
                         <div class="card-gradient-overlay"></div>
                         <div class="card-content-wrap">
-                            <span class="card-badge">Workflow · Dokumente</span>
-                            <h4 class="card-title">Objektakte &amp; Übergabe automatisieren</h4>
+                            <span class="card-badge">Onboarding · Workflow</span>
+                            <h4 class="card-title">Neuvermietung &amp; Mieter-Onboarding</h4>
                             <div class="card-expanded-content">
-                                <p class="card-desc">Neuvermietung oder Eigentümerwechsel löst automatisch alle Folgeschritte aus. Ordner, Checklisten, E-Mails und CRM-Status. Kein Copy-Paste.</p>
+                                <p class="card-desc">Trigger bei Neuvermietung oder Eigentümerwechsel: Dokumentenmappe, Übergabeprotokoll, Willkommens-Mail an Mieter und Status-Update für Verwaltung und Makler — ohne manuelles Copy-Paste.</p>
                                 <ul class="card-bullets">
-                                    <li><span>✔</span> Trigger aus CRM oder Formular</li>
-                                    <li><span>✔</span> Dokumentenablage</li>
-                                    <li><span>✔</span> Status für Verwaltung &amp; Makler</li>
+                                    <li><span>✔</span> Ordner und Checklisten automatisch anlegen</li>
+                                    <li><span>✔</span> E-Mails und Aufgaben ans Team routen</li>
+                                    <li><span>✔</span> CRM-Status synchron halten</li>
                                 </ul>
                                 <div style="margin-top: 1.25rem;">
-                                    <button type="button" class="featured-btn js-open-booking">Kostenlos beraten lassen &rarr;</button>
+                                    <button type="button" class="featured-btn js-open-booking">Kostenlosen Audit buchen &rarr;</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="expanding-card" data-index="2">
+                        <div class="card-bg-image" style="background-image: linear-gradient(135deg, #1e1b18 0%, #2f2a24 55%, #3c352c 100%);"></div>
+                        <div class="card-gradient-overlay"></div>
+                        <div class="card-content-wrap">
+                            <span class="card-badge">E-Mail · Routing</span>
+                            <h4 class="card-title">E-Mail-Management für Verwaltung</h4>
+                            <div class="card-expanded-content">
+                                <p class="card-desc">Shared Mailbox für Hausverwaltungen: Mieter-, Eigentümer- und Handwerker-Anfragen automatisch kategorisieren, an zuständige Mitarbeitende routen und SLA-Follow-ups auslösen.</p>
+                                <ul class="card-bullets">
+                                    <li><span>✔</span> Kategorisierung nach Absender und Betreff</li>
+                                    <li><span>✔</span> Routing und Eskalation nach SLA</li>
+                                    <li><span>✔</span> Besichtigungstermine aus der Mail heraus</li>
+                                </ul>
+                                <div style="margin-top: 1.25rem;">
+                                    <button type="button" class="featured-btn js-open-booking">Kostenlosen Audit buchen &rarr;</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="expanding-card" data-index="3">
+                        <div class="card-bg-image" style="background-image: url('images/RAIS CRM Screenshot.png');"></div>
+                        <div class="card-gradient-overlay"></div>
+                        <div class="card-content-wrap">
+                            <span class="card-badge">Company GPT · RAG</span>
+                            <h4 class="card-title">Internes GPT für Objektwissen</h4>
+                            <div class="card-expanded-content">
+                                <p class="card-desc">„Welche Nebenkosten hat Objekt X?“ / „Stand der Renovierung Wohnung Y?“ — Ihr Team fragt, das GPT antwortet aus eigener Datenbank. DSGVO-konform, nicht öffentlich.</p>
+                                <ul class="card-bullets">
+                                    <li><span>✔</span> RAG auf Exposés, Verträge, Hausordnung</li>
+                                    <li><span>✔</span> Supabase/Postgres oder bestehende DB</li>
+                                    <li><span>✔</span> Nur intern, kein öffentlicher Chatbot</li>
+                                </ul>
+                                <div style="margin-top: 1.25rem;">
+                                    <button type="button" class="featured-btn js-open-booking">Kostenlosen Audit buchen &rarr;</button>
                                 </div>
                             </div>
                         </div>
@@ -2504,7 +2702,7 @@
                 </div>
 
                 <div style="text-align: center; margin-top: 3.5rem;">
-                    <a href="#projekte" class="btn-primary" style="text-decoration: none;">Alle Systeme ansehen</a>
+                    <button type="button" class="btn-primary js-open-booking" style="border:none;cursor:pointer;font-family:inherit;">Kostenlosen Audit buchen</button>
                 </div>
 
             </div>
@@ -2521,23 +2719,13 @@
              ZUSAMMENARBEIT — PROZESS
         ═══════════════════════════════════════════════════ -->
 
-        <!-- Lead-Magnet Teaser -->
-        <section id="lead-magnet" style="padding: 3rem 0;">
-            <div class="section-wrap" style="text-align:center; max-width: 42rem; margin: 0 auto;">
-                <span class="mono-label" style="color: var(--orange);">Kostenloses Prozesshandbuch</span>
-                <h2 class="section-h2" style="margin-top: 0.75rem;">Prozesse automatisieren, Schritt für Schritt</h2>
-                <p style="color: var(--muted-stone, #6B6359); line-height: 1.65; margin-bottom: 1.25rem;">Unser Prozesshandbuch zeigt, wie Makler und Hausverwaltungen Portalanfragen, Objektakten und Team-Workflows strukturiert automatisieren.</p>
-                <a href="prozesshandbuch.html" class="hero-btn-outline" style="display:inline-flex;">Prozesshandbuch herunterladen</a>
-            </div>
-        </section>
-
         <section id="zusammenarbeit-prozess">
             <div class="section-wrap">
                 <div class="process-intro">
                     <span class="mono-label">Zusammenarbeit</span>
                     <h2 class="section-h2">So läuft die Zusammenarbeit</h2>
                     <p class="section-sub" style="margin-left: auto; margin-right: auto;">
-                        Schritt 1 startet mit dem kostenlosen Erstgespräch — danach transparent bis zum Live-Betrieb.
+                        Schritt 1 startet mit dem kostenlosen Prozess-Audit — danach transparent bis zum Live-Betrieb.
                     </p>
                     <p class="process-path-tagline">Der Weg einer Zusammenarbeit</p>
                 </div>
@@ -2565,8 +2753,8 @@
                                     <article class="collab-step__inner">
                                         <button type="button" class="collab-step__btn" data-step-btn="1" aria-current="step"><span class="collab-step__num">1</span></button>
                                         <div class="collab-step__card">
-                                            <h3 class="collab-step__title">Erstgespräch</h3>
-                                            <p class="collab-step__desc">15 Minuten um zu verstehen, wo Ihre Prozesse Zeit und Geld kosten.</p>
+                                            <h3 class="collab-step__title">Prozess-Audit</h3>
+                                            <p class="collab-step__desc">60 Minuten: Wo liegt der größte Hebel? Sie gehen mit 3 Use Cases und Umsetzungs-Blueprint raus.</p>
                                         </div>
                                     </article>
                                 </li>
@@ -2637,32 +2825,21 @@
         </section>
 
         <!-- ═══════════════════════════════════════════════════
-             ÜBER UNS
+             WIR
         ═══════════════════════════════════════════════════ -->
-        <section id="ueber-uns">
-            <div class="section-wrap">
-                <div class="ueberuns-grid">
-
-                    <!-- Text column -->
-                    <div>
-                        <span class="mono-label">Wer ist RAIS</span>
-                        <h2 class="section-h2">Direkt. Kein Umweg.</h2>
-                        <p class="ueberuns-copy">
-                            RAIS steht für Ritz AI Solutions — Kevin Ritz aus Koblenz. Ich konzipiere und baue Automatisierungslösungen für Makler, Hausverwaltungen und kleine Teams, von der ersten Analyse bis zum laufenden System.
-                        </p>
-                        <p class="ueberuns-copy">
-                            Kein Account-Manager, kein Wiederverkäufer. Sie arbeiten direkt mit mir — von der Analyse bis zur fertigen Lösung.
-                        </p>
-                    </div>
-
-                    <!-- Founder card -->
-                    <div>
-                        <img src="images/pic_kevin.jpg" alt="Kevin Ritz, Gründer von RAIS" class="founder-photo">
-                        <p class="founder-name">Kevin Ritz</p>
-                        <p class="founder-role">Gründer · Ritz AI Solutions · Koblenz</p>
-                    </div>
-
-                </div>
+        <section id="wir">
+            <div class="wir-bg" aria-hidden="true"></div>
+            <div class="wir-overlay" aria-hidden="true"></div>
+            <div class="wir-content reveal">
+                <span class="mono-label">Wir</span>
+                <h2 class="section-h2">RAIS — Ritz AI Solutions</h2>
+                <p class="wir-copy">
+                    Wir bauen Lead-Qualification- und Booking-Systeme für Immobilienbetriebe, die wachsen wollen — ohne SaaS-Ballast der letzten 15 Jahre.
+                </p>
+                <p class="wir-copy">
+                    DSGVO-konforme Infrastruktur mit eigenen Datenbanken und EU-Hosting via AWS und Supabase. Direkte Umsetzung — kein Account-Manager, kein Wiederverkäufer.
+                </p>
+                <span class="wir-location">Ritz AI Solutions · Koblenz</span>
             </div>
         </section>
 
@@ -2677,10 +2854,13 @@
 
                     <!-- Copy column -->
                     <div class="contact-text-col">
-                        <span class="mono-label" style="color: var(--orange);">Erstgespräch</span>
-                        <h2 class="section-h2" style="color: #fff; margin-top: 0.75rem;">15 Minuten. Kostenlos. Konkret.</h2>
+                        <span class="mono-label" style="color: var(--orange);">Prozess-Audit</span>
+                        <h2 class="section-h2" style="color: #fff; margin-top: 0.75rem;">1 Stunde. Kostenlos. 3 Use Cases mit Blueprint.</h2>
                         <p class="contact-copy">
-                            Sie zeigen uns, wo täglich Zeit verloren geht. Wir zeigen Ihnen, was sich automatisieren lässt — und was das konkret bringt. Kein Pitch, kein Verkaufsdruck.
+                            In einer Stunde gehen wir Ihre Geschäftsprozesse durch — von der Inseratsanfrage bis zur Objektübergabe. Sie erhalten drei konkrete Automatisierungs-Use Cases, Schritt für Schritt aufgeschlüsselt: DSGVO-konform, kosteneffizient, ohne SaaS-Ballast.
+                        </p>
+                        <p class="contact-copy" style="margin-top: 1rem;">
+                            Beratung und Blueprint sind kostenlos — ohne Aufpreis, ohne Verkaufsdruck. Wenn Sie es selbst umsetzen wollen, haben Sie alles in der Hand. Wenn Sie es mit uns bauen wollen, buchen Sie danach.
                         </p>
                         <div class="contact-steps">
                             <div class="contact-step">
@@ -2693,24 +2873,24 @@
                             </div>
                             <div class="contact-step">
                                 <span class="contact-step-num">3</span>
-                                Termin wählen
+                                Audit-Termin wählen (60 Min)
                             </div>
                             <div class="contact-step">
                                 <span class="contact-step-num">
                                     <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                                 </span>
-                                15 Minuten · Kostenlos · Kein Verkaufsdruck
+                                Kostenlos · Blueprint inklusive · Kein Pitch
                             </div>
                         </div>
                     </div>
 
                     <!-- Booking card -->
                     <div class="cal-embed-wrap">
-                        <p class="cal-card-title">Kostenlose Beratung buchen</p>
-                        <p class="cal-card-sub">15 Minuten, kostenlos. Sie zeigen uns Ihren Prozess, wir zeigen Ihnen was sich automatisieren lässt und was es bringen würde.</p>
+                        <p class="cal-card-title">Kostenlosen Audit buchen</p>
+                        <p class="cal-card-sub">60 Minuten, kostenlos. Wir analysieren Ihre Prozesse und liefern 3 konkrete Automatisierungs-Use Cases mit Schritt-für-Schritt-Plan.</p>
                         <button type="button" id="contact-demo-btn" class="cal-load-btn" style="display:flex; align-items:center; justify-content:center; gap:0.5rem; width:100%; border:none; cursor:pointer; font-family:inherit;">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                            Kostenlos beraten lassen
+                            Kostenlosen Audit buchen
                         </button>
                         <div class="cal-trust-row">
                             <span class="cal-trust-item">
@@ -2723,7 +2903,7 @@
                             </span>
                             <span class="cal-trust-item">
                                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                15 Minuten · Kostenlos
+                                60 Min · Kostenlos
                             </span>
                         </div>
                     </div>
@@ -2759,7 +2939,7 @@
          MOBILE STICKY CTA
     ═══════════════════════════════════════════════════════ -->
     <div id="sticky-cta" aria-hidden="true">
-        <button type="button" class="sticky-cta-btn" id="sticky-demo-btn">Kostenlos beraten lassen</button>
+        <button type="button" class="sticky-cta-btn" id="sticky-demo-btn">Kostenlosen Audit buchen</button>
     </div>
 
     <!-- ═══════════════════════════════════════════════════════
@@ -2932,7 +3112,7 @@
 
         /* ── Antigravity reveal orchestration ───────────────── */
         var revealTargets = document.querySelectorAll([
-            '.leis-intro', '.projekte-intro', '.process-intro', '.collab-path', '.contact-founder-row', '.contact-text-col',
+            '.leis-intro', '.zielgruppe-intro', '.zielgruppe-split', '.zielgruppe-cta-wrap', '.projekte-intro', '.process-intro', '.collab-path', '.wir-content', '.contact-text-col',
             '.problem-item', '.contact-text-col', '.contact-detail', '.cal-embed-wrap'
         ].join(','));
 
@@ -3106,7 +3286,7 @@
             <div class="bm-step is-active" id="bm-step-0">
                 <p class="bm-label">Schritt 1 von 3</p>
                 <h2 class="bm-title">Wer sind Sie?</h2>
-                <p class="bm-sub">Damit ich das Gespräch auf Ihre Situation vorbereiten kann.</p>
+                <p class="bm-sub">Damit wir das Audit auf Ihre Situation vorbereiten können.</p>
                 <div class="bm-field">
                     <label for="bm-name">Ihr Name</label>
                     <input type="text" id="bm-name" placeholder="Max Mustermann" autocomplete="name">
@@ -3132,12 +3312,13 @@
             <div class="bm-step" id="bm-step-1">
                 <p class="bm-label">Schritt 2 von 3</p>
                 <h2 class="bm-title">Was kostet Sie am meisten Zeit?</h2>
-                <p class="bm-sub">So kann ich das Gespräch gezielt vorbereiten.</p>
+                <p class="bm-sub">So können wir das Audit gezielt vorbereiten.</p>
                 <div class="bm-options" id="bm-options-pain">
-                    <button type="button" class="bm-option" data-value="onboarding"><span class="bm-option-icon">📋</span> Inseratsanfragen / Portale</button>
-                    <button type="button" class="bm-option" data-value="nachverfolgung"><span class="bm-option-icon">🔔</span> Objektakten &amp; Dokumente</button>
-                    <button type="button" class="bm-option" data-value="kommunikation"><span class="bm-option-icon">💬</span> Mieter-/Eigentümerkommunikation</button>
-                    <button type="button" class="bm-option" data-value="dokumentation"><span class="bm-option-icon">🗂️</span> Internes Dokumentenmanagement</button>
+                    <button type="button" class="bm-option" data-value="inseratsanfragen"><span class="bm-option-icon">📧</span> Inseratsanfragen / Lead-Qualification</button>
+                    <button type="button" class="bm-option" data-value="onboarding"><span class="bm-option-icon">📋</span> Onboarding-Automatisierung</button>
+                    <button type="button" class="bm-option" data-value="email-management"><span class="bm-option-icon">💬</span> E-Mail-Management</button>
+                    <button type="button" class="bm-option" data-value="company-gpt"><span class="bm-option-icon">🤖</span> Company GPT</button>
+                    <button type="button" class="bm-option" data-value="gesamtprozess"><span class="bm-option-icon">🔍</span> Gesamtprozess-Audit</button>
                     <button type="button" class="bm-option" data-value="anderes"><span class="bm-option-icon">✏️</span> Anderes</button>
                 </div>
                 <div class="bm-actions">
@@ -3167,7 +3348,7 @@
             <div class="bm-step" id="bm-step-3">
                 <p class="bm-label">Fast geschafft</p>
                 <h2 class="bm-title">Wählen Sie Ihren Termin</h2>
-                <p class="bm-sub">15 Minuten, kostenlos und unverbindlich.</p>
+                <p class="bm-sub">60 Minuten, kostenlos. Sie erhalten 3 Use Cases mit Umsetzungs-Blueprint.</p>
                 <div class="bm-calendly-wrap" id="bm-calendly-wrap"></div>
             </div>
 
@@ -3192,10 +3373,35 @@
         var steps    = [0,1,2,3].map(function(i){ return document.getElementById('bm-step-'+i); });
         var dots     = document.querySelectorAll('.bm-dot');
 
-        var state = { step: 0, name: '', email: '', pain_point: '', team_size: '', calLoaded: false };
+        var state = { step: 0, name: '', email: '', pain_point: '', team_size: '', icp_segment: null, source: null, calLoaded: false };
+
+        function resetModalState() {
+            state.step = 0;
+            state.name = '';
+            state.email = '';
+            state.pain_point = '';
+            state.team_size = '';
+            state.icp_segment = null;
+            state.source = null;
+            state.calLoaded = false;
+            document.querySelectorAll('.bm-option').forEach(function(b){ b.classList.remove('selected'); });
+            var nameEl = document.getElementById('bm-name');
+            var emailEl = document.getElementById('bm-email');
+            var privacyEl = document.getElementById('bm-privacy');
+            if (nameEl) nameEl.value = '';
+            if (emailEl) emailEl.value = '';
+            if (privacyEl) privacyEl.checked = false;
+            var calWrap = document.getElementById('bm-calendly-wrap');
+            if (calWrap) calWrap.innerHTML = '';
+        }
 
         /* ── open / close ── */
-        function openModal() {
+        function openModal(opts) {
+            resetModalState();
+            if (opts) {
+                if (opts.icp_segment) state.icp_segment = opts.icp_segment;
+                if (opts.source) state.source = opts.source;
+            }
             modal.classList.add('is-open');
             document.body.classList.add('noscroll');
             goTo(0);
@@ -3207,10 +3413,30 @@
 
         ['nav-demo-btn','hero-work-btn','contact-demo-btn','sticky-demo-btn','mobile-demo-btn'].forEach(function(id){
             var el = document.getElementById(id);
-            if (el) el.addEventListener('click', openModal);
+            if (el) el.addEventListener('click', function(){ openModal(); });
         });
         document.querySelectorAll('.js-open-booking').forEach(function(el){
-            el.addEventListener('click', openModal);
+            el.addEventListener('click', function(){
+                openModal({
+                    icp_segment: el.dataset.icpSegment || null,
+                    source: el.dataset.source || null
+                });
+            });
+        });
+        document.querySelectorAll('.js-zielgruppe-panel').forEach(function(panel){
+            function openFromPanel() {
+                openModal({
+                    icp_segment: panel.dataset.icpSegment || null,
+                    source: 'zielgruppe'
+                });
+            }
+            panel.addEventListener('click', openFromPanel);
+            panel.addEventListener('keydown', function(e){
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openFromPanel();
+                }
+            });
         });
         closeBtn.addEventListener('click', closeModal);
         backdrop.addEventListener('click', closeModal);
@@ -3277,6 +3503,8 @@
                         email:       state.email,
                         pain_point:  state.pain_point || null,
                         team_size:   state.team_size  || null,
+                        icp_segment: state.icp_segment || null,
+                        source:      state.source || null,
                         privacy_ack: true,
                         consent_timestamp: new Date().toISOString()
                     })
