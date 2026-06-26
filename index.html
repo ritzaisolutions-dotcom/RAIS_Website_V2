@@ -288,16 +288,6 @@
         }
 
         /* H1 */
-        .hero-h1-panel {
-            background: rgba(251, 248, 243, 0.94);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 14px;
-            padding: 1.25rem 1.75rem;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22);
-            max-width: 100%;
-        }
-
         .hero-h1 {
             font-family: 'Baskerville', 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
             font-size: clamp(2.2rem, 5.8vw, 4.55rem);
@@ -309,7 +299,7 @@
             flex-direction: column;
             align-items: center;
             gap: 0.05em;
-            text-shadow: none;
+            text-shadow: 0 2px 14px rgba(0, 0, 0, 0.25);
         }
 
         .hero-h1__line {
@@ -320,15 +310,12 @@
             color: var(--orange);
         }
 
-        .hero-h1__line--charcoal {
-            color: var(--charcoal);
+        .hero-h1__line--light {
+            color: #FBF8F3;
         }
 
-        .hero-h1__line--accent em {
-            color: var(--orange);
-            font-style: italic;
-            text-decoration: underline;
-            text-underline-offset: 0.14em;
+        .hero-h1__mark {
+            color: var(--pistachio);
         }
 
         /* Subline */
@@ -450,11 +437,6 @@
                 padding: 0.5rem 0.95rem;
             }
 
-            .hero-h1-panel {
-                padding: 1rem 1.25rem;
-                border-radius: 12px;
-            }
-
             .hero-h1 {
                 font-size: clamp(2rem, 10.6vw, 3.35rem);
                 line-height: 1.1;
@@ -533,148 +515,55 @@
 
         .leis-intro {
             max-width: 640px;
-            margin-bottom: 3.5rem;
+            margin-bottom: 2rem;
         }
 
-        /* Three equal pillars → 2×2 grid for four pillars */
-        .leis-grid {
+        .leis-icons {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.25rem;
-            align-items: stretch;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem 4rem;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 2rem 0 1rem;
         }
 
-        /* Pillar base */
-        .leis-pillar {
-            background-color: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 2.5rem;
+        .leis-icon-item {
             display: flex;
             flex-direction: column;
-            box-shadow: 0 4px 28px rgba(47, 42, 36, 0.04);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            align-items: center;
+            text-align: center;
+            gap: 1.25rem;
         }
 
-        .leis-pillar:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(47, 42, 36, 0.1);
-            border-color: rgba(236, 106, 55, 0.3);
-        }
-
-        /* Main pillar — pistachio left accent */
-        .leis-pillar--main {
-            border-left: 3px solid var(--pistachio);
-        }
-
-        /* Card icon */
-        .leis-card-icon {
-            width: 2.25rem;
-            height: 2.25rem;
+        .leis-icon-item svg {
+            width: 1.75rem;
+            height: 1.75rem;
             color: var(--pistachio);
-            margin-bottom: 1.25rem;
             flex-shrink: 0;
         }
 
-        /* Badge */
-        .leis-card-badge {
-            display: inline-flex;
-            align-items: center;
-            font-family: 'JetBrains Mono', 'Courier New', monospace;
-            font-size: 0.5625rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--pistachio);
-            background-color: rgba(60, 90, 42, 0.08);
-            padding: 0.25rem 0.6875rem;
-            border-radius: 100px;
-            margin-bottom: 1rem;
-            align-self: flex-start;
-        }
-
-        .leis-card-badge--ext {
-            color: var(--stone);
-            background-color: rgba(123, 116, 107, 0.09);
-        }
-
-        /* Card title */
-        .leis-card-title {
+        .leis-icon-title {
             font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
-            font-size: 1.375rem;
+            font-size: 1rem;
             font-weight: 700;
             color: var(--charcoal);
-            line-height: 1.22;
-            margin-bottom: 1rem;
+            line-height: 1.3;
+            margin: 0;
         }
 
-        /* Card body */
-        .leis-card-body {
-            font-size: 0.9375rem;
-            line-height: 1.72;
-            color: var(--stone);
-            flex: 1;
-        }
-
-        .leis-card-list {
-            list-style: none;
-            margin-top: 1.35rem;
-            display: grid;
-            gap: 0.8rem;
-        }
-
-        .leis-card-list li {
-            position: relative;
-            padding-left: 1.2rem;
-            font-size: 0.9375rem;
-            line-height: 1.65;
-            color: var(--charcoal);
-        }
-
-        .leis-card-list li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0.68em;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background-color: var(--orange);
-        }
-
-        .leis-card-note {
-            margin-top: 1.3rem;
-            padding-top: 1.15rem;
-            border-top: 1px solid rgba(217, 209, 199, 0.85);
-            font-size: 0.875rem;
-            line-height: 1.7;
-            color: var(--stone);
-        }
-        /* Card inline CTA link */
-        .leis-card-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3125rem;
-            margin-top: 1.625rem;
-            font-size: 0.9375rem;
-            font-weight: 500;
-            color: var(--pistachio);
-            text-decoration: none;
-            align-self: flex-start;
-            transition: color 0.15s ease, gap 0.15s ease;
-        }
-
-        .leis-card-link:hover {
-            color: var(--sage);
-            gap: 0.5rem;
-        }
-
-        /* Responsive */
         @media (max-width: 840px) {
-            .leis-grid { grid-template-columns: 1fr; }
+            .leis-icons {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2.5rem;
+            }
         }
 
         @media (max-width: 520px) {
             #leistungen { padding: 4rem 0; }
+            .leis-icons {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
         }
 
 
@@ -979,145 +868,11 @@
             padding: 6rem 0;
             background: var(--surface);
             border-top: 1px solid var(--border);
-            background-image:
-                linear-gradient(rgba(236, 106, 55, 0.035) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(236, 106, 55, 0.035) 1px, transparent 1px);
-            background-size: 32px 32px;
         }
 
-        .usecase-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            max-width: 720px;
-            margin: 0 auto;
-        }
-
-        .usecase-cube {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            aspect-ratio: 1;
-            padding: 1.25rem;
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            background: rgba(251, 248, 243, 0.92);
-            color: inherit;
-            font-family: inherit;
-            text-align: center;
-            cursor: pointer;
-            transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-        }
-
-        .usecase-cube:hover,
-        .usecase-cube:focus-visible {
-            border-color: rgba(236, 106, 55, 0.45);
-            outline: none;
-            box-shadow: 0 8px 24px rgba(47, 42, 36, 0.08);
-        }
-
-        .usecase-cube.is-open {
-            grid-column: 1 / -1;
-            aspect-ratio: auto;
-            align-items: flex-start;
-            text-align: left;
-            padding: 1.75rem;
-            border-color: rgba(236, 106, 55, 0.35);
-            box-shadow: 0 12px 32px rgba(47, 42, 36, 0.1);
-        }
-
-        .usecase-cube__icon {
-            width: 2rem;
-            height: 2rem;
-            color: var(--pistachio);
-            flex-shrink: 0;
-        }
-
-        .usecase-cube__label {
-            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
-            font-size: 0.9375rem;
-            font-weight: 700;
-            color: var(--charcoal);
-            line-height: 1.25;
-        }
-
-        .usecase-cube__detail {
-            display: none;
-            width: 100%;
-            margin-top: 0.5rem;
-        }
-
-        .usecase-cube.is-open .usecase-cube__detail {
-            display: block;
-        }
-
-        .usecase-cube__badge {
-            display: inline-block;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.5625rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--orange);
-            background: rgba(236, 106, 55, 0.1);
-            padding: 0.25rem 0.625rem;
-            border-radius: 100px;
-            margin-bottom: 0.75rem;
-        }
-
-        .usecase-cube__title {
-            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--charcoal);
-            margin-bottom: 0.75rem;
-            line-height: 1.25;
-        }
-
-        .usecase-cube__desc {
-            font-size: 0.9375rem;
-            line-height: 1.65;
-            color: var(--stone);
-            margin-bottom: 1rem;
-        }
-
-        .usecase-cube__bullets {
-            list-style: none;
-            display: grid;
-            gap: 0.5rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .usecase-cube__bullets li {
-            font-size: 0.875rem;
-            line-height: 1.55;
-            color: var(--charcoal);
-            padding-left: 1.125rem;
-            position: relative;
-        }
-
-        .usecase-cube__bullets li::before {
-            content: '✔';
-            position: absolute;
-            left: 0;
-            color: var(--pistachio);
-            font-size: 0.75rem;
-        }
-
-        @media (max-width: 520px) {
-            .usecase-grid {
-                grid-template-columns: 1fr;
-            }
-            .usecase-cube {
-                aspect-ratio: auto;
-                min-height: 140px;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .usecase-cube { transition: none; }
+        .projekte-intro {
+            max-width: 600px;
+            margin-bottom: 2.5rem;
         }
 
         #zusammenarbeit-prozess {
@@ -1130,11 +885,6 @@
             text-align: center;
             max-width: 40rem;
             margin: 0 auto 2rem;
-        }
-
-        .projekte-intro {
-            max-width: 600px;
-            margin-bottom: 2.5rem;
         }
 
         /* Carousel viewport */
@@ -2575,13 +2325,11 @@
                     <img src="favicon.svg" alt="" width="36" height="36" style="filter: drop-shadow(0 2px 8px rgba(236,106,55,0.3));">
                     <span style="font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif; font-size: 1.6rem; font-weight: 300; color: var(--orange); letter-spacing: 0.2em; text-transform: uppercase;">RAIS</span>
                 </div>
-                <div class="hero-h1-panel">
-                    <h1 class="hero-h1">
-                        <span class="hero-h1__line hero-h1__line--orange">Wir räumen auf,</span>
-                        <span class="hero-h1__line hero-h1__line--charcoal">was die Immobranche</span>
-                        <span class="hero-h1__line hero-h1__line--charcoal hero-h1__line--accent">15 Jahre <em>lang verschlafen</em> hat.</span>
-                    </h1>
-                </div>
+                <h1 class="hero-h1">
+                    <span class="hero-h1__line hero-h1__line--orange">Wir räumen auf,</span>
+                    <span class="hero-h1__line hero-h1__line--light">was die Immobranche</span>
+                    <span class="hero-h1__line hero-h1__line--light">15 Jahre lang <span class="hero-h1__mark">verschlafen</span> hat.</span>
+                </h1>
 
                 <p class="hero-sub">
                     DSGVO-konforme KI-gestützte Systeme, damit Ihr Portfolio sorglos weiter wachsen kann.
@@ -2736,83 +2484,34 @@
                 <div class="leis-intro reveal">
                     <span class="mono-label">Was wir tun</span>
                     <h2 class="section-h2">Vier Systeme. Ein Ergebnis: Qualifizierte Anfragen und gebuchte Termine — statt manueller Verwaltung.</h2>
-                    <p class="section-sub">
-                        Lead-Qualification und Booking für Immobilienbetriebe — DSGVO-konform, kosteneffizient, ohne SaaS-Ballast der letzten Jahre.
-                    </p>
                 </div>
 
-                <div class="leis-grid">
-
-                    <article class="leis-pillar leis-pillar--main reveal reveal-delay-1">
-                        <svg class="leis-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <div class="leis-icons reveal">
+                    <div class="leis-icon-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                             <polyline points="22,6 12,13 2,6"/>
                         </svg>
-                        <span class="leis-card-badge">Hauptleistung</span>
-                        <h3 class="leis-card-title">Inseratsanfragen-Automatisierung</h3>
-                        <p class="leis-card-body">
-                            Portalanfragen von ImmoScout24 und Immowelt erfassen, parsen, vorqualifizieren und mit Erstantwort beantworten — inklusive CRM-Eintrag und Terminvorschlag.
-                        </p>
-                        <ul class="leis-card-list">
-                            <li>Parsing der Portal-Mail und Zuordnung zu Objekt und Interessent</li>
-                            <li>Budget- und Bonitäts-Check vor der Weiterleitung ans Team</li>
-                            <li>Automatische Erstantwort und Follow-up-Sequenz</li>
-                            <li>Anbindung an PropStack, Outlook und Google Workspace</li>
-                        </ul>
-                        <button type="button" class="leis-card-link js-open-booking" style="background:none;border:none;cursor:pointer;font-family:inherit;padding:0;">
-                            Kostenlosen Audit buchen
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-                        </button>
-                    </article>
-
-                    <article class="leis-pillar reveal reveal-delay-2">
-                        <svg class="leis-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <p class="leis-icon-title">Inseratsanfragen</p>
+                    </div>
+                    <div class="leis-icon-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
                             <circle cx="9" cy="7" r="4"/>
                             <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
                             <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
                         </svg>
-                        <span class="leis-card-badge">System</span>
-                        <h3 class="leis-card-title">Onboarding-Automatisierung</h3>
-                        <p class="leis-card-body">
-                            Neuvermietung, Eigentümerwechsel, Mieter-Onboarding: Ordner, Checklisten, Status und Team-Übergaben — ohne Copy-Paste zwischen Tools.
-                        </p>
-                        <ul class="leis-card-list">
-                            <li>Trigger aus CRM oder Formular bei Neuvermietung</li>
-                            <li>Dokumentenmappe und Übergabeprotokoll automatisch anlegen</li>
-                            <li>Willkommens-Mail an Mieter und Status für das Team</li>
-                            <li>Checklisten für Verwaltung und Makler synchron halten</li>
-                        </ul>
-                        <button type="button" class="leis-card-link js-open-booking" style="background:none;border:none;cursor:pointer;font-family:inherit;padding:0;">
-                            Kostenlosen Audit buchen
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-                        </button>
-                    </article>
-
-                    <article class="leis-pillar reveal reveal-delay-3">
-                        <svg class="leis-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <p class="leis-icon-title">Onboarding</p>
+                    </div>
+                    <div class="leis-icon-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <rect x="2" y="4" width="20" height="16" rx="2"/>
                             <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
                         </svg>
-                        <span class="leis-card-badge">System</span>
-                        <h3 class="leis-card-title">E-Mail-Management-Systeme</h3>
-                        <p class="leis-card-body">
-                            Shared Mailbox für Verwaltung und Vertrieb: strukturiertes Routing, SLA-Follow-ups und Besichtigungstermine — ohne Postfach-Chaos.
-                        </p>
-                        <ul class="leis-card-list">
-                            <li>Kategorisierung: Mieter, Eigentümer, Handwerker, Interessenten</li>
-                            <li>Automatisches Routing an zuständige Mitarbeitende</li>
-                            <li>Follow-ups und Erinnerungen nach definierter SLA</li>
-                            <li>Terminbuchung für Besichtigungen direkt aus der Mail</li>
-                        </ul>
-                        <button type="button" class="leis-card-link js-open-booking" style="background:none;border:none;cursor:pointer;font-family:inherit;padding:0;">
-                            Kostenlosen Audit buchen
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-                        </button>
-                    </article>
-
-                    <article class="leis-pillar reveal reveal-delay-4">
-                        <svg class="leis-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <p class="leis-icon-title">E-Mail</p>
+                    </div>
+                    <div class="leis-icon-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M12 8V4H8"/>
                             <rect width="16" height="12" x="4" y="8" rx="2"/>
                             <path d="M2 14h2"/>
@@ -2820,23 +2519,8 @@
                             <path d="M15 13v2"/>
                             <path d="M9 13v2"/>
                         </svg>
-                        <span class="leis-card-badge">System</span>
-                        <h3 class="leis-card-title">Company GPTs</h3>
-                        <p class="leis-card-body">
-                            Internes GPT auf Objektdaten, Exposés, Hausordnung und Vertrags-FAQ — DSGVO-konform, nur für Ihr Team, nicht öffentlich.
-                        </p>
-                        <ul class="leis-card-list">
-                            <li>Antworten zu Objekten, Mietern und Abläufen aus eigener Datenbank</li>
-                            <li>RAG auf Exposés, Verträge und interne Prozessdokumente</li>
-                            <li>Antwortentwürfe für Makler und Verwaltung</li>
-                            <li>Hosting in EU-Infrastruktur (AWS, Supabase)</li>
-                        </ul>
-                        <button type="button" class="leis-card-link js-open-booking" style="background:none;border:none;cursor:pointer;font-family:inherit;padding:0;">
-                            Kostenlosen Audit buchen
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-                        </button>
-                    </article>
-
+                        <p class="leis-icon-title">Company GPT</p>
+                    </div>
                 </div>
 
             </div>
@@ -2851,71 +2535,87 @@
                 <div class="projekte-intro reveal">
                     <span class="mono-label">Use Cases</span>
                     <h2 class="section-h2">Was wir für Immobilienteams gebaut haben.</h2>
-                    <p class="section-sub">Konkrete Abläufe für Makler und Hausverwaltungen ab 5 Mitarbeitenden — tippen Sie auf einen Bereich.</p>
+                    <p class="section-sub">Konkrete Abläufe für Makler und Hausverwaltungen ab 5 Mitarbeitenden — jedes System löst einen echten Engpass im Tagesgeschäft.</p>
                 </div>
 
-                <div class="usecase-grid reveal" role="list">
-                    <div class="usecase-cube" data-usecase="0" role="listitem" tabindex="0" aria-expanded="false">
-                        <svg class="usecase-cube__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                        <span class="usecase-cube__label">Inseratsanfragen</span>
-                        <div class="usecase-cube__detail">
-                            <span class="usecase-cube__badge">Lead-Qualification · n8n</span>
-                            <h4 class="usecase-cube__title">Inseratsanfragen automatisieren</h4>
-                            <p class="usecase-cube__desc">ImmoScout24-Mail → Parsing → Budget- und Bonitäts-Check → Erstantwort mit Terminvorschlag → PropStack/CRM-Eintrag. Kein Interessent wartet mehr als fünf Minuten.</p>
-                            <ul class="usecase-cube__bullets">
-                                <li>Portal-Mail parsen und Objekt zuordnen</li>
-                                <li>Vorqualifizierung vor Team-Weiterleitung</li>
-                                <li>Automatischer CRM-Eintrag und Follow-up</li>
-                            </ul>
-                            <button type="button" class="featured-btn js-open-booking">Kostenlosen Audit buchen &rarr;</button>
+                <div class="expanding-cards-container">
+                    <div class="expanding-card active" data-index="0">
+                        <div class="card-bg-image" style="background-image: url('images/WIR_ref.jpg');"></div>
+                        <div class="card-gradient-overlay"></div>
+                        <div class="card-content-wrap">
+                            <span class="card-badge">Lead-Qualification · n8n</span>
+                            <h4 class="card-title">Inseratsanfragen automatisieren</h4>
+                            <div class="card-expanded-content">
+                                <p class="card-desc">ImmoScout24-Mail → Parsing → Budget- und Bonitäts-Check → Erstantwort mit Terminvorschlag → PropStack/CRM-Eintrag. Kein Interessent wartet mehr als fünf Minuten.</p>
+                                <ul class="card-bullets">
+                                    <li><span>✔</span> Portal-Mail parsen und Objekt zuordnen</li>
+                                    <li><span>✔</span> Vorqualifizierung vor Team-Weiterleitung</li>
+                                    <li><span>✔</span> Automatischer CRM-Eintrag und Follow-up</li>
+                                </ul>
+                                <div style="margin-top: 1.25rem;">
+                                    <button type="button" class="featured-btn js-open-booking">Kostenlosen Audit buchen &rarr;</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="usecase-cube" data-usecase="1" role="listitem" tabindex="0" aria-expanded="false">
-                        <svg class="usecase-cube__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                        <span class="usecase-cube__label">Onboarding</span>
-                        <div class="usecase-cube__detail">
-                            <span class="usecase-cube__badge">Onboarding · Workflow</span>
-                            <h4 class="usecase-cube__title">Neuvermietung &amp; Mieter-Onboarding</h4>
-                            <p class="usecase-cube__desc">Trigger bei Neuvermietung oder Eigentümerwechsel: Dokumentenmappe, Übergabeprotokoll, Willkommens-Mail an Mieter und Status-Update für Verwaltung und Makler — ohne manuelles Copy-Paste.</p>
-                            <ul class="usecase-cube__bullets">
-                                <li>Ordner und Checklisten automatisch anlegen</li>
-                                <li>E-Mails und Aufgaben ans Team routen</li>
-                                <li>CRM-Status synchron halten</li>
-                            </ul>
-                            <button type="button" class="featured-btn js-open-booking">Kostenlosen Audit buchen &rarr;</button>
+                    <div class="expanding-card" data-index="1">
+                        <div class="card-bg-image" style="background-image: url('images/automatisches Onboarding system Screenshot.png');"></div>
+                        <div class="card-gradient-overlay"></div>
+                        <div class="card-content-wrap">
+                            <span class="card-badge">Onboarding · Workflow</span>
+                            <h4 class="card-title">Neuvermietung &amp; Mieter-Onboarding</h4>
+                            <div class="card-expanded-content">
+                                <p class="card-desc">Trigger bei Neuvermietung oder Eigentümerwechsel: Dokumentenmappe, Übergabeprotokoll, Willkommens-Mail an Mieter und Status-Update für Verwaltung und Makler — ohne manuelles Copy-Paste.</p>
+                                <ul class="card-bullets">
+                                    <li><span>✔</span> Ordner und Checklisten automatisch anlegen</li>
+                                    <li><span>✔</span> E-Mails und Aufgaben ans Team routen</li>
+                                    <li><span>✔</span> CRM-Status synchron halten</li>
+                                </ul>
+                                <div style="margin-top: 1.25rem;">
+                                    <button type="button" class="featured-btn js-open-booking">Kostenlosen Audit buchen &rarr;</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="usecase-cube" data-usecase="2" role="listitem" tabindex="0" aria-expanded="false">
-                        <svg class="usecase-cube__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
-                        <span class="usecase-cube__label">E-Mail</span>
-                        <div class="usecase-cube__detail">
-                            <span class="usecase-cube__badge">E-Mail · Routing</span>
-                            <h4 class="usecase-cube__title">E-Mail-Management für Verwaltung</h4>
-                            <p class="usecase-cube__desc">Shared Mailbox für Hausverwaltungen: Mieter-, Eigentümer- und Handwerker-Anfragen automatisch kategorisieren, an zuständige Mitarbeitende routen und SLA-Follow-ups auslösen.</p>
-                            <ul class="usecase-cube__bullets">
-                                <li>Kategorisierung nach Absender und Betreff</li>
-                                <li>Routing und Eskalation nach SLA</li>
-                                <li>Besichtigungstermine aus der Mail heraus</li>
-                            </ul>
-                            <button type="button" class="featured-btn js-open-booking">Kostenlosen Audit buchen &rarr;</button>
+                    <div class="expanding-card" data-index="2">
+                        <div class="card-bg-image" style="background-image: linear-gradient(135deg, #1e1b18 0%, #2f2a24 55%, #3c352c 100%);"></div>
+                        <div class="card-gradient-overlay"></div>
+                        <div class="card-content-wrap">
+                            <span class="card-badge">E-Mail · Routing</span>
+                            <h4 class="card-title">E-Mail-Management für Verwaltung</h4>
+                            <div class="card-expanded-content">
+                                <p class="card-desc">Shared Mailbox für Hausverwaltungen: Mieter-, Eigentümer- und Handwerker-Anfragen automatisch kategorisieren, an zuständige Mitarbeitende routen und SLA-Follow-ups auslösen.</p>
+                                <ul class="card-bullets">
+                                    <li><span>✔</span> Kategorisierung nach Absender und Betreff</li>
+                                    <li><span>✔</span> Routing und Eskalation nach SLA</li>
+                                    <li><span>✔</span> Besichtigungstermine aus der Mail heraus</li>
+                                </ul>
+                                <div style="margin-top: 1.25rem;">
+                                    <button type="button" class="featured-btn js-open-booking">Kostenlosen Audit buchen &rarr;</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="usecase-cube" data-usecase="3" role="listitem" tabindex="0" aria-expanded="false">
-                        <svg class="usecase-cube__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="16" x2="8" y2="16"/><line x1="16" y1="16" x2="16" y2="16"/></svg>
-                        <span class="usecase-cube__label">Company GPT</span>
-                        <div class="usecase-cube__detail">
-                            <span class="usecase-cube__badge">Company GPT · RAG</span>
-                            <h4 class="usecase-cube__title">Internes GPT für Objektwissen</h4>
-                            <p class="usecase-cube__desc">„Welche Nebenkosten hat Objekt X?“ / „Stand der Renovierung Wohnung Y?“ — Ihr Team fragt, das GPT antwortet aus eigener Datenbank. DSGVO-konform, nicht öffentlich.</p>
-                            <ul class="usecase-cube__bullets">
-                                <li>RAG auf Exposés, Verträge, Hausordnung</li>
-                                <li>Supabase/Postgres oder bestehende DB</li>
-                                <li>Nur intern, kein öffentlicher Chatbot</li>
-                            </ul>
-                            <button type="button" class="featured-btn js-open-booking">Kostenlosen Audit buchen &rarr;</button>
+                    <div class="expanding-card" data-index="3">
+                        <div class="card-bg-image" style="background-image: url('images/RAIS CRM Screenshot.png');"></div>
+                        <div class="card-gradient-overlay"></div>
+                        <div class="card-content-wrap">
+                            <span class="card-badge">Company GPT · RAG</span>
+                            <h4 class="card-title">Internes GPT für Objektwissen</h4>
+                            <div class="card-expanded-content">
+                                <p class="card-desc">„Welche Nebenkosten hat Objekt X?“ / „Stand der Renovierung Wohnung Y?“ — Ihr Team fragt, das GPT antwortet aus eigener Datenbank. DSGVO-konform, nicht öffentlich.</p>
+                                <ul class="card-bullets">
+                                    <li><span>✔</span> RAG auf Exposés, Verträge, Hausordnung</li>
+                                    <li><span>✔</span> Supabase/Postgres oder bestehende DB</li>
+                                    <li><span>✔</span> Nur intern, kein öffentlicher Chatbot</li>
+                                </ul>
+                                <div style="margin-top: 1.25rem;">
+                                    <button type="button" class="featured-btn js-open-booking">Kostenlosen Audit buchen &rarr;</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -3434,42 +3134,26 @@
         }());
 
 
-        /* ── Use Case Cube Grid ─────────────────────────────── */
+        /* ── Expanding Cards (Featured Cases) ────────────────── */
         (function() {
-            var cubes = document.querySelectorAll('.usecase-cube');
-            if (cubes.length === 0) return;
+            var cards = document.querySelectorAll('.expanding-card');
+            if (cards.length === 0) return;
 
-            function closeAll(except) {
-                cubes.forEach(function(cube) {
-                    if (cube === except) return;
-                    cube.classList.remove('is-open');
-                    cube.setAttribute('aria-expanded', 'false');
+            function activateCard(card) {
+                cards.forEach(function(c) {
+                    c.classList.remove('active');
                 });
+                card.classList.add('active');
             }
 
-            function toggleCube(cube) {
-                var isOpen = cube.classList.contains('is-open');
-                closeAll(cube);
-                if (isOpen) {
-                    cube.classList.remove('is-open');
-                    cube.setAttribute('aria-expanded', 'false');
-                } else {
-                    cube.classList.add('is-open');
-                    cube.setAttribute('aria-expanded', 'true');
-                }
-            }
-
-            cubes.forEach(function(cube) {
-                cube.addEventListener('click', function(e) {
-                    if (e.target.closest('.js-open-booking')) return;
-                    toggleCube(cube);
+            cards.forEach(function(card) {
+                card.addEventListener('mouseenter', function() {
+                    activateCard(card);
                 });
-                cube.addEventListener('keydown', function(e) {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        if (e.target.closest('.js-open-booking')) return;
-                        e.preventDefault();
-                        toggleCube(cube);
-                    }
+
+                card.addEventListener('click', function(e) {
+                    if (e.target.closest('a') || e.target.closest('button')) return;
+                    activateCard(card);
                 });
             });
         }());
