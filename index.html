@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>RAIS | KI als Hebel für Ihr Maklerbüro</title>
-    <meta name="description" content="KI-gestützte Qualifizierung und Terminierung Ihrer Inseratsanfragen. DSGVO-konform, für unabhängige Immobilienmakler mit 5 bis 25 Mitarbeitern. Kostenloser Prozess-Audit.">
+    <title>RAIS | Anfragen-System für Maklerbüros</title>
+    <meta name="description" content="Anfragen-System für Immobilienmakler: Portalanfragen automatisch qualifizieren und Termine buchen. Weniger Stunden mit Rückfragen. DSGVO-konform. Kostenloser Prozess-Audit.">
     <meta name="google-site-verification" content="A6q1zlZLweKSa1vIxp-owVoxpEXPyIW-gPWdY6N79ZI">
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -13,15 +13,15 @@
     <link rel="apple-touch-icon" href="favicon.png?v=3">
 
     <!-- OpenGraph -->
-    <meta property="og:title" content="RAIS | KI als Hebel für Ihr Maklerbüro">
-    <meta property="og:description" content="KI-gestützte Qualifizierung und Terminierung Ihrer Inseratsanfragen. DSGVO-konform, für unabhängige Immobilienmakler mit 5 bis 25 Mitarbeitern. Kostenloser Prozess-Audit.">
+    <meta property="og:title" content="RAIS | Anfragen-System für Maklerbüros">
+    <meta property="og:description" content="Anfragen-System für Immobilienmakler: Portalanfragen automatisch qualifizieren und Termine buchen. Weniger Stunden mit Rückfragen. DSGVO-konform. Kostenloser Prozess-Audit.">
     <meta property="og:url" content="https://ritz-ai.solutions">
     <meta property="og:type" content="website">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="RAIS | KI als Hebel für Ihr Maklerbüro">
-    <meta name="twitter:description" content="KI-gestützte Qualifizierung und Terminierung Ihrer Inseratsanfragen. DSGVO-konform, für unabhängige Immobilienmakler mit 5 bis 25 Mitarbeitern. Kostenloser Prozess-Audit.">
+    <meta name="twitter:title" content="RAIS | Anfragen-System für Maklerbüros">
+    <meta name="twitter:description" content="Anfragen-System für Immobilienmakler: Portalanfragen automatisch qualifizieren und Termine buchen. Weniger Stunden mit Rückfragen. DSGVO-konform. Kostenloser Prozess-Audit.">
 
     <!-- Schema.org -->
     <script type="application/ld+json">
@@ -321,6 +321,13 @@
             text-underline-offset: 0.14em;
             text-decoration-color: var(--sage);
             text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+        }
+
+        .hero-h1__mark--charcoal {
+            color: var(--charcoal);
+            font-style: normal;
+            text-decoration: none;
+            text-shadow: 0 0 10px rgba(251, 248, 243, 0.55);
         }
 
         /* Subline */
@@ -699,7 +706,7 @@
             display: flex;
             align-items: flex-start;
             justify-content: center;
-            gap: 0.5rem;
+            gap: 1.5rem;
             max-width: 920px;
             margin: 2.75rem auto 0;
         }
@@ -749,9 +756,115 @@
             flex: 0 0 auto;
             align-self: flex-start;
             margin-top: 1.6rem;
-            width: 1.5rem;
-            height: 1.5rem;
+            width: 2.25rem;
+            height: 2.25rem;
+            min-width: 2.25rem;
             color: var(--orange);
+        }
+
+        .leis-intro__tagline {
+            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
+            font-size: 1.0625rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin: 1.25rem auto 0;
+            max-width: 32rem;
+            line-height: 1.45;
+        }
+
+        .flow-outcomes {
+            max-width: 920px;
+            margin: 2.75rem auto 0;
+            text-align: center;
+        }
+
+        .flow-outcomes__label {
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 0.625rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin: 0 0 1.25rem;
+        }
+
+        .flow-outcomes__list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin: 0 0 1.5rem;
+            padding: 0;
+        }
+
+        .flow-outcomes__item {
+            font-size: 0.9375rem;
+            line-height: 1.55;
+            color: var(--charcoal);
+            padding: 1rem 1rem 1rem 1.5rem;
+            position: relative;
+            text-align: left;
+            background: rgba(120, 148, 100, 0.14);
+            border: 1px solid rgba(120, 148, 100, 0.28);
+            border-radius: 12px;
+            opacity: 0;
+            transform: translateX(-24px);
+            transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .flow-outcomes__item::before {
+            content: '';
+            position: absolute;
+            left: 0.75rem;
+            top: 1.15em;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--sage);
+        }
+
+        .flow-outcomes__item.is-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .flow-outcomes__item[data-index="0"].is-visible { transition-delay: 0ms; }
+        .flow-outcomes__item[data-index="1"].is-visible { transition-delay: 150ms; }
+        .flow-outcomes__item[data-index="2"].is-visible { transition-delay: 300ms; }
+
+        .flow-outcomes__stat {
+            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--orange);
+            margin: 0;
+            animation: flow-stat-pulse 2.4s ease-in-out infinite;
+        }
+
+        @keyframes flow-stat-pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50%      { opacity: 0.72; transform: scale(1.02); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .flow-outcomes__item {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+            .flow-outcomes__stat {
+                animation: none;
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .flow-outcomes__list {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+            .flow-outcomes__item[data-index="1"].is-visible { transition-delay: 150ms; }
+            .flow-outcomes__item[data-index="2"].is-visible { transition-delay: 300ms; }
         }
 
         .flow-cta-wrap {
@@ -760,7 +873,7 @@
         }
 
         @media (max-width: 720px) {
-            .flow { flex-direction: column; align-items: center; gap: 0.25rem; }
+            .flow { flex-direction: column; align-items: center; gap: 0.75rem; }
             .flow__step { max-width: 320px; }
             .flow__arrow { align-self: center; margin-top: 0; transform: rotate(90deg); }
         }
@@ -1179,65 +1292,195 @@
         }
 
         #zusammenarbeit-prozess {
-            padding: 6rem 0;
+            padding: 4rem 0;
+            min-height: 90dvh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             background: var(--background);
             border-top: 1px solid var(--border);
+        }
+
+        #zusammenarbeit-prozess .section-wrap {
+            width: 100%;
         }
 
         #zusammenarbeit-prozess .process-intro {
             text-align: center;
             max-width: 40rem;
-            margin: 0 auto 2rem;
+            margin: 0 auto 2.5rem;
         }
 
-        /* Zusammenarbeit — 3 statische Bloecke */
-        .collab3-list {
-            display: grid;
-            gap: 1.25rem;
-            max-width: 46rem;
+        /* Zusammenarbeit — vertikaler Cascade-Flow */
+        .collab-cascade {
+            max-width: 32rem;
             margin: 0 auto;
         }
 
-        .collab3-item {
+        .collab-cascade__stack {
             display: flex;
-            gap: 1.25rem;
-            align-items: flex-start;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 1.75rem 1.75rem;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
         }
 
-        .collab3-num {
-            flex-shrink: 0;
-            width: 3rem;
-            height: 3rem;
-            border-radius: 50%;
-            border: 3px solid var(--border);
-            background: linear-gradient(145deg, var(--orange), var(--orange-hover));
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .collab-cascade__row {
+            display: grid;
+            grid-template-columns: 2.5rem 1fr;
+            gap: 1rem;
+            width: 100%;
+            align-items: stretch;
+        }
+
+        .collab-cascade__numeral {
             font-family: 'JetBrains Mono', monospace;
             font-size: 1.125rem;
             font-weight: 700;
+            color: var(--orange);
+            padding-top: 1.5rem;
+            text-align: center;
         }
 
-        .collab3-title {
+        .collab-cascade__card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.5rem 1.5rem;
+            opacity: 0.45;
+            transition: opacity 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .collab-cascade__card.is-active {
+            opacity: 1;
+            border-color: rgba(236, 106, 55, 0.45);
+            box-shadow: 0 4px 20px rgba(236, 106, 55, 0.08);
+        }
+
+        .collab-cascade__card:not(.is-active) .collab-cascade__body {
+            display: none;
+        }
+
+        .collab-cascade__eyebrow {
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 0.5625rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--pistachio);
+        }
+
+        .collab-cascade__title {
             font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: var(--charcoal);
             line-height: 1.3;
-            margin: 0.2rem 0 0.5rem;
+            margin: 0.35rem 0 0;
         }
 
-        .collab3-desc {
+        .collab-cascade__body {
+            margin-top: 0.6rem;
+        }
+
+        .collab-cascade__desc {
             font-size: 0.9375rem;
             line-height: 1.65;
             color: var(--stone);
             margin: 0;
+        }
+
+        .collab-cascade__arrow {
+            width: 1.5rem;
+            height: 2.5rem;
+            color: var(--orange);
+            flex-shrink: 0;
+            margin: 0.15rem 0;
+        }
+
+        .collab-cascade__arrow line,
+        .collab-cascade__arrow polyline {
+            stroke-dasharray: 32;
+            stroke-dashoffset: 32;
+            transition: stroke-dashoffset 0.4s ease;
+        }
+
+        .collab-cascade[data-step="2"] .collab-cascade__arrow[data-arrow="1"] line,
+        .collab-cascade[data-step="2"] .collab-cascade__arrow[data-arrow="1"] polyline,
+        .collab-cascade[data-step="3"] .collab-cascade__arrow[data-arrow="1"] line,
+        .collab-cascade[data-step="3"] .collab-cascade__arrow[data-arrow="1"] polyline {
+            stroke-dashoffset: 0;
+        }
+
+        .collab-cascade[data-step="3"] .collab-cascade__arrow[data-arrow="2"] line,
+        .collab-cascade[data-step="3"] .collab-cascade__arrow[data-arrow="2"] polyline {
+            stroke-dashoffset: 0;
+        }
+
+        .collab-cascade__controls {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .collab-cascade__counter {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--stone);
+            width: 100%;
+            text-align: center;
+            order: -1;
+        }
+
+        .collab-cascade__btn {
+            padding: 0.7rem 1.4rem;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--charcoal);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: border-color 0.15s ease, background 0.15s ease;
+        }
+
+        .collab-cascade__btn:hover { border-color: var(--orange); }
+
+        .collab-cascade__btn--next {
+            border-color: var(--orange);
+            background: var(--orange);
+            color: #fff;
+        }
+
+        .collab-cascade__btn--next:hover { background: var(--orange-hover); border-color: var(--orange-hover); }
+
+        .collab-cascade__btn--cta {
+            border: none;
+            background: var(--orange);
+            color: #fff;
+        }
+
+        .collab-cascade__btn--cta:hover { background: var(--orange-hover); }
+
+        .collab-cascade__btn[hidden] { display: none; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .collab-cascade__arrow line,
+            .collab-cascade__arrow polyline,
+            .collab-cascade__card { transition: none; }
+            .collab-cascade[data-step="2"] .collab-cascade__arrow[data-arrow="1"] line,
+            .collab-cascade[data-step="2"] .collab-cascade__arrow[data-arrow="1"] polyline,
+            .collab-cascade[data-step="3"] .collab-cascade__arrow[data-arrow="1"] line,
+            .collab-cascade[data-step="3"] .collab-cascade__arrow[data-arrow="1"] polyline,
+            .collab-cascade[data-step="3"] .collab-cascade__arrow[data-arrow="2"] line,
+            .collab-cascade[data-step="3"] .collab-cascade__arrow[data-arrow="2"] polyline { stroke-dashoffset: 0; }
+        }
+
+        @media (max-width: 520px) {
+            .collab-cascade__row { grid-template-columns: 2rem 1fr; gap: 0.75rem; }
+            .collab-cascade__card { padding: 1.25rem 1.15rem; }
         }
 
         .collab3-outro {
@@ -1259,184 +1502,6 @@
             line-height: 1.7;
             color: var(--stone);
             margin: 0;
-        }
-
-        @media (max-width: 520px) {
-            .collab3-item { flex-direction: column; gap: 0.9rem; padding: 1.5rem 1.4rem; }
-        }
-
-        /* Interaktiver Stepper */
-        .stepper {
-            display: grid;
-            grid-template-columns: 4.5rem 1fr;
-            gap: 1.5rem;
-            max-width: 46rem;
-            margin: 0 auto;
-            align-items: stretch;
-        }
-
-        .stepper__rail {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.25rem 0;
-        }
-
-        .stepper__line {
-            position: absolute;
-            top: 1.4rem;
-            bottom: 1.4rem;
-            left: 50%;
-            width: 2px;
-            transform: translateX(-50%);
-            background: var(--border);
-            z-index: 0;
-        }
-
-        .stepper__line-fill {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 0%;
-            background: var(--orange);
-            transition: height 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .stepper__dot {
-            position: relative;
-            z-index: 1;
-            width: 2.8rem;
-            height: 2.8rem;
-            border-radius: 50%;
-            border: 2px solid var(--border);
-            background: var(--surface);
-            color: var(--stone);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1.05rem;
-            font-weight: 700;
-            transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-        }
-
-        .stepper__dot.is-completed {
-            border-color: var(--pistachio);
-            background: #e8f0e4;
-            color: var(--pistachio);
-        }
-
-        .stepper__dot.is-active {
-            border-color: var(--orange);
-            background: linear-gradient(145deg, var(--orange), var(--orange-hover));
-            color: #fff;
-            transform: scale(1.08);
-        }
-
-        .stepper__panels {
-            position: relative;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 1.75rem 1.75rem;
-            min-height: 8.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .stepper__panel { display: none; }
-        .stepper__panel.is-active { display: block; animation: stepper-fade 0.4s ease; }
-
-        @keyframes stepper-fade {
-            from { opacity: 0; transform: translateY(6px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        .stepper__eyebrow {
-            font-family: 'JetBrains Mono', 'Courier New', monospace;
-            font-size: 0.5625rem;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--pistachio);
-        }
-
-        .stepper__title {
-            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--charcoal);
-            line-height: 1.3;
-            margin: 0.4rem 0 0.6rem;
-        }
-
-        .stepper__desc {
-            font-size: 0.9375rem;
-            line-height: 1.65;
-            color: var(--stone);
-            margin: 0;
-        }
-
-        .stepper__controls {
-            grid-column: 2;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-top: 1.25rem;
-        }
-
-        .stepper__counter {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--stone);
-            margin-left: auto;
-        }
-
-        .stepper__btn {
-            padding: 0.7rem 1.4rem;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            background: var(--surface);
-            color: var(--charcoal);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9375rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: border-color 0.15s ease, background 0.15s ease;
-        }
-
-        .stepper__btn:hover { border-color: var(--orange); }
-
-        .stepper__btn--next {
-            border-color: var(--orange);
-            background: var(--orange);
-            color: #fff;
-        }
-
-        .stepper__btn--next:hover { background: var(--orange-hover); border-color: var(--orange-hover); }
-
-        .stepper__btn--cta {
-            border: none;
-            background: var(--orange);
-            color: #fff;
-        }
-
-        .stepper__btn--cta:hover { background: var(--orange-hover); }
-
-        .stepper__btn[hidden] { display: none; }
-
-        @media (prefers-reduced-motion: reduce) {
-            .stepper__line-fill, .stepper__dot, .stepper__panel.is-active { transition: none; animation: none; }
-        }
-
-        @media (max-width: 520px) {
-            .stepper { grid-template-columns: 3.4rem 1fr; gap: 1rem; }
-            .stepper__panels { padding: 1.4rem 1.3rem; }
-            .stepper__controls { flex-wrap: wrap; }
-            .stepper__counter { width: 100%; margin-left: 0; order: -1; }
         }
 
         /* Carousel viewport */
@@ -1684,10 +1749,39 @@
         ───────────────────────────────────────────────────── */
 
         #zielgruppe {
-            padding: 5rem 0;
-            background: var(--surface);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+            padding: 6rem 0;
+            background: var(--background);
+        }
+
+        .zielgruppe-atmosphere {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .zielgruppe-atmosphere::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url('images/zielgruppe_ref.jpg');
+            background-size: cover;
+            background-position: center 35%;
+            opacity: 0.28;
+        }
+
+        .zielgruppe-atmosphere::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(245, 242, 236, 0.78) 0%, rgba(245, 242, 236, 0.72) 50%, rgba(245, 242, 236, 0.82) 100%);
+        }
+
+        #zielgruppe .section-wrap {
+            position: relative;
+            z-index: 1;
         }
 
         .zielgruppe-intro {
@@ -1706,16 +1800,68 @@
 
         .zielgruppe-split--single {
             display: block;
-            max-width: 34rem;
+            max-width: 40rem;
             margin: 0 auto;
             min-height: 0;
         }
 
-        .zielgruppe-split--single .zielgruppe-panel {
-            background-color: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2rem 2rem;
+        .zielgruppe-editorial {
+            text-align: left;
+            max-width: 40rem;
+            margin: 0 auto;
+        }
+
+        .zielgruppe-editorial__label {
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 0.625rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--orange);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .zielgruppe-editorial__title {
+            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
+            font-size: 1.375rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            line-height: 1.25;
+            margin: 0 0 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .zielgruppe-reqs--grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.65rem 3rem;
+            }
+        }
+
+        .zielgruppe-reqs--roman {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .zielgruppe-reqs--roman li {
+            display: grid;
+            grid-template-columns: 2rem 1fr;
+            gap: 0.75rem;
+            align-items: start;
+            padding-left: 0;
+        }
+
+        .zielgruppe-reqs--roman li::before {
+            display: none;
+        }
+
+        .zielgruppe-reqs__numeral {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--orange);
+            padding-top: 0.1em;
+            text-align: center;
         }
 
         .zielgruppe-split__divider {
@@ -3058,33 +3204,18 @@
                 </div>
                 <h1 class="hero-h1">
                     <span class="hero-h1__line hero-h1__line--light">Ihr Maklerbüro hat kein</span>
-                    <span class="hero-h1__line hero-h1__line--light">Anfragen-Problem.</span>
+                    <span class="hero-h1__line hero-h1__line--light"><span class="hero-h1__mark--charcoal">Anfragen-Problem.</span></span>
                     <span class="hero-h1__line hero-h1__line--light">Es hat ein</span>
                     <span class="hero-h1__line hero-h1__line--light"><span class="hero-h1__mark">Qualifizierungs-Problem.</span></span>
                 </h1>
 
                 <p class="hero-sub">
-                    KI-gestützte Qualifizierung und Terminierung Ihrer Inseratsanfragen. DSGVO-konform, als Hebel für Ihr Team, nicht als Ersatz.
+                    Ein System, das Portalanfragen qualifiziert und Termine bucht. Statt Stunden mit Rückfragen.
                 </p>
 
                 <div class="hero-ctas">
                     <button type="button" class="hero-btn-primary" id="hero-work-btn">Kostenlosen Audit buchen</button>
                     <a href="#projekte" class="hero-btn-outline" id="hero-demo-btn">Referenzen ansehen</a>
-                </div>
-
-                <div class="hero-proof-strip proof-strip" aria-label="Was Sie aus dem Audit mitnehmen">
-                    <div class="proof-strip-item">
-                        <strong>1 Std.</strong>
-                        <span>kostenloser Audit Ihrer gesamten Geschäftsprozesse</span>
-                    </div>
-                    <div class="proof-strip-item">
-                        <strong>3</strong>
-                        <span>konkrete Use Cases — Schritt für Schritt aufgeschlüsselt</span>
-                    </div>
-                    <div class="proof-strip-item">
-                        <strong>0&nbsp;€</strong>
-                        <span>Beratung und Umsetzungs-Blueprint inklusive</span>
-                    </div>
                 </div>
 
             </div>
@@ -3172,6 +3303,7 @@
              ZIELGRUPPE — Mit wem wir arbeiten
         ═══════════════════════════════════════════════════ -->
         <section id="zielgruppe">
+            <div class="zielgruppe-atmosphere" aria-hidden="true"></div>
             <div class="section-wrap">
                 <div class="zielgruppe-intro reveal">
                     <span class="mono-label">Mit wem wir arbeiten</span>
@@ -3179,17 +3311,15 @@
                     <p class="section-sub" style="margin-left: auto; margin-right: auto;">Wir arbeiten mit unabhängigen Maklerbüros im Mittelstand, die bereit sind, mit dem Zeitgeist zu gehen. Innovationsbereitschaft ist für uns das wichtigste Kriterium.</p>
                 </div>
 
-                <div class="zielgruppe-split zielgruppe-split--single reveal">
-                    <div class="zielgruppe-panel zielgruppe-panel--makler is-clickable js-zielgruppe-panel" data-icp-segment="makler" tabindex="0" role="button" aria-label="Unabhängige Maklerbüros, Audit buchen">
-                        <span class="zielgruppe-panel__label">Vertrieb</span>
-                        <h3 class="zielgruppe-panel__title">Unabhängige Maklerbüros</h3>
-                        <ul class="zielgruppe-reqs">
-                            <li><strong>5 bis 25 Mitarbeitende</strong> im Team</li>
-                            <li>Hohes <strong>Anfragevolumen</strong> über die gängigen Immobilienportale</li>
-                            <li>Bestehendes <strong>CRM</strong> wie onOffice oder Propstack (unsere Empfehlung), oder die Bereitschaft eines einzuführen</li>
-                            <li>Offenheit für <strong>KI und neue Systeme</strong> im Team, das wichtigste Kriterium für eine Zusammenarbeit</li>
-                        </ul>
-                    </div>
+                <div class="zielgruppe-editorial reveal">
+                    <span class="zielgruppe-editorial__label">Vertrieb</span>
+                    <h3 class="zielgruppe-editorial__title">Unabhängige Maklerbüros</h3>
+                    <ol class="zielgruppe-reqs zielgruppe-reqs--roman">
+                        <li><span class="zielgruppe-reqs__numeral" aria-hidden="true">I</span><span><strong>5 bis 25 Mitarbeitende</strong> im Team</span></li>
+                        <li><span class="zielgruppe-reqs__numeral" aria-hidden="true">II</span><span>Hohes <strong>Anfragevolumen</strong> über die gängigen Immobilienportale</span></li>
+                        <li><span class="zielgruppe-reqs__numeral" aria-hidden="true">III</span><span>Bestehendes <strong>CRM</strong> wie onOffice oder Propstack (unsere Empfehlung), oder die Bereitschaft eines einzuführen</span></li>
+                        <li><span class="zielgruppe-reqs__numeral" aria-hidden="true">IV</span><span>Offenheit für <strong>KI und neue Systeme</strong> im Team, das wichtigste Kriterium für eine Zusammenarbeit</span></li>
+                    </ol>
                 </div>
 
                 <div class="zielgruppe-cta-wrap reveal">
@@ -3204,7 +3334,9 @@
                 <!-- Section intro -->
                 <div class="leis-intro reveal" style="margin-left: auto; margin-right: auto; text-align: center;">
                     <span class="mono-label">Was wir tun</span>
-                    <h2 class="section-h2">KI als Hebel in Ihrem Maklerbüro.</h2>
+                    <h2 class="section-h2">Das Anfragen-System für Ihr Maklerbüro.</h2>
+                    <p class="section-sub" style="margin: 0.75rem auto 0; max-width: 36rem;">Automatisiert Qualifizierung und Terminierung Ihrer Portalanfragen. Ihr Team spricht nur noch mit Leads, die wirklich passen.</p>
+                    <p class="leis-intro__tagline">Weniger Stunden mit Rückfragen. Mehr Termine mit qualifizierten Interessenten.</p>
                 </div>
 
                 <div class="flow reveal">
@@ -3232,8 +3364,8 @@
                                 <path d="M9 13v2"/>
                             </svg>
                         </span>
-                        <h3 class="flow__title">Qualifizierung durch KI</h3>
-                        <p class="flow__desc">Die KI prüft und qualifiziert vor.</p>
+                        <h3 class="flow__title">Automatische Qualifizierung</h3>
+                        <p class="flow__desc">Das System prüft vor. Fehlen Angaben, geht eine Rückfrage per E-Mail raus, nicht per Telefon.</p>
                     </div>
 
                     <svg class="flow__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -3248,7 +3380,7 @@
                             </svg>
                         </span>
                         <h3 class="flow__title">Terminbuchung</h3>
-                        <p class="flow__desc">Das Buchungsformular geht an den Kunden.</p>
+                        <p class="flow__desc">Der Interessent wählt einen freien Slot. Der Termin landet direkt in Ihrem Kalender.</p>
                     </div>
 
                     <svg class="flow__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
@@ -3262,6 +3394,16 @@
                         <h3 class="flow__title">Erstgespräch</h3>
                         <p class="flow__desc">Ihr Team spricht mit qualifizierten Leads.</p>
                     </div>
+                </div>
+
+                <div class="flow-outcomes" id="flow-outcomes">
+                    <p class="flow-outcomes__label">Was das System für Ihr Büro bedeutet</p>
+                    <ul class="flow-outcomes__list">
+                        <li class="flow-outcomes__item" data-index="0">Keine Rückfragen nach Telefonnummer oder Adresse im Erstkontakt</li>
+                        <li class="flow-outcomes__item" data-index="1">Kein Wegdrücken von Terminvorschlägen per Telefon</li>
+                        <li class="flow-outcomes__item" data-index="2">Keine ständigen Mailboxen beim Kontakt mit Interessenten</li>
+                    </ul>
+                    <p class="flow-outcomes__stat">Durchschnittlich 60 Stunden Ersparnis pro Monat</p>
                 </div>
 
                 <div class="flow-cta-wrap reveal">
@@ -3384,43 +3526,57 @@
                     </p>
                 </div>
 
-                <div class="stepper reveal" id="collab-stepper" data-step="1">
-                    <div class="stepper__rail" aria-hidden="true">
-                        <span class="stepper__line"><span class="stepper__line-fill" id="stepper-fill"></span></span>
-                        <span class="stepper__dot is-active" data-dot="1">1</span>
-                        <span class="stepper__dot" data-dot="2">2</span>
-                        <span class="stepper__dot" data-dot="3">3</span>
+                <div class="collab-cascade reveal" id="collab-stepper" data-step="1">
+                    <div class="collab-cascade__stack">
+                        <div class="collab-cascade__row">
+                            <span class="collab-cascade__numeral" aria-hidden="true">I</span>
+                            <div class="collab-cascade__card is-active" data-card="1">
+                                <span class="collab-cascade__eyebrow">Schritt 1</span>
+                                <h3 class="collab-cascade__title">Discovery</h3>
+                                <div class="collab-cascade__body">
+                                    <p class="collab-cascade__desc">Wir schauen uns Ihre Prozesse an. Ergebnis: Sie wissen, was möglich ist.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <svg class="collab-cascade__arrow" data-arrow="1" viewBox="0 0 24 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="4" x2="12" y2="24"/><polyline points="6 18 12 24 18 18"/></svg>
+
+                        <div class="collab-cascade__row">
+                            <span class="collab-cascade__numeral" aria-hidden="true">II</span>
+                            <div class="collab-cascade__card" data-card="2">
+                                <span class="collab-cascade__eyebrow">Schritt 2</span>
+                                <h3 class="collab-cascade__title">Angebot</h3>
+                                <div class="collab-cascade__body">
+                                    <p class="collab-cascade__desc">Wir kommen mit einem konkreten Angebot zurück. Scope, Timeline, Preis.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <svg class="collab-cascade__arrow" data-arrow="2" viewBox="0 0 24 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="4" x2="12" y2="24"/><polyline points="6 18 12 24 18 18"/></svg>
+
+                        <div class="collab-cascade__row">
+                            <span class="collab-cascade__numeral" aria-hidden="true">III</span>
+                            <div class="collab-cascade__card" data-card="3">
+                                <span class="collab-cascade__eyebrow">Schritt 3</span>
+                                <h3 class="collab-cascade__title">Zusammenarbeit</h3>
+                                <div class="collab-cascade__body">
+                                    <p class="collab-cascade__desc">Passt das Angebot, starten wir. Vertrag und Onboarding.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="stepper__panels">
-                        <div class="stepper__panel is-active" data-panel="1">
-                            <span class="stepper__eyebrow">Schritt 1</span>
-                            <h3 class="stepper__title">Discovery</h3>
-                            <p class="stepper__desc">Wir identifizieren gemeinsam, ob eine Zusammenarbeit Mehrwert bringt und wo Ihre operativen Vertriebsprozesse Zeit fressen. Ergebnis: konkretes Know-how, was möglich ist, was nicht, und was keinen Sinn ergibt.</p>
-                        </div>
-                        <div class="stepper__panel" data-panel="2">
-                            <span class="stepper__eyebrow">Schritt 2</span>
-                            <h3 class="stepper__title">Proposition Call</h3>
-                            <p class="stepper__desc">Wir kommen mit einem fertig geschnürten Angebot zurück. Was wir umsetzen, wie wir es umsetzen und welchen kompetitiven Vorteil Ihr Büro dadurch gewinnt. Ergebnis: klares Angebot mit Scope, Timeline und Preis.</p>
-                        </div>
-                        <div class="stepper__panel" data-panel="3">
-                            <span class="stepper__eyebrow">Schritt 3</span>
-                            <h3 class="stepper__title">Closing (optional)</h3>
-                            <p class="stepper__desc">Nach Ihrer internen Sichtung des Angebots folgen Vertragsunterschrift und Onboarding-Termin. Kein Druck, keine Nachfass-Schleifen.</p>
-                        </div>
-                    </div>
-
-                    <div class="stepper__controls">
-                        <button type="button" class="stepper__btn stepper__btn--back" id="stepper-back" hidden>Zurück</button>
-                        <button type="button" class="stepper__btn stepper__btn--next" id="stepper-next">Weiter</button>
-                        <button type="button" class="stepper__btn stepper__btn--cta js-open-booking" id="stepper-cta" data-source="zusammenarbeit" hidden>Kostenlosen Audit buchen</button>
-                        <span class="stepper__counter" id="stepper-counter" aria-live="polite">Schritt 1 von 3</span>
+                    <div class="collab-cascade__controls">
+                        <span class="collab-cascade__counter" id="stepper-counter" aria-live="polite">Schritt 1 von 3</span>
+                        <button type="button" class="collab-cascade__btn collab-cascade__btn--back" id="stepper-back" hidden>Zurück</button>
+                        <button type="button" class="collab-cascade__btn collab-cascade__btn--next" id="stepper-next">Weiter</button>
+                        <button type="button" class="collab-cascade__btn collab-cascade__btn--cta js-open-booking" id="stepper-cta" data-source="zusammenarbeit" hidden>Kostenlosen Audit buchen</button>
                     </div>
                 </div>
 
                 <div class="collab3-outro reveal">
                     <h3 class="collab3-outro__title">Und nach der Unterschrift?</h3>
-                    <p class="collab3-outro__text">Wir implementieren Ihre neue Infrastruktur rechtssicher und weisen Sie und Ihr Team persönlich ein, damit das System Sie im Arbeitsalltag sorglos unterstützt.</p>
+                    <p class="collab3-outro__text">Wir bauen das System, schulen Ihr Team, und es läuft.</p>
                 </div>
             </div>
         </section>
@@ -3437,12 +3593,12 @@
                     <!-- Copy column -->
                     <div class="contact-text-col">
                         <span class="mono-label" style="color: var(--orange);">Prozess-Audit</span>
-                        <h2 class="section-h2" style="color: #fff; margin-top: 0.75rem;">1 Stunde. Kostenlos. 3 Use Cases mit Blueprint.</h2>
+                        <h2 class="section-h2" style="color: #fff; margin-top: 0.75rem;">60 Minuten. Kostenlos. Klare nächste Schritte.</h2>
                         <p class="contact-copy">
-                            In einer Stunde gehen wir Ihre Geschäftsprozesse durch — von der Inseratsanfrage bis zur Objektübergabe. Sie erhalten drei konkrete Automatisierungs-Use Cases, Schritt für Schritt aufgeschlüsselt: DSGVO-konform, kosteneffizient, ohne SaaS-Ballast.
+                            Wir analysieren Ihre Prozesse und zeigen, wo Zeit verloren geht. Sie bekommen drei umsetzbare Use Cases.
                         </p>
                         <p class="contact-copy" style="margin-top: 1rem;">
-                            Beratung und Blueprint sind kostenlos — ohne Aufpreis, ohne Verkaufsdruck. Wenn Sie es selbst umsetzen wollen, haben Sie alles in der Hand. Wenn Sie es mit uns bauen wollen, buchen Sie danach.
+                            Kein Verkaufsdruck. Blueprint inklusive.
                         </p>
                         <div class="contact-steps">
                             <div class="contact-step">
@@ -3470,13 +3626,13 @@
                         <figure class="audit-blueprint__frame">
                             <img src="images/cover.png" width="480" height="678" loading="lazy" alt="Prozesse rechtssicher digitalisieren, Praxisleitfaden für unabhängige Immobilienmakler">
                         </figure>
-                        <p class="audit-blueprint__caption">Blueprint · 3 Use Cases · Schritt für Schritt</p>
+                        <p class="audit-blueprint__caption">Blueprint · 3 Use Cases</p>
                     </div>
 
                     <!-- Booking card -->
                     <div class="cal-embed-wrap">
                         <p class="cal-card-title">Kostenlosen Audit buchen</p>
-                        <p class="cal-card-sub">60 Minuten, kostenlos. Wir analysieren Ihre Prozesse und liefern 3 konkrete Automatisierungs-Use Cases mit Schritt-für-Schritt-Plan.</p>
+                        <p class="cal-card-sub">60 Minuten, kostenlos. Drei konkrete Automatisierungs-Ideen für Ihr Büro.</p>
                         <button type="button" id="contact-demo-btn" class="cal-load-btn" style="display:flex; align-items:center; justify-content:center; gap:0.5rem; width:100%; border:none; cursor:pointer; font-family:inherit;">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                             Kostenlosen Audit buchen
@@ -3702,7 +3858,7 @@
 
         /* ── Antigravity reveal orchestration ───────────────── */
         var revealTargets = document.querySelectorAll([
-            '.leis-intro', '.zielgruppe-intro', '.zielgruppe-split', '.zielgruppe-cta-wrap', '.projekte-intro', '.process-intro', '.stepper', '.wir-content', '.contact-text-col',
+            '.leis-intro', '.zielgruppe-intro', '.zielgruppe-editorial', '.zielgruppe-cta-wrap', '.projekte-intro', '.process-intro', '.collab-cascade', '.wir-content', '.contact-text-col',
             '.problem-item', '.contact-text-col', '.contact-detail', '.audit-blueprint', '.cal-embed-wrap'
         ].join(','));
 
@@ -3735,6 +3891,40 @@
                 el.classList.add('active');
             });
         }
+
+        /* ── Flow outcomes stagger ───────────────────────────── */
+        (function () {
+            var container = document.getElementById('flow-outcomes');
+            if (!container) return;
+
+            var items = container.querySelectorAll('.flow-outcomes__item');
+            var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            function activateItems() {
+                items.forEach(function (item) {
+                    item.classList.add('is-visible');
+                });
+            }
+
+            if (reducedMotion) {
+                activateItems();
+                return;
+            }
+
+            if ('IntersectionObserver' in window) {
+                var outcomesObserver = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            activateItems();
+                            outcomesObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.2, rootMargin: '0px 0px -6% 0px' });
+                outcomesObserver.observe(container);
+            } else {
+                activateItems();
+            }
+        }());
 
 
         /* ── Branchen carousel ───────────────────────────────── */
@@ -3825,16 +4015,14 @@
         }
 
 
-        /* ── Zusammenarbeit-Stepper ──────────────────────────── */
+        /* ── Zusammenarbeit-Cascade ──────────────────────────── */
         (function () {
             var stepper = document.getElementById('collab-stepper');
             if (!stepper) return;
 
             var TOTAL   = 3;
             var current = 1;
-            var dots    = stepper.querySelectorAll('.stepper__dot');
-            var panels  = stepper.querySelectorAll('.stepper__panel');
-            var fill    = document.getElementById('stepper-fill');
+            var cards   = stepper.querySelectorAll('.collab-cascade__card');
             var backBtn = document.getElementById('stepper-back');
             var nextBtn = document.getElementById('stepper-next');
             var ctaBtn  = document.getElementById('stepper-cta');
@@ -3843,18 +4031,10 @@
             function render() {
                 stepper.setAttribute('data-step', String(current));
 
-                dots.forEach(function (dot) {
-                    var n = parseInt(dot.getAttribute('data-dot'), 10);
-                    dot.classList.remove('is-active', 'is-completed');
-                    if (n < current) dot.classList.add('is-completed');
-                    if (n === current) dot.classList.add('is-active');
+                cards.forEach(function (card) {
+                    var n = parseInt(card.getAttribute('data-card'), 10);
+                    card.classList.toggle('is-active', n === current);
                 });
-
-                panels.forEach(function (panel) {
-                    panel.classList.toggle('is-active', parseInt(panel.getAttribute('data-panel'), 10) === current);
-                });
-
-                if (fill) fill.style.height = ((current - 1) / (TOTAL - 1) * 100) + '%';
 
                 backBtn.hidden = current === 1;
                 nextBtn.hidden = current === TOTAL;
@@ -4036,21 +4216,6 @@
                     icp_segment: el.dataset.icpSegment || null,
                     source: el.dataset.source || null
                 });
-            });
-        });
-        document.querySelectorAll('.js-zielgruppe-panel').forEach(function(panel){
-            function openFromPanel() {
-                openModal({
-                    icp_segment: panel.dataset.icpSegment || null,
-                    source: 'zielgruppe'
-                });
-            }
-            panel.addEventListener('click', openFromPanel);
-            panel.addEventListener('keydown', function(e){
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    openFromPanel();
-                }
             });
         });
         closeBtn.addEventListener('click', closeModal);
