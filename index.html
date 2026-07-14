@@ -1176,6 +1176,20 @@
             min-height: 280px;
         }
 
+        .zielgruppe-split--single {
+            display: block;
+            max-width: 34rem;
+            margin: 0 auto;
+            min-height: 0;
+        }
+
+        .zielgruppe-split--single .zielgruppe-panel {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem 2rem;
+        }
+
         .zielgruppe-split__divider {
             display: none;
         }
@@ -2589,30 +2603,19 @@
             <div class="section-wrap">
                 <div class="zielgruppe-intro reveal">
                     <span class="mono-label">Mit wem wir arbeiten</span>
-                    <h2 class="section-h2">KMU aus der Immobilienbranche.</h2>
-                    <p class="section-sub" style="margin-left: auto; margin-right: auto;">Wir arbeiten mit etablierten Betrieben, bei denen Automatisierung sich rechnet.</p>
+                    <h2 class="section-h2">Wir arbeiten ausschließlich mit unabhängigen Immobilienmaklern.</h2>
+                    <p class="section-sub" style="margin-left: auto; margin-right: auto;">Wir arbeiten ausschließlich mit unabhängigen Immobilienmaklern, bei denen Automatisierung sich wirklich rechnet.</p>
                 </div>
 
-                <div class="zielgruppe-split reveal">
-                    <div class="zielgruppe-split__divider" aria-hidden="true"></div>
-
-                    <div class="zielgruppe-panel zielgruppe-panel--makler is-clickable js-zielgruppe-panel" data-icp-segment="makler" tabindex="0" role="button" aria-label="Makler und Vertrieb — Audit buchen">
+                <div class="zielgruppe-split zielgruppe-split--single reveal">
+                    <div class="zielgruppe-panel zielgruppe-panel--makler is-clickable js-zielgruppe-panel" data-icp-segment="makler" tabindex="0" role="button" aria-label="Unabhängige Maklerbüros — Audit buchen">
                         <span class="zielgruppe-panel__label">Vertrieb</span>
-                        <h3 class="zielgruppe-panel__title">Makler &amp; Vertrieb</h3>
+                        <h3 class="zielgruppe-panel__title">Unabhängige Maklerbüros</h3>
                         <ul class="zielgruppe-reqs">
-                            <li>Ab <strong>5 Mitarbeitenden</strong> im Team</li>
-                            <li><strong>Vergleichbares Volumen</strong> im Vertrieb — z.&nbsp;B. ab ~50 Abschlüssen/Jahr oder entsprechendem Umsatz</li>
-                            <li>Hohes <strong>Anfragevolumen</strong> über Portale (ImmoScout24, Immowelt &amp; Co.)</li>
-                        </ul>
-                    </div>
-
-                    <div class="zielgruppe-panel zielgruppe-panel--verwaltung is-clickable js-zielgruppe-panel" data-icp-segment="verwaltung" tabindex="0" role="button" aria-label="Hausverwaltungen — Audit buchen">
-                        <span class="zielgruppe-panel__label">Verwaltung</span>
-                        <h3 class="zielgruppe-panel__title">Hausverwaltungen</h3>
-                        <ul class="zielgruppe-reqs">
-                            <li>Ab <strong>5 Mitarbeitenden</strong> im Team</li>
-                            <li>Ab <strong>300 verwalteten Objekten</strong> (WEG, Miete, Sondereigentum)</li>
-                            <li>Wiederkehrende <strong>Prozesse</strong> mit echtem Automatisierungshebel — Mieterkommunikation, Objektakten, Übergaben</li>
+                            <li><strong>5 bis 25 Mitarbeitende</strong> im Team</li>
+                            <li>Hohes <strong>Anfragevolumen</strong> über ImmoScout24, Immowelt &amp; Co.</li>
+                            <li>Bestehendes <strong>CRM</strong> wie onOffice oder Propstack (unsere Empfehlung), oder die Bereitschaft eines einzuführen</li>
+                            <li>Der Wille, raus aus der manuellen Abarbeitung, KI als <strong>Hebel für das Team</strong> statt als Ersatz</li>
                         </ul>
                     </div>
                 </div>
