@@ -1600,6 +1600,49 @@
             color: rgba(251, 248, 243, 0.45);
         }
 
+        .wir-content--split { max-width: 52rem; }
+
+        .wir-grid {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 2.5rem;
+            align-items: center;
+            text-align: left;
+            margin-top: 2rem;
+        }
+
+        .wir-photo {
+            width: 100%;
+            max-width: 240px;
+            height: auto;
+            border-radius: 16px;
+            display: block;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+        }
+
+        .wir-text { min-width: 0; }
+        .wir-text .wir-copy:first-child { margin-top: 0; }
+
+        .wir-linkedin {
+            display: inline-block;
+            margin-top: 1rem;
+            font-size: 0.9375rem;
+            color: var(--orange);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(236, 106, 55, 0.4);
+        }
+
+        .wir-linkedin:hover { border-bottom-color: var(--orange); }
+
+        @media (max-width: 640px) {
+            .wir-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                justify-items: center;
+                text-align: center;
+            }
+        }
+
         /* ─────────────────────────────────────────────────────
            ÜBER UNS (legacy — removed)
         ───────────────────────────────────────────────────── */
@@ -2949,15 +2992,21 @@
         <section id="wir">
             <div class="wir-bg" aria-hidden="true"></div>
             <div class="wir-overlay" aria-hidden="true"></div>
-            <div class="wir-content reveal">
-                <span class="mono-label">Wir</span>
-                <h2 class="section-h2">Jung. Aus Koblenz. Für die Immobilienbranche.</h2>
-                <p class="wir-copy">
-                    Wir sind ein junges Unternehmen aus Koblenz und helfen Immobilienbetrieben dabei, aus Leidenschaft Schwung zu gewinnen — mit Systemen, die im Alltag funktionieren.
-                </p>
-                <p class="wir-copy">
-                    Was wir gemeinsam entwickeln, soll Vorbild sein: transparent, DSGVO-konform und ohne SaaS-Ballast. Sie arbeiten direkt mit uns — klein, direkt, persönlich.
-                </p>
+            <div class="wir-content wir-content--split reveal">
+                <span class="mono-label">Gründer</span>
+                <h2 class="section-h2">Gründer. Aus Koblenz. Für Maklerbüros.</h2>
+                <div class="wir-grid">
+                    <img class="wir-photo" src="images/kevin.webp" width="240" height="320" loading="lazy" alt="Kevin Ritz, Gründer von RAIS">
+                    <div class="wir-text">
+                        <p class="wir-copy">
+                            Ich bin Kevin Ritz, Gründer von RAIS aus Koblenz. Mich treibt das Optimieren von Prozessen an, die allen Beteiligten die Arbeit leichter machen. Effizienz ist kein Buzzword, sie ist der Grund, warum es RAIS gibt.
+                        </p>
+                        <p class="wir-copy">
+                            Was wir gemeinsam entwickeln, ist transparent, DSGVO-konform und ohne SaaS-Ballast. Sie arbeiten direkt mit mir, klein, direkt, persönlich.
+                        </p>
+                        <a class="wir-linkedin" href="https://linkedin.com/in/kevin-ritz-rais" target="_blank" rel="noopener">LinkedIn</a>
+                    </div>
+                </div>
                 <span class="wir-location">Ritz AI Solutions · Koblenz</span>
             </div>
         </section>
@@ -3127,6 +3176,7 @@
                 <a href="#contact">Kontakt</a>
                 <a href="impressum.html">Impressum</a>
                 <a href="datenschutz.html">Datenschutz</a>
+                <a href="https://linkedin.com/in/kevin-ritz-rais" target="_blank" rel="noopener">LinkedIn</a>
             </nav>
             <span class="footer-copy">© 2026 Ritz AI Solutions · RAIS · Koblenz</span>
         </div>
@@ -3460,10 +3510,10 @@
                 <h2 class="bm-title">Was kostet Sie am meisten Zeit?</h2>
                 <p class="bm-sub">So können wir das Audit gezielt vorbereiten.</p>
                 <div class="bm-options" id="bm-options-pain">
-                    <button type="button" class="bm-option" data-value="inseratsanfragen"><span class="bm-option-icon">📧</span> Inseratsanfragen / Lead-Qualification</button>
-                    <button type="button" class="bm-option" data-value="onboarding"><span class="bm-option-icon">📋</span> Onboarding-Automatisierung</button>
-                    <button type="button" class="bm-option" data-value="email-management"><span class="bm-option-icon">💬</span> E-Mail-Management</button>
-                    <button type="button" class="bm-option" data-value="company-gpt"><span class="bm-option-icon">🤖</span> Company GPT</button>
+                    <button type="button" class="bm-option" data-value="inseratsanfragen-qualifizieren"><span class="bm-option-icon">📧</span> Inseratsanfragen qualifizieren</button>
+                    <button type="button" class="bm-option" data-value="terminierung-besichtigungen"><span class="bm-option-icon">📅</span> Terminierung von Besichtigungen</button>
+                    <button type="button" class="bm-option" data-value="onboarding-vertragsunterschrift"><span class="bm-option-icon">📋</span> Onboarding nach Vertragsunterschrift</button>
+                    <button type="button" class="bm-option" data-value="wiederkehrende-kundenfragen"><span class="bm-option-icon">💬</span> Wiederkehrende Kundenfragen</button>
                     <button type="button" class="bm-option" data-value="gesamtprozess"><span class="bm-option-icon">🔍</span> Gesamtprozess-Audit</button>
                     <button type="button" class="bm-option" data-value="anderes"><span class="bm-option-icon">✏️</span> Anderes</button>
                 </div>
@@ -3479,10 +3529,10 @@
                 <h2 class="bm-title">Wie groß ist Ihr Team?</h2>
                 <p class="bm-sub">Damit die Lösung exakt auf Ihre Teamgröße passt.</p>
                 <div class="bm-options" id="bm-options-size">
-                    <button type="button" class="bm-option" data-value="solo"><span class="bm-option-icon">🧑</span> Solo</button>
-                    <button type="button" class="bm-option" data-value="2-5"><span class="bm-option-icon">👥</span> 2–5 Personen</button>
-                    <button type="button" class="bm-option" data-value="6-20"><span class="bm-option-icon">🏢</span> 6–20 Personen</button>
-                    <button type="button" class="bm-option" data-value="20+"><span class="bm-option-icon">🏗️</span> Mehr als 20</button>
+                    <button type="button" class="bm-option" data-value="unter-5"><span class="bm-option-icon">🧑</span> Unter 5 Personen</button>
+                    <button type="button" class="bm-option" data-value="5-10"><span class="bm-option-icon">👥</span> 5 bis 10</button>
+                    <button type="button" class="bm-option" data-value="11-25"><span class="bm-option-icon">🏢</span> 11 bis 25</button>
+                    <button type="button" class="bm-option" data-value="ueber-25"><span class="bm-option-icon">🏗️</span> Mehr als 25</button>
                 </div>
                 <div class="bm-actions">
                     <button type="button" class="bm-btn-back" id="bm-back-2">← Zurück</button>
