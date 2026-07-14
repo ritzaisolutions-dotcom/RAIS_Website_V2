@@ -1003,6 +1003,61 @@
             margin-bottom: 2.5rem;
         }
 
+        .ref-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .ref-card {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            background: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.75rem 1.6rem;
+            transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+        }
+
+        .ref-card:hover {
+            border-color: rgba(120, 148, 100, 0.45);
+            box-shadow: 0 10px 28px rgba(47, 42, 36, 0.07);
+            transform: translateY(-2px);
+        }
+
+        .ref-card__badge {
+            font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
+            font-size: 0.5625rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--pistachio);
+        }
+
+        .ref-card__title {
+            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            line-height: 1.3;
+            margin: 0;
+        }
+
+        .ref-card__desc {
+            font-size: 0.9375rem;
+            line-height: 1.6;
+            color: var(--stone);
+            margin: 0;
+        }
+
+        @media (max-width: 900px) {
+            .ref-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 600px) {
+            .ref-grid { grid-template-columns: 1fr; }
+        }
+
         #zusammenarbeit-prozess {
             padding: 6rem 0;
             background: var(--background);
@@ -2768,91 +2823,42 @@
             <div class="section-wrap">
 
                 <div class="projekte-intro reveal">
-                    <span class="mono-label">Use Cases</span>
-                    <h2 class="section-h2">Was wir für Immobilienteams gebaut haben.</h2>
-                    <p class="section-sub">Konkrete Abläufe für Makler und Hausverwaltungen ab 5 Mitarbeitenden — jedes System löst einen echten Engpass im Tagesgeschäft.</p>
+                    <span class="mono-label">Referenzen</span>
+                    <h2 class="section-h2">Systeme, die wir bereits gebaut haben.</h2>
+                    <p class="section-sub">Jedes dieser Systeme läuft produktiv oder lief als Kundenprojekt. Keine Konzepte, gebaute Realität.</p>
                 </div>
 
-                <div class="expanding-cards-container">
-                    <div class="expanding-card active" data-index="0">
-                        <div class="card-bg-image" style="background-image: url('images/WIR_ref.jpg');"></div>
-                        <div class="card-gradient-overlay"></div>
-                        <div class="card-content-wrap">
-                            <span class="card-badge">Lead-Qualification · n8n</span>
-                            <h4 class="card-title">Inseratsanfragen automatisieren</h4>
-                            <div class="card-expanded-content">
-                                <p class="card-desc">ImmoScout24-Mail → Parsing → Budget- und Bonitäts-Check → Erstantwort mit Terminvorschlag → PropStack/CRM-Eintrag. Kein Interessent wartet mehr als fünf Minuten.</p>
-                                <ul class="card-bullets">
-                                    <li><span>✔</span> Portal-Mail parsen und Objekt zuordnen</li>
-                                    <li><span>✔</span> Vorqualifizierung vor Team-Weiterleitung</li>
-                                    <li><span>✔</span> Automatischer CRM-Eintrag und Follow-up</li>
-                                </ul>
-                                <div style="margin-top: 1.25rem;">
-                                    <button type="button" class="featured-btn js-open-booking">Kostenlosen Audit buchen &rarr;</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="expanding-card" data-index="1">
-                        <div class="card-bg-image" style="background-image: url('images/automatisches Onboarding system Screenshot.png');"></div>
-                        <div class="card-gradient-overlay"></div>
-                        <div class="card-content-wrap">
-                            <span class="card-badge">Onboarding · Workflow</span>
-                            <h4 class="card-title">Neuvermietung &amp; Mieter-Onboarding</h4>
-                            <div class="card-expanded-content">
-                                <p class="card-desc">Trigger bei Neuvermietung oder Eigentümerwechsel: Dokumentenmappe, Übergabeprotokoll, Willkommens-Mail an Mieter und Status-Update für Verwaltung und Makler — ohne manuelles Copy-Paste.</p>
-                                <ul class="card-bullets">
-                                    <li><span>✔</span> Ordner und Checklisten automatisch anlegen</li>
-                                    <li><span>✔</span> E-Mails und Aufgaben ans Team routen</li>
-                                    <li><span>✔</span> CRM-Status synchron halten</li>
-                                </ul>
-                                <div style="margin-top: 1.25rem;">
-                                    <button type="button" class="featured-btn js-open-booking">Kostenlosen Audit buchen &rarr;</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="expanding-card" data-index="2">
-                        <div class="card-bg-image" style="background-image: linear-gradient(135deg, #1e1b18 0%, #2f2a24 55%, #3c352c 100%);"></div>
-                        <div class="card-gradient-overlay"></div>
-                        <div class="card-content-wrap">
-                            <span class="card-badge">E-Mail · Routing</span>
-                            <h4 class="card-title">E-Mail-Management für Verwaltung</h4>
-                            <div class="card-expanded-content">
-                                <p class="card-desc">Shared Mailbox für Hausverwaltungen: Mieter-, Eigentümer- und Handwerker-Anfragen automatisch kategorisieren, an zuständige Mitarbeitende routen und SLA-Follow-ups auslösen.</p>
-                                <ul class="card-bullets">
-                                    <li><span>✔</span> Kategorisierung nach Absender und Betreff</li>
-                                    <li><span>✔</span> Routing und Eskalation nach SLA</li>
-                                    <li><span>✔</span> Besichtigungstermine aus der Mail heraus</li>
-                                </ul>
-                                <div style="margin-top: 1.25rem;">
-                                    <button type="button" class="featured-btn js-open-booking">Kostenlosen Audit buchen &rarr;</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="expanding-card" data-index="3">
-                        <div class="card-bg-image" style="background-image: url('images/RAIS CRM Screenshot.png');"></div>
-                        <div class="card-gradient-overlay"></div>
-                        <div class="card-content-wrap">
-                            <span class="card-badge">Company GPT · RAG</span>
-                            <h4 class="card-title">Internes GPT für Objektwissen</h4>
-                            <div class="card-expanded-content">
-                                <p class="card-desc">„Welche Nebenkosten hat Objekt X?“ / „Stand der Renovierung Wohnung Y?“ — Ihr Team fragt, das GPT antwortet aus eigener Datenbank. DSGVO-konform, nicht öffentlich.</p>
-                                <ul class="card-bullets">
-                                    <li><span>✔</span> RAG auf Exposés, Verträge, Hausordnung</li>
-                                    <li><span>✔</span> Supabase/Postgres oder bestehende DB</li>
-                                    <li><span>✔</span> Nur intern, kein öffentlicher Chatbot</li>
-                                </ul>
-                                <div style="margin-top: 1.25rem;">
-                                    <button type="button" class="featured-btn js-open-booking">Kostenlosen Audit buchen &rarr;</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="ref-grid reveal">
+                    <article class="ref-card">
+                        <span class="ref-card__badge">Onboarding</span>
+                        <h3 class="ref-card__title">Onboarding-Workflow bei Vertragsunterschrift</h3>
+                        <p class="ref-card__desc">Automatische Dokumentenmappe, Aufgaben und Status-Updates ab Signatur, ohne Copy-Paste.</p>
+                    </article>
+                    <article class="ref-card">
+                        <span class="ref-card__badge">Lead-Gen</span>
+                        <h3 class="ref-card__title">Lead-Scraping und Enrichment</h3>
+                        <p class="ref-card__desc">Zielkunden-Recherche mit automatischer Anreicherung und CRM-Import.</p>
+                    </article>
+                    <article class="ref-card">
+                        <span class="ref-card__badge">Qualifizierung</span>
+                        <h3 class="ref-card__title">Anfragen-Qualifizierung</h3>
+                        <p class="ref-card__desc">KI-gestützte Vorqualifizierung von Portalanfragen inklusive Terminierung.</p>
+                    </article>
+                    <article class="ref-card">
+                        <span class="ref-card__badge">Enterprise</span>
+                        <h3 class="ref-card__title">Enterprise-Chatbot für einen großen deutschen Telekommunikationsanbieter</h3>
+                        <p class="ref-card__desc">Kundendialog-System im Enterprise-Maßstab.</p>
+                    </article>
+                    <article class="ref-card">
+                        <span class="ref-card__badge">RAG · Intern</span>
+                        <h3 class="ref-card__title">Wissensdatenbanken und interne GPTs</h3>
+                        <p class="ref-card__desc">RAG-Systeme auf Unternehmens-Dokumenten, nur intern, DSGVO-konform.</p>
+                    </article>
+                    <article class="ref-card">
+                        <span class="ref-card__badge">Support</span>
+                        <h3 class="ref-card__title">Kundensupport-System für eine Hausverwaltung</h3>
+                        <p class="ref-card__desc">Mieteranliegen werden per Knopfdruck an Partnerbetriebe weitergeleitet, jede Anfrage wird bis zur Umsetzung überwacht.</p>
+                    </article>
                 </div>
 
                 <div style="text-align: center; margin-top: 3.5rem;">
@@ -3365,31 +3371,6 @@
                     dragX = null;
                 }
                 startAuto();
-            });
-        }());
-
-
-        /* ── Expanding Cards (Featured Cases) ────────────────── */
-        (function() {
-            var cards = document.querySelectorAll('.expanding-card');
-            if (cards.length === 0) return;
-
-            function activateCard(card) {
-                cards.forEach(function(c) {
-                    c.classList.remove('active');
-                });
-                card.classList.add('active');
-            }
-
-            cards.forEach(function(card) {
-                card.addEventListener('mouseenter', function() {
-                    activateCard(card);
-                });
-
-                card.addEventListener('click', function(e) {
-                    if (e.target.closest('a') || e.target.closest('button')) return;
-                    activateCard(card);
-                });
             });
         }());
 
