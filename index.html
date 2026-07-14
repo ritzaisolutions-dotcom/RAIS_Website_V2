@@ -1070,6 +1070,81 @@
             margin: 0 auto 2rem;
         }
 
+        /* Zusammenarbeit — 3 statische Bloecke */
+        .collab3-list {
+            display: grid;
+            gap: 1.25rem;
+            max-width: 46rem;
+            margin: 0 auto;
+        }
+
+        .collab3-item {
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.75rem 1.75rem;
+        }
+
+        .collab3-num {
+            flex-shrink: 0;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            border: 3px solid var(--border);
+            background: linear-gradient(145deg, var(--orange), var(--orange-hover));
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.125rem;
+            font-weight: 700;
+        }
+
+        .collab3-title {
+            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            line-height: 1.3;
+            margin: 0.2rem 0 0.5rem;
+        }
+
+        .collab3-desc {
+            font-size: 0.9375rem;
+            line-height: 1.65;
+            color: var(--stone);
+            margin: 0;
+        }
+
+        .collab3-outro {
+            max-width: 46rem;
+            margin: 2.5rem auto 0;
+            text-align: center;
+        }
+
+        .collab3-outro__title {
+            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
+            font-size: 1.375rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            margin: 0 0 0.6rem;
+        }
+
+        .collab3-outro__text {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--stone);
+            margin: 0;
+        }
+
+        @media (max-width: 520px) {
+            .collab3-item { flex-direction: column; gap: 0.9rem; padding: 1.5rem 1.4rem; }
+        }
+
         /* Carousel viewport */
         .proj-viewport {
             overflow: hidden;
@@ -2897,101 +2972,37 @@
                     <span class="mono-label">Zusammenarbeit</span>
                     <h2 class="section-h2">So läuft die Zusammenarbeit</h2>
                     <p class="section-sub" style="margin-left: auto; margin-right: auto;">
-                        Schritt 1 startet mit dem kostenlosen Prozess-Audit — danach transparent bis zum Live-Betrieb.
+                        Vom ersten Gespräch bis zur Unterschrift. Klar, ohne Umwege.
                     </p>
-                    <p class="process-path-tagline">Der Weg einer Zusammenarbeit</p>
                 </div>
-                <div class="collab-path reveal" id="collab-path" data-active-step="1">
-                    <div class="collab-path__viewport" tabindex="0" role="region" aria-label="Der Weg einer Zusammenarbeit">
-                        <div class="collab-path__track">
-                            <svg class="collab-path__svg collab-path__svg--wave" viewBox="0 0 1200 256" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-                                <defs>
-                                    <linearGradient id="collabPathGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                        <stop offset="0%" stop-color="#EC6A37" stop-opacity="0.35" />
-                                        <stop offset="35%" stop-color="#C45A2E" stop-opacity="0.5" />
-                                        <stop offset="65%" stop-color="#789464" stop-opacity="0.55" />
-                                        <stop offset="100%" stop-color="#3C5A2A" stop-opacity="0.4" />
-                                    </linearGradient>
-                                </defs>
-                                <path class="collab-path__line collab-path__line--bg" d="M 80 128 C 140 128, 180 32, 240 32 C 300 32, 340 224, 400 224 C 460 224, 500 32, 560 32 C 620 32, 660 224, 720 224 C 780 224, 820 32, 880 32 C 940 32, 980 128, 1040 128 L 1160 128" />
-                                <path class="collab-path__line collab-path__line--dash" d="M 80 128 C 140 128, 180 32, 240 32 C 300 32, 340 224, 400 224 C 460 224, 500 32, 560 32 C 620 32, 660 224, 720 224 C 780 224, 820 32, 880 32 C 940 32, 980 128, 1040 128 L 1160 128" />
-                            </svg>
-                            <svg class="collab-path__svg collab-path__svg--stack" viewBox="0 0 48 720" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-                                <path class="collab-path__line collab-path__line--bg" d="M 24 28 C 38 95, 10 165, 24 232 C 38 300, 8 368, 24 436 C 38 504, 10 572, 24 640 C 36 688, 28 708, 24 712" />
-                                <path class="collab-path__line collab-path__line--dash" d="M 24 28 C 38 95, 10 165, 24 232 C 38 300, 8 368, 24 436 C 38 504, 10 572, 24 640 C 36 688, 28 708, 24 712" />
-                            </svg>
-                            <ol class="collab-path__steps" role="list">
-                                <li class="collab-step is-active" role="listitem" data-step="1" data-position="middle">
-                                    <article class="collab-step__inner">
-                                        <button type="button" class="collab-step__btn" data-step-btn="1" aria-current="step"><span class="collab-step__num">1</span></button>
-                                        <div class="collab-step__card">
-                                            <h3 class="collab-step__title">Prozess-Audit</h3>
-                                            <p class="collab-step__desc">60 Minuten: Wo liegt der größte Hebel? Sie gehen mit 3 Use Cases und Umsetzungs-Blueprint raus.</p>
-                                        </div>
-                                    </article>
-                                </li>
-                                <li class="collab-step" role="listitem" data-step="2" data-position="up">
-                                    <article class="collab-step__inner">
-                                        <button type="button" class="collab-step__btn" data-step-btn="2"><span class="collab-step__num">2</span></button>
-                                        <div class="collab-step__card">
-                                            <h3 class="collab-step__title">Engpässe sichtbar machen</h3>
-                                            <p class="collab-step__desc">Wir zeigen, welche Abläufe automatisierbar sind und was das konkret bringt.</p>
-                                        </div>
-                                    </article>
-                                </li>
-                                <li class="collab-step" role="listitem" data-step="3" data-position="down">
-                                    <article class="collab-step__inner">
-                                        <button type="button" class="collab-step__btn" data-step-btn="3"><span class="collab-step__num">3</span></button>
-                                        <div class="collab-step__card">
-                                            <h3 class="collab-step__title">Lösungsplan erstellen</h3>
-                                            <p class="collab-step__desc">Klare Roadmap mit Prioritäten und messbaren Zielen, kein Konzept-Papier.</p>
-                                        </div>
-                                    </article>
-                                </li>
-                                <li class="collab-step" role="listitem" data-step="4" data-position="up">
-                                    <article class="collab-step__inner">
-                                        <button type="button" class="collab-step__btn" data-step-btn="4"><span class="collab-step__num">4</span></button>
-                                        <div class="collab-step__card">
-                                            <h3 class="collab-step__title">Umsetzung planen</h3>
-                                            <p class="collab-step__desc">Wir stimmen Tools, Zeitplan und Aufwand mit Ihrem Team ab.</p>
-                                        </div>
-                                    </article>
-                                </li>
-                                <li class="collab-step" role="listitem" data-step="5" data-position="down">
-                                    <article class="collab-step__inner">
-                                        <button type="button" class="collab-step__btn" data-step-btn="5"><span class="collab-step__num">5</span></button>
-                                        <div class="collab-step__card">
-                                            <h3 class="collab-step__title">Aufbau und Integration</h3>
-                                            <p class="collab-step__desc">Automatisierungen, Verbindungen zu Ihren bestehenden Systemen und KI-Agenten werden gebaut.</p>
-                                        </div>
-                                    </article>
-                                </li>
-                                <li class="collab-step" role="listitem" data-step="6" data-position="up">
-                                    <article class="collab-step__inner">
-                                        <button type="button" class="collab-step__btn" data-step-btn="6"><span class="collab-step__num">6</span></button>
-                                        <div class="collab-step__card">
-                                            <h3 class="collab-step__title">Abnahme und Übergabe</h3>
-                                            <p class="collab-step__desc">Sie testen, wir feinjustieren, bis alles reibungslos läuft.</p>
-                                        </div>
-                                    </article>
-                                </li>
-                                <li class="collab-step" role="listitem" data-step="7" data-position="middle">
-                                    <article class="collab-step__inner">
-                                        <button type="button" class="collab-step__btn" data-step-btn="7"><span class="collab-step__num">7</span></button>
-                                        <div class="collab-step__card">
-                                            <h3 class="collab-step__title">Betrieb und Überwachung</h3>
-                                            <p class="collab-step__desc">Das System läuft, wir behalten es im Blick und greifen bei Bedarf ein.</p>
-                                        </div>
-                                    </article>
-                                </li>
-                            </ol>
+
+                <div class="collab3-list reveal">
+                    <div class="collab3-item">
+                        <span class="collab3-num" aria-hidden="true">1</span>
+                        <div>
+                            <h3 class="collab3-title">Discovery</h3>
+                            <p class="collab3-desc">Wir identifizieren gemeinsam, ob eine Zusammenarbeit Mehrwert bringt und wo Ihre operativen Vertriebsprozesse Zeit fressen. Ergebnis: konkretes Know-how, was möglich ist, was nicht, und was keinen Sinn ergibt.</p>
                         </div>
                     </div>
-                    <div class="collab-path__controls">
-                        <button type="button" class="collab-path__nav collab-path__nav--prev" id="collab-prev" disabled>Zurück</button>
-                        <p class="collab-path__counter" id="collab-counter" aria-live="polite">Schritt 1 von 7</p>
-                        <button type="button" class="collab-path__nav collab-path__nav--next" id="collab-next">Weiter</button>
+                    <div class="collab3-item">
+                        <span class="collab3-num" aria-hidden="true">2</span>
+                        <div>
+                            <h3 class="collab3-title">Proposition Call</h3>
+                            <p class="collab3-desc">Wir kommen mit einem fertig geschnürten Angebot zurück. Was wir umsetzen, wie wir es umsetzen und welchen kompetitiven Vorteil Ihr Büro dadurch gewinnt. Ergebnis: klares Angebot mit Scope, Timeline und Preis.</p>
+                        </div>
                     </div>
+                    <div class="collab3-item">
+                        <span class="collab3-num" aria-hidden="true">3</span>
+                        <div>
+                            <h3 class="collab3-title">Closing (optional)</h3>
+                            <p class="collab3-desc">Nach Ihrer internen Sichtung des Angebots folgen Vertragsunterschrift und Onboarding-Termin. Kein Druck, keine Nachfass-Schleifen.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collab3-outro reveal">
+                    <h3 class="collab3-outro__title">Und nach der Unterschrift?</h3>
+                    <p class="collab3-outro__text">Wir implementieren Ihre neue Infrastruktur rechtssicher und weisen Sie und Ihr Team persönlich ein, damit das System Sie im Arbeitsalltag sorglos unterstützt.</p>
                 </div>
             </div>
         </section>
@@ -3272,7 +3283,7 @@
 
         /* ── Antigravity reveal orchestration ───────────────── */
         var revealTargets = document.querySelectorAll([
-            '.leis-intro', '.zielgruppe-intro', '.zielgruppe-split', '.zielgruppe-cta-wrap', '.projekte-intro', '.process-intro', '.collab-path', '.wir-content', '.contact-text-col',
+            '.leis-intro', '.zielgruppe-intro', '.zielgruppe-split', '.zielgruppe-cta-wrap', '.projekte-intro', '.process-intro', '.collab3-list', '.wir-content', '.contact-text-col',
             '.problem-item', '.contact-text-col', '.contact-detail', '.audit-blueprint', '.cal-embed-wrap'
         ].join(','));
 
@@ -3715,7 +3726,6 @@
         }
     }());
     </script>
-    <script src="scripts/collab-path.js" defer></script>
 
 </body>
 </html>
