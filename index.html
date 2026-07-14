@@ -590,6 +590,110 @@
             }
         }
 
+        /* Kernangebot-Karte + Ergaenzungsblock */
+        .leis-core {
+            max-width: 720px;
+            margin: 1.5rem auto 0;
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem 2.5rem;
+        }
+
+        .leis-core__badge {
+            display: inline-block;
+            font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
+            font-size: 0.5625rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--pistachio);
+            margin-bottom: 0.75rem;
+        }
+
+        .leis-core__title {
+            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            line-height: 1.25;
+            margin-bottom: 0.875rem;
+        }
+
+        .leis-core__body {
+            font-size: 1rem;
+            line-height: 1.65;
+            color: var(--stone);
+            margin-bottom: 1.25rem;
+        }
+
+        .leis-core__list {
+            list-style: none;
+            display: grid;
+            gap: 0.6rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .leis-core__list li {
+            font-size: 0.9375rem;
+            line-height: 1.55;
+            color: var(--charcoal);
+            padding-left: 1.25rem;
+            position: relative;
+        }
+
+        .leis-core__list li::before {
+            content: '✔';
+            position: absolute;
+            left: 0;
+            color: var(--pistachio);
+            font-size: 0.8125rem;
+        }
+
+        .leis-core__cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 1.6rem;
+            background-color: var(--orange);
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.15s ease;
+        }
+
+        .leis-core__cta:hover { background-color: var(--orange-hover); }
+
+        .leis-more {
+            max-width: 720px;
+            margin: 1.5rem auto 0;
+            padding: 1.5rem 1.75rem;
+            border-left: 2px solid var(--pistachio);
+        }
+
+        .leis-more__title {
+            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .leis-more__text {
+            font-size: 0.9375rem;
+            line-height: 1.65;
+            color: var(--stone);
+            margin: 0;
+        }
+
+        @media (max-width: 520px) {
+            .leis-core { padding: 1.75rem 1.5rem; }
+        }
+
 
         /* ─────────────────────────────────────────────────────
            BRANCHEN — CAROUSEL
@@ -2630,46 +2734,28 @@
             <div class="section-wrap">
 
                 <!-- Section intro -->
-                <div class="leis-intro reveal">
+                <div class="leis-intro reveal" style="margin-left: auto; margin-right: auto; text-align: center;">
                     <span class="mono-label">Was wir tun</span>
-                    <h2 class="section-h2">Vier Systeme. Ein Ergebnis: qualifizierte Anfragen.</h2>
+                    <h2 class="section-h2">KI als Hebel in Ihrem Maklerbüro.</h2>
                 </div>
 
-                <div class="leis-icons reveal">
-                    <button type="button" class="leis-icon-item js-open-leis-modal" data-leis="inseratsanfragen" aria-haspopup="dialog">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                            <polyline points="22,6 12,13 2,6"/>
-                        </svg>
-                        <span class="leis-icon-title">Inseratsanfragen</span>
-                    </button>
-                    <button type="button" class="leis-icon-item js-open-leis-modal" data-leis="onboarding" aria-haspopup="dialog">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-                            <circle cx="9" cy="7" r="4"/>
-                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                        </svg>
-                        <span class="leis-icon-title">Onboarding</span>
-                    </button>
-                    <button type="button" class="leis-icon-item js-open-leis-modal" data-leis="email" aria-haspopup="dialog">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <rect x="2" y="4" width="20" height="16" rx="2"/>
-                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-                        </svg>
-                        <span class="leis-icon-title">E-Mail</span>
-                    </button>
-                    <button type="button" class="leis-icon-item js-open-leis-modal" data-leis="company-gpt" aria-haspopup="dialog">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M12 8V4H8"/>
-                            <rect width="16" height="12" x="4" y="8" rx="2"/>
-                            <path d="M2 14h2"/>
-                            <path d="M20 14h2"/>
-                            <path d="M15 13v2"/>
-                            <path d="M9 13v2"/>
-                        </svg>
-                        <span class="leis-icon-title">Company GPT</span>
-                    </button>
+                <div class="leis-core reveal">
+                    <span class="leis-core__badge">Kernangebot</span>
+                    <h3 class="leis-core__title">Inseratsanfragen automatisch qualifizieren und terminieren</h3>
+                    <p class="leis-core__body">Jede Portalanfrage wird erfasst, vorqualifiziert und bei Eignung direkt mit Terminvorschlag beantwortet. Ihr Team spricht nur noch mit wirklich interessierten Kunden.</p>
+                    <ul class="leis-core__list">
+                        <li>Portal-Mail parsen und Objekt zuordnen</li>
+                        <li>Vorqualifizierung nach Ihren Kriterien vor der Team-Weiterleitung</li>
+                        <li>Automatische Erstantwort mit Terminvorschlag</li>
+                        <li>Eintrag und Follow-up in Ihrem CRM (onOffice, Propstack)</li>
+                        <li>DSGVO-konform auf EU-Infrastruktur</li>
+                    </ul>
+                    <button type="button" class="leis-core__cta js-open-booking" data-source="leistungen-core">Kostenlosen Audit buchen</button>
+                </div>
+
+                <div class="leis-more reveal">
+                    <h3 class="leis-more__title">Die Infrastruktur hört hier nicht auf.</h3>
+                    <p class="leis-more__text">Wo darüber hinaus echter Mehrwert für Ihr Unternehmen liegt, identifizieren wir im persönlichen Gespräch. Zum Beispiel Onboarding bei Vertragsunterschrift, Exposé-Erstellung oder First-Level-Support bei wiederkehrenden Fragen.</p>
                 </div>
 
             </div>
@@ -3332,70 +3418,6 @@
     </script>
 
     <!-- ═══════════════════════════════════════════════════════
-         LEISTUNGEN MODAL
-    ═══════════════════════════════════════════════════════ -->
-    <div id="leis-modal" role="dialog" aria-modal="true" aria-labelledby="lm-title-active">
-        <div class="lm-backdrop" id="lm-backdrop"></div>
-        <div class="lm-box">
-            <button class="lm-close" id="lm-close" aria-label="Schließen">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            </button>
-
-            <div class="lm-panel" data-leis="inseratsanfragen">
-                <span class="lm-badge">Hauptleistung</span>
-                <h3 class="lm-title" id="lm-title-inseratsanfragen">Inseratsanfragen-Automatisierung</h3>
-                <p class="lm-body">Portalanfragen von ImmoScout24 und Immowelt erfassen, parsen, vorqualifizieren und mit Erstantwort beantworten — inklusive CRM-Eintrag und Terminvorschlag.</p>
-                <ul class="lm-list">
-                    <li>Parsing der Portal-Mail und Zuordnung zu Objekt und Interessent</li>
-                    <li>Budget- und Bonitäts-Check vor der Weiterleitung ans Team</li>
-                    <li>Automatische Erstantwort und Follow-up-Sequenz</li>
-                    <li>Anbindung an PropStack, Outlook und Google Workspace</li>
-                </ul>
-                <button type="button" class="lm-cta js-open-booking-from-leis" data-source="leistungen-inseratsanfragen">Kostenlosen Audit buchen</button>
-            </div>
-
-            <div class="lm-panel" data-leis="onboarding">
-                <span class="lm-badge">System</span>
-                <h3 class="lm-title" id="lm-title-onboarding">Onboarding-Automatisierung</h3>
-                <p class="lm-body">Neuvermietung, Eigentümerwechsel, Mieter-Onboarding: Ordner, Checklisten, Status und Team-Übergaben — ohne Copy-Paste zwischen Tools.</p>
-                <ul class="lm-list">
-                    <li>Trigger aus CRM oder Formular bei Neuvermietung</li>
-                    <li>Dokumentenmappe und Übergabeprotokoll automatisch anlegen</li>
-                    <li>Willkommens-Mail an Mieter und Status für das Team</li>
-                    <li>Checklisten für Verwaltung und Makler synchron halten</li>
-                </ul>
-                <button type="button" class="lm-cta js-open-booking-from-leis" data-source="leistungen-onboarding">Kostenlosen Audit buchen</button>
-            </div>
-
-            <div class="lm-panel" data-leis="email">
-                <span class="lm-badge">System</span>
-                <h3 class="lm-title" id="lm-title-email">E-Mail-Management-Systeme</h3>
-                <p class="lm-body">Shared Mailbox für Verwaltung und Vertrieb: strukturiertes Routing, SLA-Follow-ups und Besichtigungstermine — ohne Postfach-Chaos.</p>
-                <ul class="lm-list">
-                    <li>Kategorisierung: Mieter, Eigentümer, Handwerker, Interessenten</li>
-                    <li>Automatisches Routing an zuständige Mitarbeitende</li>
-                    <li>Follow-ups und Erinnerungen nach definierter SLA</li>
-                    <li>Terminbuchung für Besichtigungen direkt aus der Mail</li>
-                </ul>
-                <button type="button" class="lm-cta js-open-booking-from-leis" data-source="leistungen-email">Kostenlosen Audit buchen</button>
-            </div>
-
-            <div class="lm-panel" data-leis="company-gpt">
-                <span class="lm-badge">System</span>
-                <h3 class="lm-title" id="lm-title-company-gpt">Company GPTs</h3>
-                <p class="lm-body">Internes GPT auf Objektdaten, Exposés, Hausordnung und Vertrags-FAQ — DSGVO-konform, nur für Ihr Team, nicht öffentlich.</p>
-                <ul class="lm-list">
-                    <li>Antworten zu Objekten, Mietern und Abläufen aus eigener Datenbank</li>
-                    <li>RAG auf Exposés, Verträge und interne Prozessdokumente</li>
-                    <li>Antwortentwürfe für Makler und Verwaltung</li>
-                    <li>Hosting in EU-Infrastruktur (AWS, Supabase)</li>
-                </ul>
-                <button type="button" class="lm-cta js-open-booking-from-leis" data-source="leistungen-company-gpt">Kostenlosen Audit buchen</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- ═══════════════════════════════════════════════════════
          BOOKING MODAL
     ═══════════════════════════════════════════════════════ -->
     <div id="booking-modal" role="dialog" aria-modal="true" aria-label="Kostenloser Audit buchen">
@@ -3486,70 +3508,6 @@
 
         </div>
     </div>
-
-    <script>
-    (function () {
-        var leisModal   = document.getElementById('leis-modal');
-        var lmBackdrop  = document.getElementById('lm-backdrop');
-        var lmClose     = document.getElementById('lm-close');
-        var lmPanels    = document.querySelectorAll('.lm-panel');
-
-        if (!leisModal) return;
-
-        function showLeisPanel(key) {
-            lmPanels.forEach(function (panel) {
-                var active = panel.dataset.leis === key;
-                panel.classList.toggle('is-active', active);
-                if (active) {
-                    leisModal.setAttribute('aria-labelledby', panel.querySelector('.lm-title').id);
-                }
-            });
-        }
-
-        function openLeisModal(key) {
-            showLeisPanel(key);
-            leisModal.classList.add('is-open');
-            document.body.classList.add('noscroll');
-            if (lmClose) lmClose.focus();
-        }
-
-        function closeLeisModal() {
-            leisModal.classList.remove('is-open');
-            var bookingModal = document.getElementById('booking-modal');
-            if (!bookingModal || !bookingModal.classList.contains('is-open')) {
-                document.body.classList.remove('noscroll');
-            }
-            lmPanels.forEach(function (panel) { panel.classList.remove('is-active'); });
-        }
-
-        document.querySelectorAll('.js-open-leis-modal').forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                openLeisModal(btn.dataset.leis);
-            });
-        });
-
-        if (lmClose) lmClose.addEventListener('click', closeLeisModal);
-        if (lmBackdrop) lmBackdrop.addEventListener('click', closeLeisModal);
-
-        document.querySelectorAll('.js-open-booking-from-leis').forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                var source = btn.dataset.source || 'leistungen';
-                closeLeisModal();
-                if (typeof window.RAIS_openBooking === 'function') {
-                    window.RAIS_openBooking({ source: source });
-                }
-            });
-        });
-
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape' && leisModal.classList.contains('is-open')) {
-                closeLeisModal();
-            }
-        });
-
-        window.RAIS_closeLeisModal = closeLeisModal;
-    }());
-    </script>
 
     <script>
     (function () {
