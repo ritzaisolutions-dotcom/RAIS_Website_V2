@@ -1265,6 +1265,180 @@
             .collab3-item { flex-direction: column; gap: 0.9rem; padding: 1.5rem 1.4rem; }
         }
 
+        /* Interaktiver Stepper */
+        .stepper {
+            display: grid;
+            grid-template-columns: 4.5rem 1fr;
+            gap: 1.5rem;
+            max-width: 46rem;
+            margin: 0 auto;
+            align-items: stretch;
+        }
+
+        .stepper__rail {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.25rem 0;
+        }
+
+        .stepper__line {
+            position: absolute;
+            top: 1.4rem;
+            bottom: 1.4rem;
+            left: 50%;
+            width: 2px;
+            transform: translateX(-50%);
+            background: var(--border);
+            z-index: 0;
+        }
+
+        .stepper__line-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0%;
+            background: var(--orange);
+            transition: height 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .stepper__dot {
+            position: relative;
+            z-index: 1;
+            width: 2.8rem;
+            height: 2.8rem;
+            border-radius: 50%;
+            border: 2px solid var(--border);
+            background: var(--surface);
+            color: var(--stone);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.05rem;
+            font-weight: 700;
+            transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+        }
+
+        .stepper__dot.is-completed {
+            border-color: var(--pistachio);
+            background: #e8f0e4;
+            color: var(--pistachio);
+        }
+
+        .stepper__dot.is-active {
+            border-color: var(--orange);
+            background: linear-gradient(145deg, var(--orange), var(--orange-hover));
+            color: #fff;
+            transform: scale(1.08);
+        }
+
+        .stepper__panels {
+            position: relative;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.75rem 1.75rem;
+            min-height: 8.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .stepper__panel { display: none; }
+        .stepper__panel.is-active { display: block; animation: stepper-fade 0.4s ease; }
+
+        @keyframes stepper-fade {
+            from { opacity: 0; transform: translateY(6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .stepper__eyebrow {
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 0.5625rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--pistachio);
+        }
+
+        .stepper__title {
+            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            line-height: 1.3;
+            margin: 0.4rem 0 0.6rem;
+        }
+
+        .stepper__desc {
+            font-size: 0.9375rem;
+            line-height: 1.65;
+            color: var(--stone);
+            margin: 0;
+        }
+
+        .stepper__controls {
+            grid-column: 2;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+        }
+
+        .stepper__counter {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--stone);
+            margin-left: auto;
+        }
+
+        .stepper__btn {
+            padding: 0.7rem 1.4rem;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--charcoal);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: border-color 0.15s ease, background 0.15s ease;
+        }
+
+        .stepper__btn:hover { border-color: var(--orange); }
+
+        .stepper__btn--next {
+            border-color: var(--orange);
+            background: var(--orange);
+            color: #fff;
+        }
+
+        .stepper__btn--next:hover { background: var(--orange-hover); border-color: var(--orange-hover); }
+
+        .stepper__btn--cta {
+            border: none;
+            background: var(--orange);
+            color: #fff;
+        }
+
+        .stepper__btn--cta:hover { background: var(--orange-hover); }
+
+        .stepper__btn[hidden] { display: none; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .stepper__line-fill, .stepper__dot, .stepper__panel.is-active { transition: none; animation: none; }
+        }
+
+        @media (max-width: 520px) {
+            .stepper { grid-template-columns: 3.4rem 1fr; gap: 1rem; }
+            .stepper__panels { padding: 1.4rem 1.3rem; }
+            .stepper__controls { flex-wrap: wrap; }
+            .stepper__counter { width: 100%; margin-left: 0; order: -1; }
+        }
+
         /* Carousel viewport */
         .proj-viewport {
             overflow: hidden;
@@ -3210,27 +3384,37 @@
                     </p>
                 </div>
 
-                <div class="collab3-list reveal">
-                    <div class="collab3-item">
-                        <span class="collab3-num" aria-hidden="true">1</span>
-                        <div>
-                            <h3 class="collab3-title">Discovery</h3>
-                            <p class="collab3-desc">Wir identifizieren gemeinsam, ob eine Zusammenarbeit Mehrwert bringt und wo Ihre operativen Vertriebsprozesse Zeit fressen. Ergebnis: konkretes Know-how, was möglich ist, was nicht, und was keinen Sinn ergibt.</p>
+                <div class="stepper reveal" id="collab-stepper" data-step="1">
+                    <div class="stepper__rail" aria-hidden="true">
+                        <span class="stepper__line"><span class="stepper__line-fill" id="stepper-fill"></span></span>
+                        <span class="stepper__dot is-active" data-dot="1">1</span>
+                        <span class="stepper__dot" data-dot="2">2</span>
+                        <span class="stepper__dot" data-dot="3">3</span>
+                    </div>
+
+                    <div class="stepper__panels">
+                        <div class="stepper__panel is-active" data-panel="1">
+                            <span class="stepper__eyebrow">Schritt 1</span>
+                            <h3 class="stepper__title">Discovery</h3>
+                            <p class="stepper__desc">Wir identifizieren gemeinsam, ob eine Zusammenarbeit Mehrwert bringt und wo Ihre operativen Vertriebsprozesse Zeit fressen. Ergebnis: konkretes Know-how, was möglich ist, was nicht, und was keinen Sinn ergibt.</p>
+                        </div>
+                        <div class="stepper__panel" data-panel="2">
+                            <span class="stepper__eyebrow">Schritt 2</span>
+                            <h3 class="stepper__title">Proposition Call</h3>
+                            <p class="stepper__desc">Wir kommen mit einem fertig geschnürten Angebot zurück. Was wir umsetzen, wie wir es umsetzen und welchen kompetitiven Vorteil Ihr Büro dadurch gewinnt. Ergebnis: klares Angebot mit Scope, Timeline und Preis.</p>
+                        </div>
+                        <div class="stepper__panel" data-panel="3">
+                            <span class="stepper__eyebrow">Schritt 3</span>
+                            <h3 class="stepper__title">Closing (optional)</h3>
+                            <p class="stepper__desc">Nach Ihrer internen Sichtung des Angebots folgen Vertragsunterschrift und Onboarding-Termin. Kein Druck, keine Nachfass-Schleifen.</p>
                         </div>
                     </div>
-                    <div class="collab3-item">
-                        <span class="collab3-num" aria-hidden="true">2</span>
-                        <div>
-                            <h3 class="collab3-title">Proposition Call</h3>
-                            <p class="collab3-desc">Wir kommen mit einem fertig geschnürten Angebot zurück. Was wir umsetzen, wie wir es umsetzen und welchen kompetitiven Vorteil Ihr Büro dadurch gewinnt. Ergebnis: klares Angebot mit Scope, Timeline und Preis.</p>
-                        </div>
-                    </div>
-                    <div class="collab3-item">
-                        <span class="collab3-num" aria-hidden="true">3</span>
-                        <div>
-                            <h3 class="collab3-title">Closing (optional)</h3>
-                            <p class="collab3-desc">Nach Ihrer internen Sichtung des Angebots folgen Vertragsunterschrift und Onboarding-Termin. Kein Druck, keine Nachfass-Schleifen.</p>
-                        </div>
+
+                    <div class="stepper__controls">
+                        <button type="button" class="stepper__btn stepper__btn--back" id="stepper-back" hidden>Zurück</button>
+                        <button type="button" class="stepper__btn stepper__btn--next" id="stepper-next">Weiter</button>
+                        <button type="button" class="stepper__btn stepper__btn--cta js-open-booking" id="stepper-cta" data-source="zusammenarbeit" hidden>Kostenlosen Audit buchen</button>
+                        <span class="stepper__counter" id="stepper-counter" aria-live="polite">Schritt 1 von 3</span>
                     </div>
                 </div>
 
@@ -3518,7 +3702,7 @@
 
         /* ── Antigravity reveal orchestration ───────────────── */
         var revealTargets = document.querySelectorAll([
-            '.leis-intro', '.zielgruppe-intro', '.zielgruppe-split', '.zielgruppe-cta-wrap', '.projekte-intro', '.process-intro', '.collab3-list', '.wir-content', '.contact-text-col',
+            '.leis-intro', '.zielgruppe-intro', '.zielgruppe-split', '.zielgruppe-cta-wrap', '.projekte-intro', '.process-intro', '.stepper', '.wir-content', '.contact-text-col',
             '.problem-item', '.contact-text-col', '.contact-detail', '.audit-blueprint', '.cal-embed-wrap'
         ].join(','));
 
@@ -3639,6 +3823,54 @@
             window.addEventListener('scroll', updateStickyCta, { passive: true });
             updateStickyCta();
         }
+
+
+        /* ── Zusammenarbeit-Stepper ──────────────────────────── */
+        (function () {
+            var stepper = document.getElementById('collab-stepper');
+            if (!stepper) return;
+
+            var TOTAL   = 3;
+            var current = 1;
+            var dots    = stepper.querySelectorAll('.stepper__dot');
+            var panels  = stepper.querySelectorAll('.stepper__panel');
+            var fill    = document.getElementById('stepper-fill');
+            var backBtn = document.getElementById('stepper-back');
+            var nextBtn = document.getElementById('stepper-next');
+            var ctaBtn  = document.getElementById('stepper-cta');
+            var counter = document.getElementById('stepper-counter');
+
+            function render() {
+                stepper.setAttribute('data-step', String(current));
+
+                dots.forEach(function (dot) {
+                    var n = parseInt(dot.getAttribute('data-dot'), 10);
+                    dot.classList.remove('is-active', 'is-completed');
+                    if (n < current) dot.classList.add('is-completed');
+                    if (n === current) dot.classList.add('is-active');
+                });
+
+                panels.forEach(function (panel) {
+                    panel.classList.toggle('is-active', parseInt(panel.getAttribute('data-panel'), 10) === current);
+                });
+
+                if (fill) fill.style.height = ((current - 1) / (TOTAL - 1) * 100) + '%';
+
+                backBtn.hidden = current === 1;
+                nextBtn.hidden = current === TOTAL;
+                ctaBtn.hidden  = current !== TOTAL;
+                if (counter) counter.textContent = 'Schritt ' + current + ' von ' + TOTAL;
+            }
+
+            nextBtn.addEventListener('click', function () {
+                if (current < TOTAL) { current++; render(); }
+            });
+            backBtn.addEventListener('click', function () {
+                if (current > 1) { current--; render(); }
+            });
+
+            render();
+        }());
 
 
     }());
