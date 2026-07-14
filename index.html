@@ -1129,6 +1129,55 @@
             .ref-grid { grid-template-columns: 1fr; }
         }
 
+        /* Referenzen — bewegter Bild-Strip */
+        .ref-strip-wrapper {
+            overflow: hidden;
+            margin-top: 2.5rem;
+            -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+        }
+
+        .ref-strip-wrapper:hover .ref-strip-track { animation-play-state: paused; }
+
+        .ref-strip-track {
+            display: flex;
+            gap: 1.25rem;
+            width: max-content;
+            animation: ref-strip-scroll 48s linear infinite;
+        }
+
+        .ref-strip-item {
+            flex-shrink: 0;
+            width: 300px;
+            margin: 0;
+        }
+
+        .ref-strip-item img {
+            width: 100%;
+            height: 172px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            display: block;
+            background: var(--background);
+        }
+
+        .ref-strip-item figcaption {
+            margin-top: 0.65rem;
+            font-size: 0.8125rem;
+            line-height: 1.4;
+            color: var(--stone);
+        }
+
+        @keyframes ref-strip-scroll {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .ref-strip-track { animation: none; overflow-x: auto; padding-bottom: 0.5rem; }
+        }
+
         #zusammenarbeit-prozess {
             padding: 6rem 0;
             background: var(--background);
@@ -3060,37 +3109,59 @@
                     <p class="section-sub">Jedes dieser Systeme läuft produktiv oder lief als Kundenprojekt. Keine Konzepte, gebaute Realität.</p>
                 </div>
 
-                <div class="ref-grid reveal">
-                    <article class="ref-card">
-                        <span class="ref-card__badge">Onboarding</span>
-                        <h3 class="ref-card__title">Onboarding-Workflow bei Vertragsunterschrift</h3>
-                        <p class="ref-card__desc">Automatische Dokumentenmappe, Aufgaben und Status-Updates ab Signatur, ohne Copy-Paste.</p>
-                    </article>
-                    <article class="ref-card">
-                        <span class="ref-card__badge">Lead-Gen</span>
-                        <h3 class="ref-card__title">Lead-Scraping und Enrichment</h3>
-                        <p class="ref-card__desc">Zielkunden-Recherche mit automatischer Anreicherung und CRM-Import.</p>
-                    </article>
-                    <article class="ref-card">
-                        <span class="ref-card__badge">Qualifizierung</span>
-                        <h3 class="ref-card__title">Anfragen-Qualifizierung</h3>
-                        <p class="ref-card__desc">KI-gestützte Vorqualifizierung von Portalanfragen inklusive Terminierung.</p>
-                    </article>
-                    <article class="ref-card">
-                        <span class="ref-card__badge">Enterprise</span>
-                        <h3 class="ref-card__title">Enterprise-Chatbot für einen großen deutschen Telekommunikationsanbieter</h3>
-                        <p class="ref-card__desc">Kundendialog-System im Enterprise-Maßstab.</p>
-                    </article>
-                    <article class="ref-card">
-                        <span class="ref-card__badge">RAG · Intern</span>
-                        <h3 class="ref-card__title">Wissensdatenbanken und interne GPTs</h3>
-                        <p class="ref-card__desc">RAG-Systeme auf Unternehmens-Dokumenten, nur intern, DSGVO-konform.</p>
-                    </article>
-                    <article class="ref-card">
-                        <span class="ref-card__badge">Support</span>
-                        <h3 class="ref-card__title">Kundensupport-System für eine Hausverwaltung</h3>
-                        <p class="ref-card__desc">Mieteranliegen werden per Knopfdruck an Partnerbetriebe weitergeleitet, jede Anfrage wird bis zur Umsetzung überwacht.</p>
-                    </article>
+                <div class="ref-strip-wrapper reveal">
+                    <div class="ref-strip-track">
+                        <!-- Set 1 -->
+                        <figure class="ref-strip-item">
+                            <img src="images/automatisches Onboarding system Screenshot.png" loading="lazy" alt="Onboarding-Automatisierung">
+                            <figcaption>Onboarding-Automatisierung</figcaption>
+                        </figure>
+                        <figure class="ref-strip-item">
+                            <img src="images/RAIS CRM Screenshot.png" loading="lazy" alt="Anfragen-Qualifizierung im CRM">
+                            <figcaption>Anfragen-Qualifizierung im CRM</figcaption>
+                        </figure>
+                        <figure class="ref-strip-item">
+                            <img src="images/clay and light screenshot.png" loading="lazy" alt="Lead-Scraping und Enrichment">
+                            <figcaption>Lead-Scraping und Enrichment</figcaption>
+                        </figure>
+                        <figure class="ref-strip-item">
+                            <img src="images/Eckstein CMS Screenshot.png" loading="lazy" alt="Website- und CMS-System">
+                            <figcaption>Website- und CMS-System</figcaption>
+                        </figure>
+                        <figure class="ref-strip-item">
+                            <img src="images/RAIS performance Screenshot.png" loading="lazy" alt="Performance-Dashboard">
+                            <figcaption>Performance-Dashboard</figcaption>
+                        </figure>
+                        <figure class="ref-strip-item">
+                            <img src="images/LMLF wf3 get person screenshot.png" loading="lazy" alt="Workflow-Automatisierung">
+                            <figcaption>Workflow-Automatisierung</figcaption>
+                        </figure>
+                        <!-- Set 2 (Duplikat für nahtlosen Loop) -->
+                        <figure class="ref-strip-item" aria-hidden="true">
+                            <img src="images/automatisches Onboarding system Screenshot.png" loading="lazy" alt="">
+                            <figcaption>Onboarding-Automatisierung</figcaption>
+                        </figure>
+                        <figure class="ref-strip-item" aria-hidden="true">
+                            <img src="images/RAIS CRM Screenshot.png" loading="lazy" alt="">
+                            <figcaption>Anfragen-Qualifizierung im CRM</figcaption>
+                        </figure>
+                        <figure class="ref-strip-item" aria-hidden="true">
+                            <img src="images/clay and light screenshot.png" loading="lazy" alt="">
+                            <figcaption>Lead-Scraping und Enrichment</figcaption>
+                        </figure>
+                        <figure class="ref-strip-item" aria-hidden="true">
+                            <img src="images/Eckstein CMS Screenshot.png" loading="lazy" alt="">
+                            <figcaption>Website- und CMS-System</figcaption>
+                        </figure>
+                        <figure class="ref-strip-item" aria-hidden="true">
+                            <img src="images/RAIS performance Screenshot.png" loading="lazy" alt="">
+                            <figcaption>Performance-Dashboard</figcaption>
+                        </figure>
+                        <figure class="ref-strip-item" aria-hidden="true">
+                            <img src="images/LMLF wf3 get person screenshot.png" loading="lazy" alt="">
+                            <figcaption>Workflow-Automatisierung</figcaption>
+                        </figure>
+                    </div>
                 </div>
 
                 <div style="text-align: center; margin-top: 3.5rem;">
