@@ -10,3 +10,4 @@ vite.err.log
 .playwright-cli/
 debug-*.log
 live_scs/
+.vercel

@@ -33,14 +33,18 @@ function sentryLoaderKey(dsn) {
   return match ? match[1] : '';
 }
 
-const env = loadEnv(envPath);
+// process.env (Vercel / CI) wins; local .env is fallback only.
+const fileEnv = loadEnv(envPath);
 const required = ['SUPABASE_URL', 'SUPABASE_ANON_KEY', 'CAL_COM_URL', 'SENTRY_DSN'];
+const env = Object.fromEntries(
+  required.map((key) => [key, process.env[key] || fileEnv[key] || ''])
+);
 const missing = required.filter((key) => !env[key]);
 
 if (missing.length) {
   console.error(
-    `generate-public-config: Fehlende Variablen in .env: ${missing.join(', ')}\n` +
-      'Kopiere .env.example nach .env und trage die Werte ein.'
+    `generate-public-config: Fehlende Variablen: ${missing.join(', ')}\n` +
+      'Setze sie als Umgebungsvariablen (Vercel) oder in .env (lokal).'
   );
   process.exit(1);
 }

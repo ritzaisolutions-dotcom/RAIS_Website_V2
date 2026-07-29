@@ -12,6 +12,7 @@ const copyTargets = [
   { from: 'klaro-config.js', to: 'klaro-config.js' },
   { from: 'styles/klaro-overrides.css', to: 'styles/klaro-overrides.css' },
   { from: 'sitemap.xml', to: 'sitemap.xml' },
+  { from: 'robots.txt', to: 'robots.txt' },
 ];
 
 mkdirSync(dist, { recursive: true });
