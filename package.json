@@ -6,8 +6,9 @@
   "scripts": {
     "config": "node scripts/generate-public-config.mjs",
     "deploy": "npm run config",
-    "predev": "npm run config",
-    "prebuild": "npm run config",
+    "pages": "node scripts/build-pages.mjs && node scripts/sync-index-shell.mjs",
+    "predev": "npm run config && npm run pages",
+    "prebuild": "npm run config && npm run pages",
     "dev": "vite",
     "build": "vite build && node scripts/postbuild-copy.mjs",
     "preview": "vite preview",

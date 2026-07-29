@@ -1,201 +1,262 @@
 # RAIS Brand Guide
 
+Version 2, Stand 25.07.2026. Ersetzt die vorherige Fassung. Änderungen gegenüber Version 1 sind an den betroffenen Stellen kurz begründet, damit die Historie nachvollziehbar bleibt.
+
 ## Brand Summary
 
-RAIS (Ritz AI Solutions) is a practical automation and internal-AI partner for **Makler, Hausverwaltungen and small teams**.
+RAIS (Ritz AI Solutions) ist ein praktischer Automatisierungs- und interner-KI-Partner für **unabhängige Immobilienmaklerbüros im Mittelstand**.
 
-RAIS should not read like an AI lab, trend agency, or vague digital consultancy.
-The brand should feel calm, capable, commercially useful, and grounded in real workflows.
+RAIS soll nicht wie ein AI-Lab, eine Trend-Agentur oder eine vage Digitalberatung wirken. Die Marke soll ruhig, kompetent, kommerziell nützlich und in echten Arbeitsabläufen verankert wirken.
 
-**Dezent Immobilien:** name the audience clearly, but do not position as “Immobilien-only”. Technology and measurable outcomes stay central.
+**Änderung gegenüber Version 1:** Die vorherige Fassung nannte Makler, Hausverwaltungen und kleine Teams als Zielgruppe und warnte ausdrücklich davor, als "Immobilien-only" aufzutreten. Das ist überholt. Entscheidung vom 03.07.2026: Immobilienmakler ist die einzige aktive Nische, Hausverwaltungen sind ein bewusst verworfener früherer Pivot. Der Fokus ist jetzt Absicht, nicht Risiko.
 
 ## Audience
 
-Primary focus:
+**Zielgruppe (ICP), verbindlich:**
 
-- Makler und Immobilienmakler-Teams
+Unabhängige Immobilienmaklerbüros, 5 bis 25 Mitarbeitende.
+
+**Harte Ausschlusskriterien:**
+
+- Einzelkämpfer (Solo-Makler)
+- Franchise-Netzwerke (VON POLL, RE/MAX, Engel & Völkers, FALC, iad und vergleichbare)
+- Bankgebundene Agenturen (LBS, Sparkasse, Volksbank und vergleichbare)
 - Hausverwaltungen
-- kleine Teams mit viel Admin- und Kommunikationslast
 
-Traits:
+**Qualifizierende Merkmale, in Reihenfolge der Wichtigkeit:**
 
-- often non-technical operators, not developers
-- time-poor
-- skeptical of hype and SaaS bloat
-- care about response speed, clean files, and not losing inquiries
+1. 5 bis 25 Mitarbeitende im Team
+2. Hohes Anfragevolumen über gängige Immobilienportale
+3. Bestehendes CRM wie onOffice oder Propstack, oder Bereitschaft, eines einzuführen
+4. Offenheit für KI und neue Systeme im Team, wichtigstes weiches Kriterium
 
-Copy must be understandable in a few seconds.
+**Merkmale der Zielperson:**
+
+- oft nicht-technische Betreiber, keine Entwickler
+- zeitknapp
+- skeptisch gegenüber Hype und SaaS-Ballast
+- legen Wert auf Reaktionsgeschwindigkeit, saubere Akten, keine verlorenen Anfragen
+
+Copy muss in wenigen Sekunden verständlich sein.
 
 ## Positioning
 
-Sell **less manual admin work**, not abstract AI.
+Verkauft wird **weniger manuelle Bearbeitungszeit und mehr gebuchte Erstgespräche**, nicht abstrakte KI.
 
-RAIS is not selling:
+RAIS verkauft nicht:
 
-- AI for its own sake
-- public chatbot novelty as the main product
-- startup language
-- generic “digital transformation”
-- a menu of unrelated services
-- official portal partnerships without contract
+- KI um ihrer selbst willen
+- öffentliche Chatbot-Spielereien als Hauptprodukt
+- Startup-Sprache
+- generische "digitale Transformation"
+- ein Menü unzusammenhängender Leistungen
+- offizielle Portal-Partnerschaften ohne Vertrag
 
-RAIS is selling:
+RAIS verkauft:
 
-- faster handling of portal and email inquiries
-- synchronized object files, folders, and CRM/sheets
-- internal GPT on own data (RAG), team-only
-- workflows from inquiry to handover
-- systems without expensive recurring SaaS lock-in where possible
+- schnellere Bearbeitung von Portal- und E-Mail-Anfragen
+- automatische Qualifizierung und Terminbuchung, direkt in den bestehenden Kalender
+- Übersicht über alle Anfragen und Termine an einem Ort
+- Systeme ohne teuren wiederkehrenden SaaS-Lock-in, wo möglich
 
-## Core Offer Structure
+## Marken-Hierarchie und Live-Systeme
 
-Three pillars on the homepage:
+**RAIS** ist die Marke und der Absender (Logo, Home, Navigation).
 
-1. **Prozessautomatisierung** (Hauptleistung): Portal-E-Mail to file creation and team handover
-2. **KI-Agenten** (Erweiterung): internal GPT on object data, exposés, house rules, contract FAQ
-3. **Digitale Präsenz** (Erweiterung): exposé landing, inquiry forms, viewing appointments
+**AQuT** ist nur der Name eines Angebotssystems unter RAIS (Anfragen-Qualifizierungs- und Terminierungs-System), keine eigene Brand. Es darf auf einer Deep-Subpage ausführlich erklärt werden. Die Startseite zeigt RAIS als Unternehmen und teasert Live-Systeme, ohne AQuT zur Produktmarke zu machen.
 
-Primary CTA across the site: **Kostenlosen Audit buchen**
+**Live-Systeme im Portfolio (Home, gewichtet):**
 
-Secondary orientation CTA: **Use Cases ansehen** (`#projekte`)
+1. **AQuT** (dominant, Deep-Page) – Anfragen qualifizieren und Termine buchen
+2. **Onboarding WFS** (Kontext: Makler)
+3. **Lead Scraping LMLF** (Kontext: Makler)
+4. **CRM** (Kontext: Makler)
+5. **Habit-Tracker mit Performance Report** (Kontext: Intern)
+6. **Agentic AI Content Creation** (Kontext: Content)
 
-No fixed public price on the website unless explicitly reintroduced.
+Nur AQuT hat eine eigene Verkaufsseite. Die übrigen fünf erscheinen auf der Home als leichtere Teaser.
 
-## Proof and Use Cases
+## Angebotssystem AQuT
 
-Frame project cards as **concrete workflows**, not generic portfolio pieces.
+**AQuT** steht für **Anfragen-Qualifizierungs- und Terminierungs-System**. Verwendung in Angeboten, Pitches und auf `/aqut.html`.
 
-Current use cases:
+**Paket 1, das verkaufte Kernprodukt:**
 
-1. Automatic response to listing inquiries (e.g. ImmoScout24 via email, n8n)
-2. Internal knowledge assistant (GPT + database/documents)
-3. Object file and handover automation (move-in, owner change)
+- Automatische Qualifizierung eingehender Portalanfragen (aktuell ImmoScout24 per E-Mail)
+- Kauf/Miete-Erkennung, automatische Rückfrage bei fehlenden Angaben
+- Personalisierter Terminbuchungslink für den Interessenten
+- Direkte Kalenderintegration (aktuell Outlook / Microsoft Graph)
+- Übersichts-Dashboard mit Anfragen und Terminen pro Objekt
+- Intelligente Datenbanksuche über alle Leads
 
-Do not imply live customer logos or portal partnerships without permission.
+**Paket 2, die Erweiterung, erst nach stabilem Go-Live von Paket 1:**
+
+- Besichtigungstermin-Buchung
+- Digitale Mieterselbstauskunft
+- Vergleichsansicht für Bewerbungen/Anfragen
+
+Diese Zweiteilung gehört sichtbar auf die Website. Sie erklärt gleichzeitig das Produkt und den Grund für eine fortlaufende Zusammenarbeit, ohne wie ein Leistungsmenü zu wirken.
+
+## Primärer und sekundärer CTA
+
+Primär, über die gesamte Website: **Kostenlosen Audit buchen**
+
+Sekundär, zur Orientierung: **AQuT ansehen** beziehungsweise, je nach Seite, **Use Cases ansehen**
+
+Kein fester öffentlicher Preis auf der Website, solange nicht ausdrücklich wieder eingeführt. Das Setup-Preismodell befindet sich aktuell in Erprobung (siehe Wissensbasis, Testmodell niedrigeres Setup plus volumenbasierte Retainer-Tiers), daher keine Zahl festschreiben.
+
+## Proof und Use Cases
+
+Use Cases werden als **konkrete Arbeitsabläufe** dargestellt, nicht als generische Portfolio-Stücke, und leiten sich direkt aus Paket 1 ab:
+
+1. Automatische Antwort und Qualifizierung bei Inseratsanfragen (ImmoScout24 per E-Mail, n8n)
+2. Automatische Terminbuchung mit direkter Kalenderintegration
+3. Übersichts-Dashboard und intelligente Datenbanksuche
+
+Keine Andeutung von Kundenlogos oder Portal-Partnerschaften ohne Erlaubnis.
+
+**Referenz:** Haller Immobilienberatung GmbH hat die öffentliche Referenzierung des Projekts vertraglich gestattet (AN-0013). Sobald eine belastbare, gemessene Kennzahl aus dem Live-Betrieb vorliegt, wird eine vollständige Case Study veröffentlicht. Bis dahin keine unbelegten Zahlen zu diesem oder einem anderen Kunden verwenden.
 
 ## Trust Baseline
 
-Always include:
+Immer enthalten:
 
 - Impressum
 - Datenschutz
-- cookie banner / consent tooling (Klaro)
+- Cookie-Banner / Consent-Tooling (Klaro)
+- AVV-Hinweis gemäß Art. 28 DSGVO, EU-Serverstandorte klar benannt
 
-Trust should not be hidden in the footer as an afterthought.
+Trust darf nicht als Fußzeilen-Nachgedanke versteckt werden.
 
 ## Brand Personality
 
-The brand should feel:
+Die Marke soll wirken:
 
-- direct
-- grounded
-- mature
-- commercially serious
-- warm without sounding soft
-- confident without sounding loud
+- direkt
+- geerdet
+- reif
+- kommerziell ernsthaft
+- warm, ohne weich zu klingen
+- selbstbewusst, ohne laut zu klingen
 
-The brand should not feel:
+Die Marke soll nicht wirken:
 
-- futuristic
-- salesy
-- overproduced
-- generic SaaS
-- “full-service agency” vague
-- hype-driven
+- futuristisch
+- verkäuferisch
+- überproduziert
+- wie generisches SaaS
+- wie eine vage "Full-Service-Agentur"
+- hype-getrieben
 
 ## Color Palette
 
-Use this exact palette:
+Exakte Palette, unverändert:
 
-- Primary accent / Mandarin Orange: `#EC6A37`
-- Accent hover / Soft Mandarin: `#F37A48`
-- Base background / Cloud: `#F5F2EC`
-- Surface / Warm Linen: `#FBF8F3`
+- Primärakzent / Mandarin Orange: `#EC6A37`
+- Akzent-Hover / Soft Mandarin: `#F37A48`
+- Basis-Hintergrund / Cloud: `#F5F2EC`
+- Fläche / Warm Linen: `#FBF8F3`
 - Sage: `#789464`
-- Dark Pistachio: `#3C5A2A`
-- Charcoal text: `#2F2A24`
-- Muted text / Stone: `#7B746B`
+- British Racing Green: `#004225`
+- Charcoal-Text: `#2F2A24`
+- Gedämpfter Text / Stone: `#7B746B`
 - Border: `#D9D1C7`
 
 ## Color Usage
 
-- Cloud and Warm Linen should dominate the atmosphere
-- Charcoal and Stone carry hierarchy and readability
-- Sage and Dark Pistachio support structure and trust
-- Orange is an accent, not the page background
+- Cloud und Warm Linen dominieren die Grundatmosphäre
+- Charcoal und Stone tragen Hierarchie und Lesbarkeit
+- Sage und Dark Pistachio stützen Struktur und Vertrauen, dürfen auf einzelnen Flächen auch dominant eingesetzt werden (siehe `brand_steer.md`), solange sie sich klar von Orange abgrenzen
+- Orange ist Akzent, nicht Seitenhintergrund
 
 ## Typography Direction
 
-Typography should feel:
+Typografie soll wirken:
 
-- premium
-- readable
-- editorial, not techy
-- confident without aggression
+- hochwertig
+- lesbar
+- editorial, nicht techy
+- selbstbewusst ohne Aggressivität
 
-Avoid:
+Vermeiden:
 
-- futuristic fonts
-- dev-tool aesthetics as the main voice
-- overly geometric startup typography
+- futuristische Schriften
+- Dev-Tool-Ästhetik als Hauptstimme
+- übermäßig geometrische Startup-Typografie
+
+Details zur konkreten Schriftwahl stehen in `brand_steer.md`.
 
 ## Messaging Principles
 
-Copy should be:
+Copy soll sein:
 
-- concrete
-- believable
-- outcome-focused
-- plain German by default on the site
-- **without em dashes (—)** in user-facing text
+- konkret
+- glaubwürdig
+- ergebnisorientiert
+- auf der Website standardmäßig deutsch
+- **ohne Gedankenstriche (—)** in nutzersichtbarem Text
 
-Copy should not:
+Copy soll nicht:
 
-- overuse the word AI
-- promise everything to everyone
-- rely on vague growth language
-- invent statistics without proof
-- use ImmoScout24 as a partner claim
+- das Wort KI überstrapazieren
+- allen alles versprechen
+- auf vage Wachstumssprache setzen
+- Statistiken ohne Beleg erfinden
+- ImmoScout24 als Partner darstellen
+
+**Konkretes Beispiel für einen behobenen Verstoß:** Die frühere Live-Seite behauptete "durchschnittlich 60 Stunden Ersparnis pro Monat" ohne Beleg. Die belastbare Angebotsherleitung lautet 5 bis 8 Stunden pro Woche (~20 bis 32 Stunden pro Monat).
+
+**Orientierungsclaim (AQuT, verbindliche Formel):** „Bei typischem Anfragevolumen oft im Bereich von rund 30 Stunden pro Monat, abhängig von Ihrem Volumen (Herleitung: ca. 5 bis 8 Stunden pro Woche).“ Der Rechner personalisiert darunter. Claim und Rechner-Ergebnis dürfen nicht als dieselbe Zahl behauptet werden.
 
 ## Messaging Pillars
 
-Keep returning to:
+Immer wieder aufgreifen:
 
-- fewer lost listing inquiries
-- faster first responses
-- cleaner object files and handovers
-- internal knowledge without spreadsheet chaos
-- workflows instead of copy-paste between tools
-- measurable setup, no unnecessary SaaS ballast
+- weniger verlorene Inseratsanfragen
+- schnellere Erstreaktion
+- ein Abschluss refinanziert das System, nicht nur Zeitersparnis rechtfertigt den Preis
+- Systeme statt Copy-Paste zwischen Tools
+- messbares Setup, kein unnötiger SaaS-Ballast
+
+**Änderung gegenüber Version 1:** Das Umsatzargument (ein Abschluss bringt einen fünfstelligen Betrag, das System refinanziert sich mit dem ersten geretteten Abschluss) ist jetzt das primäre Argument auf der AQuT-Seite, Zeitersparnis ist ein unterstützender Beleg, nicht die Hauptaussage. Grund: Umsatzverlust ist für den Ziel-GF schmerzhafter als Personalkosten.
+
+## Quantifizierung von Schmerz, nur mit eigenen Angaben
+
+Wird auf der AQuT-Seite ein interaktiver Rechner eingesetzt, gilt zwingend:
+
+- Jede angezeigte Zahl muss vollständig aus Eingaben des Besuchers berechnet sein (zum Beispiel Anfragevolumen, Zeitaufwand pro Anfrage, eigener Stundensatz).
+- RAIS behauptet nie selbst eine Zahl über den Besucher oder sein Büro.
+- Kalkulierte Ausgaben sind erlaubt und erwünscht, unbelegte oder von RAIS angenommene Ausgaben nicht.
+
+Details zum Rechner-Konzept liegen im separaten Design-Dokument zur Website-Architektur.
 
 ## Visual Direction
 
-The site should feel like a premium commercial partner, not a startup landing page.
+Die Website soll wie ein hochwertiger kommerzieller Partner wirken, nicht wie eine Startup-Landingpage.
 
-Use:
+Verwenden:
 
-- warm whitespace
-- restrained contrast
-- clear section pacing
-- proof-oriented layouts
-- calm seriousness
+- warmer Weißraum
+- zurückhaltender Kontrast
+- klare Sektionsabstände
+- beweisorientierte Layouts
+- ruhige Ernsthaftigkeit
 
-Avoid:
+Vermeiden:
 
-- dashboard fantasy
-- neon or sci-fi styling
-- generic AI agency cues
-- decorative noise without purpose
+- Dashboard-Fantasie
+- Neon- oder Sci-Fi-Stilistik
+- generische AI-Agentur-Signale
+- dekoratives Rauschen ohne Zweck
 
-## Offer and CTA Guidance
+## Offer- und CTA-Guidance
 
-The homepage should present automation as the core story.
-Supporting capabilities appear as extensions, not equal-weight products.
+Die Startseite ist die Unternehmensseite von RAIS (Hero, Trust, Referenzen-Teaser, gewichtetes System-Portfolio, ICP). Die AQuT-Seite vertieft ein System. Paket 2 erscheint dort als Ausblick, nicht als zweites Angebot.
 
-CTAs should explain the value of the conversation.
-Weak permission-asking (“Klingt das interessant?”) is out.
+CTAs sollen den Wert des Gesprächs erklären. Schwaches Erlaubnis-Einholen ("Klingt das interessant?") ist untersagt.
 
 ## Quality Standard
 
-If a page could plausibly belong to any freelancer, agency, or SaaS consultant, it is not specific enough.
-If copy reads like a vertical-only rebrand with no technical credibility, it is too narrow.
+Wenn eine Seite plausibel zu jedem beliebigen Freelancer, jeder Agentur oder jedem SaaS-Berater passen könnte, ist sie nicht spezifisch genug.
+
+**Geändert gegenüber Version 1:** Der frühere Zusatz, eine reine Immobilien-Ausrichtung sei "zu eng", ist gestrichen. Die volle, unverwässerte Fokussierung auf Immobilienmakler ist jetzt der Qualitätsstandard, nicht ein Risiko, das abgefedert werden muss.

@@ -1,0 +1,117 @@
+{
+  "outputComponents": [
+    {
+      "design": {
+        "screens": [
+          {
+            "designSystem": {
+              "designSystem": {
+                "displayName": "RAIS Editorial Commercial",
+                "theme": {
+                  "colorMode": "LIGHT",
+                  "colorVariant": "FIDELITY",
+                  "customColor": "#EC6A37",
+                  "designMd": "# RAIS Design System\n\n## Brand\nRAIS (Ritz AI Solutions) — practical automation partner for independent German real-estate brokerages (5–25 staff). Commercial clarity with editorial restraint. Warm, credible, composed. Not startup-glassy, not dark-tech, not generic SaaS card grids.\n\n## Palette (exact)\n- Cloud background: #F5F2EC\n- Warm Linen surface: #FBF8F3\n- Charcoal text: #2F2A24\n- Stone muted: #7B746B\n- Border: #D9D1C7\n- Sage support: #789464\n- Dark Pistachio: #3C5A2A\n- Mandarin Orange accent ONLY for primary CTA / key emphasis: #EC6A37 (under 5% surface area)\n- Never use orange as body text on Cloud\n\n## Typography\n- Headlines: Source Serif 4 — text serif, moderate contrast, commercial-serious (NOT display Playfair)\n- Body: Libre Franklin — neutral grotesque, not geometric\n- Labels: JetBrains Mono sparingly for small system cues only — never headlines\n\n## Layout principles\n- One composition per first viewport: brand, one headline, one supporting sentence, one CTA group, one dominant full-bleed hero image\n- No cards in hero; cards only for interactive modules\n- Max content width 1100px; section spacing ≥120px desktop\n- One primary CTA per page: \"Kostenlosen Audit buchen\"\n- German copy, no em-dashes, no ALL-CAPS eyebrows\n- Trust via EU hosting / AVV — no fake tech logos\n\n## Anti-patterns\n- Purple gradients, glassmorphism, glow, pill clusters, stat strips in hero\n- Multiple equal CTAs, decorative numbered lists without sequence\n- Generic AI cream+terracotta display-serif cliché — keep palette but stay editorial and quiet\n",
+                  "headlineFont": "SOURCE_SERIF_4",
+                  "overrideNeutralColor": "#F5F2EC",
+                  "overridePrimaryColor": "#EC6A37",
+                  "overrideSecondaryColor": "#789464",
+                  "overrideTertiaryColor": "#3C5A2A",
+                  "roundness": "ROUND_EIGHT"
+                }
+              },
+              "name": "assets/9525258838078977768",
+              "version": "1"
+            },
+            "generatedBy": "interactive_ui_controller",
+            "height": "768",
+            "id": "6e2f5a37a4d64f10b7e205297b92b94b",
+            "name": "projects/15630995938242958857/screens/6e2f5a37a4d64f10b7e205297b92b94b",
+            "prompt": "High-fidelity, professional architectural photography of a modern, high-end German real estate brokerage office. Calm, natural daylight. A clean desk with a laptop, some neatly stacked documents, and a designer chair. Minimalist aesthetic, no clutter. Muted tones: warm wood, linen, soft greys. Authentic work atmosphere, not a sterile showroom. Edge-to-edge composition, low contrast for background use.",
+            "screenMetadata": {
+              "agentType": "PRO_AGENT",
+              "status": "COMPLETE"
+            },
+            "screenType": "IMAGE",
+            "screenshot": {
+              "downloadUrl": "https://lh3.googleusercontent.com/aida/AP1WRLtnWPsg1oCxGkcZ0v63qrmWeG9rRtCYioli-rizeF1rrF3VucAPWi4U8lrOIZrQfzfBOhFeMchpcScSwpIfIA2RerUXCnng0Ypz9WBj1Lprj3zQkwehCUR81pg6LDA5Rnlu1qitPhExhQ774EMPR48FaqS4BMh7xM1nD_A2Zbuths4cDI7CqX4aSo35jzlz2tNPGwcBAUAzpWZj2hN8a02lEmTaeKIlnteHqiXLGCguBjHr_WBhXDfu67CB",
+              "name": "projects/15630995938242958857/files/b399e0e4547945b9bc39ca87da25e07d"
+            },
+            "theme": {},
+            "title": "High-fidelity, professional architectural photography of a modern, high-end German real estate brokerage office. Calm, natural daylight. A clean desk with a laptop, some neatly stacked documents, and a designer chair. Minimalist aesthetic, no clutter. Muted tones: warm wood, linen, soft greys. Authentic work atmosphere, not a sterile showroom. Edge-to-edge composition, low contrast for background use.",
+            "width": "1376"
+          },
+          {
+            "designSystem": {
+              "designSystem": {
+                "displayName": "RAIS Editorial Commercial",
+                "theme": {
+                  "colorMode": "LIGHT",
+                  "colorVariant": "FIDELITY",
+                  "customColor": "#EC6A37",
+                  "designMd": "# RAIS Design System\n\n## Brand\nRAIS (Ritz AI Solutions) — practical automation partner for independent German real-estate brokerages (5–25 staff). Commercial clarity with editorial restraint. Warm, credible, composed. Not startup-glassy, not dark-tech, not generic SaaS card grids.\n\n## Palette (exact)\n- Cloud background: #F5F2EC\n- Warm Linen surface: #FBF8F3\n- Charcoal text: #2F2A24\n- Stone muted: #7B746B\n- Border: #D9D1C7\n- Sage support: #789464\n- Dark Pistachio: #3C5A2A\n- Mandarin Orange accent ONLY for primary CTA / key emphasis: #EC6A37 (under 5% surface area)\n- Never use orange as body text on Cloud\n\n## Typography\n- Headlines: Source Serif 4 — text serif, moderate contrast, commercial-serious (NOT display Playfair)\n- Body: Libre Franklin — neutral grotesque, not geometric\n- Labels: JetBrains Mono sparingly for small system cues only — never headlines\n\n## Layout principles\n- One composition per first viewport: brand, one headline, one supporting sentence, one CTA group, one dominant full-bleed hero image\n- No cards in hero; cards only for interactive modules\n- Max content width 1100px; section spacing ≥120px desktop\n- One primary CTA per page: \"Kostenlosen Audit buchen\"\n- German copy, no em-dashes, no ALL-CAPS eyebrows\n- Trust via EU hosting / AVV — no fake tech logos\n\n## Anti-patterns\n- Purple gradients, glassmorphism, glow, pill clusters, stat strips in hero\n- Multiple equal CTAs, decorative numbered lists without sequence\n- Generic AI cream+terracotta display-serif cliché — keep palette but stay editorial and quiet\n",
+                  "headlineFont": "SOURCE_SERIF_4",
+                  "overrideNeutralColor": "#F5F2EC",
+                  "overridePrimaryColor": "#EC6A37",
+                  "overrideSecondaryColor": "#789464",
+                  "overrideTertiaryColor": "#3C5A2A",
+                  "roundness": "ROUND_EIGHT"
+                }
+              },
+              "name": "assets/9525258838078977768",
+              "version": "1"
+            },
+            "deviceType": "DESKTOP",
+            "generatedBy": "figaro_agent",
+            "height": "7290",
+            "htmlCode": {
+              "downloadUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzllYTdkZTBlYzdiZjQyYzhhNGMyMGIyZjM2MzVjOTNiEgsSBxD61PHhohMYAZIBJAoKcHJvamVjdF9pZBIWQhQxNTYzMDk5NTkzODI0Mjk1ODg1Nw&filename=&opi=96797242",
+              "mimeType": "text/html",
+              "name": "projects/15630995938242958857/files/351ba52edf404a2b9c5946f7f342efe0"
+            },
+            "id": "daa04390746e43fda40f8055805177ff",
+            "name": "projects/15630995938242958857/screens/daa04390746e43fda40f8055805177ff",
+            "prompt": "Desktop marketing homepage for RAIS (ritz-ai.solutions). \n\nVISUALS:\n- Background: {{DATA:IMAGE:IMAGE_3}} as a full-bleed hero background with a subtle dark overlay.\n- Colors: Warm Cloud (#F5F2EC) and Warm Linen (#FBF8F3) for sections. Charcoal (#2F2A24) for headlines. Stone (#7B746B) for body. Mandarin (#EC6A37) for buttons.\n- Typography: Source Serif 4 headlines, Libre Franklin body.\n- Style: Editorial, generous whitespace, max width 1100px, 120px section gaps. No cards in hero, no glassmorphism.\n\nSECTIONS:\n1. Fixed Top Nav: RAIS wordmark, links (Systeme, Referenzen, Über uns, Persönlichkeit), CTA 'Audit buchen'.\n2. Hero: Large RAIS branding. Headline: 'Systeme für Maklerbüros, die Anfragen nicht verlieren wollen.' Supporting sentence: 'Weniger manuelle Bearbeitungszeit und mehr gebuchte Ersttermine für Ihr Team.' CTAs: Primary 'Kostenlosen Audit buchen', Secondary 'Live-Systeme ansehen'.\n3. Trust Strip (Thin): Text labels: 'EU-Hosting Deutschland', 'Datenbank Frankfurt', 'AVV Art. 28 DSGVO', 'Kein Datentransfer außerhalb der EU'.\n4. Reference Teaser: 'Haller Immobilienberatung' honest teaser with link to case study.\n5. Live Systems Asymmetric Bento: Large 'AQuT' (Anfragen qualifizieren und Termine buchen). Peers: 'Onboarding WFS', 'Lead Scraping LMLF', 'CRM', 'Habit-Tracker', 'Agentic Content'. Context: Makler/Intern/Content.\n6. ICP Section (Full-bleed Sage #789464 background, Warm Linen text): Target: Unabhängige Maklerbüros (5–25 Personen). Exclude: Solos, Franchises, Bankgebunden, Hausverwaltungen.\n7. Audit Module: Invitation to free process audit.\n8. Footer: Impressum, Datenschutz.\n\nGerman copy. Sentence case. No em dashes. No pills/chips/floating badges.",
+            "screenMetadata": {
+              "agentType": "PRO_AGENT",
+              "status": "COMPLETE"
+            },
+            "screenType": "DESIGN",
+            "screenshot": {
+              "downloadUrl": "https://lh3.googleusercontent.com/aida/AP1WRLsNxrvQNHZziCMMn_4rc15gy4wk5NblE1DAHT-sQf8TqdohYZp30m-DTbBsJRTFSyBAUljOQlKT26fK5QtAJFxjD9o-Jd9ZLpweFcjqzjXw4_RP_R9XMjtzttpn0Mrn4ejDZ-I24IhMyhzB3ZdbKo8OpQkpLxX6N-shxsZamf3faNrNb6rlt_WvXR3Y9soJhnQcUuN7ucXUezraA4JiBAP7v7Mtuv8tH9MNqG5_XPUi-OSIaeqYhGxi5juP",
+              "name": "projects/15630995938242958857/files/5eafddab5ada40c5b96bddd81dad4b6d"
+            },
+            "theme": {
+              "colorMode": "LIGHT",
+              "colorVariant": "FIDELITY",
+              "customColor": "#EC6A37",
+              "headlineFont": "SOURCE_SERIF_4",
+              "overrideNeutralColor": "#F5F2EC",
+              "overridePrimaryColor": "#EC6A37",
+              "overrideSecondaryColor": "#789464",
+              "overrideTertiaryColor": "#3C5A2A",
+              "roundness": "ROUND_EIGHT"
+            },
+            "title": "RAIS — Marketing Homepage",
+            "width": "2560"
+          }
+        ],
+        "theme": {}
+      }
+    },
+    {
+      "text": "I've designed the RAIS desktop marketing homepage, focusing on editorial clarity and professional restraint. \n\nKey design decisions:\n- **Visual Atmosphere**: Used a \"Warm Linen\" and \"Warm Cloud\" palette to create a high-end, paper-like feel that conveys trust and operational stability for the German market.\n- **Hero Composition**: Implemented an edge-to-edge photograph of a calm brokerage office (High-fidelity, professional architectural photography of a modern, high-end German real estate brokerage office. Calm, natural daylight. A clean desk with a laptop, some neatly stacked documents, and a designer chair. Minimalist aesthetic, no clutter. Muted tones: warm wood, linen, soft greys. Authentic work atmosphere, not a sterile showroom. Edge-to-edge composition, low contrast for background use.) as a background plane, with a restrained overlay to ensure the headline remains the primary focus.\n- **Systematic Clarity**: The \"Live-Systeme\" section uses an asymmetric bento layout rather than a generic grid, providing visual hierarchy to the core 'AQuT' system.\n- **Proof & Trust**: The ICP section is rendered in a full-bleed Sage block to create a distinct pause in the scroll, clearly defining the target audience through editorial restraint rather than loud graphics.\n- **Typography**: Paired Source Serif 4 headlines with Libre Franklin body text to achieve a balance between authority and modern functionality.\n\nThe design is optimized for a 1100px content width with generous 120px section spacing to maintain a sophisticated, uncluttered look."
+    },
+    {
+      "suggestion": "Show me a mobile version of this page"
+    },
+    {
+      "suggestion": "Can we add more details to the AQuT system?"
+    },
+    {
+      "suggestion": "Let's adjust the Sage color intensity"
+    }
+  ],
+  "projectId": "15630995938242958857",
+  "sessionId": "2770293103809346608"
+}

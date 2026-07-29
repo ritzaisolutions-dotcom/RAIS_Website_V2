@@ -8,7 +8,7 @@
   var SUPABASE_URL = cfg.supabaseUrl || '';
   var SUPABASE_ANON = cfg.supabaseAnonKey || '';
 
-  /* Unveränderliche Browser-ID (kein Personenbezug, nur zur Deduplizierung) */
+  /* Pseudonyme Browser-ID (personenbezogen, nur zur Deduplizierung; siehe Datenschutzerklärung) */
   function generateUUID() {
     if (window.crypto && window.crypto.randomUUID) {
       return window.crypto.randomUUID();

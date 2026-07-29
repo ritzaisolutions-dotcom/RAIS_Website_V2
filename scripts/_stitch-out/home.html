@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="de"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RAIS - Ritz AI Solutions</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600&amp;family=Source+Serif+4:opsz,wght@8..60,400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        cloud: "#F5F2EC",
+                        linen: "#FBF8F3",
+                        charcoal: "#2F2A24",
+                        stone: "#7B746B",
+                        border: "#D9D1C7",
+                        sage: "#789464",
+                        pistachio: "#3C5A2A",
+                        mandarin: "#EC6A37",
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        'section': '120px',
+                    },
+                    fontFamily: {
+                        headline: ["\"Source Serif 4\"", "serif"],
+                        display: ["\"Source Serif 4\"", "serif"],
+                        body: ["\"Libre Franklin\"", "sans-serif"],
+                        label: ["\"JetBrains Mono\"", "monospace"],
+                    },
+                    maxWidth: {
+                        'content': '1100px',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-cloud text-charcoal font-body antialiased selection:bg-mandarin selection:text-linen">
+<!-- TopNavBar -->
+<nav class="bg-[#FBF8F3] dark:bg-[#2F2A24] text-[#2F2A24] dark:text-[#FBF8F3] docked full-width top-0 sticky border-b border-[#D9D1C7] dark:border-[#7B746B] z-50">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-[1100px] mx-auto">
+<a class="font-headline text-xl font-bold text-[#2F2A24] dark:text-[#FBF8F3] tracking-tight" href="#">RAIS</a>
+<div class="hidden md:flex space-x-8 items-center font-body text-base">
+<a class="text-[#2F2A24] dark:text-[#FBF8F3] font-bold border-b-2 border-[#EC6A37] pb-1 hover:text-[#EC6A37] transition-colors duration-200" href="#">Systeme</a>
+<a class="text-[#7B746B] dark:text-[#D9D1C7] hover:text-[#2F2A24] hover:text-[#EC6A37] transition-colors duration-200" href="#">Referenzen</a>
+<a class="text-[#7B746B] dark:text-[#D9D1C7] hover:text-[#2F2A24] hover:text-[#EC6A37] transition-colors duration-200" href="#">Über uns</a>
+<a class="text-[#7B746B] dark:text-[#D9D1C7] hover:text-[#2F2A24] hover:text-[#EC6A37] transition-colors duration-200" href="#">Persönlichkeit</a>
+</div>
+<button class="bg-mandarin text-linen px-6 py-2.5 rounded hover:bg-opacity-90 transition-opacity font-medium hidden md:block">
+                Kostenlosen Audit buchen
+            </button>
+<button class="md:hidden text-charcoal">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative min-h-[85vh] flex items-center pt-16 pb-32">
+<div class="absolute inset-0 z-0 bg-charcoal">
+<img alt="Modern office environment" class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCi41M7Xw40SzJwlXXCATPwMMLBpwxDhCaJk4Tv73oFv_F9wPVeYLQBzBfTUPH5twztH4AGbO57r1vPuU3eMFUJ37wVSFNbWy2xT6OvFxqcaAXSFCeSrorzKLe2L4kY1ytCSXaHzncGIvH0szZaFVihI0dYFO9sHVxhSuZjLpo_0OaCENy-OQEbKzsp9plNQjZpl4Xid__IdcT2DXBlBlKQ214S-DBHgr_otcsNXHbpeXV8DGn5vCSCvnF_z4xpgbMNlemrk0oOJ7fW"/>
+</div>
+<div class="relative z-10 w-full px-8 max-w-[1100px] mx-auto text-linen">
+<span class="font-label text-sm tracking-widest text-linen/70 mb-6 block uppercase">RAIS</span>
+<h1 class="font-headline text-5xl md:text-6xl lg:text-7xl leading-tight mb-8 max-w-3xl font-medium">
+                Systeme für Maklerbüros, die Anfragen nicht verlieren wollen.
+            </h1>
+<p class="font-body text-xl md:text-2xl text-linen/90 max-w-2xl mb-12 font-light">
+                Weniger manuelle Bearbeitungszeit und mehr gebuchte Ersttermine für Ihr Team.
+            </p>
+<div class="flex flex-col sm:flex-row gap-6">
+<button class="bg-mandarin text-linen px-8 py-4 rounded font-medium text-lg hover:bg-opacity-90 transition-opacity text-center">
+                    Kostenlosen Audit buchen
+                </button>
+<button class="bg-transparent border border-linen text-linen px-8 py-4 rounded font-medium text-lg hover:bg-linen hover:text-charcoal transition-colors text-center">
+                    Live-Systeme ansehen
+                </button>
+</div>
+</div>
+</header>
+<!-- Trust Strip -->
+<div class="bg-linen border-b border-border py-4">
+<div class="max-w-[1100px] mx-auto px-8 flex flex-wrap justify-between items-center gap-6 font-label text-xs text-stone">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">shield</span>
+                EU-Hosting Deutschland
+            </div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">database</span>
+                Datenbank Frankfurt
+            </div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">gavel</span>
+                AVV Art. 28 DSGVO
+            </div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+                Kein Datentransfer außerhalb der EU
+            </div>
+</div>
+</div>
+<!-- Main Content Area -->
+<main class="space-y-section py-section">
+<!-- Reference Teaser -->
+<section class="max-w-[1100px] mx-auto px-8">
+<div class="border-l-4 border-mandarin pl-8 py-2">
+<h2 class="font-headline text-3xl text-charcoal mb-4">Haller Immobilienberatung</h2>
+<p class="font-body text-lg text-stone max-w-2xl mb-6">
+                    Eine ehrliche Betrachtung, wie strukturierte Anfragequalifizierung den Arbeitsalltag eines etablierten Maklerbüros verändert hat.
+                </p>
+<a class="inline-flex items-center gap-2 font-medium text-charcoal hover:text-mandarin transition-colors group" href="#">
+                    Fallstudie lesen
+                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</section>
+<!-- Live Systems Bento -->
+<section class="max-w-[1100px] mx-auto px-8">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="font-headline text-4xl text-charcoal mb-4">Produktivsysteme</h2>
+<p class="font-body text-stone">Zweckmäßige Automatisierung für den Makleralltag.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
+<!-- AQuT (Large) -->
+<div class="md:col-span-2 md:row-span-2 bg-linen p-8 border border-border rounded flex flex-col justify-between group hover:border-mandarin/50 transition-colors">
+<div>
+<div class="font-label text-xs text-stone mb-4 uppercase tracking-wider">Kernsystem</div>
+<h3 class="font-headline text-3xl text-charcoal mb-2">AQuT</h3>
+<p class="font-body text-stone max-w-md">Anfragen qualifizieren und Termine buchen. Vollständig automatisiert zwischen Erstkontakt und Kalendereintrag.</p>
+</div>
+<div class="flex justify-between items-end">
+<span class="font-label text-xs bg-cloud px-3 py-1 rounded text-stone">Makler</span>
+<span class="material-symbols-outlined text-border group-hover:text-mandarin transition-colors text-3xl">event_available</span>
+</div>
+</div>
+<!-- Onboarding -->
+<div class="bg-linen p-6 border border-border rounded flex flex-col justify-between group hover:border-stone transition-colors">
+<div>
+<h3 class="font-headline text-xl text-charcoal mb-2">Onboarding WFS</h3>
+<p class="font-body text-sm text-stone">Strukturierte Objektannahme.</p>
+</div>
+<div class="flex justify-between items-end">
+<span class="font-label text-xs bg-cloud px-3 py-1 rounded text-stone">Intern</span>
+<span class="material-symbols-outlined text-border group-hover:text-stone transition-colors">description</span>
+</div>
+</div>
+<!-- Lead Scraping -->
+<div class="bg-linen p-6 border border-border rounded flex flex-col justify-between group hover:border-stone transition-colors">
+<div>
+<h3 class="font-headline text-xl text-charcoal mb-2">Lead Scraping LMLF</h3>
+<p class="font-body text-sm text-stone">Marktbeobachtung und Akquise.</p>
+</div>
+<div class="flex justify-between items-end">
+<span class="font-label text-xs bg-cloud px-3 py-1 rounded text-stone">Makler</span>
+<span class="material-symbols-outlined text-border group-hover:text-stone transition-colors">troubleshoot</span>
+</div>
+</div>
+<!-- CRM -->
+<div class="bg-linen p-6 border border-border rounded flex flex-col justify-between group hover:border-stone transition-colors">
+<div>
+<h3 class="font-headline text-xl text-charcoal mb-2">CRM Integration</h3>
+<p class="font-body text-sm text-stone">Nahtloser Datenfluss.</p>
+</div>
+<div class="flex justify-between items-end">
+<span class="font-label text-xs bg-cloud px-3 py-1 rounded text-stone">Intern</span>
+<span class="material-symbols-outlined text-border group-hover:text-stone transition-colors">sync</span>
+</div>
+</div>
+<!-- Habit Tracker -->
+<div class="bg-linen p-6 border border-border rounded flex flex-col justify-between group hover:border-stone transition-colors">
+<div>
+<h3 class="font-headline text-xl text-charcoal mb-2">Habit-Tracker</h3>
+<p class="font-body text-sm text-stone">Team-Routinen stärken.</p>
+</div>
+<div class="flex justify-between items-end">
+<span class="font-label text-xs bg-cloud px-3 py-1 rounded text-stone">Intern</span>
+<span class="material-symbols-outlined text-border group-hover:text-stone transition-colors">checklist</span>
+</div>
+</div>
+<!-- Agentic Content -->
+<div class="bg-linen p-6 border border-border rounded flex flex-col justify-between group hover:border-stone transition-colors">
+<div>
+<h3 class="font-headline text-xl text-charcoal mb-2">Agentic Content</h3>
+<p class="font-body text-sm text-stone">Automatisierte Exposé-Erstellung.</p>
+</div>
+<div class="flex justify-between items-end">
+<span class="font-label text-xs bg-cloud px-3 py-1 rounded text-stone">Content</span>
+<span class="material-symbols-outlined text-border group-hover:text-stone transition-colors">edit_document</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ICP Section -->
+<section class="bg-sage py-24 text-linen">
+<div class="max-w-[1100px] mx-auto px-8 grid md:grid-cols-2 gap-16">
+<div>
+<h2 class="font-headline text-4xl mb-6">Für wen wir arbeiten.</h2>
+<p class="font-body text-lg text-linen/90 leading-relaxed">
+                        Wir konzentrieren uns auf unabhängige Maklerbüros im deutschsprachigen Raum. Spezialisierung erfordert klare Grenzen.
+                    </p>
+</div>
+<div class="space-y-8">
+<div>
+<h3 class="font-label text-sm uppercase tracking-widest text-pistachio mb-4 border-b border-pistachio/30 pb-2">Fokus</h3>
+<p class="font-body text-xl">Unabhängige Maklerbüros</p>
+<p class="font-label text-sm mt-1 text-linen/70">5–25 Personen im Team</p>
+</div>
+<div>
+<h3 class="font-label text-sm uppercase tracking-widest text-linen/50 mb-4 border-b border-linen/20 pb-2">Nicht in unserer Zielgruppe</h3>
+<ul class="font-body space-y-2 text-linen/80">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px]">close</span> Einzelkämpfer &amp; Solos</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px]">close</span> Franchise-Systeme</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px]">close</span> Bankgebundene Makler</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px]">close</span> Reine Hausverwaltungen</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Audit Module -->
+<section class="max-w-[1100px] mx-auto px-8">
+<div class="bg-charcoal text-linen p-12 md:p-16 rounded-lg text-center">
+<h2 class="font-headline text-3xl md:text-4xl mb-4">Bereit für Klarheit in Ihren Prozessen?</h2>
+<p class="font-body text-lg text-stone max-w-2xl mx-auto mb-10">
+                    Lassen Sie uns in einem unverbindlichen Audit prüfen, wo in Ihrem Büro manueller Aufwand reduziert werden kann.
+                </p>
+<button class="bg-mandarin text-linen px-8 py-4 rounded font-medium text-lg hover:bg-opacity-90 transition-opacity">
+                    Prozess-Audit anfragen
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#F5F2EC] dark:bg-[#2F2A24] border-t border-[#D9D1C7] dark:border-[#7B746B] w-full py-12 px-8">
+<div class="max-w-[1100px] mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="font-headline text-lg font-bold text-[#2F2A24] dark:text-[#FBF8F3]">
+                RAIS
+            </div>
+<div class="flex space-x-6 font-body text-sm">
+<a class="text-[#7B746B] hover:text-[#EC6A37] transition-all duration-200" href="#">Impressum</a>
+<a class="text-[#7B746B] hover:text-[#EC6A37] transition-all duration-200" href="#">Datenschutz</a>
+<a class="text-[#7B746B] hover:text-[#EC6A37] transition-all duration-200" href="#">AGB</a>
+<a class="text-[#7B746B] hover:text-[#EC6A37] transition-all duration-200" href="#">Kontakt</a>
+</div>
+<div class="font-label text-xs text-[#7B746B]">
+                © 2024 Ritz AI Solutions. Alle Rechte vorbehalten. EU-Hosting &amp; DSGVO-konform.
+            </div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-label="Kuratiertes YouTube-Vorschaubild">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3C5A2A"/>
+      <stop offset="100%" stop-color="#2F2A24"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#g)"/>
+  <circle cx="640" cy="340" r="64" fill="#EC6A37"/>
+  <polygon points="620,310 620,370 675,340" fill="#FBF8F3"/>
+  <text x="640" y="460" text-anchor="middle" fill="#FBF8F3" font-family="Georgia, serif" font-size="42">Kevin Ritz � KI und Automation</text>
+  <text x="640" y="510" text-anchor="middle" fill="#D9D1C7" font-family="system-ui, sans-serif" font-size="22">Kuratiert f�r den RAIS Business-Kontext</text>
+</svg>

@@ -23,6 +23,7 @@
 ## Manual delta that must remain in templates
 
 - Supabase
+- Notion (Website Audit Leads)
 - Self-hosted `n8n` at Hostinger
 - Any stack-specific legal clarifications not modeled cleanly by `eRecht24`
 - Branding and `§ 19 UStG` notice in the legal notice wrapper

@@ -1,0 +1,6 @@
+[functions.submit-audit-lead]
+# Öffentliches Lead-Formular: Der Aufruf trägt nur den Publishable-Key (kein JWT),
+# daher kein Plattform-JWT-Gating. Die Function schützt sich selbst über
+# Origin-Allowlist, Rate-Limit (register_audit_lead_attempt), Honeypot/Timing und
+# strikte Eingabevalidierung.
+verify_jwt = false

@@ -262,9 +262,14 @@
 </head>
 <body>
 <header class="site-shell topbar">
-    <a href="index.html" class="brand">RAIS</a>
-    <nav class="topnav" aria-label="Rechtliche Navigation">
-        <a href="index.html">Startseite</a>
+    <a href="/" class="brand">RAIS</a>
+    <nav class="topnav" aria-label="Seitenlinks">
+        <a href="/">Startseite</a>
+        <a href="/#systeme">Systeme</a>
+        <a href="referenzen.html">Referenzen</a>
+        <a href="ueber-uns.html">Über uns</a>
+        <a href="persoenlichkeit.html">Persönlichkeit</a>
+        <a href="/#contact">Audit buchen</a>
         <a href="impressum.html">Impressum</a>
         <a href="datenschutz.html">Datenschutz</a>
     </nav>
@@ -330,13 +335,13 @@ E-Mail: kevin@ritz-ai.solutions</p>
                 <p>Wir verwenden auf dieser Website das Open-Source-Consent-Management-Tool <strong>Klaro</strong>, um Einwilligungen für einwilligungsbedürftige Dienste zu verwalten und technisch abzubilden. Klaro wird von unserem eigenen Server ausgeliefert (selbst gehostet) – es werden keine Consent-Daten an den Klaro-Anbieter oder externe Consent-CDNs übermittelt.</p>
                 <p>Die Consent-Entscheidungen werden im Browser des Nutzers (localStorage) gespeichert und zur Erfüllung unserer Nachweispflicht gemäß Art.&nbsp;7 Abs.&nbsp;1 DSGVO zusätzlich in unserer Supabase-Datenbank synchronisiert (siehe nächster Absatz). Rechtsgrundlage für den Einsatz von Klaro ist Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;c DSGVO sowie Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;f DSGVO (berechtigtes Interesse an der rechtssicheren Verwaltung von Einwilligungen).</p>
                 <p>Weitere Informationen zu Klaro: <a href="https://klaro.org" target="_blank" rel="noopener noreferrer">https://klaro.org</a>.</p>
-                <p>Zur Erfüllung unserer Nachweispflicht nach Art.&nbsp;7 Abs.&nbsp;1 DSGVO speichern wir Ihre Consent-Entscheidung zusätzlich zur lokalen Speicherung in unserer Supabase-Datenbank (Tabelle für Consent-Nachweise; verarbeitet werden eine zufällig erzeugte, nicht personenbezogene Browser-ID, die getroffene Auswahl je Dienst und die aufgerufene Seite). Die zufällige Browser-ID wird ebenfalls lokal in Ihrem Browser (localStorage) gespeichert, um Mehrfacheinträge zu vermeiden. Rechtsgrundlage ist Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;c DSGVO i.&nbsp;V.&nbsp;m. Art.&nbsp;7 Abs.&nbsp;1 DSGVO.</p>
+                <p>Zur Erfüllung unserer Nachweispflicht nach Art.&nbsp;7 Abs.&nbsp;1 DSGVO speichern wir Ihre Consent-Entscheidung zusätzlich zur lokalen Speicherung in unserer Supabase-Datenbank (Tabelle für Consent-Nachweise; verarbeitet werden eine zufällig erzeugte pseudonyme Browser-ID, die getroffene Auswahl je Dienst und die aufgerufene Seite). Diese Browser-ID wird als personenbezogenes Datum behandelt und ebenfalls lokal in Ihrem Browser (localStorage) gespeichert, um Mehrfacheinträge zu vermeiden. Rechtsgrundlage ist Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;c DSGVO i.&nbsp;V.&nbsp;m. Art.&nbsp;7 Abs.&nbsp;1 DSGVO.</p>
 
                 <h3>Sentry (Fehlerüberwachung)</h3>
                 <p>Zur Erkennung technischer Störungen setzen wir Sentry ein (Functional Software Inc., USA). Der Dienst wird erst nach Einwilligung über Klaro geladen. Die Verarbeitung erfolgt über EU-Server (<code>ingest.de.sentry.io</code>). Rechtsgrundlage: Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;a DSGVO i.&nbsp;V.&nbsp;m. §&nbsp;25 Abs.&nbsp;1 TDDDG. Weitere Informationen: <a href="https://sentry.io/privacy/" target="_blank" rel="noopener noreferrer">https://sentry.io/privacy/</a>.</p>
 
                 <h3>Cal.com erst nach bewusster Nutzeraktion</h3>
-                <p>Die externe Cal.com-Einbindung wird auf dieser Website nicht bereits beim bloßen Seitenaufruf geladen. Das Buchungs-iframe wird erst nach einer ausdrücklichen Nutzeraktion in der Buchungssektion nachgeladen. Ohne diesen Klick bleibt es bei einem externen Link zu Cal.com.</p>
+                <p>Die externe Buchungsseite von Cal.com wird auf dieser Website weder eingebettet noch beim Seitenaufruf geladen. Erst wenn Sie den deutlich gekennzeichneten Link zur Terminbuchung aktiv auswählen, wird Cal.com in einem neuen Tab geöffnet. Angaben aus dem Buchungsmodal werden nicht vorbefüllt oder an Cal.com übergeben.</p>
 
 <h3>Supabase als externer Datenbankdienst</h3>
                 <p>Für einzelne Formulare und strukturierte Datenspeicherung auf dieser Website nutzen wir Supabase als externen technischen Dienstleister. Anbieter ist Supabase, Inc., 970 Toa Payoh North, Singapur. Supabase verarbeitet personenbezogene Daten in unserem Auftrag als Auftragsverarbeiter. Dabei kann es insbesondere um Formularinhalte, Kontaktdaten, technisch erforderliche Metadaten und gespeicherte Datensätze gehen, die zur Bearbeitung von Anfragen, zur Bereitstellung von Funktionen oder zur Verwaltung von Leads erforderlich sind.</p>
@@ -349,8 +354,8 @@ E-Mail: kevin@ritz-ai.solutions</p>
                 <p>Nach der aktuellen Datenschutzerklärung von Hostinger ist Hostinger International Ltd. in Zypern ansässig. Weitere Informationen zur Datenverarbeitung durch Hostinger finden Sie unter <a href="https://www.hostinger.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">https://www.hostinger.com/legal/privacy-policy</a>.</p>
 
                 <h3>Terminanfrage über das Buchungsmodal</h3>
-                <p>Über das Buchungsmodal auf unserer Startseite können Sie ein kostenloses Prozess-Audit (ca. 60 Minuten) anfragen. Dabei verarbeiten wir die von Ihnen eingegebenen Daten (Name, E-Mail-Adresse, optional die von Ihnen ausgewählte Herausforderung („Pain Point"), Teamgröße, optional Ihre Branche als Makler oder Hausverwaltung sowie die Quelle Ihrer Anfrage) zum Zweck der Vorbereitung und Durchführung des Audits. Die Angabe dieser Daten setzt voraus, dass Sie zuvor bestätigt haben, unsere Datenschutzerklärung gelesen zu haben.</p>
-                <p>Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, da Sie mit der Anfrage die Durchführung vorvertraglicher Maßnahmen anstoßen. Die Daten werden in unserer Supabase-Datenbank gespeichert und im Anschluss an die Terminbuchung (Cal.com) zur Vorbereitung genutzt. Die Speicherung erfolgt grundsätzlich für bis zu 24 Monate, sofern keine Kundenbeziehung begründet wird oder gesetzliche Aufbewahrungspflichten entgegenstehen.</p>
+                <p>Über das Buchungsmodal auf unserer Startseite können Sie ein kostenloses Prozess-Audit (ca. 60 Minuten) anfragen. Dabei verarbeiten wir die von Ihnen eingegebenen Daten (Name, E-Mail-Adresse, optional die von Ihnen ausgewählte Herausforderung („Pain Point"), Teamgröße, optional Ihre Branche als Makler oder Hausverwaltung sowie die Quelle Ihrer Anfrage) zum Zweck der Vorbereitung und Durchführung des Audits. Die Angaben werden vor der Speicherung serverseitig auf erlaubte Werte und Längen geprüft. Zum Schutz vor Missbrauch begrenzen wir Anfragen und speichern dafür einen gehashten IP-Wert für höchstens 24 Stunden.</p>
+                <p>Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, da Sie mit der Anfrage die Durchführung vorvertraglicher Maßnahmen anstoßen. Die Lead-Daten werden in Notion gespeichert (Anbieter: Notion Labs, Inc., USA; Auftragsverarbeitung mit Standardvertragsklauseln) und zusätzlich per E-Mail an uns übermittelt. Supabase speichert für diese Anfrage nur einen gehashten IP-Wert zur Missbrauchsabwehr (höchstens 24 Stunden), keine Lead-Inhalte. Wenn Sie anschließend den externen Buchungslink auswählen, gelten für die dort selbst eingegebenen Daten zusätzlich die Datenschutzbestimmungen von Cal.com. Die Speicherung unserer Audit-Anfragen erfolgt grundsätzlich für bis zu 24 Monate, sofern keine Kundenbeziehung begründet wird oder gesetzliche Aufbewahrungspflichten entgegenstehen. Weitere Informationen zu Notion: <a href="https://www.notion.com/de/privacy" target="_blank" rel="noopener noreferrer">https://www.notion.com/de/privacy</a>.</p>
 
                 <h3>Statische Demo-Vorschauen</h3>
                 <p>Auf dieser Website werden in einzelnen Bereichen statische Vorschaubilder und lokal gerenderte Beispielansichten verwendet, um Aufbau und Leistungsumfang möglicher Websites zu veranschaulichen. Diese Vorschauen werden beim bloßen Seitenaufruf aus den eigenen Website-Dateien geladen. Dabei findet keine zusätzliche Verbindung zu einem externen Demo-Host statt.</p>
@@ -368,7 +373,12 @@ E-Mail: kevin@ritz-ai.solutions</p>
 <footer class="site-shell site-footer">
     <div>Klare Rechtstexte, am echten Stack ausgerichtet und lesbar gehalten.</div>
     <div class="footer-links">
-        <a href="index.html">Startseite</a>
+        <a href="/">Startseite</a>
+        <a href="/#systeme">Systeme</a>
+        <a href="referenzen.html">Referenzen</a>
+        <a href="ueber-uns.html">Über uns</a>
+        <a href="persoenlichkeit.html">Persönlichkeit</a>
+        <a href="/#contact">Audit buchen</a>
         <a href="impressum.html">Impressum</a>
         <a href="datenschutz.html">Datenschutz</a>
     </div>

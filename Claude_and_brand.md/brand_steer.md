@@ -1,176 +1,218 @@
 # RAIS Brand Steer
 
+Version 2, Stand 25.07.2026. Ersetzt die vorherige Fassung.
+
 ## Purpose
 
-This file governs visual execution for the current RAIS website.
-`brand.md` defines positioning and messaging.
-`brand_steer.md` translates that into on-screen decisions.
+Diese Datei steuert die visuelle Umsetzung der aktuellen RAIS-Website.
+`brand.md` definiert Positionierung und Botschaft.
+`brand_steer.md` übersetzt das in Bildschirm-Entscheidungen.
 
-Authority order:
+Autoritätsreihenfolge:
 
 1. `brand.md`
 2. `brand_steer.md`
-3. page files (`index.html`, CSS)
+3. Seitendateien (`index.html`, weitere Seiten, CSS)
 
 ## Core Appearance Goal
 
-RAIS should look like commercial clarity with editorial restraint.
+RAIS soll wie kommerzielle Klarheit mit editorialer Zurückhaltung wirken.
 
-That means:
+Das heißt:
 
 - warm
-- premium
-- composed
-- credible for operations-heavy teams (property admin, not consumer glam)
-- more like a serious proposal than a startup landing page
+- hochwertig
+- komponiert
+- glaubwürdig für ein operativ arbeitendes Maklerbüro, nicht Consumer-Glanz
+- eher wie ein ernsthaftes Angebot als eine Startup-Landingpage
 
 ## Anti-Goals
 
-Do not drift into:
+Nicht abdriften in:
 
-- generic agency aesthetics
-- generic SaaS card grids
-- “AI agency” visual language
-- dark tech theatrics
-- decorative effects that weaken trust
-- fake portal branding or misleading product screenshots
+- generische Agentur-Ästhetik
+- generische SaaS-Card-Grids
+- "AI-Agentur"-Bildsprache
+- Dark-Tech-Theatralik
+- dekorative Effekte, die Vertrauen schwächen
+- gefälschte Portal-Markenzeichen oder irreführende Produkt-Screenshots
+- mehrere gleich laute CTAs auf einer Sektion
+- Nummerierung ohne echte Reihenfolge im Inhalt
+
+## Site-Architektur
+
+**Änderung gegenüber Version 2:** RAIS ist die Marke. AQuT ist ein Systemname im Portfolio, kein Flaggship-Brand. Home ist Unternehmensseite mit gewichtetem Live-Systeme-Teaser. Nur AQuT hat eine Deep-Subpage.
+
+```
+Home (RAIS) ──┬── #systeme (AQuT dominant + 5 Peers)
+              ├── AQuT (System-Verkaufsseite + Rechner)
+              ├── Referenzen
+              ├── Über uns
+              ├── Persönlichkeit
+              ├── So arbeiten wir (Footer / sekundär)
+              └── Kontakt / Audit (Modul, kein Nav-Punkt)
+```
+
+Primäre Nav: Systeme · Referenzen · Über uns · Persönlichkeit · Audit buchen.
+
+### Home
+
+**Job:** RAIS als Unternehmen zeigen, Vertrauen, kurzes Portfolio, Conversion.
+
+- Hero: Qualifizierungs-Claim (kein Anfragen-Problem, Qualifizierungs-Problem), Supporting, primär Audit, sekundär `#systeme`
+- Trust-Strip: EU/AVV/Hosting (keine Tech-Logos)
+- Pain-/Alltagssektion (`#alltag`): konkrete Qualifizierungs-Pains vor der Lösung
+- Wem wir geholfen haben: Haller-Teaser mit Outcome-Richtung ohne Fake-Kennzahl → `/referenzen.html`
+- Live-Systeme: asymmetrisches Bento, AQuT groß, fünf Peers leichter mit Kontextwort
+- ICP inkl. sichtbarer Ausschlüsse, unnummeriert
+- Kurzer Einstieg „So starten wir“ → `/zusammenarbeit.html`
+- FAQ lebt auf der AQuT-Seite (DSGVO, CRM, Dauer, Fit), nicht auf Home
+- Kontaktmodul
+
+### AQuT
+
+**Job:** dieses eine System verkaufen. Absender bleibt RAIS.
+
+1. Orientierungsclaim (30 Std-Formel aus brand.md), nicht als feste Garantie
+2. Rechner „nach Ihren Angaben“, client-only, keine Leads
+3. Vier-Schritt-Prozess
+4. Paket 1
+5. Use-Case-Sage-Fläche
+6. Paket-2-Ausblick
+7. Scope / Nicht-Scope
+8. FAQ (DSGVO/EU, onOffice/Propstack, Dauer, Teamgröße/Fit)
+9. Ein primärer CTA: Audit buchen
+
+### So arbeiten wir
+
+**Job:** Angst vor dem Ablauf nehmen. Collab-Prozess (Discovery bis Betrieb) mit vollem Raum. In der Footer-Navigation.
+
+### Referenzen
+
+**Job:** Beweisen, nicht behaupten. Haller als Impact-Story: Ausgangslage → gebautes System → Alltag in Prozesssprache → ehrlicher Status ohne unbelegte Kennzahlen. Keine Logo-Wall.
+
+### Über uns
+
+**Job:** Gründerzugang, EU-Infrastruktur, externer Security-Review. Unverändert in der Grundstruktur.
+
+### Persönlichkeit
+
+**Job:** Media-Hub als RAIS-Äquivalent zu Podcast/Resources: kuratierte LinkedIn-Beiträge plus technische YouTube-Praxis-Videos (`@kevin_ritz`). Zukunftspfad: mehr technische Videos auf YouTube. Regeln: lokales Thumbnail + Link-out, kein Auto-Latest vom Kanal, kein `ytimg`/Embed vor Consent, kein Eckstein-Podcast, kein Audio-Podcast-Produkt.
+
+### Kontakt / Audit
+
+Kein eigener Navigationspunkt, wiederverwendbares Modul am Ende jeder Seite. Mehrstufiges Formular bleibt in der Struktur, ohne Emoji-Icons, siehe Modul-Regeln unten. `data-value`-Keys unverändert lassen, Supabase-Kompatibilität.
 
 ## Layout Steering
 
-Prefer:
+Bevorzugen:
 
-- clear section rhythm: hero → ticker → leistungen → use cases → process → contact
-- strong copy hierarchy
-- framed offer areas for the three pillars
-- expanding cards for use cases (interactive, first card active by default)
-- visible seriousness around contact and legal trust
+- klarer Sektionsrhythmus je Seite, abgestimmt auf deren einzelnen Job
+- starke Copy-Hierarchie, nicht jede Sektion gleich gewichtet
+- pro Seite maximal zwei Sektionen, die spürbar größer sind als der Rest
+- Inhaltsbreite maximal 1100 px, Textspalten deutlich schmaler
+- Sektionsabstände mindestens 120 px auf Desktop
 
-Avoid:
+Vermeiden:
 
-- repeating the same card treatment section after section without purpose
-- multiple equally loud CTAs
-- ornamental layout moves with no sales purpose
+- dieselbe Card-Behandlung Sektion für Sektion ohne Zweck wiederholen
+- mehrere gleich laute CTAs auf einer Seite, Richtwert: ein primärer CTA pro Seite plus ein wiederkehrendes Kontaktmodul
+- dekorative Layout-Bewegungen ohne Verkaufszweck
+- römische oder arabische Nummerierung an Stellen ohne echte Reihenfolge (Beispiel: die vier ICP-Kriterien sind gleichrangig, keine Sequenz, daher unnummeriert)
 
 ## Surface Strategy
 
-Primary atmosphere:
+Primäre Atmosphäre:
 
-- Cloud and Warm Linen
-- calm tonal layering
-- subtle paper-like contrast
+- Cloud und Warm Linen
+- ruhige tonale Schichtung
+- dezenter, papierartiger Kontrast
 
-Support structure:
+Stützstruktur:
 
-- Sage and Dark Pistachio
-- Charcoal and Stone for legibility
+- Sage und Dark Pistachio, genau eine Sektion pro Seite darf als volle Blockfläche in Sage mit Warm-Linen-Text ausgeführt werden. Auf der AQuT-Seite ist das die Use-Case- beziehungsweise Beweisfläche.
+- Charcoal und Stone für Lesbarkeit
 
-Accent:
+Akzent:
 
-- Mandarin Orange for action and key emphasis only
+- Mandarin Orange ausschließlich für Aktion und Schlüsselbetonung, unter fünf Prozent Flächenanteil
+- Mandarin nie als Fließtextfarbe auf Cloud, Kontrast dort grenzwertig
 
-Do not let orange become the dominant atmosphere.
+Orange darf nicht zur dominanten Atmosphäre werden.
 
 ## Typography Steering
 
-Headlines should feel editorial and commercially serious.
-Body copy should stay plain, readable, and direct.
+**Empfehlung, kein festgeschriebener Beschluss, bei Bedarf anpassen:**
 
-Mono cues are allowed for:
+Überschriften sollen editorial und kommerziell ernsthaft wirken, aber bewusst nicht die aktuell verbreitete Kombination aus kontrastreicher Display-Serif auf warmem Creme mit Terrakotta-Akzent verwenden, das ist gerade der Standard-Look KI-naher Websites und schwächt die Differenzierung genau der Marke, die "keine Lösung von der Stange" verkauft.
 
-- small labels (`mono-label`)
-- restrained system markers
-- support framing
+- Überschriften: eine **Text**-Serif statt Display-Serif, moderater Strichkontrast, sachlich. Kandidaten: Source Serif 4, Literata, Newsreader, lizenziert GT Alpina oder Freight Text.
+- Fließtext: neutrale Grotesk, ausdrücklich nicht geometrisch, das schließt Poppins und Montserrat aus. Archivo oder Instrument Sans frei verfügbar, Söhne lizenziert.
+- Mono-Cues erlaubt für kleine Labels (`mono-label`), zurückhaltende Systemmarker, unterstützende Rahmung. Mono darf nie zur dominanten Stimme werden, keine Mono-Headlines, kein Mono-Fließtext.
 
-Mono must not become the dominant voice.
+Deutsche Satzregeln: keine Versalien-Eyebrows (Deutsch hat Großbuchstaben in Substantiven, Versalsatz zerstört das Wortbild), typografische Anführungszeichen „so", keine Gedankenstriche in sichtbarer Copy.
 
-## Module Rules
+## Modul-Regeln
 
-### Hero
+### Hero (Home und AQuT unterscheiden sich)
 
-The hero should communicate one clear offer for the focus audience.
+**Home-Hero** kommuniziert Zielgruppe und Kernversprechen in einer Zeile, filtert, verweist weiter. Kein Produktmenü im Hero.
 
-Use:
+**AQuT-Hero** eröffnet mit dem Orientierungsclaim (30 Std-Formel) und führt zum Rechner. Umsatzargument als unterstützender Block erlaubt. Keine Gedankenstriche.
 
-- a strong outcome claim (less manual admin, measurable, no SaaS ballast)
-- one clear supporting paragraph (portals, files, communication)
-- primary CTA: audit booking
-- secondary CTA: use cases
-- proof strip with credible, niche-relevant labels
+### Rechner (nur auf der AQuT-Seite)
 
-Avoid:
+Interaktives Modul, direkt im oberen Bereich der AQuT-Seite. Zweck: Schmerz quantifizieren, ohne unbelegte Behauptungen.
 
-- vague growth language
-- product menus in the hero
-- em dashes in copy
+Eingaben, in dieser Reihenfolge:
 
-### Offer Section (`#leistungen`)
+1. Anfragevolumen pro Woche
+2. Zeitaufwand pro Anfrage aktuell, in Minuten
+3. Stundensatz, editierbares Vorschlagsfeld
+4. Aktuelles CRM (onOffice, Propstack, anderes, keins)
 
-Use:
+Berechnung ausschließlich aus 1 bis 3: Stunden pro Woche und kalkulatorischer Wert pro Monat, mit dem sichtbaren Zusatz "nach Ihren eigenen Angaben". CRM-Eingabe steuert eine textliche Botschaft (Anbindung ohne Migration bei onOffice/Propstack, schlanke eigene Datenbank bei "keins"), fließt nicht in die Rechnung ein.
 
-- one main pillar (Prozessautomatisierung)
-- two extensions (KI, digitale Präsenz)
-- bullets that name real workflows (portal mail, object files, RAG, exposé landing)
+Keine Euro- oder Stundenzahl anzeigen, die nicht direkt aus den drei numerischen Eingaben berechnet ist. Keine Erfolgsgarantie einbauen, solange der zugehörige Wissensbasis-Eintrag auf Status Hypothese steht.
 
-### Use Cases (`#projekte`)
+### Use Cases (auf der AQuT-Seite, ehemals `#projekte`)
 
-Use:
+Drei expandierende Karten, erste Karte aktiv, abgeleitet aus Paket 1:
 
-- three expanding cards, immobilien-nah but technically honest
-- gradient or real screenshots that match the copy
-- CTA to booking on cards, not fake “live demo” links unless real
+1. Anfrage kommt rein, wird qualifiziert, Rückfrage geht automatisch raus
+2. Interessent bucht Termin selbst, landet im Kalender
+3. Dashboard und intelligente Suche
 
-Do not:
+Screenshots oder Verlaufsflächen nur, wenn Copy exakt passt. Keine Wiederverwendung von Screenshots aus anderen Projekten mit unpassenden Titeln, insbesondere keine Inhalte aus dem Eckstein-Podcast-CMS.
 
-- show ImmoScout24 logos without license
-- reuse onboarding screenshots with mismatched titles
+### Zusammenarbeit-Prozess (jetzt auf "So arbeiten wir")
 
-### Collaboration Path (`#zusammenarbeit-prozess`)
+Organischer Wellenpfad, sieben Schritte, deutsche Copy, interaktiver Stepper (`collab-path.js`), Schritt 1 ist das kostenlose Erstgespräch. Struktur und JS-Verhalten nur bei ausdrücklicher Anfrage ändern.
 
-Use:
+### Persönlichkeit
 
-- organic wave path, 7 steps, German copy
-- interactive stepper (`collab-path.js`)
-- step 1 = free intro call
+Media = YouTube Tech-Videos + LinkedIn. Struktur für weitere kuratierte YouTube-Einträge (lokales Thumbnail, Titel, Kurztext, Link-out) offenhalten. Siehe Seiten-Job oben. Zusätzlich: keine automatisierte Cross-Posting-Anzeige aus Instagram oder anderen Kanälen, die laut Marken-Positionierung nicht für den RAIS-B2B-Kontext vorgesehen sind.
 
-Change structure/JS only when explicitly requested.
+### Trust-Sektion
 
-### Homepage Role
-
-The homepage is the **entire funnel**: explain, prove, process, book.
-
-It should:
-
-- qualify property-heavy teams without excluding others
-- present Kevin Ritz as direct builder contact
-- avoid feeling like a one-person portfolio page
-
-There are **no** separate niche HTML pages in the repo anymore.
-
-### Trust Section
-
-Demo/use-case sections should be honest.
-
-Use:
-
-- “Use Cases” / concrete workflow language
-- direct founder access in contact
-- visible legal links
-
-Do not fake proof or partner status.
+Ehrlich bleiben. Verwenden: "Use Cases" beziehungsweise konkrete Prozesssprache, direkter Gründerzugang im Kontakt, sichtbare rechtliche Links. Keinen Beweis vortäuschen, keinen Partnerstatus behaupten.
 
 ## Visual Proof Guidance
 
-Use real screenshots only when copy matches.
-Placeholder gradients are fine for integrations that cannot show branded UI.
+Echte Screenshots nur, wenn Copy dazu passt. Platzhalter-Gradients sind für Integrationen in Ordnung, die keine gebrandete UI zeigen können.
+
+**Ticker-Inhalt (proof strip):** ausschließlich EU-Infrastruktur- und Datenschutz-relevante Labels, keine Technologie-Markennamen als Selbstzweck. Beispiel: selbst gehostet in Deutschland, Datenbank in Frankfurt, AVV nach Art. 28 DSGVO, keine Datenweitergabe außerhalb der EU. Diese Labels sind für die Zielgruppe der eigentliche Beweis, nicht Werkzeugnamen wie n8n oder Supabase.
 
 ## Quality Check
 
-Before shipping, ask:
+Vor dem Ausliefern fragen:
 
-- does this page sell one clear thing?
-- does this feel credible to a skeptical Makler or Verwalter?
-- is the CTA concrete?
-- is trust handled honestly?
-- are there em dashes in visible copy? (remove)
+- verkauft diese Seite eine einzige klare Sache?
+- wirkt das glaubwürdig für einen skeptischen Makler-GF?
+- ist der CTA konkret, und gibt es höchstens einen primären CTA pro Seite?
+- wird Trust ehrlich behandelt?
+- gibt es Gedankenstriche in sichtbarer Copy? (entfernen)
+- ist jede angezeigte Zahl entweder direkt belegt oder vollständig aus Nutzereingaben berechnet?
+- hat jede Seite einen Job, den keine andere Seite übernehmen könnte?
 
-If the answer fails any of these, revise before shipping.
+Scheitert die Antwort an einem dieser Punkte, vor dem Ausliefern überarbeiten.

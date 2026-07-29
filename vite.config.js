@@ -13,7 +13,12 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         impressum: resolve(__dirname, 'impressum.html'),
-        datenschutz: resolve(__dirname, 'datenschutz.html')
+        datenschutz: resolve(__dirname, 'datenschutz.html'),
+        aqut: resolve(__dirname, 'aqut.html'),
+        referenzen: resolve(__dirname, 'referenzen.html'),
+        zusammenarbeit: resolve(__dirname, 'zusammenarbeit.html'),
+        ueberUns: resolve(__dirname, 'ueber-uns.html'),
+        persoenlichkeit: resolve(__dirname, 'persoenlichkeit.html')
       }
     }
   }

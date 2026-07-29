@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>RAIS | Anfragen-System für Maklerbüros</title>
-    <meta name="description" content="Anfragen-System für Immobilienmakler: Portalanfragen automatisch qualifizieren und Termine buchen. Weniger Stunden mit Rückfragen. DSGVO-konform. Kostenloser Prozess-Audit.">
+    <title>RAIS | Automatisierung für Maklerbüros</title>
+    <meta name="description" content="RAIS baut Systeme für unabhängige Immobilienmaklerbüros: Anfragen, Onboarding, CRM und mehr. DSGVO-konform. Kostenloser Prozess-Audit.">
     <meta name="google-site-verification" content="A6q1zlZLweKSa1vIxp-owVoxpEXPyIW-gPWdY6N79ZI">
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -50,6 +50,8 @@
     <link rel='stylesheet' href='fonts.css'>
     <link rel='stylesheet' href='styles/antigravity-polish.css'>
     <link rel="stylesheet" href="styles/tailwind.generated.css">
+    <link rel="stylesheet" href="styles/site-multipage.css">
+    <link rel="stylesheet" href="styles/booking-modal.css">
     <script src="vendor/lucide.min.js"></script>
 
     <style>
@@ -2715,6 +2717,59 @@
             .trust-browser-body { height: 320px; }
         }
 
+        .trust-founder {
+            display: grid;
+            grid-template-columns: minmax(220px, 0.72fr) minmax(0, 1.28fr);
+            align-items: center;
+            gap: clamp(2rem, 6vw, 5.5rem);
+            max-width: 960px;
+        }
+
+        .trust-founder__portrait {
+            width: 100%;
+            max-width: 360px;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            display: block;
+            border-radius: 16px;
+            box-shadow: 0 18px 46px rgba(47, 42, 36, 0.15);
+        }
+
+        .trust-founder__copy {
+            max-width: 540px;
+        }
+
+        .trust-founder__copy .section-h2 {
+            margin-top: 0.75rem;
+        }
+
+        .trust-founder__copy p {
+            max-width: 52ch;
+            margin-top: 1.25rem;
+            color: var(--stone);
+            line-height: 1.7;
+        }
+
+        .trust-founder__link {
+            display: inline-flex;
+            margin-top: 1.5rem;
+            color: var(--charcoal);
+            font-weight: 600;
+            text-decoration-color: rgba(236, 106, 55, 0.55);
+            text-underline-offset: 0.25em;
+        }
+
+        @media (max-width: 640px) {
+            .trust-founder {
+                grid-template-columns: 1fr;
+                gap: 1.75rem;
+            }
+
+            .trust-founder__portrait {
+                max-width: 280px;
+            }
+        }
+
         /* ─────────────────────────────────────────────────────
            MOBILE STICKY CTA
         ───────────────────────────────────────────────────── */
@@ -3105,91 +3160,46 @@
 
 <body>
 
-    <!-- ═══════════════════════════════════════════════════════
-         NAVBAR
-    ═══════════════════════════════════════════════════════ -->
-    <nav id="navbar" aria-label="Hauptnavigation">
-        <div class="nav-inner">
-
-            <!-- Brand -->
-            <a href="/" class="nav-brand" aria-label="RAIS zur Startseite">
-                <img src="favicon.svg" alt="" width="52" height="52" aria-hidden="true">
-                <div class="nav-brand-words">
-                    <span class="nav-wordmark">RAIS</span>
-                    <span class="nav-submark">Ritz AI Solutions</span>
-                </div>
-            </a>
-
-            <!-- Desktop center links -->
-            <div class="nav-center" role="none">
-                <ul class="nav-list" role="list">
-
-                    <li>
-                        <a href="#leistungen">Leistungen</a>
-                    </li>
-
-                    <li>
-                        <a href="#projekte">Projekte</a>
-                    </li>
-
-                    <li>
-                        <a href="#wir">Wir</a>
-                    </li>
-
-                    <li>
-                        <a href="#contact">Kontakt</a>
-                    </li>
-
-                </ul>
-            </div>
-
-            <!-- Right: CTA + hamburger -->
-            <div class="nav-right">
-                <button type="button" class="btn-primary" id="nav-demo-btn">Kostenlosen Audit buchen</button>
-
-                <button
-                    class="nav-hamburger"
-                    id="hamburger-btn"
-                    type="button"
-                    aria-label="Menü öffnen"
-                    aria-expanded="false"
-                    aria-controls="mobile-overlay"
-                >
-                    <svg id="hamburger-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <line x1="3"  y1="6"  x2="21" y2="6"/>
-                        <line x1="3"  y1="12" x2="21" y2="12"/>
-                        <line x1="3"  y1="18" x2="21" y2="18"/>
-                    </svg>
-                </button>
-            </div>
-
-        </div>
-    </nav>
-
-
-    <!-- ═══════════════════════════════════════════════════════
-         MOBILE OVERLAY
-    ═══════════════════════════════════════════════════════ -->
-    <div id="mobile-overlay" role="dialog" aria-label="Navigation" aria-modal="true">
-        <div class="mobile-nav-inner">
-
-            <a href="#leistungen" class="mobile-link" data-close-menu>Leistungen</a>
-            <a href="#projekte"   class="mobile-link" data-close-menu>Projekte</a>
-            <a href="#wir" class="mobile-link" data-close-menu>Wir</a>
-            <a href="#contact"   class="mobile-link" data-close-menu>Kontakt</a>
-
-            <hr class="mobile-hr">
-
-            <button type="button" class="mobile-cta" id="mobile-demo-btn">Kostenlosen Audit buchen</button>
-
-        </div>
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+<nav id="navbar" aria-label="Hauptnavigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand" aria-label="RAIS zur Startseite">
+      <img src="favicon.svg" alt="" width="44" height="44" aria-hidden="true">
+      <div class="nav-brand-words">
+        <span class="nav-wordmark">RAIS</span>
+        <span class="nav-submark">Ritz AI Solutions</span>
+      </div>
+    </a>
+    <div class="nav-center" role="none">
+      <ul class="nav-list" role="list">
+        <li><a href="#systeme">Systeme</a></li>
+        <li><a href="referenzen.html">Referenzen</a></li>
+        <li><a href="ueber-uns.html">Über uns</a></li>
+        <li><a href="persoenlichkeit.html">Persönlichkeit</a></li>
+      </ul>
     </div>
+    <div class="nav-right">
+      <button type="button" class="btn-primary js-open-booking" id="nav-demo-btn" data-source="nav">Kostenlosen Audit buchen</button>
+      <button class="nav-hamburger" id="hamburger-btn" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-overlay">
+        <svg id="hamburger-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+<div id="mobile-overlay" role="dialog" aria-label="Navigation" aria-modal="true">
+  <div class="mobile-nav-inner">
+    <a href="#systeme" class="mobile-link" data-close-menu>Systeme</a>
+    <a href="referenzen.html" class="mobile-link" data-close-menu>Referenzen</a>
+    <a href="ueber-uns.html" class="mobile-link" data-close-menu>Über uns</a>
+    <a href="persoenlichkeit.html" class="mobile-link" data-close-menu>Persönlichkeit</a>
+    <a href="zusammenarbeit.html" class="mobile-link" data-close-menu>So arbeiten wir</a>
+    <hr class="mobile-hr">
+    <button type="button" class="mobile-cta js-open-booking" id="mobile-demo-btn" data-source="mobile-nav">Kostenlosen Audit buchen</button>
+  </div>
+</div>
 
 
-    <!-- ═══════════════════════════════════════════════════════
-         MAIN CONTENT
-    ═══════════════════════════════════════════════════════ -->
-    <main>
+    <main id="main">
 
         <section id="hero">
 
@@ -3214,8 +3224,8 @@
                 </p>
 
                 <div class="hero-ctas">
-                    <button type="button" class="hero-btn-primary" id="hero-work-btn">Kostenlosen Audit buchen</button>
-                    <a href="#projekte" class="hero-btn-outline" id="hero-demo-btn">Referenzen ansehen</a>
+                    <button type="button" class="hero-btn-primary js-open-booking" id="hero-work-btn" data-source="hero">Kostenlosen Audit buchen</button>
+                    <a href="#systeme" class="hero-btn-outline" id="hero-demo-btn">Live-Systeme ansehen</a>
                 </div>
 
             </div>
@@ -3233,359 +3243,125 @@
 <!-- ═══════════════════════════════════════════════════
              TECH STACK TICKER
         ═══════════════════════════════════════════════════ -->
-        <section id="ticker" aria-label="Eingesetzte Technologien">
-            <div class="ticker-wrapper" aria-hidden="true">
-                <div class="ticker-track">
-                    <!-- Set 1 -->
-                    <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#EA4B71"><path d="M21.4737 5.6842c-1.1772 0-2.1663.8051-2.4468 1.8947h-2.8955c-1.235 0-2.289.893-2.492 2.111l-.1038.623a1.263 1.263 0 0 1-1.246 1.0555H11.289c-.2805-1.0896-1.2696-1.8947-2.4468-1.8947s-2.1663.8051-2.4467 1.8947H4.973c-.2805-1.0896-1.2696-1.8947-2.4468-1.8947C1.1311 9.4737 0 10.6047 0 12s1.131 2.5263 2.5263 2.5263c1.1772 0 2.1663-.8051 2.4468-1.8947h1.4223c.2804 1.0896 1.2696 1.8947 2.4467 1.8947 1.1772 0 2.1663-.8051 2.4468-1.8947h1.0008a1.263 1.263 0 0 1 1.2459 1.0555l.1038.623c.203 1.218 1.257 2.111 2.492 2.111h.3692c.2804 1.0895 1.2696 1.8947 2.4468 1.8947 1.3952 0 2.5263-1.131 2.5263-2.5263s-1.131-2.5263-2.5263-2.5263c-1.1772 0-2.1664.805-2.4468 1.8947h-.3692a1.263 1.263 0 0 1-1.246-1.0555l-.1037-.623A2.52 2.52 0 0 0 13.9607 12a2.52 2.52 0 0 0 .821-1.4794l.1038-.623a1.263 1.263 0 0 1 1.2459-1.0555h2.8955c.2805 1.0896 1.2696 1.8947 2.4468 1.8947 1.3952 0 2.5263-1.131 2.5263-2.5263s-1.131-2.5263-2.5263-2.5263m0 1.2632a1.263 1.263 0 0 1 1.2631 1.2631 1.263 1.263 0 0 1-1.2631 1.2632 1.263 1.263 0 0 1-1.2632-1.2632 1.263 1.263 0 0 1 1.2632-1.2631M2.5263 10.7368A1.263 1.263 0 0 1 3.7895 12a1.263 1.263 0 0 1-1.2632 1.2632A1.263 1.263 0 0 1 1.2632 12a1.263 1.263 0 0 1 1.2631-1.2632m6.3158 0A1.263 1.263 0 0 1 10.1053 12a1.263 1.263 0 0 1-1.2632 1.2632A1.263 1.263 0 0 1 7.579 12a1.263 1.263 0 0 1 1.2632-1.2632m10.1053 3.7895a1.263 1.263 0 0 1 1.2631 1.2632 1.263 1.263 0 0 1-1.2631 1.2631 1.263 1.263 0 0 1-1.2632-1.2631 1.263 1.263 0 0 1 1.2632-1.2632"/></svg>n8n</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#3FCF8E"><path d="M11.9 1.036c-.015-.986-1.26-1.41-1.874-.637L.764 12.05C.303 12.636.718 13.5 1.456 13.5h8.09l-.148 9.479c.016.986 1.26 1.41 1.875.637l9.263-11.652c.46-.586.045-1.45-.694-1.45h-8.09l.148-9.478Z"/></svg>Supabase</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#4285F4"><path d="M12.19 2.38a9.344 9.344 0 0 0-9.234 6.893c.053-.02-.055.013 0 0-3.875 2.551-3.922 8.11-.247 10.941l.006-.007-.007.03a6.717 6.717 0 0 0 4.077 1.356h5.173l.03.03h5.192c6.687.053 9.376-8.605 3.835-12.35a9.365 9.365 0 0 0-2.821-4.552l-.043.043.006-.05A9.344 9.344 0 0 0 12.19 2.38zm-.358 4.146c1.244-.04 2.518.368 3.486 1.15a5.186 5.186 0 0 1 1.862 4.078v.518c3.53-.07 3.53 5.262 0 5.193h-5.193l-.008.009v-.04H6.785a2.59 2.59 0 0 1-1.067-.23h.001a2.597 2.597 0 1 1 3.437-3.437l3.013-3.012A6.747 6.747 0 0 0 8.11 8.24c.018-.01.04-.026.054-.023a5.186 5.186 0 0 1 3.67-1.69z"/></svg>Google Cloud</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#F25022"><path d="M11.4 11.4H0V0h11.4v11.4zm12.6 0H12.6V0H24v11.4zM11.4 24H0V12.6h11.4V24zm12.6 0H12.6V12.6H24V24z"/></svg>Microsoft 365</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#6D00CC"><path d="M13.38 3.498c-.27 0-.511.19-.566.465L9.85 18.986a.578.578 0 0 0 .453.678l4.095.826a.58.58 0 0 0 .682-.455l2.963-15.021a.578.578 0 0 0-.453-.678l-4.096-.826a.589.589 0 0 0-.113-.012zm-5.876.098a.576.576 0 0 0-.516.318L.062 17.697a.575.575 0 0 0 .256.774l3.733 1.877a.578.578 0 0 0 .775-.258l6.926-13.781a.577.577 0 0 0-.256-.776L7.762 3.658a.571.571 0 0 0-.258-.062zm11.74.115a.576.576 0 0 0-.576.576v15.426c0 .318.258.578.576.578h4.178a.58.58 0 0 0 .578-.578V4.287a.578.578 0 0 0-.578-.576Z"/></svg>Make</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#FF7A59"><path d="M18.164 7.93V5.084a2.198 2.198 0 001.267-1.978v-.067A2.2 2.2 0 0017.238.845h-.067a2.2 2.2 0 00-2.193 2.193v.067a2.196 2.196 0 001.252 1.973l.013.006v2.852a6.22 6.22 0 00-2.969 1.31l.012-.01-7.828-6.095A2.497 2.497 0 104.3 4.656l-.012.006 7.697 5.991a6.176 6.176 0 00-1.038 3.446c0 1.343.425 2.588 1.147 3.607l-.013-.02-2.342 2.343a1.968 1.968 0 00-.58-.095h-.002a2.033 2.033 0 102.033 2.033 1.978 1.978 0 00-.1-.595l.005.014 2.317-2.317a6.247 6.247 0 104.782-11.134l-.036-.005zm-.964 9.378a3.206 3.206 0 113.215-3.207v.002a3.206 3.206 0 01-3.207 3.207z"/></svg>HubSpot</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#3776AB"><path d="M11.914 0C5.82 0 6.2 2.656 6.2 2.656l.007 2.752h5.814v.826H3.912S0 5.789 0 11.969c0 6.18 3.403 5.963 3.403 5.963h2.031v-2.868s-.109-3.403 3.35-3.403h5.769s3.24.052 3.24-3.13V3.13S18.28 0 11.914 0zM8.708 1.81a1.042 1.042 0 1 1 0 2.084 1.042 1.042 0 0 1 0-2.083zM12.086 24c6.094 0 5.714-2.656 5.714-2.656l-.007-2.752H11.98v-.826h8.109S24 18.211 24 12.031c0-6.18-3.403-5.963-3.403-5.963h-2.031v2.868s.109 3.403-3.35 3.403H9.447s-3.24-.052-3.24 3.13v5.401S5.72 24 12.086 24zm3.206-1.81a1.042 1.042 0 1 1 0-2.084 1.042 1.042 0 0 1 0 2.083z"/></svg>Python</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#3178C6"><path d="M0 12v12h24V0H0zm19.341-.956c.61.152 1.074.423 1.501.865.221.236.549.666.575.77.008.03-1.036.73-1.668 1.123-.023.015-.115-.084-.217-.236-.31-.45-.633-.644-1.128-.678-.728-.05-1.196.331-1.192.967a.88.88 0 0 0 .102.45c.16.331.458.53 1.39.933 1.719.74 2.454 1.227 2.911 1.92.51.773.625 2.008.278 2.926-.38.998-1.325 1.676-2.655 1.9-.411.073-1.386.062-1.828-.018-.964-.172-1.878-.648-2.442-1.273-.221-.243-.652-.88-.625-.925.011-.016.11-.077.22-.141.108-.061.511-.294.892-.515l.69-.4.145.214c.202.308.643.731.91.872.766.404 1.817.347 2.335-.118a.883.883 0 0 0 .313-.72c0-.278-.035-.4-.18-.61-.186-.266-.567-.49-1.649-.96-1.238-.533-1.771-.864-2.259-1.39a3.165 3.165 0 0 1-.659-1.2c-.091-.339-.114-1.189-.042-1.531.255-1.197 1.158-2.03 2.461-2.278.423-.08 1.406-.05 1.821.053zm-5.634 1.002l.008.983H10.59v8.876H8.38v-8.876H5.258v-.964c0-.534.011-.98.026-.99.012-.016 1.913-.024 4.217-.02l4.195.007z"/></svg>TypeScript</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#412991"><path d="M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.985 5.985 0 0 0-3.998 2.9 6.046 6.046 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494zM3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085 4.783 2.759a.771.771 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646zM2.34 7.896a4.485 4.485 0 0 1 2.366-1.973V11.6a.766.766 0 0 0 .388.676l5.815 3.355-2.02 1.168a.076.076 0 0 1-.071 0L4.1 14.31a4.501 4.501 0 0 1-1.76-6.414zm16.597 3.855l-5.843-3.37 2.02-1.166a.076.076 0 0 1 .071 0l4.718 2.723a4.5 4.5 0 0 1-.676 8.123V12.48a.79.79 0 0 0-.29-.729zm2.01-3.023l-.141-.085-4.774-2.782a.776.776 0 0 0-.785 0L9.409 9.23V6.897a.066.066 0 0 1 .028-.061l4.713-2.719a4.498 4.498 0 0 1 6.757 4.66zm-12.64 4.135l-2.02-1.164a.08.08 0 0 1-.038-.057V6.075a4.5 4.5 0 0 1 7.375-3.453l-.142.08L8.704 5.46a.795.795 0 0 0-.393.681zm1.097-2.365l2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5z"/></svg>OpenAI</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#D97757"><path d="M17.3041 3.541h-3.6718l6.696 16.918H24Zm-10.6082 0L0 20.459h3.7442l1.3693-3.5527h7.0052l1.3693 3.5528h3.7442L10.5363 3.5409Zm-.3712 10.2232 2.2914-5.9456 2.2914 5.9456Z"/></svg>Claude</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#FF7000"><path d="M17.3 3.5h-3.67l6.7 16.9H24L17.3 3.5zm-10.6 0L0 20.5h3.74l1.37-3.55h7.01l1.37 3.55h3.74L10.5 3.5h-3.8zm-.37 10.22l2.29-5.95 2.29 5.95H6.33z"/></svg>Mistral</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#FF9900"><path d="M12 2C5.4 2 0 5.4 0 9.7c0 2.2 1.2 4.2 3.2 5.7.3-1 .8-1.9 1.4-2.8-1.4-1-2.3-2.3-2.3-3.7 0-3.2 4.8-5.8 10.7-5.8S23.7 5.2 23.7 8.4c0 1.4-.9 2.7-2.3 3.7.6.9 1.1 1.8 1.4 2.8 2-1.5 3.2-3.5 3.2-5.7C24 5.4 18.6 2 12 2zm-5.5 13.2c3.2 2.4 7.3 3.7 11.5 3.7 1.1 0 2.3-.1 3.4-.3-.3-.5-.7-1-1.1-1.4-3 .6-6.2.2-8.9-1.3-.8-.5-1.6-1-2.3-1.6-.4.3-.9.6-1.4.9z"/></svg>AWS</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#000000"><path d="M24 22.525H0l12-21.05 12 21.05z"/></svg>Vercel</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#4169E1"><path d="M23.5594 14.7228a.5269.5269 0 0 0-.0563-.1191c-.139-.2632-.4768-.3418-1.0074-.2321-1.6533.3411-2.2935.1312-2.5256-.0191 1.342-2.0482 2.445-4.522 3.0411-6.8297.2714-1.0507.7982-3.5237.1222-4.7316a1.5641 1.5641 0 0 0-.1509-.235C21.6931.9086 19.8007.0248 17.5099.0005c-1.4947-.0158-2.7705.3461-3.1161.4794a9.449 9.449 0 0 0-.5159-.0816 8.044 8.044 0 0 0-1.3114-.1278c-1.1822-.0184-2.2038.2642-3.0498.8406-.8573-.3211-4.7888-1.645-7.2219.0788C.9359 2.1526.3086 3.8733.4302 6.3043c.0409.818.5069 3.334 1.2423 5.7436.4598 1.5065.9387 2.7019 1.4334 3.582.553.9942 1.1259 1.5933 1.7143 1.7895.4474.1491 1.1327.1441 1.8581-.7279.8012-.9635 1.5903-1.8258 1.9446-2.2069.4351.2355.9064.3625 1.39.3772a.0569.0569 0 0 0 .0004.0041 11.0312 11.0312 0 0 0-.2472.3054c-.3389.4302-.4094.5197-1.5002.7443-.3102.064-1.1344.2339-1.1464.8115-.0025.1224.0329.2309.0919.3268.2269.4231.9216.6097 1.015.6331 1.3345.3335 2.5044.092 3.3714-.6787-.017 2.231.0775 4.4174.3454 5.0874.2212.5529.7618 1.9045 2.4692 1.9043.2505 0 .5263-.0291.8296-.0941 1.7819-.3821 2.5557-1.1696 2.855-2.9059.1503-.8707.4016-2.8753.5388-4.1012.0169-.0703.0357-.1207.057-.1362.0007-.0005.0697-.0471.4272.0307a.3673.3673 0 0 0 .0443.0068l.2539.0223.0149.001c.8468.0384 1.9114-.1426 2.5312-.4308.6438-.2988 1.8057-1.0323 1.5951-1.6698z"/></svg>PostgreSQL</span>
-                    <span class="ticker-sep">·</span>
-                    <!-- Duplicate set for seamless loop -->
-                    <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#EA4B71"><path d="M21.4737 5.6842c-1.1772 0-2.1663.8051-2.4468 1.8947h-2.8955c-1.235 0-2.289.893-2.492 2.111l-.1038.623a1.263 1.263 0 0 1-1.246 1.0555H11.289c-.2805-1.0896-1.2696-1.8947-2.4468-1.8947s-2.1663.8051-2.4467 1.8947H4.973c-.2805-1.0896-1.2696-1.8947-2.4468-1.8947C1.1311 9.4737 0 10.6047 0 12s1.131 2.5263 2.5263 2.5263c1.1772 0 2.1663-.8051 2.4468-1.8947h1.4223c.2804 1.0896 1.2696 1.8947 2.4467 1.8947 1.1772 0 2.1663-.8051 2.4468-1.8947h1.0008a1.263 1.263 0 0 1 1.2459 1.0555l.1038.623c.203 1.218 1.257 2.111 2.492 2.111h.3692c.2804 1.0895 1.2696 1.8947 2.4468 1.8947 1.3952 0 2.5263-1.131 2.5263-2.5263s-1.131-2.5263-2.5263-2.5263c-1.1772 0-2.1664.805-2.4468 1.8947h-.3692a1.263 1.263 0 0 1-1.246-1.0555l-.1037-.623A2.52 2.52 0 0 0 13.9607 12a2.52 2.52 0 0 0 .821-1.4794l.1038-.623a1.263 1.263 0 0 1 1.2459-1.0555h2.8955c.2805 1.0896 1.2696 1.8947 2.4468 1.8947 1.3952 0 2.5263-1.131 2.5263-2.5263s-1.131-2.5263-2.5263-2.5263m0 1.2632a1.263 1.263 0 0 1 1.2631 1.2631 1.263 1.263 0 0 1-1.2631 1.2632 1.263 1.263 0 0 1-1.2632-1.2632 1.263 1.263 0 0 1 1.2632-1.2631M2.5263 10.7368A1.263 1.263 0 0 1 3.7895 12a1.263 1.263 0 0 1-1.2632 1.2632A1.263 1.263 0 0 1 1.2632 12a1.263 1.263 0 0 1 1.2631-1.2632m6.3158 0A1.263 1.263 0 0 1 10.1053 12a1.263 1.263 0 0 1-1.2632 1.2632A1.263 1.263 0 0 1 7.579 12a1.263 1.263 0 0 1 1.2632-1.2632m10.1053 3.7895a1.263 1.263 0 0 1 1.2631 1.2632 1.263 1.263 0 0 1-1.2631 1.2631 1.263 1.263 0 0 1-1.2632-1.2631 1.263 1.263 0 0 1 1.2632-1.2632"/></svg>n8n</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#3FCF8E"><path d="M11.9 1.036c-.015-.986-1.26-1.41-1.874-.637L.764 12.05C.303 12.636.718 13.5 1.456 13.5h8.09l-.148 9.479c.016.986 1.26 1.41 1.875.637l9.263-11.652c.46-.586.045-1.45-.694-1.45h-8.09l.148-9.478Z"/></svg>Supabase</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#4285F4"><path d="M12.19 2.38a9.344 9.344 0 0 0-9.234 6.893c.053-.02-.055.013 0 0-3.875 2.551-3.922 8.11-.247 10.941l.006-.007-.007.03a6.717 6.717 0 0 0 4.077 1.356h5.173l.03.03h5.192c6.687.053 9.376-8.605 3.835-12.35a9.365 9.365 0 0 0-2.821-4.552l-.043.043.006-.05A9.344 9.344 0 0 0 12.19 2.38zm-.358 4.146c1.244-.04 2.518.368 3.486 1.15a5.186 5.186 0 0 1 1.862 4.078v.518c3.53-.07 3.53 5.262 0 5.193h-5.193l-.008.009v-.04H6.785a2.59 2.59 0 0 1-1.067-.23h.001a2.597 2.597 0 1 1 3.437-3.437l3.013-3.012A6.747 6.747 0 0 0 8.11 8.24c.018-.01.04-.026.054-.023a5.186 5.186 0 0 1 3.67-1.69z"/></svg>Google Cloud</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#F25022"><path d="M11.4 11.4H0V0h11.4v11.4zm12.6 0H12.6V0H24v11.4zM11.4 24H0V12.6h11.4V24zm12.6 0H12.6V12.6H24V24z"/></svg>Microsoft 365</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#6D00CC"><path d="M13.38 3.498c-.27 0-.511.19-.566.465L9.85 18.986a.578.578 0 0 0 .453.678l4.095.826a.58.58 0 0 0 .682-.455l2.963-15.021a.578.578 0 0 0-.453-.678l-4.096-.826a.589.589 0 0 0-.113-.012zm-5.876.098a.576.576 0 0 0-.516.318L.062 17.697a.575.575 0 0 0 .256.774l3.733 1.877a.578.578 0 0 0 .775-.258l6.926-13.781a.577.577 0 0 0-.256-.776L7.762 3.658a.571.571 0 0 0-.258-.062zm11.74.115a.576.576 0 0 0-.576.576v15.426c0 .318.258.578.576.578h4.178a.58.58 0 0 0 .578-.578V4.287a.578.578 0 0 0-.578-.576Z"/></svg>Make</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#FF7A59"><path d="M18.164 7.93V5.084a2.198 2.198 0 001.267-1.978v-.067A2.2 2.2 0 0017.238.845h-.067a2.2 2.2 0 00-2.193 2.193v.067a2.196 2.196 0 001.252 1.973l.013.006v2.852a6.22 6.22 0 00-2.969 1.31l.012-.01-7.828-6.095A2.497 2.497 0 104.3 4.656l-.012.006 7.697 5.991a6.176 6.176 0 00-1.038 3.446c0 1.343.425 2.588 1.147 3.607l-.013-.02-2.342 2.343a1.968 1.968 0 00-.58-.095h-.002a2.033 2.033 0 102.033 2.033 1.978 1.978 0 00-.1-.595l.005.014 2.317-2.317a6.247 6.247 0 104.782-11.134l-.036-.005zm-.964 9.378a3.206 3.206 0 113.215-3.207v.002a3.206 3.206 0 01-3.207 3.207z"/></svg>HubSpot</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#3776AB"><path d="M11.914 0C5.82 0 6.2 2.656 6.2 2.656l.007 2.752h5.814v.826H3.912S0 5.789 0 11.969c0 6.18 3.403 5.963 3.403 5.963h2.031v-2.868s-.109-3.403 3.35-3.403h5.769s3.24.052 3.24-3.13V3.13S18.28 0 11.914 0zM8.708 1.81a1.042 1.042 0 1 1 0 2.084 1.042 1.042 0 0 1 0-2.083zM12.086 24c6.094 0 5.714-2.656 5.714-2.656l-.007-2.752H11.98v-.826h8.109S24 18.211 24 12.031c0-6.18-3.403-5.963-3.403-5.963h-2.031v2.868s.109 3.403-3.35 3.403H9.447s-3.24-.052-3.24 3.13v5.401S5.72 24 12.086 24zm3.206-1.81a1.042 1.042 0 1 1 0-2.084 1.042 1.042 0 0 1 0 2.083z"/></svg>Python</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#3178C6"><path d="M0 12v12h24V0H0zm19.341-.956c.61.152 1.074.423 1.501.865.221.236.549.666.575.77.008.03-1.036.73-1.668 1.123-.023.015-.115-.084-.217-.236-.31-.45-.633-.644-1.128-.678-.728-.05-1.196.331-1.192.967a.88.88 0 0 0 .102.45c.16.331.458.53 1.39.933 1.719.74 2.454 1.227 2.911 1.92.51.773.625 2.008.278 2.926-.38.998-1.325 1.676-2.655 1.9-.411.073-1.386.062-1.828-.018-.964-.172-1.878-.648-2.442-1.273-.221-.243-.652-.88-.625-.925.011-.016.11-.077.22-.141.108-.061.511-.294.892-.515l.69-.4.145.214c.202.308.643.731.91.872.766.404 1.817.347 2.335-.118a.883.883 0 0 0 .313-.72c0-.278-.035-.4-.18-.61-.186-.266-.567-.49-1.649-.96-1.238-.533-1.771-.864-2.259-1.39a3.165 3.165 0 0 1-.659-1.2c-.091-.339-.114-1.189-.042-1.531.255-1.197 1.158-2.03 2.461-2.278.423-.08 1.406-.05 1.821.053zm-5.634 1.002l.008.983H10.59v8.876H8.38v-8.876H5.258v-.964c0-.534.011-.98.026-.99.012-.016 1.913-.024 4.217-.02l4.195.007z"/></svg>TypeScript</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#412991"><path d="M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.985 5.985 0 0 0-3.998 2.9 6.046 6.046 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494zM3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085 4.783 2.759a.771.771 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646zM2.34 7.896a4.485 4.485 0 0 1 2.366-1.973V11.6a.766.766 0 0 0 .388.676l5.815 3.355-2.02 1.168a.076.076 0 0 1-.071 0L4.1 14.31a4.501 4.501 0 0 1-1.76-6.414zm16.597 3.855l-5.843-3.37 2.02-1.166a.076.076 0 0 1 .071 0l4.718 2.723a4.5 4.5 0 0 1-.676 8.123V12.48a.79.79 0 0 0-.29-.729zm2.01-3.023l-.141-.085-4.774-2.782a.776.776 0 0 0-.785 0L9.409 9.23V6.897a.066.066 0 0 1 .028-.061l4.713-2.719a4.498 4.498 0 0 1 6.757 4.66zm-12.64 4.135l-2.02-1.164a.08.08 0 0 1-.038-.057V6.075a4.5 4.5 0 0 1 7.375-3.453l-.142.08L8.704 5.46a.795.795 0 0 0-.393.681zm1.097-2.365l2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5z"/></svg>OpenAI</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#D97757"><path d="M17.3041 3.541h-3.6718l6.696 16.918H24Zm-10.6082 0L0 20.459h3.7442l1.3693-3.5527h7.0052l1.3693 3.5528h3.7442L10.5363 3.5409Zm-.3712 10.2232 2.2914-5.9456 2.2914 5.9456Z"/></svg>Claude</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#FF7000"><path d="M17.3 3.5h-3.67l6.7 16.9H24L17.3 3.5zm-10.6 0L0 20.5h3.74l1.37-3.55h7.01l1.37 3.55h3.74L10.5 3.5h-3.8zm-.37 10.22l2.29-5.95 2.29 5.95H6.33z"/></svg>Mistral</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#FF9900"><path d="M12 2C5.4 2 0 5.4 0 9.7c0 2.2 1.2 4.2 3.2 5.7.3-1 .8-1.9 1.4-2.8-1.4-1-2.3-2.3-2.3-3.7 0-3.2 4.8-5.8 10.7-5.8S23.7 5.2 23.7 8.4c0 1.4-.9 2.7-2.3 3.7.6.9 1.1 1.8 1.4 2.8 2-1.5 3.2-3.5 3.2-5.7C24 5.4 18.6 2 12 2zm-5.5 13.2c3.2 2.4 7.3 3.7 11.5 3.7 1.1 0 2.3-.1 3.4-.3-.3-.5-.7-1-1.1-1.4-3 .6-6.2.2-8.9-1.3-.8-.5-1.6-1-2.3-1.6-.4.3-.9.6-1.4.9z"/></svg>AWS</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#000000"><path d="M24 22.525H0l12-21.05 12 21.05z"/></svg>Vercel</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-icon" viewBox="0 0 24 24" fill="#4169E1"><path d="M23.5594 14.7228a.5269.5269 0 0 0-.0563-.1191c-.139-.2632-.4768-.3418-1.0074-.2321-1.6533.3411-2.2935.1312-2.5256-.0191 1.342-2.0482 2.445-4.522 3.0411-6.8297.2714-1.0507.7982-3.5237.1222-4.7316a1.5641 1.5641 0 0 0-.1509-.235C21.6931.9086 19.8007.0248 17.5099.0005c-1.4947-.0158-2.7705.3461-3.1161.4794a9.449 9.449 0 0 0-.5159-.0816 8.044 8.044 0 0 0-1.3114-.1278c-1.1822-.0184-2.2038.2642-3.0498.8406-.8573-.3211-4.7888-1.645-7.2219.0788C.9359 2.1526.3086 3.8733.4302 6.3043c.0409.818.5069 3.334 1.2423 5.7436.4598 1.5065.9387 2.7019 1.4334 3.582.553.9942 1.1259 1.5933 1.7143 1.7895.4474.1491 1.1327.1441 1.8581-.7279.8012-.9635 1.5903-1.8258 1.9446-2.2069.4351.2355.9064.3625 1.39.3772a.0569.0569 0 0 0 .0004.0041 11.0312 11.0312 0 0 0-.2472.3054c-.3389.4302-.4094.5197-1.5002.7443-.3102.064-1.1344.2339-1.1464.8115-.0025.1224.0329.2309.0919.3268.2269.4231.9216.6097 1.015.6331 1.3345.3335 2.5044.092 3.3714-.6787-.017 2.231.0775 4.4174.3454 5.0874.2212.5529.7618 1.9045 2.4692 1.9043.2505 0 .5263-.0291.8296-.0941 1.7819-.3821 2.5557-1.1696 2.855-2.9059.1503-.8707.4016-2.8753.5388-4.1012.0169-.0703.0357-.1207.057-.1362.0007-.0005.0697-.0471.4272.0307a.3673.3673 0 0 0 .0443.0068l.2539.0223.0149.001c.8468.0384 1.9114-.1426 2.5312-.4308.6438-.2988 1.8057-1.0323 1.5951-1.6698z"/></svg>PostgreSQL</span>
-                    <span class="ticker-sep">·</span>
+
+        <section class="trust-strip" aria-label="Infrastruktur und Datenschutz">
+            <ul class="trust-strip__list">
+                <li>Selbst gehostet in Deutschland</li>
+                <li>Datenbank in Frankfurt</li>
+                <li>AVV nach Art. 28 DSGVO</li>
+                <li>Keine Datenweitergabe außerhalb der EU</li>
+                <li>Koblenz</li>
+            </ul>
+        </section>
+
+        <section id="alltag">
+            <div class="section-wrap">
+                <span class="mono-label">Im Büroalltag</span>
+                <h2 class="section-h2">Wo Qualifizierung Zeit kostet</h2>
+                <p class="section-sub">Die Anfragen kommen rein. Der Engpass sitzt danach: manuelle Prüfung, Rückfragen und Terminabstimmung.</p>
+                <ul class="list-plain">
+                    <li>Jedes Portal-Mail wird einzeln gelesen, bevor klar ist, ob Kauf oder Miete und ob die Angaben reichen.</li>
+                    <li>Rückfragen gehen per Hand raus und verzögern die Antwortzeit gegenüber dem Interessenten.</li>
+                    <li>Terminfindung läuft über Hin und Her in E-Mail oder Telefon, statt direkt in den Kalender.</li>
+                    <li>Erstgespräche mit unpassenden Leads binden Kapazität, die für passende Interessenten fehlt.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="referenzen-teaser">
+            <div class="section-wrap">
+                <span class="mono-label">Wem wir geholfen haben</span>
+                <h2 class="section-h2">Haller Immobilienberatung GmbH</h2>
+                <div class="teaser-card">
+                    <p>Öffentlich freigegebene Referenz: Portalanfragen werden qualifiziert und Termine landen im Kalender, statt im Hin und Her des Büroalltags. Gemessene Kennzahlen folgen, sobald sie aus dem Live-Betrieb belastbar vorliegen.</p>
+                    <p style="margin-top:0.75rem;"><a href="referenzen.html">Zur Referenz</a></p>
                 </div>
             </div>
         </section>
 
+        <section id="trust" aria-labelledby="trust-title">
+            <div class="section-wrap trust-founder">
+                <img class="trust-founder__portrait" src="images/kevin-ritz-portrait.png" width="2048" height="2048" loading="lazy" alt="Kevin Ritz, Gründer von RAIS">
+                <div class="trust-founder__copy">
+                    <span class="mono-label">Direkter Ansprechpartner</span>
+                    <h2 class="section-h2" id="trust-title">Kein Vermittler. Kein anonymes Projektteam.</h2>
+                    <p>Ich bin Kevin Ritz, Gründer von RAIS aus Koblenz. Vom ersten Prozess-Audit bis zum laufenden System arbeiten Sie direkt mit mir.</p>
+                    <a class="trust-founder__link" href="ueber-uns.html">Mehr über RAIS und Kevin Ritz</a>
+                </div>
+            </div>
+        </section>
 
-        <!-- ═══════════════════════════════════════════════════
-             ZIELGRUPPE — Mit wem wir arbeiten
-        ═══════════════════════════════════════════════════ -->
+        <section id="systeme">
+            <div class="section-wrap">
+                <span class="mono-label">Live-Systeme</span>
+                <h2 class="section-h2">Was RAIS heute baut</h2>
+                <p class="section-sub">AQuT ist das vertiefte Angebot für Makleranfragen. Die übrigen Systeme zeigen die Bandbreite, ohne die Zielgruppe zu verwässern.</p>
+                <div class="systeme-bento">
+                    <article class="sys-cell sys-cell--aqut">
+                        <span class="sys-ctx">Makler</span>
+                        <h3>AQuT</h3>
+                        <p>Portalanfragen qualifizieren, Rückfragen automatisieren, Termine buchen. Bei typischem Volumen oft rund 30 Stunden pro Monat (Herleitung ca. 5 bis 8 Std/Woche), abhängig vom Anfragevolumen.</p>
+                        <a href="aqut.html">AQuT genauer ansehen</a>
+                    </article>
+                    <article class="sys-cell sys-cell--peer">
+                        <span class="sys-ctx">Makler</span>
+                        <h3>Onboarding WFS</h3>
+                        <p>Nach Vertragsunterschrift: strukturierte Objektannahme ohne Zettelwirtschaft.</p>
+                    </article>
+                    <article class="sys-cell sys-cell--peer">
+                        <span class="sys-ctx">Makler</span>
+                        <h3>Lead Scraping LMLF</h3>
+                        <p>Marktbeobachtung und Lead-Erfassung über strukturierte Workflows.</p>
+                    </article>
+                    <article class="sys-cell sys-cell--peer">
+                        <span class="sys-ctx">Makler</span>
+                        <h3>CRM</h3>
+                        <p>Anbindung an bestehende Systeme oder schlanke eigene Datenhaltung.</p>
+                    </article>
+                    <article class="sys-cell sys-cell--peer">
+                        <span class="sys-ctx">Intern</span>
+                        <h3>Habit Tracker + Report</h3>
+                        <p>Interne Routinen mit Performance-Report für Disziplin und Auswertung.</p>
+                    </article>
+                    <article class="sys-cell sys-cell--peer">
+                        <span class="sys-ctx">Content</span>
+                        <h3>Agentic AI Content</h3>
+                        <p>Agentische Systeme für Content-Erstellung und Redaktionsabläufe.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
         <section id="zielgruppe">
-            <div class="zielgruppe-atmosphere" aria-hidden="true"></div>
             <div class="section-wrap">
-                <div class="zielgruppe-intro reveal">
-                    <span class="mono-label">Mit wem wir arbeiten</span>
-                    <h2 class="section-h2">Sie führen ein Maklerbüro im Mittelstand?</h2>
-                    <p class="section-sub" style="margin-left: auto; margin-right: auto;">Wir arbeiten mit unabhängigen Maklerbüros im Mittelstand, die bereit sind, mit dem Zeitgeist zu gehen. Innovationsbereitschaft ist für uns das wichtigste Kriterium.</p>
-                </div>
-
-                <div class="zielgruppe-editorial reveal">
-                    <span class="zielgruppe-editorial__label">Vertrieb</span>
-                    <h3 class="zielgruppe-editorial__title">Unabhängige Maklerbüros</h3>
-                    <ol class="zielgruppe-reqs zielgruppe-reqs--roman">
-                        <li><span class="zielgruppe-reqs__numeral" aria-hidden="true">I</span><span><strong>5 bis 25 Mitarbeitende</strong> im Team</span></li>
-                        <li><span class="zielgruppe-reqs__numeral" aria-hidden="true">II</span><span>Hohes <strong>Anfragevolumen</strong> über die gängigen Immobilienportale</span></li>
-                        <li><span class="zielgruppe-reqs__numeral" aria-hidden="true">III</span><span>Bestehendes <strong>CRM</strong> wie onOffice oder Propstack (unsere Empfehlung), oder die Bereitschaft eines einzuführen</span></li>
-                        <li><span class="zielgruppe-reqs__numeral" aria-hidden="true">IV</span><span>Offenheit für <strong>KI und neue Systeme</strong> im Team, das wichtigste Kriterium für eine Zusammenarbeit</span></li>
-                    </ol>
-                </div>
-
-                <div class="zielgruppe-cta-wrap reveal">
-                    <button type="button" class="hero-btn-primary js-open-booking" data-source="zielgruppe">Kostenlosen Audit buchen</button>
-                </div>
+                <span class="mono-label">Für wen</span>
+                <h2 class="section-h2">Unabhängige Maklerbüros mit echtem Anfragevolumen</h2>
+                <ul class="list-plain">
+                    <li>5 bis 25 Mitarbeitende im Team</li>
+                    <li>Hohes Anfragevolumen über gängige Immobilienportale</li>
+                    <li>Bestehendes CRM wie onOffice oder Propstack, oder Bereitschaft dazu</li>
+                    <li>Offenheit für KI und neue Systeme im Team</li>
+                </ul>
+                <p class="mono-label" style="margin-top:2.5rem;">Nicht unsere Zielgruppe</p>
+                <ul class="list-plain">
+                    <li>Einzelkämpfer und Solo-Makler</li>
+                    <li>Franchise-Netzwerke</li>
+                    <li>Bankgebundene Agenturen</li>
+                    <li>Reine Hausverwaltungen</li>
+                </ul>
             </div>
         </section>
 
-        <section id="leistungen">
+        <section id="start">
             <div class="section-wrap">
-
-                <!-- Section intro -->
-                <div class="leis-intro reveal" style="margin-left: auto; margin-right: auto; text-align: center;">
-                    <span class="mono-label">Was wir tun</span>
-                    <h2 class="section-h2">Das Anfragen-System für Ihr Maklerbüro.</h2>
-                    <p class="section-sub" style="margin: 0.75rem auto 0; max-width: 36rem;">Automatisiert Qualifizierung und Terminierung Ihrer Portalanfragen. Ihr Team spricht nur noch mit Leads, die wirklich passen.</p>
-                    <p class="leis-intro__tagline">Weniger Stunden mit Rückfragen. Mehr Termine mit qualifizierten Interessenten.</p>
-                </div>
-
-                <div class="flow reveal">
-                    <div class="flow__step">
-                        <span class="flow__icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="2" y="4" width="20" height="16" rx="2"/>
-                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-                            </svg>
-                        </span>
-                        <h3 class="flow__title">Anfrage</h3>
-                        <p class="flow__desc">Die Portalanfrage geht ein.</p>
-                    </div>
-
-                    <svg class="flow__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-
-                    <div class="flow__step">
-                        <span class="flow__icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 8V4H8"/>
-                                <rect width="16" height="12" x="4" y="8" rx="2"/>
-                                <path d="M2 14h2"/>
-                                <path d="M20 14h2"/>
-                                <path d="M15 13v2"/>
-                                <path d="M9 13v2"/>
-                            </svg>
-                        </span>
-                        <h3 class="flow__title">Automatische Qualifizierung</h3>
-                        <p class="flow__desc">Das System prüft vor. Fehlen Angaben, geht eine Rückfrage per E-Mail raus, nicht per Telefon.</p>
-                    </div>
-
-                    <svg class="flow__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-
-                    <div class="flow__step">
-                        <span class="flow__icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="4" width="18" height="18" rx="2"/>
-                                <line x1="16" y1="2" x2="16" y2="6"/>
-                                <line x1="8" y1="2" x2="8" y2="6"/>
-                                <line x1="3" y1="10" x2="21" y2="10"/>
-                            </svg>
-                        </span>
-                        <h3 class="flow__title">Terminbuchung</h3>
-                        <p class="flow__desc">Der Interessent wählt einen freien Slot. Der Termin landet direkt in Ihrem Kalender.</p>
-                    </div>
-
-                    <svg class="flow__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-
-                    <div class="flow__step">
-                        <span class="flow__icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.28h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.99a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.28 16"/>
-                            </svg>
-                        </span>
-                        <h3 class="flow__title">Erstgespräch</h3>
-                        <p class="flow__desc">Ihr Team spricht mit qualifizierten Leads.</p>
-                    </div>
-                </div>
-
-                <div class="flow-outcomes" id="flow-outcomes">
-                    <p class="flow-outcomes__label">Was das System für Ihr Büro bedeutet</p>
-                    <ul class="flow-outcomes__list">
-                        <li class="flow-outcomes__item" data-index="0">Keine Rückfragen nach Telefonnummer oder Adresse im Erstkontakt</li>
-                        <li class="flow-outcomes__item" data-index="1">Kein Wegdrücken von Terminvorschlägen per Telefon</li>
-                        <li class="flow-outcomes__item" data-index="2">Keine ständigen Mailboxen beim Kontakt mit Interessenten</li>
-                    </ul>
-                    <p class="flow-outcomes__stat">Durchschnittlich 60 Stunden Ersparnis pro Monat</p>
-                </div>
-
-                <div class="flow-cta-wrap reveal">
-                    <button type="button" class="leis-core__cta js-open-booking" data-source="leistungen-flow">Kostenlosen Audit buchen</button>
-                </div>
-
+                <span class="mono-label">Einstieg</span>
+                <h2 class="section-h2">So starten wir</h2>
+                <p class="section-sub">Kostenloses Erstgespräch, klares Angebot, dann Aufbau bis Betrieb. Der volle Ablauf steht auf einer eigenen Seite.</p>
+                <p style="margin-top:1.5rem;"><a href="zusammenarbeit.html">So arbeiten wir</a></p>
             </div>
         </section>
 
-        <!-- ═══════════════════════════════════════════════════
-             PROJEKTE
-        ═══════════════════════════════════════════════════ -->
-        <section id="projekte">
-            <div class="section-wrap">
-
-                <div class="projekte-intro reveal">
-                    <span class="mono-label">Referenzen</span>
-                    <h2 class="section-h2">Systeme, die wir bereits gebaut haben.</h2>
-                    <p class="section-sub">Jedes dieser Systeme läuft produktiv oder lief als Kundenprojekt. Keine Konzepte, gebaute Realität.</p>
-                </div>
-
-                <div class="ref-strip-wrapper reveal">
-                    <div class="ref-strip-track">
-                        <!-- Set 1 -->
-                        <figure class="ref-strip-item">
-                            <img src="images/automatisches Onboarding system Screenshot.png" loading="lazy" alt="Onboarding-Automatisierung">
-                            <figcaption>Onboarding-Automatisierung</figcaption>
-                        </figure>
-                        <figure class="ref-strip-item">
-                            <img src="images/RAIS CRM Screenshot.png" loading="lazy" alt="Anfragen-Qualifizierung im CRM">
-                            <figcaption>Anfragen-Qualifizierung im CRM</figcaption>
-                        </figure>
-                        <figure class="ref-strip-item">
-                            <img src="images/clay and light screenshot.png" loading="lazy" alt="Lead-Scraping und Enrichment">
-                            <figcaption>Lead-Scraping und Enrichment</figcaption>
-                        </figure>
-                        <figure class="ref-strip-item">
-                            <img src="images/Eckstein CMS Screenshot.png" loading="lazy" alt="Website- und CMS-System">
-                            <figcaption>Website- und CMS-System</figcaption>
-                        </figure>
-                        <figure class="ref-strip-item">
-                            <img src="images/RAIS performance Screenshot.png" loading="lazy" alt="Performance-Dashboard">
-                            <figcaption>Performance-Dashboard</figcaption>
-                        </figure>
-                        <figure class="ref-strip-item">
-                            <img src="images/LMLF wf3 get person screenshot.png" loading="lazy" alt="Workflow-Automatisierung">
-                            <figcaption>Workflow-Automatisierung</figcaption>
-                        </figure>
-                        <!-- Set 2 (Duplikat für nahtlosen Loop) -->
-                        <figure class="ref-strip-item" aria-hidden="true">
-                            <img src="images/automatisches Onboarding system Screenshot.png" loading="lazy" alt="">
-                            <figcaption>Onboarding-Automatisierung</figcaption>
-                        </figure>
-                        <figure class="ref-strip-item" aria-hidden="true">
-                            <img src="images/RAIS CRM Screenshot.png" loading="lazy" alt="">
-                            <figcaption>Anfragen-Qualifizierung im CRM</figcaption>
-                        </figure>
-                        <figure class="ref-strip-item" aria-hidden="true">
-                            <img src="images/clay and light screenshot.png" loading="lazy" alt="">
-                            <figcaption>Lead-Scraping und Enrichment</figcaption>
-                        </figure>
-                        <figure class="ref-strip-item" aria-hidden="true">
-                            <img src="images/Eckstein CMS Screenshot.png" loading="lazy" alt="">
-                            <figcaption>Website- und CMS-System</figcaption>
-                        </figure>
-                        <figure class="ref-strip-item" aria-hidden="true">
-                            <img src="images/RAIS performance Screenshot.png" loading="lazy" alt="">
-                            <figcaption>Performance-Dashboard</figcaption>
-                        </figure>
-                        <figure class="ref-strip-item" aria-hidden="true">
-                            <img src="images/LMLF wf3 get person screenshot.png" loading="lazy" alt="">
-                            <figcaption>Workflow-Automatisierung</figcaption>
-                        </figure>
-                    </div>
-                </div>
-
-                <div style="text-align: center; margin-top: 3.5rem;">
-                    <button type="button" class="btn-primary js-open-booking" style="border:none;cursor:pointer;font-family:inherit;">Kostenlosen Audit buchen</button>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ═══════════════════════════════════════════════════
-             WIR
-        ═══════════════════════════════════════════════════ -->
-        <section id="wir">
-            <div class="wir-bg" aria-hidden="true"></div>
-            <div class="wir-overlay" aria-hidden="true"></div>
-            <div class="wir-content wir-content--split reveal">
-                <span class="mono-label">Gründer</span>
-                <h2 class="section-h2">Gründer. Aus Koblenz. Für Maklerbüros.</h2>
-                <div class="wir-grid">
-                    <img class="wir-photo" src="images/prof_bild.jpg" width="240" height="320" loading="lazy" alt="Kevin Ritz, Gründer von RAIS">
-                    <div class="wir-text">
-                        <p class="wir-copy">
-                            Ich bin Kevin Ritz, Gründer von RAIS aus Koblenz. Mich treibt das Optimieren von Prozessen an, die allen Beteiligten die Arbeit leichter machen. Effizienz ist kein Buzzword, sie ist der Grund, warum es RAIS gibt.
-                        </p>
-                        <p class="wir-copy">
-                            Was wir gemeinsam entwickeln, ist transparent, DSGVO-konform und ohne SaaS-Ballast. Sie arbeiten direkt mit mir, klein, direkt, persönlich.
-                        </p>
-                        <a class="wir-linkedin" href="https://linkedin.com/in/kevin-ritz-rais" target="_blank" rel="noopener">LinkedIn</a>
-                    </div>
-                </div>
-                <span class="wir-location">Ritz AI Solutions · Koblenz</span>
-            </div>
-        </section>
-
-        <!-- ═══════════════════════════════════════════════════
-             ZUSAMMENARBEIT — PROZESS
-        ═══════════════════════════════════════════════════ -->
-
-        <section id="zusammenarbeit-prozess">
-            <div class="section-wrap">
-                <div class="process-intro">
-                    <span class="mono-label">Zusammenarbeit</span>
-                    <h2 class="section-h2">So läuft die Zusammenarbeit</h2>
-                    <p class="section-sub" style="margin-left: auto; margin-right: auto;">
-                        Vom ersten Gespräch bis zur Unterschrift. Klar, ohne Umwege.
-                    </p>
-                </div>
-
-                <div class="collab-cascade reveal" id="collab-stepper" data-step="1">
-                    <div class="collab-cascade__stack">
-                        <div class="collab-cascade__row">
-                            <span class="collab-cascade__numeral" aria-hidden="true">I</span>
-                            <div class="collab-cascade__card is-active" data-card="1">
-                                <span class="collab-cascade__eyebrow">Schritt 1</span>
-                                <h3 class="collab-cascade__title">Discovery</h3>
-                                <div class="collab-cascade__body">
-                                    <p class="collab-cascade__desc">Wir schauen uns Ihre Prozesse an. Ergebnis: Sie wissen, was möglich ist.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <svg class="collab-cascade__arrow" data-arrow="1" viewBox="0 0 24 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="4" x2="12" y2="24"/><polyline points="6 18 12 24 18 18"/></svg>
-
-                        <div class="collab-cascade__row">
-                            <span class="collab-cascade__numeral" aria-hidden="true">II</span>
-                            <div class="collab-cascade__card" data-card="2">
-                                <span class="collab-cascade__eyebrow">Schritt 2</span>
-                                <h3 class="collab-cascade__title">Angebot</h3>
-                                <div class="collab-cascade__body">
-                                    <p class="collab-cascade__desc">Wir kommen mit einem konkreten Angebot zurück. Scope, Timeline, Preis.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <svg class="collab-cascade__arrow" data-arrow="2" viewBox="0 0 24 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="4" x2="12" y2="24"/><polyline points="6 18 12 24 18 18"/></svg>
-
-                        <div class="collab-cascade__row">
-                            <span class="collab-cascade__numeral" aria-hidden="true">III</span>
-                            <div class="collab-cascade__card" data-card="3">
-                                <span class="collab-cascade__eyebrow">Schritt 3</span>
-                                <h3 class="collab-cascade__title">Zusammenarbeit</h3>
-                                <div class="collab-cascade__body">
-                                    <p class="collab-cascade__desc">Passt das Angebot, starten wir. Vertrag und Onboarding.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="collab-cascade__controls">
-                        <span class="collab-cascade__counter" id="stepper-counter" aria-live="polite">Schritt 1 von 3</span>
-                        <button type="button" class="collab-cascade__btn collab-cascade__btn--back" id="stepper-back" hidden>Zurück</button>
-                        <button type="button" class="collab-cascade__btn collab-cascade__btn--next" id="stepper-next">Weiter</button>
-                        <button type="button" class="collab-cascade__btn collab-cascade__btn--cta js-open-booking" id="stepper-cta" data-source="zusammenarbeit" hidden>Kostenlosen Audit buchen</button>
-                    </div>
-                </div>
-
-                <div class="collab3-outro reveal">
-                    <h3 class="collab3-outro__title">Und nach der Unterschrift?</h3>
-                    <p class="collab3-outro__text">Wir bauen das System, schulen Ihr Team, und es läuft.</p>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- ═══════════════════════════════════════════════════
-             KONTAKT
-        ═══════════════════════════════════════════════════ -->
-        <section id="contact">
+<section id="contact">
             <div class="section-wrap">
 
                 <div class="contact-grid">
@@ -3633,7 +3409,7 @@
                     <div class="cal-embed-wrap">
                         <p class="cal-card-title">Kostenlosen Audit buchen</p>
                         <p class="cal-card-sub">60 Minuten, kostenlos. Drei konkrete Automatisierungs-Ideen für Ihr Büro.</p>
-                        <button type="button" id="contact-demo-btn" class="cal-load-btn" style="display:flex; align-items:center; justify-content:center; gap:0.5rem; width:100%; border:none; cursor:pointer; font-family:inherit;">
+                        <button type="button" id="contact-demo-btn" class="cal-load-btn js-open-booking" data-source="contact" style="display:flex; align-items:center; justify-content:center; gap:0.5rem; width:100%; border:none; cursor:pointer; font-family:inherit;">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                             Kostenlosen Audit buchen
                         </button>
@@ -3684,7 +3460,7 @@
          MOBILE STICKY CTA
     ═══════════════════════════════════════════════════════ -->
     <div id="sticky-cta" aria-hidden="true">
-        <button type="button" class="sticky-cta-btn" id="sticky-demo-btn">Kostenlosen Audit buchen</button>
+        <button type="button" class="sticky-cta-btn js-open-booking" id="sticky-demo-btn" data-source="sticky">Kostenlosen Audit buchen</button>
     </div>
 
     <!-- ═══════════════════════════════════════════════════════
@@ -3697,11 +3473,13 @@
                 <span class="footer-wordmark">RAIS</span>
             </a>
             <nav class="footer-legal" aria-label="Seitenlinks">
-                <a href="#projekte">Projekte</a>
+                <a href="#systeme">Systeme</a>
+                <a href="zusammenarbeit.html">So arbeiten wir</a>
+                <a href="referenzen.html">Referenzen</a>
                 <a href="#contact">Kontakt</a>
                 <a href="impressum.html">Impressum</a>
                 <a href="datenschutz.html">Datenschutz</a>
-                <a href="https://linkedin.com/in/kevin-ritz-rais" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://linkedin.com/in/kevin-ritz-rais" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             </nav>
             <span class="footer-copy">© 2026 Ritz AI Solutions · RAIS · Koblenz</span>
         </div>
@@ -4059,275 +3837,87 @@
     <!-- ═══════════════════════════════════════════════════════
          BOOKING MODAL
     ═══════════════════════════════════════════════════════ -->
-    <div id="booking-modal" role="dialog" aria-modal="true" aria-label="Kostenloser Audit buchen">
-        <div class="bm-backdrop" id="bm-backdrop"></div>
-        <div class="bm-box">
 
-            <button class="bm-close" id="bm-close" aria-label="Schließen">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            </button>
-
-            <!-- Progress dots: steps 1–3 + Cal.com -->
-            <div class="bm-progress" id="bm-progress">
-                <div class="bm-dot" data-step="0"></div>
-                <div class="bm-dot" data-step="1"></div>
-                <div class="bm-dot" data-step="2"></div>
-                <div class="bm-dot" data-step="3"></div>
-            </div>
-
-            <!-- Step 1: Name & Email -->
-            <div class="bm-step is-active" id="bm-step-0">
-                <p class="bm-label">Schritt 1 von 3</p>
-                <h2 class="bm-title">Wer sind Sie?</h2>
-                <p class="bm-sub">Damit wir das Audit auf Ihre Situation vorbereiten können.</p>
-                <div class="bm-field">
-                    <label for="bm-name">Ihr Name</label>
-                    <input type="text" id="bm-name" placeholder="Max Mustermann" autocomplete="name">
-                </div>
-                <div class="bm-field">
-                    <label for="bm-email">E-Mail-Adresse</label>
-                    <input type="email" id="bm-email" placeholder="max@muster.de" autocomplete="email">
-                </div>
-                <div class="bm-field" style="position:absolute; left:-9999px;" aria-hidden="true">
-                    <label for="bm-website">Website</label>
-                    <input type="text" id="bm-website" name="website" tabindex="-1" autocomplete="off">
-                </div>
-                <label class="bm-check" for="bm-privacy">
-                    <input type="checkbox" id="bm-privacy" required>
-                    <span>Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a> gelesen.</span>
-                </label>
-                <div class="bm-actions">
-                    <button type="button" class="bm-btn-next" id="bm-next-0">Weiter →</button>
-                </div>
-            </div>
-
-            <!-- Step 2: Pain Point -->
-            <div class="bm-step" id="bm-step-1">
-                <p class="bm-label">Schritt 2 von 3</p>
-                <h2 class="bm-title">Was kostet Sie am meisten Zeit?</h2>
-                <p class="bm-sub">So können wir das Audit gezielt vorbereiten.</p>
-                <div class="bm-options" id="bm-options-pain">
-                    <button type="button" class="bm-option" data-value="inseratsanfragen-qualifizieren"><span class="bm-option-icon">📧</span> Inseratsanfragen qualifizieren</button>
-                    <button type="button" class="bm-option" data-value="terminierung-besichtigungen"><span class="bm-option-icon">📅</span> Terminierung von Besichtigungen</button>
-                    <button type="button" class="bm-option" data-value="onboarding-vertragsunterschrift"><span class="bm-option-icon">📋</span> Onboarding nach Vertragsunterschrift</button>
-                    <button type="button" class="bm-option" data-value="wiederkehrende-kundenfragen"><span class="bm-option-icon">💬</span> Wiederkehrende Kundenfragen</button>
-                    <button type="button" class="bm-option" data-value="gesamtprozess"><span class="bm-option-icon">🔍</span> Gesamtprozess-Audit</button>
-                    <button type="button" class="bm-option" data-value="anderes"><span class="bm-option-icon">✏️</span> Anderes</button>
-                </div>
-                <div class="bm-actions">
-                    <button type="button" class="bm-btn-back" id="bm-back-1">← Zurück</button>
-                    <button type="button" class="bm-btn-next" id="bm-next-1">Weiter →</button>
-                </div>
-            </div>
-
-            <!-- Step 3: Unternehmensgröße -->
-            <div class="bm-step" id="bm-step-2">
-                <p class="bm-label">Schritt 3 von 3</p>
-                <h2 class="bm-title">Wie groß ist Ihr Team?</h2>
-                <p class="bm-sub">Damit die Lösung exakt auf Ihre Teamgröße passt.</p>
-                <div class="bm-options" id="bm-options-size">
-                    <button type="button" class="bm-option" data-value="unter-5"><span class="bm-option-icon">🧑</span> Unter 5 Personen</button>
-                    <button type="button" class="bm-option" data-value="5-10"><span class="bm-option-icon">👥</span> 5 bis 10</button>
-                    <button type="button" class="bm-option" data-value="11-25"><span class="bm-option-icon">🏢</span> 11 bis 25</button>
-                    <button type="button" class="bm-option" data-value="ueber-25"><span class="bm-option-icon">🏗️</span> Mehr als 25</button>
-                </div>
-                <div class="bm-actions">
-                    <button type="button" class="bm-btn-back" id="bm-back-2">← Zurück</button>
-                    <button type="button" class="bm-btn-next" id="bm-next-2">Termin buchen →</button>
-                </div>
-            </div>
-
-            <!-- Step 4: Cal.com -->
-            <div class="bm-step" id="bm-step-3">
-                <p class="bm-label">Fast geschafft</p>
-                <h2 class="bm-title">Wählen Sie Ihren Termin</h2>
-                <p class="bm-sub">60 Minuten, kostenlos. Sie erhalten 3 Use Cases mit Umsetzungs-Blueprint.</p>
-                <div class="bm-cal-wrap" id="bm-cal-wrap"></div>
-            </div>
-
-        </div>
+<div id="booking-modal" role="dialog" aria-modal="true" aria-label="Kostenloser Audit buchen">
+  <div class="bm-backdrop" id="bm-backdrop"></div>
+  <div class="bm-box">
+    <button class="bm-close" id="bm-close" type="button" aria-label="Schließen">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="bm-progress" id="bm-progress">
+      <div class="bm-dot" data-step="0"></div>
+      <div class="bm-dot" data-step="1"></div>
+      <div class="bm-dot" data-step="2"></div>
+      <div class="bm-dot" data-step="3"></div>
     </div>
+    <div class="bm-step is-active" id="bm-step-0">
+      <p class="bm-label">Schritt 1 von 3</p>
+      <h2 class="bm-title">Wer sind Sie?</h2>
+      <p class="bm-sub">Damit wir das Audit auf Ihre Situation vorbereiten können.</p>
+      <div class="bm-field">
+        <label for="bm-name">Ihr Name</label>
+        <input type="text" id="bm-name" placeholder="Max Mustermann" autocomplete="name" maxlength="200">
+      </div>
+      <div class="bm-field">
+        <label for="bm-email">E-Mail-Adresse</label>
+        <input type="email" id="bm-email" placeholder="max@muster.de" autocomplete="email" maxlength="254">
+      </div>
+      <div class="bm-field" style="position:absolute;left:-9999px;" aria-hidden="true">
+        <label for="bm-website">Website</label>
+        <input type="text" id="bm-website" name="website" tabindex="-1" autocomplete="off">
+      </div>
+      <label class="bm-check" for="bm-privacy">
+        <input type="checkbox" id="bm-privacy" required>
+        <span>Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a> gelesen.</span>
+      </label>
+      <div class="bm-actions">
+        <button type="button" class="bm-btn-next" id="bm-next-0">Weiter</button>
+      </div>
+    </div>
+    <div class="bm-step" id="bm-step-1">
+      <p class="bm-label">Schritt 2 von 3</p>
+      <h2 class="bm-title">Was kostet Sie am meisten Zeit?</h2>
+      <p class="bm-sub">So können wir das Audit gezielt vorbereiten.</p>
+      <div class="bm-options" id="bm-options-pain">
+        <button type="button" class="bm-option" data-value="inseratsanfragen-qualifizieren">Inseratsanfragen qualifizieren</button>
+        <button type="button" class="bm-option" data-value="terminierung-besichtigungen">Terminierung von Besichtigungen</button>
+        <button type="button" class="bm-option" data-value="onboarding-vertragsunterschrift">Onboarding nach Vertragsunterschrift</button>
+        <button type="button" class="bm-option" data-value="wiederkehrende-kundenfragen">Wiederkehrende Kundenfragen</button>
+        <button type="button" class="bm-option" data-value="gesamtprozess">Gesamtprozess-Audit</button>
+        <button type="button" class="bm-option" data-value="anderes">Anderes</button>
+      </div>
+      <div class="bm-actions">
+        <button type="button" class="bm-btn-back" id="bm-back-1">Zurück</button>
+        <button type="button" class="bm-btn-next" id="bm-next-1">Weiter</button>
+      </div>
+    </div>
+    <div class="bm-step" id="bm-step-2">
+      <p class="bm-label">Schritt 3 von 3</p>
+      <h2 class="bm-title">Wie groß ist Ihr Team?</h2>
+      <p class="bm-sub">Damit die Lösung exakt auf Ihre Teamgröße passt.</p>
+      <div class="bm-options" id="bm-options-size">
+        <button type="button" class="bm-option" data-value="unter-5">Unter 5 Personen</button>
+        <button type="button" class="bm-option" data-value="5-10">5 bis 10</button>
+        <button type="button" class="bm-option" data-value="11-25">11 bis 25</button>
+        <button type="button" class="bm-option" data-value="ueber-25">Mehr als 25</button>
+      </div>
+      <div class="bm-actions">
+        <button type="button" class="bm-btn-back" id="bm-back-2">Zurück</button>
+        <button type="button" class="bm-btn-next" id="bm-next-2">Termin buchen</button>
+      </div>
+    </div>
+    <div class="bm-step" id="bm-step-3">
+      <p class="bm-label">Fast geschafft</p>
+      <h2 class="bm-title">Wählen Sie Ihren Termin</h2>
+      <p class="bm-sub">60 Minuten, kostenlos. Die Buchung öffnet sich bei Cal.com in einem neuen Tab. Es werden keine Angaben aus diesem Formular an Cal.com übergeben.</p>
+      <p class="bm-sub" id="bm-submit-status" role="status" aria-live="polite"></p>
+      <div class="bm-cal-wrap" id="bm-cal-wrap"></div>
+    </div>
+  </div>
+</div>
+<script src="scripts/booking-modal.js"></script>
 
-    <script>
-    (function () {
-        var cfg = window.RAIS_PUBLIC_CONFIG || {};
-        var SUPABASE_URL  = cfg.supabaseUrl || '';
-        var SUPABASE_ANON = cfg.supabaseAnonKey || '';
-        var CAL_URL       = cfg.calComUrl || '';
-
-        if (!SUPABASE_URL || !SUPABASE_ANON) {
-            console.error('RAIS: scripts/public-config.js fehlt. npm run config ausführen.');
-            return;
-        }
-
-        var modal    = document.getElementById('booking-modal');
-        var backdrop = document.getElementById('bm-backdrop');
-        var closeBtn = document.getElementById('bm-close');
-        var steps    = [0,1,2,3].map(function(i){ return document.getElementById('bm-step-'+i); });
-        var dots     = document.querySelectorAll('.bm-dot');
-
-        var state = { step: 0, name: '', email: '', pain_point: '', team_size: '', icp_segment: null, source: null, calLoaded: false };
-
-        function resetModalState() {
-            state.step = 0;
-            state.name = '';
-            state.email = '';
-            state.pain_point = '';
-            state.team_size = '';
-            state.icp_segment = null;
-            state.source = null;
-            state.calLoaded = false;
-            document.querySelectorAll('.bm-option').forEach(function(b){ b.classList.remove('selected'); });
-            var nameEl = document.getElementById('bm-name');
-            var emailEl = document.getElementById('bm-email');
-            var privacyEl = document.getElementById('bm-privacy');
-            if (nameEl) nameEl.value = '';
-            if (emailEl) emailEl.value = '';
-            if (privacyEl) privacyEl.checked = false;
-            var calWrap = document.getElementById('bm-cal-wrap');
-            if (calWrap) calWrap.innerHTML = '';
-        }
-
-        /* ── open / close ── */
-        function openModal(opts) {
-            resetModalState();
-            if (opts) {
-                if (opts.icp_segment) state.icp_segment = opts.icp_segment;
-                if (opts.source) state.source = opts.source;
-            }
-            modal.classList.add('is-open');
-            document.body.classList.add('noscroll');
-            goTo(0);
-        }
-        function closeModal() {
-            modal.classList.remove('is-open');
-            document.body.classList.remove('noscroll');
-        }
-
-        window.RAIS_openBooking = openModal;
-
-        ['nav-demo-btn','hero-work-btn','contact-demo-btn','sticky-demo-btn','mobile-demo-btn'].forEach(function(id){
-            var el = document.getElementById(id);
-            if (el) el.addEventListener('click', function(){ openModal(); });
-        });
-        document.querySelectorAll('.js-open-booking').forEach(function(el){
-            el.addEventListener('click', function(){
-                openModal({
-                    icp_segment: el.dataset.icpSegment || null,
-                    source: el.dataset.source || null
-                });
-            });
-        });
-        closeBtn.addEventListener('click', closeModal);
-        backdrop.addEventListener('click', closeModal);
-        document.addEventListener('keydown', function (e) {
-            if (e.key !== 'Escape') return;
-            var leisModal = document.getElementById('leis-modal');
-            if (leisModal && leisModal.classList.contains('is-open')) return;
-            closeModal();
-        });
-
-        /* ── step nav ── */
-        function goTo(n) {
-            steps.forEach(function(s,i){ s.classList.toggle('is-active', i===n); });
-            dots.forEach(function(d,i){ d.classList.toggle('done', i<=n); });
-            state.step = n;
-        }
-
-        /* ── option buttons ── */
-        function bindOptions(groupId, key) {
-            document.querySelectorAll('#'+groupId+' .bm-option').forEach(function(btn){
-                btn.addEventListener('click', function(){
-                    document.querySelectorAll('#'+groupId+' .bm-option').forEach(function(b){ b.classList.remove('selected'); });
-                    btn.classList.add('selected');
-                    state[key] = btn.dataset.value;
-                });
-            });
-        }
-        bindOptions('bm-options-pain', 'pain_point');
-        bindOptions('bm-options-size', 'team_size');
-
-        /* ── step 1 → 2 ── */
-        document.getElementById('bm-next-0').addEventListener('click', function(){
-            var nameEl    = document.getElementById('bm-name');
-            var emailEl   = document.getElementById('bm-email');
-            var privacyEl = document.getElementById('bm-privacy');
-            var ok = true;
-            if (!nameEl.value.trim()) { nameEl.classList.add('bm-error'); ok = false; } else { nameEl.classList.remove('bm-error'); }
-            if (!emailEl.value.trim() || !emailEl.value.includes('@')) { emailEl.classList.add('bm-error'); ok = false; } else { emailEl.classList.remove('bm-error'); }
-            if (!privacyEl.checked) { privacyEl.closest('.bm-check').classList.add('bm-error'); ok = false; } else { privacyEl.closest('.bm-check').classList.remove('bm-error'); }
-            if (!ok) return;
-            state.name  = nameEl.value.trim();
-            state.email = emailEl.value.trim();
-            goTo(1);
-        });
-
-        document.getElementById('bm-back-1').addEventListener('click', function(){ goTo(0); });
-        document.getElementById('bm-next-1').addEventListener('click', function(){ goTo(2); });
-        document.getElementById('bm-back-2').addEventListener('click', function(){ goTo(1); });
-
-        /* ── step 3 → Cal.com ── */
-        document.getElementById('bm-next-2').addEventListener('click', function(){
-            saveLeadAndShowCal();
-        });
-
-        function saveLeadAndShowCal() {
-            var honeypot = document.getElementById('bm-website');
-            if (!honeypot || !honeypot.value) {
-                /* Save to Supabase — fire and forget */
-                fetch(SUPABASE_URL + '/rest/v1/inbound_leads', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'apikey': SUPABASE_ANON,
-                        'Authorization': 'Bearer ' + SUPABASE_ANON,
-                        'Prefer': 'return=minimal'
-                    },
-                    body: JSON.stringify({
-                        name:        state.name,
-                        email:       state.email,
-                        pain_point:  state.pain_point || null,
-                        team_size:   state.team_size  || null,
-                        icp_segment: state.icp_segment || null,
-                        source:      state.source || null,
-                        privacy_ack: true,
-                        consent_timestamp: new Date().toISOString()
-                    })
-                }).catch(function(){});
-            }
-
-            goTo(3);
-            loadCalEmbed();
-        }
-
-        function loadCalEmbed() {
-            if (state.calLoaded) return;
-            var wrap = document.getElementById('bm-cal-wrap');
-            if (!wrap) return;
-
-            state.calLoaded = true;
-
-            if (!CAL_URL) {
-                wrap.innerHTML = '<p style="padding:1.5rem;text-align:center;">Termin direkt buchen: <a href="https://cal.com/ritzaisolutions/kostenloses-ai-potencials-audit-rais" target="_blank" rel="noopener noreferrer">Cal.com öffnen ↗</a></p>';
-                return;
-            }
-
-            var calUrl = CAL_URL +
-                '?embed=true' +
-                '&name='  + encodeURIComponent(state.name) +
-                '&email=' + encodeURIComponent(state.email);
-
-            var iframe = document.createElement('iframe');
-            iframe.src = calUrl;
-            iframe.title = 'Termin buchen — Cal.com';
-            iframe.loading = 'lazy';
-            iframe.setAttribute('allow', 'payment');
-            wrap.appendChild(iframe);
-        }
-    }());
-    </script>
-
-    <!-- ── 3D Card Tilt Effect ───────────────────────────── -->
+<!-- ── 3D Card Tilt Effect ───────────────────────────── -->
     <script>
     (function() {
         if (window.matchMedia('(hover: hover)').matches) {

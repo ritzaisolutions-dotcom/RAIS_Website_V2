@@ -1,0 +1,19 @@
+{
+  "designSystem": {
+    "displayName": "RAIS Editorial Commercial",
+    "theme": {
+      "colorMode": "LIGHT",
+      "colorVariant": "FIDELITY",
+      "customColor": "#EC6A37",
+      "designMd": "# RAIS Design System\n\n## Brand\nRAIS (Ritz AI Solutions) — practical automation partner for independent German real-estate brokerages (5–25 staff). Commercial clarity with editorial restraint. Warm, credible, composed. Not startup-glassy, not dark-tech, not generic SaaS card grids.\n\n## Palette (exact)\n- Cloud background: #F5F2EC\n- Warm Linen surface: #FBF8F3\n- Charcoal text: #2F2A24\n- Stone muted: #7B746B\n- Border: #D9D1C7\n- Sage support: #789464\n- Dark Pistachio: #3C5A2A\n- Mandarin Orange accent ONLY for primary CTA / key emphasis: #EC6A37 (under 5% surface area)\n- Never use orange as body text on Cloud\n\n## Typography\n- Headlines: Source Serif 4 — text serif, moderate contrast, commercial-serious (NOT display Playfair)\n- Body: Libre Franklin — neutral grotesque, not geometric\n- Labels: JetBrains Mono sparingly for small system cues only — never headlines\n\n## Layout principles\n- One composition per first viewport: brand, one headline, one supporting sentence, one CTA group, one dominant full-bleed hero image\n- No cards in hero; cards only for interactive modules\n- Max content width 1100px; section spacing ≥120px desktop\n- One primary CTA per page: \"Kostenlosen Audit buchen\"\n- German copy, no em-dashes, no ALL-CAPS eyebrows\n- Trust via EU hosting / AVV — no fake tech logos\n\n## Anti-patterns\n- Purple gradients, glassmorphism, glow, pill clusters, stat strips in hero\n- Multiple equal CTAs, decorative numbered lists without sequence\n- Generic AI cream+terracotta display-serif cliché — keep palette but stay editorial and quiet\n",
+      "headlineFont": "SOURCE_SERIF_4",
+      "overrideNeutralColor": "#F5F2EC",
+      "overridePrimaryColor": "#EC6A37",
+      "overrideSecondaryColor": "#789464",
+      "overrideTertiaryColor": "#3C5A2A",
+      "roundness": "ROUND_EIGHT"
+    }
+  },
+  "name": "assets/9525258838078977768",
+  "version": "1"
+}

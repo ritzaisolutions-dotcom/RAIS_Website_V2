@@ -1,92 +1,65 @@
 # CLAUDE.md
 
+Version 3, Stand 25.07.2026. Ersetzt Version 2. Kevin-Hierarchy: RAIS = Marke, AQuT = Systemname im Portfolio.
+
 ## Project Goal
 
-Position RAIS as a practical, premium, commercially serious partner for **process automation and internal AI systems**, with a **clear but not exclusive focus on Makler and Hausverwaltungen**.
+RAIS als praktischen, hochwertigen Partner für Prozessautomatisierung und interne KI-Systeme für unabhängige Immobilienmaklerbüros positionieren.
 
-The website should sell measurable relief from manual admin work (portal inquiries, object files, team communication), not abstract technology or generic agency services.
+Die Website verkauft messbare Entlastung. **RAIS** ist der Absender. **AQuT** ist ein benanntes Angebotssystem unter RAIS, keine eigene Brand.
 
-## Primary Constraint
+## Primäre Einschränkung
 
-Reuse the current technical foundation wherever reasonable.
-Prefer targeted edits to copy, hierarchy, and presentation over unnecessary rebuilds.
+Bestehendes Fundament wiederverwenden. Vanilla HTML, Vite, Tailwind. Gezielte Edits vor Rebuilds.
 
-The site is a **single-page** experience: `index.html` is the only marketing surface.
+## Site-Struktur
+
+| Seite | Job |
+|---|---|
+| Home (`index.html`) | RAIS als Unternehmen, Trust, Haller-Teaser, gewichtetes Live-Systeme-Portfolio, ICP, Kontakt |
+| AQuT (`aqut.html`) | Verkaufsseite für das System inkl. Orientierungsclaim und client-only Rechner |
+| Referenzen (`referenzen.html`) | Case Studies, aktuell Haller |
+| So arbeiten wir (`zusammenarbeit.html`) | Prozess Discovery bis Betrieb (Footer-Nav, nicht primäre Nav) |
+| Über uns (`ueber-uns.html`) | Kevin, externer Spezialist, Infrastruktur |
+| Persönlichkeit (`persoenlichkeit.html`) | LinkedIn und YouTube, kuratiert, lokales Thumbnail |
+
+Kontakt/Audit ist ein Modul auf jeder Seite. Primäre Nav: Systeme · Referenzen · Über uns · Persönlichkeit · Audit. Zusammenarbeit im Footer.
 
 ## Design Authority
 
-`brand.md` defines positioning and messaging.
-`brand_steer.md` defines visual execution.
-
-When making visual or copy decisions:
-
-1. follow `brand.md` first
-2. follow `brand_steer.md` second
-3. prefer outcome-specific clarity over generic design patterns
-4. reject anything that reads like a template, generic agency, or AI-hype landing page
-
-## Workflow Rules
-
-- propose a short plan before large edits
-- avoid random redesign drift
-- keep the direction aligned with automation outcomes for property teams
-- prefer focused edits over uncontrolled rewrites
-- simplify rather than embellish when unsure
+1. `brand.md`
+2. `brand_steer.md`
+3. Projekt-Skills `.cursor/skills/frontend-design` und `.cursor/skills/cyber-security`
+4. Seitendateien / CSS
 
 ## Content Rules
 
-- write in German on the website unless explicitly asked otherwise
-- keep language commercially credible and easy to scan
-- sell business outcomes, not technical novelty
-- avoid jargon-heavy AI phrasing
-- do not invent proof, statistics, or case evidence
-- **no em dashes (—) in visible copy**; use periods or commas
+- Deutsch, glaubwürdig, ohne Gedankenstriche (—)
+- Keine erfundenen Beweise
+- Orientierungsclaim 30 Std/Monat nur mit Formel aus `brand.md`; Rechner nur aus Nutzereingaben
+- Rechner sammelt keine Kontaktdaten und submitet nichts an CRM/Supabase
 
-## Structural Rules
+## Rechner-Regeln (AQuT)
 
-- preserve deployability
-- avoid unnecessary rewrites
-- reuse working legal pages and integrations where possible
-- do not remove legal or compliance content without reason
-- keep the site compatible with the current hosting and development workflow unless explicitly changing it
+- Inputs: Anfragevolumen, Zeitaufwand/Anfrage, Stundensatz; CRM nur Textbotschaft
+- Ausgabe: Stunden/Woche und Euro/Monat „nach Ihren eigenen Angaben“
+- Keine Erfolgsgarantie, keine RAIS-Umsatzquote ohne Nutzereingabe
+
+## Persönlichkeit
+
+- Kein Auto-Latest vom YouTube-Kanal kevin_ritz
+- Lokales Thumbnail + Link-out (kein ytimg vor Consent)
+- Kein Eckstein Podcast
 
 ## File Priorities
 
-Primary files:
-
-- `index.html`
-- `styles/antigravity-polish.css`
-- `scripts/collab-path.js`
-- `brand.md`
-- `brand_steer.md`
-- `CLAUDE_CODE_INSTRUCTIONS.md`
-
-Secondary:
-
+- `index.html`, `aqut.html`, `referenzen.html`, `zusammenarbeit.html`, `ueber-uns.html`, `persoenlichkeit.html`
+- `styles/site-multipage.css`, `styles/booking-modal.css`, `styles/antigravity-polish.css`
+- `scripts/booking-modal.js`, `scripts/aqut-rechner.js`, `scripts/site-nav.js`, `scripts/collab-path.js`
 - `impressum.html`, `datenschutz.html`
-- `RAIS_Website_Repositionierung.md` (live copy reference)
-- `.htaccess` (redirects, 410 for removed trade pages)
 
-**Obsolete / removed from repo:** `landingpage.html`, trade niche pages (`fliesenleger.html`, etc.)
+## Was nicht beiläufig ändern
 
-## What Not to Change Casually
-
-- legal structure and privacy logic unless data flows change
-- working Calendly and Klaro consent logic
-- branding assets without reason
-- `#collab-path` JS behavior unless explicitly requested
-- booking modal `data-value` keys (Supabase compatibility)
-- hero image and tech ticker without reason
-
-## Copy Quality Standard
-
-The site should feel:
-
-- specific
-- premium
-- useful
-- believable
-- non-generic
-
-If a page could fit any random automation consultant, it is not sharp enough.
-If Immobilien copy sounds like a full vertical rebrand instead of a credible focus, it is too narrow.
+- Legal/Klaro ohne Grund
+- `data-value`-Keys im Booking-Modal
+- Secrets nicht committen; nur Publishables in `public-config.js`
