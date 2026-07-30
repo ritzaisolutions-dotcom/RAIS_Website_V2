@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>RAIS | Automatisierung für Maklerbüros</title>
-    <meta name="description" content="RAIS baut Systeme für unabhängige Immobilienmaklerbüros: Anfragen, Onboarding, CRM und mehr. DSGVO-konform. Kostenloser Prozess-Audit.">
+    <title>RAIS | Anfragen qualifizieren. Termine buchen.</title>
+    <meta name="description" content="AQuT von RAIS: Portalanfragen automatisch qualifizieren und Termine direkt in den Kalender. Für unabhängige Maklerbüros. Kostenloser Prozess-Audit.">
     <meta name="google-site-verification" content="A6q1zlZLweKSa1vIxp-owVoxpEXPyIW-gPWdY6N79ZI">
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -13,15 +13,15 @@
     <link rel="apple-touch-icon" href="favicon.png?v=3">
 
     <!-- OpenGraph -->
-    <meta property="og:title" content="RAIS | Anfragen-System für Maklerbüros">
-    <meta property="og:description" content="Anfragen-System für Immobilienmakler: Portalanfragen automatisch qualifizieren und Termine buchen. Weniger Stunden mit Rückfragen. DSGVO-konform. Kostenloser Prozess-Audit.">
+    <meta property="og:title" content="RAIS | Anfragen qualifizieren. Termine buchen.">
+    <meta property="og:description" content="AQuT von RAIS: Portalanfragen automatisch qualifizieren und Termine direkt in den Kalender. Für unabhängige Maklerbüros. Kostenloser Prozess-Audit.">
     <meta property="og:url" content="https://ritz-ai.solutions">
     <meta property="og:type" content="website">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="RAIS | Anfragen-System für Maklerbüros">
-    <meta name="twitter:description" content="Anfragen-System für Immobilienmakler: Portalanfragen automatisch qualifizieren und Termine buchen. Weniger Stunden mit Rückfragen. DSGVO-konform. Kostenloser Prozess-Audit.">
+    <meta name="twitter:title" content="RAIS | Anfragen qualifizieren. Termine buchen.">
+    <meta name="twitter:description" content="AQuT von RAIS: Portalanfragen automatisch qualifizieren und Termine direkt in den Kalender. Für unabhängige Maklerbüros. Kostenloser Prozess-Audit.">
 
     <!-- Schema.org -->
     <script type="application/ld+json">
@@ -30,7 +30,7 @@
       "@type": "ProfessionalService",
       "name": "RAIS (Ritz AI Solutions)",
       "url": "https://ritz-ai.solutions",
-      "description": "Lead-Qualification und Booking für Immobilienbetriebe: Inseratsanfragen, Onboarding, E-Mail-Management, Company GPTs. DSGVO-konform, messbar.",
+      "description": "Prozessautomatisierung für unabhängige Immobilienmaklerbüros: Anfragen qualifizieren, Termine buchen, Systeme betreiben. DSGVO-konform.",
       "brand": { "@type": "Brand", "name": "RAIS" }
     }
     </script>
@@ -47,16 +47,17 @@
     <link rel="preload" href="images/mark-koch-hero.webp" as="image" type="image/webp">
 
     <!-- Fonts & Styles -->
-    <link rel='stylesheet' href='fonts.css'>
-    <link rel='stylesheet' href='styles/antigravity-polish.css'>
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="styles/antigravity-polish.css">
     <link rel="stylesheet" href="styles/tailwind.generated.css">
     <link rel="stylesheet" href="styles/site-multipage.css">
+    <link rel="stylesheet" href="styles/home.css">
     <link rel="stylesheet" href="styles/booking-modal.css">
     <script src="vendor/lucide.min.js"></script>
 
     <style>
 
-        /* ─────────────────────────────────────────────────────
+/* ─────────────────────────────────────────────────────
            BRAND TOKENS
         ───────────────────────────────────────────────────── */
 
@@ -66,7 +67,8 @@
             --background:   #F5F2EC;
             --surface:      #FBF8F3;
             --sage:         #789464;
-            --pistachio:    #3C5A2A;
+            --racing-green: #004225;
+            --pistachio:    var(--racing-green); /* Alt-Alias, Dark Pistachio ersetzt */
             --charcoal:     #2F2A24;
             --stone:        #7B746B;
             --border:       #D9D1C7;
@@ -110,32 +112,32 @@
 
         #navbar {
             position: fixed;
-            inset: 0 0 auto 0;
+            inset: 12px 20px auto 20px;
             z-index: 100;
-            height: var(--nav-h);
-            background-color: rgba(251, 248, 243, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
+            height: 64px;
+            background: linear-gradient(135deg, rgba(251, 248, 243, 0.82), rgba(251, 248, 243, 0.64));
+            backdrop-filter: blur(18px) saturate(1.2);
+            -webkit-backdrop-filter: blur(18px) saturate(1.2);
+            border: 1px solid rgba(255, 255, 255, 0.52);
+            border-radius: 16px;
+            box-shadow: 0 8px 28px rgba(47, 42, 36, 0.1);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            transform: translateY(-100%);
-            opacity: 0;
-            pointer-events: none;
+            transform: none;
+            opacity: 1;
+            pointer-events: auto;
         }
 
         #navbar.scrolled {
-            transform: translateY(0);
-            opacity: 1;
-            pointer-events: auto;
             inset: 12px 20px auto 20px;
             height: 64px;
-            background-color: rgba(251, 248, 243, 0.75);
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            background: linear-gradient(135deg, rgba(251, 248, 243, 0.9), rgba(251, 248, 243, 0.76));
+            border: 1px solid rgba(255, 255, 255, 0.48);
             border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(47, 42, 36, 0.12);
+            box-shadow: 0 14px 34px rgba(47, 42, 36, 0.14);
         }
 
         @media (max-width: 860px) {
+            #navbar,
             #navbar.scrolled {
                 inset: 8px 12px auto 12px;
             }
@@ -518,1578 +520,7 @@
             color: var(--stone);
         }
 
-        /* ─────────────────────────────────────────────────────
-           LEISTUNGEN
-        ───────────────────────────────────────────────────── */
-
-        #leistungen {
-            padding: 6rem 0;
-            background: var(--background);
-            background-image:
-                linear-gradient(rgba(236, 106, 55, 0.035) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(236, 106, 55, 0.035) 1px, transparent 1px);
-            background-size: 32px 32px;
-        }
-
-        .leis-intro {
-            max-width: 640px;
-            margin-bottom: 2rem;
-        }
-
-        .leis-icons {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 3rem 4rem;
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 2rem 0 1rem;
-        }
-
-        .leis-icon-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap: 1.25rem;
-            background: none;
-            border: 1px solid transparent;
-            border-radius: 12px;
-            padding: 1rem;
-            cursor: pointer;
-            font: inherit;
-            width: 100%;
-            transition: border-color 0.15s ease, box-shadow 0.15s ease;
-        }
-
-        .leis-icon-item:hover,
-        .leis-icon-item:focus-visible {
-            border-color: rgba(120, 148, 100, 0.45);
-            outline: none;
-            box-shadow: 0 8px 24px rgba(47, 42, 36, 0.06);
-        }
-
-        .leis-icon-item svg {
-            width: 1.75rem;
-            height: 1.75rem;
-            color: var(--pistachio);
-            flex-shrink: 0;
-        }
-
-        .leis-icon-title {
-            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--charcoal);
-            line-height: 1.3;
-            margin: 0;
-        }
-
-        @media (max-width: 840px) {
-            .leis-icons {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2.5rem;
-            }
-        }
-
-        @media (max-width: 520px) {
-            #leistungen { padding: 4rem 0; }
-            .leis-icons {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
-        }
-
-        /* Kernangebot-Karte + Ergaenzungsblock */
-        .leis-core {
-            max-width: 720px;
-            margin: 1.5rem auto 0;
-            background-color: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2.5rem 2.5rem;
-        }
-
-        .leis-core__badge {
-            display: inline-block;
-            font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
-            font-size: 0.5625rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--pistachio);
-            margin-bottom: 0.75rem;
-        }
-
-        .leis-core__title {
-            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--charcoal);
-            line-height: 1.25;
-            margin-bottom: 0.875rem;
-        }
-
-        .leis-core__body {
-            font-size: 1rem;
-            line-height: 1.65;
-            color: var(--stone);
-            margin-bottom: 1.25rem;
-        }
-
-        .leis-core__list {
-            list-style: none;
-            display: grid;
-            gap: 0.6rem;
-            margin-bottom: 1.75rem;
-        }
-
-        .leis-core__list li {
-            font-size: 0.9375rem;
-            line-height: 1.55;
-            color: var(--charcoal);
-            padding-left: 1.25rem;
-            position: relative;
-        }
-
-        .leis-core__list li::before {
-            content: '✔';
-            position: absolute;
-            left: 0;
-            color: var(--pistachio);
-            font-size: 0.8125rem;
-        }
-
-        .leis-core__cta {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.8rem 1.6rem;
-            background-color: var(--orange);
-            color: #ffffff;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9375rem;
-            font-weight: 500;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: background-color 0.15s ease;
-        }
-
-        .leis-core__cta:hover { background-color: var(--orange-hover); }
-
-        .leis-more {
-            max-width: 720px;
-            margin: 1.5rem auto 0;
-            padding: 1.5rem 1.75rem;
-            border-left: 2px solid var(--pistachio);
-        }
-
-        .leis-more__title {
-            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
-            font-size: 1.125rem;
-            font-weight: 700;
-            color: var(--charcoal);
-            margin-bottom: 0.5rem;
-            line-height: 1.3;
-        }
-
-        .leis-more__text {
-            font-size: 0.9375rem;
-            line-height: 1.65;
-            color: var(--stone);
-            margin: 0;
-        }
-
-        @media (max-width: 520px) {
-            .leis-core { padding: 1.75rem 1.5rem; }
-        }
-
-        /* Flow-Visual: 4-Schritt-Kette */
-        .flow {
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            gap: 1.5rem;
-            max-width: 920px;
-            margin: 2.75rem auto 0;
-        }
-
-        .flow__step {
-            flex: 1 1 0;
-            max-width: 200px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap: 0.75rem;
-        }
-
-        .flow__icon {
-            width: 4.5rem;
-            height: 4.5rem;
-            border-radius: 50%;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--pistachio);
-            flex-shrink: 0;
-        }
-
-        .flow__icon svg { width: 1.9rem; height: 1.9rem; }
-
-        .flow__title {
-            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--charcoal);
-            line-height: 1.3;
-            margin: 0;
-        }
-
-        .flow__desc {
-            font-size: 0.8125rem;
-            line-height: 1.45;
-            color: var(--stone);
-            margin: 0;
-        }
-
-        .flow__arrow {
-            flex: 0 0 auto;
-            align-self: flex-start;
-            margin-top: 1.6rem;
-            width: 2.25rem;
-            height: 2.25rem;
-            min-width: 2.25rem;
-            color: var(--orange);
-        }
-
-        .leis-intro__tagline {
-            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
-            font-size: 1.0625rem;
-            font-weight: 600;
-            color: var(--charcoal);
-            margin: 1.25rem auto 0;
-            max-width: 32rem;
-            line-height: 1.45;
-        }
-
-        .flow-outcomes {
-            max-width: 920px;
-            margin: 2.75rem auto 0;
-            text-align: center;
-        }
-
-        .flow-outcomes__label {
-            font-family: 'JetBrains Mono', 'Courier New', monospace;
-            font-size: 0.625rem;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--orange);
-            margin: 0 0 1.25rem;
-        }
-
-        .flow-outcomes__list {
-            list-style: none;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
-            margin: 0 0 1.5rem;
-            padding: 0;
-        }
-
-        .flow-outcomes__item {
-            font-size: 0.9375rem;
-            line-height: 1.55;
-            color: var(--charcoal);
-            padding: 1rem 1rem 1rem 1.5rem;
-            position: relative;
-            text-align: left;
-            background: rgba(120, 148, 100, 0.14);
-            border: 1px solid rgba(120, 148, 100, 0.28);
-            border-radius: 12px;
-            opacity: 0;
-            transform: translateX(-24px);
-            transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .flow-outcomes__item::before {
-            content: '';
-            position: absolute;
-            left: 0.75rem;
-            top: 1.15em;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background-color: var(--sage);
-        }
-
-        .flow-outcomes__item.is-visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .flow-outcomes__item[data-index="0"].is-visible { transition-delay: 0ms; }
-        .flow-outcomes__item[data-index="1"].is-visible { transition-delay: 150ms; }
-        .flow-outcomes__item[data-index="2"].is-visible { transition-delay: 300ms; }
-
-        .flow-outcomes__stat {
-            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
-            font-size: 1.125rem;
-            font-weight: 700;
-            color: var(--orange);
-            margin: 0;
-            animation: flow-stat-pulse 2.4s ease-in-out infinite;
-        }
-
-        @keyframes flow-stat-pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50%      { opacity: 0.72; transform: scale(1.02); }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .flow-outcomes__item {
-                opacity: 1;
-                transform: none;
-                transition: none;
-            }
-            .flow-outcomes__stat {
-                animation: none;
-                opacity: 1;
-                transform: none;
-            }
-        }
-
-        @media (max-width: 720px) {
-            .flow-outcomes__list {
-                grid-template-columns: 1fr;
-                gap: 0.75rem;
-            }
-            .flow-outcomes__item[data-index="1"].is-visible { transition-delay: 150ms; }
-            .flow-outcomes__item[data-index="2"].is-visible { transition-delay: 300ms; }
-        }
-
-        .flow-cta-wrap {
-            text-align: center;
-            margin-top: 2.75rem;
-        }
-
-        @media (max-width: 720px) {
-            .flow { flex-direction: column; align-items: center; gap: 0.75rem; }
-            .flow__step { max-width: 320px; }
-            .flow__arrow { align-self: center; margin-top: 0; transform: rotate(90deg); }
-        }
-
-
-        /* ─────────────────────────────────────────────────────
-           BRANCHEN — CAROUSEL
-        ───────────────────────────────────────────────────── */
-
-        #branchen {
-            padding: 6rem 0;
-            background-color: var(--surface);
-        }
-
-        .branchen-header { margin-bottom: 3rem; }
-        .branchen-intro { max-width: 540px; }
-
-        /* ── Carousel footer: dots ────────────────────────── */
-
-        .carousel-footer {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: 2rem;
-        }
-
-
-        /* ── Carousel ──────────────────────────────────────── */
-
-        .carousel-viewport {
-            overflow: hidden;
-            margin-left: -2rem;
-            margin-right: -2rem;
-            padding-left: 2rem;
-        }
-
-        .carousel-track {
-            display: flex;
-            gap: 1.25rem;
-            transition: transform 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            will-change: transform;
-            touch-action: pan-y;
-        }
-
-        .carousel-card {
-            flex: 0 0 min(600px, 62vw);
-            background: var(--background);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2.5rem;
-            display: flex;
-            flex-direction: column;
-            transition: border-color 0.4s ease, box-shadow 0.4s ease;
-        }
-
-        .carousel-card.is-active {
-            border-color: rgba(236, 106, 55, 0.28);
-            box-shadow: 0 8px 32px rgba(47, 42, 36, 0.07);
-        }
-
-        .branchen-num {
-            display: inline-block;
-            font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
-            font-size: 0.625rem;
-            letter-spacing: 0.16em;
-            color: var(--pistachio);
-            margin-bottom: 1.375rem;
-        }
-
-        .branchen-icon {
-            display: block;
-            width: 32px;
-            height: 32px;
-            color: var(--pistachio);
-            margin-bottom: 1rem;
-        }
-
-        .branchen-title {
-            font-family: 'Baskerville', 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
-            font-size: clamp(1.5rem, 2.5vw, 2.125rem);
-            font-weight: 700;
-            color: var(--charcoal);
-            line-height: 1.18;
-            margin-bottom: 1rem;
-        }
-
-        .branchen-desc {
-            font-size: 0.9375rem;
-            line-height: 1.72;
-            color: var(--stone);
-            flex: 1;
-            margin-bottom: 2rem;
-        }
-
-        .branchen-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.625rem 1.375rem;
-            min-height: 44px;
-            border: 1.5px solid var(--orange);
-            color: var(--orange);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9375rem;
-            font-weight: 500;
-            border-radius: 10px;
-            text-decoration: none;
-            align-self: flex-start;
-            transition: background-color 0.15s ease, color 0.15s ease;
-            white-space: nowrap;
-        }
-
-        .branchen-btn:hover { background-color: var(--orange); color: #ffffff; }
-
-        button.branchen-btn {
-            background: transparent;
-            cursor: pointer;
-            font-family: inherit;
-        }
-
-        /* ── Dot navigation ────────────────────────────────── */
-
-        .carousel-dots {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .carousel-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 5px;
-            background-color: var(--border);
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            transition: background-color 0.25s ease, width 0.3s cubic-bezier(0.16,1,0.3,1);
-        }
-
-        .carousel-dot.is-active {
-            background-color: var(--orange);
-            width: 28px;
-        }
-
-        .proj-swipe-hint {
-            display: none;
-            text-align: center;
-            font-family: 'JetBrains Mono', 'Courier New', monospace;
-            font-size: 0.625rem;
-            letter-spacing: 0.06em;
-            color: var(--stone);
-            opacity: 0.5;
-            margin-top: 0.75rem;
-        }
-        @media (max-width: 700px) {
-            .proj-swipe-hint { display: block; }
-        }
-
-        /* ── Responsive ─────────────────────────────────────── */
-
-        @media (max-width: 840px) {
-            .branchen-header { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
-            .carousel-card { flex: 0 0 min(480px, 82vw); }
-        }
-
-        @media (max-width: 520px) {
-            #branchen { padding: 4rem 0; }
-            .carousel-card { flex: 0 0 88vw; padding: 1.75rem; }
-        }
-
-
-        /* ── Ergebnisse Grid ──────────────────────────────── */
-
-        .erg-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
-            align-items: stretch;
-        }
-
-        .erg-card {
-            background: var(--background);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2.5rem;
-            display: flex;
-            flex-direction: column;
-            transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .erg-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(236, 106, 55, 0.3);
-            box-shadow: 0 16px 36px rgba(47, 42, 36, 0.09);
-        }
-
-        .erg-metric {
-            font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 700;
-            color: var(--orange);
-            line-height: 1;
-            margin-bottom: 0.375rem;
-        }
-
-        .erg-metric-label {
-            font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
-            font-size: 0.625rem;
-            letter-spacing: 0.14em;
-            color: var(--pistachio);
-            text-transform: uppercase;
-            margin-bottom: 1.375rem;
-        }
-
-        @media (max-width: 840px) {
-            .erg-grid { grid-template-columns: 1fr; }
-        }
-
-        @media (max-width: 600px) {
-            .erg-card    { padding: 1.5rem; }
-            .leis-pillar { padding: 1.75rem; }
-        }
-
-        /* ─────────────────────────────────────────────────────
-           VISION SECTION
-        ───────────────────────────────────────────────────── */
-
-        #vision {
-            padding: 8rem 0;
-            background-color: var(--surface);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Subtle background ornament */
-        #vision::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(236, 106, 55, 0.03) 0%, transparent 70%);
-            z-index: 0;
-        }
-
-        .vision-inner {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .vision-logo-wrap {
-            margin-bottom: 2.5rem;
-            display: flex;
-            justify-content: center;
-        }
-
-        .vision-logo {
-            width: 64px;
-            height: 64px;
-            object-fit: contain;
-            opacity: 0.9;
-            filter: grayscale(0.2);
-        }
-
-        .vision-title {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--stone);
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-
-        .vision-text {
-            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
-            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-            line-height: 1.6;
-            color: var(--charcoal);
-            font-style: italic;
-        }
-
-        .vision-text span {
-            color: var(--orange);
-            font-style: normal;
-            font-weight: 700;
-        }
-
-        /* ─────────────────────────────────────────────────────
-           ÜBER UNS
-        ───────────────────────────────────────────────────── */
-
-        /* ─────────────────────────────────────────────────────
-           PROJEKTE SECTION
-        ───────────────────────────────────────────────────── */
-
-        #projekte {
-            padding: 6rem 0;
-            background: var(--surface);
-            border-top: 1px solid var(--border);
-        }
-
-        .projekte-intro {
-            max-width: 600px;
-            margin-bottom: 2.5rem;
-        }
-
-        .ref-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-
-        .ref-card {
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-            background: var(--background);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 1.75rem 1.6rem;
-            transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
-        }
-
-        .ref-card:hover {
-            border-color: rgba(120, 148, 100, 0.45);
-            box-shadow: 0 10px 28px rgba(47, 42, 36, 0.07);
-            transform: translateY(-2px);
-        }
-
-        .ref-card__badge {
-            font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
-            font-size: 0.5625rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--pistachio);
-        }
-
-        .ref-card__title {
-            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
-            font-size: 1.125rem;
-            font-weight: 700;
-            color: var(--charcoal);
-            line-height: 1.3;
-            margin: 0;
-        }
-
-        .ref-card__desc {
-            font-size: 0.9375rem;
-            line-height: 1.6;
-            color: var(--stone);
-            margin: 0;
-        }
-
-        @media (max-width: 900px) {
-            .ref-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        @media (max-width: 600px) {
-            .ref-grid { grid-template-columns: 1fr; }
-        }
-
-        /* Referenzen — bewegter Bild-Strip */
-        .ref-strip-wrapper {
-            overflow: hidden;
-            margin-top: 2.5rem;
-            -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
-            mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
-        }
-
-        .ref-strip-wrapper:hover .ref-strip-track { animation-play-state: paused; }
-
-        .ref-strip-track {
-            display: flex;
-            gap: 1.25rem;
-            width: max-content;
-            animation: ref-strip-scroll 48s linear infinite;
-        }
-
-        .ref-strip-item {
-            flex-shrink: 0;
-            width: 300px;
-            margin: 0;
-        }
-
-        .ref-strip-item img {
-            width: 100%;
-            height: 172px;
-            object-fit: cover;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            display: block;
-            background: var(--background);
-        }
-
-        .ref-strip-item figcaption {
-            margin-top: 0.65rem;
-            font-size: 0.8125rem;
-            line-height: 1.4;
-            color: var(--stone);
-        }
-
-        @keyframes ref-strip-scroll {
-            from { transform: translateX(0); }
-            to   { transform: translateX(-50%); }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .ref-strip-track { animation: none; overflow-x: auto; padding-bottom: 0.5rem; }
-        }
-
-        #zusammenarbeit-prozess {
-            padding: 4rem 0;
-            min-height: 90dvh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background: var(--background);
-            border-top: 1px solid var(--border);
-        }
-
-        #zusammenarbeit-prozess .section-wrap {
-            width: 100%;
-        }
-
-        #zusammenarbeit-prozess .process-intro {
-            text-align: center;
-            max-width: 40rem;
-            margin: 0 auto 2.5rem;
-        }
-
-        /* Zusammenarbeit — vertikaler Cascade-Flow */
-        .collab-cascade {
-            max-width: 32rem;
-            margin: 0 auto;
-        }
-
-        .collab-cascade__stack {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0;
-        }
-
-        .collab-cascade__row {
-            display: grid;
-            grid-template-columns: 2.5rem 1fr;
-            gap: 1rem;
-            width: 100%;
-            align-items: stretch;
-        }
-
-        .collab-cascade__numeral {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1.125rem;
-            font-weight: 700;
-            color: var(--orange);
-            padding-top: 1.5rem;
-            text-align: center;
-        }
-
-        .collab-cascade__card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 1.5rem 1.5rem;
-            opacity: 0.45;
-            transition: opacity 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
-        }
-
-        .collab-cascade__card.is-active {
-            opacity: 1;
-            border-color: rgba(236, 106, 55, 0.45);
-            box-shadow: 0 4px 20px rgba(236, 106, 55, 0.08);
-        }
-
-        .collab-cascade__card:not(.is-active) .collab-cascade__body {
-            display: none;
-        }
-
-        .collab-cascade__eyebrow {
-            font-family: 'JetBrains Mono', 'Courier New', monospace;
-            font-size: 0.5625rem;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--pistachio);
-        }
-
-        .collab-cascade__title {
-            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--charcoal);
-            line-height: 1.3;
-            margin: 0.35rem 0 0;
-        }
-
-        .collab-cascade__body {
-            margin-top: 0.6rem;
-        }
-
-        .collab-cascade__desc {
-            font-size: 0.9375rem;
-            line-height: 1.65;
-            color: var(--stone);
-            margin: 0;
-        }
-
-        .collab-cascade__arrow {
-            width: 1.5rem;
-            height: 2.5rem;
-            color: var(--orange);
-            flex-shrink: 0;
-            margin: 0.15rem 0;
-        }
-
-        .collab-cascade__arrow line,
-        .collab-cascade__arrow polyline {
-            stroke-dasharray: 32;
-            stroke-dashoffset: 32;
-            transition: stroke-dashoffset 0.4s ease;
-        }
-
-        .collab-cascade[data-step="2"] .collab-cascade__arrow[data-arrow="1"] line,
-        .collab-cascade[data-step="2"] .collab-cascade__arrow[data-arrow="1"] polyline,
-        .collab-cascade[data-step="3"] .collab-cascade__arrow[data-arrow="1"] line,
-        .collab-cascade[data-step="3"] .collab-cascade__arrow[data-arrow="1"] polyline {
-            stroke-dashoffset: 0;
-        }
-
-        .collab-cascade[data-step="3"] .collab-cascade__arrow[data-arrow="2"] line,
-        .collab-cascade[data-step="3"] .collab-cascade__arrow[data-arrow="2"] polyline {
-            stroke-dashoffset: 0;
-        }
-
-        .collab-cascade__controls {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-top: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .collab-cascade__counter {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--stone);
-            width: 100%;
-            text-align: center;
-            order: -1;
-        }
-
-        .collab-cascade__btn {
-            padding: 0.7rem 1.4rem;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            background: var(--surface);
-            color: var(--charcoal);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9375rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: border-color 0.15s ease, background 0.15s ease;
-        }
-
-        .collab-cascade__btn:hover { border-color: var(--orange); }
-
-        .collab-cascade__btn--next {
-            border-color: var(--orange);
-            background: var(--orange);
-            color: #fff;
-        }
-
-        .collab-cascade__btn--next:hover { background: var(--orange-hover); border-color: var(--orange-hover); }
-
-        .collab-cascade__btn--cta {
-            border: none;
-            background: var(--orange);
-            color: #fff;
-        }
-
-        .collab-cascade__btn--cta:hover { background: var(--orange-hover); }
-
-        .collab-cascade__btn[hidden] { display: none; }
-
-        @media (prefers-reduced-motion: reduce) {
-            .collab-cascade__arrow line,
-            .collab-cascade__arrow polyline,
-            .collab-cascade__card { transition: none; }
-            .collab-cascade[data-step="2"] .collab-cascade__arrow[data-arrow="1"] line,
-            .collab-cascade[data-step="2"] .collab-cascade__arrow[data-arrow="1"] polyline,
-            .collab-cascade[data-step="3"] .collab-cascade__arrow[data-arrow="1"] line,
-            .collab-cascade[data-step="3"] .collab-cascade__arrow[data-arrow="1"] polyline,
-            .collab-cascade[data-step="3"] .collab-cascade__arrow[data-arrow="2"] line,
-            .collab-cascade[data-step="3"] .collab-cascade__arrow[data-arrow="2"] polyline { stroke-dashoffset: 0; }
-        }
-
-        @media (max-width: 520px) {
-            .collab-cascade__row { grid-template-columns: 2rem 1fr; gap: 0.75rem; }
-            .collab-cascade__card { padding: 1.25rem 1.15rem; }
-        }
-
-        .collab3-outro {
-            max-width: 46rem;
-            margin: 2.5rem auto 0;
-            text-align: center;
-        }
-
-        .collab3-outro__title {
-            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
-            font-size: 1.375rem;
-            font-weight: 700;
-            color: var(--charcoal);
-            margin: 0 0 0.6rem;
-        }
-
-        .collab3-outro__text {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: var(--stone);
-            margin: 0;
-        }
-
-        /* Carousel viewport */
-        .proj-viewport {
-            overflow: hidden;
-            margin: 0 -2rem;
-            padding: 0 2rem;
-        }
-
-        .proj-track {
-            display: flex;
-            gap: 1.25rem;
-            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            will-change: transform;
-            touch-action: pan-y;
-            align-items: stretch;
-        }
-
-        .proj-card {
-            flex: 0 0 calc(50% - 0.625rem);
-            background: var(--background);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            display: flex;
-            flex-direction: column;
-            min-width: 0;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .proj-card:hover {
-            border-color: rgba(236, 106, 55, 0.28);
-            box-shadow: 0 12px 32px rgba(47, 42, 36, 0.08);
-        }
-
-        .proj-img-wrap {
-            aspect-ratio: 16 / 9;
-            overflow: hidden;
-            border-radius: 13px 13px 0 0;
-            background: #131210;
-            flex-shrink: 0;
-        }
-
-        .proj-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top left;
-            display: block;
-        }
-
-        .proj-img-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--surface);
-            color: var(--border);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.6875rem;
-            letter-spacing: 0.08em;
-        }
-
-        .proj-body {
-            padding: 1.5rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .proj-badge {
-            display: inline-block;
-            font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
-            font-size: 0.5625rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            padding: 0.25rem 0.625rem;
-            border-radius: 6px;
-            align-self: flex-start;
-        }
-
-        /* Projekt carousel arrows */
-        .proj-carousel-wrap {
-            position: relative;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .proj-arrow {
-            flex-shrink: 0;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 1px solid var(--border);
-            background: var(--surface);
-            color: var(--stone);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: background 0.18s, color 0.18s, border-color 0.18s;
-            z-index: 2;
-        }
-
-        .proj-arrow:hover {
-            background: var(--orange);
-            border-color: var(--orange);
-            color: #fff;
-        }
-
-        .proj-arrow:disabled {
-            opacity: 0.3;
-            cursor: default;
-            pointer-events: none;
-        }
-
-        @media (max-width: 700px) {
-            .proj-arrow { display: none; }
-        }
-
-        .proj-name {
-            font-family: 'JetBrains Mono', 'Courier New', monospace;
-            font-size: 0.6875rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--stone);
-            opacity: 0.65;
-            margin: 0;
-        }
-
-        /* CRM screenshot: blur overlay covers lead table rows */
-        .proj-img-wrap--censored { position: relative; }
-        .proj-censor-bar {
-            position: absolute;
-            left: 0; right: 0;
-            bottom: 0;
-            height: 55%;
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            background: rgba(10, 8, 6, 0.08);
-            border-radius: 0 0 10px 10px;
-            pointer-events: none;
-        }
-
-        .proj-badge--auto      { background: rgba(236, 106, 55, 0.1); color: var(--orange); }
-        .proj-badge--website   { background: rgba(60, 90, 42, 0.1);   color: var(--pistachio); }
-        .proj-badge--webapp    { background: rgba(236, 106, 55, 0.1); color: var(--orange); }
-        .proj-badge--crm       { background: rgba(120, 148, 100, 0.1);color: var(--sage); }
-        .proj-badge--cms       { background: rgba(47, 42, 36, 0.1);   color: var(--charcoal); }
-        .proj-badge--dashboard { background: rgba(60, 90, 42, 0.1);   color: var(--pistachio); }
-
-        .proj-title {
-            font-family: 'Baskerville', 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
-            font-size: 1.125rem;
-            font-weight: 700;
-            color: var(--charcoal);
-            line-height: 1.3;
-            margin: 0;
-        }
-
-        .proj-bullets {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
-            flex: 1;
-            margin: 0;
-            padding: 0;
-        }
-
-        .proj-bullets li {
-            font-size: 0.875rem;
-            line-height: 1.55;
-            color: var(--stone);
-            padding-left: 1.125rem;
-            position: relative;
-        }
-
-        .proj-bullets li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: var(--pistachio);
-            font-size: 0.75rem;
-            top: 0.1em;
-        }
-
-        .proj-links {
-            display: flex;
-            gap: 0.625rem;
-            margin-top: auto;
-            padding-top: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .proj-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.875rem;
-            font-weight: 500;
-            text-decoration: none;
-            min-height: 44px;
-            transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-            cursor: pointer;
-            border: 1.5px solid transparent;
-        }
-
-        .proj-btn--ghost {
-            border-color: var(--border);
-            color: var(--stone);
-            background: transparent;
-        }
-
-        .proj-btn--ghost:hover { border-color: var(--charcoal); color: var(--charcoal); }
-
-        .proj-btn--solid {
-            background: var(--orange);
-            color: #fff;
-            border-color: var(--orange);
-        }
-
-        .proj-btn--solid:hover { background: var(--orange-hover); border-color: var(--orange-hover); }
-
-        /* Dots */
-        .proj-dots {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 1.75rem;
-        }
-
-        @media (max-width: 700px) {
-            .proj-card { flex: 0 0 88vw; }
-            .proj-viewport { margin: 0 -1.25rem; padding: 0 1.25rem; }
-        }
-
-        /* ─────────────────────────────────────────────────────
-           ZIELGRUPPE — Mit wem wir arbeiten
-        ───────────────────────────────────────────────────── */
-
-        #zielgruppe {
-            position: relative;
-            overflow: hidden;
-            padding: 6rem 0;
-            background: var(--background);
-        }
-
-        .zielgruppe-atmosphere {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .zielgruppe-atmosphere::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: url('images/zielgruppe_ref.jpg');
-            background-size: cover;
-            background-position: center 35%;
-            opacity: 0.28;
-        }
-
-        .zielgruppe-atmosphere::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(245, 242, 236, 0.78) 0%, rgba(245, 242, 236, 0.72) 50%, rgba(245, 242, 236, 0.82) 100%);
-        }
-
-        #zielgruppe .section-wrap {
-            position: relative;
-            z-index: 1;
-        }
-
-        .zielgruppe-intro {
-            text-align: center;
-            max-width: 36rem;
-            margin: 0 auto 2.75rem;
-        }
-
-        .zielgruppe-split {
-            position: relative;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
-            min-height: 280px;
-        }
-
-        .zielgruppe-split--single {
-            display: block;
-            max-width: 40rem;
-            margin: 0 auto;
-            min-height: 0;
-        }
-
-        .zielgruppe-editorial {
-            text-align: left;
-            max-width: 40rem;
-            margin: 0 auto;
-        }
-
-        .zielgruppe-editorial__label {
-            font-family: 'JetBrains Mono', 'Courier New', monospace;
-            font-size: 0.625rem;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--orange);
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .zielgruppe-editorial__title {
-            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
-            font-size: 1.375rem;
-            font-weight: 700;
-            color: var(--charcoal);
-            line-height: 1.25;
-            margin: 0 0 1rem;
-        }
-
-        @media (min-width: 768px) {
-            .zielgruppe-reqs--grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 0.65rem 3rem;
-            }
-        }
-
-        .zielgruppe-reqs--roman {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1rem;
-        }
-
-        .zielgruppe-reqs--roman li {
-            display: grid;
-            grid-template-columns: 2rem 1fr;
-            gap: 0.75rem;
-            align-items: start;
-            padding-left: 0;
-        }
-
-        .zielgruppe-reqs--roman li::before {
-            display: none;
-        }
-
-        .zielgruppe-reqs__numeral {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--orange);
-            padding-top: 0.1em;
-            text-align: center;
-        }
-
-        .zielgruppe-split__divider {
-            display: none;
-        }
-
-        @media (min-width: 768px) {
-            .zielgruppe-split__divider {
-                display: block;
-                position: absolute;
-                left: 50%;
-                top: 8%;
-                bottom: 8%;
-                width: 2px;
-                margin-left: -1px;
-                background: linear-gradient(180deg, transparent, rgba(236, 106, 55, 0.35) 20%, rgba(236, 106, 55, 0.35) 80%, transparent);
-                transform: rotate(-4deg);
-                transform-origin: center center;
-                z-index: 1;
-                pointer-events: none;
-            }
-        }
-
-        .zielgruppe-panel {
-            padding: 2rem 2.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            transition: background-color 0.25s ease;
-            cursor: default;
-        }
-
-        @media (min-width: 768px) {
-            .zielgruppe-panel--makler { padding-right: 3rem; }
-            .zielgruppe-panel--verwaltung { padding-left: 3rem; }
-        }
-
-        .zielgruppe-panel.is-clickable {
-            cursor: pointer;
-        }
-
-        .zielgruppe-panel.is-clickable:hover {
-            background-color: rgba(236, 106, 55, 0.04);
-        }
-
-        .zielgruppe-panel__label {
-            font-family: 'JetBrains Mono', 'Courier New', monospace;
-            font-size: 0.625rem;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--orange);
-        }
-
-        .zielgruppe-panel__title {
-            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
-            font-size: 1.375rem;
-            font-weight: 700;
-            color: var(--charcoal);
-            line-height: 1.25;
-        }
-
-        .zielgruppe-reqs {
-            list-style: none;
-            display: grid;
-            gap: 0.65rem;
-            margin-top: 0.25rem;
-        }
-
-        .zielgruppe-reqs li {
-            position: relative;
-            padding-left: 1.15rem;
-            font-size: 0.9375rem;
-            line-height: 1.6;
-            color: var(--stone);
-        }
-
-        .zielgruppe-reqs li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0.62em;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background-color: var(--pistachio);
-        }
-
-        .zielgruppe-cta-wrap {
-            text-align: center;
-            margin-top: 2.5rem;
-        }
-
-        @media (max-width: 767px) {
-            .zielgruppe-split {
-                grid-template-columns: 1fr;
-                gap: 0;
-            }
-            .zielgruppe-panel {
-                padding: 1.75rem 0;
-                border-bottom: 1px solid var(--border);
-            }
-            .zielgruppe-panel--verwaltung {
-                border-bottom: none;
-            }
-        }
-
-        /* ─────────────────────────────────────────────────────
-           WIR — Team-Sektion (Koblenz-Hintergrund)
-        ───────────────────────────────────────────────────── */
-
-        #wir {
-            position: relative;
-            padding: 6rem 0;
-            overflow: hidden;
-            color: #FBF8F3;
-        }
-
-        .wir-bg {
-            position: absolute;
-            inset: 0;
-            background: url('images/WIR_ref.jpg') center/cover no-repeat;
-            animation: wirKenBurns 22s ease-in-out infinite alternate;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .wir-bg { animation: none; }
-        }
-
-        @keyframes wirKenBurns {
-            from { transform: scale(1); }
-            to   { transform: scale(1.05); }
-        }
-
-        .wir-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(145deg, rgba(26, 20, 16, 0.82) 0%, rgba(18, 14, 10, 0.88) 100%);
-        }
-
-        .wir-content {
-            position: relative;
-            z-index: 2;
-            max-width: 40rem;
-            margin: 0 auto;
-            text-align: center;
-            padding: 0 1.5rem;
-        }
-
-        .wir-content .mono-label {
-            color: var(--orange);
-        }
-
-        .wir-content .section-h2 {
-            color: #FBF8F3;
-            margin-top: 0.75rem;
-        }
-
-        .wir-copy {
-            font-size: 1rem;
-            line-height: 1.78;
-            color: rgba(251, 248, 243, 0.82);
-            margin-top: 1.25rem;
-        }
-
-        .wir-copy + .wir-copy {
-            margin-top: 1rem;
-        }
-
-        .wir-location {
-            display: inline-block;
-            margin-top: 1.75rem;
-            font-family: 'JetBrains Mono', 'Courier New', monospace;
-            font-size: 0.5625rem;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: rgba(251, 248, 243, 0.45);
-        }
-
-        .wir-content--split { max-width: 52rem; }
-
-        .wir-grid {
-            display: grid;
-            grid-template-columns: 240px 1fr;
-            gap: 2.5rem;
-            align-items: center;
-            text-align: left;
-            margin-top: 2rem;
-        }
-
-        .wir-photo {
-            width: 100%;
-            max-width: 240px;
-            height: auto;
-            border-radius: 16px;
-            display: block;
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
-        }
-
-        .wir-text { min-width: 0; }
-        .wir-text .wir-copy:first-child { margin-top: 0; }
-
-        .wir-linkedin {
-            display: inline-block;
-            margin-top: 1rem;
-            font-size: 0.9375rem;
-            color: var(--orange);
-            text-decoration: none;
-            border-bottom: 1px solid rgba(236, 106, 55, 0.4);
-        }
-
-        .wir-linkedin:hover { border-bottom-color: var(--orange); }
-
-        @media (max-width: 640px) {
-            .wir-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-                justify-items: center;
-                text-align: center;
-            }
-        }
-
-        /* ─────────────────────────────────────────────────────
-           ÜBER UNS (legacy — removed)
-        ───────────────────────────────────────────────────── */
-
-        /* ── Contact section — dark hero treatment ── */
+/* ── Contact section — dark hero treatment ── */
         #contact {
             background: var(--charcoal);
             color: #fff;
@@ -2412,7 +843,7 @@
         ───────────────────────────────────────────────────── */
 
         #ticker {
-            padding: 1.25rem 0;
+            padding: 1.1rem 0;
             overflow: hidden;
             border-bottom: 1px solid var(--border);
             background: var(--surface);
@@ -2420,6 +851,8 @@
 
         .ticker-wrapper {
             overflow: hidden;
+            mask-image: linear-gradient(90deg, transparent, #000 96px, #000 calc(100% - 96px), transparent);
+            -webkit-mask-image: linear-gradient(90deg, transparent, #000 96px, #000 calc(100% - 96px), transparent);
         }
 
         .ticker-wrapper:hover .ticker-track {
@@ -2429,15 +862,15 @@
         .ticker-track {
             display: flex;
             align-items: center;
-            gap: 2rem;
+            gap: 1.75rem;
             width: max-content;
-            animation: ticker-scroll 32s linear infinite;
+            animation: ticker-scroll 42s linear infinite;
         }
 
         .ticker-item {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.55rem;
             font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
             font-size: 0.8125rem;
             color: var(--stone);
@@ -2446,11 +879,12 @@
             flex-shrink: 0;
         }
 
-        .ticker-icon {
-            width: 15px;
-            height: 15px;
+        .ticker-logo {
+            width: 1.15rem;
+            height: 1.15rem;
             flex-shrink: 0;
-            opacity: 0.7;
+            color: var(--charcoal);
+            opacity: 0.78;
         }
 
         .ticker-sep {
@@ -2463,6 +897,10 @@
         @keyframes ticker-scroll {
             from { transform: translateX(0); }
             to   { transform: translateX(-50%); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .ticker-track { animation: none; }
         }
 
         /* ─────────────────────────────────────────────────────
@@ -2832,128 +1270,6 @@
         .branchen-demo-link:hover { color: var(--charcoal); }
 
         /* ─────────────────────────────────────────────────────
-           LEISTUNGEN MODAL
-        ───────────────────────────────────────────────────── */
-
-        #leis-modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 8500;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-        }
-        #leis-modal.is-open { display: flex; }
-
-        .lm-backdrop {
-            position: absolute;
-            inset: 0;
-            background: rgba(20, 17, 13, 0.65);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-        }
-
-        .lm-box {
-            position: relative;
-            background: rgba(251, 248, 243, 0.92);
-            backdrop-filter: blur(24px) saturate(1.4);
-            -webkit-backdrop-filter: blur(24px) saturate(1.4);
-            border: 1px solid rgba(255, 255, 255, 0.55);
-            border-radius: 1.5rem;
-            width: 100%;
-            max-width: 520px;
-            max-height: 90vh;
-            overflow-y: auto;
-            padding: 2.25rem 2rem 2rem;
-            box-shadow: 0 32px 80px rgba(20, 17, 13, 0.28), 0 0 0 1px rgba(255, 255, 255, 0.12) inset;
-        }
-
-        .lm-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: var(--stone);
-            line-height: 1;
-            padding: 0.25rem;
-            transition: color 0.15s;
-        }
-        .lm-close:hover { color: var(--charcoal); }
-
-        .lm-panel { display: none; }
-        .lm-panel.is-active { display: block; }
-
-        .lm-badge {
-            display: inline-block;
-            font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
-            font-size: 0.5625rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--pistachio);
-            margin-bottom: 0.75rem;
-        }
-
-        .lm-title {
-            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
-            font-size: 1.375rem;
-            font-weight: 700;
-            color: var(--charcoal);
-            line-height: 1.25;
-            margin-bottom: 0.875rem;
-        }
-
-        .lm-body {
-            font-size: 0.9375rem;
-            line-height: 1.65;
-            color: var(--stone);
-            margin-bottom: 1.125rem;
-        }
-
-        .lm-list {
-            list-style: none;
-            display: grid;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .lm-list li {
-            font-size: 0.875rem;
-            line-height: 1.55;
-            color: var(--charcoal);
-            padding-left: 1.125rem;
-            position: relative;
-        }
-
-        .lm-list li::before {
-            content: '✔';
-            position: absolute;
-            left: 0;
-            color: var(--pistachio);
-            font-size: 0.75rem;
-        }
-
-        .lm-cta {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.75rem 1.5rem;
-            background-color: var(--orange);
-            color: #ffffff;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9375rem;
-            font-weight: 500;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: background-color 0.15s ease;
-        }
-
-        .lm-cta:hover { background-color: var(--orange-hover); }
-
-        /* ─────────────────────────────────────────────────────
            BOOKING MODAL
         ───────────────────────────────────────────────────── */
 
@@ -3155,7 +1471,7 @@
             .bm-cal-wrap { margin: 0 -1.25rem -1.25rem; }
             .bm-cal-wrap iframe { height: 580px; }
         }
-    </style>
+</style>
 </head>
 
 <body>
@@ -3179,7 +1495,7 @@
       </ul>
     </div>
     <div class="nav-right">
-      <button type="button" class="btn-primary js-open-booking" id="nav-demo-btn" data-source="nav">Kostenlosen Audit buchen</button>
+      <button type="button" class="btn-primary js-open-booking" id="nav-demo-btn" data-source="nav">Kostenlose Beratungsstunde buchen</button>
       <button class="nav-hamburger" id="hamburger-btn" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-overlay">
         <svg id="hamburger-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
@@ -3194,7 +1510,7 @@
     <a href="persoenlichkeit.html" class="mobile-link" data-close-menu>Persönlichkeit</a>
     <a href="zusammenarbeit.html" class="mobile-link" data-close-menu>So arbeiten wir</a>
     <hr class="mobile-hr">
-    <button type="button" class="mobile-cta js-open-booking" id="mobile-demo-btn" data-source="mobile-nav">Kostenlosen Audit buchen</button>
+    <button type="button" class="mobile-cta js-open-booking" id="mobile-demo-btn" data-source="mobile-nav">Kostenlose Beratungsstunde buchen</button>
   </div>
 </div>
 
@@ -3220,12 +1536,12 @@
                 </h1>
 
                 <p class="hero-sub">
-                    Ein System, das Portalanfragen qualifiziert und Termine bucht. Statt Stunden mit Rückfragen.
+                    Ein System, das Portalanfragen qualifiziert und Termine bucht. Statt Stunden mit Rückfragen zu verbringen.
                 </p>
 
                 <div class="hero-ctas">
-                    <button type="button" class="hero-btn-primary js-open-booking" id="hero-work-btn" data-source="hero">Kostenlosen Audit buchen</button>
-                    <a href="#systeme" class="hero-btn-outline" id="hero-demo-btn">Live-Systeme ansehen</a>
+                    <button type="button" class="hero-btn-primary js-open-booking" id="hero-work-btn" data-source="hero">Kostenlose Beratungsstunde buchen</button>
+                    <a href="#aqut" class="hero-btn-outline" id="hero-demo-btn">AQuT kennenlernen</a>
                 </div>
 
             </div>
@@ -3244,210 +1560,510 @@
              TECH STACK TICKER
         ═══════════════════════════════════════════════════ -->
 
-        <section class="trust-strip" aria-label="Infrastruktur und Datenschutz">
-            <ul class="trust-strip__list">
-                <li>Selbst gehostet in Deutschland</li>
-                <li>Datenbank in Frankfurt</li>
-                <li>AVV nach Art. 28 DSGVO</li>
-                <li>Keine Datenweitergabe außerhalb der EU</li>
-                <li>Koblenz</li>
-            </ul>
-        </section>
-
-        <section id="alltag">
-            <div class="section-wrap">
-                <span class="mono-label">Im Büroalltag</span>
-                <h2 class="section-h2">Wo Qualifizierung Zeit kostet</h2>
-                <p class="section-sub">Die Anfragen kommen rein. Der Engpass sitzt danach: manuelle Prüfung, Rückfragen und Terminabstimmung.</p>
-                <ul class="list-plain">
-                    <li>Jedes Portal-Mail wird einzeln gelesen, bevor klar ist, ob Kauf oder Miete und ob die Angaben reichen.</li>
-                    <li>Rückfragen gehen per Hand raus und verzögern die Antwortzeit gegenüber dem Interessenten.</li>
-                    <li>Terminfindung läuft über Hin und Her in E-Mail oder Telefon, statt direkt in den Kalender.</li>
-                    <li>Erstgespräche mit unpassenden Leads binden Kapazität, die für passende Interessenten fehlt.</li>
-                </ul>
+        <section id="ticker" aria-label="Eingesetzte Technologien">
+            <div class="ticker-wrapper" aria-hidden="true">
+                <div class="ticker-track">
+                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2 3.5 7v10L12 22l8.5-5V7L12 2zm0 2.3 6.2 3.6v7.2L12 18.7l-6.2-3.6V7.9L12 4.3z"/><path d="M12 8.2 8.8 10v4L12 15.8 15.2 14v-4L12 8.2z"/></svg>Mistral</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>OpenAI</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.05 2.05a1 1 0 0 0-1.1 0L3.4 7.8a1 1 0 0 0-.45.84v6.72a1 1 0 0 0 .45.84l8.55 5.75a1 1 0 0 0 1.1 0l8.55-5.75a1 1 0 0 0 .45-.84V8.64a1 1 0 0 0-.45-.84l-8.55-5.75zM12 5.2l6.2 4.17v5.26L12 18.8l-6.2-4.17V9.37L12 5.2z"/></svg>Azure</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 18a5 5 0 0 1 .4-9.98A6.5 6.5 0 0 1 19.5 11 4.5 4.5 0 0 1 18 20H8"/><path d="M9 14h6M10.5 11.5 12 10l1.5 1.5"/></svg>GCP</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3 4 7.5v9L12 21l8-4.5v-9L12 3z"/><path d="M12 8v8M8.5 10.5 12 12.5l3.5-2"/></svg>Anthropic</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h13A1.5 1.5 0 0 1 20 5.5v4A1.5 1.5 0 0 1 18.5 11h-13A1.5 1.5 0 0 1 4 9.5v-4zm0 9A1.5 1.5 0 0 1 5.5 13h5A1.5 1.5 0 0 1 12 14.5v4A1.5 1.5 0 0 1 10.5 20h-5A1.5 1.5 0 0 1 4 18.5v-4zm10 0A1.5 1.5 0 0 1 15.5 13h3A1.5 1.5 0 0 1 20 14.5v4A1.5 1.5 0 0 1 18.5 20h-3a1.5 1.5 0 0 1-1.5-1.5v-4z"/></svg>Supabase</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M17.5 14v3.5H14M10 6.5h4M6.5 10v4"/></svg>n8n</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 19h16"/><path d="M7 19V9l5-5 5 5v10"/><path d="M10 19v-5h4v5"/></svg>Hostinger</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 8 9 6 9-6"/></svg>Resend</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2 3.5 7v10L12 22l8.5-5V7L12 2zm0 2.3 6.2 3.6v7.2L12 18.7l-6.2-3.6V7.9L12 4.3z"/><path d="M12 8.2 8.8 10v4L12 15.8 15.2 14v-4L12 8.2z"/></svg>Mistral</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>OpenAI</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.05 2.05a1 1 0 0 0-1.1 0L3.4 7.8a1 1 0 0 0-.45.84v6.72a1 1 0 0 0 .45.84l8.55 5.75a1 1 0 0 0 1.1 0l8.55-5.75a1 1 0 0 0 .45-.84V8.64a1 1 0 0 0-.45-.84l-8.55-5.75zM12 5.2l6.2 4.17v5.26L12 18.8l-6.2-4.17V9.37L12 5.2z"/></svg>Azure</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 18a5 5 0 0 1 .4-9.98A6.5 6.5 0 0 1 19.5 11 4.5 4.5 0 0 1 18 20H8"/><path d="M9 14h6M10.5 11.5 12 10l1.5 1.5"/></svg>GCP</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3 4 7.5v9L12 21l8-4.5v-9L12 3z"/><path d="M12 8v8M8.5 10.5 12 12.5l3.5-2"/></svg>Anthropic</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h13A1.5 1.5 0 0 1 20 5.5v4A1.5 1.5 0 0 1 18.5 11h-13A1.5 1.5 0 0 1 4 9.5v-4zm0 9A1.5 1.5 0 0 1 5.5 13h5A1.5 1.5 0 0 1 12 14.5v4A1.5 1.5 0 0 1 10.5 20h-5A1.5 1.5 0 0 1 4 18.5v-4zm10 0A1.5 1.5 0 0 1 15.5 13h3A1.5 1.5 0 0 1 20 14.5v4A1.5 1.5 0 0 1 18.5 20h-3a1.5 1.5 0 0 1-1.5-1.5v-4z"/></svg>Supabase</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M17.5 14v3.5H14M10 6.5h4M6.5 10v4"/></svg>n8n</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 19h16"/><path d="M7 19V9l5-5 5 5v10"/><path d="M10 19v-5h4v5"/></svg>Hostinger</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 8 9 6 9-6"/></svg>Resend</span>
+                    <span class="ticker-sep">·</span>
+                </div>
             </div>
         </section>
 
+        <section id="zielgruppe" class="home-band home-band--cloud" aria-labelledby="zielgruppe-title">
+            <div class="section-wrap">
+                <span class="mono-label">Mit wem wir arbeiten</span>
+                <h2 class="section-h2" id="zielgruppe-title">Unabhängige Maklerbüros mit echtem Anfragevolumen</h2>
+                <p class="section-sub">Wir filtern bewusst. Wenn Sie sich links wiederfinden, sind Sie richtig. Wenn rechts, sparen wir uns beide die Zeit.</p>
+                <div class="icp-grid">
+                    <article class="icp-card icp-card--yes">
+                        <span class="icp-card__badge" aria-hidden="true"><i data-lucide="check"></i></span>
+                        <h3 class="icp-card__heading">Passt</h3>
+                        <ul>
+                            <li><span class="icp-mark" aria-hidden="true"><i data-lucide="check"></i></span> 5 bis 25 Mitarbeitende</li>
+                            <li><span class="icp-mark" aria-hidden="true"><i data-lucide="check"></i></span> Hohes Anfragevolumen über Immobilienportale</li>
+                            <li><span class="icp-mark" aria-hidden="true"><i data-lucide="check"></i></span> CRM wie onOffice oder Propstack</li>
+                            <li><span class="icp-mark" aria-hidden="true"><i data-lucide="check"></i></span> Offenheit für KI</li>
+                        </ul>
+                    </article>
+                    <article class="icp-card icp-card--no">
+                        <span class="icp-card__badge" aria-hidden="true"><i data-lucide="x"></i></span>
+                        <h3 class="icp-card__heading">Passt nicht</h3>
+                        <ul>
+                            <li><span class="icp-mark" aria-hidden="true"><i data-lucide="x"></i></span> Geringes Anfragevolumen unter 10 bis 15 Mails pro Woche</li>
+                            <li><span class="icp-mark" aria-hidden="true"><i data-lucide="x"></i></span> Franchise-Netzwerke</li>
+                            <li><span class="icp-mark" aria-hidden="true"><i data-lucide="x"></i></span> Keine Bereitschaft zur Innovation</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="warum-rais" class="home-band home-band--linen" aria-labelledby="warum-rais-title">
+            <div class="section-wrap">
+                <span class="mono-label">Warum RAIS</span>
+                <h2 class="section-h2" id="warum-rais-title">Enterprise-KI ohne Enterprise-Ballast</h2>
+                <p class="section-sub">Wir bauen Systeme, die im Makleralltag sitzen: DSGVO-klar, EU-hosted und auf Ihr Büro zugeschnitten. Kein One-size-SaaS.</p>
+                <div class="why-grid">
+                    <article class="why-card">
+                        <span class="why-card__icon" aria-hidden="true"><i data-lucide="shield-check"></i></span>
+                        <span class="why-card__badge">DSGVO</span>
+                        <h3>Enterprise-KI ohne Komplexität</h3>
+                        <p>GDPR-konforme KI-Systeme auf Enterprise-Niveau, ohne Enterprise-Ballast und Projektlawinen.</p>
+                    </article>
+                    <article class="why-card">
+                        <span class="why-card__icon" aria-hidden="true"><i data-lucide="scan-search"></i></span>
+                        <span class="why-card__badge">Fachblick</span>
+                        <h3>Echter Mehrwert statt Hype</h3>
+                        <p>Fachverständnis, das Marketing-Hype von nutzbarem Mehrwert für Ihr Büro unterscheidet.</p>
+                    </article>
+                    <article class="why-card">
+                        <span class="why-card__icon" aria-hidden="true"><i data-lucide="server"></i></span>
+                        <span class="why-card__badge">EU only</span>
+                        <h3>100&nbsp;% EU-Infrastruktur</h3>
+                        <p>Server und Datenhaltung in Deutschland (Frankfurt), AVV nach Art. 28 DSGVO.</p>
+                    </article>
+                    <article class="why-card">
+                        <span class="why-card__icon" aria-hidden="true"><i data-lucide="pencil-ruler"></i></span>
+                        <span class="why-card__badge">Maßarbeit</span>
+                        <h3>Maßgeschneidert statt SaaS</h3>
+                        <p>Direkt persönliche Lösungen für Ihr Büro. Kein starrer Baukasten, den Sie selbst zusammenstöpseln müssen.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="aqut" class="sage-block" aria-labelledby="aqut-title">
+            <div class="aqut-dots" aria-hidden="true"></div>
+            <div class="aqut-vignette" aria-hidden="true"></div>
+            <div class="section-wrap">
+                <span class="mono-label">Unser Flaggschiff</span>
+                <h2 class="section-h2" id="aqut-title">AQuT: von der Anfrage bis zum Termin im Kalender</h2>
+                <p class="section-sub">Anfragen-Qualifizierungs- und Terminierungs-System. Kein Chatbot-Spiel. Ein durchgängiger Ablauf, der dem Team Stunden zurückgibt und Interessenten in Minuten antwortet.</p>
+
+                <ol class="aqut-flow aqut-flow--timeline" aria-label="Systemweg AQuT in fünf Schritten">
+                    <li class="aqut-flow__step">
+                        <span class="aqut-flow__num" aria-hidden="true">1</span>
+                        <span class="aqut-flow__icon" aria-hidden="true"><i data-lucide="inbox"></i></span>
+                        <strong>Mail-Eingang</strong>
+                        <span>Portal-Anfrage trifft ein</span>
+                    </li>
+                    <li class="aqut-flow__arrow" aria-hidden="true"><i data-lucide="chevron-right"></i></li>
+                    <li class="aqut-flow__step">
+                        <span class="aqut-flow__num" aria-hidden="true">2</span>
+                        <span class="aqut-flow__icon" aria-hidden="true"><i data-lucide="brain"></i></span>
+                        <strong>LLM-Prüfung</strong>
+                        <span>Kauf/Miete und Vollständigkeit</span>
+                    </li>
+                    <li class="aqut-flow__arrow" aria-hidden="true"><i data-lucide="chevron-right"></i></li>
+                    <li class="aqut-flow__step">
+                        <span class="aqut-flow__num" aria-hidden="true">3</span>
+                        <span class="aqut-flow__icon" aria-hidden="true"><i data-lucide="send"></i></span>
+                        <strong>Smarte Antwort</strong>
+                        <span>Buchungslink, Rückfrage oder Absage</span>
+                    </li>
+                    <li class="aqut-flow__arrow" aria-hidden="true"><i data-lucide="chevron-right"></i></li>
+                    <li class="aqut-flow__step">
+                        <span class="aqut-flow__num" aria-hidden="true">4</span>
+                        <span class="aqut-flow__icon" aria-hidden="true"><i data-lucide="calendar-check-2"></i></span>
+                        <strong>Interessent bucht</strong>
+                        <span>Erstgespräch selbst wählen</span>
+                    </li>
+                    <li class="aqut-flow__arrow" aria-hidden="true"><i data-lucide="chevron-right"></i></li>
+                    <li class="aqut-flow__step">
+                        <span class="aqut-flow__num" aria-hidden="true">5</span>
+                        <span class="aqut-flow__icon" aria-hidden="true"><i data-lucide="bell-ring"></i></span>
+                        <strong>CRM und Reminder</strong>
+                        <span>Termin und 24h Reminder</span>
+                    </li>
+                </ol>
+
+                <div class="benefit-grid">
+                    <article class="benefit-card">
+                        <p class="benefit-card__stat">20 bis 35 Std/Woche</p>
+                        <p>Arbeitsaufwand gespart, direkt abhängig von Ihrem Anfragevolumen.</p>
+                    </article>
+                    <article class="benefit-card">
+                        <p class="benefit-card__stat">15 Std auf 2 Min</p>
+                        <p>Reaktionszeit auf Anfragen. Von durchschnittlich 15 Stunden auf unter 2 Minuten.</p>
+                    </article>
+                    <article class="benefit-card">
+                        <p class="benefit-card__stat">Entlastung</p>
+                        <p>Entlastung ihrer Mitarbeiter: Fokus auf abschlussrelevante Aufgaben statt Mailbox.</p>
+                    </article>
+                </div>
+
+                <div class="home-cta-row">
+                    <button type="button" class="btn-primary js-open-booking" data-source="home-aqut">Kostenlose Beratungsstunde buchen</button>
+                    <a class="home-cta-link" href="aqut.html">AQuT im Detail</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="systeme" class="home-band home-band--cloud home-band--marquee" aria-labelledby="systeme-title">
+            <div class="section-wrap">
+                <span class="mono-label">Was wir machen</span>
+                <h2 class="section-h2" id="systeme-title">Weitere Use Cases rund um AQuT</h2>
+                <p class="section-sub">AQuT ist das Flaggschiff. Darunter bauen wir Systeme für Support, Onboarding und Datenqualität, immer mit demselben Anspruch: Entlastung statt Techniktheater.</p>
+            </div>
+            <div class="use-marquee" id="use-marquee" aria-label="Use Cases im Überblick">
+                <div class="use-marquee__row use-marquee__row--rtl">
+                    <div class="use-marquee__track">
+                        <div class="use-marquee__list">
+                            <article class="spot-card">
+                                <span class="spot-card__icon" aria-hidden="true"><i data-lucide="audio-lines"></i></span>
+                                <h3 class="spot-card__title">Voice Agents</h3>
+                                <p class="spot-card__body">24/7 Erstaufnahme am Telefon</p>
+                                <span class="spot-card__meta">Erreichbarkeit</span>
+                            </article>
+                            <article class="spot-card">
+                                <span class="spot-card__icon" aria-hidden="true"><i data-lucide="mail"></i></span>
+                                <h3 class="spot-card__title">Mieteranliegen</h3>
+                                <p class="spot-card__body">Mail-Weiterleitung an Partnerbetriebe</p>
+                                <span class="spot-card__meta">Verwaltung</span>
+                            </article>
+                            <article class="spot-card">
+                                <span class="spot-card__icon" aria-hidden="true"><i data-lucide="key-round"></i></span>
+                                <h3 class="spot-card__title">Kundenonboarding</h3>
+                                <p class="spot-card__body">Ablauf nach Vertragsabschluss</p>
+                                <span class="spot-card__meta">Service</span>
+                            </article>
+                            <article class="spot-card" aria-hidden="true">
+                                <span class="spot-card__icon" aria-hidden="true"><i data-lucide="audio-lines"></i></span>
+                                <h3 class="spot-card__title">Voice Agents</h3>
+                                <p class="spot-card__body">24/7 Erstaufnahme am Telefon</p>
+                                <span class="spot-card__meta">Erreichbarkeit</span>
+                            </article>
+                        </div>
+                        <div class="use-marquee__list" aria-hidden="true">
+                            <article class="spot-card">
+                                <span class="spot-card__icon" aria-hidden="true"><i data-lucide="audio-lines"></i></span>
+                                <h3 class="spot-card__title">Voice Agents</h3>
+                                <p class="spot-card__body">24/7 Erstaufnahme am Telefon</p>
+                                <span class="spot-card__meta">Erreichbarkeit</span>
+                            </article>
+                            <article class="spot-card">
+                                <span class="spot-card__icon" aria-hidden="true"><i data-lucide="mail"></i></span>
+                                <h3 class="spot-card__title">Mieteranliegen</h3>
+                                <p class="spot-card__body">Mail-Weiterleitung an Partnerbetriebe</p>
+                                <span class="spot-card__meta">Verwaltung</span>
+                            </article>
+                            <article class="spot-card">
+                                <span class="spot-card__icon" aria-hidden="true"><i data-lucide="key-round"></i></span>
+                                <h3 class="spot-card__title">Kundenonboarding</h3>
+                                <p class="spot-card__body">Ablauf nach Vertragsabschluss</p>
+                                <span class="spot-card__meta">Service</span>
+                            </article>
+                            <article class="spot-card">
+                                <span class="spot-card__icon" aria-hidden="true"><i data-lucide="audio-lines"></i></span>
+                                <h3 class="spot-card__title">Voice Agents</h3>
+                                <p class="spot-card__body">24/7 Erstaufnahme am Telefon</p>
+                                <span class="spot-card__meta">Erreichbarkeit</span>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+                <div class="use-marquee__row use-marquee__row--ltr">
+                    <div class="use-marquee__track">
+                        <div class="use-marquee__list">
+                            <article class="spot-card">
+                                <span class="spot-card__icon" aria-hidden="true"><i data-lucide="message-square"></i></span>
+                                <h3 class="spot-card__title">WhatsApp Ticketing</h3>
+                                <p class="spot-card__body">Kundensupport mit automatischer Kategorisierung</p>
+                                <span class="spot-card__meta">Support</span>
+                            </article>
+                            <article class="spot-card">
+                                <span class="spot-card__icon" aria-hidden="true"><i data-lucide="database"></i></span>
+                                <h3 class="spot-card__title">Datenbestand</h3>
+                                <p class="spot-card__body">Anreichern und bereinigen</p>
+                                <span class="spot-card__meta">Datenpflege</span>
+                            </article>
+                            <article class="spot-card">
+                                <span class="spot-card__icon" aria-hidden="true"><i data-lucide="calendar-check"></i></span>
+                                <h3 class="spot-card__title">Kalender-Booking</h3>
+                                <p class="spot-card__body">Booking und Reminder-Workflow</p>
+                                <span class="spot-card__meta">Organisation</span>
+                            </article>
+                            <article class="spot-card" aria-hidden="true">
+                                <span class="spot-card__icon" aria-hidden="true"><i data-lucide="message-square"></i></span>
+                                <h3 class="spot-card__title">WhatsApp Ticketing</h3>
+                                <p class="spot-card__body">Kundensupport mit automatischer Kategorisierung</p>
+                                <span class="spot-card__meta">Support</span>
+                            </article>
+                        </div>
+                        <div class="use-marquee__list" aria-hidden="true">
+                            <article class="spot-card">
+                                <span class="spot-card__icon" aria-hidden="true"><i data-lucide="message-square"></i></span>
+                                <h3 class="spot-card__title">WhatsApp Ticketing</h3>
+                                <p class="spot-card__body">Kundensupport mit automatischer Kategorisierung</p>
+                                <span class="spot-card__meta">Support</span>
+                            </article>
+                            <article class="spot-card">
+                                <span class="spot-card__icon" aria-hidden="true"><i data-lucide="database"></i></span>
+                                <h3 class="spot-card__title">Datenbestand</h3>
+                                <p class="spot-card__body">Anreichern und bereinigen</p>
+                                <span class="spot-card__meta">Datenpflege</span>
+                            </article>
+                            <article class="spot-card">
+                                <span class="spot-card__icon" aria-hidden="true"><i data-lucide="calendar-check"></i></span>
+                                <h3 class="spot-card__title">Kalender-Booking</h3>
+                                <p class="spot-card__body">Booking und Reminder-Workflow</p>
+                                <span class="spot-card__meta">Organisation</span>
+                            </article>
+                            <article class="spot-card">
+                                <span class="spot-card__icon" aria-hidden="true"><i data-lucide="message-square"></i></span>
+                                <h3 class="spot-card__title">WhatsApp Ticketing</h3>
+                                <p class="spot-card__body">Kundensupport mit automatischer Kategorisierung</p>
+                                <span class="spot-card__meta">Support</span>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="rechner" class="home-band home-band--cloud" aria-labelledby="rechner-title">
+            <div class="section-wrap">
+                <span class="mono-label">Ihre Rechnung</span>
+                <h2 class="section-h2" id="rechner-title">Was kostet Sie das heute?</h2>
+                <p class="section-sub">Keine Lead-Erfassung. Keine Kontaktdaten. Nur Aufklärung aus Ihren Zahlen: Mailbearbeitung plus die Anrufe, die in der Mailbox landen und hinterher nachgezogen werden. CRM klären wir im Discovery-Call.</p>
+                <div class="rechner rechner--wizard" id="aqut-rechner">
+                    <div class="rq-progress">
+                        <span class="rq-progress__label" id="rq-step-label">Schritt 1 von 3</span>
+                        <div class="rq-progress__bars" aria-hidden="true">
+                            <span class="rq-progress__bar is-filled" data-bar="1"></span>
+                            <span class="rq-progress__bar" data-bar="2"></span>
+                            <span class="rq-progress__bar" data-bar="3"></span>
+                        </div>
+                    </div>
+
+                    <fieldset class="rq-step" data-step="1">
+                        <legend class="rq-step__title">Ihr Anfragevolumen</legend>
+                        <p class="rq-step__hint">Wie viele Anfragen landen bei Ihnen, und wie lange dauert die Bearbeitung?</p>
+                        <div class="rq-period" role="group" aria-label="Zeitraum für Anfragevolumen">
+                            <button type="button" class="rq-period__btn is-active" id="rq-period-month" data-period="month" aria-pressed="true">Monatlich</button>
+                            <button type="button" class="rq-period__btn" id="rq-period-week" data-period="week" aria-pressed="false">Wöchentlich</button>
+                        </div>
+                        <div class="rq-fields">
+                            <div>
+                                <label for="rq-volume" id="rq-volume-label">Anfragen pro Monat</label>
+                                <input id="rq-volume" type="number" min="0" step="1" value="350" inputmode="numeric">
+                            </div>
+                            <div>
+                                <label for="rq-minutes">Minuten pro Mail-Anfrage</label>
+                                <input id="rq-minutes" type="number" min="0" step="1" value="18" inputmode="numeric">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="rq-step" data-step="2" hidden>
+                        <legend class="rq-step__title">Telefon-Nacharbeit</legend>
+                        <p class="rq-step__hint">Wie viel Zeit verbringt Ihr Team mit dem Hinterhertelefonieren von Mailbox-Anfragen?</p>
+                        <div class="rq-fields">
+                            <div>
+                                <label for="rq-phone-share">Anteil Anfragen mit Mailbox-Nachtelefonat (%)</label>
+                                <input id="rq-phone-share" type="number" min="0" max="100" step="1" value="30" inputmode="numeric">
+                            </div>
+                            <div>
+                                <label for="rq-phone-minutes">Minuten pro Mailbox-Nein-Anruf</label>
+                                <input id="rq-phone-minutes" type="number" min="0" step="1" value="5" inputmode="numeric">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="rq-step" data-step="3" hidden>
+                        <legend class="rq-step__title">Ihr Kostensatz</legend>
+                        <p class="rq-step__hint">Mit welchem internen Stundensatz rechnen Sie die Bearbeitungszeit?</p>
+                        <div class="rq-fields">
+                            <div>
+                                <label for="rq-rate">Stundensatz in Euro</label>
+                                <input id="rq-rate" type="number" min="0" step="1" value="45" inputmode="decimal">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <div class="rq-step rq-step--result" data-step="4" hidden>
+                        <span class="rq-step__eyebrow">Ihr Ergebnis</span>
+                        <p class="rq-step__hint">nach Ihren eigenen Angaben, ausgewiesen pro Monat</p>
+                        <div class="rechner__out" id="rq-output" aria-live="polite"></div>
+                    </div>
+
+                    <p class="rq-error" id="rq-error" hidden role="alert"></p>
+
+                    <div class="rq-nav">
+                        <button type="button" class="rq-btn-back" id="rq-back" hidden>Zurück</button>
+                        <button type="button" class="rq-btn-reset" id="rq-reset" hidden>Werte anpassen</button>
+                        <button type="button" class="rq-btn-next" id="rq-next">Weiter</button>
+                        <button type="button" class="btn-primary js-open-booking rq-btn-cta" id="rq-cta" data-source="home-rechner" hidden>Kostenlose Beratungsstunde buchen</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ablauf" class="home-band home-band--linen" aria-labelledby="ablauf-title">
+            <div class="section-wrap">
+                <span class="mono-label">Zusammenarbeit</span>
+                <h2 class="section-h2" id="ablauf-title">So läuft die Zusammenarbeit</h2>
+                <p class="section-sub">Vier klare Schritte. Kein Projektchaos. Am Ende läuft das System, ohne dass Sie es selbst betreiben müssen.</p>
+                <div class="ablauf-timeline ablauf-timeline--path">
+                    <article class="ablauf-step">
+                        <span class="ablauf-step__icon" aria-hidden="true"><i data-lucide="messages-square"></i></span>
+                        <h3>Discovery-Call</h3>
+                        <p>Gemeinsame Analyse Ihrer Prozesse, um die größten Hebel für KI-Automatisierung zu identifizieren.</p>
+                        <span class="ablauf-step__meta">60 Min · Kostenlos</span>
+                    </article>
+                    <article class="ablauf-step">
+                        <span class="ablauf-step__icon" aria-hidden="true"><i data-lucide="waypoints"></i></span>
+                        <h3>Systemgespräch</h3>
+                        <p>Wir besprechen Infrastruktur und legen die Prioritäten für die Umsetzung fest.</p>
+                        <span class="ablauf-step__meta">Sales Call</span>
+                    </article>
+                    <article class="ablauf-step">
+                        <span class="ablauf-step__icon" aria-hidden="true"><i data-lucide="hammer"></i></span>
+                        <h3>Umsetzung</h3>
+                        <p>Schlüsselfertiger Aufbau inklusive Testphase und Integration in bestehende Tools.</p>
+                        <span class="ablauf-step__meta">ca. 4 Wochen</span>
+                    </article>
+                    <article class="ablauf-step">
+                        <span class="ablauf-step__icon" aria-hidden="true"><i data-lucide="shield"></i></span>
+                        <h3>Betrieb</h3>
+                        <p>Laufende Wartung, Anpassungen und Hosting durch uns. Sie nutzen nur das fertige System.</p>
+                        <span class="ablauf-step__meta">Retainer · Rundum</span>
+                    </article>
+                </div>
+                <div class="home-cta-row">
+                    <a class="home-cta-link" href="zusammenarbeit.html" style="color:var(--charcoal);">Mehr zum Ablauf</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Haller-Teaser ausgeblendet bis Freigabe für öffentliche Nennung auf der Startseite
         <section id="referenzen-teaser">
             <div class="section-wrap">
                 <span class="mono-label">Wem wir geholfen haben</span>
                 <h2 class="section-h2">Haller Immobilienberatung GmbH</h2>
                 <div class="teaser-card">
-                    <p>Öffentlich freigegebene Referenz: Portalanfragen werden qualifiziert und Termine landen im Kalender, statt im Hin und Her des Büroalltags. Gemessene Kennzahlen folgen, sobald sie aus dem Live-Betrieb belastbar vorliegen.</p>
+                    <p>Öffentlich freigegebene Referenz: Portalanfragen werden qualifiziert und Termine landen im Kalender. Gemessene Kennzahlen folgen, sobald sie aus dem Live-Betrieb belastbar vorliegen.</p>
                     <p style="margin-top:0.75rem;"><a href="referenzen.html">Zur Referenz</a></p>
                 </div>
             </div>
         </section>
+        -->
 
-        <section id="trust" aria-labelledby="trust-title">
-            <div class="section-wrap trust-founder">
-                <img class="trust-founder__portrait" src="images/kevin-ritz-portrait.png" width="2048" height="2048" loading="lazy" alt="Kevin Ritz, Gründer von RAIS">
-                <div class="trust-founder__copy">
-                    <span class="mono-label">Direkter Ansprechpartner</span>
-                    <h2 class="section-h2" id="trust-title">Kein Vermittler. Kein anonymes Projektteam.</h2>
-                    <p>Ich bin Kevin Ritz, Gründer von RAIS aus Koblenz. Vom ersten Prozess-Audit bis zum laufenden System arbeiten Sie direkt mit mir.</p>
-                    <a class="trust-founder__link" href="ueber-uns.html">Mehr über RAIS und Kevin Ritz</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="systeme">
+        <section id="trust" class="home-band home-band--cloud" aria-labelledby="trust-title">
             <div class="section-wrap">
-                <span class="mono-label">Live-Systeme</span>
-                <h2 class="section-h2">Was RAIS heute baut</h2>
-                <p class="section-sub">AQuT ist das vertiefte Angebot für Makleranfragen. Die übrigen Systeme zeigen die Bandbreite, ohne die Zielgruppe zu verwässern.</p>
-                <div class="systeme-bento">
-                    <article class="sys-cell sys-cell--aqut">
-                        <span class="sys-ctx">Makler</span>
-                        <h3>AQuT</h3>
-                        <p>Portalanfragen qualifizieren, Rückfragen automatisieren, Termine buchen. Bei typischem Volumen oft rund 30 Stunden pro Monat (Herleitung ca. 5 bis 8 Std/Woche), abhängig vom Anfragevolumen.</p>
-                        <a href="aqut.html">AQuT genauer ansehen</a>
-                    </article>
-                    <article class="sys-cell sys-cell--peer">
-                        <span class="sys-ctx">Makler</span>
-                        <h3>Onboarding WFS</h3>
-                        <p>Nach Vertragsunterschrift: strukturierte Objektannahme ohne Zettelwirtschaft.</p>
-                    </article>
-                    <article class="sys-cell sys-cell--peer">
-                        <span class="sys-ctx">Makler</span>
-                        <h3>Lead Scraping LMLF</h3>
-                        <p>Marktbeobachtung und Lead-Erfassung über strukturierte Workflows.</p>
-                    </article>
-                    <article class="sys-cell sys-cell--peer">
-                        <span class="sys-ctx">Makler</span>
-                        <h3>CRM</h3>
-                        <p>Anbindung an bestehende Systeme oder schlanke eigene Datenhaltung.</p>
-                    </article>
-                    <article class="sys-cell sys-cell--peer">
-                        <span class="sys-ctx">Intern</span>
-                        <h3>Habit Tracker + Report</h3>
-                        <p>Interne Routinen mit Performance-Report für Disziplin und Auswertung.</p>
-                    </article>
-                    <article class="sys-cell sys-cell--peer">
-                        <span class="sys-ctx">Content</span>
-                        <h3>Agentic AI Content</h3>
-                        <p>Agentische Systeme für Content-Erstellung und Redaktionsabläufe.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section id="zielgruppe">
-            <div class="section-wrap">
-                <span class="mono-label">Für wen</span>
-                <h2 class="section-h2">Unabhängige Maklerbüros mit echtem Anfragevolumen</h2>
-                <ul class="list-plain">
-                    <li>5 bis 25 Mitarbeitende im Team</li>
-                    <li>Hohes Anfragevolumen über gängige Immobilienportale</li>
-                    <li>Bestehendes CRM wie onOffice oder Propstack, oder Bereitschaft dazu</li>
-                    <li>Offenheit für KI und neue Systeme im Team</li>
-                </ul>
-                <p class="mono-label" style="margin-top:2.5rem;">Nicht unsere Zielgruppe</p>
-                <ul class="list-plain">
-                    <li>Einzelkämpfer und Solo-Makler</li>
-                    <li>Franchise-Netzwerke</li>
-                    <li>Bankgebundene Agenturen</li>
-                    <li>Reine Hausverwaltungen</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="start">
-            <div class="section-wrap">
-                <span class="mono-label">Einstieg</span>
-                <h2 class="section-h2">So starten wir</h2>
-                <p class="section-sub">Kostenloses Erstgespräch, klares Angebot, dann Aufbau bis Betrieb. Der volle Ablauf steht auf einer eigenen Seite.</p>
-                <p style="margin-top:1.5rem;"><a href="zusammenarbeit.html">So arbeiten wir</a></p>
-            </div>
-        </section>
-
-<section id="contact">
-            <div class="section-wrap">
-
-                <div class="contact-grid">
-
-                    <!-- Copy column -->
-                    <div class="contact-text-col">
-                        <span class="mono-label" style="color: var(--orange);">Prozess-Audit</span>
-                        <h2 class="section-h2" style="color: #fff; margin-top: 0.75rem;">60 Minuten. Kostenlos. Klare nächste Schritte.</h2>
-                        <p class="contact-copy">
-                            Wir analysieren Ihre Prozesse und zeigen, wo Zeit verloren geht. Sie bekommen drei umsetzbare Use Cases.
-                        </p>
-                        <p class="contact-copy" style="margin-top: 1rem;">
-                            Kein Verkaufsdruck. Blueprint inklusive.
-                        </p>
-                        <div class="contact-steps">
-                            <div class="contact-step">
-                                <span class="contact-step-num">1</span>
-                                Name &amp; E-Mail
+                <span class="mono-label">Woran Sie uns messen können</span>
+                <h2 class="section-h2" id="trust-title">Direkt. DSGVO-klar. Ohne Vermittler.</h2>
+                <div class="trust-grid">
+                    <img class="trust-grid__portrait" src="images/kevin-ritz-portrait.png" width="720" height="720" loading="lazy" alt="Kevin Ritz, Gründer von RAIS">
+                    <div>
+                        <ul class="trust-facts">
+                            <li>Selbst gehostet in Deutschland</li>
+                            <li>Datenbank in Frankfurt</li>
+                            <li>AVV nach Art. 28 DSGVO</li>
+                            <li>Keine Datenweitergabe außerhalb der EU</li>
+                        </ul>
+                        <p class="section-sub" style="margin:0;">Ich bin Kevin Ritz, Gründer von RAIS aus Koblenz. Vom ersten Audit bis zum laufenden System arbeiten Sie direkt mit mir. Kein anonymes Projektteam.</p>
+                        <div class="trust-pillars">
+                            <div class="trust-pillar">
+                                <strong>EU-Server</strong>
+                                <span>Hosting strikt innerhalb der Europäischen Union.</span>
                             </div>
-                            <div class="contact-step">
-                                <span class="contact-step-num">2</span>
-                                Was kostet Sie aktuell am meisten Zeit?
+                            <div class="trust-pillar">
+                                <strong>Security-Review</strong>
+                                <span>Regelmäßige Prüfung der eingesetzten Tools.</span>
                             </div>
-                            <div class="contact-step">
-                                <span class="contact-step-num">3</span>
-                                Audit-Termin wählen (60 Min)
+                            <div class="trust-pillar">
+                                <strong>DSGVO-AVV</strong>
+                                <span>Rechtssichere Verträge für die Auftragsverarbeitung.</span>
                             </div>
-                            <div class="contact-step">
-                                <span class="contact-step-num">
-                                    <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                </span>
-                                Kostenlos · Blueprint inklusive · Kein Pitch
+                            <div class="trust-pillar">
+                                <strong>Kurze Wege</strong>
+                                <span>Direkter Draht bei technischen Fragen.</span>
                             </div>
                         </div>
+                        <p class="trust-status">Aktuell laufen Systeme im Aufbau und Live-Betrieb. Eine öffentliche Case Study folgt, sobald Freigabe und belastbare Kennzahlen vorliegen. Bis dahin keine erfundenen Beweise.</p>
+                        <div class="trust-links">
+                            <a href="ueber-uns.html">Über uns</a>
+                            <a href="impressum.html">Impressum</a>
+                            <a href="datenschutz.html">Datenschutz</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+<section id="contact" class="contact-band">
+            <div class="section-wrap">
+                <div class="contact-deliver">
+                    <span class="mono-label" style="color: var(--orange);">Kostenlose Beratungsstunde</span>
+                    <h2 class="section-h2" style="color: #fff; margin-top: 0.75rem;">60 Minuten. Kostenlos. Drei umsetzbare Ideen.</h2>
+                    <p class="contact-copy home-contact-lead">
+                        Kein Pitch. Keine Folien-Show. Am Ende wissen Sie, wo in Ihrem Büro Zeit verloren geht und was sich als Nächstes lohnt.
+                    </p>
+
+                    <div class="contact-deliver__grid">
+                        <article class="contact-deliver__item">
+                            <span class="contact-deliver__icon" aria-hidden="true"><i data-lucide="search"></i></span>
+                            <h3>Ihre Prozesse</h3>
+                            <p>Gemeinsame Sicht auf den größten Zeitfresser in Anfragen und Nacharbeit.</p>
+                        </article>
+                        <article class="contact-deliver__item">
+                            <span class="contact-deliver__icon" aria-hidden="true"><i data-lucide="blocks"></i></span>
+                            <h3>Ihre Use Cases</h3>
+                            <p>Drei passende Automatisierungen für Ihr Büro, priorisiert nach Hebel.</p>
+                        </article>
+                        <article class="contact-deliver__item">
+                            <span class="contact-deliver__icon" aria-hidden="true"><i data-lucide="map"></i></span>
+                            <h3>Ihr Fahrplan</h3>
+                            <p>Aufwand, Kosten und nächste Schritte. Klar genug für eine Entscheidung.</p>
+                        </article>
                     </div>
 
-                    <div class="audit-blueprint reveal">
-                        <figure class="audit-blueprint__frame">
-                            <img src="images/cover.png" width="480" height="678" loading="lazy" alt="Prozesse rechtssicher digitalisieren, Praxisleitfaden für unabhängige Immobilienmakler">
-                        </figure>
-                        <p class="audit-blueprint__caption">Blueprint · 3 Use Cases</p>
-                    </div>
-
-                    <!-- Booking card -->
-                    <div class="cal-embed-wrap">
-                        <p class="cal-card-title">Kostenlosen Audit buchen</p>
-                        <p class="cal-card-sub">60 Minuten, kostenlos. Drei konkrete Automatisierungs-Ideen für Ihr Büro.</p>
-                        <button type="button" id="contact-demo-btn" class="cal-load-btn js-open-booking" data-source="contact" style="display:flex; align-items:center; justify-content:center; gap:0.5rem; width:100%; border:none; cursor:pointer; font-family:inherit;">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                            Kostenlosen Audit buchen
+                    <div class="contact-deliver__cta">
+                        <button type="button" id="contact-demo-btn" class="cal-load-btn js-open-booking" data-source="contact">
+                            Kostenlose Beratungsstunde buchen
                         </button>
-                        <div class="cal-trust-row">
-                            <span class="cal-trust-item">
-                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Kein Pitch
-                            </span>
-                            <span class="cal-trust-item">
-                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                Kein Verkaufsdruck
-                            </span>
-                            <span class="cal-trust-item">
-                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                                60 Min · Kostenlos
-                            </span>
+                        <p class="contact-deliver__trust">Kevin Ritz · 60 Min · kein Verkaufsdruck</p>
+                        <div class="contact-details contact-details--inline">
+                            <a href="mailto:kevin@ritz-ai.solutions" class="contact-detail-link">kevin@ritz-ai.solutions</a>
+                            <a href="tel:+4915129755134" class="contact-detail-link">+49 151 297 551 34</a>
                         </div>
                     </div>
-
                 </div>
-
-                <!-- Contact details -->
-                <div class="contact-details">
-                    <div class="contact-detail">
-                        <svg class="contact-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <rect x="2" y="4" width="20" height="16" rx="2"/>
-                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-                        </svg>
-                        <a href="mailto:kevin@ritz-ai.solutions" class="contact-detail-link">kevin@ritz-ai.solutions</a>
-                    </div>
-                    <div class="contact-detail">
-                        <svg class="contact-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.28h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.99a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.28 16"/>
-                        </svg>
-                        <a href="tel:+4915129755134" class="contact-detail-link">+49 151 297 551 34</a>
-                    </div>
-                </div>
-
             </div>
         </section>
 
@@ -3460,7 +2076,7 @@
          MOBILE STICKY CTA
     ═══════════════════════════════════════════════════════ -->
     <div id="sticky-cta" aria-hidden="true">
-        <button type="button" class="sticky-cta-btn js-open-booking" id="sticky-demo-btn" data-source="sticky">Kostenlosen Audit buchen</button>
+        <button type="button" class="sticky-cta-btn js-open-booking" id="sticky-demo-btn" data-source="sticky">Beratungsstunde buchen</button>
     </div>
 
     <!-- ═══════════════════════════════════════════════════════
@@ -3486,7 +2102,7 @@
     </footer>
 
 
-    <!-- ═══════════════════════════════════════════════════════
+        <!-- ═══════════════════════════════════════════════════════
          SCRIPTS
     ═══════════════════════════════════════════════════════ -->
     <script>
@@ -3497,28 +2113,8 @@
         var navbar = document.getElementById('navbar');
 
         window.addEventListener('scroll', function () {
-            navbar.classList.toggle('scrolled', window.scrollY > 10);
+            if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 10);
         }, { passive: true });
-
-        /* ── Portfolio Accordion Logic ─────────────────────── */
-        document.addEventListener('click', function (e) {
-            var trigger = e.target.closest('.proj-accordion-trigger');
-            if (!trigger) return;
-            
-            var accordion = trigger.closest('.proj-accordion');
-            if (!accordion) return;
-            
-            var isOpen = accordion.classList.contains('is-open');
-            var content = accordion.querySelector('.proj-accordion-content');
-            
-            if (isOpen) {
-                accordion.classList.remove('is-open');
-                content.style.maxHeight = null;
-            } else {
-                accordion.classList.add('is-open');
-                content.style.maxHeight = content.scrollHeight + 'px';
-            }
-        });
 
         /* ── Active nav state on scroll ──────────────────────── */
         var navAnchorGroups = [
@@ -3597,6 +2193,7 @@
         ].join('');
 
         function openMenu() {
+            if (!mobileOverlay || !hamburgerBtn || !hamburgerIcon) return;
             mobileOverlay.classList.add('is-open');
             document.body.classList.add('noscroll');
             hamburgerBtn.setAttribute('aria-expanded', 'true');
@@ -3605,6 +2202,7 @@
         }
 
         function closeMenu() {
+            if (!mobileOverlay || !hamburgerBtn || !hamburgerIcon) return;
             mobileOverlay.classList.remove('is-open');
             document.body.classList.remove('noscroll');
             hamburgerBtn.setAttribute('aria-expanded', 'false');
@@ -3612,32 +2210,47 @@
             hamburgerIcon.innerHTML = SVG_MENU;
         }
 
-        hamburgerBtn.addEventListener('click', function () {
-            mobileOverlay.classList.contains('is-open') ? closeMenu() : openMenu();
-        });
+        if (hamburgerBtn) {
+            hamburgerBtn.addEventListener('click', function () {
+                mobileOverlay.classList.contains('is-open') ? closeMenu() : openMenu();
+            });
+        }
 
         document.querySelectorAll('[data-close-menu]').forEach(function (el) {
             el.addEventListener('click', closeMenu);
         });
 
-
-        /* Escape closes mobile menu */
         document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') {
-                closeMenu();
-            }
+            if (e.key === 'Escape') closeMenu();
         });
-
 
         /* ── Init Lucide icons ───────────────────────────────── */
         if (window.lucide) {
             window.lucide.createIcons();
         }
 
+        /* ── Spotlight card cursor glow (delegated) ─────────── */
+        (function () {
+            var marquee = document.getElementById('use-marquee');
+            if (!marquee) return;
+            var canHover = window.matchMedia && window.matchMedia('(hover: hover)').matches;
+            var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (!canHover || reduceMotion) return;
+
+            marquee.addEventListener('pointermove', function (e) {
+                var card = e.target.closest('.spot-card');
+                if (!card || !marquee.contains(card)) return;
+                var rect = card.getBoundingClientRect();
+                card.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
+                card.style.setProperty('--my', (e.clientY - rect.top) + 'px');
+            });
+        }());
+
         /* ── Antigravity reveal orchestration ───────────────── */
         var revealTargets = document.querySelectorAll([
-            '.leis-intro', '.zielgruppe-intro', '.zielgruppe-editorial', '.zielgruppe-cta-wrap', '.projekte-intro', '.process-intro', '.collab-cascade', '.wir-content', '.contact-text-col',
-            '.problem-item', '.contact-text-col', '.contact-detail', '.audit-blueprint', '.cal-embed-wrap'
+            '.icp-card', '.sys-cell', '.benefit-card', '.ablauf-step',
+            '.trust-grid', '.contact-text-col', '.contact-detail',
+            '.audit-blueprint', '.cal-embed-wrap', '.rechner'
         ].join(','));
 
         revealTargets.forEach(function (el, index) {
@@ -3670,109 +2283,6 @@
             });
         }
 
-        /* ── Flow outcomes stagger ───────────────────────────── */
-        (function () {
-            var container = document.getElementById('flow-outcomes');
-            if (!container) return;
-
-            var items = container.querySelectorAll('.flow-outcomes__item');
-            var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-            function activateItems() {
-                items.forEach(function (item) {
-                    item.classList.add('is-visible');
-                });
-            }
-
-            if (reducedMotion) {
-                activateItems();
-                return;
-            }
-
-            if ('IntersectionObserver' in window) {
-                var outcomesObserver = new IntersectionObserver(function (entries) {
-                    entries.forEach(function (entry) {
-                        if (entry.isIntersecting) {
-                            activateItems();
-                            outcomesObserver.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.2, rootMargin: '0px 0px -6% 0px' });
-                outcomesObserver.observe(container);
-            } else {
-                activateItems();
-            }
-        }());
-
-
-        /* ── Branchen carousel ───────────────────────────────── */
-        (function () {
-            var track    = document.getElementById('carouselTrack');
-            var viewport = document.getElementById('carouselViewport');
-            var dotBtns  = document.querySelectorAll('.carousel-dot');
-            if (!track) return;
-
-            var cards      = track.querySelectorAll('.carousel-card');
-            var total      = cards.length;
-            var current    = 0;
-            var autoTimer  = null;
-            var GAP        = 20; // matches 1.25rem gap
-
-            function cardWidth() { return cards[0].offsetWidth; }
-
-            function goTo(idx) {
-                current = ((idx % total) + total) % total;
-                track.style.transform = 'translateX(-' + (current * (cardWidth() + GAP)) + 'px)';
-                dotBtns.forEach(function (d, i) {
-                    var a = i === current;
-                    d.classList.toggle('is-active', a);
-                    d.setAttribute('aria-selected', a ? 'true' : 'false');
-                });
-                Array.prototype.forEach.call(cards, function (c, i) {
-                    c.classList.toggle('is-active', i === current);
-                });
-            }
-
-            function startAuto() {
-                stopAuto();
-                autoTimer = setInterval(function () { goTo(current + 1); }, 4500);
-            }
-            function stopAuto() { clearInterval(autoTimer); }
-
-            goTo(0);
-            startAuto();
-
-            if (viewport) {
-                viewport.addEventListener('mouseenter', stopAuto);
-                viewport.addEventListener('mouseleave', startAuto);
-            }
-
-            dotBtns.forEach(function (dot) {
-                dot.addEventListener('click', function () {
-                    stopAuto();
-                    goTo(parseInt(dot.getAttribute('data-index'), 10));
-                    startAuto();
-                });
-            });
-
-            /* Touch / pointer drag */
-            var dragX = null;
-            track.addEventListener('pointerdown', function (e) {
-                dragX = e.clientX;
-                track.setPointerCapture(e.pointerId);
-                stopAuto();
-            });
-            track.addEventListener('pointerup', function (e) {
-                if (dragX !== null) {
-                    var diff = dragX - e.clientX;
-                    if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1));
-                    dragX = null;
-                }
-                startAuto();
-            });
-        }());
-
-
         /* ── Mobile sticky CTA ───────────────────────────────── */
         var stickyCta = document.getElementById('sticky-cta');
         var contactEl = document.getElementById('contact');
@@ -3792,45 +2302,6 @@
             updateStickyCta();
         }
 
-
-        /* ── Zusammenarbeit-Cascade ──────────────────────────── */
-        (function () {
-            var stepper = document.getElementById('collab-stepper');
-            if (!stepper) return;
-
-            var TOTAL   = 3;
-            var current = 1;
-            var cards   = stepper.querySelectorAll('.collab-cascade__card');
-            var backBtn = document.getElementById('stepper-back');
-            var nextBtn = document.getElementById('stepper-next');
-            var ctaBtn  = document.getElementById('stepper-cta');
-            var counter = document.getElementById('stepper-counter');
-
-            function render() {
-                stepper.setAttribute('data-step', String(current));
-
-                cards.forEach(function (card) {
-                    var n = parseInt(card.getAttribute('data-card'), 10);
-                    card.classList.toggle('is-active', n === current);
-                });
-
-                backBtn.hidden = current === 1;
-                nextBtn.hidden = current === TOTAL;
-                ctaBtn.hidden  = current !== TOTAL;
-                if (counter) counter.textContent = 'Schritt ' + current + ' von ' + TOTAL;
-            }
-
-            nextBtn.addEventListener('click', function () {
-                if (current < TOTAL) { current++; render(); }
-            });
-            backBtn.addEventListener('click', function () {
-                if (current > 1) { current--; render(); }
-            });
-
-            render();
-        }());
-
-
     }());
     </script>
 
@@ -3838,7 +2309,7 @@
          BOOKING MODAL
     ═══════════════════════════════════════════════════════ -->
 
-<div id="booking-modal" role="dialog" aria-modal="true" aria-label="Kostenloser Audit buchen">
+<div id="booking-modal" role="dialog" aria-modal="true" aria-label="Kostenlose Beratungsstunde buchen">
   <div class="bm-backdrop" id="bm-backdrop"></div>
   <div class="bm-box">
     <button class="bm-close" id="bm-close" type="button" aria-label="Schließen">
@@ -3848,12 +2319,11 @@
       <div class="bm-dot" data-step="0"></div>
       <div class="bm-dot" data-step="1"></div>
       <div class="bm-dot" data-step="2"></div>
-      <div class="bm-dot" data-step="3"></div>
     </div>
     <div class="bm-step is-active" id="bm-step-0">
-      <p class="bm-label">Schritt 1 von 3</p>
-      <h2 class="bm-title">Wer sind Sie?</h2>
-      <p class="bm-sub">Damit wir das Audit auf Ihre Situation vorbereiten können.</p>
+      <p class="bm-label">Schritt 1 von 2</p>
+      <h2 class="bm-title">Ihre Kontaktdaten</h2>
+      <p class="bm-sub">Damit wir die Beratungsstunde vorbereiten und Sie erreichen können.</p>
       <div class="bm-field">
         <label for="bm-name">Ihr Name</label>
         <input type="text" id="bm-name" placeholder="Max Mustermann" autocomplete="name" maxlength="200">
@@ -3861,6 +2331,10 @@
       <div class="bm-field">
         <label for="bm-email">E-Mail-Adresse</label>
         <input type="email" id="bm-email" placeholder="max@muster.de" autocomplete="email" maxlength="254">
+      </div>
+      <div class="bm-field">
+        <label for="bm-phone">Telefon</label>
+        <input type="tel" id="bm-phone" placeholder="+49 170 1234567" autocomplete="tel" maxlength="40" inputmode="tel">
       </div>
       <div class="bm-field" style="position:absolute;left:-9999px;" aria-hidden="true">
         <label for="bm-website">Website</label>
@@ -3875,38 +2349,27 @@
       </div>
     </div>
     <div class="bm-step" id="bm-step-1">
-      <p class="bm-label">Schritt 2 von 3</p>
-      <h2 class="bm-title">Was kostet Sie am meisten Zeit?</h2>
-      <p class="bm-sub">So können wir das Audit gezielt vorbereiten.</p>
-      <div class="bm-options" id="bm-options-pain">
-        <button type="button" class="bm-option" data-value="inseratsanfragen-qualifizieren">Inseratsanfragen qualifizieren</button>
-        <button type="button" class="bm-option" data-value="terminierung-besichtigungen">Terminierung von Besichtigungen</button>
-        <button type="button" class="bm-option" data-value="onboarding-vertragsunterschrift">Onboarding nach Vertragsunterschrift</button>
-        <button type="button" class="bm-option" data-value="wiederkehrende-kundenfragen">Wiederkehrende Kundenfragen</button>
-        <button type="button" class="bm-option" data-value="gesamtprozess">Gesamtprozess-Audit</button>
-        <button type="button" class="bm-option" data-value="anderes">Anderes</button>
+      <p class="bm-label">Schritt 2 von 2</p>
+      <h2 class="bm-title">Ihr Anfragevolumen</h2>
+      <p class="bm-sub">Wie viele E-Mail-Anfragen landen durchschnittlich pro Woche bei Ihnen?</p>
+      <div class="bm-slider-block">
+        <div class="bm-slider-value" aria-live="polite">
+          <span id="bm-volume-display">80</span>
+          <span class="bm-slider-unit">Anfragen / Woche</span>
+        </div>
+        <input type="range" id="bm-volume" class="bm-slider" min="0" max="300" step="5" value="80" aria-valuemin="0" aria-valuemax="300" aria-valuenow="80" aria-label="Anfragen pro Woche">
+        <div class="bm-slider-scale" aria-hidden="true">
+          <span>0</span>
+          <span>150</span>
+          <span>300</span>
+        </div>
       </div>
       <div class="bm-actions">
         <button type="button" class="bm-btn-back" id="bm-back-1">Zurück</button>
-        <button type="button" class="bm-btn-next" id="bm-next-1">Weiter</button>
+        <button type="button" class="bm-btn-next" id="bm-next-1">Termin buchen</button>
       </div>
     </div>
     <div class="bm-step" id="bm-step-2">
-      <p class="bm-label">Schritt 3 von 3</p>
-      <h2 class="bm-title">Wie groß ist Ihr Team?</h2>
-      <p class="bm-sub">Damit die Lösung exakt auf Ihre Teamgröße passt.</p>
-      <div class="bm-options" id="bm-options-size">
-        <button type="button" class="bm-option" data-value="unter-5">Unter 5 Personen</button>
-        <button type="button" class="bm-option" data-value="5-10">5 bis 10</button>
-        <button type="button" class="bm-option" data-value="11-25">11 bis 25</button>
-        <button type="button" class="bm-option" data-value="ueber-25">Mehr als 25</button>
-      </div>
-      <div class="bm-actions">
-        <button type="button" class="bm-btn-back" id="bm-back-2">Zurück</button>
-        <button type="button" class="bm-btn-next" id="bm-next-2">Termin buchen</button>
-      </div>
-    </div>
-    <div class="bm-step" id="bm-step-3">
       <p class="bm-label">Fast geschafft</p>
       <h2 class="bm-title">Wählen Sie Ihren Termin</h2>
       <p class="bm-sub">60 Minuten, kostenlos. Die Buchung öffnet sich bei Cal.com in einem neuen Tab. Es werden keine Angaben aus diesem Formular an Cal.com übergeben.</p>
@@ -3917,37 +2380,38 @@
 </div>
 <script src="scripts/booking-modal.js"></script>
 
-<!-- ── 3D Card Tilt Effect ───────────────────────────── -->
-    <script>
-    (function() {
-        if (window.matchMedia('(hover: hover)').matches) {
-            var cards = document.querySelectorAll('.proj-card');
-            cards.forEach(function(card) {
-                card.addEventListener('mouseenter', function() {
-                    card.style.transition = 'transform 0.1s ease, box-shadow 0.1s ease';
-                });
-                
-                card.addEventListener('mousemove', function(e) {
-                    var rect = card.getBoundingClientRect();
-                    var x = e.clientX - rect.left;
-                    var y = e.clientY - rect.top;
-                    
-                    var rX = ((y / rect.height) - 0.5) * -12; // Max 12 degrees
-                    var rY = ((x / rect.width) - 0.5) * 12;   // Max 12 degrees
-                    
-                    card.style.transform = 'perspective(1000px) rotateX(' + rX + 'deg) rotateY(' + rY + 'deg) scale(1.025)';
-                    card.style.boxShadow = (-rY * 1.5) + 'px ' + (rX * 1.5) + 'px 30px rgba(47, 42, 36, 0.15)';
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    card.style.transition = 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
-                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
-                    card.style.boxShadow = '';
-                });
-            });
-        }
-    }());
-    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ── Calculator (after sync-safe boundary) ───────────── -->
+<script src="scripts/aqut-rechner.js"></script>
 
 </body>
 </html>

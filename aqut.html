@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AQuT | Anfragen-System von RAIS</title>
-  <meta name="description" content="AQuT von RAIS: Portalanfragen qualifizieren und Termine buchen. Orientierungsclaim rund 30 Stunden pro Monat, abhängig vom Anfragevolumen.">
+  <meta name="description" content="AQuT von RAIS: Portalanfragen qualifizieren und Termine buchen. Bei hohem Volumen oft 20 bis 35 Stunden pro Woche zurück.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" href="favicon.png?v=3">
   <meta property="og:title" content="AQuT | Anfragen-System von RAIS">
-  <meta property="og:description" content="AQuT von RAIS: Portalanfragen qualifizieren und Termine buchen. Orientierungsclaim rund 30 Stunden pro Monat, abhängig vom Anfragevolumen.">
+  <meta property="og:description" content="AQuT von RAIS: Portalanfragen qualifizieren und Termine buchen. Bei hohem Volumen oft 20 bis 35 Stunden pro Woche zurück.">
   <meta property="og:url" content="https://ritz-ai.solutions/aqut.html">
   <meta property="og:type" content="website">
   <script src="scripts/public-config.js"></script>
@@ -44,7 +44,7 @@
       </ul>
     </div>
     <div class="nav-right">
-      <button type="button" class="btn-primary js-open-booking" id="nav-demo-btn" data-source="nav">Kostenlosen Audit buchen</button>
+      <button type="button" class="btn-primary js-open-booking" id="nav-demo-btn" data-source="nav">Kostenlose Beratungsstunde buchen</button>
       <button class="nav-hamburger" id="hamburger-btn" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-overlay">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
@@ -59,7 +59,7 @@
     <a href="persoenlichkeit.html" class="mobile-link" data-close-menu>Persönlichkeit</a>
     <a href="zusammenarbeit.html" class="mobile-link" data-close-menu>So arbeiten wir</a>
     <hr class="mobile-hr">
-    <button type="button" class="mobile-cta js-open-booking" id="mobile-demo-btn" data-source="mobile-nav">Kostenlosen Audit buchen</button>
+    <button type="button" class="mobile-cta js-open-booking" id="mobile-demo-btn" data-source="mobile-nav">Kostenlose Beratungsstunde buchen</button>
   </div>
 </div>
 <main id="main">
@@ -67,8 +67,8 @@
   <div class="page-hero__inner">
     <span class="mono-label">System von RAIS</span>
     <h1>AQuT: weniger manuelle Anfragenbearbeitung, mehr gebuchte Erstgespräche</h1>
-    <p>Bei typischem Anfragevolumen oft im Bereich von rund 30 Stunden pro Monat, abhängig von Ihrem Volumen (Herleitung: ca. 5 bis 8 Stunden pro Woche). Der Rechner darunter rechnet mit Ihren Angaben.</p>
-    <button type="button" class="btn-primary js-open-booking" data-source="aqut-hero">Kostenlosen Audit buchen</button>
+    <p>Bei hohem Anfragevolumen oft im Bereich von 20 bis 35 Stunden pro Woche, abhängig von Ihrem Volumen. Erstreaktion von durchschnittlich 15 Stunden auf 2 Minuten. Der Rechner darunter rechnet mit Ihren Angaben.</p>
+    <button type="button" class="btn-primary js-open-booking" data-source="aqut-hero">Kostenlose Beratungsstunde buchen</button>
   </div>
 </section>
 
@@ -76,40 +76,80 @@
   <div class="section-wrap" style="padding-top:2rem;">
     <span class="mono-label">Ihre Rechnung</span>
     <h2 class="section-h2">Rechner: nach Ihren eigenen Angaben</h2>
-    <p class="section-sub">Keine Lead-Erfassung. Keine Kontaktdaten. Nur Aufklärung aus Ihren Zahlen.</p>
-    <div class="rechner" id="aqut-rechner">
-      <div class="rechner__grid">
-        <div>
-          <label for="rq-volume">Anfragevolumen pro Woche</label>
-          <input id="rq-volume" type="number" min="0" step="1" value="25" inputmode="numeric">
-        </div>
-        <div>
-          <label for="rq-minutes">Minuten pro Anfrage aktuell</label>
-          <input id="rq-minutes" type="number" min="0" step="1" value="12" inputmode="numeric">
-        </div>
-        <div>
-          <label for="rq-rate">Stundensatz in Euro</label>
-          <input id="rq-rate" type="number" min="0" step="1" value="35" inputmode="decimal">
-        </div>
-        <div>
-          <label for="rq-crm">Aktuelles CRM</label>
-          <select id="rq-crm">
-            <option value="onoffice">onOffice</option>
-            <option value="propstack">Propstack</option>
-            <option value="anderes">Anderes System</option>
-            <option value="keins">Kein CRM</option>
-          </select>
+    <p class="section-sub">Keine Lead-Erfassung. Keine Kontaktdaten. Nur Aufklärung aus Ihren Zahlen: Mailbearbeitung plus Mailbox-Nachtelefonate. CRM klären wir im Discovery-Call.</p>
+    <div class="rechner rechner--wizard" id="aqut-rechner">
+      <div class="rq-progress">
+        <span class="rq-progress__label" id="rq-step-label">Schritt 1 von 3</span>
+        <div class="rq-progress__bars" aria-hidden="true">
+          <span class="rq-progress__bar is-filled" data-bar="1"></span>
+          <span class="rq-progress__bar" data-bar="2"></span>
+          <span class="rq-progress__bar" data-bar="3"></span>
         </div>
       </div>
-      <div class="rechner__out" id="rq-output" aria-live="polite"></div>
-      <p id="rq-crm-msg" class="section-sub" style="margin-top:0.85rem;"></p>
+
+      <fieldset class="rq-step" data-step="1">
+        <legend class="rq-step__title">Ihr Anfragevolumen</legend>
+        <p class="rq-step__hint">Wie viele Anfragen landen bei Ihnen, und wie lange dauert die Bearbeitung?</p>
+        <div class="rq-period" role="group" aria-label="Zeitraum für Anfragevolumen">
+          <button type="button" class="rq-period__btn is-active" id="rq-period-month" data-period="month" aria-pressed="true">Monatlich</button>
+          <button type="button" class="rq-period__btn" id="rq-period-week" data-period="week" aria-pressed="false">Wöchentlich</button>
+        </div>
+        <div class="rq-fields">
+          <div>
+            <label for="rq-volume" id="rq-volume-label">Anfragen pro Monat</label>
+            <input id="rq-volume" type="number" min="0" step="1" value="350" inputmode="numeric">
+          </div>
+          <div>
+            <label for="rq-minutes">Minuten pro Mail-Anfrage</label>
+            <input id="rq-minutes" type="number" min="0" step="1" value="18" inputmode="numeric">
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="rq-step" data-step="2" hidden>
+        <legend class="rq-step__title">Telefon-Nacharbeit</legend>
+        <p class="rq-step__hint">Wie viel Zeit verbringt Ihr Team mit dem Hinterhertelefonieren von Mailbox-Anfragen?</p>
+        <div class="rq-fields">
+          <div>
+            <label for="rq-phone-share">Anteil Anfragen mit Mailbox-Nachtelefonat (%)</label>
+            <input id="rq-phone-share" type="number" min="0" max="100" step="1" value="30" inputmode="numeric">
+          </div>
+          <div>
+            <label for="rq-phone-minutes">Minuten pro Mailbox-Nein-Anruf</label>
+            <input id="rq-phone-minutes" type="number" min="0" step="1" value="5" inputmode="numeric">
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="rq-step" data-step="3" hidden>
+        <legend class="rq-step__title">Ihr Kostensatz</legend>
+        <p class="rq-step__hint">Mit welchem internen Stundensatz rechnen Sie die Bearbeitungszeit?</p>
+        <div class="rq-fields">
+          <div>
+            <label for="rq-rate">Stundensatz in Euro</label>
+            <input id="rq-rate" type="number" min="0" step="1" value="45" inputmode="decimal">
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="rq-step rq-step--result" data-step="4" hidden>
+        <span class="rq-step__eyebrow">Ihr Ergebnis</span>
+        <p class="rq-step__hint">nach Ihren eigenen Angaben, ausgewiesen pro Monat</p>
+        <div class="rechner__out" id="rq-output" aria-live="polite"></div>
+      </div>
+
+      <p class="rq-error" id="rq-error" hidden role="alert"></p>
+
+      <div class="rq-nav">
+        <button type="button" class="rq-btn-back" id="rq-back" hidden>Zurück</button>
+        <button type="button" class="rq-btn-reset" id="rq-reset" hidden>Werte anpassen</button>
+        <button type="button" class="rq-btn-next" id="rq-next">Weiter</button>
+        <button type="button" class="btn-primary js-open-booking rq-btn-cta" id="rq-cta" data-source="aqut-rechner" hidden>Kostenlose Beratungsstunde buchen</button>
+      </div>
       <details>
         <summary>Optional: Übergang zum Umsatzargument</summary>
         <p class="section-sub" style="margin-top:0.75rem;">Verlorene Bearbeitungszeit ist nicht nur Personalkosten. Sie ist der Vorlauf zu verlorenen Abschlüssen. Im 60-minütigen Audit prüfen wir das anhand Ihrer echten Anfragedaten.</p>
       </details>
-      <p style="margin-top:1.25rem;">
-        <button type="button" class="btn-primary js-open-booking" data-source="aqut-rechner">Im Audit vertiefen</button>
-      </p>
     </div>
   </div>
 </section>
@@ -209,7 +249,7 @@
       </details>
     </div>
     <p style="margin-top:2rem;">
-      <button type="button" class="btn-primary js-open-booking" data-source="aqut-faq">Kostenlosen Audit buchen</button>
+      <button type="button" class="btn-primary js-open-booking" data-source="aqut-faq">Kostenlose Beratungsstunde buchen</button>
     </p>
   </div>
 </section>
@@ -218,15 +258,15 @@
   <div class="section-wrap">
     <div class="contact-grid">
       <div class="contact-text-col">
-        <span class="mono-label">Prozess-Audit</span>
+        <span class="mono-label">Kostenlose Beratungsstunden</span>
         <h2 class="section-h2">60 Minuten. Kostenlos. Klare nächste Schritte.</h2>
         <p class="contact-copy">Wir analysieren Ihre Prozesse und zeigen, wo Zeit verloren geht. Sie bekommen drei umsetzbare Use Cases.</p>
         <p class="contact-copy">Kein Verkaufsdruck. Blueprint inklusive.</p>
       </div>
       <div class="cal-embed-wrap">
-        <p class="cal-card-title">Kostenlosen Audit buchen</p>
+        <p class="cal-card-title">Kostenlose Beratungsstunde buchen</p>
         <p class="cal-card-sub">60 Minuten, kostenlos. Drei konkrete Automatisierungs-Ideen für Ihr Büro.</p>
-        <button type="button" id="contact-demo-btn" class="cal-load-btn js-open-booking" data-source="contact">Kostenlosen Audit buchen</button>
+        <button type="button" id="contact-demo-btn" class="cal-load-btn js-open-booking" data-source="contact">Kostenlose Beratungsstunde buchen</button>
       </div>
     </div>
     <div class="contact-details">
@@ -237,7 +277,7 @@
 </section>
 
 <div id="sticky-cta" aria-hidden="true">
-  <button type="button" class="sticky-cta-btn js-open-booking" id="sticky-demo-btn" data-source="sticky">Kostenlosen Audit buchen</button>
+  <button type="button" class="sticky-cta-btn js-open-booking" id="sticky-demo-btn" data-source="sticky">Beratungsstunde buchen</button>
 </div>
 <footer id="footer">
   <div class="footer-inner">
@@ -258,7 +298,7 @@
   </div>
 </footer>
 
-<div id="booking-modal" role="dialog" aria-modal="true" aria-label="Kostenloser Audit buchen">
+<div id="booking-modal" role="dialog" aria-modal="true" aria-label="Kostenlose Beratungsstunde buchen">
   <div class="bm-backdrop" id="bm-backdrop"></div>
   <div class="bm-box">
     <button class="bm-close" id="bm-close" type="button" aria-label="Schließen">
@@ -268,12 +308,11 @@
       <div class="bm-dot" data-step="0"></div>
       <div class="bm-dot" data-step="1"></div>
       <div class="bm-dot" data-step="2"></div>
-      <div class="bm-dot" data-step="3"></div>
     </div>
     <div class="bm-step is-active" id="bm-step-0">
-      <p class="bm-label">Schritt 1 von 3</p>
-      <h2 class="bm-title">Wer sind Sie?</h2>
-      <p class="bm-sub">Damit wir das Audit auf Ihre Situation vorbereiten können.</p>
+      <p class="bm-label">Schritt 1 von 2</p>
+      <h2 class="bm-title">Ihre Kontaktdaten</h2>
+      <p class="bm-sub">Damit wir die Beratungsstunde vorbereiten und Sie erreichen können.</p>
       <div class="bm-field">
         <label for="bm-name">Ihr Name</label>
         <input type="text" id="bm-name" placeholder="Max Mustermann" autocomplete="name" maxlength="200">
@@ -281,6 +320,10 @@
       <div class="bm-field">
         <label for="bm-email">E-Mail-Adresse</label>
         <input type="email" id="bm-email" placeholder="max@muster.de" autocomplete="email" maxlength="254">
+      </div>
+      <div class="bm-field">
+        <label for="bm-phone">Telefon</label>
+        <input type="tel" id="bm-phone" placeholder="+49 170 1234567" autocomplete="tel" maxlength="40" inputmode="tel">
       </div>
       <div class="bm-field" style="position:absolute;left:-9999px;" aria-hidden="true">
         <label for="bm-website">Website</label>
@@ -295,38 +338,27 @@
       </div>
     </div>
     <div class="bm-step" id="bm-step-1">
-      <p class="bm-label">Schritt 2 von 3</p>
-      <h2 class="bm-title">Was kostet Sie am meisten Zeit?</h2>
-      <p class="bm-sub">So können wir das Audit gezielt vorbereiten.</p>
-      <div class="bm-options" id="bm-options-pain">
-        <button type="button" class="bm-option" data-value="inseratsanfragen-qualifizieren">Inseratsanfragen qualifizieren</button>
-        <button type="button" class="bm-option" data-value="terminierung-besichtigungen">Terminierung von Besichtigungen</button>
-        <button type="button" class="bm-option" data-value="onboarding-vertragsunterschrift">Onboarding nach Vertragsunterschrift</button>
-        <button type="button" class="bm-option" data-value="wiederkehrende-kundenfragen">Wiederkehrende Kundenfragen</button>
-        <button type="button" class="bm-option" data-value="gesamtprozess">Gesamtprozess-Audit</button>
-        <button type="button" class="bm-option" data-value="anderes">Anderes</button>
+      <p class="bm-label">Schritt 2 von 2</p>
+      <h2 class="bm-title">Ihr Anfragevolumen</h2>
+      <p class="bm-sub">Wie viele E-Mail-Anfragen landen durchschnittlich pro Woche bei Ihnen?</p>
+      <div class="bm-slider-block">
+        <div class="bm-slider-value" aria-live="polite">
+          <span id="bm-volume-display">80</span>
+          <span class="bm-slider-unit">Anfragen / Woche</span>
+        </div>
+        <input type="range" id="bm-volume" class="bm-slider" min="0" max="300" step="5" value="80" aria-valuemin="0" aria-valuemax="300" aria-valuenow="80" aria-label="Anfragen pro Woche">
+        <div class="bm-slider-scale" aria-hidden="true">
+          <span>0</span>
+          <span>150</span>
+          <span>300</span>
+        </div>
       </div>
       <div class="bm-actions">
         <button type="button" class="bm-btn-back" id="bm-back-1">Zurück</button>
-        <button type="button" class="bm-btn-next" id="bm-next-1">Weiter</button>
+        <button type="button" class="bm-btn-next" id="bm-next-1">Termin buchen</button>
       </div>
     </div>
     <div class="bm-step" id="bm-step-2">
-      <p class="bm-label">Schritt 3 von 3</p>
-      <h2 class="bm-title">Wie groß ist Ihr Team?</h2>
-      <p class="bm-sub">Damit die Lösung exakt auf Ihre Teamgröße passt.</p>
-      <div class="bm-options" id="bm-options-size">
-        <button type="button" class="bm-option" data-value="unter-5">Unter 5 Personen</button>
-        <button type="button" class="bm-option" data-value="5-10">5 bis 10</button>
-        <button type="button" class="bm-option" data-value="11-25">11 bis 25</button>
-        <button type="button" class="bm-option" data-value="ueber-25">Mehr als 25</button>
-      </div>
-      <div class="bm-actions">
-        <button type="button" class="bm-btn-back" id="bm-back-2">Zurück</button>
-        <button type="button" class="bm-btn-next" id="bm-next-2">Termin buchen</button>
-      </div>
-    </div>
-    <div class="bm-step" id="bm-step-3">
       <p class="bm-label">Fast geschafft</p>
       <h2 class="bm-title">Wählen Sie Ihren Termin</h2>
       <p class="bm-sub">60 Minuten, kostenlos. Die Buchung öffnet sich bei Cal.com in einem neuen Tab. Es werden keine Angaben aus diesem Formular an Cal.com übergeben.</p>

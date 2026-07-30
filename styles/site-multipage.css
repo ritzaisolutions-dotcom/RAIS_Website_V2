@@ -8,7 +8,8 @@
   --background: #F5F2EC;
   --surface: #FBF8F3;
   --sage: #789464;
-  --pistachio: #3C5A2A;
+  --racing-green: #004225;
+  --pistachio: var(--racing-green); /* Alt-Alias, Dark Pistachio ersetzt */
   --charcoal: #2F2A24;
   --stone: #7B746B;
   --border: #D9D1C7;
@@ -16,6 +17,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html { scroll-behavior: smooth; color-scheme: light; overflow-x: hidden; }
 body {
   margin: 0;
@@ -345,7 +347,7 @@ a { color: inherit; }
 
 /* Contact block */
 #contact {
-  background: linear-gradient(160deg, #2F2A24, #3C5A2A);
+  background: linear-gradient(160deg, #2F2A24, #004225);
   color: #FBF8F3;
 }
 #contact .section-h2 { color: #FBF8F3; }

@@ -115,7 +115,7 @@ Use Cases werden als **konkrete Arbeitsabläufe** dargestellt, nicht als generis
 
 Keine Andeutung von Kundenlogos oder Portal-Partnerschaften ohne Erlaubnis.
 
-**Referenz:** Haller Immobilienberatung GmbH hat die öffentliche Referenzierung des Projekts vertraglich gestattet (AN-0013). Sobald eine belastbare, gemessene Kennzahl aus dem Live-Betrieb vorliegt, wird eine vollständige Case Study veröffentlicht. Bis dahin keine unbelegten Zahlen zu diesem oder einem anderen Kunden verwenden.
+**Referenz:** Haller Immobilienberatung GmbH: öffentliche Nennung auf der Startseite ist bis zur Freigabe ausgeblendet. `referenzen.html` und der Nav-Punkt bleiben. Sobald Freigabe und belastbare Kennzahl aus dem Live-Betrieb vorliegen, wird die Case Study freigeschaltet. Bis dahin keine unbelegten Zahlen zu diesem oder einem anderen Kunden verwenden.
 
 ## Trust Baseline
 
@@ -166,7 +166,8 @@ Exakte Palette, unverändert:
 
 - Cloud und Warm Linen dominieren die Grundatmosphäre
 - Charcoal und Stone tragen Hierarchie und Lesbarkeit
-- Sage und Dark Pistachio stützen Struktur und Vertrauen, dürfen auf einzelnen Flächen auch dominant eingesetzt werden (siehe `brand_steer.md`), solange sie sich klar von Orange abgrenzen
+- Sage und British Racing Green stützen Struktur und Vertrauen, dürfen auf einzelnen Flächen auch dominant eingesetzt werden (siehe `brand_steer.md`), solange sie sich klar von Orange abgrenzen
+- Token: `--racing-green: #004225`; `--pistachio` bleibt als Alias auf denselben Wert
 - Orange ist Akzent, nicht Seitenhintergrund
 
 ## Typography Direction
@@ -204,9 +205,9 @@ Copy soll nicht:
 - Statistiken ohne Beleg erfinden
 - ImmoScout24 als Partner darstellen
 
-**Konkretes Beispiel für einen behobenen Verstoß:** Die frühere Live-Seite behauptete "durchschnittlich 60 Stunden Ersparnis pro Monat" ohne Beleg. Die belastbare Angebotsherleitung lautet 5 bis 8 Stunden pro Woche (~20 bis 32 Stunden pro Monat).
+**Orientierungsclaim (AQuT, verbindliche Formel):** „Bei hohem Anfragevolumen oft im Bereich von 20 bis 35 Stunden pro Woche, abhängig von Ihrem Volumen.“ (Herleitung: Platzhalter, Kevin liefert die Zahlenbasis.) Der Rechner personalisiert darunter. Claim und Rechner-Ergebnis dürfen nicht als dieselbe Zahl behauptet werden.
 
-**Orientierungsclaim (AQuT, verbindliche Formel):** „Bei typischem Anfragevolumen oft im Bereich von rund 30 Stunden pro Monat, abhängig von Ihrem Volumen (Herleitung: ca. 5 bis 8 Stunden pro Woche).“ Der Rechner personalisiert darunter. Claim und Rechner-Ergebnis dürfen nicht als dieselbe Zahl behauptet werden.
+**Speed-to-Lead-Claim (AQuT):** Erstreaktion von durchschnittlich 15 Stunden auf 2 Minuten. (Herleitung: Platzhalter, Kevin liefert die Zahlenbasis.)
 
 ## Messaging Pillars
 
@@ -222,9 +223,12 @@ Immer wieder aufgreifen:
 
 ## Quantifizierung von Schmerz, nur mit eigenen Angaben
 
-Wird auf der AQuT-Seite ein interaktiver Rechner eingesetzt, gilt zwingend:
+Wird auf der AQuT-Seite oder der Home-Landingpage ein interaktiver Rechner eingesetzt, gilt zwingend:
 
-- Jede angezeigte Zahl muss vollständig aus Eingaben des Besuchers berechnet sein (zum Beispiel Anfragevolumen, Zeitaufwand pro Anfrage, eigener Stundensatz).
+- Jede angezeigte Zahl muss vollständig aus Eingaben des Besuchers berechnet sein (Anfragevolumen, Minuten pro Mail, Mailbox-Telefonanteil, Minuten pro Nein-Anruf, Stundensatz).
+- Der Rechner ist ein Multi-Step-Wizard (Volumen → Telefon-Nacharbeit → Kostensatz → Ergebnis), client-only, ohne Kontaktdaten.
+- Formel: Mailstunden plus Telefon-Nacharbeitsstunden → Std/Woche und Euro/Monat „nach Ihren eigenen Angaben“.
+- Kein CRM-Feld im Rechner; CRM wird im Discovery-Call geklärt.
 - RAIS behauptet nie selbst eine Zahl über den Besucher oder sein Büro.
 - Kalkulierte Ausgaben sind erlaubt und erwünscht, unbelegte oder von RAIS angenommene Ausgaben nicht.
 

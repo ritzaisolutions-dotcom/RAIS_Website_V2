@@ -15,6 +15,8 @@ const NOTION_VERSION = "2022-06-28";
 type LeadPayload = {
   name: string;
   email: string;
+  phone: string | null;
+  inquiryVolume: number | null;
   painPoint: string | null;
   teamSize: string | null;
   icpSegment: string | null;
@@ -82,6 +84,8 @@ async function persistLead(
     body: JSON.stringify({
       name: lead.name,
       email: lead.email,
+      phone: lead.phone,
+      inquiry_volume: lead.inquiryVolume,
       pain_point: lead.painPoint,
       team_size: lead.teamSize,
       icp_segment: lead.icpSegment,
@@ -107,6 +111,8 @@ async function createNotionLead(lead: LeadPayload): Promise<string | null> {
   const title = lead.name.slice(0, 200);
   const attackNotes = [
     lead.painPoint ? `Pain Point: ${lead.painPoint}` : null,
+    lead.phone ? `Telefon: ${lead.phone}` : null,
+    lead.inquiryVolume !== null ? `Anfragen/Woche: ${lead.inquiryVolume}` : null,
     lead.icpSegment ? `ICP: ${lead.icpSegment}` : null,
     lead.source ? `Form-Source: ${lead.source}` : null,
     "Kanal: Inbound Website (Audit-Buchungsmodal)",
@@ -156,6 +162,8 @@ async function sendLeadEmail(lead: LeadPayload, notionUrl: string | null): Promi
   const lines = [
     `Name: ${lead.name}`,
     `E-Mail: ${lead.email}`,
+    `Telefon: ${lead.phone ?? "—"}`,
+    `Anfragen/Woche: ${lead.inquiryVolume ?? "—"}`,
     `Pain Point: ${lead.painPoint ?? "—"}`,
     `Teamgröße: ${lead.teamSize ?? "—"}`,
     `ICP: ${lead.icpSegment ?? "—"}`,
@@ -178,6 +186,8 @@ async function sendLeadEmail(lead: LeadPayload, notionUrl: string | null): Promi
         record: {
           name: lead.name,
           email: lead.email,
+          phone: lead.phone,
+          inquiry_volume: lead.inquiryVolume,
           pain_point: lead.painPoint,
           team_size: lead.teamSize,
           icp_segment: lead.icpSegment,
@@ -249,6 +259,15 @@ Deno.serve(async (request) => {
   try {
     const name = textOrNull(input.name, 200);
     const email = textOrNull(input.email, 254)?.toLowerCase();
+    const phoneRaw = textOrNull(input.phone, 40);
+    const phone = phoneRaw ? phoneRaw.replace(/[^\d+()\s/-]/g, "").trim() : null;
+    const phoneDigits = phone ? phone.replace(/\D/g, "") : "";
+    const inquiryVolumeRaw = input.inquiry_volume;
+    const inquiryVolume = typeof inquiryVolumeRaw === "number"
+      ? inquiryVolumeRaw
+      : (typeof inquiryVolumeRaw === "string" && inquiryVolumeRaw.trim() !== ""
+        ? Number(inquiryVolumeRaw)
+        : null);
     const painPoint = textOrNull(input.pain_point, 80);
     const teamSize = textOrNull(input.team_size, 20);
     const icpSegment = textOrNull(input.icp_segment, 20);
@@ -269,6 +288,13 @@ Deno.serve(async (request) => {
       !name ||
       !email ||
       !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
+      !phone ||
+      phoneDigits.length < 6 ||
+      phoneDigits.length > 20 ||
+      inquiryVolume === null ||
+      !Number.isFinite(inquiryVolume) ||
+      inquiryVolume < 0 ||
+      inquiryVolume > 300 ||
       input.privacy_ack !== true ||
       (painPoint !== null && !allowedPainPoints.has(painPoint)) ||
       (teamSize !== null && !allowedTeamSizes.has(teamSize)) ||
@@ -305,6 +331,8 @@ Deno.serve(async (request) => {
     const lead: LeadPayload = {
       name,
       email,
+      phone,
+      inquiryVolume: Math.round(inquiryVolume),
       painPoint,
       teamSize,
       icpSegment,

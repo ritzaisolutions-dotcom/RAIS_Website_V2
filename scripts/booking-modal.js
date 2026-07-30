@@ -2,7 +2,7 @@
  * Audit booking modal – shared.
  * Security: only publishable anon key from public-config; lead via Edge Function;
  * honeypot #bm-website; generic error copy; Cal.com opens without form PII in URL.
- * data-value keys must stay stable for Supabase.
+ * Fields: name, email, phone, inquiry_volume (slider).
  */
 (function () {
   'use strict';
@@ -22,40 +22,57 @@
 
   var backdrop = document.getElementById('bm-backdrop');
   var closeBtn = document.getElementById('bm-close');
-  var steps = [0, 1, 2, 3].map(function (i) { return document.getElementById('bm-step-' + i); });
+  var steps = [0, 1, 2].map(function (i) { return document.getElementById('bm-step-' + i); });
   var dots = document.querySelectorAll('.bm-dot');
+  var volumeEl = document.getElementById('bm-volume');
+  var volumeDisplay = document.getElementById('bm-volume-display');
 
   var state = {
     step: 0,
     name: '',
     email: '',
-    pain_point: '',
-    team_size: '',
+    phone: '',
+    inquiry_volume: 80,
     icp_segment: null,
     source: null,
     bookingLinkShown: false,
     openedAt: 0
   };
 
+  function syncVolumeUI() {
+    if (!volumeEl) return;
+    var value = parseInt(volumeEl.value, 10);
+    if (!isFinite(value) || value < 0) value = 0;
+    if (value > 300) value = 300;
+    state.inquiry_volume = value;
+    volumeEl.setAttribute('aria-valuenow', String(value));
+    if (volumeDisplay) volumeDisplay.textContent = String(value);
+    var pct = (value / 300) * 100;
+    volumeEl.style.setProperty('--bm-slider-pct', pct + '%');
+  }
+
   function resetModalState() {
     state.step = 0;
     state.name = '';
     state.email = '';
-    state.pain_point = '';
-    state.team_size = '';
+    state.phone = '';
+    state.inquiry_volume = 80;
     state.icp_segment = null;
     state.source = null;
     state.bookingLinkShown = false;
     state.openedAt = Date.now();
-    document.querySelectorAll('.bm-option').forEach(function (b) { b.classList.remove('selected'); });
     var nameEl = document.getElementById('bm-name');
     var emailEl = document.getElementById('bm-email');
+    var phoneEl = document.getElementById('bm-phone');
     var privacyEl = document.getElementById('bm-privacy');
     var websiteEl = document.getElementById('bm-website');
     if (nameEl) nameEl.value = '';
     if (emailEl) emailEl.value = '';
+    if (phoneEl) phoneEl.value = '';
     if (privacyEl) privacyEl.checked = false;
     if (websiteEl) websiteEl.value = '';
+    if (volumeEl) volumeEl.value = '80';
+    syncVolumeUI();
     var calWrap = document.getElementById('bm-cal-wrap');
     if (calWrap) calWrap.innerHTML = '';
     var submitStatus = document.getElementById('bm-submit-status');
@@ -116,25 +133,27 @@
     if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
   });
 
-  function bindOptionGroup(containerId, field) {
-    var box = document.getElementById(containerId);
-    if (!box) return;
-    box.querySelectorAll('.bm-option').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        box.querySelectorAll('.bm-option').forEach(function (b) { b.classList.remove('selected'); });
-        btn.classList.add('selected');
-        state[field] = btn.getAttribute('data-value') || '';
-      });
-    });
+  if (volumeEl) {
+    volumeEl.addEventListener('input', syncVolumeUI);
+    volumeEl.addEventListener('change', syncVolumeUI);
+    syncVolumeUI();
   }
-  bindOptionGroup('bm-options-pain', 'pain_point');
-  bindOptionGroup('bm-options-size', 'team_size');
+
+  function normalizePhone(raw) {
+    return String(raw || '').replace(/[^\d+()\s/-]/g, '').trim();
+  }
+
+  function isValidPhone(phone) {
+    var digits = phone.replace(/\D/g, '');
+    return digits.length >= 6 && digits.length <= 20;
+  }
 
   var next0 = document.getElementById('bm-next-0');
   if (next0) {
     next0.addEventListener('click', function () {
       var nameEl = document.getElementById('bm-name');
       var emailEl = document.getElementById('bm-email');
+      var phoneEl = document.getElementById('bm-phone');
       var privacyEl = document.getElementById('bm-privacy');
       var websiteEl = document.getElementById('bm-website');
       var ok = true;
@@ -148,6 +167,11 @@
         if (emailEl) emailEl.classList.add('bm-error');
         ok = false;
       } else if (emailEl) emailEl.classList.remove('bm-error');
+      var phone = phoneEl ? normalizePhone(phoneEl.value) : '';
+      if (!phone || !isValidPhone(phone)) {
+        if (phoneEl) phoneEl.classList.add('bm-error');
+        ok = false;
+      } else if (phoneEl) phoneEl.classList.remove('bm-error');
       if (!privacyEl || !privacyEl.checked) {
         if (privacyEl && privacyEl.parentElement) privacyEl.parentElement.classList.add('bm-error');
         ok = false;
@@ -155,38 +179,30 @@
       if (!ok) return;
       state.name = nameEl.value.trim().slice(0, 200);
       state.email = email.slice(0, 254);
+      state.phone = phone.slice(0, 40);
       goTo(1);
+      if (volumeEl) volumeEl.focus();
     });
   }
 
   var next1 = document.getElementById('bm-next-1');
   if (next1) {
     next1.addEventListener('click', function () {
-      if (!state.pain_point) return;
-      goTo(2);
+      syncVolumeUI();
+      submitLead();
     });
   }
 
   var back1 = document.getElementById('bm-back-1');
   if (back1) back1.addEventListener('click', function () { goTo(0); });
-  var back2 = document.getElementById('bm-back-2');
-  if (back2) back2.addEventListener('click', function () { goTo(1); });
-
-  var next2 = document.getElementById('bm-next-2');
-  if (next2) {
-    next2.addEventListener('click', function () {
-      if (!state.team_size) return;
-      submitLead();
-    });
-  }
 
   function submitLead() {
     var submitStatus = document.getElementById('bm-submit-status');
     var payload = {
       name: state.name,
       email: state.email,
-      pain_point: state.pain_point || null,
-      team_size: state.team_size || null,
+      phone: state.phone,
+      inquiry_volume: state.inquiry_volume,
       icp_segment: state.icp_segment || null,
       source: state.source || null,
       privacy_ack: true,
@@ -211,7 +227,7 @@
         submitStatus.textContent = 'Ihre Anfrage konnte gerade nicht gespeichert werden. Sie können den Termin trotzdem direkt buchen.';
       }
     }).finally(function () {
-      goTo(3);
+      goTo(2);
       showCalBookingLink();
     });
   }

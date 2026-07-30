@@ -57,23 +57,25 @@ Primäre Nav: Systeme · Referenzen · Über uns · Persönlichkeit · Audit buc
 
 ### Home
 
-**Job:** RAIS als Unternehmen zeigen, Vertrauen, kurzes Portfolio, Conversion.
+**Job:** Konversionsorientierte Landingpage. Lead-Magnet für Paid und organische Einstiege.
 
 - Hero: Qualifizierungs-Claim (kein Anfragen-Problem, Qualifizierungs-Problem), Supporting, primär Audit, sekundär `#systeme`
-- Trust-Strip: EU/AVV/Hosting (keine Tech-Logos)
-- Pain-/Alltagssektion (`#alltag`): konkrete Qualifizierungs-Pains vor der Lösung
-- Wem wir geholfen haben: Haller-Teaser mit Outcome-Richtung ohne Fake-Kennzahl → `/referenzen.html`
-- Live-Systeme: asymmetrisches Bento, AQuT groß, fünf Peers leichter mit Kontextwort
-- ICP inkl. sichtbarer Ausschlüsse, unnummeriert
-- Kurzer Einstieg „So starten wir“ → `/zusammenarbeit.html`
-- FAQ lebt auf der AQuT-Seite (DSGVO, CRM, Dauer, Fit), nicht auf Home
-- Kontaktmodul
+- Tech-Stack-Ticker direkt unter dem Hero (n8n, Supabase, Cloud, CRM-Ökosystem); DSGVO-Fakten wandern als Chips in `#trust`
+- `#zielgruppe`: Mit wem wir arbeiten, Passt / Passt nicht (Ausschluss: geringes Volumen, Franchise, keine Innovationsbereitschaft)
+- `#warum-rais`: 2x2 Authority Grid (Enterprise-KI, Mehrwert statt Hype, EU-Infrastruktur, maßgeschneidert)
+- `#aqut`: Flaggschiff, Sage-Vollfläche mit Leinen-Punktraster, 5-Schritt Icon-Flow, drei Benefits (20–35 Std/Woche, 15 Std auf 2 Min, Entlastung), CTA
+- `#systeme`: hinter AQuT, gegenläufiges Doppel-Marquee mit Spotlight-Cards (oranger Hover-Rahmen); Anker bleibt `#systeme`
+- `#rechner`: Multi-Step-Wizard (Volumen → Telefon → Kostensatz → Ergebnis), client-only, kein CRM-Feld
+- `#ablauf`: Discovery, Systemgespräch, Umsetzung ~4 Wochen, Betrieb im Retainer
+- `#trust`: Gründerzugang plus DSGVO-Chips und Info-Kacheln; Haller-Teaser ausgeblendet bis Freigabe
+- `#contact`: Abschluss-CTA als kostenlose Beratungsstunden (Klarheit wo KI Zeit, Geld und Sorgen spart)
+- FAQ lebt auf der AQuT-Seite, nicht auf Home
 
 ### AQuT
 
 **Job:** dieses eine System verkaufen. Absender bleibt RAIS.
 
-1. Orientierungsclaim (30 Std-Formel aus brand.md), nicht als feste Garantie
+1. Orientierungsclaim (20–35 Std-Formel aus brand.md), nicht als feste Garantie
 2. Rechner „nach Ihren Angaben“, client-only, keine Leads
 3. Vier-Schritt-Prozess
 4. Paket 1
@@ -130,7 +132,7 @@ Primäre Atmosphäre:
 
 Stützstruktur:
 
-- Sage und Dark Pistachio, genau eine Sektion pro Seite darf als volle Blockfläche in Sage mit Warm-Linen-Text ausgeführt werden. Auf der AQuT-Seite ist das die Use-Case- beziehungsweise Beweisfläche.
+- Sage und British Racing Green (`#004225`, Token `--racing-green`, Alias `--pistachio`), genau eine Sektion pro Seite darf als volle Blockfläche in Sage mit Warm-Linen-Text ausgeführt werden. Auf der Home-Seite ist das `#aqut` mit Leinen-Punktraster. Auf der AQuT-Seite ist das die Use-Case- beziehungsweise Beweisfläche.
 - Charcoal und Stone für Lesbarkeit
 
 Akzent:
@@ -158,22 +160,22 @@ Deutsche Satzregeln: keine Versalien-Eyebrows (Deutsch hat Großbuchstaben in Su
 
 **Home-Hero** kommuniziert Zielgruppe und Kernversprechen in einer Zeile, filtert, verweist weiter. Kein Produktmenü im Hero.
 
-**AQuT-Hero** eröffnet mit dem Orientierungsclaim (30 Std-Formel) und führt zum Rechner. Umsatzargument als unterstützender Block erlaubt. Keine Gedankenstriche.
+**AQuT-Hero** eröffnet mit dem Orientierungsclaim (20–35 Std-Formel) und führt zum Rechner. Umsatzargument als unterstützender Block erlaubt. Keine Gedankenstriche.
 
-### Rechner (nur auf der AQuT-Seite)
+### Rechner (Home und AQuT-Seite)
 
-Interaktives Modul, direkt im oberen Bereich der AQuT-Seite. Zweck: Schmerz quantifizieren, ohne unbelegte Behauptungen.
+Interaktives Modul auf der Home-Landingpage und der AQuT-Seite. Zweck: Schmerz quantifizieren, ohne unbelegte Behauptungen. Darstellung als Multi-Step-Wizard, nicht als Formular-Wand.
 
-Eingaben, in dieser Reihenfolge:
+Schritte:
 
-1. Anfragevolumen pro Woche
-2. Zeitaufwand pro Anfrage aktuell, in Minuten
+1. Anfragevolumen und Minuten pro Mail-Anfrage
+2. Anteil Anfragen mit Mailbox-Nachtelefonat (%) und Minuten pro Mailbox-Nein-Anruf
 3. Stundensatz, editierbares Vorschlagsfeld
-4. Aktuelles CRM (onOffice, Propstack, anderes, keins)
+4. Ergebnis: Std/Woche, Euro/Monat, Aufschlüsselung Mail vs. Telefon, CTA in den Audit
 
-Berechnung ausschließlich aus 1 bis 3: Stunden pro Woche und kalkulatorischer Wert pro Monat, mit dem sichtbaren Zusatz "nach Ihren eigenen Angaben". CRM-Eingabe steuert eine textliche Botschaft (Anbindung ohne Migration bei onOffice/Propstack, schlanke eigene Datenbank bei "keins"), fließt nicht in die Rechnung ein.
+Berechnung: `emailHours = volume × minutes / 60`, `phoneHours = volume × (share% / 100) × phoneMinutes / 60`, Summe → Std/Woche und Euro/Monat, mit dem sichtbaren Zusatz „nach Ihren eigenen Angaben“. Kein CRM-Feld (CRM im Discovery-Call).
 
-Keine Euro- oder Stundenzahl anzeigen, die nicht direkt aus den drei numerischen Eingaben berechnet ist. Keine Erfolgsgarantie einbauen, solange der zugehörige Wissensbasis-Eintrag auf Status Hypothese steht.
+Keine Euro- oder Stundenzahl anzeigen, die nicht direkt aus den numerischen Eingaben berechnet ist. Keine Erfolgsgarantie einbauen, solange der zugehörige Wissensbasis-Eintrag auf Status Hypothese steht.
 
 ### Use Cases (auf der AQuT-Seite, ehemals `#projekte`)
 

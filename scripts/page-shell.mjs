@@ -4,7 +4,7 @@
  * (build-pages + sync-index-shell). Do not hand-edit Nav/Footer/Modal on pages.
  */
 export const bookingModalHtml = `
-<div id="booking-modal" role="dialog" aria-modal="true" aria-label="Kostenloser Audit buchen">
+<div id="booking-modal" role="dialog" aria-modal="true" aria-label="Kostenlose Beratungsstunde buchen">
   <div class="bm-backdrop" id="bm-backdrop"></div>
   <div class="bm-box">
     <button class="bm-close" id="bm-close" type="button" aria-label="Schließen">
@@ -14,12 +14,11 @@ export const bookingModalHtml = `
       <div class="bm-dot" data-step="0"></div>
       <div class="bm-dot" data-step="1"></div>
       <div class="bm-dot" data-step="2"></div>
-      <div class="bm-dot" data-step="3"></div>
     </div>
     <div class="bm-step is-active" id="bm-step-0">
-      <p class="bm-label">Schritt 1 von 3</p>
-      <h2 class="bm-title">Wer sind Sie?</h2>
-      <p class="bm-sub">Damit wir das Audit auf Ihre Situation vorbereiten können.</p>
+      <p class="bm-label">Schritt 1 von 2</p>
+      <h2 class="bm-title">Ihre Kontaktdaten</h2>
+      <p class="bm-sub">Damit wir die Beratungsstunde vorbereiten und Sie erreichen können.</p>
       <div class="bm-field">
         <label for="bm-name">Ihr Name</label>
         <input type="text" id="bm-name" placeholder="Max Mustermann" autocomplete="name" maxlength="200">
@@ -27,6 +26,10 @@ export const bookingModalHtml = `
       <div class="bm-field">
         <label for="bm-email">E-Mail-Adresse</label>
         <input type="email" id="bm-email" placeholder="max@muster.de" autocomplete="email" maxlength="254">
+      </div>
+      <div class="bm-field">
+        <label for="bm-phone">Telefon</label>
+        <input type="tel" id="bm-phone" placeholder="+49 170 1234567" autocomplete="tel" maxlength="40" inputmode="tel">
       </div>
       <div class="bm-field" style="position:absolute;left:-9999px;" aria-hidden="true">
         <label for="bm-website">Website</label>
@@ -41,38 +44,27 @@ export const bookingModalHtml = `
       </div>
     </div>
     <div class="bm-step" id="bm-step-1">
-      <p class="bm-label">Schritt 2 von 3</p>
-      <h2 class="bm-title">Was kostet Sie am meisten Zeit?</h2>
-      <p class="bm-sub">So können wir das Audit gezielt vorbereiten.</p>
-      <div class="bm-options" id="bm-options-pain">
-        <button type="button" class="bm-option" data-value="inseratsanfragen-qualifizieren">Inseratsanfragen qualifizieren</button>
-        <button type="button" class="bm-option" data-value="terminierung-besichtigungen">Terminierung von Besichtigungen</button>
-        <button type="button" class="bm-option" data-value="onboarding-vertragsunterschrift">Onboarding nach Vertragsunterschrift</button>
-        <button type="button" class="bm-option" data-value="wiederkehrende-kundenfragen">Wiederkehrende Kundenfragen</button>
-        <button type="button" class="bm-option" data-value="gesamtprozess">Gesamtprozess-Audit</button>
-        <button type="button" class="bm-option" data-value="anderes">Anderes</button>
+      <p class="bm-label">Schritt 2 von 2</p>
+      <h2 class="bm-title">Ihr Anfragevolumen</h2>
+      <p class="bm-sub">Wie viele E-Mail-Anfragen landen durchschnittlich pro Woche bei Ihnen?</p>
+      <div class="bm-slider-block">
+        <div class="bm-slider-value" aria-live="polite">
+          <span id="bm-volume-display">80</span>
+          <span class="bm-slider-unit">Anfragen / Woche</span>
+        </div>
+        <input type="range" id="bm-volume" class="bm-slider" min="0" max="300" step="5" value="80" aria-valuemin="0" aria-valuemax="300" aria-valuenow="80" aria-label="Anfragen pro Woche">
+        <div class="bm-slider-scale" aria-hidden="true">
+          <span>0</span>
+          <span>150</span>
+          <span>300</span>
+        </div>
       </div>
       <div class="bm-actions">
         <button type="button" class="bm-btn-back" id="bm-back-1">Zurück</button>
-        <button type="button" class="bm-btn-next" id="bm-next-1">Weiter</button>
+        <button type="button" class="bm-btn-next" id="bm-next-1">Termin buchen</button>
       </div>
     </div>
     <div class="bm-step" id="bm-step-2">
-      <p class="bm-label">Schritt 3 von 3</p>
-      <h2 class="bm-title">Wie groß ist Ihr Team?</h2>
-      <p class="bm-sub">Damit die Lösung exakt auf Ihre Teamgröße passt.</p>
-      <div class="bm-options" id="bm-options-size">
-        <button type="button" class="bm-option" data-value="unter-5">Unter 5 Personen</button>
-        <button type="button" class="bm-option" data-value="5-10">5 bis 10</button>
-        <button type="button" class="bm-option" data-value="11-25">11 bis 25</button>
-        <button type="button" class="bm-option" data-value="ueber-25">Mehr als 25</button>
-      </div>
-      <div class="bm-actions">
-        <button type="button" class="bm-btn-back" id="bm-back-2">Zurück</button>
-        <button type="button" class="bm-btn-next" id="bm-next-2">Termin buchen</button>
-      </div>
-    </div>
-    <div class="bm-step" id="bm-step-3">
       <p class="bm-label">Fast geschafft</p>
       <h2 class="bm-title">Wählen Sie Ihren Termin</h2>
       <p class="bm-sub">60 Minuten, kostenlos. Die Buchung öffnet sich bei Cal.com in einem neuen Tab. Es werden keine Angaben aus diesem Formular an Cal.com übergeben.</p>
@@ -106,7 +98,7 @@ export function navHtml(active) {
       </ul>
     </div>
     <div class="nav-right">
-      <button type="button" class="btn-primary js-open-booking" id="nav-demo-btn" data-source="nav">Kostenlosen Audit buchen</button>
+      <button type="button" class="btn-primary js-open-booking" id="nav-demo-btn" data-source="nav">Kostenlose Beratungsstunde buchen</button>
       <button class="nav-hamburger" id="hamburger-btn" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-overlay">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
@@ -121,7 +113,7 @@ export function navHtml(active) {
     <a href="persoenlichkeit.html" class="mobile-link" data-close-menu>Persönlichkeit</a>
     <a href="zusammenarbeit.html" class="mobile-link" data-close-menu>So arbeiten wir</a>
     <hr class="mobile-hr">
-    <button type="button" class="mobile-cta js-open-booking" id="mobile-demo-btn" data-source="mobile-nav">Kostenlosen Audit buchen</button>
+    <button type="button" class="mobile-cta js-open-booking" id="mobile-demo-btn" data-source="mobile-nav">Kostenlose Beratungsstunde buchen</button>
   </div>
 </div>
 `;
@@ -132,15 +124,15 @@ export const contactHtml = `
   <div class="section-wrap">
     <div class="contact-grid">
       <div class="contact-text-col">
-        <span class="mono-label">Prozess-Audit</span>
+        <span class="mono-label">Kostenlose Beratungsstunden</span>
         <h2 class="section-h2">60 Minuten. Kostenlos. Klare nächste Schritte.</h2>
         <p class="contact-copy">Wir analysieren Ihre Prozesse und zeigen, wo Zeit verloren geht. Sie bekommen drei umsetzbare Use Cases.</p>
         <p class="contact-copy">Kein Verkaufsdruck. Blueprint inklusive.</p>
       </div>
       <div class="cal-embed-wrap">
-        <p class="cal-card-title">Kostenlosen Audit buchen</p>
+        <p class="cal-card-title">Kostenlose Beratungsstunde buchen</p>
         <p class="cal-card-sub">60 Minuten, kostenlos. Drei konkrete Automatisierungs-Ideen für Ihr Büro.</p>
-        <button type="button" id="contact-demo-btn" class="cal-load-btn js-open-booking" data-source="contact">Kostenlosen Audit buchen</button>
+        <button type="button" id="contact-demo-btn" class="cal-load-btn js-open-booking" data-source="contact">Kostenlose Beratungsstunde buchen</button>
       </div>
     </div>
     <div class="contact-details">
@@ -153,7 +145,7 @@ export const contactHtml = `
 
 export const footerHtml = `
 <div id="sticky-cta" aria-hidden="true">
-  <button type="button" class="sticky-cta-btn js-open-booking" id="sticky-demo-btn" data-source="sticky">Kostenlosen Audit buchen</button>
+  <button type="button" class="sticky-cta-btn js-open-booking" id="sticky-demo-btn" data-source="sticky">Beratungsstunde buchen</button>
 </div>
 <footer id="footer">
   <div class="footer-inner">

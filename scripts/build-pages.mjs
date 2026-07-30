@@ -32,15 +32,15 @@ page({
   active: 'systeme',
   title: 'AQuT | Anfragen-System von RAIS',
   description:
-    'AQuT von RAIS: Portalanfragen qualifizieren und Termine buchen. Orientierungsclaim rund 30 Stunden pro Monat, abhängig vom Anfragevolumen.',
+    'AQuT von RAIS: Portalanfragen qualifizieren und Termine buchen. Bei hohem Volumen oft 20 bis 35 Stunden pro Woche zurück.',
   path: 'aqut.html',
   main: `
 <section class="page-hero">
   <div class="page-hero__inner">
     <span class="mono-label">System von RAIS</span>
     <h1>AQuT: weniger manuelle Anfragenbearbeitung, mehr gebuchte Erstgespräche</h1>
-    <p>Bei typischem Anfragevolumen oft im Bereich von rund 30 Stunden pro Monat, abhängig von Ihrem Volumen (Herleitung: ca. 5 bis 8 Stunden pro Woche). Der Rechner darunter rechnet mit Ihren Angaben.</p>
-    <button type="button" class="btn-primary js-open-booking" data-source="aqut-hero">Kostenlosen Audit buchen</button>
+    <p>Bei hohem Anfragevolumen oft im Bereich von 20 bis 35 Stunden pro Woche, abhängig von Ihrem Volumen. Erstreaktion von durchschnittlich 15 Stunden auf 2 Minuten. Der Rechner darunter rechnet mit Ihren Angaben.</p>
+    <button type="button" class="btn-primary js-open-booking" data-source="aqut-hero">Kostenlose Beratungsstunde buchen</button>
   </div>
 </section>
 
@@ -48,40 +48,80 @@ page({
   <div class="section-wrap" style="padding-top:2rem;">
     <span class="mono-label">Ihre Rechnung</span>
     <h2 class="section-h2">Rechner: nach Ihren eigenen Angaben</h2>
-    <p class="section-sub">Keine Lead-Erfassung. Keine Kontaktdaten. Nur Aufklärung aus Ihren Zahlen.</p>
-    <div class="rechner" id="aqut-rechner">
-      <div class="rechner__grid">
-        <div>
-          <label for="rq-volume">Anfragevolumen pro Woche</label>
-          <input id="rq-volume" type="number" min="0" step="1" value="25" inputmode="numeric">
-        </div>
-        <div>
-          <label for="rq-minutes">Minuten pro Anfrage aktuell</label>
-          <input id="rq-minutes" type="number" min="0" step="1" value="12" inputmode="numeric">
-        </div>
-        <div>
-          <label for="rq-rate">Stundensatz in Euro</label>
-          <input id="rq-rate" type="number" min="0" step="1" value="35" inputmode="decimal">
-        </div>
-        <div>
-          <label for="rq-crm">Aktuelles CRM</label>
-          <select id="rq-crm">
-            <option value="onoffice">onOffice</option>
-            <option value="propstack">Propstack</option>
-            <option value="anderes">Anderes System</option>
-            <option value="keins">Kein CRM</option>
-          </select>
+    <p class="section-sub">Keine Lead-Erfassung. Keine Kontaktdaten. Nur Aufklärung aus Ihren Zahlen: Mailbearbeitung plus Mailbox-Nachtelefonate. CRM klären wir im Discovery-Call.</p>
+    <div class="rechner rechner--wizard" id="aqut-rechner">
+      <div class="rq-progress">
+        <span class="rq-progress__label" id="rq-step-label">Schritt 1 von 3</span>
+        <div class="rq-progress__bars" aria-hidden="true">
+          <span class="rq-progress__bar is-filled" data-bar="1"></span>
+          <span class="rq-progress__bar" data-bar="2"></span>
+          <span class="rq-progress__bar" data-bar="3"></span>
         </div>
       </div>
-      <div class="rechner__out" id="rq-output" aria-live="polite"></div>
-      <p id="rq-crm-msg" class="section-sub" style="margin-top:0.85rem;"></p>
+
+      <fieldset class="rq-step" data-step="1">
+        <legend class="rq-step__title">Ihr Anfragevolumen</legend>
+        <p class="rq-step__hint">Wie viele Anfragen landen bei Ihnen, und wie lange dauert die Bearbeitung?</p>
+        <div class="rq-period" role="group" aria-label="Zeitraum für Anfragevolumen">
+          <button type="button" class="rq-period__btn is-active" id="rq-period-month" data-period="month" aria-pressed="true">Monatlich</button>
+          <button type="button" class="rq-period__btn" id="rq-period-week" data-period="week" aria-pressed="false">Wöchentlich</button>
+        </div>
+        <div class="rq-fields">
+          <div>
+            <label for="rq-volume" id="rq-volume-label">Anfragen pro Monat</label>
+            <input id="rq-volume" type="number" min="0" step="1" value="350" inputmode="numeric">
+          </div>
+          <div>
+            <label for="rq-minutes">Minuten pro Mail-Anfrage</label>
+            <input id="rq-minutes" type="number" min="0" step="1" value="18" inputmode="numeric">
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="rq-step" data-step="2" hidden>
+        <legend class="rq-step__title">Telefon-Nacharbeit</legend>
+        <p class="rq-step__hint">Wie viel Zeit verbringt Ihr Team mit dem Hinterhertelefonieren von Mailbox-Anfragen?</p>
+        <div class="rq-fields">
+          <div>
+            <label for="rq-phone-share">Anteil Anfragen mit Mailbox-Nachtelefonat (%)</label>
+            <input id="rq-phone-share" type="number" min="0" max="100" step="1" value="30" inputmode="numeric">
+          </div>
+          <div>
+            <label for="rq-phone-minutes">Minuten pro Mailbox-Nein-Anruf</label>
+            <input id="rq-phone-minutes" type="number" min="0" step="1" value="5" inputmode="numeric">
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="rq-step" data-step="3" hidden>
+        <legend class="rq-step__title">Ihr Kostensatz</legend>
+        <p class="rq-step__hint">Mit welchem internen Stundensatz rechnen Sie die Bearbeitungszeit?</p>
+        <div class="rq-fields">
+          <div>
+            <label for="rq-rate">Stundensatz in Euro</label>
+            <input id="rq-rate" type="number" min="0" step="1" value="45" inputmode="decimal">
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="rq-step rq-step--result" data-step="4" hidden>
+        <span class="rq-step__eyebrow">Ihr Ergebnis</span>
+        <p class="rq-step__hint">nach Ihren eigenen Angaben, ausgewiesen pro Monat</p>
+        <div class="rechner__out" id="rq-output" aria-live="polite"></div>
+      </div>
+
+      <p class="rq-error" id="rq-error" hidden role="alert"></p>
+
+      <div class="rq-nav">
+        <button type="button" class="rq-btn-back" id="rq-back" hidden>Zurück</button>
+        <button type="button" class="rq-btn-reset" id="rq-reset" hidden>Werte anpassen</button>
+        <button type="button" class="rq-btn-next" id="rq-next">Weiter</button>
+        <button type="button" class="btn-primary js-open-booking rq-btn-cta" id="rq-cta" data-source="aqut-rechner" hidden>Kostenlose Beratungsstunde buchen</button>
+      </div>
       <details>
         <summary>Optional: Übergang zum Umsatzargument</summary>
         <p class="section-sub" style="margin-top:0.75rem;">Verlorene Bearbeitungszeit ist nicht nur Personalkosten. Sie ist der Vorlauf zu verlorenen Abschlüssen. Im 60-minütigen Audit prüfen wir das anhand Ihrer echten Anfragedaten.</p>
       </details>
-      <p style="margin-top:1.25rem;">
-        <button type="button" class="btn-primary js-open-booking" data-source="aqut-rechner">Im Audit vertiefen</button>
-      </p>
     </div>
   </div>
 </section>
@@ -181,7 +221,7 @@ page({
       </details>
     </div>
     <p style="margin-top:2rem;">
-      <button type="button" class="btn-primary js-open-booking" data-source="aqut-faq">Kostenlosen Audit buchen</button>
+      <button type="button" class="btn-primary js-open-booking" data-source="aqut-faq">Kostenlose Beratungsstunde buchen</button>
     </p>
   </div>
 </section>
@@ -224,7 +264,7 @@ page({
     <h3>Status</h3>
     <p>Die Referenz ist öffentlich freigegeben. Eine belastbare Kennzahl aus dem Live-Betrieb (Stunden, Abschlussrate oder Antwortzeit) folgt, sobald sie gemessen und freigegeben ist. Bis dahin keine erfundenen Prozent- oder Euro-Claims zu diesem Kunden.</p>
 
-    <p style="margin-top:2rem;"><button type="button" class="btn-primary js-open-booking" data-source="referenzen">Kostenlosen Audit buchen</button></p>
+    <p style="margin-top:2rem;"><button type="button" class="btn-primary js-open-booking" data-source="referenzen">Kostenlose Beratungsstunde buchen</button></p>
     <div class="case-slot case-slot--quiet" aria-hidden="true"></div>
     <div class="case-slot case-slot--quiet" aria-hidden="true"></div>
   </div>

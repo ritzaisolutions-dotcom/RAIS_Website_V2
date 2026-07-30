@@ -16,9 +16,9 @@ Bestehendes Fundament wiederverwenden. Vanilla HTML, Vite, Tailwind. Gezielte Ed
 
 | Seite | Job |
 |---|---|
-| Home (`index.html`) | RAIS als Unternehmen, Trust, Haller-Teaser, gewichtetes Live-Systeme-Portfolio, ICP, Kontakt |
-| AQuT (`aqut.html`) | Verkaufsseite für das System inkl. Orientierungsclaim und client-only Rechner |
-| Referenzen (`referenzen.html`) | Case Studies, aktuell Haller |
+| Home (`index.html`) | Landingpage / Lead-Magnet: Hero, Tech-Stack-Ticker, ICP, Warum RAIS, AQuT-Flaggschiff, Use-Case-Spotlight-Cards (`#systeme`), Multi-Step-Rechner, Ablauf, Trust (ohne Kundenbeweis bis Freigabe), Kontakt |
+| AQuT (`aqut.html`) | Verkaufsseite für das System inkl. Orientierungsclaim und client-only Multi-Step-Rechner |
+| Referenzen (`referenzen.html`) | Case Studies; Haller-Teaser auf Home ausgeblendet bis Freigabe |
 | So arbeiten wir (`zusammenarbeit.html`) | Prozess Discovery bis Betrieb (Footer-Nav, nicht primäre Nav) |
 | Über uns (`ueber-uns.html`) | Kevin, externer Spezialist, Infrastruktur |
 | Persönlichkeit (`persoenlichkeit.html`) | LinkedIn und YouTube, kuratiert, lokales Thumbnail |
@@ -36,14 +36,19 @@ Kontakt/Audit ist ein Modul auf jeder Seite. Primäre Nav: Systeme · Referenzen
 
 - Deutsch, glaubwürdig, ohne Gedankenstriche (—)
 - Keine erfundenen Beweise
-- Orientierungsclaim 30 Std/Monat nur mit Formel aus `brand.md`; Rechner nur aus Nutzereingaben
+- Orientierungsclaim 20–35 Std/Woche und Speed-to-Lead 15 Std → 2 Min nur mit Formel aus `brand.md`; Rechner nur aus Nutzereingaben
 - Rechner sammelt keine Kontaktdaten und submitet nichts an CRM/Supabase
+- Haller-Teaser auf Home ausgeblendet bis Freigabe
 
-## Rechner-Regeln (AQuT)
+## Rechner-Regeln (Home und AQuT)
 
-- Inputs: Anfragevolumen, Zeitaufwand/Anfrage, Stundensatz; CRM nur Textbotschaft
-- Ausgabe: Stunden/Woche und Euro/Monat „nach Ihren eigenen Angaben“
+- Multi-Step: Volumen → Telefon-Nacharbeit → Kostensatz → Ergebnis
+- Inputs: Anfragevolumen, Minuten pro Mail-Anfrage, Anteil Mailbox-Nachtelefonat (%), Minuten pro Mailbox-Nein-Anruf, Stundensatz
+- Formel: `emailHours + phoneHours` → Std/Woche und Euro/Monat „nach Ihren eigenen Angaben“; Aufschlüsselung Mail vs. Telefon
+- Kein CRM-Feld im Rechner (CRM wird im Discovery-Call geklärt)
 - Keine Erfolgsgarantie, keine RAIS-Umsatzquote ohne Nutzereingabe
+- Auch auf der Home-Landingpage einsetzbar (gleiche IDs, `aqut-rechner.js`)
+- British Racing Green (`#004225`) ist der Grün-Token; `--pistachio` ist nur noch Alias
 
 ## Persönlichkeit
 
@@ -54,7 +59,7 @@ Kontakt/Audit ist ein Modul auf jeder Seite. Primäre Nav: Systeme · Referenzen
 ## File Priorities
 
 - `index.html`, `aqut.html`, `referenzen.html`, `zusammenarbeit.html`, `ueber-uns.html`, `persoenlichkeit.html`
-- `styles/site-multipage.css`, `styles/booking-modal.css`, `styles/antigravity-polish.css`
+- `styles/site-multipage.css`, `styles/home.css`, `styles/booking-modal.css`, `styles/antigravity-polish.css`
 - `scripts/booking-modal.js`, `scripts/aqut-rechner.js`, `scripts/site-nav.js`, `scripts/collab-path.js`
 - `impressum.html`, `datenschutz.html`
 

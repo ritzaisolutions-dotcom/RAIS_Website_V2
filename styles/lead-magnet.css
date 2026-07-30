@@ -4,7 +4,8 @@
   --background: #F5F2EC;
   --surface: #FBF8F3;
   --sage: #789464;
-  --pistachio: #3C5A2A;
+  --racing-green: #004225;
+  --pistachio: var(--racing-green); /* Alt-Alias, Dark Pistachio ersetzt */
   --charcoal: #2F2A24;
   --muted: #6B6359;
   --border: rgba(72, 96, 54, 0.18);
