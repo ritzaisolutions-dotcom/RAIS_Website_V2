@@ -4,7 +4,9 @@
       "Bash(git commit -m ' *)",
       "Bash(npm install *)",
       "Bash(gh issue *)",
-      "Bash(gh auth *)"
+      "Bash(gh auth *)",
+      "Bash(python -)",
+      "Bash(npm run *)"
     ]
   }
 }
