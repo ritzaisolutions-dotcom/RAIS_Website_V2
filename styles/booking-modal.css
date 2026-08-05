@@ -105,6 +105,25 @@
 }
 .bm-field input:focus { border-color: var(--orange, #EC6A37); }
 .bm-field input.bm-error { border-color: #d94f3b; }
+.bm-field select,
+.bm-select {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.65rem 0.85rem;
+  border: 1.5px solid var(--border, #D9D1C7);
+  border-radius: 0.5rem;
+  background: #fff;
+  font-size: 0.95rem;
+  color: var(--charcoal, #2F2A24);
+  font-family: inherit;
+  outline: none;
+  margin-bottom: 1.1rem;
+  cursor: pointer;
+}
+.bm-field select:focus,
+.bm-select:focus { border-color: var(--orange, #EC6A37); }
+.bm-field select.bm-error,
+.bm-select.bm-error { border-color: #d94f3b; }
 
 .bm-check {
   display: flex;
@@ -253,7 +272,7 @@
   min-height: 44px;
   font-size: 0.9rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--on-orange, #2F2A24);
   cursor: pointer;
   font-family: inherit;
   text-decoration: none;

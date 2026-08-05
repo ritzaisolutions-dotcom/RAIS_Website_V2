@@ -9,10 +9,10 @@ let html = readFileSync(path, 'utf8');
 const replacement = `
         <section class="trust-strip" aria-label="Infrastruktur und Datenschutz">
             <ul class="trust-strip__list">
-                <li>Selbst gehostet in Deutschland</li>
+                <li>Selbst gehostet in der EU</li>
                 <li>Datenbank in Frankfurt</li>
                 <li>AVV nach Art. 28 DSGVO</li>
-                <li>Keine Datenweitergabe außerhalb der EU</li>
+                <li>Kundendaten bleiben in der EU</li>
                 <li>Koblenz</li>
             </ul>
         </section>

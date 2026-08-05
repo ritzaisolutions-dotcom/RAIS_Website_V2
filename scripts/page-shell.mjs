@@ -4,7 +4,7 @@
  * (build-pages + sync-index-shell). Do not hand-edit Nav/Footer/Modal on pages.
  */
 export const bookingModalHtml = `
-<div id="booking-modal" role="dialog" aria-modal="true" aria-label="Kostenlose Beratungsstunde buchen">
+<div id="booking-modal" role="dialog" aria-modal="true" aria-label="Kostenlosen KI-Audit buchen">
   <div class="bm-backdrop" id="bm-backdrop"></div>
   <div class="bm-box">
     <button class="bm-close" id="bm-close" type="button" aria-label="Schließen">
@@ -18,7 +18,7 @@ export const bookingModalHtml = `
     <div class="bm-step is-active" id="bm-step-0">
       <p class="bm-label">Schritt 1 von 2</p>
       <h2 class="bm-title">Ihre Kontaktdaten</h2>
-      <p class="bm-sub">Damit wir die Beratungsstunde vorbereiten und Sie erreichen können.</p>
+      <p class="bm-sub">Damit wir den KI-Audit vorbereiten und Sie erreichen können.</p>
       <div class="bm-field">
         <label for="bm-name">Ihr Name</label>
         <input type="text" id="bm-name" placeholder="Max Mustermann" autocomplete="name" maxlength="200">
@@ -45,14 +45,25 @@ export const bookingModalHtml = `
     </div>
     <div class="bm-step" id="bm-step-1">
       <p class="bm-label">Schritt 2 von 2</p>
-      <h2 class="bm-title">Ihr Anfragevolumen</h2>
-      <p class="bm-sub">Wie viele E-Mail-Anfragen landen durchschnittlich pro Woche bei Ihnen?</p>
+      <h2 class="bm-title">Ihr Engpass und Volumen</h2>
+      <p class="bm-sub">Wo verlieren Sie die meiste Zeit, und wie oft tritt das auf?</p>
+      <div class="bm-field">
+        <label for="bm-engpass">Haupt-Engpass</label>
+        <select id="bm-engpass" class="bm-select">
+          <option value="">Bitte wählen</option>
+          <option value="lead-qualifizierung">Lead-Qualifizierung und Erstkontakt</option>
+          <option value="bestandskunden">Bestandskunden-Kommunikation</option>
+          <option value="support">Support und Ticketing</option>
+          <option value="reporting">Reporting und Datenpflege</option>
+          <option value="sonstiges">Sonstiger Prozess</option>
+        </select>
+      </div>
       <div class="bm-slider-block">
         <div class="bm-slider-value" aria-live="polite">
           <span id="bm-volume-display">80</span>
-          <span class="bm-slider-unit">Anfragen / Woche</span>
+          <span class="bm-slider-unit">Vorgänge / Woche</span>
         </div>
-        <input type="range" id="bm-volume" class="bm-slider" min="0" max="300" step="5" value="80" aria-valuemin="0" aria-valuemax="300" aria-valuenow="80" aria-label="Anfragen pro Woche">
+        <input type="range" id="bm-volume" class="bm-slider" min="0" max="300" step="5" value="80" aria-valuemin="0" aria-valuemax="300" aria-valuenow="80" aria-label="Vorgänge pro Woche">
         <div class="bm-slider-scale" aria-hidden="true">
           <span>0</span>
           <span>150</span>
@@ -92,13 +103,13 @@ export function navHtml(active) {
     <div class="nav-center" role="none">
       <ul class="nav-list" role="list">
         ${link('/#systeme', 'Systeme', 'systeme')}
-        ${link('referenzen.html', 'Referenzen', 'referenzen')}
+        ${link('/#methodik', 'Methode', 'methodik')}
+        ${link('referenzen.html', 'Systemkatalog', 'referenzen')}
         ${link('ueber-uns.html', 'Über uns', 'ueber-uns')}
-        ${link('persoenlichkeit.html', 'Persönlichkeit', 'persoenlichkeit')}
       </ul>
     </div>
     <div class="nav-right">
-      <button type="button" class="btn-primary js-open-booking" id="nav-demo-btn" data-source="nav">Kostenlose Beratungsstunde buchen</button>
+      <button type="button" class="btn-primary js-open-booking" id="nav-demo-btn" data-source="nav">Kostenlosen KI-Audit buchen</button>
       <button class="nav-hamburger" id="hamburger-btn" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-overlay">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
@@ -108,12 +119,13 @@ export function navHtml(active) {
 <div id="mobile-overlay" role="dialog" aria-label="Navigation" aria-modal="true">
   <div class="mobile-nav-inner">
     <a href="/#systeme" class="mobile-link" data-close-menu>Systeme</a>
-    <a href="referenzen.html" class="mobile-link" data-close-menu>Referenzen</a>
+    <a href="/#methodik" class="mobile-link" data-close-menu>Methode</a>
+    <a href="referenzen.html" class="mobile-link" data-close-menu>Systemkatalog</a>
     <a href="ueber-uns.html" class="mobile-link" data-close-menu>Über uns</a>
-    <a href="persoenlichkeit.html" class="mobile-link" data-close-menu>Persönlichkeit</a>
     <a href="zusammenarbeit.html" class="mobile-link" data-close-menu>So arbeiten wir</a>
+    <a href="persoenlichkeit.html" class="mobile-link" data-close-menu>Persönlichkeit</a>
     <hr class="mobile-hr">
-    <button type="button" class="mobile-cta js-open-booking" id="mobile-demo-btn" data-source="mobile-nav">Kostenlose Beratungsstunde buchen</button>
+    <button type="button" class="mobile-cta js-open-booking" id="mobile-demo-btn" data-source="mobile-nav">Kostenlosen KI-Audit buchen</button>
   </div>
 </div>
 `;
@@ -124,15 +136,15 @@ export const contactHtml = `
   <div class="section-wrap">
     <div class="contact-grid">
       <div class="contact-text-col">
-        <span class="mono-label">Kostenlose Beratungsstunden</span>
+        <span class="mono-label">Kostenlose KI-Audits</span>
         <h2 class="section-h2">60 Minuten. Kostenlos. Klare nächste Schritte.</h2>
         <p class="contact-copy">Wir analysieren Ihre Prozesse und zeigen, wo Zeit verloren geht. Sie bekommen drei umsetzbare Use Cases.</p>
         <p class="contact-copy">Kein Verkaufsdruck. Blueprint inklusive.</p>
       </div>
       <div class="cal-embed-wrap">
-        <p class="cal-card-title">Kostenlose Beratungsstunde buchen</p>
-        <p class="cal-card-sub">60 Minuten, kostenlos. Drei konkrete Automatisierungs-Ideen für Ihr Büro.</p>
-        <button type="button" id="contact-demo-btn" class="cal-load-btn js-open-booking" data-source="contact">Kostenlose Beratungsstunde buchen</button>
+        <p class="cal-card-title">Kostenlosen KI-Audit buchen</p>
+        <p class="cal-card-sub">60 Minuten, kostenlos. Drei konkrete Automatisierungs-Ideen für Ihren Betrieb.</p>
+        <button type="button" id="contact-demo-btn" class="cal-load-btn js-open-booking" data-source="contact">Kostenlosen KI-Audit buchen</button>
       </div>
     </div>
     <div class="contact-details">
@@ -145,7 +157,7 @@ export const contactHtml = `
 
 export const footerHtml = `
 <div id="sticky-cta" aria-hidden="true">
-  <button type="button" class="sticky-cta-btn js-open-booking" id="sticky-demo-btn" data-source="sticky">Beratungsstunde buchen</button>
+  <button type="button" class="sticky-cta-btn js-open-booking" id="sticky-demo-btn" data-source="sticky">KI-Audit buchen</button>
 </div>
 <footer id="footer">
   <div class="footer-inner">
@@ -155,8 +167,11 @@ export const footerHtml = `
     </a>
     <nav class="footer-legal" aria-label="Seitenlinks">
       <a href="/#systeme">Systeme</a>
+      <a href="/#methodik">Methode</a>
       <a href="zusammenarbeit.html">So arbeiten wir</a>
-      <a href="referenzen.html">Referenzen</a>
+      <a href="referenzen.html">Systemkatalog</a>
+      <a href="ams.html">AMS Beispielsystem</a>
+      <a href="persoenlichkeit.html">Persönlichkeit</a>
       <a href="#contact">Kontakt</a>
       <a href="impressum.html">Impressum</a>
       <a href="datenschutz.html">Datenschutz</a>
@@ -191,11 +206,57 @@ export function headHtml({ title, description, path }) {
   <link rel="stylesheet" href="styles/antigravity-polish.css">
   <link rel="stylesheet" href="styles/tailwind.generated.css">
   <link rel="stylesheet" href="styles/site-multipage.css">
+  <!-- home.css war frueher startseiten-exklusiv. Damit lagen der
+       Rechner-Wizard (.rq-*), das Architekturbild (.arch), das
+       Ja-Nein-Raster (.icp-*) und die Ablauf-Zeitleiste nur dort.
+       Folge: der Rechner auf aqut.html rendert als rohes
+       Browser-Default, weil saemtliche .rq-Regeln fehlten.
+       Die beiden Dateien teilen sich genau einen Selektor (#contact)
+       und dort verschiedene Eigenschaften, deshalb ist das gefahrlos. -->
+  <link rel="stylesheet" href="styles/home.css">
   <link rel="stylesheet" href="styles/booking-modal.css">
 </head>
 <body>
-`;
+${spriteHtml}`;
 }
+
+/**
+ * Symbol-Sprite, inline im Dokument.
+ *
+ * Die Unterseiten laden keine Icon-Bibliothek: vendor/lucide.min.js
+ * haengt nur an index.html. Statt sie ueberall zu laden, hier ein
+ * kleiner eigener Satz. Kein Netzwerk, kein Bundle, faerbbar ueber
+ * currentColor, skaliert ueber font-size.
+ *
+ * Strichstaerke 1.5 und runde Enden, damit die Symbole zur
+ * Strichfuehrung der bestehenden CSS-Zeichnungen passen
+ * (.arch__link, .akte__toggle) und nicht wie Fremdkoerper wirken.
+ *
+ * Verwendung:  <svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>
+ */
+export const spriteHtml = `<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+  <symbol id="i-crm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-5.4 6-5.4s6 2.1 6 5.4"/><path d="M17 9.5h4M17 13h4"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-files" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2.5h8a2 2 0 0 1 2 2V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+  <symbol id="i-board" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M15 4v16"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5h3l1.6 4-2 1.4a12 12 0 0 0 6.5 6.5l1.4-2 4 1.6v3a2 2 0 0 1-2.2 2A17.5 17.5 0 0 1 4 5.7 2 2 0 0 1 6 3.5"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a7.5 7.5 0 0 1-11 6.6L4 20l1.4-4.4A7.5 7.5 0 1 1 20 12"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8 12 3.5 3 8v8l9 4.5 9-4.5z"/><path d="m3 8 9 4.5M21 8l-9 4.5M12 12.5V21"/></symbol>
+  <symbol id="i-form" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h4"/></symbol>
+  <symbol id="i-table" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M3 15h18M10 10v10"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></symbol>
+  <symbol id="i-tool" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 6.5a3.5 3.5 0 0 0 4.6 4.6l-8 8a2.4 2.4 0 0 1-3.4-3.4z"/><path d="M14.5 6.5 17 4"/></symbol>
+  <symbol id="i-megafon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10v4a1.5 1.5 0 0 0 1.5 1.5H8l7 4.5V4L8 8.5H5.5A1.5 1.5 0 0 0 4 10"/><path d="M18 9.5a3.5 3.5 0 0 1 0 5"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 13.7 9l5.5 1.7-5.5 1.7L12 18l-1.7-5.6L4.8 10.7 10.3 9z"/><path d="M18.5 3.5v3M20 5h-3"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/><path d="M12 14.5v2"/></symbol>
+  <symbol id="i-limit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="m6.5 6.5 11 11"/></symbol>
+  <symbol id="i-hand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11"/><path d="M12 10.5V4.5a1.5 1.5 0 0 1 3 0V11"/><path d="M15 11V6.5a1.5 1.5 0 0 1 3 0V14a6 6 0 0 1-6 6h-1a6 6 0 0 1-5.2-3l-1.6-2.8a1.5 1.5 0 0 1 2.4-1.7L9 14.5V11"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+</svg>
+`;
 
 export const scriptsHtml = `
 <script src="scripts/site-nav.js"></script>

@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    var TOTAL = 7;
+    var TOTAL = 5;
 
     function initCollabPath(root) {
         if (!root) return;

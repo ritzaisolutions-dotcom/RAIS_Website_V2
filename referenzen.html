@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Referenzen | RAIS</title>
-  <meta name="description" content="Referenzen von RAIS. Haller Immobilienberatung GmbH als erste öffentliche Case Study.">
+  <title>Systemkatalog | RAIS</title>
+  <meta name="description" content="Der Systemkatalog von RAIS: 24 Systeme zum Anfragen. Anfragen qualifizieren, Support, Ticketing, Dokumente, Content und Reporting, für Immobilien, Handwerk, Handel und Beratung.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" href="favicon.png?v=3">
-  <meta property="og:title" content="Referenzen | RAIS">
-  <meta property="og:description" content="Referenzen von RAIS. Haller Immobilienberatung GmbH als erste öffentliche Case Study.">
+  <meta property="og:title" content="Systemkatalog | RAIS">
+  <meta property="og:description" content="Der Systemkatalog von RAIS: 24 Systeme zum Anfragen. Anfragen qualifizieren, Support, Ticketing, Dokumente, Content und Reporting, für Immobilien, Handwerk, Handel und Beratung.">
   <meta property="og:url" content="https://ritz-ai.solutions/referenzen.html">
   <meta property="og:type" content="website">
   <script src="scripts/public-config.js"></script>
@@ -21,9 +21,39 @@
   <link rel="stylesheet" href="styles/antigravity-polish.css">
   <link rel="stylesheet" href="styles/tailwind.generated.css">
   <link rel="stylesheet" href="styles/site-multipage.css">
+  <!-- home.css war frueher startseiten-exklusiv. Damit lagen der
+       Rechner-Wizard (.rq-*), das Architekturbild (.arch), das
+       Ja-Nein-Raster (.icp-*) und die Ablauf-Zeitleiste nur dort.
+       Folge: der Rechner auf aqut.html rendert als rohes
+       Browser-Default, weil saemtliche .rq-Regeln fehlten.
+       Die beiden Dateien teilen sich genau einen Selektor (#contact)
+       und dort verschiedene Eigenschaften, deshalb ist das gefahrlos. -->
+  <link rel="stylesheet" href="styles/home.css">
   <link rel="stylesheet" href="styles/booking-modal.css">
 </head>
 <body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+  <symbol id="i-crm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-5.4 6-5.4s6 2.1 6 5.4"/><path d="M17 9.5h4M17 13h4"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-files" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2.5h8a2 2 0 0 1 2 2V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+  <symbol id="i-board" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M15 4v16"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5h3l1.6 4-2 1.4a12 12 0 0 0 6.5 6.5l1.4-2 4 1.6v3a2 2 0 0 1-2.2 2A17.5 17.5 0 0 1 4 5.7 2 2 0 0 1 6 3.5"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a7.5 7.5 0 0 1-11 6.6L4 20l1.4-4.4A7.5 7.5 0 1 1 20 12"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8 12 3.5 3 8v8l9 4.5 9-4.5z"/><path d="m3 8 9 4.5M21 8l-9 4.5M12 12.5V21"/></symbol>
+  <symbol id="i-form" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h4"/></symbol>
+  <symbol id="i-table" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M3 15h18M10 10v10"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></symbol>
+  <symbol id="i-tool" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 6.5a3.5 3.5 0 0 0 4.6 4.6l-8 8a2.4 2.4 0 0 1-3.4-3.4z"/><path d="M14.5 6.5 17 4"/></symbol>
+  <symbol id="i-megafon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10v4a1.5 1.5 0 0 0 1.5 1.5H8l7 4.5V4L8 8.5H5.5A1.5 1.5 0 0 0 4 10"/><path d="M18 9.5a3.5 3.5 0 0 1 0 5"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 13.7 9l5.5 1.7-5.5 1.7L12 18l-1.7-5.6L4.8 10.7 10.3 9z"/><path d="M18.5 3.5v3M20 5h-3"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/><path d="M12 14.5v2"/></symbol>
+  <symbol id="i-limit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="m6.5 6.5 11 11"/></symbol>
+  <symbol id="i-hand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11"/><path d="M12 10.5V4.5a1.5 1.5 0 0 1 3 0V11"/><path d="M15 11V6.5a1.5 1.5 0 0 1 3 0V14a6 6 0 0 1-6 6h-1a6 6 0 0 1-5.2-3l-1.6-2.8a1.5 1.5 0 0 1 2.4-1.7L9 14.5V11"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+</svg>
 
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
 <nav id="navbar" aria-label="Hauptnavigation">
@@ -38,13 +68,13 @@
     <div class="nav-center" role="none">
       <ul class="nav-list" role="list">
         <li><a href="/#systeme">Systeme</a></li>
-        <li><a href="referenzen.html" aria-current="page">Referenzen</a></li>
+        <li><a href="/#methodik">Methode</a></li>
+        <li><a href="referenzen.html" aria-current="page">Systemkatalog</a></li>
         <li><a href="ueber-uns.html">Über uns</a></li>
-        <li><a href="persoenlichkeit.html">Persönlichkeit</a></li>
       </ul>
     </div>
     <div class="nav-right">
-      <button type="button" class="btn-primary js-open-booking" id="nav-demo-btn" data-source="nav">Kostenlose Beratungsstunde buchen</button>
+      <button type="button" class="btn-primary js-open-booking" id="nav-demo-btn" data-source="nav">Kostenlosen KI-Audit buchen</button>
       <button class="nav-hamburger" id="hamburger-btn" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-overlay">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
@@ -54,46 +84,824 @@
 <div id="mobile-overlay" role="dialog" aria-label="Navigation" aria-modal="true">
   <div class="mobile-nav-inner">
     <a href="/#systeme" class="mobile-link" data-close-menu>Systeme</a>
-    <a href="referenzen.html" class="mobile-link" data-close-menu>Referenzen</a>
+    <a href="/#methodik" class="mobile-link" data-close-menu>Methode</a>
+    <a href="referenzen.html" class="mobile-link" data-close-menu>Systemkatalog</a>
     <a href="ueber-uns.html" class="mobile-link" data-close-menu>Über uns</a>
-    <a href="persoenlichkeit.html" class="mobile-link" data-close-menu>Persönlichkeit</a>
     <a href="zusammenarbeit.html" class="mobile-link" data-close-menu>So arbeiten wir</a>
+    <a href="persoenlichkeit.html" class="mobile-link" data-close-menu>Persönlichkeit</a>
     <hr class="mobile-hr">
-    <button type="button" class="mobile-cta js-open-booking" id="mobile-demo-btn" data-source="mobile-nav">Kostenlose Beratungsstunde buchen</button>
+    <button type="button" class="mobile-cta js-open-booking" id="mobile-demo-btn" data-source="mobile-nav">Kostenlosen KI-Audit buchen</button>
   </div>
 </div>
 <main id="main">
 <section class="page-hero">
   <div class="page-hero__inner">
-    <span class="mono-label">Referenzen</span>
-    <h1>Beweisen, nicht behaupten</h1>
-    <p>Öffentliche Referenzierung nur mit Freigabe. Aktuell: Haller Immobilienberatung GmbH.</p>
+    <span class="mono-label">Systemkatalog</span>
+    <h1>Suchen Sie sich Ihr System aus</h1>
+    <p>Vierundzwanzig Systeme, die wir bauen. Jeder Eintrag nennt den Auslöser, den Ablauf, die Stelle für die menschliche Übergabe und ausdrücklich das, was das System nicht tut. Was passt, fragen Sie direkt an.</p>
   </div>
 </section>
-<section>
-  <div class="section-wrap case-story">
-    <span class="mono-label">Case Study</span>
-    <h2 class="section-h2">Haller Immobilienberatung GmbH</h2>
 
-    <h3>Ausgangslage</h3>
-    <p>Hohes Anfragevolumen über Immobilienportale. Qualifizierung und Terminabstimmung liefen manuell: Mails lesen, Rückfragen schreiben, Termine per Hin und Her finden. Kapazität im Büro ging in Vorarbeit statt in passende Erstgespräche.</p>
+<!-- Anatomie eines Eintrags. Erklaert einmal gross, was in den 24
+     Eintraegen darunter jeweils in vier Zeilen steht. Reines HTML und
+     CSS, kein Bild: die Produkt-Screenshots im Repo zeigen echte
+     Kontaktdaten und sind deshalb nicht verwendbar. -->
+<section class="band-linen" aria-labelledby="katalog-anatomie-title">
+  <div class="section-wrap">
+    <span class="mono-label">So liest sich ein Eintrag</span>
+    <h2 class="section-h2 section-h2--anchor" id="katalog-anatomie-title">Wie ein System bei Ihnen ankommt</h2>
+    <p class="section-sub">Jeder Eintrag im Katalog beantwortet dieselben vier Fragen. Am Beispiel des Systems, mit dem die meisten anfangen.</p>
 
-    <h3>Was gebaut wurde</h3>
-    <p>AQuT im Scope Paket 1: Portalanfragen erfassen und dem Objekt zuordnen, Kauf oder Miete erkennen, fehlende Angaben per automatischer Rückfrage klären, personalisierten Terminlink ausspielen, Termine in den Kalender schreiben und Anfragen in einer Übersicht durchsuchbar halten.</p>
-
-    <h3>Wie der Alltag läuft</h3>
-    <ol class="list-plain list-plain--ordered">
-      <li>Portalanfrage kommt rein und wird dem Objekt zugeordnet.</li>
-      <li>Das System qualifiziert und fragt nach, wenn Angaben fehlen.</li>
-      <li>Der Interessent bucht selbst; der Termin landet im Kalender des Büros.</li>
+    <ol class="anatomie">
+      <li class="anatomie__stage">
+        <span class="anatomie__ico"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg></span>
+        <span class="anatomie__label">Auslöser</span>
+        <p class="anatomie__what">Woran Sie Ihren eigenen Alltag wiedererkennen.</p>
+        <p class="anatomie__example">Eine Anfrage trifft ein, über Formular, Portal, Mail oder Telefon.</p>
+      </li>
+      <li class="anatomie__stage">
+        <span class="anatomie__ico"><svg class="ico" aria-hidden="true"><use href="#i-board"></use></svg></span>
+        <span class="anatomie__label">Ablauf</span>
+        <p class="anatomie__what">Vier Schritte, die das System selbst erledigt.</p>
+        <p class="anatomie__example">Aufnehmen, Rückfragen stellen, einordnen, weiterleiten.</p>
+      </li>
+      <li class="anatomie__stage">
+        <span class="anatomie__ico"><svg class="ico" aria-hidden="true"><use href="#i-hand"></use></svg></span>
+        <span class="anatomie__label">Übergabe</span>
+        <p class="anatomie__what">Die Stelle, an der ein Mensch entscheidet.</p>
+        <p class="anatomie__example">Sobald Bedarf, Budget und Zeitrahmen geklärt sind, geht der Vorgang an Ihr Team.</p>
+      </li>
+      <li class="anatomie__stage anatomie__stage--limit">
+        <span class="anatomie__ico"><svg class="ico" aria-hidden="true"><use href="#i-limit"></use></svg></span>
+        <span class="anatomie__label">Nicht im Zug</span>
+        <p class="anatomie__what">Was das System ausdrücklich nicht tut.</p>
+        <p class="anatomie__example">Keine Preiszusagen, keine Zusagen zu Verfügbarkeiten.</p>
+      </li>
     </ol>
 
-    <h3>Status</h3>
-    <p>Die Referenz ist öffentlich freigegeben. Eine belastbare Kennzahl aus dem Live-Betrieb (Stunden, Abschlussrate oder Antwortzeit) folgt, sobald sie gemessen und freigegeben ist. Bis dahin keine erfundenen Prozent- oder Euro-Claims zu diesem Kunden.</p>
+    <p class="anatomie__note">Die vierte Zeile ist die wichtigste. Ein System, das seine Grenze nicht kennt, gehört nicht in Ihren Betrieb.</p>
+  </div>
+</section>
 
-    <p style="margin-top:2rem;"><button type="button" class="btn-primary js-open-booking" data-source="referenzen">Kostenlose Beratungsstunde buchen</button></p>
-    <div class="case-slot case-slot--quiet" aria-hidden="true"></div>
-    <div class="case-slot case-slot--quiet" aria-hidden="true"></div>
+<section id="katalog" aria-labelledby="katalog-uebergreifend-title">
+  <div class="section-wrap">
+    <!-- Ohne JS bleibt das Suchfeld verborgen und alle Eintraege stehen sichtbar. -->
+    <div class="katalog__search" hidden>
+      <label for="katalog-suche">Katalog durchsuchen</label>
+      <input type="search" id="katalog-suche" placeholder="Zum Beispiel Angebot, Rechnung, WhatsApp, Onboarding" autocomplete="off">
+      <p class="katalog__status" id="katalog-status" role="status" aria-live="polite"></p>
+    </div>
+
+    <span class="mono-label">Im Detail</span>
+    <h2 class="section-h2" id="katalog-flaggschiffe-title">Die fünf, mit denen die meisten anfangen</h2>
+    <p class="section-sub">Jedes davon hat eine eigene Seite mit Ablauf, Übergabepunkt und Grenzen.</p>
+    <div class="system-tiles">
+      <article class="system-tile" style="--tile-image: url('images/AMS%20-%20Use%20Case.png')">
+        <span class="system-tile__ph" aria-hidden="true"></span>
+        <span class="system-tile__code">ANF</span>
+        <h3 class="system-tile__title"><a href="system-anfragen-qualifizieren.html">Anfragen qualifizieren</a></h3>
+        <p class="system-tile__trigger">Eine Anfrage trifft ein, über Formular, Portal, Mail oder Telefon.</p>
+        <ul class="system-tile__tools"><li><img src="images/n8n-color.svg" alt="n8n" width="80" height="24" loading="lazy" decoding="async"></li><li><img src="images/supabase.svg" alt="Supabase" width="80" height="24" loading="lazy" decoding="async"></li></ul>
+      </article>
+      <article class="system-tile">
+        <span class="system-tile__ph" aria-hidden="true"></span>
+        <span class="system-tile__code">SUP</span>
+        <h3 class="system-tile__title"><a href="system-support-agent.html">Support-Agent für Chat und Telefon</a></h3>
+        <p class="system-tile__trigger">Ein Kunde meldet sich außerhalb der Bürozeiten oder während im Büro bereits eine Warteschlange steht.</p>
+        <ul class="system-tile__tools"><li><img src="images/n8n-color.svg" alt="n8n" width="80" height="24" loading="lazy" decoding="async"></li><li><img src="images/supabase.svg" alt="Supabase" width="80" height="24" loading="lazy" decoding="async"></li></ul>
+      </article>
+      <article class="system-tile" style="--tile-image: url('images/Onboarding%20Automation%20-%20Use%20Case.png')">
+        <span class="system-tile__ph" aria-hidden="true"></span>
+        <span class="system-tile__code">ONB</span>
+        <h3 class="system-tile__title"><a href="system-onboarding.html">Onboarding von Kunden und Mitarbeitenden</a></h3>
+        <p class="system-tile__trigger">Ein Vertrag ist unterschrieben oder eine Zusage ist erteilt.</p>
+        <ul class="system-tile__tools"><li><img src="images/n8n-color.svg" alt="n8n" width="80" height="24" loading="lazy" decoding="async"></li><li><img src="images/supabase.svg" alt="Supabase" width="80" height="24" loading="lazy" decoding="async"></li></ul>
+      </article>
+      <article class="system-tile">
+        <span class="system-tile__ph" aria-hidden="true"></span>
+        <span class="system-tile__code">DOK</span>
+        <h3 class="system-tile__title"><a href="system-dokumente-auslesen.html">Dokumente auslesen und einpflegen</a></h3>
+        <p class="system-tile__trigger">Ein PDF, ein Scan oder eine Mail mit Anhang trifft ein.</p>
+        <ul class="system-tile__tools"><li><img src="images/n8n-color.svg" alt="n8n" width="80" height="24" loading="lazy" decoding="async"></li><li><img src="images/supabase.svg" alt="Supabase" width="80" height="24" loading="lazy" decoding="async"></li></ul>
+      </article>
+      <article class="system-tile">
+        <span class="system-tile__ph" aria-hidden="true"></span>
+        <span class="system-tile__code">REP</span>
+        <h3 class="system-tile__title"><a href="system-reporting.html">Reporting und Wochenlage</a></h3>
+        <p class="system-tile__trigger">Ein fester Termin in der Woche, oder ein vereinbarter Schwellenwert wird überschritten.</p>
+        <ul class="system-tile__tools"><li><img src="images/n8n-color.svg" alt="n8n" width="80" height="24" loading="lazy" decoding="async"></li><li><img src="images/supabase.svg" alt="Supabase" width="80" height="24" loading="lazy" decoding="async"></li></ul>
+      </article>
+    </div>
+
+    <span class="mono-label" style="margin-top:4rem;">Branchenübergreifend</span>
+    <h2 class="section-h2" id="katalog-uebergreifend-title">Sieben Systeme, die überall greifen</h2>
+    <p class="section-sub">Diese Vorgänge sehen in jedem Betrieb ähnlich aus. Nur die Bezeichnungen und die angebundenen Systeme unterscheiden sich.</p>
+    <ul class="akte-register">
+      <li class="akte-item" data-search="anfragen qualifizieren eine anfrage trifft ein, über formular, portal, mail oder telefon. formular, postfach, telefonie, crm anf"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">ANF</span>
+          <span class="akte__title">Anfragen qualifizieren</span>
+          <span class="akte__trigger">Auslöser: Eine Anfrage trifft ein, über Formular, Portal, Mail oder Telefon.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Aufnehmen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Rückfragen stellen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Einordnen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Weiterleiten</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Sobald Bedarf, Budget und Zeitrahmen geklärt sind, geht der Vorgang mit vollständiger Notiz an einen Menschen.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-form"></use></svg>Formular</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>Postfach</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-phone"></use></svg>Telefonie</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-crm"></use></svg>CRM</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine Preiszusagen, keine Vertragsauskünfte, keine Absage an Interessenten ohne menschliche Freigabe.
+          </p>
+          <p class="akte__cta">
+            <a class="akte__cta-btn" href="system-anfragen-qualifizieren.html">System im Detail ansehen</a>
+          </p>
+        </div>
+      </details></li>
+      <li class="akte-item" data-search="support-agent für chat und telefon ein kunde meldet sich außerhalb der bürozeiten oder während im büro bereits eine warteschlange steht. telefonie, chat, postfach, ticketsystem, wissensbasis sup"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">SUP</span>
+          <span class="akte__title">Support-Agent für Chat und Telefon</span>
+          <span class="akte__trigger">Auslöser: Ein Kunde meldet sich außerhalb der Bürozeiten oder während im Büro bereits eine Warteschlange steht.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Anliegen aufnehmen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Gegen die Wissensbasis prüfen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Beantworten oder eskalieren</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Protokoll ablegen</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Ab der zweiten Rückfrage ohne belastbare Antwort übernimmt ein Mensch, mit vollständigem Gesprächsverlauf.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-phone"></use></svg>Telefonie</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-chat"></use></svg>Chat</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>Postfach</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-board"></use></svg>Ticketsystem</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-doc"></use></svg>Wissensbasis</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine Kulanzentscheidungen, keine Zusagen zu Preisen und Fristen, keine Auskunft zu laufenden Verträgen.
+          </p>
+          <p class="akte__cta">
+            <a class="akte__cta-btn" href="system-support-agent.html">System im Detail ansehen</a>
+          </p>
+        </div>
+      </details></li>
+      <li class="akte-item" data-search="onboarding von kunden und mitarbeitenden ein vertrag ist unterschrieben oder eine zusage ist erteilt. postfach, kalender, dateiablage, crm oder personalsystem onb"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">ONB</span>
+          <span class="akte__title">Onboarding von Kunden und Mitarbeitenden</span>
+          <span class="akte__trigger">Auslöser: Ein Vertrag ist unterschrieben oder eine Zusage ist erteilt.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Unterlagen anfordern</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Vollständigkeit prüfen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Zugänge und Termine anlegen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Status melden</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Fehlt eine Unterlage nach zwei Erinnerungen, landet der Fall auf dem Tisch der zuständigen Person.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>Postfach</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-calendar"></use></svg>Kalender</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-files"></use></svg>Dateiablage</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-crm"></use></svg>CRM oder Personalsystem</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine Bonitäts- oder Eignungsentscheidungen. Gesundheits- und Bewerbungsdaten nur nach gesonderter Vereinbarung.
+          </p>
+          <p class="akte__cta">
+            <a class="akte__cta-btn" href="system-onboarding.html">System im Detail ansehen</a>
+          </p>
+        </div>
+      </details></li>
+      <li class="akte-item" data-search="ticketing und eskalation eine meldung landet im postfach, per whatsapp oder über ein formular. postfach, whatsapp business, ticketsystem, partnerverzeichnis tic"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">TIC</span>
+          <span class="akte__title">Ticketing und Eskalation</span>
+          <span class="akte__trigger">Auslöser: Eine Meldung landet im Postfach, per WhatsApp oder über ein Formular.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Erfassen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Kategorisieren</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Priorisieren</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Zuständigkeit zuweisen</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Alles ab der vereinbarten Dringlichkeitsstufe geht sofort und zusätzlich per Anruf an die Bereitschaft.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>Postfach</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-chat"></use></svg>WhatsApp Business</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-board"></use></svg>Ticketsystem</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-crm"></use></svg>Partnerverzeichnis</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine eigenständige Beauftragung von Partnerbetrieben oberhalb eines vereinbarten Betrags.
+          </p>
+          <p class="akte__cta">
+            <button type="button" class="akte__cta-btn js-open-booking" data-source="katalog-TIC">Dieses System anfragen</button>
+          </p>
+        </div>
+      </details></li>
+      <li class="akte-item" data-search="dokumente auslesen und einpflegen ein pdf, ein scan oder eine mail mit anhang trifft ein. postfach, dateiablage, crm, warenwirtschaft, buchhaltung dok"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">DOK</span>
+          <span class="akte__title">Dokumente auslesen und einpflegen</span>
+          <span class="akte__trigger">Auslöser: Ein PDF, ein Scan oder eine Mail mit Anhang trifft ein.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Dokumenttyp erkennen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Felder auslesen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Gegen den Bestand prüfen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">In das Zielsystem schreiben</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Bei unsicherer Erkennung wird nicht geschrieben, sondern zur Prüfung vorgelegt.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>Postfach</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-files"></use></svg>Dateiablage</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-crm"></use></svg>CRM</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-box"></use></svg>Warenwirtschaft</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-table"></use></svg>Buchhaltung</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine automatische Freigabe von Zahlungen, keine Änderung bestehender Stammdaten ohne Bestätigung.
+          </p>
+          <p class="akte__cta">
+            <a class="akte__cta-btn" href="system-dokumente-auslesen.html">System im Detail ansehen</a>
+          </p>
+        </div>
+      </details></li>
+      <li class="akte-item" data-search="content-erstellung mit freigabe ein neues objekt, produkt oder thema steht an. crm oder produktdatenbank, bildablage, social- und newsletter-werkzeuge con"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">CON</span>
+          <span class="akte__title">Content-Erstellung mit Freigabe</span>
+          <span class="akte__trigger">Auslöser: Ein neues Objekt, Produkt oder Thema steht an.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Daten sammeln</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Entwurf erzeugen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Gegen Ihre Vorgaben prüfen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Zur Freigabe vorlegen</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Nichts geht ungeprüft nach außen. Jeder Entwurf braucht eine menschliche Freigabe.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-crm"></use></svg>CRM oder Produktdatenbank</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-files"></use></svg>Bildablage</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>Social- und Newsletter-Werkzeuge</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine Aussagen zu Preisen oder Rechtslagen, keine Zusicherungen, keine Veröffentlichung ohne Freigabe.
+          </p>
+          <p class="akte__cta">
+            <button type="button" class="akte__cta-btn js-open-booking" data-source="katalog-CON">Dieses System anfragen</button>
+          </p>
+        </div>
+      </details></li>
+      <li class="akte-item" data-search="reporting und wochenlage ein fester termin in der woche, oder ein vereinbarter schwellenwert wird überschritten. crm, ticketsystem, buchhaltung, tabellen rep"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">REP</span>
+          <span class="akte__title">Reporting und Wochenlage</span>
+          <span class="akte__trigger">Auslöser: Ein fester Termin in der Woche, oder ein vereinbarter Schwellenwert wird überschritten.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Quellen zusammenführen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Auffälligkeiten markieren</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Bericht erzeugen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Verteilen</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Der Bericht benennt Auffälligkeiten und Fragen. Entschieden wird im Team.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-crm"></use></svg>CRM</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-board"></use></svg>Ticketsystem</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-table"></use></svg>Buchhaltung</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-table"></use></svg>Tabellen</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine Bewertung einzelner Mitarbeitender, keine Leistungsprofile von Personen.
+          </p>
+          <p class="akte__cta">
+            <a class="akte__cta-btn" href="system-reporting.html">System im Detail ansehen</a>
+          </p>
+        </div>
+      </details></li>
+    </ul>
+
+    <div class="branchen-wrap">
+      <span class="mono-label">Nach Branche</span>
+      <h2 class="section-h2" id="katalog-branchen-title">Wie das im Alltag aussieht</h2>
+      <p class="section-sub">Dieselben Prinzipien, übersetzt in die Sprache und die Werkzeuge Ihrer Branche.</p>
+    <div class="branchen" id="branchen">
+      <div class="branchen__tablist" role="tablist" aria-label="Branchen">
+        <button type="button" class="branchen__tab" role="tab" id="branche-tab-immobilien" aria-controls="branche-panel-immobilien" aria-selected="true" tabindex="0">Immobilien</button>
+        <button type="button" class="branchen__tab" role="tab" id="branche-tab-handwerk" aria-controls="branche-panel-handwerk" aria-selected="false" tabindex="-1">Handwerk und Bau</button>
+        <button type="button" class="branchen__tab" role="tab" id="branche-tab-handel" aria-controls="branche-panel-handel" aria-selected="false" tabindex="-1">Handel und Großhandel</button>
+        <button type="button" class="branchen__tab" role="tab" id="branche-tab-beratung" aria-controls="branche-panel-beratung" aria-selected="false" tabindex="-1">Agenturen und Beratung</button>
+      </div>
+      <section class="branchen__panel" id="branche-panel-immobilien" role="tabpanel" aria-labelledby="branche-tab-immobilien">
+        <h3 class="branchen__panel-title" id="branche-immobilien">Maklerbüros und Hausverwaltungen</h3>
+        <p class="section-sub">Unsere Referenzbranche. Hier sind die Prozesse am dichtesten dokumentiert.</p>
+    <ul class="akte-register">
+      <li class="akte-item" data-search="portalanfragen qualifizieren eine anfrage aus einem immobilienportal oder von der eigenen website trifft ein. portale, website-formular, onoffice oder propstack, kalender imm-a"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">IMM-A</span>
+          <span class="akte__title">Portalanfragen qualifizieren</span>
+          <span class="akte__trigger">Auslöser: Eine Anfrage aus einem Immobilienportal oder von der eigenen Website trifft ein.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Anfrage aufnehmen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Bedarf, Finanzierungsstand und Zeitrahmen erfragen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Einordnen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Termin vorbereiten</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Nur Interessenten mit geklärtem Bedarf und Zeitrahmen landen im Kalender Ihrer Berater.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-form"></use></svg>Portale</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-form"></use></svg>Website-Formular</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-crm"></use></svg>onOffice oder Propstack</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-calendar"></use></svg>Kalender</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine Bonitätsprüfung, keine Absage an Interessenten, keine Aussage zu Kaufpreisen oder Provisionen.
+          </p>
+          <p class="akte__cta">
+            <button type="button" class="akte__cta-btn js-open-booking" data-source="katalog-IMM-A">Dieses System anfragen</button>
+          </p>
+        </div>
+      </details></li>
+      <li class="akte-item" data-search="mieter-support und störungsmeldungen ein mieter meldet einen schaden per mail, telefon oder whatsapp. postfach, whatsapp business, ticketsystem, partnerverzeichnis imm-b"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">IMM-B</span>
+          <span class="akte__title">Mieter-Support und Störungsmeldungen</span>
+          <span class="akte__trigger">Auslöser: Ein Mieter meldet einen Schaden per Mail, Telefon oder WhatsApp.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Meldung aufnehmen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Dringlichkeit einordnen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Objekt und Zuständigkeit zuordnen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Partnerbetrieb oder Bereitschaft informieren</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Notfälle wie Wasser oder Heizungsausfall gehen sofort und zusätzlich per Anruf an die Bereitschaft.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>Postfach</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-chat"></use></svg>WhatsApp Business</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-board"></use></svg>Ticketsystem</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-crm"></use></svg>Partnerverzeichnis</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine Kostenzusagen, keine Beauftragung oberhalb des vereinbarten Betrags, keine Aussagen zur Mietminderung.
+          </p>
+          <p class="akte__cta">
+            <button type="button" class="akte__cta-btn js-open-booking" data-source="katalog-IMM-B">Dieses System anfragen</button>
+          </p>
+        </div>
+      </details></li>
+      <li class="akte-item" data-search="aktenpflege im crm daten liegen parallel in portalen, im postfach und in tabellen. onoffice, propstack, portale, postfach imm-c"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">IMM-C</span>
+          <span class="akte__title">Aktenpflege im CRM</span>
+          <span class="akte__trigger">Auslöser: Daten liegen parallel in Portalen, im Postfach und in Tabellen.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Quellen anbinden</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Objekt- und Kontaktdaten erfassen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Gegen den Bestand abgleichen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Akte aktualisieren</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Bei Widersprüchen zwischen zwei Quellen wird nicht überschrieben, sondern vorgelegt.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-crm"></use></svg>onOffice</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-crm"></use></svg>Propstack</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-form"></use></svg>Portale</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>Postfach</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine Löschung von Datensätzen, keine Änderung an Eigentümerdaten ohne Bestätigung.
+          </p>
+          <p class="akte__cta">
+            <button type="button" class="akte__cta-btn js-open-booking" data-source="katalog-IMM-C">Dieses System anfragen</button>
+          </p>
+        </div>
+      </details></li>
+      <li class="akte-item" data-search="exposé- und objekttexte ein neues objekt wird aufgenommen. crm, bildablage, portale imm-d"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">IMM-D</span>
+          <span class="akte__title">Exposé- und Objekttexte</span>
+          <span class="akte__trigger">Auslöser: Ein neues Objekt wird aufgenommen.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Objektdaten und Grundrisse auslesen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Entwurf erzeugen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Gegen Ihre Textvorgaben prüfen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Zur Freigabe vorlegen</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Jeder Text geht erst nach Freigabe durch Ihr Team in die Vermarktung.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-crm"></use></svg>CRM</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-files"></use></svg>Bildablage</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-form"></use></svg>Portale</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine Angaben zu Energiewerten, Baujahr oder Flächen, die nicht aus einer geprüften Quelle stammen.
+          </p>
+          <p class="akte__cta">
+            <button type="button" class="akte__cta-btn js-open-booking" data-source="katalog-IMM-D">Dieses System anfragen</button>
+          </p>
+        </div>
+      </details></li>
+      <li class="akte-item" data-search="markt- und akquisesignale sie wollen früher erfahren, wo sich im bestandsgebiet etwas bewegt. öffentliche portale und register, crm, tabellen imm-e"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">IMM-E</span>
+          <span class="akte__title">Markt- und Akquisesignale</span>
+          <span class="akte__trigger">Auslöser: Sie wollen früher erfahren, wo sich im Bestandsgebiet etwas bewegt.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Öffentliche Quellen beobachten</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Signale filtern</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Nach Relevanz sortieren</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Wochenübersicht zustellen</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Die Übersicht schlägt vor, wen Sie ansprechen könnten. Die Ansprache bleibt bei Ihnen.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-form"></use></svg>Öffentliche Portale und Register</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-crm"></use></svg>CRM</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-table"></use></svg>Tabellen</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine automatisierte Kaltansprache, keine Verarbeitung von Daten aus unzulässigen Quellen.
+          </p>
+          <p class="akte__cta">
+            <button type="button" class="akte__cta-btn js-open-booking" data-source="katalog-IMM-E">Dieses System anfragen</button>
+          </p>
+        </div>
+      </details></li>
+    </ul>
+      <p class="branchen__note"><a href="ams.html">AMS im Detail ansehen</a></p>
+      </section>
+      <section class="branchen__panel" id="branche-panel-handwerk" role="tabpanel" aria-labelledby="branche-tab-handwerk">
+        <h3 class="branchen__panel-title" id="branche-handwerk">SHK, Elektro, Bau und Ausbau</h3>
+        <p class="section-sub">Viele kurze Vorgänge, wenig Zeit im Büro und ein Team, das überwiegend auf der Baustelle ist.</p>
+    <ul class="akte-register">
+      <li class="akte-item" data-search="angebotsanfragen aufnehmen eine anfrage kommt per telefon oder formular, oft während niemand im büro ist. telefonie, formular, kalender, handwerkersoftware hwk-a"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">HWK-A</span>
+          <span class="akte__title">Angebotsanfragen aufnehmen</span>
+          <span class="akte__trigger">Auslöser: Eine Anfrage kommt per Telefon oder Formular, oft während niemand im Büro ist.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Anliegen und Objekt aufnehmen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Leistungsart und Dringlichkeit klären</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Auf Machbarkeit im Gebiet prüfen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Ortstermin vorschlagen</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Der fertige Vorgang liegt morgens mit allen Angaben zur Kalkulation bereit.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-phone"></use></svg>Telefonie</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-form"></use></svg>Formular</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-calendar"></use></svg>Kalender</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-tool"></use></svg>Handwerkersoftware</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine Preisangaben, keine Terminzusagen ohne Abgleich mit Ihrer Disposition.
+          </p>
+          <p class="akte__cta">
+            <button type="button" class="akte__cta-btn js-open-booking" data-source="katalog-HWK-A">Dieses System anfragen</button>
+          </p>
+        </div>
+      </details></li>
+      <li class="akte-item" data-search="terminfenster und disposition ein termin fällt aus oder ein notdienst schiebt sich dazwischen. kalender, handwerkersoftware, sms und mail hwk-b"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">HWK-B</span>
+          <span class="akte__title">Terminfenster und Disposition</span>
+          <span class="akte__trigger">Auslöser: Ein Termin fällt aus oder ein Notdienst schiebt sich dazwischen.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Betroffene Termine erkennen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Kunden informieren</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Ersatzfenster anbieten</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Kalender nachziehen</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Verschiebungen bei Großaufträgen entscheidet immer die Disposition.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-calendar"></use></svg>Kalender</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-tool"></use></svg>Handwerkersoftware</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>SMS und Mail</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine eigenständige Umplanung von Terminen mit Fristbindung oder Abnahme.
+          </p>
+          <p class="akte__cta">
+            <button type="button" class="akte__cta-btn js-open-booking" data-source="katalog-HWK-B">Dieses System anfragen</button>
+          </p>
+        </div>
+      </details></li>
+      <li class="akte-item" data-search="nachträge und aufmaß dokumentieren auf der baustelle entsteht mehraufwand, der später abgerechnet werden muss. mobile erfassung, dateiablage, handwerkersoftware hwk-c"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">HWK-C</span>
+          <span class="akte__title">Nachträge und Aufmaß dokumentieren</span>
+          <span class="akte__trigger">Auslöser: Auf der Baustelle entsteht Mehraufwand, der später abgerechnet werden muss.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Foto und Sprachnotiz vom Monteur aufnehmen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Positionen erkennen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Dem Auftrag zuordnen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Nachtrag zur Prüfung vorlegen</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Der Nachtrag geht erst nach Prüfung durch die Bauleitung an den Kunden.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-tool"></use></svg>Mobile Erfassung</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-files"></use></svg>Dateiablage</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-tool"></use></svg>Handwerkersoftware</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine Preisbildung, keine Abrechnung, keine Kommunikation von Mehrkosten an den Kunden.
+          </p>
+          <p class="akte__cta">
+            <button type="button" class="akte__cta-btn js-open-booking" data-source="katalog-HWK-C">Dieses System anfragen</button>
+          </p>
+        </div>
+      </details></li>
+      <li class="akte-item" data-search="reklamationen und gewährleistung ein kunde meldet einen mangel nach der abnahme. postfach, handwerkersoftware, dateiablage hwk-d"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">HWK-D</span>
+          <span class="akte__title">Reklamationen und Gewährleistung</span>
+          <span class="akte__trigger">Auslöser: Ein Kunde meldet einen Mangel nach der Abnahme.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Meldung und Objekt zuordnen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Auftragshistorie heraussuchen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Gewährleistungsfrist prüfen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Vorgang mit Akte übergeben</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Die Bewertung, ob ein Mangel anerkannt wird, trifft immer ein Mensch.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>Postfach</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-tool"></use></svg>Handwerkersoftware</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-files"></use></svg>Dateiablage</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine Anerkennung oder Ablehnung von Mängeln, keine Zusagen zu Nachbesserung oder Kosten.
+          </p>
+          <p class="akte__cta">
+            <button type="button" class="akte__cta-btn js-open-booking" data-source="katalog-HWK-D">Dieses System anfragen</button>
+          </p>
+        </div>
+      </details></li>
+    </ul>
+      </section>
+      <section class="branchen__panel" id="branche-panel-handel" role="tabpanel" aria-labelledby="branche-tab-handel">
+        <h3 class="branchen__panel-title" id="branche-handel">Handel, Großhandel und E-Commerce</h3>
+        <p class="section-sub">Hohes Belegvolumen, viele gleichförmige Rückfragen und Stammdaten, die nie ganz aktuell sind.</p>
+    <ul class="akte-register">
+      <li class="akte-item" data-search="bestell- und lieferantenpost bestellungen und auftragsbestätigungen kommen als pdf oder mail in unterschiedlichen formaten. postfach, warenwirtschaft, dateiablage hdl-a"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">HDL-A</span>
+          <span class="akte__title">Bestell- und Lieferantenpost</span>
+          <span class="akte__trigger">Auslöser: Bestellungen und Auftragsbestätigungen kommen als PDF oder Mail in unterschiedlichen Formaten.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Beleg erkennen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Positionen auslesen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Gegen die Bestellung prüfen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">In die Warenwirtschaft schreiben</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Abweichungen bei Menge, Preis oder Termin gehen an den Einkauf, nicht ins System.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>Postfach</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-box"></use></svg>Warenwirtschaft</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-files"></use></svg>Dateiablage</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine Freigabe von Zahlungen, keine Bestellauslösung, keine Änderung von Konditionen.
+          </p>
+          <p class="akte__cta">
+            <button type="button" class="akte__cta-btn js-open-booking" data-source="katalog-HDL-A">Dieses System anfragen</button>
+          </p>
+        </div>
+      </details></li>
+      <li class="akte-item" data-search="retouren und reklamationen ein kunde meldet eine rücksendung oder einen defekt. shop, warenwirtschaft, versanddienstleister, postfach hdl-b"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">HDL-B</span>
+          <span class="akte__title">Retouren und Reklamationen</span>
+          <span class="akte__trigger">Auslöser: Ein Kunde meldet eine Rücksendung oder einen Defekt.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Bestellung zuordnen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Fall kategorisieren</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Rücksendeunterlagen erzeugen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Status an den Kunden melden</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Kulanz und Erstattung oberhalb des vereinbarten Betrags entscheidet ein Mensch.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-box"></use></svg>Shop</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-box"></use></svg>Warenwirtschaft</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-box"></use></svg>Versanddienstleister</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>Postfach</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine Erstattungen, keine Gutschriften, keine Zusagen zu Fristen außerhalb Ihrer Regeln.
+          </p>
+          <p class="akte__cta">
+            <button type="button" class="akte__cta-btn js-open-booking" data-source="katalog-HDL-B">Dieses System anfragen</button>
+          </p>
+        </div>
+      </details></li>
+      <li class="akte-item" data-search="artikelstammdaten und produkttexte ein lieferant liefert neue artikel oder aktualisiert daten. produktdatenbank, shop, lieferantendateien hdl-c"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">HDL-C</span>
+          <span class="akte__title">Artikelstammdaten und Produkttexte</span>
+          <span class="akte__trigger">Auslöser: Ein Lieferant liefert neue Artikel oder aktualisiert Daten.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Lieferantendaten einlesen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Auf Ihr Schema übersetzen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Produkttext entwerfen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Zur Freigabe vorlegen</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Neue Artikel gehen erst nach Sichtung live, nicht automatisch.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-box"></use></svg>Produktdatenbank</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-box"></use></svg>Shop</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-files"></use></svg>Lieferantendateien</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine Preispflege, keine Angaben zu Sicherheit, Konformität oder Inhaltsstoffen ohne geprüfte Quelle.
+          </p>
+          <p class="akte__cta">
+            <button type="button" class="akte__cta-btn js-open-booking" data-source="katalog-HDL-C">Dieses System anfragen</button>
+          </p>
+        </div>
+      </details></li>
+      <li class="akte-item" data-search="auskunft zum bestellstatus „wo ist meine lieferung“ bindet täglich zeit im kundenservice. shop, versanddienstleister, chat und postfach hdl-d"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">HDL-D</span>
+          <span class="akte__title">Auskunft zum Bestellstatus</span>
+          <span class="akte__trigger">Auslöser: „Wo ist meine Lieferung“ bindet täglich Zeit im Kundenservice.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Kunde und Bestellung identifizieren</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Versandstatus abfragen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Verständlich antworten</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Bei Problemen eskalieren</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Verspätungen und Schadensfälle übernimmt sofort der Kundenservice.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-box"></use></svg>Shop</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-box"></use></svg>Versanddienstleister</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>Chat und Postfach</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine Zusagen zu neuen Lieferterminen, keine Entschädigungen, keine Stornierungen.
+          </p>
+          <p class="akte__cta">
+            <button type="button" class="akte__cta-btn js-open-booking" data-source="katalog-HDL-D">Dieses System anfragen</button>
+          </p>
+        </div>
+      </details></li>
+    </ul>
+      </section>
+      <section class="branchen__panel" id="branche-panel-beratung" role="tabpanel" aria-labelledby="branche-tab-beratung">
+        <h3 class="branchen__panel-title" id="branche-beratung">Agenturen, Coaches und Beratungen</h3>
+        <p class="section-sub">Wenig Verwaltung im Team, dafür viel Abstimmung rund um Anfragen, Onboarding und Projektstatus.</p>
+    <ul class="akte-register">
+      <li class="akte-item" data-search="anfragen qualifizieren und erstgespräch vorbereiten eine anfrage kommt über website, empfehlung oder ein soziales netzwerk. website-formular, kalender, crm agt-a"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">AGT-A</span>
+          <span class="akte__title">Anfragen qualifizieren und Erstgespräch vorbereiten</span>
+          <span class="akte__trigger">Auslöser: Eine Anfrage kommt über Website, Empfehlung oder ein soziales Netzwerk.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Anliegen und Ausgangslage erfragen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Passung zu Ihrem Angebot prüfen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Termin vorschlagen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Gesprächsnotiz vorbereiten</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Sie gehen mit einer fertigen Vorbereitung ins Gespräch, nicht mit einer leeren Seite.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-form"></use></svg>Website-Formular</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-calendar"></use></svg>Kalender</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-crm"></use></svg>CRM</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine Honorarangaben, keine Zusagen zu Kapazität oder Startterminen.
+          </p>
+          <p class="akte__cta">
+            <button type="button" class="akte__cta-btn js-open-booking" data-source="katalog-AGT-A">Dieses System anfragen</button>
+          </p>
+        </div>
+      </details></li>
+      <li class="akte-item" data-search="kunden-onboarding ein angebot ist angenommen. postfach, kalender, projektwerkzeug, dateiablage agt-b"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">AGT-B</span>
+          <span class="akte__title">Kunden-Onboarding</span>
+          <span class="akte__trigger">Auslöser: Ein Angebot ist angenommen.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Unterlagen und Zugänge anfordern</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Vollständigkeit prüfen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Projektraum und Termine anlegen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Startfreigabe melden</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Fehlt nach zwei Erinnerungen etwas, meldet sich das System bei Ihnen statt beim Kunden.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>Postfach</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-calendar"></use></svg>Kalender</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-board"></use></svg>Projektwerkzeug</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-files"></use></svg>Dateiablage</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine Vertragsänderungen, keine Aufnahme von Zahlungsdaten, keine Zusagen zum Leistungsumfang.
+          </p>
+          <p class="akte__cta">
+            <button type="button" class="akte__cta-btn js-open-booking" data-source="katalog-AGT-B">Dieses System anfragen</button>
+          </p>
+        </div>
+      </details></li>
+      <li class="akte-item" data-search="projektadministration und statusmeldungen kunden fragen nach dem stand, während das team an der arbeit ist. projektwerkzeug, zeiterfassung, postfach agt-c"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">AGT-C</span>
+          <span class="akte__title">Projektadministration und Statusmeldungen</span>
+          <span class="akte__trigger">Auslöser: Kunden fragen nach dem Stand, während das Team an der Arbeit ist.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Stände aus dem Projektwerkzeug lesen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Offene Punkte markieren</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Statusmeldung entwerfen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Zur Freigabe vorlegen</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Jede Meldung an den Kunden geht erst nach Ihrer Freigabe raus.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-board"></use></svg>Projektwerkzeug</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-table"></use></svg>Zeiterfassung</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>Postfach</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine Aussagen zu Terminen, Budget oder Mehraufwand ohne Freigabe.
+          </p>
+          <p class="akte__cta">
+            <button type="button" class="akte__cta-btn js-open-booking" data-source="katalog-AGT-C">Dieses System anfragen</button>
+          </p>
+        </div>
+      </details></li>
+      <li class="akte-item" data-search="content-produktion mit freigabe ein thema für newsletter, beitrag oder fallbeispiel steht an. notizen, dateiablage, newsletter- und social-werkzeuge agt-d"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">AGT-D</span>
+          <span class="akte__title">Content-Produktion mit Freigabe</span>
+          <span class="akte__trigger">Auslöser: Ein Thema für Newsletter, Beitrag oder Fallbeispiel steht an.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Material und Notizen sammeln</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Entwurf in Ihrer Tonalität erzeugen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Gegen Ihre Vorgaben prüfen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Zur Freigabe vorlegen</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Nichts wird ohne Ihre Freigabe veröffentlicht oder versendet.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-doc"></use></svg>Notizen</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-files"></use></svg>Dateiablage</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>Newsletter- und Social-Werkzeuge</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine Kundennamen ohne Mandat, keine Zahlen ohne Beleg, keine Veröffentlichung ohne Freigabe.
+          </p>
+          <p class="akte__cta">
+            <button type="button" class="akte__cta-btn js-open-booking" data-source="katalog-AGT-D">Dieses System anfragen</button>
+          </p>
+        </div>
+      </details></li>
+    </ul>
+      </section>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="katalog-fragen-title">
+  <div class="section-wrap">
+    <span class="mono-label">Vor der Entscheidung</span>
+    <h2 class="section-h2" id="katalog-fragen-title">Fragen, die Sie jedem Anbieter stellen sollten</h2>
+    <p class="section-sub">Nicht nur uns. Wenn jemand bei einer davon ins Schwimmen kommt, wissen Sie genug.</p>
+    <ul class="akte-register akte-register--fragen">
+      <li><details class="akte akte--frage">
+        <summary class="akte__head">
+          <span class="akte__title">Wo genau liegen unsere Daten, und wer verarbeitet sie?</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+        </summary>
+        <div class="akte__body"><p>Bei uns: Hosting innerhalb der EU, Datenbank in Frankfurt, AVV nach Art. 28 DSGVO. Wer das nicht in einem Satz beantworten kann, weiß es selbst nicht.</p></div>
+      </details></li>
+      <li><details class="akte akte--frage">
+        <summary class="akte__head">
+          <span class="akte__title">Was passiert mit dem System, wenn wir die Zusammenarbeit beenden?</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+        </summary>
+        <div class="akte__body"><p>Bei uns bleibt es stehen. Dokumentierte Übergabe, kein Lizenzschlüssel, den wir abschalten.</p></div>
+      </details></li>
+      <li><details class="akte akte--frage">
+        <summary class="akte__head">
+          <span class="akte__title">An welcher Stelle entscheidet die Software, und an welcher ein Mensch?</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+        </summary>
+        <div class="akte__body"><p>Jeder Eintrag oben nennt den Freigabepunkt und das, was das System nicht tut. Wer diese Grenze nicht benennen kann, hat sie nicht gezogen.</p></div>
+      </details></li>
+      <li><details class="akte akte--frage">
+        <summary class="akte__head">
+          <span class="akte__title">Wer haftet, wenn das System einen Fehler macht?</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+        </summary>
+        <div class="akte__body"><p>Deshalb entscheidet bei uns nichts autonom, was jemand verantworten muss. Alles mit Konsequenz bekommt vorher eine menschliche Freigabe.</p></div>
+      </details></li>
+      <li><details class="akte akte--frage">
+        <summary class="akte__head">
+          <span class="akte__title">Was passiert, wenn Ihr Anbieter die Preise verdoppelt?</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+        </summary>
+        <div class="akte__body"><p>Wir bauen ohne Vendor-Lock-in, wo es geht. Austauschbare Bausteine statt einer Plattform, die Sie später nicht verlassen können.</p></div>
+      </details></li>
+      <li><details class="akte akte--frage">
+        <summary class="akte__head">
+          <span class="akte__title">Können wir nachvollziehen, was das System entschieden hat, und warum?</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+        </summary>
+        <div class="akte__body"><p>Jeder Vorgang wird protokolliert und ist im Zielsystem nachvollziehbar. Ein System, dessen Entscheidungen niemand prüfen kann, ist kein System, sondern ein Risiko.</p></div>
+      </details></li>
+    </ul>
+  </div>
+</section>
+
+<!-- Gruener Anker dieser Seite. Die Ehrlichkeit darueber, was hier
+     belegt ist und was nicht, ist das eigentliche Argument des
+     Katalogs, deshalb traegt sie die dunkle Flaeche. -->
+<section class="surface-green" aria-labelledby="katalog-beleg-title">
+  <div class="section-wrap">
+    <span class="mono-label">Beweislage</span>
+    <h2 class="section-h2" id="katalog-beleg-title">Was hier steht und was nicht</h2>
+    <p class="section-sub">Die Einträge beschreiben Systeme, die wir bauen, und die Regeln, nach denen sie arbeiten. Systeme laufen bereits im Aufbau und im Betrieb. Ein Eintrag trägt den Vermerk „Live im Betrieb“ aber erst, wenn ein Kunde die Nennung freigibt. Öffentliche Namen und Kennzahlen nennen wir erst nach Freigabe. Bis dahin sprechen wir über Systeme und Arbeitsweise, nicht über erfundene Erfolgsgeschichten.</p>
+    <p class="section-sub" style="margin-top:1rem;">Ihr Fall steht nicht dabei? Die meisten Systeme entstehen als Zuschnitt aus mehreren dieser Bausteine.</p>
+    <p style="margin-top:1.5rem;"><button type="button" class="btn-primary js-open-booking" data-source="katalog-abschluss">Passendes System besprechen</button></p>
   </div>
 </section>
 </main>
@@ -101,15 +909,15 @@
   <div class="section-wrap">
     <div class="contact-grid">
       <div class="contact-text-col">
-        <span class="mono-label">Kostenlose Beratungsstunden</span>
+        <span class="mono-label">Kostenlose KI-Audits</span>
         <h2 class="section-h2">60 Minuten. Kostenlos. Klare nächste Schritte.</h2>
         <p class="contact-copy">Wir analysieren Ihre Prozesse und zeigen, wo Zeit verloren geht. Sie bekommen drei umsetzbare Use Cases.</p>
         <p class="contact-copy">Kein Verkaufsdruck. Blueprint inklusive.</p>
       </div>
       <div class="cal-embed-wrap">
-        <p class="cal-card-title">Kostenlose Beratungsstunde buchen</p>
-        <p class="cal-card-sub">60 Minuten, kostenlos. Drei konkrete Automatisierungs-Ideen für Ihr Büro.</p>
-        <button type="button" id="contact-demo-btn" class="cal-load-btn js-open-booking" data-source="contact">Kostenlose Beratungsstunde buchen</button>
+        <p class="cal-card-title">Kostenlosen KI-Audit buchen</p>
+        <p class="cal-card-sub">60 Minuten, kostenlos. Drei konkrete Automatisierungs-Ideen für Ihren Betrieb.</p>
+        <button type="button" id="contact-demo-btn" class="cal-load-btn js-open-booking" data-source="contact">Kostenlosen KI-Audit buchen</button>
       </div>
     </div>
     <div class="contact-details">
@@ -120,7 +928,7 @@
 </section>
 
 <div id="sticky-cta" aria-hidden="true">
-  <button type="button" class="sticky-cta-btn js-open-booking" id="sticky-demo-btn" data-source="sticky">Beratungsstunde buchen</button>
+  <button type="button" class="sticky-cta-btn js-open-booking" id="sticky-demo-btn" data-source="sticky">KI-Audit buchen</button>
 </div>
 <footer id="footer">
   <div class="footer-inner">
@@ -130,8 +938,11 @@
     </a>
     <nav class="footer-legal" aria-label="Seitenlinks">
       <a href="/#systeme">Systeme</a>
+      <a href="/#methodik">Methode</a>
       <a href="zusammenarbeit.html">So arbeiten wir</a>
-      <a href="referenzen.html">Referenzen</a>
+      <a href="referenzen.html">Systemkatalog</a>
+      <a href="ams.html">AMS Beispielsystem</a>
+      <a href="persoenlichkeit.html">Persönlichkeit</a>
       <a href="#contact">Kontakt</a>
       <a href="impressum.html">Impressum</a>
       <a href="datenschutz.html">Datenschutz</a>
@@ -141,7 +952,7 @@
   </div>
 </footer>
 
-<div id="booking-modal" role="dialog" aria-modal="true" aria-label="Kostenlose Beratungsstunde buchen">
+<div id="booking-modal" role="dialog" aria-modal="true" aria-label="Kostenlosen KI-Audit buchen">
   <div class="bm-backdrop" id="bm-backdrop"></div>
   <div class="bm-box">
     <button class="bm-close" id="bm-close" type="button" aria-label="Schließen">
@@ -155,7 +966,7 @@
     <div class="bm-step is-active" id="bm-step-0">
       <p class="bm-label">Schritt 1 von 2</p>
       <h2 class="bm-title">Ihre Kontaktdaten</h2>
-      <p class="bm-sub">Damit wir die Beratungsstunde vorbereiten und Sie erreichen können.</p>
+      <p class="bm-sub">Damit wir den KI-Audit vorbereiten und Sie erreichen können.</p>
       <div class="bm-field">
         <label for="bm-name">Ihr Name</label>
         <input type="text" id="bm-name" placeholder="Max Mustermann" autocomplete="name" maxlength="200">
@@ -182,14 +993,25 @@
     </div>
     <div class="bm-step" id="bm-step-1">
       <p class="bm-label">Schritt 2 von 2</p>
-      <h2 class="bm-title">Ihr Anfragevolumen</h2>
-      <p class="bm-sub">Wie viele E-Mail-Anfragen landen durchschnittlich pro Woche bei Ihnen?</p>
+      <h2 class="bm-title">Ihr Engpass und Volumen</h2>
+      <p class="bm-sub">Wo verlieren Sie die meiste Zeit, und wie oft tritt das auf?</p>
+      <div class="bm-field">
+        <label for="bm-engpass">Haupt-Engpass</label>
+        <select id="bm-engpass" class="bm-select">
+          <option value="">Bitte wählen</option>
+          <option value="lead-qualifizierung">Lead-Qualifizierung und Erstkontakt</option>
+          <option value="bestandskunden">Bestandskunden-Kommunikation</option>
+          <option value="support">Support und Ticketing</option>
+          <option value="reporting">Reporting und Datenpflege</option>
+          <option value="sonstiges">Sonstiger Prozess</option>
+        </select>
+      </div>
       <div class="bm-slider-block">
         <div class="bm-slider-value" aria-live="polite">
           <span id="bm-volume-display">80</span>
-          <span class="bm-slider-unit">Anfragen / Woche</span>
+          <span class="bm-slider-unit">Vorgänge / Woche</span>
         </div>
-        <input type="range" id="bm-volume" class="bm-slider" min="0" max="300" step="5" value="80" aria-valuemin="0" aria-valuemax="300" aria-valuenow="80" aria-label="Anfragen pro Woche">
+        <input type="range" id="bm-volume" class="bm-slider" min="0" max="300" step="5" value="80" aria-valuemin="0" aria-valuemax="300" aria-valuenow="80" aria-label="Vorgänge pro Woche">
         <div class="bm-slider-scale" aria-hidden="true">
           <span>0</span>
           <span>150</span>
@@ -210,6 +1032,8 @@
     </div>
   </div>
 </div>
+<script src="scripts/branchen-tabs.js"></script>
+<script src="scripts/katalog-filter.js"></script>
 
 <script src="scripts/site-nav.js"></script>
 <script src="scripts/booking-modal.js"></script>

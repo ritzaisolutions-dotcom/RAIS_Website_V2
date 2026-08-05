@@ -41,11 +41,11 @@ Nicht abdriften in:
 
 ## Site-Architektur
 
-**Änderung gegenüber Version 2:** RAIS ist die Marke. AQuT ist ein Systemname im Portfolio, kein Flaggship-Brand. Home ist Unternehmensseite mit gewichtetem Live-Systeme-Teaser. Nur AQuT hat eine Deep-Subpage.
+**Änderung gegenüber Version 2:** RAIS ist die Marke. AMS ist ein Systemname im Portfolio, kein Flaggship-Brand. Home ist Unternehmensseite mit gewichtetem Live-Systeme-Teaser. Nur AMS hat eine Deep-Subpage.
 
 ```
-Home (RAIS) ──┬── #systeme (AQuT dominant + 5 Peers)
-              ├── AQuT (System-Verkaufsseite + Rechner)
+Home (RAIS) ──┬── #systeme (AMS dominant + 5 Peers)
+              ├── AMS (System-Verkaufsseite + Rechner)
               ├── Referenzen
               ├── Über uns
               ├── Persönlichkeit
@@ -64,14 +64,14 @@ Primäre Nav: Systeme · Referenzen · Über uns · Persönlichkeit · Audit buc
 - `#zielgruppe`: Mit wem wir arbeiten, Passt / Passt nicht (Ausschluss: geringes Volumen, Franchise, keine Innovationsbereitschaft)
 - `#warum-rais`: 2x2 Authority Grid (Enterprise-KI, Mehrwert statt Hype, EU-Infrastruktur, maßgeschneidert)
 - `#aqut`: Flaggschiff, Sage-Vollfläche mit Leinen-Punktraster, 5-Schritt Icon-Flow, drei Benefits (20–35 Std/Woche, 15 Std auf 2 Min, Entlastung), CTA
-- `#systeme`: hinter AQuT, gegenläufiges Doppel-Marquee mit Spotlight-Cards (oranger Hover-Rahmen); Anker bleibt `#systeme`
+- `#systeme`: hinter AMS, gegenläufiges Doppel-Marquee mit Spotlight-Cards (oranger Hover-Rahmen); Anker bleibt `#systeme`
 - `#rechner`: Multi-Step-Wizard (Volumen → Telefon → Kostensatz → Ergebnis), client-only, kein CRM-Feld
 - `#ablauf`: Discovery, Systemgespräch, Umsetzung ~4 Wochen, Betrieb im Retainer
 - `#trust`: Gründerzugang plus DSGVO-Chips und Info-Kacheln; Haller-Teaser ausgeblendet bis Freigabe
 - `#contact`: Abschluss-CTA als kostenlose Beratungsstunden (Klarheit wo KI Zeit, Geld und Sorgen spart)
-- FAQ lebt auf der AQuT-Seite, nicht auf Home
+- FAQ lebt auf der AMS-Seite, nicht auf Home
 
-### AQuT
+### AMS
 
 **Job:** dieses eine System verkaufen. Absender bleibt RAIS.
 
@@ -132,13 +132,39 @@ Primäre Atmosphäre:
 
 Stützstruktur:
 
-- Sage und British Racing Green (`#004225`, Token `--racing-green`, Alias `--pistachio`), genau eine Sektion pro Seite darf als volle Blockfläche in Sage mit Warm-Linen-Text ausgeführt werden. Auf der Home-Seite ist das `#aqut` mit Leinen-Punktraster. Auf der AQuT-Seite ist das die Use-Case- beziehungsweise Beweisfläche.
+- Sage, genau eine Sektion pro Seite darf als volle Blockfläche in Sage mit Warm-Linen-Text ausgeführt werden. Auf der Home-Seite ist das `#aqut` mit Leinen-Punktraster. Auf der AMS-Seite ist das die Use-Case- beziehungsweise Beweisfläche.
 - Charcoal und Stone für Lesbarkeit
+
+### Amendment 05.08.2026: British Racing Green als Leitfläche
+
+British Racing Green (`#004225`) war bisher zweite Tinte, also ausschließlich Linien-, Label- und Markenfarbe. Ab jetzt trägt es auf der Startseite volle Flächen.
+
+**Warum.** Cloud plus Serif plus Mandarin ist der am weitesten verbreitete Default-Look KI-nahe Seiten. Genau davor warnt die Typography Steering weiter unten, und dieselbe Logik gilt für die Fläche. Racing Green liefert die Kontrast-Tiefe, die eine Seite hochwertig wirken lässt, ohne in Dark-Tech-Theatrik zu kippen, und im DACH-KI-Beratungsfeld besetzt die Farbe niemand.
+
+**Regel.** Der Bandwechsel trägt ab hier eine Aussage statt nur Rhythmus: helle Bänder sind der Kontext draußen, grüne Flächen sind „innerhalb der Grenze". Das deckt sich mit dem Kernversprechen „Kundendaten bleiben in der EU".
+
+- Höchstens drei grüne Vollflächen pro Seite. Auf der Startseite: `#hero`, `#sicherheit`, `#contact`.
+- Die Sage-Regel bleibt davon unberührt. Genau eine Sage-Vollfläche pro Seite, auf der Startseite weiterhin `#aqut`.
+- Cloud und Warm Linen bleiben die Mehrheitsflächen. Kippt das Verhältnis, ist die Warm-Linen-Identität verloren.
+- Auf grünem Grund trägt `--sage` (`#789464`) nur 3.4:1 und ist als Textfarbe unbrauchbar. Dafür gibt es `--sage-light` (`#9FB88C`, 5.4:1).
+- Mandarin kommt auf Racing Green nur auf 3.7:1. Auf grünen Flächen deshalb keine Mandarin-Labels, Orange bleibt dort der Aktion vorbehalten. Ergänzt die bestehende Regel „Mandarin nie als Fließtextfarbe auf Cloud".
+
+**Signature.** Topografische Höhenlinien als Untergrund der grünen Flächen, reine CSS-Gradients in `--sage-light` bei niedriger Deckkraft. Höhenlinien sind Vermessung, Gelände, Kataster, Grenzverlauf, also die Bildsprache von Grundstücken, und damit an der Referenzbranche Immobilien verankert. Sie ersetzen das frühere orange Quadratraster im Hero, das generisches Tech-Vokabular war. Statisch, ohne Parallax und ohne Entrance-Animation.
 
 Akzent:
 
 - Mandarin Orange ausschließlich für Aktion und Schlüsselbetonung, unter fünf Prozent Flächenanteil
 - Mandarin nie als Fließtextfarbe auf Cloud, Kontrast dort grenzwertig
+
+### Amendment 05.08.2026: Schrift auf Mandarin ist Charcoal, nicht Weiß
+
+Primäre CTA trugen weiße Schrift auf `#EC6A37`. Das sind **3.14:1** und reißt die geforderten 4.5:1 auf jedem einzelnen Button, auf allen sechs Seiten inklusive Booking-Modal. Charcoal `#2F2A24` kommt auf **4.52:1**, im Hover auf `--orange-hover` sogar auf **5.20:1**.
+
+Es gibt dafür den Token `--on-orange`. Jede Fläche in Mandarin nutzt ihn, nichts setzt Weiß direkt.
+
+**Achtung: 4.52 ist knapp über der Grenze.** Wird `--orange` je aufgehellt, muss der Wert neu gerechnet werden. Die Alternative wäre gewesen, Mandarin auf `#C64E1A` abzudunkeln und Weiß zu behalten (4.66:1) — verworfen, weil das die Markenfarbe selbst verändert hätte.
+
+Nebeneffekt, der zur Richtung passt: Charcoal auf Mandarin liest wärmer und gedruckter als der vorherige Weiß-auf-Bunt-Button, der nach generischem SaaS aussah.
 
 Orange darf nicht zur dominanten Atmosphäre werden.
 
@@ -154,17 +180,21 @@ Orange darf nicht zur dominanten Atmosphäre werden.
 
 Deutsche Satzregeln: keine Versalien-Eyebrows (Deutsch hat Großbuchstaben in Substantiven, Versalsatz zerstört das Wortbild), typografische Anführungszeichen „so", keine Gedankenstriche in sichtbarer Copy.
 
+**Amendment 05.08.2026, Fließtext entschieden:** Libre Franklin ist raus, **Instrument Sans** ist gesetzt (SIL OFL, self-hosted in `fonts/`). Libre Franklin ist ein Franklin-Gothic-Revival und liest als Behörden-Default. Instrument Sans ist enger proportioniert, wirkt bewusster gesetzt und konkurriert nicht mit der Serif. Nicht geometrisch, die Poppins- und Montserrat-Sperre bleibt eingehalten. Als Variable Font trägt eine Datei alle Gewichte 400 bis 700, statt vorher fünf statischer Schnitte.
+
+Überschriften bleiben **Source Serif 4**, zusätzlich auf `letter-spacing: -0.018em` enger gestellt, weil die Serif in Displaygrößen sonst zu locker läuft. Genau zwei Sektionen pro Seite dürfen `.section-h2--anchor` tragen (größere Stufe); auf der Startseite sind das `#sicherheit` und `#systeme`.
+
 ## Modul-Regeln
 
-### Hero (Home und AQuT unterscheiden sich)
+### Hero (Home und AMS unterscheiden sich)
 
 **Home-Hero** kommuniziert Zielgruppe und Kernversprechen in einer Zeile, filtert, verweist weiter. Kein Produktmenü im Hero.
 
-**AQuT-Hero** eröffnet mit dem Orientierungsclaim (20–35 Std-Formel) und führt zum Rechner. Umsatzargument als unterstützender Block erlaubt. Keine Gedankenstriche.
+**AMS-Hero** eröffnet mit dem Orientierungsclaim (20–35 Std-Formel) und führt zum Rechner. Umsatzargument als unterstützender Block erlaubt. Keine Gedankenstriche.
 
-### Rechner (Home und AQuT-Seite)
+### Rechner (Home und AMS-Seite)
 
-Interaktives Modul auf der Home-Landingpage und der AQuT-Seite. Zweck: Schmerz quantifizieren, ohne unbelegte Behauptungen. Darstellung als Multi-Step-Wizard, nicht als Formular-Wand.
+Interaktives Modul auf der Home-Landingpage und der AMS-Seite. Zweck: Schmerz quantifizieren, ohne unbelegte Behauptungen. Darstellung als Multi-Step-Wizard, nicht als Formular-Wand.
 
 Schritte:
 
@@ -177,7 +207,7 @@ Berechnung: `emailHours = volume × minutes / 60`, `phoneHours = volume × (shar
 
 Keine Euro- oder Stundenzahl anzeigen, die nicht direkt aus den numerischen Eingaben berechnet ist. Keine Erfolgsgarantie einbauen, solange der zugehörige Wissensbasis-Eintrag auf Status Hypothese steht.
 
-### Use Cases (auf der AQuT-Seite, ehemals `#projekte`)
+### Use Cases (auf der AMS-Seite, ehemals `#projekte`)
 
 Drei expandierende Karten, erste Karte aktiv, abgeleitet aus Paket 1:
 
@@ -203,7 +233,9 @@ Ehrlich bleiben. Verwenden: "Use Cases" beziehungsweise konkrete Prozesssprache,
 
 Echte Screenshots nur, wenn Copy dazu passt. Platzhalter-Gradients sind für Integrationen in Ordnung, die keine gebrandete UI zeigen können.
 
-**Ticker-Inhalt (proof strip):** ausschließlich EU-Infrastruktur- und Datenschutz-relevante Labels, keine Technologie-Markennamen als Selbstzweck. Beispiel: selbst gehostet in Deutschland, Datenbank in Frankfurt, AVV nach Art. 28 DSGVO, keine Datenweitergabe außerhalb der EU. Diese Labels sind für die Zielgruppe der eigentliche Beweis, nicht Werkzeugnamen wie n8n oder Supabase.
+**Ticker-Inhalt (proof strip):** ausschließlich EU-Infrastruktur- und Datenschutz-relevante Labels, keine Technologie-Markennamen als Selbstzweck. Beispiel: selbst gehostet in der EU, Datenbank in Frankfurt, AVV nach Art. 28 DSGVO, Kundendaten bleiben in der EU. Diese Labels sind für die Zielgruppe der eigentliche Beweis, nicht Werkzeugnamen wie n8n oder Supabase.
+
+**Korrektur vom 04.08.2026:** Die frühere Fassung nannte hier „selbst gehostet in Deutschland". Das war sachlich falsch, das Hosting läuft in Litauen. Verifizierter Stack: Hosting Litauen (EU), Datenbank AWS Frankfurt, Sprachmodell aus Frankreich. Auch „keine Datenweitergabe außerhalb der EU" war zu absolut formuliert, weil Notion (USA) die eigenen Anfragen von RAIS hält. Richtig ist die Abgrenzung „Kundendaten bleiben in der EU". Standort-Claims niemals ohne Abgleich mit `datenschutz.html` ändern.
 
 ## Quality Check
 

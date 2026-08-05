@@ -9,6 +9,14 @@ import {
   bookingModalHtml,
   scriptsHtml
 } from './page-shell.mjs';
+import {
+  UNIVERSAL,
+  renderRegister,
+  renderBranchen,
+  renderSystemTile,
+  renderSystemTiles,
+  flagships
+} from './systemakte-data.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, '..');
@@ -28,19 +36,60 @@ function page({ file, active, title, description, path, main, extraScripts = '' 
 }
 
 page({
-  file: 'aqut.html',
+  file: 'ams.html',
   active: 'systeme',
-  title: 'AQuT | Anfragen-System von RAIS',
+  title: 'AMS | Anfragen-System von RAIS',
   description:
-    'AQuT von RAIS: Portalanfragen qualifizieren und Termine buchen. Bei hohem Volumen oft 20 bis 35 Stunden pro Woche zurück.',
-  path: 'aqut.html',
+    'AMS von RAIS: Portalanfragen qualifizieren und Termine buchen. Beispielsystem für den Mittelstand. Bei hohem Volumen oft 20 bis 35 Stunden pro Woche zurück.',
+  path: 'ams.html',
   main: `
-<section class="page-hero">
+<section class="page-hero page-hero--aqut">
   <div class="page-hero__inner">
-    <span class="mono-label">System von RAIS</span>
-    <h1>AQuT: weniger manuelle Anfragenbearbeitung, mehr gebuchte Erstgespräche</h1>
-    <p>Bei hohem Anfragevolumen oft im Bereich von 20 bis 35 Stunden pro Woche, abhängig von Ihrem Volumen. Erstreaktion von durchschnittlich 15 Stunden auf 2 Minuten. Der Rechner darunter rechnet mit Ihren Angaben.</p>
-    <button type="button" class="btn-primary js-open-booking" data-source="aqut-hero">Kostenlose Beratungsstunde buchen</button>
+    <span class="mono-label">Beispielsystem von RAIS</span>
+    <h1>AMS: so bauen wir Systeme. Exemplarisch für Immobilien.</h1>
+    <p>Bei hohem Anfragevolumen oft im Bereich von 20 bis 35 Stunden pro Woche, abhängig von Ihrem Volumen. Erstreaktion von durchschnittlich 15 Stunden auf 2 Minuten. Das Prinzip überträgt sich auf andere B2B-Prozesse.</p>
+    <button type="button" class="btn-primary js-open-booking" data-source="aqut-hero">Kostenlosen KI-Audit buchen</button>
+  </div>
+</section>
+
+<section class="aqut-sim-section" aria-labelledby="aqut-sim-title">
+  <div class="section-wrap">
+    <span class="mono-label">Live-Simulation</span>
+    <h2 class="section-h2" id="aqut-sim-title">So läuft eine Anfrage durch AMS</h2>
+    <p class="section-sub">Klicken Sie auf Demo Anfrage testen. Die Karte wandert Schritt für Schritt durch die Pipeline.</p>
+    <div class="aqut-sim" id="aqut-sim" data-step="0">
+      <div class="aqut-sim__glow" aria-hidden="true"></div>
+      <ol class="aqut-sim__rail" aria-label="AMS Pipeline">
+        <li class="aqut-sim__node" data-node="1">
+          <span class="aqut-sim__pulse" aria-hidden="true"></span>
+          <strong>Portal-Mail</strong>
+          <span>Anfrage trifft ein</span>
+        </li>
+        <li class="aqut-sim__node" data-node="2">
+          <span class="aqut-sim__pulse" aria-hidden="true"></span>
+          <strong>KI-Check</strong>
+          <span>Qualifizierung &amp; Bonität</span>
+        </li>
+        <li class="aqut-sim__node" data-node="3">
+          <span class="aqut-sim__pulse" aria-hidden="true"></span>
+          <strong>Kalender</strong>
+          <span>Termin-Slot gebucht</span>
+        </li>
+        <li class="aqut-sim__node" data-node="4">
+          <span class="aqut-sim__pulse" aria-hidden="true"></span>
+          <strong>CRM</strong>
+          <span>Eintrag &amp; Reminder</span>
+        </li>
+      </ol>
+      <div class="aqut-sim__card" id="aqut-sim-card" aria-live="polite">
+        <span class="aqut-sim__card-label">Demo-Anfrage</span>
+        <p id="aqut-sim-status">Bereit. Starten Sie die Simulation.</p>
+      </div>
+      <div class="aqut-sim__actions">
+        <button type="button" class="btn-primary" id="aqut-sim-play">Demo Anfrage testen</button>
+        <button type="button" class="home-cta-link" id="aqut-sim-reset" hidden>Zurücksetzen</button>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -116,12 +165,8 @@ page({
         <button type="button" class="rq-btn-back" id="rq-back" hidden>Zurück</button>
         <button type="button" class="rq-btn-reset" id="rq-reset" hidden>Werte anpassen</button>
         <button type="button" class="rq-btn-next" id="rq-next">Weiter</button>
-        <button type="button" class="btn-primary js-open-booking rq-btn-cta" id="rq-cta" data-source="aqut-rechner" hidden>Kostenlose Beratungsstunde buchen</button>
+        <button type="button" class="btn-primary js-open-booking rq-btn-cta" id="rq-cta" data-source="aqut-rechner" hidden>Kostenlosen KI-Audit buchen</button>
       </div>
-      <details>
-        <summary>Optional: Übergang zum Umsatzargument</summary>
-        <p class="section-sub" style="margin-top:0.75rem;">Verlorene Bearbeitungszeit ist nicht nur Personalkosten. Sie ist der Vorlauf zu verlorenen Abschlüssen. Im 60-minütigen Audit prüfen wir das anhand Ihrer echten Anfragedaten.</p>
-      </details>
     </div>
   </div>
 </section>
@@ -142,7 +187,7 @@ page({
 <section>
   <div class="section-wrap">
     <span class="mono-label">Paket 1</span>
-    <h2 class="section-h2">Was AQuT konkret liefert</h2>
+    <h2 class="section-h2">Was AMS konkret liefert</h2>
     <p class="section-sub">Das Setup für den Qualifizierungsalltag: von der Portalanfrage bis zum gebuchten Erstgespräch.</p>
     <ul class="list-plain">
       <li>Automatische Qualifizierung eingehender Portalanfragen</li>
@@ -205,10 +250,10 @@ page({
     <div class="faq-list">
       <details>
         <summary>Wie steht es um DSGVO und Hosting?</summary>
-        <p>Systeme laufen selbst gehostet in Deutschland, Datenbank in Frankfurt. AVV nach Art. 28 DSGVO. Keine Datenweitergabe außerhalb der EU ohne Rechtsgrundlage.</p>
+        <p>Systeme laufen selbst gehostet in der EU, Datenbank in Frankfurt. AVV nach Art. 28 DSGVO. Kundendaten bleiben in der EU.</p>
       </details>
       <details>
-        <summary>Funktioniert AQuT mit onOffice oder Propstack?</summary>
+        <summary>Funktioniert AMS mit onOffice oder Propstack?</summary>
         <p>Ja, Anbindung an bestehende CRMs ist Teil des Setups, sofern API und Freigaben vorliegen. Ohne CRM bauen wir eine schlanke eigene Datenhaltung.</p>
       </details>
       <details>
@@ -216,57 +261,168 @@ page({
         <p>Abhängig von Zugängen, Kalender und Qualifizierungskriterien. Im Audit klären wir eine realistische Timeline für Ihr Büro.</p>
       </details>
       <details>
-        <summary>Für welche Teamgröße passt AQuT?</summary>
-        <p>Für unabhängige Maklerbüros mit etwa 5 bis 25 Mitarbeitenden und spürbarem Portalvolumen. Solo-Makler, Franchise und bankgebundene Agenturen sind nicht die Zielgruppe.</p>
+        <summary>Für welche Teamgröße passt AMS?</summary>
+        <p>AMS ist für unabhängige Maklerbüros mit etwa 5 bis 25 Mitarbeitenden und spürbarem Portalvolumen gebaut. Solo-Makler, Franchise und bankgebundene Agenturen sind nicht die Zielgruppe. Für andere Branchen im Mittelstand bauen wir vergleichbare Qualifizierungssysteme nach dem gleichen Stack.</p>
       </details>
     </div>
     <p style="margin-top:2rem;">
-      <button type="button" class="btn-primary js-open-booking" data-source="aqut-faq">Kostenlose Beratungsstunde buchen</button>
+      <button type="button" class="btn-primary js-open-booking" data-source="aqut-faq">Kostenlosen KI-Audit buchen</button>
     </p>
   </div>
 </section>
 `,
-  extraScripts: '\n<script src="scripts/aqut-rechner.js"></script>\n'
+  extraScripts: '\n<script src="scripts/aqut-rechner.js"></script>\n<script src="scripts/aqut-sim.js"></script>\n'
 });
 
 page({
   file: 'referenzen.html',
   active: 'referenzen',
-  title: 'Referenzen | RAIS',
-  description: 'Referenzen von RAIS. Haller Immobilienberatung GmbH als erste öffentliche Case Study.',
+  title: 'Systemkatalog | RAIS',
+  description:
+    'Der Systemkatalog von RAIS: 24 Systeme zum Anfragen. Anfragen qualifizieren, Support, Ticketing, Dokumente, Content und Reporting, für Immobilien, Handwerk, Handel und Beratung.',
   path: 'referenzen.html',
+  extraScripts:
+    '<script src="scripts/branchen-tabs.js"></script>\n<script src="scripts/katalog-filter.js"></script>\n',
   main: `
 <section class="page-hero">
   <div class="page-hero__inner">
-    <span class="mono-label">Referenzen</span>
-    <h1>Beweisen, nicht behaupten</h1>
-    <p>Öffentliche Referenzierung nur mit Freigabe. Aktuell: Haller Immobilienberatung GmbH.</p>
+    <span class="mono-label">Systemkatalog</span>
+    <h1>Suchen Sie sich Ihr System aus</h1>
+    <p>Vierundzwanzig Systeme, die wir bauen. Jeder Eintrag nennt den Auslöser, den Ablauf, die Stelle für die menschliche Übergabe und ausdrücklich das, was das System nicht tut. Was passt, fragen Sie direkt an.</p>
   </div>
 </section>
-<section>
-  <div class="section-wrap case-story">
-    <span class="mono-label">Case Study</span>
-    <h2 class="section-h2">Haller Immobilienberatung GmbH</h2>
 
-    <h3>Ausgangslage</h3>
-    <p>Hohes Anfragevolumen über Immobilienportale. Qualifizierung und Terminabstimmung liefen manuell: Mails lesen, Rückfragen schreiben, Termine per Hin und Her finden. Kapazität im Büro ging in Vorarbeit statt in passende Erstgespräche.</p>
+<!-- Anatomie eines Eintrags. Erklaert einmal gross, was in den 24
+     Eintraegen darunter jeweils in vier Zeilen steht. Reines HTML und
+     CSS, kein Bild: die Produkt-Screenshots im Repo zeigen echte
+     Kontaktdaten und sind deshalb nicht verwendbar. -->
+<section class="band-linen" aria-labelledby="katalog-anatomie-title">
+  <div class="section-wrap">
+    <span class="mono-label">So liest sich ein Eintrag</span>
+    <h2 class="section-h2 section-h2--anchor" id="katalog-anatomie-title">Wie ein System bei Ihnen ankommt</h2>
+    <p class="section-sub">Jeder Eintrag im Katalog beantwortet dieselben vier Fragen. Am Beispiel des Systems, mit dem die meisten anfangen.</p>
 
-    <h3>Was gebaut wurde</h3>
-    <p>AQuT im Scope Paket 1: Portalanfragen erfassen und dem Objekt zuordnen, Kauf oder Miete erkennen, fehlende Angaben per automatischer Rückfrage klären, personalisierten Terminlink ausspielen, Termine in den Kalender schreiben und Anfragen in einer Übersicht durchsuchbar halten.</p>
-
-    <h3>Wie der Alltag läuft</h3>
-    <ol class="list-plain list-plain--ordered">
-      <li>Portalanfrage kommt rein und wird dem Objekt zugeordnet.</li>
-      <li>Das System qualifiziert und fragt nach, wenn Angaben fehlen.</li>
-      <li>Der Interessent bucht selbst; der Termin landet im Kalender des Büros.</li>
+    <ol class="anatomie">
+      <li class="anatomie__stage">
+        <span class="anatomie__ico"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg></span>
+        <span class="anatomie__label">Auslöser</span>
+        <p class="anatomie__what">Woran Sie Ihren eigenen Alltag wiedererkennen.</p>
+        <p class="anatomie__example">Eine Anfrage trifft ein, über Formular, Portal, Mail oder Telefon.</p>
+      </li>
+      <li class="anatomie__stage">
+        <span class="anatomie__ico"><svg class="ico" aria-hidden="true"><use href="#i-board"></use></svg></span>
+        <span class="anatomie__label">Ablauf</span>
+        <p class="anatomie__what">Vier Schritte, die das System selbst erledigt.</p>
+        <p class="anatomie__example">Aufnehmen, Rückfragen stellen, einordnen, weiterleiten.</p>
+      </li>
+      <li class="anatomie__stage">
+        <span class="anatomie__ico"><svg class="ico" aria-hidden="true"><use href="#i-hand"></use></svg></span>
+        <span class="anatomie__label">Übergabe</span>
+        <p class="anatomie__what">Die Stelle, an der ein Mensch entscheidet.</p>
+        <p class="anatomie__example">Sobald Bedarf, Budget und Zeitrahmen geklärt sind, geht der Vorgang an Ihr Team.</p>
+      </li>
+      <li class="anatomie__stage anatomie__stage--limit">
+        <span class="anatomie__ico"><svg class="ico" aria-hidden="true"><use href="#i-limit"></use></svg></span>
+        <span class="anatomie__label">Nicht im Zug</span>
+        <p class="anatomie__what">Was das System ausdrücklich nicht tut.</p>
+        <p class="anatomie__example">Keine Preiszusagen, keine Zusagen zu Verfügbarkeiten.</p>
+      </li>
     </ol>
 
-    <h3>Status</h3>
-    <p>Die Referenz ist öffentlich freigegeben. Eine belastbare Kennzahl aus dem Live-Betrieb (Stunden, Abschlussrate oder Antwortzeit) folgt, sobald sie gemessen und freigegeben ist. Bis dahin keine erfundenen Prozent- oder Euro-Claims zu diesem Kunden.</p>
+    <p class="anatomie__note">Die vierte Zeile ist die wichtigste. Ein System, das seine Grenze nicht kennt, gehört nicht in Ihren Betrieb.</p>
+  </div>
+</section>
 
-    <p style="margin-top:2rem;"><button type="button" class="btn-primary js-open-booking" data-source="referenzen">Kostenlose Beratungsstunde buchen</button></p>
-    <div class="case-slot case-slot--quiet" aria-hidden="true"></div>
-    <div class="case-slot case-slot--quiet" aria-hidden="true"></div>
+<section id="katalog" aria-labelledby="katalog-uebergreifend-title">
+  <div class="section-wrap">
+    <!-- Ohne JS bleibt das Suchfeld verborgen und alle Eintraege stehen sichtbar. -->
+    <div class="katalog__search" hidden>
+      <label for="katalog-suche">Katalog durchsuchen</label>
+      <input type="search" id="katalog-suche" placeholder="Zum Beispiel Angebot, Rechnung, WhatsApp, Onboarding" autocomplete="off">
+      <p class="katalog__status" id="katalog-status" role="status" aria-live="polite"></p>
+    </div>
+
+    <span class="mono-label">Im Detail</span>
+    <h2 class="section-h2" id="katalog-flaggschiffe-title">Die fünf, mit denen die meisten anfangen</h2>
+    <p class="section-sub">Jedes davon hat eine eigene Seite mit Ablauf, Übergabepunkt und Grenzen.</p>
+${renderSystemTiles()}
+
+    <span class="mono-label" style="margin-top:4rem;">Branchenübergreifend</span>
+    <h2 class="section-h2" id="katalog-uebergreifend-title">Sieben Systeme, die überall greifen</h2>
+    <p class="section-sub">Diese Vorgänge sehen in jedem Betrieb ähnlich aus. Nur die Bezeichnungen und die angebundenen Systeme unterscheiden sich.</p>
+${renderRegister(UNIVERSAL, { cta: true })}
+
+    <div class="branchen-wrap">
+      <span class="mono-label">Nach Branche</span>
+      <h2 class="section-h2" id="katalog-branchen-title">Wie das im Alltag aussieht</h2>
+      <p class="section-sub">Dieselben Prinzipien, übersetzt in die Sprache und die Werkzeuge Ihrer Branche.</p>
+${renderBranchen({ cta: true })}
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="katalog-fragen-title">
+  <div class="section-wrap">
+    <span class="mono-label">Vor der Entscheidung</span>
+    <h2 class="section-h2" id="katalog-fragen-title">Fragen, die Sie jedem Anbieter stellen sollten</h2>
+    <p class="section-sub">Nicht nur uns. Wenn jemand bei einer davon ins Schwimmen kommt, wissen Sie genug.</p>
+    <ul class="akte-register akte-register--fragen">
+      <li><details class="akte akte--frage">
+        <summary class="akte__head">
+          <span class="akte__title">Wo genau liegen unsere Daten, und wer verarbeitet sie?</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+        </summary>
+        <div class="akte__body"><p>Bei uns: Hosting innerhalb der EU, Datenbank in Frankfurt, AVV nach Art. 28 DSGVO. Wer das nicht in einem Satz beantworten kann, weiß es selbst nicht.</p></div>
+      </details></li>
+      <li><details class="akte akte--frage">
+        <summary class="akte__head">
+          <span class="akte__title">Was passiert mit dem System, wenn wir die Zusammenarbeit beenden?</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+        </summary>
+        <div class="akte__body"><p>Bei uns bleibt es stehen. Dokumentierte Übergabe, kein Lizenzschlüssel, den wir abschalten.</p></div>
+      </details></li>
+      <li><details class="akte akte--frage">
+        <summary class="akte__head">
+          <span class="akte__title">An welcher Stelle entscheidet die Software, und an welcher ein Mensch?</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+        </summary>
+        <div class="akte__body"><p>Jeder Eintrag oben nennt den Freigabepunkt und das, was das System nicht tut. Wer diese Grenze nicht benennen kann, hat sie nicht gezogen.</p></div>
+      </details></li>
+      <li><details class="akte akte--frage">
+        <summary class="akte__head">
+          <span class="akte__title">Wer haftet, wenn das System einen Fehler macht?</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+        </summary>
+        <div class="akte__body"><p>Deshalb entscheidet bei uns nichts autonom, was jemand verantworten muss. Alles mit Konsequenz bekommt vorher eine menschliche Freigabe.</p></div>
+      </details></li>
+      <li><details class="akte akte--frage">
+        <summary class="akte__head">
+          <span class="akte__title">Was passiert, wenn Ihr Anbieter die Preise verdoppelt?</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+        </summary>
+        <div class="akte__body"><p>Wir bauen ohne Vendor-Lock-in, wo es geht. Austauschbare Bausteine statt einer Plattform, die Sie später nicht verlassen können.</p></div>
+      </details></li>
+      <li><details class="akte akte--frage">
+        <summary class="akte__head">
+          <span class="akte__title">Können wir nachvollziehen, was das System entschieden hat, und warum?</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+        </summary>
+        <div class="akte__body"><p>Jeder Vorgang wird protokolliert und ist im Zielsystem nachvollziehbar. Ein System, dessen Entscheidungen niemand prüfen kann, ist kein System, sondern ein Risiko.</p></div>
+      </details></li>
+    </ul>
+  </div>
+</section>
+
+<!-- Gruener Anker dieser Seite. Die Ehrlichkeit darueber, was hier
+     belegt ist und was nicht, ist das eigentliche Argument des
+     Katalogs, deshalb traegt sie die dunkle Flaeche. -->
+<section class="surface-green" aria-labelledby="katalog-beleg-title">
+  <div class="section-wrap">
+    <span class="mono-label">Beweislage</span>
+    <h2 class="section-h2" id="katalog-beleg-title">Was hier steht und was nicht</h2>
+    <p class="section-sub">Die Einträge beschreiben Systeme, die wir bauen, und die Regeln, nach denen sie arbeiten. Systeme laufen bereits im Aufbau und im Betrieb. Ein Eintrag trägt den Vermerk „Live im Betrieb“ aber erst, wenn ein Kunde die Nennung freigibt. Öffentliche Namen und Kennzahlen nennen wir erst nach Freigabe. Bis dahin sprechen wir über Systeme und Arbeitsweise, nicht über erfundene Erfolgsgeschichten.</p>
+    <p class="section-sub" style="margin-top:1rem;">Ihr Fall steht nicht dabei? Die meisten Systeme entstehen als Zuschnitt aus mehreren dieser Bausteine.</p>
+    <p style="margin-top:1.5rem;"><button type="button" class="btn-primary js-open-booking" data-source="katalog-abschluss">Passendes System besprechen</button></p>
   </div>
 </section>
 `
@@ -276,43 +432,78 @@ page({
   file: 'zusammenarbeit.html',
   active: null,
   title: 'So arbeiten wir | RAIS',
-  description: 'Zusammenarbeit mit RAIS: von Discovery bis Betrieb, klar und ohne Umwege.',
+  description: 'Zusammenarbeit mit RAIS in fünf klaren Schritten: Erstkontakt, Discovery, Sales, Onboarding, Go-Live.',
   path: 'zusammenarbeit.html',
   main: `
 <section class="page-hero">
   <div class="page-hero__inner">
     <span class="mono-label">Zusammenarbeit</span>
-    <h1>So läuft die Zusammenarbeit</h1>
-    <p>Vom ersten Gespräch bis zum stabilen Betrieb. Sie wissen in jedem Schritt, woran Sie sind.</p>
+    <h1>Fünf Schritte. Kein Projektchaos.</h1>
+    <p>Vom ersten Termin bis zum laufenden System. Jeder Schritt hat ein klares Ergebnis.</p>
   </div>
 </section>
+<!-- Wellen-Stepper. Das CSS dafuer liegt seit laengerem fertig und
+     animiert in antigravity-polish.css (.collab-path__*), wurde aber
+     von keinem Markup benutzt; die Seite zeigte stattdessen eine
+     Primitiv-Variante, bei der immer nur ein Schritt sichtbar war.
+     Hier stehen alle fuenf Schritte gleichzeitig, der aktive wird
+     hervorgehoben. Ohne JavaScript ist damit der ganze Prozess
+     lesbar statt nur Schritt eins.
+     scripts/collab-path.js braucht: .collab-step[data-step],
+     [data-step-btn], #collab-prev, #collab-next, #collab-counter. -->
 <section>
   <div class="section-wrap">
-    <div id="collab-path" data-active-step="1" tabindex="0" aria-label="Zusammenarbeit in sieben Schritten">
-      <div class="collab-nav" role="tablist">
-        ${[1,2,3,4,5,6,7].map((n) => `<button type="button" data-step-btn="${n}" aria-label="Schritt ${n}">${n}</button>`).join('')}
+    <div class="collab-path" id="collab-path" data-active-step="1" aria-label="Zusammenarbeit in fünf Schritten">
+      <div class="collab-path__viewport">
+        <div class="collab-path__track">
+          <svg class="collab-path__svg collab-path__svg--wave" viewBox="0 0 1200 256" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="collabPathGradient" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#004225"/>
+                <stop offset="55%" stop-color="#789464"/>
+                <stop offset="100%" stop-color="#004225"/>
+              </linearGradient>
+            </defs>
+            <path class="collab-path__line collab-path__line--bg" fill="none" d="M0 128 C60 128 60 60 120 60 C180 60 300 196 360 196 C420 196 540 60 600 60 C660 60 780 196 840 196 C900 196 1020 60 1080 60 C1140 60 1140 128 1200 128"/>
+            <path class="collab-path__line collab-path__line--dash" fill="none" d="M0 128 C60 128 60 60 120 60 C180 60 300 196 360 196 C420 196 540 60 600 60 C660 60 780 196 840 196 C900 196 1020 60 1080 60 C1140 60 1140 128 1200 128"/>
+          </svg>
+          <svg class="collab-path__svg collab-path__svg--stack" viewBox="0 0 8 600" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+            <path class="collab-path__line collab-path__line--bg" fill="none" d="M4 0 L4 600"/>
+            <path class="collab-path__line collab-path__line--dash" fill="none" d="M4 0 L4 600"/>
+          </svg>
+
+          <ol class="collab-path__steps">
+            ${[
+              ['Appointment Setting', 'Erstkontakt und Terminvereinbarung. Wir klären kurz, ob Volumen und Setup zu RAIS passen.'],
+              ['Discovery Call', 'Pain-Analyse und Prozessaufnahme. Wir finden heraus, wo Zeit verloren geht und welches System den größten Hebel hat.'],
+              ['Sales Call und Konzept', 'Maßgeschneidertes Lösungskonzept, Scope, Timeline und Preis. Schriftlich, nachvollziehbar, ohne Überraschungen.'],
+              ['Technisches Onboarding', 'Systemaufbau, CRM-Anbindung und Integration in Ihre bestehenden Tools. Test mit echten Abläufen.'],
+              ['Go-Live und Monitoring', 'Übergabe, Live-Betrieb und Monitoring. Anpassungen laufen mit, ohne dass Sie das System selbst betreiben.']
+            ].map((row, i) => `
+            <li class="collab-step${i === 0 ? ' is-active' : ''}" data-step="${i + 1}" data-position="${i % 2 === 0 ? 'up' : 'down'}">
+              <div class="collab-step__inner">
+                <button type="button" class="collab-step__btn" data-step-btn="${i + 1}"${i === 0 ? ' aria-current="step"' : ''}>
+                  <span class="collab-step__num">${String(i + 1).padStart(2, '0')}</span>
+                  <span class="sr-only">Schritt ${i + 1}: ${row[0]}</span>
+                </button>
+                <div class="collab-step__card">
+                  <h3 class="collab-step__title">${row[0]}</h3>
+                  <p class="collab-step__desc">${row[1]}</p>
+                </div>
+              </div>
+            </li>`).join('')}
+          </ol>
+        </div>
       </div>
-      ${[
-        ['Discovery', 'Kostenloses Erstgespräch. Wir schauen uns Ihre Prozesse an. Ergebnis: Sie wissen, was möglich ist.'],
-        ['Angebot', 'Scope, Timeline und Preis. Konkret, schriftlich, ohne Überraschungen.'],
-        ['Kickoff', 'Vertrag und Onboarding. Rollen, Zugänge, Meilensteine.'],
-        ['Entwicklung', 'Wir bauen das System in Iterationen und halten Sie im Loop.'],
-        ['Testing', 'Gemeinsames Prüfen mit echten Abläufen Ihres Büros.'],
-        ['Go-Live', 'Übergabe, Schulung, stabile Produktivnahme.'],
-        ['Betrieb', 'Begleitung nach dem Go-Live, klarer Ansprechpartner.']
-      ].map((pair, i) => `
-      <article class="collab-step" data-step="${i + 1}">
-        <span class="mono-label">Schritt ${i + 1}</span>
-        <h2 class="section-h2" style="margin-top:0.35rem;">${pair[0]}</h2>
-        <p class="section-sub">${pair[1]}</p>
-      </article>`).join('')}
-      <div class="collab-controls">
-        <button type="button" id="collab-prev">Zurück</button>
-        <span id="collab-counter" aria-live="polite">Schritt 1 von 7</span>
-        <button type="button" id="collab-next">Weiter</button>
+
+      <div class="collab-path__controls">
+        <button type="button" class="collab-path__nav" id="collab-prev">Zurück</button>
+        <span class="collab-path__counter" id="collab-counter" aria-live="polite">Schritt 1 von 5</span>
+        <button type="button" class="collab-path__nav collab-path__nav--next" id="collab-next">Weiter</button>
       </div>
     </div>
-    <div style="margin-top:3rem;">
+
+    <div class="mitwirkung">
       <span class="mono-label">Mitwirkung</span>
       <h2 class="section-h2">Was wir von Ihnen brauchen</h2>
       <ul class="list-plain">
@@ -331,26 +522,80 @@ page({
   file: 'ueber-uns.html',
   active: 'ueber-uns',
   title: 'Über uns | RAIS',
-  description: 'Kevin Ritz, Gründer von RAIS in Koblenz. Direkter Zugang, EU-Infrastruktur, externer Security-Review.',
+  description: 'RAIS: Effizienz mit Prinzipien. Geschäftsführer Kevin Ritz. Vision: größter Dienstleister für Prozessautomatisierung mit echtem Mehrwert im DACH-Raum.',
   path: 'ueber-uns.html',
   main: `
 <section class="page-hero">
   <div class="page-hero__inner">
     <span class="mono-label">Über uns</span>
-    <h1>Gründer. Aus Koblenz. Für Maklerbüros.</h1>
-    <p>Sie arbeiten direkt mit mir. Transparent, DSGVO-konform, ohne unnötigen SaaS-Ballast.</p>
+    <h1>Effizienz mit Prinzipien</h1>
+    <p>Klar arbeiten. Systeme bauen, die echten Mehrwert schaffen. Ziel: Maßstab setzen im DACH-Raum.</p>
   </div>
 </section>
 <section>
   <div class="section-wrap">
-    <div class="about-grid">
-      <img src="images/prof_bild.jpg" width="240" height="320" loading="lazy" alt="Kevin Ritz, Gründer von RAIS">
-      <div>
-        <p>Ich bin Kevin Ritz, Gründer von RAIS aus Koblenz. Mich treibt das Optimieren von Prozessen an, die allen Beteiligten die Arbeit leichter machen. Effizienz ist kein Buzzword, sie ist der Grund, warum es RAIS gibt.</p>
-        <p>Was wir gemeinsam entwickeln, ist nachvollziehbar und auf Ihren Alltag zugeschnitten. Klein, direkt, persönlich.</p>
-        <p><a href="https://linkedin.com/in/kevin-ritz-rais" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+    <span class="mono-label">Grundwerte</span>
+    <h2 class="section-h2">Was uns trägt</h2>
+    <p class="section-sub">Fünf Prinzipien. Der Maßstab für jede Entscheidung und jedes System.</p>
+    <ol class="values-row" aria-label="Unsere fünf Grundwerte">
+      <li class="values-row__item">
+        <span class="values-row__num" aria-hidden="true">01</span>
+        <h3>Wahrhaftigkeit &amp; Ehrlichkeit</h3>
+        <p>Ehrliche Einschätzungen, wo KI hilft und wo nicht. Kein Marketing-Theater.</p>
+      </li>
+      <li class="values-row__item">
+        <span class="values-row__num" aria-hidden="true">02</span>
+        <h3>Verpflichtung &amp; Treue</h3>
+        <p>Zuverlässige Betreuung, klare Zusagen, Verbindlichkeit in Projekten.</p>
+      </li>
+      <li class="values-row__item">
+        <span class="values-row__num" aria-hidden="true">03</span>
+        <h3>Dienst am Nächsten</h3>
+        <p>Systeme sollen Menschen entlasten, nicht nur Dashboards füllen.</p>
+      </li>
+      <li class="values-row__item">
+        <span class="values-row__num" aria-hidden="true">04</span>
+        <h3>Verantwortung für Anvertrautes</h3>
+        <p>Sorgfalt bei Kundendaten, Prozessen und Entscheidungen, die Menschen betreffen.</p>
+      </li>
+      <li class="values-row__item">
+        <span class="values-row__num" aria-hidden="true">05</span>
+        <h3>Demut &amp; Exzellenz</h3>
+        <p>Hohe technische Qualität ohne Arroganz. Lernen bleibt Pflicht.</p>
+      </li>
+    </ol>
+
+    <div class="team-block" aria-labelledby="team-title">
+      <span class="mono-label">Unser Team</span>
+      <h2 class="section-h2" id="team-title">Wer RAIS trägt</h2>
+      <p class="section-sub">Wir sehen uns nicht als Besitzer, sondern als Verwalter. Arbeit direkt, persönlich, nachvollziehbar.</p>
+      <div class="team-grid">
+        <article class="team-card">
+          <img src="images/profilbild.webp" width="480" height="640" loading="lazy" alt="Kevin Ritz, Geschäftsführer von RAIS">
+          <div class="team-card__meta">
+            <span class="team-card__role">Geschäftsführer</span>
+            <h3>Kevin Ritz</h3>
+            <p>Ich baue die Systeme und stehe für den Alltag: von Koblenz aus, direkt im Projekt, ohne anonymes Account-Team.</p>
+            <p><a href="https://linkedin.com/in/kevin-ritz-rais" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+          </div>
+        </article>
+        <article class="team-card">
+          <img src="images/jesus.webp" width="480" height="640" loading="lazy" alt="Darstellung von Jesus Christus, Inhaber von RAIS">
+          <div class="team-card__meta">
+            <span class="team-card__role">Inhaber</span>
+            <h3>Jesus Christus</h3>
+            <p>Das Fundament dieser Firma. Das prägt, wie wir arbeiten: ehrlich, klar und mit dem Ziel, anderen verantwortungsvoll beim Wachsen zu helfen.</p>
+          </div>
+        </article>
       </div>
     </div>
+
+    <div class="vision-block" aria-labelledby="vision-title">
+      <span class="mono-label">Unsere Vision</span>
+      <h2 class="section-h2" id="vision-title">Das Team ausbauen. Den Maßstab setzen.</h2>
+      <p class="section-sub">Wir bauen das Team aus. Ziel: der größte Dienstleister für Prozessautomatisierung mit echtem Mehrwert im DACH-Raum.</p>
+    </div>
+
     <div style="margin-top:3rem;">
       <span class="mono-label">Qualität</span>
       <h2 class="section-h2">Externer Spezialist für Review und Security</h2>
@@ -362,10 +607,10 @@ page({
       <table class="infra-table">
         <thead><tr><th>Thema</th><th>Umsetzung</th></tr></thead>
         <tbody>
-          <tr><td>Hosting</td><td>Selbst gehostet in Deutschland</td></tr>
+          <tr><td>Hosting</td><td>Selbst gehostet in der EU</td></tr>
           <tr><td>Datenbank</td><td>Frankfurt (EU)</td></tr>
           <tr><td>Vertrag</td><td>AVV nach Art. 28 DSGVO</td></tr>
-          <tr><td>Weitergabe</td><td>Keine Datenweitergabe außerhalb der EU ohne Rechtsgrundlage</td></tr>
+          <tr><td>Weitergabe</td><td>Kundendaten bleiben in der EU</td></tr>
         </tbody>
       </table>
     </div>
@@ -378,7 +623,7 @@ page({
   file: 'persoenlichkeit.html',
   active: 'persoenlichkeit',
   title: 'Persönlichkeit | RAIS',
-  description: 'Kevin Ritz hinter RAIS: LinkedIn und technische YouTube-Videos zu Automation und KI im Unternehmer- und Maklerkontext.',
+  description: 'Kevin Ritz hinter RAIS: LinkedIn und technische YouTube-Videos zu Automation und KI für den Mittelstand.',
   path: 'persoenlichkeit.html',
   main: `
 <section class="page-hero">
@@ -395,7 +640,7 @@ page({
     <p class="section-sub">Die Themen, zu denen ich dort poste. Business, kein Produktmenü. Der Link führt aufs Profil, nicht auf einen einzelnen Beitrag.</p>
     <div class="person-cards">
       <article class="person-card">
-        <p>Automatisierung in Maklerbüros: weniger manuelle Qualifizierung, mehr gebuchte Gespräche.</p>
+        <p>Automatisierung im Mittelstand: weniger manuelle Qualifizierung, mehr gebuchte Gespräche.</p>
         <a href="https://linkedin.com/in/kevin-ritz-rais" target="_blank" rel="noopener noreferrer">Zum LinkedIn-Profil</a>
       </article>
       <article class="person-card">
@@ -403,7 +648,7 @@ page({
         <a href="https://linkedin.com/in/kevin-ritz-rais" target="_blank" rel="noopener noreferrer">Zum LinkedIn-Profil</a>
       </article>
       <article class="person-card">
-        <p>EU-Hosting und AVV als Trust-Signal: was Makler-GFs bei Prozess-Systemen prüfen sollten.</p>
+        <p>EU-Hosting und AVV als Trust-Signal: was Geschäftsführer bei Prozess-Systemen prüfen sollten.</p>
         <a href="https://linkedin.com/in/kevin-ritz-rais" target="_blank" rel="noopener noreferrer">Zum LinkedIn-Profil</a>
       </article>
     </div>
@@ -413,7 +658,7 @@ page({
   <div class="section-wrap">
     <span class="mono-label">YouTube</span>
     <h2 class="section-h2">Technische Praxis-Videos</h2>
-    <p class="section-sub">Einordnung zu Automation und KI für Unternehmer und den Maklerkontext. Lokales Vorschaubild, Link-out zum Video oder Kanal. Kein YouTube-Request und kein eingebetteter Player vor Ihrer Entscheidung dem Link zu folgen. Weitere Einträge kommen dazu, sobald freigegeben.</p>
+    <p class="section-sub">Einordnung zu Automation und KI für Unternehmer und den Maklerkontext. Lokales Vorschaubild, Link-out zum Video oder Kanal. Kein YouTube-Request und kein eingebetteter Player vor Ihrer Entscheidung dem Link zu folgen.</p>
     <div class="yt-list">
       <a class="yt-thumb-link" href="https://www.youtube.com/@kevin_ritz" target="_blank" rel="noopener noreferrer">
         <img src="images/youtube-curated-thumb.svg" width="1280" height="720" alt="Vorschaubild: Kevin Ritz zu KI und Automation" loading="lazy">
@@ -427,6 +672,117 @@ page({
   </div>
 </section>
 `
+});
+
+/* ═══════════════════════════════════════════════════════════
+   FLAGGSCHIFF-SEITEN
+
+   Eine Seite je Eintrag mit `slug` in systemakte-data.mjs, aktuell
+   fuenf. Alles kommt aus dem Datensatz, es gibt keinen handgepflegten
+   Text pro Seite: was hier steht, steht auch im Katalog, nur groesser.
+
+   Dateien liegen FLACH IM ROOT. headHtml() nutzt durchgehend relative
+   Asset-Pfade (favicon.svg, styles/…, images/…); ein Unterordner wuerde
+   saemtliche Links brechen.
+
+   Einstieg ist ausschliesslich referenzen.html, deshalb active:
+   'referenzen'. Die Navigation waechst nicht mit.
+   ═══════════════════════════════════════════════════════════ */
+
+const ICON_FOR_SYS = [
+  [/postfach|mail|newsletter/i, 'i-mail'],
+  [/whatsapp|chat|sms/i, 'i-chat'],
+  [/telefon/i, 'i-phone'],
+  [/kalender|termin/i, 'i-calendar'],
+  [/crm|onoffice|propstack|personalsystem|partnerverzeichnis/i, 'i-crm'],
+  [/ablage|datei|bild|dokument/i, 'i-files'],
+  [/ticket|projekt|board/i, 'i-board'],
+  [/warenwirtschaft|shop|produkt|versand|lieferant/i, 'i-box'],
+  [/formular|portal|register|website/i, 'i-form'],
+  [/buchhaltung|tabelle|zeiterfassung/i, 'i-table'],
+  [/wissensbasis|notiz/i, 'i-doc'],
+  [/handwerkersoftware|erfassung|werkzeug/i, 'i-tool'],
+  [/social/i, 'i-megafon'],
+];
+const sysIcon = (n) => (ICON_FOR_SYS.find(([re]) => re.test(n)) || [null, 'i-globe'])[1];
+
+const escHtml = (s) =>
+  String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+flagships().forEach((rec) => {
+  const flowChain = rec.flow
+    .map(
+      (s, i) =>
+        `${i ? '<li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li>' : ''}<li class="akte__flow-step">${escHtml(s)}</li>`
+    )
+    .join('');
+
+  const sysList = rec.systems
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean)
+    .map(
+      (s) =>
+        `<li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#${sysIcon(s)}"></use></svg>${escHtml(s)}</li>`
+    )
+    .join('');
+
+  page({
+    file: `system-${rec.slug}.html`,
+    active: 'referenzen',
+    title: `${rec.title} | RAIS`,
+    description: `${rec.title}: ${rec.trigger} Ablauf, Übergabepunkt und was das System ausdrücklich nicht tut.`,
+    path: `system-${rec.slug}.html`,
+    main: `
+<section class="page-hero">
+  <div class="page-hero__inner">
+    <span class="mono-label">Systemakte · ${escHtml(rec.code)}</span>
+    <h1>${escHtml(rec.title)}</h1>
+    <p>${escHtml(rec.trigger)}</p>
+    <button type="button" class="btn-primary js-open-booking" data-source="system-${escHtml(rec.code)}">Dieses System anfragen</button>
+  </div>
+</section>
+
+<section class="band-linen" aria-labelledby="sys-bild-title">
+  <div class="section-wrap">
+    <h2 class="sr-only" id="sys-bild-title">Das System auf einen Blick</h2>
+    <div class="system-tiles system-tiles--single">
+${renderSystemTile(rec)}
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="sys-ablauf-title">
+  <div class="section-wrap">
+    <span class="mono-label">Ablauf</span>
+    <h2 class="section-h2 section-h2--anchor" id="sys-ablauf-title">Was das System selbst erledigt</h2>
+    <p class="section-sub">Vier Schritte, in dieser Reihenfolge, jedes Mal gleich.</p>
+    <ol class="akte__flow akte__flow--large">${flowChain}</ol>
+
+    <div class="sys-handover">
+      <span class="mono-label">Übergabe</span>
+      <p>${escHtml(rec.handover)}</p>
+    </div>
+
+    <span class="mono-label" style="margin-top:2.5rem;">Anbindung</span>
+    <h2 class="section-h2">Woran es angeschlossen wird</h2>
+    <ul class="akte__systems akte__systems--large">${sysList}</ul>
+  </div>
+</section>
+
+<!-- Gruener Anker. Die Grenze ist das eigentliche Vertrauenssignal,
+     deshalb traegt sie die dunkle Flaeche und nicht den Nebensatz. -->
+<section class="surface-green" aria-labelledby="sys-grenze-title">
+  <div class="section-wrap">
+    <span class="mono-label">Nicht im Zug</span>
+    <h2 class="section-h2" id="sys-grenze-title">Was dieses System ausdrücklich nicht tut</h2>
+    <p class="section-sub">${escHtml(rec.limit)}</p>
+    <p class="sys-grenze-note">Ein System, das seine Grenze nicht kennt, gehört nicht in Ihren Betrieb. Deshalb steht sie hier und nicht im Kleingedruckten.</p>
+    <p style="margin-top:2rem;"><a class="home-cta-link" href="referenzen.html">Alle 24 Systeme im Katalog</a></p>
+  </div>
+</section>
+`,
+  });
 });
 
 console.log('multipage HTML generated');

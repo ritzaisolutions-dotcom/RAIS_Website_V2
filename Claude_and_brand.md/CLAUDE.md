@@ -1,12 +1,12 @@
 # CLAUDE.md
 
-Version 3, Stand 25.07.2026. Ersetzt Version 2. Kevin-Hierarchy: RAIS = Marke, AQuT = Systemname im Portfolio.
+Version 3, Stand 25.07.2026. Ersetzt Version 2. Kevin-Hierarchy: RAIS = Marke, AMS = Systemname im Portfolio.
 
 ## Project Goal
 
 RAIS als praktischen, hochwertigen Partner für Prozessautomatisierung und interne KI-Systeme für unabhängige Immobilienmaklerbüros positionieren.
 
-Die Website verkauft messbare Entlastung. **RAIS** ist der Absender. **AQuT** ist ein benanntes Angebotssystem unter RAIS, keine eigene Brand.
+Die Website verkauft messbare Entlastung. **RAIS** ist der Absender. **AMS** ist ein benanntes Angebotssystem unter RAIS, keine eigene Brand.
 
 ## Primäre Einschränkung
 
@@ -16,8 +16,8 @@ Bestehendes Fundament wiederverwenden. Vanilla HTML, Vite, Tailwind. Gezielte Ed
 
 | Seite | Job |
 |---|---|
-| Home (`index.html`) | Landingpage / Lead-Magnet: Hero, Tech-Stack-Ticker, ICP, Warum RAIS, AQuT-Flaggschiff, Use-Case-Spotlight-Cards (`#systeme`), Multi-Step-Rechner, Ablauf, Trust (ohne Kundenbeweis bis Freigabe), Kontakt |
-| AQuT (`aqut.html`) | Verkaufsseite für das System inkl. Orientierungsclaim und client-only Multi-Step-Rechner |
+| Home (`index.html`) | Landingpage / Lead-Magnet: Hero, Tech-Stack-Ticker, ICP, Warum RAIS, AMS-Flaggschiff, Use-Case-Spotlight-Cards (`#systeme`), Multi-Step-Rechner, Ablauf, Trust (ohne Kundenbeweis bis Freigabe), Kontakt |
+| AMS (`ams.html`) | Verkaufsseite für das System inkl. Orientierungsclaim und client-only Multi-Step-Rechner |
 | Referenzen (`referenzen.html`) | Case Studies; Haller-Teaser auf Home ausgeblendet bis Freigabe |
 | So arbeiten wir (`zusammenarbeit.html`) | Prozess Discovery bis Betrieb (Footer-Nav, nicht primäre Nav) |
 | Über uns (`ueber-uns.html`) | Kevin, externer Spezialist, Infrastruktur |
@@ -40,7 +40,7 @@ Kontakt/Audit ist ein Modul auf jeder Seite. Primäre Nav: Systeme · Referenzen
 - Rechner sammelt keine Kontaktdaten und submitet nichts an CRM/Supabase
 - Haller-Teaser auf Home ausgeblendet bis Freigabe
 
-## Rechner-Regeln (Home und AQuT)
+## Rechner-Regeln (Home und AMS)
 
 - Multi-Step: Volumen → Telefon-Nacharbeit → Kostensatz → Ergebnis
 - Inputs: Anfragevolumen, Minuten pro Mail-Anfrage, Anteil Mailbox-Nachtelefonat (%), Minuten pro Mailbox-Nein-Anruf, Stundensatz

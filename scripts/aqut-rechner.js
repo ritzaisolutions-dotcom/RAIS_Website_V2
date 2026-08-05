@@ -1,5 +1,5 @@
 /**
- * Client-only AQuT pain calculator. No network, no PII, no lead capture.
+ * Client-only AMS pain calculator. No network, no PII, no lead capture.
  * Multi-step wizard: volume → phone follow-up → rate → result.
  * Volume input defaults to monthly; optional weekly toggle converts with 4.33.
  * Result is always shown as hours/month and euro/month.
@@ -18,6 +18,8 @@
   var phoneShareEl = document.getElementById('rq-phone-share');
   var phoneMinEl = document.getElementById('rq-phone-minutes');
   var rateEl = document.getElementById('rq-rate');
+  var autoEl = document.getElementById('rq-auto');
+  var autoOutEl = document.getElementById('rq-auto-out');
   var outEl = document.getElementById('rq-output');
   var labelEl = document.getElementById('rq-step-label');
   var errorEl = document.getElementById('rq-error');
@@ -181,6 +183,13 @@
     if (step === 4) render();
   }
 
+  // Die Annahme gehoert dem Besucher. Wir behaupten keine Quote.
+  if (autoEl && autoOutEl) {
+    autoEl.addEventListener('input', function () {
+      autoOutEl.textContent = autoEl.value + ' %';
+    });
+  }
+
   function render() {
     var minutes = num(minEl, 0);
     var phoneShare = Math.min(num(phoneShareEl, 0), 100);
@@ -214,6 +223,31 @@
       weekHint.textContent = '≈ ' + formatHours(hoursWeek) + ' Std/Woche';
       outEl.appendChild(weekHint);
 
+      // Ersparnis nur, wenn der Besucher selbst eine Annahme gesetzt hat.
+      // Bei 0 Prozent behaupten wir nichts. Die Quote stammt ausdruecklich
+      // von ihm, nicht von uns.
+      var autoShare = Math.min(num(autoEl, 0), 100);
+      if (autoShare > 0) {
+        var savedHours = hoursMonth * (autoShare / 100);
+        var savedEuro = euroMonth * (autoShare / 100);
+
+        var delta = document.createElement('p');
+        delta.className = 'rq-result-delta';
+
+        var deltaLabel = document.createElement('span');
+        deltaLabel.className = 'rq-result-delta__label';
+        deltaLabel.textContent = 'Bei Ihrer Annahme von ' + autoShare + ' Prozent';
+        delta.appendChild(deltaLabel);
+
+        var deltaValue = document.createElement('span');
+        deltaValue.className = 'rq-result-delta__value';
+        deltaValue.textContent =
+          formatHours(savedHours) + ' Stunden und rund ' + formatEuro(savedEuro) + ' im Monat';
+        delta.appendChild(deltaValue);
+
+        outEl.appendChild(delta);
+      }
+
       var chart = document.createElement('div');
       chart.className = 'rq-chart';
       chart.setAttribute('role', 'img');
@@ -226,8 +260,12 @@
           ' Stunden im Monat'
       );
 
-      var emailPct = hoursMonth > 0 ? Math.round((emailHoursMonth / hoursMonth) * 100) : 50;
-      var phonePct = hoursMonth > 0 ? 100 - emailPct : 50;
+      // Ohne Aufwand gibt es keine Aufteilung. Ein 50/50-Balken wuerde eine
+      // Zahl behaupten, die der Besucher nie eingegeben hat.
+      if (hoursMonth <= 0) return;
+
+      var emailPct = Math.round((emailHoursMonth / hoursMonth) * 100);
+      var phonePct = 100 - emailPct;
 
       var bar = document.createElement('div');
       bar.className = 'rq-chart__bar';

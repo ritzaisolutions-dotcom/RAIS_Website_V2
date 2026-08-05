@@ -33,6 +33,7 @@
     email: '',
     phone: '',
     inquiry_volume: 80,
+    engpass: null,
     icp_segment: null,
     source: null,
     bookingLinkShown: false,
@@ -57,6 +58,7 @@
     state.email = '';
     state.phone = '';
     state.inquiry_volume = 80;
+    state.engpass = null;
     state.icp_segment = null;
     state.source = null;
     state.bookingLinkShown = false;
@@ -66,11 +68,16 @@
     var phoneEl = document.getElementById('bm-phone');
     var privacyEl = document.getElementById('bm-privacy');
     var websiteEl = document.getElementById('bm-website');
+    var engpassEl = document.getElementById('bm-engpass');
     if (nameEl) nameEl.value = '';
     if (emailEl) emailEl.value = '';
     if (phoneEl) phoneEl.value = '';
     if (privacyEl) privacyEl.checked = false;
     if (websiteEl) websiteEl.value = '';
+    if (engpassEl) {
+      engpassEl.value = '';
+      engpassEl.classList.remove('bm-error');
+    }
     if (volumeEl) volumeEl.value = '80';
     syncVolumeUI();
     var calWrap = document.getElementById('bm-cal-wrap');
@@ -188,6 +195,16 @@
   var next1 = document.getElementById('bm-next-1');
   if (next1) {
     next1.addEventListener('click', function () {
+      var engpassEl = document.getElementById('bm-engpass');
+      if (engpassEl) {
+        if (!engpassEl.value) {
+          engpassEl.classList.add('bm-error');
+          engpassEl.focus();
+          return;
+        }
+        engpassEl.classList.remove('bm-error');
+        state.engpass = engpassEl.value;
+      }
       syncVolumeUI();
       submitLead();
     });
@@ -203,6 +220,7 @@
       email: state.email,
       phone: state.phone,
       inquiry_volume: state.inquiry_volume,
+      engpass: state.engpass || null,
       icp_segment: state.icp_segment || null,
       source: state.source || null,
       privacy_ack: true,

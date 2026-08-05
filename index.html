@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>RAIS | Anfragen qualifizieren. Termine buchen.</title>
-    <meta name="description" content="AQuT von RAIS: Portalanfragen automatisch qualifizieren und Termine direkt in den Kalender. Für unabhängige Maklerbüros. Kostenloser Prozess-Audit.">
+    <title>RAIS | Prozessautomatisierung mit KI für den Mittelstand</title>
+    <meta name="description" content="KI-Systeme für den Mittelstand: live in Ihrer Infrastruktur, DSGVO-konform, ohne Vendor-Lock-in. Ehrliche Einschätzung, wo Automatisierung lohnt. Kostenlosen KI-Audit buchen.">
     <meta name="google-site-verification" content="A6q1zlZLweKSa1vIxp-owVoxpEXPyIW-gPWdY6N79ZI">
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -13,15 +13,15 @@
     <link rel="apple-touch-icon" href="favicon.png?v=3">
 
     <!-- OpenGraph -->
-    <meta property="og:title" content="RAIS | Anfragen qualifizieren. Termine buchen.">
-    <meta property="og:description" content="AQuT von RAIS: Portalanfragen automatisch qualifizieren und Termine direkt in den Kalender. Für unabhängige Maklerbüros. Kostenloser Prozess-Audit.">
+    <meta property="og:title" content="RAIS | Prozessautomatisierung mit KI für den Mittelstand">
+    <meta property="og:description" content="KI-Systeme für den Mittelstand: live in Ihrer Infrastruktur, DSGVO-konform, ohne Vendor-Lock-in. Ehrliche Einschätzung, wo Automatisierung lohnt.">
     <meta property="og:url" content="https://ritz-ai.solutions">
     <meta property="og:type" content="website">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="RAIS | Anfragen qualifizieren. Termine buchen.">
-    <meta name="twitter:description" content="AQuT von RAIS: Portalanfragen automatisch qualifizieren und Termine direkt in den Kalender. Für unabhängige Maklerbüros. Kostenloser Prozess-Audit.">
+    <meta name="twitter:title" content="RAIS | Prozessautomatisierung mit KI für den Mittelstand">
+    <meta name="twitter:description" content="KI-Systeme für den Mittelstand: live in Ihrer Infrastruktur, DSGVO-konform, ohne Vendor-Lock-in. Ehrliche Einschätzung, wo Automatisierung lohnt.">
 
     <!-- Schema.org -->
     <script type="application/ld+json">
@@ -30,8 +30,9 @@
       "@type": "ProfessionalService",
       "name": "RAIS (Ritz AI Solutions)",
       "url": "https://ritz-ai.solutions",
-      "description": "Prozessautomatisierung für unabhängige Immobilienmaklerbüros: Anfragen qualifizieren, Termine buchen, Systeme betreiben. DSGVO-konform.",
-      "brand": { "@type": "Brand", "name": "RAIS" }
+      "description": "Prozessautomatisierung und KI-Systeme für den deutschsprachigen Mittelstand. Live in Ihrer Infrastruktur, DSGVO-konform, ohne Vendor-Lock-in.",
+      "brand": { "@type": "Brand", "name": "RAIS" },
+      "areaServed": ["DE", "AT", "CH"]
     }
     </script>
 
@@ -62,8 +63,20 @@
         ───────────────────────────────────────────────────── */
 
         :root {
+            /* Editorial Text-Serif fuer Headings (brand_steer): bewusst KEINE Display-Serif */
+            --serif:        'Source Serif 4', 'Iowan Old Style', Georgia, serif;
+            /* Fliesstext: Instrument Sans, neutrale Grotesk, ausdruecklich nicht geometrisch */
+            --sans:         'Instrument Sans', 'Inter', system-ui, -apple-system, sans-serif;
+            --mono:         'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
             --orange:       #EC6A37;
             --orange-hover: #F37A48;
+            /* Schrift auf Mandarin. Weiss ergab nur 3.14:1 und riss
+               die 4.5:1 auf jedem primaeren CTA. Charcoal kommt auf
+               4.52:1, im Hover auf --orange-hover sogar auf 5.20:1.
+               Achtung: 4.52 ist knapp. Wird --orange je aufgehellt,
+               muss dieser Wert neu gerechnet werden. */
+            --on-orange:    #2F2A24;
             --background:   #F5F2EC;
             --surface:      #FBF8F3;
             --sage:         #789464;
@@ -73,6 +86,48 @@
             --stone:        #7B746B;
             --border:       #D9D1C7;
             --nav-h:        72px;
+
+            /* Racing Green als zweite Tinte: Linien-, Label- und Markenrollen */
+            --green-ink:    #004225;
+            --green-rule:   rgba(0, 66, 37, 0.22);
+            --green-rule-soft: rgba(0, 66, 37, 0.10);
+            --green-wash:   rgba(0, 66, 37, 0.04);
+
+            /* Racing Green als LEITFLAECHE (Amendment brand_steer, 05.08.2026).
+               Helle Baender sind der Kontext draussen, gruene Flaechen sind
+               "innerhalb der Grenze". Die eine Sage-Vollflaeche bleibt #aqut. */
+            --green-900:      #002A18;  /* Verlaufsboden, Sektionsuebergaenge */
+            --green-800:      #004225;  /* Basisflaeche */
+            --green-700:      #0A5231;  /* Kartenflaeche auf Gruen */
+            --linen-on-green: #FBF8F3;  /* Text auf Gruen, 11.9:1 */
+            --sage-light:     #9FB88C;  /* Akzent auf Gruen, 5.1:1.
+                                           --sage #789464 kaeme auf Gruen nur auf 2.8:1
+                                           und ist als Textfarbe dort unbrauchbar. */
+            --rule-on-green:  rgba(251, 248, 243, 0.14);
+            --fill-on-green:  rgba(251, 248, 243, 0.06);
+            --focus-on-green: rgba(159, 184, 140, 0.55);
+
+            /* Skalen */
+            --radius-sm:    0.7rem;
+            --radius-md:    1.1rem;
+            --radius-lg:    1.5rem;
+            --radius-pill:  999px;
+
+            --shadow-sm:    0 1px 2px rgba(47, 42, 36, 0.05);
+            --shadow-md:    0 6px 20px rgba(47, 42, 36, 0.08);
+            --shadow-lg:    0 14px 34px rgba(47, 42, 36, 0.14);
+
+            --space-2xs:    0.35rem;
+            --space-xs:     0.6rem;
+            --space-sm:     1rem;
+            --space-md:     1.5rem;
+            --space-lg:     2.5rem;
+            --space-xl:     clamp(3rem, 6vw, 4.5rem);
+            --space-band:   clamp(4.5rem, 8vw, 7.5rem);
+
+            --dur-fast:     0.2s;
+            --dur-mid:      0.32s;
+            --ease:         cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         /* ─────────────────────────────────────────────────────
@@ -92,7 +147,7 @@
         }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-family: var(--sans);
             background-color: var(--background);
             color: var(--charcoal);
             line-height: 1.65;
@@ -174,7 +229,7 @@
         }
 
         .footer-brand {
-            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
+            font-family: var(--serif);
             font-size: 0.9375rem;
             font-weight: 600;
             color: var(--charcoal);
@@ -234,6 +289,12 @@
            HERO
         ───────────────────────────────────────────────────── */
 
+        /* Racing Green traegt den Hero. Das Foto liegt nicht mehr
+           unter einem grauen Scrim, sondern wird per
+           background-blend-mode: luminosity in die gruene Flaeche
+           gerechnet. Ergebnis ist ein Duotone: das Bild liest als
+           auf gruenes Papier gedruckt statt als Stockfoto mit
+           Abdunklung. */
         #hero {
             position: relative;
             min-height: clamp(520px, 85vh, 100vh);
@@ -243,22 +304,40 @@
             justify-content: center;
             overflow: hidden;
             padding: calc(var(--nav-h) + 2rem) 2rem 3rem;
-            background:
-                linear-gradient(145deg, rgba(26,20,16,0.52) 0%, rgba(18,14,10,0.62) 100%),
-                url('images/mark-koch-hero.webp') center/cover no-repeat;
+            background-color: var(--green-800);
+            background-image:
+                linear-gradient(150deg, rgba(0, 42, 24, 0.62) 0%, rgba(0, 42, 24, 0.86) 100%),
+                url('images/mark-koch-hero.webp');
+            background-position: center, center;
+            background-size: cover, cover;
+            background-repeat: no-repeat, no-repeat;
+            /* Der Verlauf legt sich normal darueber, das Foto
+               blendet mit der gruenen Grundfarbe. */
+            background-blend-mode: normal, luminosity;
         }
 
-        /* Subtle grid pattern overlay */
+        /* Signature: topografische Hoehenlinien.
+           Ersetzt das fruehere orange 48px-Quadratraster. Ein
+           Quadratraster ist generisches Tech-Vokabular,
+           Hoehenlinien sind Vermessung und Grenzverlauf, also die
+           Bildsprache von Grundstuecken. Technik aus
+           halide-topo-hero (21st.dev), ohne dessen Parallax und
+           Entrance-Animation. Reine CSS-Gradients, statisch. */
         .hero-overlay {
             position: absolute;
             inset: 0;
             z-index: 1;
+            pointer-events: none;
+            color: var(--sage-light);
             background-image:
-                linear-gradient(rgba(236, 106, 55, 0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(236, 106, 55, 0.04) 1px, transparent 1px);
-            background-size: 48px 48px;
-            mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 100%);
-            -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 100%);
+                repeating-radial-gradient(ellipse 78% 58% at 18% 22%, transparent 0 25px, currentColor 25px 26px),
+                repeating-radial-gradient(ellipse 96% 72% at 84% 80%, transparent 0 33px, currentColor 33px 34px);
+            /* Kraeftiger als auf den reinen Gruenflaechen: hier
+               konkurriert das Foto mit den Linien, bei 0.17 waren
+               sie faktisch nicht da. */
+            opacity: 0.3;
+            mask-image: radial-gradient(ellipse 95% 85% at 50% 45%, black 45%, transparent 100%);
+            -webkit-mask-image: radial-gradient(ellipse 95% 85% at 50% 45%, black 45%, transparent 100%);
         }
 
         /* Transparent content panel (Box removed for premium layout) */
@@ -293,7 +372,7 @@
 
         /* H1 */
         .hero-h1 {
-            font-family: 'Baskerville', 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
+            font-family: var(--serif);
             font-size: clamp(2.2rem, 5.8vw, 4.55rem);
             font-weight: 700;
             line-height: 1.08;
@@ -318,30 +397,44 @@
             color: #FBF8F3;
         }
 
+        /* Die zwei Marken tragen die Gegenueberstellung der
+           Headline: "Tool-Problem" ist die falsche Diagnose und
+           tritt zurueck, "System-Problem" ist die richtige und
+           wird betont. Unterstreichung entfaellt, unterstrichene
+           Kursiv-Serif ist ein datierter Tell. */
         .hero-h1__mark {
-            color: var(--sage);
+            color: var(--sage-light);
             font-style: italic;
-            text-decoration: underline;
-            text-underline-offset: 0.14em;
-            text-decoration-color: var(--sage);
             text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
         }
 
+        /* Lief vorher in --charcoal mit Linen-Glow und waere auf
+           gruenem Grund unlesbar. Zurueckgenommenes Linen haelt
+           die Bedeutung und kommt als Displaygroesse auf gut 5:1. */
         .hero-h1__mark--charcoal {
-            color: var(--charcoal);
+            color: rgba(251, 248, 243, 0.52);
             font-style: normal;
             text-decoration: none;
-            text-shadow: 0 0 10px rgba(251, 248, 243, 0.55);
+            text-shadow: none;
         }
 
         /* Subline */
         .hero-sub {
-            font-family: 'Inter', sans-serif;
+            font-family: var(--sans);
             font-size: clamp(1.05rem, 2.1vw, 1.28rem);
             line-height: 1.7;
             color: rgba(255, 255, 255, 0.88);
             max-width: 700px;
             text-shadow: 0 1px 8px rgba(0,0,0,0.18);
+        }
+
+        /* Die USP trägt den Untertitel. Eigene Zeile, damit sie als
+           Aussage steht und nicht als Auftakt einer Aufzählung liest. */
+        .hero-sub__usp {
+            display: block;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.3rem;
         }
 
 
@@ -355,14 +448,40 @@
             margin-top: 0.375rem;
         }
 
+        /* Zweiter Weg fuer alle, die noch nicht buchen wollen.
+           Bewusst ohne Flaeche, damit der primaere CTA der
+           einzige laute bleibt (brand_steer). */
+        .hero-btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            min-height: 44px;
+            padding: 0.7rem 0.25rem;
+            color: rgba(255, 255, 255, 0.92);
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: rgba(255, 255, 255, 0.45);
+            text-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+        }
+        .hero-btn-secondary:hover {
+            text-decoration-color: rgba(255, 255, 255, 0.9);
+        }
+        .hero-btn-secondary:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: 3px;
+            border-radius: 2px;
+        }
+
         .hero-btn-primary {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             padding: 0.875rem 1.875rem;
             background-color: var(--orange);
-            color: #ffffff;
-            font-family: 'Inter', sans-serif;
+            color: var(--on-orange);
+            font-family: var(--sans);
             font-size: 1rem;
             font-weight: 500;
             border-radius: 10px;
@@ -400,7 +519,7 @@
             padding: 0.875rem 1.875rem;
             background-color: transparent;
             color: #FFFFFF;
-            font-family: 'Inter', sans-serif;
+            font-family: var(--sans);
             font-size: 1rem;
             font-weight: 500;
             border-radius: 10px;
@@ -491,20 +610,30 @@
             .section-wrap { padding: 0 1.25rem; }
         }
 
-        /* Mono section label (pistachio by default) */
+        /* Mono section label. brand_steer: keine Versalien-Eyebrows, Deutsch braucht
+           das Wortbild. Racing Green als zweite Tinte statt grau. */
         .mono-label {
-            display: inline-block;
-            font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
-            font-size: 0.625rem;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--pistachio);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            letter-spacing: 0.04em;
+            text-transform: none;
+            font-weight: 500;
+            color: var(--green-ink);
             margin-bottom: 0.875rem;
+        }
+        .mono-label::before {
+            content: "";
+            width: 1.35rem;
+            height: 1px;
+            background: var(--green-rule);
         }
 
         /* Section headline */
         .section-h2 {
-            font-family: 'Baskerville', 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
+            font-family: var(--serif);
             font-size: clamp(1.625rem, 3vw, 2.5rem);
             font-weight: 700;
             line-height: 1.2;
@@ -520,10 +649,18 @@
             color: var(--stone);
         }
 
-/* ── Contact section — dark hero treatment ── */
+/* ── Contact section — gruene Leitflaeche ──
+   Lief in --charcoal. Diese Inline-Regel steht spaeter in der
+   Kaskade als site-multipage.css und hat deren Gruen ueberstimmt,
+   deshalb muss die Flaeche hier gesetzt werden. Gleiche
+   Zusammensetzung wie #hero und #sicherheit, damit die drei
+   Anker als eine Flaeche gelesen werden. */
         #contact {
-            background: var(--charcoal);
-            color: #fff;
+            background:
+                linear-gradient(180deg, var(--green-900) 0%, transparent 20%),
+                linear-gradient(0deg, var(--green-900) 0%, transparent 16%),
+                var(--green-800);
+            color: var(--linen-on-green);
             padding: 6rem 0 5rem;
         }
         #contact .section-wrap { max-width: 1060px; }
@@ -650,8 +787,8 @@
             gap: 0.5rem;
             padding: 0.875rem 1.875rem;
             background-color: var(--orange);
-            color: #fff;
-            font-family: 'Inter', sans-serif;
+            color: var(--on-orange);
+            font-family: var(--sans);
             font-size: 1rem;
             font-weight: 600;
             border-radius: 10px;
@@ -782,60 +919,20 @@
         .reveal-delay-3 { transition-delay: 0.3s; }
         .reveal-delay-4 { transition-delay: 0.4s; }
 
-        /* ─────────────────────────────────────────────────────
-           KENNZAHLEN-BAR
-        ───────────────────────────────────────────────────── */
-
-        #zahlen-bar {
-            padding: 3rem 0;
-            background: var(--surface);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .zahlen-grid {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 2rem;
-        }
-
-        .zahlen-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            flex: 1;
-        }
-
-        .zahlen-zahl {
-            font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
-            font-size: clamp(1.75rem, 3.5vw, 2.75rem);
-            font-weight: 700;
-            color: var(--orange);
-            line-height: 1;
-            margin-bottom: 0.5rem;
-        }
-
-        .zahlen-label {
-            font-size: 0.8125rem;
-            color: var(--stone);
-            line-height: 1.4;
-            max-width: 12ch;
-        }
-
-        .zahlen-divider {
-            width: 1px;
-            height: 3rem;
-            background: var(--border);
-            flex-shrink: 0;
-        }
-
-        @media (max-width: 680px) {
-            .zahlen-grid { flex-wrap: wrap; justify-content: center; gap: 2rem 3rem; }
-            .zahlen-divider { display: none; }
-            .zahlen-item { flex: 0 0 40%; }
-            .zahlen-label { max-width: none; }
+        /* Die Reveal-Orchestrierung unten vergibt .reveal
+           bedingungslos und kennt prefers-reduced-motion nicht.
+           Ohne diesen Guard startet die Seite bei reduzierter
+           Bewegung auf opacity 0. Muss hier stehen und nicht in
+           antigravity-polish.css: das Inline-.reveal darueber
+           kommt spaeter in der Kaskade und wuerde gewinnen. */
+        @media (prefers-reduced-motion: reduce) {
+            .reveal,
+            .reveal.active {
+                opacity: 1;
+                transform: none;
+                transition: none;
+                transition-delay: 0s;
+            }
         }
 
         /* ─────────────────────────────────────────────────────
@@ -870,21 +967,12 @@
         .ticker-item {
             display: inline-flex;
             align-items: center;
-            gap: 0.55rem;
             font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
             font-size: 0.8125rem;
             color: var(--stone);
             letter-spacing: 0.04em;
             white-space: nowrap;
             flex-shrink: 0;
-        }
-
-        .ticker-logo {
-            width: 1.15rem;
-            height: 1.15rem;
-            flex-shrink: 0;
-            color: var(--charcoal);
-            opacity: 0.78;
         }
 
         .ticker-sep {
@@ -902,67 +990,6 @@
         @media (prefers-reduced-motion: reduce) {
             .ticker-track { animation: none; }
         }
-
-        /* ─────────────────────────────────────────────────────
-           PROBLEM SECTION
-        ───────────────────────────────────────────────────── */
-
-        #problem {
-            padding: 6rem 0;
-            background-color: var(--surface);
-        }
-
-        .problem-intro {
-            max-width: 640px;
-            margin-bottom: 3.5rem;
-        }
-
-        .problem-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            border-top: 1px solid var(--border);
-            border-left: 1px solid var(--border);
-        }
-
-        .problem-item {
-            padding: 2.5rem;
-            border-right: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .problem-icon {
-            display: block;
-            width: 1.625rem;
-            height: 1.625rem;
-            color: var(--orange);
-            margin-bottom: 1.125rem;
-            flex-shrink: 0;
-        }
-
-        .problem-title {
-            font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif;
-            font-size: 1.125rem;
-            font-weight: 700;
-            color: var(--charcoal);
-            line-height: 1.28;
-            margin-bottom: 0.5rem;
-        }
-
-        .problem-body {
-            font-size: 0.9rem;
-            line-height: 1.65;
-            color: var(--stone);
-        }
-
-        @media (max-width: 640px) {
-            #problem { padding: 4rem 0; }
-            .problem-grid {
-                grid-template-columns: 1fr;
-                border-left: none;
-            }
-            .problem-item { border-right: none; }
-        }
-
 
         /* ─────────────────────────────────────────────────────
            TRUST SECTION
@@ -1073,7 +1100,7 @@
         }
 
         .trust-flow-text strong {
-            font-family: 'Inter', sans-serif;
+            font-family: var(--sans);
             font-size: 0.875rem;
             font-weight: 600;
             color: var(--charcoal);
@@ -1113,8 +1140,8 @@
             gap: 0.5rem;
             padding: 0.9375rem 2rem;
             background-color: var(--orange);
-            color: #fff;
-            font-family: 'Inter', sans-serif;
+            color: var(--on-orange);
+            font-family: var(--sans);
             font-size: 1rem;
             font-weight: 500;
             border-radius: 10px;
@@ -1237,8 +1264,8 @@
             justify-content: center;
             padding: 0.9375rem 1.5rem;
             background-color: var(--orange);
-            color: #fff;
-            font-family: 'Inter', sans-serif;
+            color: var(--on-orange);
+            font-family: var(--sans);
             font-size: 1rem;
             font-weight: 500;
             border: none;
@@ -1254,20 +1281,6 @@
         @media (max-width: 860px) {
             #sticky-cta { display: block; }
         }
-
-        /* Branchen demo link */
-        .branchen-demo-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3125rem;
-            margin-top: 0.875rem;
-            font-size: 0.875rem;
-            color: var(--stone);
-            text-decoration: none;
-            transition: color 0.15s ease;
-        }
-
-        .branchen-demo-link:hover { color: var(--charcoal); }
 
         /* ─────────────────────────────────────────────────────
            BOOKING MODAL
@@ -1445,7 +1458,7 @@
             padding: 0.6rem 1.5rem;
             font-size: 0.9rem;
             font-weight: 700;
-            color: #fff;
+            color: var(--on-orange);
             cursor: pointer;
             font-family: inherit;
             transition: background 0.15s;
@@ -1471,10 +1484,176 @@
             .bm-cal-wrap { margin: 0 -1.25rem -1.25rem; }
             .bm-cal-wrap iframe { height: 580px; }
         }
+
+        /* ─────────────────────────────────────────────────────
+           RACING GREEN — Nachtrag zur Kaskade
+
+           Dieser Style-Block steht nach allen verlinkten CSS-
+           Dateien und schlaegt home.css bei gleicher Spezifitaet.
+           Was dort an bestehenden Regeln kollidiert, muss deshalb
+           hier stehen. Reine Neuzugaenge (.home-band--green,
+           .topo-lines) und alles mit hoeherer Spezifitaet
+           (.home-band--green .kontrakt) bleiben in home.css.
+        ───────────────────────────────────────────────────── */
+
+        /* Source Serif 4 laeuft in Displaygroessen zu locker. */
+        .section-h2 { letter-spacing: -0.018em; }
+
+        /* Genau zwei Ankersektionen pro Seite (brand_steer):
+           #sicherheit und #systeme. Muss hier stehen, sonst
+           gewinnt die .section-h2-Regel weiter oben. */
+        .section-h2--anchor {
+            font-size: clamp(2.1rem, 4vw, 3.1rem);
+            line-height: 1.14;
+            max-width: 20ch;
+        }
+
+        /* Der Strich am Kontakt-Label lief in --green-rule und
+           waere auf gruenem Grund unsichtbar. */
+        .mono-label--contact::before { background: var(--sage-light); }
+
+        /* Das Marken-Emblem im Hero hatte bisher gar kein CSS und
+           erbte damit Charcoal, war also auf der dunklen Flaeche
+           praktisch unsichtbar. */
+        .hero-brand-emblem {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            opacity: 0.9;
+        }
+
+        .hero-brand-emblem__word {
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            letter-spacing: 0.22em;
+            color: var(--linen-on-green);
+        }
+
+        /* Auf schmalen Viewports werden aus denselben Ringen
+           wenige grosse Boegen, die mit der Headline konkurrieren.
+           Enger stellen und zuruecknehmen, wie bei den Baendern. */
+        @media (max-width: 700px) {
+            .hero-overlay {
+                background-image:
+                    repeating-radial-gradient(ellipse 90% 62% at 22% 20%, transparent 0 17px, currentColor 17px 18px),
+                    repeating-radial-gradient(ellipse 100% 76% at 80% 82%, transparent 0 23px, currentColor 23px 24px);
+                opacity: 0.22;
+            }
+        }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Wie lange dauert es, bis ein System läuft?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ein erstes System geht typischerweise in vier bis sechs Wochen live. Der Audit und die Analyse davor kosten Sie etwa zwei Termine. Größere Zuschnitte dauern länger, das sagen wir dann vor Projektstart und nicht mittendrin."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was ist, wenn das System die vereinbarten Kriterien nicht erreicht?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Wir definieren messbare Kriterien vor Projektstart. Werden sie nicht erreicht, passen wir nach, ohne zusätzliche Beratungshonorare. Deshalb legen wir im Audit so viel Wert darauf, dass die Kriterien überhaupt messbar formuliert sind."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was ist, wenn mein Team damit nicht klarkommt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Die Systeme laufen dort, wo Ihr Team ohnehin arbeitet: im Postfach, im CRM, im Ticketsystem. Es gibt in der Regel keine neue Oberfläche, die jemand lernen muss. Wo doch, gehört die Einweisung zur Übergabe und nicht auf eine Extrarechnung."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Können wir unsere bestehenden Tools und unser CRM behalten?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, das ist der Normalfall. Wir bauen an Ihre Systeme an, statt Ihnen eine Plattform zu verkaufen. Wenn ein Werkzeug wirklich im Weg steht, sagen wir das offen, aber ein Wechsel ist nie die Voraussetzung dafür, dass wir anfangen können."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Brauchen wir technisches Wissen im Haus?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Für den Betrieb nicht. Sie brauchen jemanden, der fachlich entscheiden kann, was das System darf und was nicht, und der Freigaben erteilt. Das ist eine fachliche Rolle, keine technische."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was passiert nach dem Go-Live, wer betreut das System?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Jedes System wird dokumentiert übergeben, damit Ihr Team oder ein anderer Dienstleister es weiterbetreiben kann. Ob wir den Betrieb übernehmen, entscheiden Sie danach. Es gibt keinen Lizenzschlüssel, den wir abschalten könnten."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie viel Zeit kostet uns das Projekt intern?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Rechnen Sie mit einem halben Tag für den Audit, dann etwa ein bis zwei Stunden pro Woche für Rückfragen und Freigaben, solange gebaut wird. Wenn wir mehr brauchen, sagen wir es vorher."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ab welcher Größe lohnt sich das überhaupt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Entscheidend ist nicht die Mitarbeiterzahl, sondern das Volumen eines wiederkehrenden Vorgangs. Unter etwa zehn Fällen pro Woche raten wir ab, da rechnet sich der Aufwand meistens nicht. Was bei Ihnen zusammenkommt, können Sie im Rechner auf dieser Seite mit Ihren eigenen Zahlen prüfen."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Was kostet es?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Wir nennen keinen öffentlichen Preis, weil der Zuschnitt jedes Systems den Aufwand bestimmt und eine Zahl ohne Kontext niemandem hilft. Der Rahmen hängt an drei Dingen: wie viele Prozesse Sie automatisieren, wie sauber Ihre Daten heute vorliegen, und ob wir den Betrieb übernehmen. Sie bekommen ein schriftliches Angebot mit Scope, Zeitplan und Preis, bevor irgendetwas gebaut wird."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Arbeiten Sie auch außerhalb der genannten Branchen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, im Einzelfall. Immobilien, Handwerk, Handel und Beratung sind die Bereiche, in denen wir die meisten Prozesse dokumentiert haben. Wenn wir in Ihrem Fall keinen echten Mehrwert sehen, sagen wir ab, statt ein Projekt anzunehmen."
+      }
+    }
+  ]
+}
+</script>
 </head>
 
 <body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+  <symbol id="i-crm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-5.4 6-5.4s6 2.1 6 5.4"/><path d="M17 9.5h4M17 13h4"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-files" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2.5h8a2 2 0 0 1 2 2V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+  <symbol id="i-board" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M15 4v16"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5h3l1.6 4-2 1.4a12 12 0 0 0 6.5 6.5l1.4-2 4 1.6v3a2 2 0 0 1-2.2 2A17.5 17.5 0 0 1 4 5.7 2 2 0 0 1 6 3.5"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a7.5 7.5 0 0 1-11 6.6L4 20l1.4-4.4A7.5 7.5 0 1 1 20 12"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8 12 3.5 3 8v8l9 4.5 9-4.5z"/><path d="m3 8 9 4.5M21 8l-9 4.5M12 12.5V21"/></symbol>
+  <symbol id="i-form" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h4"/></symbol>
+  <symbol id="i-table" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M3 15h18M10 10v10"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></symbol>
+  <symbol id="i-tool" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 6.5a3.5 3.5 0 0 0 4.6 4.6l-8 8a2.4 2.4 0 0 1-3.4-3.4z"/><path d="M14.5 6.5 17 4"/></symbol>
+  <symbol id="i-megafon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10v4a1.5 1.5 0 0 0 1.5 1.5H8l7 4.5V4L8 8.5H5.5A1.5 1.5 0 0 0 4 10"/><path d="M18 9.5a3.5 3.5 0 0 1 0 5"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 13.7 9l5.5 1.7-5.5 1.7L12 18l-1.7-5.6L4.8 10.7 10.3 9z"/><path d="M18.5 3.5v3M20 5h-3"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/><path d="M12 14.5v2"/></symbol>
+  <symbol id="i-limit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="m6.5 6.5 11 11"/></symbol>
+  <symbol id="i-hand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11"/><path d="M12 10.5V4.5a1.5 1.5 0 0 1 3 0V11"/><path d="M15 11V6.5a1.5 1.5 0 0 1 3 0V14a6 6 0 0 1-6 6h-1a6 6 0 0 1-5.2-3l-1.6-2.8a1.5 1.5 0 0 1 2.4-1.7L9 14.5V11"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+</svg>
 
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
 <nav id="navbar" aria-label="Hauptnavigation">
@@ -1489,13 +1668,13 @@
     <div class="nav-center" role="none">
       <ul class="nav-list" role="list">
         <li><a href="#systeme">Systeme</a></li>
-        <li><a href="referenzen.html">Referenzen</a></li>
+        <li><a href="#methodik">Methode</a></li>
+        <li><a href="referenzen.html">Systemkatalog</a></li>
         <li><a href="ueber-uns.html">Über uns</a></li>
-        <li><a href="persoenlichkeit.html">Persönlichkeit</a></li>
       </ul>
     </div>
     <div class="nav-right">
-      <button type="button" class="btn-primary js-open-booking" id="nav-demo-btn" data-source="nav">Kostenlose Beratungsstunde buchen</button>
+      <button type="button" class="btn-primary js-open-booking" id="nav-demo-btn" data-source="nav">Kostenlosen KI-Audit buchen</button>
       <button class="nav-hamburger" id="hamburger-btn" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-overlay">
         <svg id="hamburger-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
@@ -1505,12 +1684,13 @@
 <div id="mobile-overlay" role="dialog" aria-label="Navigation" aria-modal="true">
   <div class="mobile-nav-inner">
     <a href="#systeme" class="mobile-link" data-close-menu>Systeme</a>
-    <a href="referenzen.html" class="mobile-link" data-close-menu>Referenzen</a>
+    <a href="#methodik" class="mobile-link" data-close-menu>Methode</a>
+    <a href="referenzen.html" class="mobile-link" data-close-menu>Systemkatalog</a>
     <a href="ueber-uns.html" class="mobile-link" data-close-menu>Über uns</a>
-    <a href="persoenlichkeit.html" class="mobile-link" data-close-menu>Persönlichkeit</a>
     <a href="zusammenarbeit.html" class="mobile-link" data-close-menu>So arbeiten wir</a>
+    <a href="persoenlichkeit.html" class="mobile-link" data-close-menu>Persönlichkeit</a>
     <hr class="mobile-hr">
-    <button type="button" class="mobile-cta js-open-booking" id="mobile-demo-btn" data-source="mobile-nav">Kostenlose Beratungsstunde buchen</button>
+    <button type="button" class="mobile-cta js-open-booking" id="mobile-demo-btn" data-source="mobile-nav">Kostenlosen KI-Audit buchen</button>
   </div>
 </div>
 
@@ -1524,24 +1704,25 @@
 
             <!-- Transparent content panel (Box removed for premium layout) -->
             <div class="hero-content">
-                <div class="hero-brand-emblem" style="display: inline-flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
-                    <img src="favicon.svg" alt="" width="36" height="36" style="filter: drop-shadow(0 2px 8px rgba(236,106,55,0.3));">
-                    <span style="font-family: 'Baskerville', 'Palatino Linotype', Georgia, serif; font-size: 1.6rem; font-weight: 300; color: var(--orange); letter-spacing: 0.2em; text-transform: uppercase;">RAIS</span>
+                <div class="hero-brand-emblem">
+                    <img src="favicon.svg" alt="" width="36" height="36">
+                    <span class="hero-brand-emblem__word">RAIS</span>
                 </div>
                 <h1 class="hero-h1">
-                    <span class="hero-h1__line hero-h1__line--light">Ihr Maklerbüro hat kein</span>
-                    <span class="hero-h1__line hero-h1__line--light"><span class="hero-h1__mark--charcoal">Anfragen-Problem.</span></span>
-                    <span class="hero-h1__line hero-h1__line--light">Es hat ein</span>
-                    <span class="hero-h1__line hero-h1__line--light"><span class="hero-h1__mark">Qualifizierungs-Problem.</span></span>
+                    <span class="hero-h1__line hero-h1__line--light">Ihr Mittelstand hat kein</span>
+                    <span class="hero-h1__line hero-h1__line--light"><span class="hero-h1__mark--charcoal">Tool-Problem.</span></span>
+                    <span class="hero-h1__line hero-h1__line--light">Er hat ein</span>
+                    <span class="hero-h1__line hero-h1__line--light"><span class="hero-h1__mark">System-Problem.</span></span>
                 </h1>
 
                 <p class="hero-sub">
-                    Ein System, das Portalanfragen qualifiziert und Termine bucht. Statt Stunden mit Rückfragen zu verbringen.
+                    <strong class="hero-sub__usp">Enterprise-Sicherheit ohne Enterprise-Overhead.</strong>
+                    Systeme, die in Ihrer Infrastruktur laufen und Ihrem Team echte Zeit zurückgeben.
                 </p>
 
                 <div class="hero-ctas">
-                    <button type="button" class="hero-btn-primary js-open-booking" id="hero-work-btn" data-source="hero">Kostenlose Beratungsstunde buchen</button>
-                    <a href="#aqut" class="hero-btn-outline" id="hero-demo-btn">AQuT kennenlernen</a>
+                    <button type="button" class="hero-btn-primary js-open-booking" id="hero-work-btn" data-source="hero">Kostenlosen KI-Audit buchen</button>
+                    <a class="hero-btn-secondary" href="#handbuch">Erst das Prozesshandbuch lesen</a>
                 </div>
 
             </div>
@@ -1556,112 +1737,672 @@
         </section>
 
 
-<!-- ═══════════════════════════════════════════════════
-             TECH STACK TICKER
+        <!-- ═══════════════════════════════════════════════════
+             TECH-STREIFEN direkt unter dem Hero.
+             Logos statt Textlauf: ein Marquee liest niemand,
+             Logos tragen Wiedererkennung und damit Vertrauen.
+             Inhalt aus scripts/techstack-data.mjs, eingehängt
+             von sync-index-shell.mjs. Anbieter erscheinen erst,
+             wenn datenschutz.html sie als Auftragsverarbeiter führt.
         ═══════════════════════════════════════════════════ -->
-
-        <section id="ticker" aria-label="Eingesetzte Technologien">
-            <div class="ticker-wrapper" aria-hidden="true">
-                <div class="ticker-track">
-                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2 3.5 7v10L12 22l8.5-5V7L12 2zm0 2.3 6.2 3.6v7.2L12 18.7l-6.2-3.6V7.9L12 4.3z"/><path d="M12 8.2 8.8 10v4L12 15.8 15.2 14v-4L12 8.2z"/></svg>Mistral</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>OpenAI</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.05 2.05a1 1 0 0 0-1.1 0L3.4 7.8a1 1 0 0 0-.45.84v6.72a1 1 0 0 0 .45.84l8.55 5.75a1 1 0 0 0 1.1 0l8.55-5.75a1 1 0 0 0 .45-.84V8.64a1 1 0 0 0-.45-.84l-8.55-5.75zM12 5.2l6.2 4.17v5.26L12 18.8l-6.2-4.17V9.37L12 5.2z"/></svg>Azure</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 18a5 5 0 0 1 .4-9.98A6.5 6.5 0 0 1 19.5 11 4.5 4.5 0 0 1 18 20H8"/><path d="M9 14h6M10.5 11.5 12 10l1.5 1.5"/></svg>GCP</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3 4 7.5v9L12 21l8-4.5v-9L12 3z"/><path d="M12 8v8M8.5 10.5 12 12.5l3.5-2"/></svg>Anthropic</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h13A1.5 1.5 0 0 1 20 5.5v4A1.5 1.5 0 0 1 18.5 11h-13A1.5 1.5 0 0 1 4 9.5v-4zm0 9A1.5 1.5 0 0 1 5.5 13h5A1.5 1.5 0 0 1 12 14.5v4A1.5 1.5 0 0 1 10.5 20h-5A1.5 1.5 0 0 1 4 18.5v-4zm10 0A1.5 1.5 0 0 1 15.5 13h3A1.5 1.5 0 0 1 20 14.5v4A1.5 1.5 0 0 1 18.5 20h-3a1.5 1.5 0 0 1-1.5-1.5v-4z"/></svg>Supabase</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M17.5 14v3.5H14M10 6.5h4M6.5 10v4"/></svg>n8n</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 19h16"/><path d="M7 19V9l5-5 5 5v10"/><path d="M10 19v-5h4v5"/></svg>Hostinger</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 8 9 6 9-6"/></svg>Resend</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2 3.5 7v10L12 22l8.5-5V7L12 2zm0 2.3 6.2 3.6v7.2L12 18.7l-6.2-3.6V7.9L12 4.3z"/><path d="M12 8.2 8.8 10v4L12 15.8 15.2 14v-4L12 8.2z"/></svg>Mistral</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>OpenAI</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.05 2.05a1 1 0 0 0-1.1 0L3.4 7.8a1 1 0 0 0-.45.84v6.72a1 1 0 0 0 .45.84l8.55 5.75a1 1 0 0 0 1.1 0l8.55-5.75a1 1 0 0 0 .45-.84V8.64a1 1 0 0 0-.45-.84l-8.55-5.75zM12 5.2l6.2 4.17v5.26L12 18.8l-6.2-4.17V9.37L12 5.2z"/></svg>Azure</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 18a5 5 0 0 1 .4-9.98A6.5 6.5 0 0 1 19.5 11 4.5 4.5 0 0 1 18 20H8"/><path d="M9 14h6M10.5 11.5 12 10l1.5 1.5"/></svg>GCP</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3 4 7.5v9L12 21l8-4.5v-9L12 3z"/><path d="M12 8v8M8.5 10.5 12 12.5l3.5-2"/></svg>Anthropic</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h13A1.5 1.5 0 0 1 20 5.5v4A1.5 1.5 0 0 1 18.5 11h-13A1.5 1.5 0 0 1 4 9.5v-4zm0 9A1.5 1.5 0 0 1 5.5 13h5A1.5 1.5 0 0 1 12 14.5v4A1.5 1.5 0 0 1 10.5 20h-5A1.5 1.5 0 0 1 4 18.5v-4zm10 0A1.5 1.5 0 0 1 15.5 13h3A1.5 1.5 0 0 1 20 14.5v4A1.5 1.5 0 0 1 18.5 20h-3a1.5 1.5 0 0 1-1.5-1.5v-4z"/></svg>Supabase</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M17.5 14v3.5H14M10 6.5h4M6.5 10v4"/></svg>n8n</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 19h16"/><path d="M7 19V9l5-5 5 5v10"/><path d="M10 19v-5h4v5"/></svg>Hostinger</span>
-                    <span class="ticker-sep">·</span>
-                    <span class="ticker-item"><svg class="ticker-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 8 9 6 9-6"/></svg>Resend</span>
-                    <span class="ticker-sep">·</span>
-                </div>
+        <section id="techstack" class="techstack-band" aria-label="Technologie und Datenfluss">
+            <div class="section-wrap">
+                <!-- techstack:start -->
+    <div class="techstack">
+      <div class="marquee techstack__marquee" style="--marquee-duration: 31.5s">
+        <div class="marquee__track">
+          <ul class="techstack__list">
+            <li class="techstack__item">
+              <img src="images/n8n-color.svg" alt="n8n" width="120" height="40" loading="lazy" decoding="async">
+            </li>
+            <li class="techstack__item">
+              <img src="images/supabase.svg" alt="Supabase" width="120" height="40" loading="lazy" decoding="async">
+            </li>
+            <li class="techstack__item">
+              <img src="images/mistral.svg" alt="Mistral" width="120" height="40" loading="lazy" decoding="async">
+            </li>
+            <li class="techstack__item">
+              <img src="images/Azure%20logo.svg" alt="Microsoft Azure" width="120" height="40" loading="lazy" decoding="async">
+            </li>
+            <li class="techstack__item">
+              <img src="images/google-cloud.svg" alt="Google Cloud" width="120" height="40" loading="lazy" decoding="async">
+            </li>
+            <li class="techstack__item">
+              <img src="images/anthropic.svg" alt="Claude" width="120" height="40" loading="lazy" decoding="async">
+            </li>
+            <li class="techstack__item">
+              <img src="images/codex-openai.svg" alt="Codex" width="120" height="40" loading="lazy" decoding="async">
+            </li>
+          </ul>
+          <ul class="techstack__list" aria-hidden="true">
+            <li class="techstack__item">
+              <img src="images/n8n-color.svg" alt="n8n" width="120" height="40" loading="lazy" decoding="async">
+            </li>
+            <li class="techstack__item">
+              <img src="images/supabase.svg" alt="Supabase" width="120" height="40" loading="lazy" decoding="async">
+            </li>
+            <li class="techstack__item">
+              <img src="images/mistral.svg" alt="Mistral" width="120" height="40" loading="lazy" decoding="async">
+            </li>
+            <li class="techstack__item">
+              <img src="images/Azure%20logo.svg" alt="Microsoft Azure" width="120" height="40" loading="lazy" decoding="async">
+            </li>
+            <li class="techstack__item">
+              <img src="images/google-cloud.svg" alt="Google Cloud" width="120" height="40" loading="lazy" decoding="async">
+            </li>
+            <li class="techstack__item">
+              <img src="images/anthropic.svg" alt="Claude" width="120" height="40" loading="lazy" decoding="async">
+            </li>
+            <li class="techstack__item">
+              <img src="images/codex-openai.svg" alt="Codex" width="120" height="40" loading="lazy" decoding="async">
+            </li>
+          </ul>
+        </div>
+      </div>
+      <p class="techstack__trust">
+        <svg class="ico" aria-hidden="true"><use href="#i-lock"></use></svg>
+        EU-Hosting · AVV nach Art. 28
+      </p>
+    </div>
+                <!-- techstack:end -->
             </div>
         </section>
+
 
         <section id="zielgruppe" class="home-band home-band--cloud" aria-labelledby="zielgruppe-title">
             <div class="section-wrap">
                 <span class="mono-label">Mit wem wir arbeiten</span>
-                <h2 class="section-h2" id="zielgruppe-title">Unabhängige Maklerbüros mit echtem Anfragevolumen</h2>
-                <p class="section-sub">Wir filtern bewusst. Wenn Sie sich links wiederfinden, sind Sie richtig. Wenn rechts, sparen wir uns beide die Zeit.</p>
+                <h2 class="section-h2" id="zielgruppe-title">Fokussiert auf den operativen Mittelstand</h2>
+                <p class="section-sub">Wiederkehrende Prozesse, spürbares Volumen, kein internes KI-Team.</p>
+
+                <!-- Beobachtungen, keine Behauptungen. Brauchen deshalb
+                     keinen Beleg und holen den Leser ab, bevor die
+                     Qualifizierung ihn prüft. -->
+                <div class="diagnose">
+                    <p class="diagnose__title">Woran Sie merken, dass es Zeit wird</p>
+                    <ul class="diagnose__list">
+                        <li>Die Geschäftsführung ist Flaschenhals für Vorgänge, die sie nicht treffen müsste.</li>
+                        <li>Wissen liegt in einem Kopf und nicht im System.</li>
+                        <li>Dieselben Fehler wiederholen sich, weil nichts dokumentiert ist.</li>
+                        <li>Anfragen versanden, weil niemand Zeit hat, sie zu sichten.</li>
+                    </ul>
+                </div>
                 <div class="icp-grid">
                     <article class="icp-card icp-card--yes">
                         <span class="icp-card__badge" aria-hidden="true"><i data-lucide="check"></i></span>
                         <h3 class="icp-card__heading">Passt</h3>
                         <ul>
-                            <li><span class="icp-mark" aria-hidden="true"><i data-lucide="check"></i></span> 5 bis 25 Mitarbeitende</li>
-                            <li><span class="icp-mark" aria-hidden="true"><i data-lucide="check"></i></span> Hohes Anfragevolumen über Immobilienportale</li>
-                            <li><span class="icp-mark" aria-hidden="true"><i data-lucide="check"></i></span> CRM wie onOffice oder Propstack</li>
-                            <li><span class="icp-mark" aria-hidden="true"><i data-lucide="check"></i></span> Offenheit für KI</li>
+                            <li><span class="icp-mark" aria-hidden="true"><i data-lucide="check"></i></span> 5 bis 200 Mitarbeitende</li>
+                            <li><span class="icp-mark" aria-hidden="true"><i data-lucide="check"></i></span> Wiederkehrende Prozesse mit Volumen</li>
+                            <li><span class="icp-mark" aria-hidden="true"><i data-lucide="check"></i></span> Bestehende Tools und CRMs</li>
+                            <li><span class="icp-mark" aria-hidden="true"><i data-lucide="check"></i></span> Offenheit für KI und Datenverantwortung</li>
                         </ul>
                     </article>
                     <article class="icp-card icp-card--no">
                         <span class="icp-card__badge" aria-hidden="true"><i data-lucide="x"></i></span>
                         <h3 class="icp-card__heading">Passt nicht</h3>
                         <ul>
-                            <li><span class="icp-mark" aria-hidden="true"><i data-lucide="x"></i></span> Geringes Anfragevolumen unter 10 bis 15 Mails pro Woche</li>
-                            <li><span class="icp-mark" aria-hidden="true"><i data-lucide="x"></i></span> Franchise-Netzwerke</li>
-                            <li><span class="icp-mark" aria-hidden="true"><i data-lucide="x"></i></span> Keine Bereitschaft zur Innovation</li>
+                            <li><span class="icp-mark" aria-hidden="true"><i data-lucide="x"></i></span> Kaum wiederkehrende Prozesse</li>
+                            <li><span class="icp-mark" aria-hidden="true"><i data-lucide="x"></i></span> Nur Strategiepapiere, keine Umsetzung</li>
+                            <li><span class="icp-mark" aria-hidden="true"><i data-lucide="x"></i></span> Keine Bereitschaft zu klaren Freigaben</li>
                         </ul>
                     </article>
+                </div>
+                <!-- Autorität entsteht durch die Bereitschaft, Nein zu sagen. -->
+                <div class="beweis-negativ" style="margin-top:2rem;max-width:44rem;">
+                    <span class="beweis-negativ__label">Wovon wir abraten</span>
+                    <p>Von Automatisierung bei Vorgängen unter etwa zehn Fällen pro Woche. Von KI dort, wo eine Vorlage oder eine saubere Checkliste denselben Effekt hat. Von jedem System, das eine Entscheidung trifft, für die am Ende ein Mensch geradestehen muss.</p>
                 </div>
             </div>
         </section>
 
-        <section id="warum-rais" class="home-band home-band--linen" aria-labelledby="warum-rais-title">
+        <!-- ═══════════════════════════════════════════════════
+             SICHERHEIT — die USP als Sektion
+             Rendert "Enterprise-Sicherheit ohne Enterprise-Overhead"
+             als Struktur statt als Behauptung: links was der Kunde
+             bekommt, rechts welchen Overhead er dafür nicht trägt.
+             Bewusst Regeln statt Flächen, damit es kein drittes
+             Schwergewicht neben #aqut und #systeme wird.
+        ═══════════════════════════════════════════════════ -->
+        <section id="sicherheit" class="home-band home-band--green" aria-labelledby="sicherheit-title">
             <div class="section-wrap">
                 <span class="mono-label">Warum RAIS</span>
-                <h2 class="section-h2" id="warum-rais-title">Enterprise-KI ohne Enterprise-Ballast</h2>
-                <p class="section-sub">Wir bauen Systeme, die im Makleralltag sitzen: DSGVO-klar, EU-hosted und auf Ihr Büro zugeschnitten. Kein One-size-SaaS.</p>
-                <div class="why-grid">
-                    <article class="why-card">
-                        <span class="why-card__icon" aria-hidden="true"><i data-lucide="shield-check"></i></span>
-                        <span class="why-card__badge">DSGVO</span>
-                        <h3>Enterprise-KI ohne Komplexität</h3>
-                        <p>GDPR-konforme KI-Systeme auf Enterprise-Niveau, ohne Enterprise-Ballast und Projektlawinen.</p>
-                    </article>
-                    <article class="why-card">
-                        <span class="why-card__icon" aria-hidden="true"><i data-lucide="scan-search"></i></span>
-                        <span class="why-card__badge">Fachblick</span>
-                        <h3>Echter Mehrwert statt Hype</h3>
-                        <p>Fachverständnis, das Marketing-Hype von nutzbarem Mehrwert für Ihr Büro unterscheidet.</p>
-                    </article>
-                    <article class="why-card">
-                        <span class="why-card__icon" aria-hidden="true"><i data-lucide="server"></i></span>
-                        <span class="why-card__badge">EU only</span>
-                        <h3>100&nbsp;% EU-Infrastruktur</h3>
-                        <p>Server und Datenhaltung in Deutschland (Frankfurt), AVV nach Art. 28 DSGVO.</p>
-                    </article>
-                    <article class="why-card">
-                        <span class="why-card__icon" aria-hidden="true"><i data-lucide="pencil-ruler"></i></span>
-                        <span class="why-card__badge">Maßarbeit</span>
-                        <h3>Maßgeschneidert statt SaaS</h3>
-                        <p>Direkt persönliche Lösungen für Ihr Büro. Kein starrer Baukasten, den Sie selbst zusammenstöpseln müssen.</p>
-                    </article>
+                <h2 class="section-h2 section-h2--anchor" id="sicherheit-title">Enterprise-Sicherheit ohne Enterprise-Overhead.</h2>
+                <p class="section-sub">Was Sie bekommen. Und was Sie sich sparen.</p>
+
+                <dl class="kontrakt">
+                    <div class="kontrakt__row">
+                        <dt class="kontrakt__get">EU-Hosting, Datenbank in Frankfurt</dt>
+                        <dd class="kontrakt__without">Daten in fremder Rechtsordnung</dd>
+                    </div>
+                    <div class="kontrakt__row">
+                        <dt class="kontrakt__get">AVV ab dem ersten Tag</dt>
+                        <dd class="kontrakt__without">Monate im Procurement</dd>
+                    </div>
+                    <div class="kontrakt__row">
+                        <dt class="kontrakt__get">Freigabepunkte, schriftlich definiert</dt>
+                        <dd class="kontrakt__without">Ein Governance-Board</dd>
+                    </div>
+                    <div class="kontrakt__row">
+                        <dt class="kontrakt__get">Dokumentierte Übergabe</dt>
+                        <dd class="kontrakt__without">Abhängigkeit vom Beraterstab</dd>
+                    </div>
+                </dl>
+
+                <!-- Architekturbild. Reines HTML und CSS, keine Grafikdatei.
+                     TODO: Sobald der französische Modellanbieter in
+                     datenschutz.html als Auftragsverarbeiter geführt wird,
+                     kommt "Sprachmodell aus Frankreich" in den mittleren
+                     Knoten und als Ticker-Label dazu. -->
+                <figure class="arch">
+                    <figcaption class="arch__cap">Wohin Ihre Daten fließen, und wohin nicht</figcaption>
+                    <div class="arch__flow">
+                        <div class="arch__node">
+                            <span class="arch__node-label">Ihre Systeme</span>
+                            <ul>
+                                <li>CRM</li>
+                                <li>Postfach</li>
+                                <li>Telefonie</li>
+                            </ul>
+                        </div>
+                        <span class="arch__link" aria-hidden="true"></span>
+                        <div class="arch__node arch__node--core">
+                            <span class="arch__node-label">RAIS-Schicht</span>
+                            <ul>
+                                <li>Hosting in der EU</li>
+                                <li>Datenbank Frankfurt</li>
+                                <li>AVV nach Art. 28</li>
+                            </ul>
+                        </div>
+                        <span class="arch__link" aria-hidden="true"></span>
+                        <div class="arch__node">
+                            <span class="arch__node-label">Entscheidung</span>
+                            <ul>
+                                <li>Ihr Team gibt frei</li>
+                                <li>jeder Schritt protokolliert</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="arch__note">Kundendaten verlassen die EU nicht. Für unsere eigenen Anfragen von dieser Website nutzen wir einen Dienst mit Sitz in den USA, auf Basis von Standardvertragsklauseln. Das steht so in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+                    <!-- Stand hier bis 05.08.2026 unter dem Tech-Streifen. Dort
+                         wurde der Satz nicht gelesen, ersatzlos streichen kam
+                         aber nicht in Frage: der Streifen zeigt jetzt ein
+                         EU-Label, und dann darf die bekannte Ausnahme nicht
+                         verschwiegen werden. Quelle bleibt CHOICE_NOTE in
+                         scripts/techstack-data.mjs. -->
+                    <p class="arch__note arch__note--choice">Wo Sie es ausdrücklich wünschen und die Daten nicht sensibel sind, binden wir auch Modelle außerhalb der EU an. Diese Entscheidung treffen Sie, nicht wir.</p>
+                </figure>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════
+             BEWEISLAGE
+             Ersetzt den alten Proof-Streifen. Gleichzeitig die Legende
+             für die Statusstempel im Register weiter unten.
+        ═══════════════════════════════════════════════════ -->
+        <section id="beweislage" class="home-band home-band--cloud" aria-labelledby="beweislage-title">
+            <div class="section-wrap">
+                <div class="beweis-grid">
+                    <div class="beweis-intro">
+                        <span class="mono-label">Beweislage</span>
+                        <h2 class="section-h2" id="beweislage-title">Was wir belegen können und was nicht.</h2>
+                        <p class="section-sub">Andere zeigen Logos, die nie Kunden waren. Wir kennzeichnen jeden Eintrag danach, wie belastbar er ist.</p>
+                    </div>
+                    <div>
+                        <dl class="beweis-ledger">
+                            <div class="beweis-row">
+                                <dt class="beweis-row__mark">Live im Betrieb</dt>
+                                <dd><p>Läuft bei einem Kunden, Freigabe liegt vor.</p></dd>
+                            </div>
+                            <div class="beweis-row beweis-row--soft">
+                                <dt class="beweis-row__mark">Im Aufbau</dt>
+                                <dd><p>Funktioniert im Test, hat den Alltag noch nicht überstanden.</p></dd>
+                            </div>
+                            <div class="beweis-row beweis-row--soft">
+                                <dt class="beweis-row__mark">Übertragbar</dt>
+                                <dd><p>Muster, das wir beherrschen. Ohne Live-Beleg, und wir sagen das auch so.</p></dd>
+                            </div>
+                        </dl>
+                        <p class="beweis-stand">Aktuell trägt kein Eintrag einen Stempel. Systeme laufen, aber die Freigaben zur Nennung stehen noch aus.</p>
+                        <div class="beweis-negativ">
+                            <span class="beweis-negativ__label">Was Sie hier nicht finden</span>
+                            <p>Kundenlogos ohne Mandat. Erfundene Prozentzahlen. Case Studies ohne Freigabe. Vorher-Nachher-Werte, die wir nicht selbst gemessen haben.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════
+             SYSTEMAKTE
+             Register aus scripts/systemakte-data.mjs. Der Bereich zwischen
+             systemakte:start und systemakte:end wird von
+             scripts/sync-index-shell.mjs bei jedem `npm run pages`
+             neu erzeugt. Inhalte dort pflegen, nicht hier.
+        ═══════════════════════════════════════════════════ -->
+        <section id="systeme" class="home-band home-band--linen" aria-labelledby="systemakte-title">
+            <div class="section-wrap">
+                <span class="mono-label">Systemakte</span>
+                <!-- Traegt die Wirkung aus der Liste darunter, nicht aus der
+                     Ueberschrift. Die zweite Ankerstufe liegt deshalb auf
+                     #methodik. -->
+                <h2 class="section-h2" id="systemakte-title">Was wir bauen, Eintrag für Eintrag</h2>
+                <p class="section-sub">Auslöser, Ablauf, Übergabepunkt. Und was das System ausdrücklich nicht tut.</p>
+                <!-- systemakte:start -->
+    <ul class="akte-register">
+      <li class="akte-item" data-search="anfragen qualifizieren eine anfrage trifft ein, über formular, portal, mail oder telefon. formular, postfach, telefonie, crm anf"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">ANF</span>
+          <span class="akte__title">Anfragen qualifizieren</span>
+          <span class="akte__trigger">Auslöser: Eine Anfrage trifft ein, über Formular, Portal, Mail oder Telefon.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Aufnehmen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Rückfragen stellen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Einordnen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Weiterleiten</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Sobald Bedarf, Budget und Zeitrahmen geklärt sind, geht der Vorgang mit vollständiger Notiz an einen Menschen.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-form"></use></svg>Formular</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>Postfach</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-phone"></use></svg>Telefonie</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-crm"></use></svg>CRM</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine Preiszusagen, keine Vertragsauskünfte, keine Absage an Interessenten ohne menschliche Freigabe.
+          </p>
+        </div>
+      </details></li>
+      <li class="akte-item" data-search="support-agent für chat und telefon ein kunde meldet sich außerhalb der bürozeiten oder während im büro bereits eine warteschlange steht. telefonie, chat, postfach, ticketsystem, wissensbasis sup"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">SUP</span>
+          <span class="akte__title">Support-Agent für Chat und Telefon</span>
+          <span class="akte__trigger">Auslöser: Ein Kunde meldet sich außerhalb der Bürozeiten oder während im Büro bereits eine Warteschlange steht.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Anliegen aufnehmen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Gegen die Wissensbasis prüfen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Beantworten oder eskalieren</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Protokoll ablegen</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Ab der zweiten Rückfrage ohne belastbare Antwort übernimmt ein Mensch, mit vollständigem Gesprächsverlauf.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-phone"></use></svg>Telefonie</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-chat"></use></svg>Chat</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>Postfach</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-board"></use></svg>Ticketsystem</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-doc"></use></svg>Wissensbasis</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine Kulanzentscheidungen, keine Zusagen zu Preisen und Fristen, keine Auskunft zu laufenden Verträgen.
+          </p>
+        </div>
+      </details></li>
+      <li class="akte-item" data-search="onboarding von kunden und mitarbeitenden ein vertrag ist unterschrieben oder eine zusage ist erteilt. postfach, kalender, dateiablage, crm oder personalsystem onb"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">ONB</span>
+          <span class="akte__title">Onboarding von Kunden und Mitarbeitenden</span>
+          <span class="akte__trigger">Auslöser: Ein Vertrag ist unterschrieben oder eine Zusage ist erteilt.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Unterlagen anfordern</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Vollständigkeit prüfen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Zugänge und Termine anlegen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Status melden</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Fehlt eine Unterlage nach zwei Erinnerungen, landet der Fall auf dem Tisch der zuständigen Person.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>Postfach</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-calendar"></use></svg>Kalender</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-files"></use></svg>Dateiablage</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-crm"></use></svg>CRM oder Personalsystem</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine Bonitäts- oder Eignungsentscheidungen. Gesundheits- und Bewerbungsdaten nur nach gesonderter Vereinbarung.
+          </p>
+        </div>
+      </details></li>
+      <li class="akte-item" data-search="ticketing und eskalation eine meldung landet im postfach, per whatsapp oder über ein formular. postfach, whatsapp business, ticketsystem, partnerverzeichnis tic"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">TIC</span>
+          <span class="akte__title">Ticketing und Eskalation</span>
+          <span class="akte__trigger">Auslöser: Eine Meldung landet im Postfach, per WhatsApp oder über ein Formular.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Erfassen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Kategorisieren</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Priorisieren</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Zuständigkeit zuweisen</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Alles ab der vereinbarten Dringlichkeitsstufe geht sofort und zusätzlich per Anruf an die Bereitschaft.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>Postfach</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-chat"></use></svg>WhatsApp Business</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-board"></use></svg>Ticketsystem</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-crm"></use></svg>Partnerverzeichnis</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine eigenständige Beauftragung von Partnerbetrieben oberhalb eines vereinbarten Betrags.
+          </p>
+        </div>
+      </details></li>
+      <li class="akte-item" data-search="dokumente auslesen und einpflegen ein pdf, ein scan oder eine mail mit anhang trifft ein. postfach, dateiablage, crm, warenwirtschaft, buchhaltung dok"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">DOK</span>
+          <span class="akte__title">Dokumente auslesen und einpflegen</span>
+          <span class="akte__trigger">Auslöser: Ein PDF, ein Scan oder eine Mail mit Anhang trifft ein.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Dokumenttyp erkennen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Felder auslesen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Gegen den Bestand prüfen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">In das Zielsystem schreiben</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Bei unsicherer Erkennung wird nicht geschrieben, sondern zur Prüfung vorgelegt.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>Postfach</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-files"></use></svg>Dateiablage</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-crm"></use></svg>CRM</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-box"></use></svg>Warenwirtschaft</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-table"></use></svg>Buchhaltung</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine automatische Freigabe von Zahlungen, keine Änderung bestehender Stammdaten ohne Bestätigung.
+          </p>
+        </div>
+      </details></li>
+    </ul>
+    <div class="branchen" id="branchen">
+      <div class="branchen__tablist" role="tablist" aria-label="Branchen">
+        <button type="button" class="branchen__tab" role="tab" id="branche-tab-immobilien" aria-controls="branche-panel-immobilien" aria-selected="true" tabindex="0">Immobilien</button>
+        <button type="button" class="branchen__tab" role="tab" id="branche-tab-handwerk" aria-controls="branche-panel-handwerk" aria-selected="false" tabindex="-1">Handwerk und Bau</button>
+        <button type="button" class="branchen__tab" role="tab" id="branche-tab-handel" aria-controls="branche-panel-handel" aria-selected="false" tabindex="-1">Handel und Großhandel</button>
+        <button type="button" class="branchen__tab" role="tab" id="branche-tab-beratung" aria-controls="branche-panel-beratung" aria-selected="false" tabindex="-1">Agenturen und Beratung</button>
+      </div>
+      <section class="branchen__panel" id="branche-panel-immobilien" role="tabpanel" aria-labelledby="branche-tab-immobilien">
+        <h3 class="branchen__panel-title" id="branche-immobilien">Maklerbüros und Hausverwaltungen</h3>
+        <p class="section-sub">Unsere Referenzbranche. Hier sind die Prozesse am dichtesten dokumentiert.</p>
+    <ul class="akte-register">
+      <li class="akte-item" data-search="portalanfragen qualifizieren eine anfrage aus einem immobilienportal oder von der eigenen website trifft ein. portale, website-formular, onoffice oder propstack, kalender imm-a"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">IMM-A</span>
+          <span class="akte__title">Portalanfragen qualifizieren</span>
+          <span class="akte__trigger">Auslöser: Eine Anfrage aus einem Immobilienportal oder von der eigenen Website trifft ein.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Anfrage aufnehmen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Bedarf, Finanzierungsstand und Zeitrahmen erfragen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Einordnen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Termin vorbereiten</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Nur Interessenten mit geklärtem Bedarf und Zeitrahmen landen im Kalender Ihrer Berater.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-form"></use></svg>Portale</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-form"></use></svg>Website-Formular</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-crm"></use></svg>onOffice oder Propstack</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-calendar"></use></svg>Kalender</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine Bonitätsprüfung, keine Absage an Interessenten, keine Aussage zu Kaufpreisen oder Provisionen.
+          </p>
+        </div>
+      </details></li>
+      <li class="akte-item" data-search="mieter-support und störungsmeldungen ein mieter meldet einen schaden per mail, telefon oder whatsapp. postfach, whatsapp business, ticketsystem, partnerverzeichnis imm-b"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">IMM-B</span>
+          <span class="akte__title">Mieter-Support und Störungsmeldungen</span>
+          <span class="akte__trigger">Auslöser: Ein Mieter meldet einen Schaden per Mail, Telefon oder WhatsApp.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Meldung aufnehmen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Dringlichkeit einordnen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Objekt und Zuständigkeit zuordnen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Partnerbetrieb oder Bereitschaft informieren</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Notfälle wie Wasser oder Heizungsausfall gehen sofort und zusätzlich per Anruf an die Bereitschaft.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>Postfach</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-chat"></use></svg>WhatsApp Business</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-board"></use></svg>Ticketsystem</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-crm"></use></svg>Partnerverzeichnis</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine Kostenzusagen, keine Beauftragung oberhalb des vereinbarten Betrags, keine Aussagen zur Mietminderung.
+          </p>
+        </div>
+      </details></li>
+    </ul>
+      <p class="branchen__note">Alle 5 Einträge für Immobilien stehen in der <a href="referenzen.html#branche-immobilien">vollständigen Liste</a>.</p>
+      </section>
+      <section class="branchen__panel" id="branche-panel-handwerk" role="tabpanel" aria-labelledby="branche-tab-handwerk">
+        <h3 class="branchen__panel-title" id="branche-handwerk">SHK, Elektro, Bau und Ausbau</h3>
+        <p class="section-sub">Viele kurze Vorgänge, wenig Zeit im Büro und ein Team, das überwiegend auf der Baustelle ist.</p>
+    <ul class="akte-register">
+      <li class="akte-item" data-search="angebotsanfragen aufnehmen eine anfrage kommt per telefon oder formular, oft während niemand im büro ist. telefonie, formular, kalender, handwerkersoftware hwk-a"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">HWK-A</span>
+          <span class="akte__title">Angebotsanfragen aufnehmen</span>
+          <span class="akte__trigger">Auslöser: Eine Anfrage kommt per Telefon oder Formular, oft während niemand im Büro ist.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Anliegen und Objekt aufnehmen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Leistungsart und Dringlichkeit klären</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Auf Machbarkeit im Gebiet prüfen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Ortstermin vorschlagen</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Der fertige Vorgang liegt morgens mit allen Angaben zur Kalkulation bereit.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-phone"></use></svg>Telefonie</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-form"></use></svg>Formular</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-calendar"></use></svg>Kalender</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-tool"></use></svg>Handwerkersoftware</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine Preisangaben, keine Terminzusagen ohne Abgleich mit Ihrer Disposition.
+          </p>
+        </div>
+      </details></li>
+      <li class="akte-item" data-search="terminfenster und disposition ein termin fällt aus oder ein notdienst schiebt sich dazwischen. kalender, handwerkersoftware, sms und mail hwk-b"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">HWK-B</span>
+          <span class="akte__title">Terminfenster und Disposition</span>
+          <span class="akte__trigger">Auslöser: Ein Termin fällt aus oder ein Notdienst schiebt sich dazwischen.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Betroffene Termine erkennen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Kunden informieren</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Ersatzfenster anbieten</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Kalender nachziehen</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Verschiebungen bei Großaufträgen entscheidet immer die Disposition.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-calendar"></use></svg>Kalender</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-tool"></use></svg>Handwerkersoftware</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>SMS und Mail</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine eigenständige Umplanung von Terminen mit Fristbindung oder Abnahme.
+          </p>
+        </div>
+      </details></li>
+    </ul>
+      <p class="branchen__note">Alle 4 Einträge für Handwerk und Bau stehen in der <a href="referenzen.html#branche-handwerk">vollständigen Liste</a>.</p>
+      </section>
+      <section class="branchen__panel" id="branche-panel-handel" role="tabpanel" aria-labelledby="branche-tab-handel">
+        <h3 class="branchen__panel-title" id="branche-handel">Handel, Großhandel und E-Commerce</h3>
+        <p class="section-sub">Hohes Belegvolumen, viele gleichförmige Rückfragen und Stammdaten, die nie ganz aktuell sind.</p>
+    <ul class="akte-register">
+      <li class="akte-item" data-search="bestell- und lieferantenpost bestellungen und auftragsbestätigungen kommen als pdf oder mail in unterschiedlichen formaten. postfach, warenwirtschaft, dateiablage hdl-a"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">HDL-A</span>
+          <span class="akte__title">Bestell- und Lieferantenpost</span>
+          <span class="akte__trigger">Auslöser: Bestellungen und Auftragsbestätigungen kommen als PDF oder Mail in unterschiedlichen Formaten.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Beleg erkennen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Positionen auslesen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Gegen die Bestellung prüfen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">In die Warenwirtschaft schreiben</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Abweichungen bei Menge, Preis oder Termin gehen an den Einkauf, nicht ins System.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>Postfach</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-box"></use></svg>Warenwirtschaft</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-files"></use></svg>Dateiablage</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine Freigabe von Zahlungen, keine Bestellauslösung, keine Änderung von Konditionen.
+          </p>
+        </div>
+      </details></li>
+      <li class="akte-item" data-search="retouren und reklamationen ein kunde meldet eine rücksendung oder einen defekt. shop, warenwirtschaft, versanddienstleister, postfach hdl-b"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">HDL-B</span>
+          <span class="akte__title">Retouren und Reklamationen</span>
+          <span class="akte__trigger">Auslöser: Ein Kunde meldet eine Rücksendung oder einen Defekt.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Bestellung zuordnen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Fall kategorisieren</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Rücksendeunterlagen erzeugen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Status an den Kunden melden</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Kulanz und Erstattung oberhalb des vereinbarten Betrags entscheidet ein Mensch.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-box"></use></svg>Shop</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-box"></use></svg>Warenwirtschaft</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-box"></use></svg>Versanddienstleister</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>Postfach</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine Erstattungen, keine Gutschriften, keine Zusagen zu Fristen außerhalb Ihrer Regeln.
+          </p>
+        </div>
+      </details></li>
+    </ul>
+      <p class="branchen__note">Alle 4 Einträge für Handel und Großhandel stehen in der <a href="referenzen.html#branche-handel">vollständigen Liste</a>.</p>
+      </section>
+      <section class="branchen__panel" id="branche-panel-beratung" role="tabpanel" aria-labelledby="branche-tab-beratung">
+        <h3 class="branchen__panel-title" id="branche-beratung">Agenturen, Coaches und Beratungen</h3>
+        <p class="section-sub">Wenig Verwaltung im Team, dafür viel Abstimmung rund um Anfragen, Onboarding und Projektstatus.</p>
+    <ul class="akte-register">
+      <li class="akte-item" data-search="anfragen qualifizieren und erstgespräch vorbereiten eine anfrage kommt über website, empfehlung oder ein soziales netzwerk. website-formular, kalender, crm agt-a"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">AGT-A</span>
+          <span class="akte__title">Anfragen qualifizieren und Erstgespräch vorbereiten</span>
+          <span class="akte__trigger">Auslöser: Eine Anfrage kommt über Website, Empfehlung oder ein soziales Netzwerk.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Anliegen und Ausgangslage erfragen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Passung zu Ihrem Angebot prüfen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Termin vorschlagen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Gesprächsnotiz vorbereiten</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Sie gehen mit einer fertigen Vorbereitung ins Gespräch, nicht mit einer leeren Seite.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-form"></use></svg>Website-Formular</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-calendar"></use></svg>Kalender</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-crm"></use></svg>CRM</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine Honorarangaben, keine Zusagen zu Kapazität oder Startterminen.
+          </p>
+        </div>
+      </details></li>
+      <li class="akte-item" data-search="kunden-onboarding ein angebot ist angenommen. postfach, kalender, projektwerkzeug, dateiablage agt-b"><details class="akte">
+        <summary class="akte__head">
+          <span class="akte__code">AGT-B</span>
+          <span class="akte__title">Kunden-Onboarding</span>
+          <span class="akte__trigger">Auslöser: Ein Angebot ist angenommen.</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <dl class="akte__rows">
+            <dt>Ablauf</dt>
+            <dd><ol class="akte__flow"><li class="akte__flow-step">Unterlagen und Zugänge anfordern</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Vollständigkeit prüfen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Projektraum und Termine anlegen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Startfreigabe melden</li></ol></dd>
+            <dt>Übergabe</dt>
+            <dd>Fehlt nach zwei Erinnerungen etwas, meldet sich das System bei Ihnen statt beim Kunden.</dd>
+            <dt>Anbindung</dt>
+            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>Postfach</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-calendar"></use></svg>Kalender</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-board"></use></svg>Projektwerkzeug</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-files"></use></svg>Dateiablage</li></ul></dd>
+          </dl>
+          <p class="akte__limit">
+            <span class="akte__limit-label">Nicht im Zug</span>
+            Keine Vertragsänderungen, keine Aufnahme von Zahlungsdaten, keine Zusagen zum Leistungsumfang.
+          </p>
+        </div>
+      </details></li>
+    </ul>
+      <p class="branchen__note">Alle 4 Einträge für Agenturen und Beratung stehen in der <a href="referenzen.html#branche-beratung">vollständigen Liste</a>.</p>
+      </section>
+    </div>
+                <!-- systemakte:end -->
+                <div class="home-cta-row">
+                    <button type="button" class="btn-primary js-open-booking" data-source="systemakte">Passendes System besprechen</button>
+                    <a class="home-cta-link" href="referenzen.html">Alle 24 Systeme im Katalog</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════
+             PROOF-TICKER. Traegt die EU- und DSGVO-Belege, die
+             brand_steer als den eigentlichen Beweis fuer die
+             Zielgruppe benennt. Steht seit dem Tausch unter der
+             Systemakte, die Logos haben dafuer den Platz unter
+             dem Hero. Niemals Markennamen hier hineinmischen.
+        ═══════════════════════════════════════════════════ -->
+        <section id="ticker" aria-label="Vertrauen und Infrastruktur">
+            <div class="ticker-wrapper" aria-hidden="true">
+                <div class="ticker-track">
+                    <span class="ticker-item">Selbst gehostet in der EU</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item">Datenbank Frankfurt</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item">AVV nach Art. 28 DSGVO</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item">Kundendaten bleiben in der EU</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item">Externer Security-Review</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item">Kein Vendor-Lock-in</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item">Selbst gehostet in der EU</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item">Datenbank Frankfurt</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item">AVV nach Art. 28 DSGVO</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item">Kundendaten bleiben in der EU</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item">Externer Security-Review</span>
+                    <span class="ticker-sep">·</span>
+                    <span class="ticker-item">Kein Vendor-Lock-in</span>
+                    <span class="ticker-sep">·</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="methodik" class="home-band home-band--cloud" aria-labelledby="methodik-title">
+            <div class="section-wrap">
+                <span class="mono-label">Der RAIS-System-Stack</span>
+                <h2 class="section-h2 section-h2--anchor" id="methodik-title">Vier Stufen. Die richtige für Ihren Engpass.</h2>
+                <p class="section-sub">Die meisten Anbieter verkaufen sofort die oberste Stufe. Wir nehmen pro Prozess die unterste, die reicht.</p>
+                <!-- Leiter, keine Kartenreihe. Vier gleich grosse weisse Karten
+                     zeigten keine Steigerung, damit ging das eigentliche
+                     Argument unter: RAIS verkauft nicht reflexhaft KI. Jede
+                     Stufe ist optisch schwerer als die vorige, Stufe 04 traegt
+                     als einzige den Orange-Akzent, weil dort die Zurueckhaltung
+                     steht. Dieselbe Logik wie "Nicht im Zug" im Katalog. -->
+                <ol class="stack-ladder" aria-label="RAIS-System-Stack in vier Stufen">
+                    <li class="stack-step" data-level="1">
+                        <span class="stack-step__ico"><svg class="ico" aria-hidden="true"><use href="#i-doc"></use></svg></span>
+                        <span class="stack-step__num" aria-hidden="true">01</span>
+                        <h3 class="stack-step__title">Bordmittel</h3>
+                        <p class="stack-step__desc">Vorlagen, Textbausteine, Tastaturkürzel. Kostet nichts und bringt oft schon spürbar Zeit zurück.</p>
+                        <span class="stack-step__note">Ohne KI, mit klarem Gewinn</span>
+                    </li>
+                    <li class="stack-step" data-level="2">
+                        <span class="stack-step__ico"><svg class="ico" aria-hidden="true"><use href="#i-board"></use></svg></span>
+                        <span class="stack-step__num" aria-hidden="true">02</span>
+                        <h3 class="stack-step__title">Deterministische Workflows</h3>
+                        <p class="stack-step__desc">Feste Abfolgen, ausgelöst durch ein Ereignis. Jedes Mal exakt dasselbe Ergebnis, nachvollziehbar bis zum einzelnen Schritt.</p>
+                        <span class="stack-step__note">Kein Modell im Spiel</span>
+                    </li>
+                    <li class="stack-step" data-level="3">
+                        <span class="stack-step__ico"><svg class="ico" aria-hidden="true"><use href="#i-spark"></use></svg></span>
+                        <span class="stack-step__num" aria-hidden="true">03</span>
+                        <h3 class="stack-step__title">KI-veredelte Workflows</h3>
+                        <p class="stack-step__desc">Ein Sprachmodell als einzelner Schritt, eingefasst in feste Regeln. Für alles, wo Sprache das eigentliche Problem ist.</p>
+                        <span class="stack-step__note">Nur wo Sprache der Engpass ist</span>
+                    </li>
+                    <li class="stack-step stack-step--limit" data-level="4">
+                        <span class="stack-step__ico"><svg class="ico" aria-hidden="true"><use href="#i-target"></use></svg></span>
+                        <span class="stack-step__num" aria-hidden="true">04</span>
+                        <h3 class="stack-step__title">Autonome Agenten</h3>
+                        <p class="stack-step__desc">Ein Ziel statt einer festen Abfolge. Nur dort, wo der Hebel den Aufwand und das Risiko rechtfertigt.</p>
+                        <span class="stack-step__note">Bewusst nicht überall</span>
+                    </li>
+                </ol>
+                <div class="home-cta-row">
+                    <a class="home-cta-link" href="#systeme">Systeme ansehen</a>
+                    <a class="home-cta-link" href="ams.html">Ein System durchgerechnet</a>
                 </div>
             </div>
         </section>
@@ -1670,187 +2411,70 @@
             <div class="aqut-dots" aria-hidden="true"></div>
             <div class="aqut-vignette" aria-hidden="true"></div>
             <div class="section-wrap">
-                <span class="mono-label">Unser Flaggschiff</span>
-                <h2 class="section-h2" id="aqut-title">AQuT: von der Anfrage bis zum Termin im Kalender</h2>
-                <p class="section-sub">Anfragen-Qualifizierungs- und Terminierungs-System. Kein Chatbot-Spiel. Ein durchgängiger Ablauf, der dem Team Stunden zurückgibt und Interessenten in Minuten antwortet.</p>
+                <span class="mono-label">Beispielsystem · AMS</span>
+                <h2 class="section-h2" id="aqut-title">So bauen wir Systeme. Exemplarisch für Immobilien.</h2>
+                <p class="section-sub"><strong>Problem:</strong> Zu viel Zeit mit Anfragen ohne Abschluss. <strong>Lösung:</strong> KI-Qualifizierung: nur A-Leads erreichen Ihr Team. Von der Portalanfrage bis zum Termin.</p>
 
-                <ol class="aqut-flow aqut-flow--timeline" aria-label="Systemweg AQuT in fünf Schritten">
-                    <li class="aqut-flow__step">
-                        <span class="aqut-flow__num" aria-hidden="true">1</span>
-                        <span class="aqut-flow__icon" aria-hidden="true"><i data-lucide="inbox"></i></span>
-                        <strong>Mail-Eingang</strong>
-                        <span>Portal-Anfrage trifft ein</span>
-                    </li>
-                    <li class="aqut-flow__arrow" aria-hidden="true"><i data-lucide="chevron-right"></i></li>
-                    <li class="aqut-flow__step">
-                        <span class="aqut-flow__num" aria-hidden="true">2</span>
-                        <span class="aqut-flow__icon" aria-hidden="true"><i data-lucide="brain"></i></span>
-                        <strong>LLM-Prüfung</strong>
-                        <span>Kauf/Miete und Vollständigkeit</span>
-                    </li>
-                    <li class="aqut-flow__arrow" aria-hidden="true"><i data-lucide="chevron-right"></i></li>
-                    <li class="aqut-flow__step">
-                        <span class="aqut-flow__num" aria-hidden="true">3</span>
-                        <span class="aqut-flow__icon" aria-hidden="true"><i data-lucide="send"></i></span>
-                        <strong>Smarte Antwort</strong>
-                        <span>Buchungslink, Rückfrage oder Absage</span>
-                    </li>
-                    <li class="aqut-flow__arrow" aria-hidden="true"><i data-lucide="chevron-right"></i></li>
-                    <li class="aqut-flow__step">
-                        <span class="aqut-flow__num" aria-hidden="true">4</span>
-                        <span class="aqut-flow__icon" aria-hidden="true"><i data-lucide="calendar-check-2"></i></span>
-                        <strong>Interessent bucht</strong>
-                        <span>Erstgespräch selbst wählen</span>
-                    </li>
-                    <li class="aqut-flow__arrow" aria-hidden="true"><i data-lucide="chevron-right"></i></li>
-                    <li class="aqut-flow__step">
-                        <span class="aqut-flow__num" aria-hidden="true">5</span>
-                        <span class="aqut-flow__icon" aria-hidden="true"><i data-lucide="bell-ring"></i></span>
-                        <strong>CRM und Reminder</strong>
-                        <span>Termin und 24h Reminder</span>
-                    </li>
-                </ol>
+                <div class="aqut-sim aqut-sim--home" id="aqut-sim" data-step="0">
+                    <div class="aqut-sim__glow" aria-hidden="true"></div>
+                    <ol class="aqut-sim__rail" aria-label="AMS Pipeline Demo">
+                        <li class="aqut-sim__node" data-node="1">
+                            <span class="aqut-sim__pulse" aria-hidden="true"></span>
+                            <strong>Portal-Mail</strong>
+                            <span>Anfrage trifft ein</span>
+                        </li>
+                        <li class="aqut-sim__node" data-node="2">
+                            <span class="aqut-sim__pulse" aria-hidden="true"></span>
+                            <strong>KI-Check</strong>
+                            <span>Qualifizierung</span>
+                        </li>
+                        <li class="aqut-sim__node" data-node="3">
+                            <span class="aqut-sim__pulse" aria-hidden="true"></span>
+                            <strong>Kalender</strong>
+                            <span>Termin gebucht</span>
+                        </li>
+                        <li class="aqut-sim__node" data-node="4">
+                            <span class="aqut-sim__pulse" aria-hidden="true"></span>
+                            <strong>CRM</strong>
+                            <span>Eintrag &amp; Reminder</span>
+                        </li>
+                    </ol>
+                    <div class="aqut-sim__card" id="aqut-sim-card" aria-live="polite">
+                        <span class="aqut-sim__card-label">Live-Simulation</span>
+                        <p id="aqut-sim-status">Bereit. Starten Sie die Simulation.</p>
+                    </div>
+                    <div class="aqut-sim__actions">
+                        <button type="button" class="btn-primary" id="aqut-sim-play">Demo Anfrage testen</button>
+                        <button type="button" class="home-cta-link" id="aqut-sim-reset" hidden>Zurücksetzen</button>
+                    </div>
+                </div>
 
-                <div class="benefit-grid">
-                    <article class="benefit-card">
-                        <p class="benefit-card__stat">20 bis 35 Std/Woche</p>
-                        <p>Arbeitsaufwand gespart, direkt abhängig von Ihrem Anfragevolumen.</p>
-                    </article>
-                    <article class="benefit-card">
-                        <p class="benefit-card__stat">15 Std auf 2 Min</p>
-                        <p>Reaktionszeit auf Anfragen. Von durchschnittlich 15 Stunden auf unter 2 Minuten.</p>
-                    </article>
-                    <article class="benefit-card">
-                        <p class="benefit-card__stat">Entlastung</p>
-                        <p>Entlastung ihrer Mitarbeiter: Fokus auf abschlussrelevante Aufgaben statt Mailbox.</p>
-                    </article>
+                <!-- Datenblatt statt Erfolgszahlen. Die alten Kacheln nannten
+                     Stundenwerte, die niemand nachrechnen konnte. Für Zahlen
+                     gibt es den Rechner, der ausschließlich mit den Angaben
+                     des Besuchers arbeitet. -->
+                <div class="datenblatt">
+                    <p class="datenblatt__title">Datenblatt</p>
+                    <dl class="datenblatt__rows">
+                        <dt>Eingang</dt>
+                        <dd>Portalanfrage, Website-Formular, Mail oder Anruf</dd>
+                        <dt>Verarbeitung</dt>
+                        <dd>Aufnehmen, Rückfragen stellen, einordnen, Termin vorbereiten</dd>
+                        <dt>Ausgabe</dt>
+                        <dd>Vorgang im CRM mit Notiz, Einordnung und Terminvorschlag</dd>
+                        <dt>Freigabepunkt</dt>
+                        <dd>Vor jedem Termin und vor jeder Rückmeldung, die den Interessenten verbindlich betrifft</dd>
+                        <dt>Datenhaltung</dt>
+                        <dd>Selbst gehostet in der EU, AVV nach Art. 28 DSGVO</dd>
+                        <dt>Betrieb</dt>
+                        <dd>Läuft in Ihrer Umgebung, dokumentiert übergeben, ohne Vendor-Lock-in</dd>
+                    </dl>
+                    <p class="datenblatt__note">Was Ihnen das konkret spart, rechnen Sie weiter unten nach Ihren eigenen Angaben aus.</p>
                 </div>
 
                 <div class="home-cta-row">
-                    <button type="button" class="btn-primary js-open-booking" data-source="home-aqut">Kostenlose Beratungsstunde buchen</button>
-                    <a class="home-cta-link" href="aqut.html">AQuT im Detail</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="systeme" class="home-band home-band--cloud home-band--marquee" aria-labelledby="systeme-title">
-            <div class="section-wrap">
-                <span class="mono-label">Was wir machen</span>
-                <h2 class="section-h2" id="systeme-title">Weitere Use Cases rund um AQuT</h2>
-                <p class="section-sub">AQuT ist das Flaggschiff. Darunter bauen wir Systeme für Support, Onboarding und Datenqualität, immer mit demselben Anspruch: Entlastung statt Techniktheater.</p>
-            </div>
-            <div class="use-marquee" id="use-marquee" aria-label="Use Cases im Überblick">
-                <div class="use-marquee__row use-marquee__row--rtl">
-                    <div class="use-marquee__track">
-                        <div class="use-marquee__list">
-                            <article class="spot-card">
-                                <span class="spot-card__icon" aria-hidden="true"><i data-lucide="audio-lines"></i></span>
-                                <h3 class="spot-card__title">Voice Agents</h3>
-                                <p class="spot-card__body">24/7 Erstaufnahme am Telefon</p>
-                                <span class="spot-card__meta">Erreichbarkeit</span>
-                            </article>
-                            <article class="spot-card">
-                                <span class="spot-card__icon" aria-hidden="true"><i data-lucide="mail"></i></span>
-                                <h3 class="spot-card__title">Mieteranliegen</h3>
-                                <p class="spot-card__body">Mail-Weiterleitung an Partnerbetriebe</p>
-                                <span class="spot-card__meta">Verwaltung</span>
-                            </article>
-                            <article class="spot-card">
-                                <span class="spot-card__icon" aria-hidden="true"><i data-lucide="key-round"></i></span>
-                                <h3 class="spot-card__title">Kundenonboarding</h3>
-                                <p class="spot-card__body">Ablauf nach Vertragsabschluss</p>
-                                <span class="spot-card__meta">Service</span>
-                            </article>
-                            <article class="spot-card" aria-hidden="true">
-                                <span class="spot-card__icon" aria-hidden="true"><i data-lucide="audio-lines"></i></span>
-                                <h3 class="spot-card__title">Voice Agents</h3>
-                                <p class="spot-card__body">24/7 Erstaufnahme am Telefon</p>
-                                <span class="spot-card__meta">Erreichbarkeit</span>
-                            </article>
-                        </div>
-                        <div class="use-marquee__list" aria-hidden="true">
-                            <article class="spot-card">
-                                <span class="spot-card__icon" aria-hidden="true"><i data-lucide="audio-lines"></i></span>
-                                <h3 class="spot-card__title">Voice Agents</h3>
-                                <p class="spot-card__body">24/7 Erstaufnahme am Telefon</p>
-                                <span class="spot-card__meta">Erreichbarkeit</span>
-                            </article>
-                            <article class="spot-card">
-                                <span class="spot-card__icon" aria-hidden="true"><i data-lucide="mail"></i></span>
-                                <h3 class="spot-card__title">Mieteranliegen</h3>
-                                <p class="spot-card__body">Mail-Weiterleitung an Partnerbetriebe</p>
-                                <span class="spot-card__meta">Verwaltung</span>
-                            </article>
-                            <article class="spot-card">
-                                <span class="spot-card__icon" aria-hidden="true"><i data-lucide="key-round"></i></span>
-                                <h3 class="spot-card__title">Kundenonboarding</h3>
-                                <p class="spot-card__body">Ablauf nach Vertragsabschluss</p>
-                                <span class="spot-card__meta">Service</span>
-                            </article>
-                            <article class="spot-card">
-                                <span class="spot-card__icon" aria-hidden="true"><i data-lucide="audio-lines"></i></span>
-                                <h3 class="spot-card__title">Voice Agents</h3>
-                                <p class="spot-card__body">24/7 Erstaufnahme am Telefon</p>
-                                <span class="spot-card__meta">Erreichbarkeit</span>
-                            </article>
-                        </div>
-                    </div>
-                </div>
-                <div class="use-marquee__row use-marquee__row--ltr">
-                    <div class="use-marquee__track">
-                        <div class="use-marquee__list">
-                            <article class="spot-card">
-                                <span class="spot-card__icon" aria-hidden="true"><i data-lucide="message-square"></i></span>
-                                <h3 class="spot-card__title">WhatsApp Ticketing</h3>
-                                <p class="spot-card__body">Kundensupport mit automatischer Kategorisierung</p>
-                                <span class="spot-card__meta">Support</span>
-                            </article>
-                            <article class="spot-card">
-                                <span class="spot-card__icon" aria-hidden="true"><i data-lucide="database"></i></span>
-                                <h3 class="spot-card__title">Datenbestand</h3>
-                                <p class="spot-card__body">Anreichern und bereinigen</p>
-                                <span class="spot-card__meta">Datenpflege</span>
-                            </article>
-                            <article class="spot-card">
-                                <span class="spot-card__icon" aria-hidden="true"><i data-lucide="calendar-check"></i></span>
-                                <h3 class="spot-card__title">Kalender-Booking</h3>
-                                <p class="spot-card__body">Booking und Reminder-Workflow</p>
-                                <span class="spot-card__meta">Organisation</span>
-                            </article>
-                            <article class="spot-card" aria-hidden="true">
-                                <span class="spot-card__icon" aria-hidden="true"><i data-lucide="message-square"></i></span>
-                                <h3 class="spot-card__title">WhatsApp Ticketing</h3>
-                                <p class="spot-card__body">Kundensupport mit automatischer Kategorisierung</p>
-                                <span class="spot-card__meta">Support</span>
-                            </article>
-                        </div>
-                        <div class="use-marquee__list" aria-hidden="true">
-                            <article class="spot-card">
-                                <span class="spot-card__icon" aria-hidden="true"><i data-lucide="message-square"></i></span>
-                                <h3 class="spot-card__title">WhatsApp Ticketing</h3>
-                                <p class="spot-card__body">Kundensupport mit automatischer Kategorisierung</p>
-                                <span class="spot-card__meta">Support</span>
-                            </article>
-                            <article class="spot-card">
-                                <span class="spot-card__icon" aria-hidden="true"><i data-lucide="database"></i></span>
-                                <h3 class="spot-card__title">Datenbestand</h3>
-                                <p class="spot-card__body">Anreichern und bereinigen</p>
-                                <span class="spot-card__meta">Datenpflege</span>
-                            </article>
-                            <article class="spot-card">
-                                <span class="spot-card__icon" aria-hidden="true"><i data-lucide="calendar-check"></i></span>
-                                <h3 class="spot-card__title">Kalender-Booking</h3>
-                                <p class="spot-card__body">Booking und Reminder-Workflow</p>
-                                <span class="spot-card__meta">Organisation</span>
-                            </article>
-                            <article class="spot-card">
-                                <span class="spot-card__icon" aria-hidden="true"><i data-lucide="message-square"></i></span>
-                                <h3 class="spot-card__title">WhatsApp Ticketing</h3>
-                                <p class="spot-card__body">Kundensupport mit automatischer Kategorisierung</p>
-                                <span class="spot-card__meta">Support</span>
-                            </article>
-                        </div>
-                    </div>
+                    <button type="button" class="btn-primary js-open-booking" data-source="home-aqut">So ein System für uns?</button>
+                    <a class="home-cta-link" href="ams.html">AMS im Detail</a>
                 </div>
             </div>
         </section>
@@ -1859,7 +2483,7 @@
             <div class="section-wrap">
                 <span class="mono-label">Ihre Rechnung</span>
                 <h2 class="section-h2" id="rechner-title">Was kostet Sie das heute?</h2>
-                <p class="section-sub">Keine Lead-Erfassung. Keine Kontaktdaten. Nur Aufklärung aus Ihren Zahlen: Mailbearbeitung plus die Anrufe, die in der Mailbox landen und hinterher nachgezogen werden. CRM klären wir im Discovery-Call.</p>
+                <p class="section-sub">Keine Lead-Erfassung. Keine Kontaktdaten. Nur Aufklärung aus Ihren Zahlen: Bearbeitung plus Nacharbeit, die hinterher nachgezogen wird. Details klären wir im Discovery-Call.</p>
                 <div class="rechner rechner--wizard" id="aqut-rechner">
                     <div class="rq-progress">
                         <span class="rq-progress__label" id="rq-step-label">Schritt 1 von 3</span>
@@ -1913,6 +2537,17 @@
                                 <input id="rq-rate" type="number" min="0" step="1" value="45" inputmode="decimal">
                             </div>
                         </div>
+                        <!-- Die Annahme gehört ausdrücklich dem Besucher.
+                             Wir behaupten keine Automatisierungsquote, sonst
+                             wäre es eine Zahl von uns statt aus seinen Angaben. -->
+                        <div class="rq-annahme">
+                            <label for="rq-auto">Ihre Annahme: wie viel davon halten Sie für automatisierbar?</label>
+                            <div class="rq-annahme__row">
+                                <input id="rq-auto" type="range" min="0" max="100" step="5" value="0" aria-describedby="rq-auto-out">
+                                <output id="rq-auto-out" for="rq-auto">0 %</output>
+                            </div>
+                            <p class="rq-annahme__note">Bei 0 Prozent zeigen wir keine Ersparnis. Schätzen Sie selbst, wir rechnen nur.</p>
+                        </div>
                     </fieldset>
 
                     <div class="rq-step rq-step--result" data-step="4" hidden>
@@ -1927,7 +2562,7 @@
                         <button type="button" class="rq-btn-back" id="rq-back" hidden>Zurück</button>
                         <button type="button" class="rq-btn-reset" id="rq-reset" hidden>Werte anpassen</button>
                         <button type="button" class="rq-btn-next" id="rq-next">Weiter</button>
-                        <button type="button" class="btn-primary js-open-booking rq-btn-cta" id="rq-cta" data-source="home-rechner" hidden>Kostenlose Beratungsstunde buchen</button>
+                        <button type="button" class="btn-primary js-open-booking rq-btn-cta" id="rq-cta" data-source="home-rechner" hidden>Diese Zahlen besprechen</button>
                     </div>
                 </div>
             </div>
@@ -1936,87 +2571,188 @@
         <section id="ablauf" class="home-band home-band--linen" aria-labelledby="ablauf-title">
             <div class="section-wrap">
                 <span class="mono-label">Zusammenarbeit</span>
-                <h2 class="section-h2" id="ablauf-title">So läuft die Zusammenarbeit</h2>
-                <p class="section-sub">Vier klare Schritte. Kein Projektchaos. Am Ende läuft das System, ohne dass Sie es selbst betreiben müssen.</p>
+                <h2 class="section-h2" id="ablauf-title">Fünf Schritte. Kein Projektchaos.</h2>
+                <p class="section-sub">Vom ersten Termin bis zum laufenden System. Jeder Schritt hat ein klares Ergebnis. <strong>Ein erstes System geht typischerweise in vier bis sechs Wochen live.</strong></p>
                 <div class="ablauf-timeline ablauf-timeline--path">
                     <article class="ablauf-step">
-                        <span class="ablauf-step__icon" aria-hidden="true"><i data-lucide="messages-square"></i></span>
-                        <h3>Discovery-Call</h3>
-                        <p>Gemeinsame Analyse Ihrer Prozesse, um die größten Hebel für KI-Automatisierung zu identifizieren.</p>
-                        <span class="ablauf-step__meta">60 Min · Kostenlos</span>
+                        <span class="ablauf-step__icon" aria-hidden="true"><i data-lucide="calendar-plus"></i></span>
+                        <h3>Appointment Setting</h3>
+                        <p>Erstkontakt und Terminvereinbarung. Kurz klären, ob Volumen und Setup passen.</p>
+                        <span class="ablauf-step__meta">Einstieg<span class="ablauf-step__dauer">20 Minuten</span></span>
                     </article>
                     <article class="ablauf-step">
-                        <span class="ablauf-step__icon" aria-hidden="true"><i data-lucide="waypoints"></i></span>
-                        <h3>Systemgespräch</h3>
-                        <p>Wir besprechen Infrastruktur und legen die Prioritäten für die Umsetzung fest.</p>
-                        <span class="ablauf-step__meta">Sales Call</span>
+                        <span class="ablauf-step__icon" aria-hidden="true"><i data-lucide="search"></i></span>
+                        <h3>Discovery Call</h3>
+                        <p>Pain-Analyse und Prozessaufnahme. Welches System hat den größten Hebel?</p>
+                        <span class="ablauf-step__meta">Analyse<span class="ablauf-step__dauer">60 Minuten</span></span>
+                    </article>
+                    <article class="ablauf-step">
+                        <span class="ablauf-step__icon" aria-hidden="true"><i data-lucide="presentation"></i></span>
+                        <h3>Sales Call &amp; Konzept</h3>
+                        <p>Lösungskonzept, Scope, Timeline und Preis. Schriftlich und nachvollziehbar.</p>
+                        <span class="ablauf-step__meta">Entscheidung<span class="ablauf-step__dauer">Angebot schriftlich</span></span>
                     </article>
                     <article class="ablauf-step">
                         <span class="ablauf-step__icon" aria-hidden="true"><i data-lucide="hammer"></i></span>
-                        <h3>Umsetzung</h3>
-                        <p>Schlüsselfertiger Aufbau inklusive Testphase und Integration in bestehende Tools.</p>
-                        <span class="ablauf-step__meta">ca. 4 Wochen</span>
+                        <h3>Technisches Onboarding</h3>
+                        <p>Systemaufbau, CRM-Anbindung und Integration in Ihre Tools.</p>
+                        <span class="ablauf-step__meta">Umsetzung<span class="ablauf-step__dauer">4 bis 6 Wochen</span></span>
                     </article>
                     <article class="ablauf-step">
-                        <span class="ablauf-step__icon" aria-hidden="true"><i data-lucide="shield"></i></span>
-                        <h3>Betrieb</h3>
-                        <p>Laufende Wartung, Anpassungen und Hosting durch uns. Sie nutzen nur das fertige System.</p>
-                        <span class="ablauf-step__meta">Retainer · Rundum</span>
+                        <span class="ablauf-step__icon" aria-hidden="true"><i data-lucide="activity"></i></span>
+                        <h3>Go-Live &amp; Monitoring</h3>
+                        <p>Übergabe, Live-Betrieb und kontinuierliches Monitoring.</p>
+                        <span class="ablauf-step__meta">Betrieb<span class="ablauf-step__dauer">laufend</span></span>
                     </article>
                 </div>
                 <div class="home-cta-row">
-                    <a class="home-cta-link" href="zusammenarbeit.html" style="color:var(--charcoal);">Mehr zum Ablauf</a>
+                    <a class="home-cta-link" href="zusammenarbeit.html">Mehr zum Ablauf</a>
                 </div>
             </div>
         </section>
 
-        <!-- Haller-Teaser ausgeblendet bis Freigabe für öffentliche Nennung auf der Startseite
-        <section id="referenzen-teaser">
+        <!-- ═══════════════════════════════════════════════════
+             FAQ — Einwandbehandlung
+             Nicht zu verwechseln mit der Einkaufs-Checkliste in
+             #sicherheit, die eine andere Aufgabe hat. Inhalt und
+             FAQPage-Schema stammen beide aus scripts/faq-data.mjs
+             und werden von sync-index-shell.mjs eingehängt.
+        ═══════════════════════════════════════════════════ -->
+        <section id="faq" class="home-band home-band--cloud" aria-labelledby="faq-title">
             <div class="section-wrap">
-                <span class="mono-label">Wem wir geholfen haben</span>
-                <h2 class="section-h2">Haller Immobilienberatung GmbH</h2>
-                <div class="teaser-card">
-                    <p>Öffentlich freigegebene Referenz: Portalanfragen werden qualifiziert und Termine landen im Kalender. Gemessene Kennzahlen folgen, sobald sie aus dem Live-Betrieb belastbar vorliegen.</p>
-                    <p style="margin-top:0.75rem;"><a href="referenzen.html">Zur Referenz</a></p>
-                </div>
+                <span class="mono-label">Bevor Sie fragen</span>
+                <h2 class="section-h2" id="faq-title">Was Kunden vor dem ersten Termin wissen wollen</h2>
+                <p class="section-sub">Zehn Antworten, ohne Marketingnebel. Was nicht dabei ist, beantworten wir im Erstgespräch genauso direkt.</p>
+                <!-- faq:start -->
+      <ul class="akte-register akte-register--faq">
+        <li><details class="akte akte--frage">
+          <summary class="akte__head">
+            <span class="akte__title">Wie lange dauert es, bis ein System läuft?</span>
+            <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+          </summary>
+          <div class="akte__body">
+            <p>Ein erstes System geht typischerweise in vier bis sechs Wochen live. Der Audit und die Analyse davor kosten Sie etwa zwei Termine. Größere Zuschnitte dauern länger, das sagen wir dann vor Projektstart und nicht mittendrin.</p>
+          </div>
+        </details></li>
+        <li><details class="akte akte--frage">
+          <summary class="akte__head">
+            <span class="akte__title">Was ist, wenn das System die vereinbarten Kriterien nicht erreicht?</span>
+            <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+          </summary>
+          <div class="akte__body">
+            <p>Wir definieren messbare Kriterien vor Projektstart. Werden sie nicht erreicht, passen wir nach, ohne zusätzliche Beratungshonorare. Deshalb legen wir im Audit so viel Wert darauf, dass die Kriterien überhaupt messbar formuliert sind.</p>
+          </div>
+        </details></li>
+        <li><details class="akte akte--frage">
+          <summary class="akte__head">
+            <span class="akte__title">Was ist, wenn mein Team damit nicht klarkommt?</span>
+            <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+          </summary>
+          <div class="akte__body">
+            <p>Die Systeme laufen dort, wo Ihr Team ohnehin arbeitet: im Postfach, im CRM, im Ticketsystem. Es gibt in der Regel keine neue Oberfläche, die jemand lernen muss. Wo doch, gehört die Einweisung zur Übergabe und nicht auf eine Extrarechnung.</p>
+          </div>
+        </details></li>
+        <li><details class="akte akte--frage">
+          <summary class="akte__head">
+            <span class="akte__title">Können wir unsere bestehenden Tools und unser CRM behalten?</span>
+            <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+          </summary>
+          <div class="akte__body">
+            <p>Ja, das ist der Normalfall. Wir bauen an Ihre Systeme an, statt Ihnen eine Plattform zu verkaufen. Wenn ein Werkzeug wirklich im Weg steht, sagen wir das offen, aber ein Wechsel ist nie die Voraussetzung dafür, dass wir anfangen können.</p>
+          </div>
+        </details></li>
+        <li><details class="akte akte--frage">
+          <summary class="akte__head">
+            <span class="akte__title">Brauchen wir technisches Wissen im Haus?</span>
+            <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+          </summary>
+          <div class="akte__body">
+            <p>Für den Betrieb nicht. Sie brauchen jemanden, der fachlich entscheiden kann, was das System darf und was nicht, und der Freigaben erteilt. Das ist eine fachliche Rolle, keine technische.</p>
+          </div>
+        </details></li>
+        <li><details class="akte akte--frage">
+          <summary class="akte__head">
+            <span class="akte__title">Was passiert nach dem Go-Live, wer betreut das System?</span>
+            <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+          </summary>
+          <div class="akte__body">
+            <p>Jedes System wird dokumentiert übergeben, damit Ihr Team oder ein anderer Dienstleister es weiterbetreiben kann. Ob wir den Betrieb übernehmen, entscheiden Sie danach. Es gibt keinen Lizenzschlüssel, den wir abschalten könnten.</p>
+          </div>
+        </details></li>
+        <li><details class="akte akte--frage">
+          <summary class="akte__head">
+            <span class="akte__title">Wie viel Zeit kostet uns das Projekt intern?</span>
+            <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+          </summary>
+          <div class="akte__body">
+            <p>Rechnen Sie mit einem halben Tag für den Audit, dann etwa ein bis zwei Stunden pro Woche für Rückfragen und Freigaben, solange gebaut wird. Wenn wir mehr brauchen, sagen wir es vorher.</p>
+          </div>
+        </details></li>
+        <li><details class="akte akte--frage">
+          <summary class="akte__head">
+            <span class="akte__title">Ab welcher Größe lohnt sich das überhaupt?</span>
+            <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+          </summary>
+          <div class="akte__body">
+            <p>Entscheidend ist nicht die Mitarbeiterzahl, sondern das Volumen eines wiederkehrenden Vorgangs. Unter etwa zehn Fällen pro Woche raten wir ab, da rechnet sich der Aufwand meistens nicht. Was bei Ihnen zusammenkommt, können Sie im Rechner auf dieser Seite mit Ihren eigenen Zahlen prüfen.</p>
+          </div>
+        </details></li>
+        <li><details class="akte akte--frage">
+          <summary class="akte__head">
+            <span class="akte__title">Was kostet es?</span>
+            <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+          </summary>
+          <div class="akte__body">
+            <p>Wir nennen keinen öffentlichen Preis, weil der Zuschnitt jedes Systems den Aufwand bestimmt und eine Zahl ohne Kontext niemandem hilft. Der Rahmen hängt an drei Dingen: wie viele Prozesse Sie automatisieren, wie sauber Ihre Daten heute vorliegen, und ob wir den Betrieb übernehmen. Sie bekommen ein schriftliches Angebot mit Scope, Zeitplan und Preis, bevor irgendetwas gebaut wird.</p>
+          </div>
+        </details></li>
+        <li><details class="akte akte--frage">
+          <summary class="akte__head">
+            <span class="akte__title">Arbeiten Sie auch außerhalb der genannten Branchen?</span>
+            <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+          </summary>
+          <div class="akte__body">
+            <p>Ja, im Einzelfall. Immobilien, Handwerk, Handel und Beratung sind die Bereiche, in denen wir die meisten Prozesse dokumentiert haben. Wenn wir in Ihrem Fall keinen echten Mehrwert sehen, sagen wir ab, statt ein Projekt anzunehmen.</p>
+          </div>
+        </details></li>
+      </ul>
+                <!-- faq:end -->
             </div>
         </section>
-        -->
 
-        <section id="trust" class="home-band home-band--cloud" aria-labelledby="trust-title">
+        <section id="trust" class="home-band home-band--linen" aria-labelledby="trust-title">
             <div class="section-wrap">
                 <span class="mono-label">Woran Sie uns messen können</span>
                 <h2 class="section-h2" id="trust-title">Direkt. DSGVO-klar. Ohne Vermittler.</h2>
                 <div class="trust-grid">
-                    <img class="trust-grid__portrait" src="images/kevin-ritz-portrait.png" width="720" height="720" loading="lazy" alt="Kevin Ritz, Gründer von RAIS">
+                    <!-- 960px-WebP statt des 1254px-PNG mit 1.6 MB. Angezeigt
+                         wird das Bild deutlich kleiner, die Quelle bleibt im
+                         Repo. -->
+                    <img class="trust-grid__portrait" src="images/profilbild.webp" width="720" height="720" loading="lazy" alt="Kevin Ritz, Geschäftsführer von RAIS">
                     <div>
-                        <ul class="trust-facts">
-                            <li>Selbst gehostet in Deutschland</li>
-                            <li>Datenbank in Frankfurt</li>
-                            <li>AVV nach Art. 28 DSGVO</li>
-                            <li>Keine Datenweitergabe außerhalb der EU</li>
-                        </ul>
-                        <p class="section-sub" style="margin:0;">Ich bin Kevin Ritz, Gründer von RAIS aus Koblenz. Vom ersten Audit bis zum laufenden System arbeiten Sie direkt mit mir. Kein anonymes Projektteam.</p>
+                        <p class="section-sub" style="margin:0 0 1.5rem;">Ich bin Kevin Ritz, Geschäftsführer von RAIS aus Koblenz. Inhaber ist Jesus Christus. Vom ersten Audit bis zum laufenden System arbeiten Sie direkt mit mir. Kein anonymes Projektteam.</p>
+                        <!-- Die DSGVO-Belege stehen bereits im Ticker. Hier stattdessen
+                             die vier Punkte, an denen man uns wirklich messen kann. -->
                         <div class="trust-pillars">
                             <div class="trust-pillar">
-                                <strong>EU-Server</strong>
-                                <span>Hosting strikt innerhalb der Europäischen Union.</span>
+                                <strong>Wahrhaftigkeit statt Hype</strong>
+                                <span>Wir sagen Ihnen auch, wenn sich ein Prozess nicht zu automatisieren lohnt.</span>
                             </div>
                             <div class="trust-pillar">
-                                <strong>Security-Review</strong>
-                                <span>Regelmäßige Prüfung der eingesetzten Tools.</span>
+                                <strong>Ein Ansprechpartner</strong>
+                                <span>Vom Audit bis zum laufenden Betrieb dieselbe Person. Keine Weitergabe an ein Projektteam.</span>
                             </div>
                             <div class="trust-pillar">
-                                <strong>DSGVO-AVV</strong>
-                                <span>Rechtssichere Verträge für die Auftragsverarbeitung.</span>
+                                <strong>Ihre Infrastruktur</strong>
+                                <span>Die Systeme laufen in Ihrer Umgebung, selbst gehostet in der EU, ohne Vendor-Lock-in.</span>
                             </div>
                             <div class="trust-pillar">
-                                <strong>Kurze Wege</strong>
-                                <span>Direkter Draht bei technischen Fragen.</span>
+                                <strong>Dokumentierte Übergabe</strong>
+                                <span>Jedes System wird dokumentiert übergeben, damit Sie es auch ohne uns weiterbetreiben können.</span>
                             </div>
                         </div>
-                        <p class="trust-status">Aktuell laufen Systeme im Aufbau und Live-Betrieb. Eine öffentliche Case Study folgt, sobald Freigabe und belastbare Kennzahlen vorliegen. Bis dahin keine erfundenen Beweise.</p>
                         <div class="trust-links">
+                            <a href="#beweislage">Unsere Beweislage</a>
                             <a href="ueber-uns.html">Über uns</a>
                             <a href="impressum.html">Impressum</a>
                             <a href="datenschutz.html">Datenschutz</a>
@@ -2026,38 +2762,114 @@
             </div>
         </section>
 
-<section id="contact" class="contact-band">
+        <!-- ═══════════════════════════════════════════════════
+             PROZESSHANDBUCH — der zweite, unverbindliche Weg
+             Steht bewusst nach dem FAQ: wer bis hierhin gelesen hat
+             und trotzdem nicht buchen will, bekommt eine Option
+             statt einer Sackgasse.
+             n8n-Benachrichtigung optional: data-n8n-webhook="…" am
+             Formular ergänzen, dann meldet lead-magnet.js dorthin.
+        ═══════════════════════════════════════════════════ -->
+        <section id="handbuch" class="home-band home-band--cloud" aria-labelledby="handbuch-title">
+            <div class="section-wrap">
+                <div class="lm-grid">
+                    <div>
+                        <!-- Cover des Prozesshandbuchs. 560px breit reicht:
+                             angezeigt wird es auf 255px, das deckt auch
+                             2x-Displays. Die Quelle (1055x1491, 1.8 MB) bleibt
+                             als cover.png im Repo, ausgeliefert wird die WebP
+                             mit 49 KB. Faellt die Datei, entfernt sich das
+                             Bild selbst und die Sektion bleibt nutzbar. -->
+                        <img class="lm-cover" src="images/cover.webp" alt="" width="560" height="791" loading="lazy" decoding="async" onerror="this.remove()">
+                        <span class="mono-label">Noch nicht so weit?</span>
+                        <h2 class="section-h2" id="handbuch-title">Das Prozesshandbuch, ohne Termin</h2>
+                        <p class="section-sub">Wie Sie Ihre wiederkehrenden Vorgänge selbst aufnehmen, bewerten und entscheiden, was sich zu automatisieren lohnt. Dieselbe Systematik, mit der wir im Audit arbeiten. Sie brauchen uns dafür nicht.</p>
+                    </div>
+
+                    <div class="lm-box">
+                        <form id="lm-form" class="lm-form" novalidate>
+                            <div class="lm-field">
+                                <label for="lm-name">Ihr Name</label>
+                                <input type="text" id="lm-name" name="name" autocomplete="name" maxlength="200" required>
+                            </div>
+                            <div class="lm-field">
+                                <label for="lm-email">E-Mail-Adresse</label>
+                                <input type="email" id="lm-email" name="email" autocomplete="email" maxlength="254" required>
+                            </div>
+                            <div class="lm-field lm-honeypot" aria-hidden="true">
+                                <label for="lm-website">Website</label>
+                                <input type="text" id="lm-website" name="website" tabindex="-1" autocomplete="off">
+                            </div>
+                            <label class="lm-check" for="lm-privacy">
+                                <input type="checkbox" id="lm-privacy" required>
+                                <span>Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a> gelesen.</span>
+                            </label>
+                            <label class="lm-check" for="lm-marketing">
+                                <input type="checkbox" id="lm-marketing">
+                                <span>Ich möchte gelegentlich Hinweise zu neuen Systemen erhalten. Jederzeit widerrufbar.</span>
+                            </label>
+                            <button type="submit" id="lm-submit" class="btn-primary lm-submit">Prozesshandbuch herunterladen</button>
+                            <p class="lm-note">Kein Verkaufsanruf. Sie bekommen das PDF und sonst nichts, solange Sie nichts anderes ankreuzen.</p>
+                        </form>
+
+                        <div id="lm-success" class="lm-success">
+                            <p class="lm-success__title">Fertig. Hier ist Ihr Handbuch.</p>
+                            <a id="lm-download-btn" class="btn-primary" href="downloads/rais-prozesshandbuch-2026.pdf" download="RAIS-Prozesshandbuch-2026.pdf">PDF öffnen</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+<!-- ═══════════════════════════════════════════════════
+             RISIKOUMKEHR
+             Aussage über den eigenen Prozess, kein Kundenbeleg.
+             Steht bewusst unmittelbar vor dem CTA.
+        ═══════════════════════════════════════════════════ -->
+        <section id="garantie" class="home-band home-band--linen garantie-band" aria-labelledby="garantie-title">
+            <div class="section-wrap">
+                <div class="garantie">
+                    <span class="mono-label">Unser Risiko, nicht Ihres</span>
+                    <h2 class="section-h2" id="garantie-title">Wir definieren messbare Kriterien vor Projektstart.</h2>
+                    <p class="garantie__body">Werden sie nicht erreicht, passen wir nach, ohne zusätzliche Beratungshonorare. Deshalb legen wir im Audit so viel Wert darauf, dass die Kriterien überhaupt messbar formuliert sind. Ein Ziel, das niemand nachrechnen kann, ist keine Zusage, sondern eine Ausrede.</p>
+                </div>
+            </div>
+        </section>
+
+<section id="contact" class="contact-band home-band--green">
             <div class="section-wrap">
                 <div class="contact-deliver">
-                    <span class="mono-label" style="color: var(--orange);">Kostenlose Beratungsstunde</span>
-                    <h2 class="section-h2" style="color: #fff; margin-top: 0.75rem;">60 Minuten. Kostenlos. Drei umsetzbare Ideen.</h2>
+                    <span class="mono-label mono-label--contact">Kostenloser KI-Audit</span>
+                    <!-- Die einzige Stelle, an der die Seite emotional wird,
+                         und sie steht dort, wo die Entscheidung fällt. -->
+                    <p class="contact-claim">Sie kaufen keine KI. Sie kaufen den Freiraum, endlich ans Wachsen denken zu können.</p>
+                    <h2 class="section-h2 contact-h2">Was passiert nach Ihrer Anfrage?</h2>
                     <p class="contact-copy home-contact-lead">
-                        Kein Pitch. Keine Folien-Show. Am Ende wissen Sie, wo in Ihrem Büro Zeit verloren geht und was sich als Nächstes lohnt.
+                        Kein Verkaufsgespräch, wenn es nicht passt. Nur Klarheit zu Ihren Optionen.
                     </p>
 
                     <div class="contact-deliver__grid">
                         <article class="contact-deliver__item">
-                            <span class="contact-deliver__icon" aria-hidden="true"><i data-lucide="search"></i></span>
-                            <h3>Ihre Prozesse</h3>
-                            <p>Gemeinsame Sicht auf den größten Zeitfresser in Anfragen und Nacharbeit.</p>
+                            <span class="contact-deliver__icon" aria-hidden="true"><i data-lucide="clock"></i></span>
+                            <h3>Antwort in 24 Stunden</h3>
+                            <p>Wir melden uns innerhalb von 24 Stunden und klären den nächsten sinnvollen Schritt.</p>
                         </article>
                         <article class="contact-deliver__item">
                             <span class="contact-deliver__icon" aria-hidden="true"><i data-lucide="blocks"></i></span>
-                            <h3>Ihre Use Cases</h3>
-                            <p>Drei passende Automatisierungen für Ihr Büro, priorisiert nach Hebel.</p>
+                            <h3>1 bis 3 Systeme</h3>
+                            <p>Sie erhalten eine klare Einschätzung, welche KI-Systeme für Ihren Betrieb wirklich sinnvoll sind.</p>
                         </article>
                         <article class="contact-deliver__item">
-                            <span class="contact-deliver__icon" aria-hidden="true"><i data-lucide="map"></i></span>
-                            <h3>Ihr Fahrplan</h3>
-                            <p>Aufwand, Kosten und nächste Schritte. Klar genug für eine Entscheidung.</p>
+                            <span class="contact-deliver__icon" aria-hidden="true"><i data-lucide="circle-check"></i></span>
+                            <h3>Ohne Druck</h3>
+                            <p>Wenn es nicht passt, sagen wir das offen. Kein Pitch um des Pitches willen.</p>
                         </article>
                     </div>
 
                     <div class="contact-deliver__cta">
                         <button type="button" id="contact-demo-btn" class="cal-load-btn js-open-booking" data-source="contact">
-                            Kostenlose Beratungsstunde buchen
+                            Kostenlosen KI-Audit buchen
                         </button>
-                        <p class="contact-deliver__trust">Kevin Ritz · 60 Min · kein Verkaufsdruck</p>
+                        <p class="contact-deliver__trust">Kevin Ritz · KI-Audit · kein Verkaufsdruck</p>
                         <div class="contact-details contact-details--inline">
                             <a href="mailto:kevin@ritz-ai.solutions" class="contact-detail-link">kevin@ritz-ai.solutions</a>
                             <a href="tel:+4915129755134" class="contact-detail-link">+49 151 297 551 34</a>
@@ -2076,7 +2888,7 @@
          MOBILE STICKY CTA
     ═══════════════════════════════════════════════════════ -->
     <div id="sticky-cta" aria-hidden="true">
-        <button type="button" class="sticky-cta-btn js-open-booking" id="sticky-demo-btn" data-source="sticky">Beratungsstunde buchen</button>
+        <button type="button" class="sticky-cta-btn js-open-booking" id="sticky-demo-btn" data-source="sticky">KI-Audit buchen</button>
     </div>
 
     <!-- ═══════════════════════════════════════════════════════
@@ -2090,8 +2902,11 @@
             </a>
             <nav class="footer-legal" aria-label="Seitenlinks">
                 <a href="#systeme">Systeme</a>
+                <a href="#methodik">Methode</a>
                 <a href="zusammenarbeit.html">So arbeiten wir</a>
-                <a href="referenzen.html">Referenzen</a>
+                <a href="referenzen.html">Systemkatalog</a>
+                <a href="ams.html">AMS Beispielsystem</a>
+                <a href="persoenlichkeit.html">Persönlichkeit</a>
                 <a href="#contact">Kontakt</a>
                 <a href="impressum.html">Impressum</a>
                 <a href="datenschutz.html">Datenschutz</a>
@@ -2229,26 +3044,13 @@
             window.lucide.createIcons();
         }
 
-        /* ── Spotlight card cursor glow (delegated) ─────────── */
-        (function () {
-            var marquee = document.getElementById('use-marquee');
-            if (!marquee) return;
-            var canHover = window.matchMedia && window.matchMedia('(hover: hover)').matches;
-            var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            if (!canHover || reduceMotion) return;
-
-            marquee.addEventListener('pointermove', function (e) {
-                var card = e.target.closest('.spot-card');
-                if (!card || !marquee.contains(card)) return;
-                var rect = card.getBoundingClientRect();
-                card.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
-                card.style.setProperty('--my', (e.clientY - rect.top) + 'px');
-            });
-        }());
-
-        /* ── Antigravity reveal orchestration ───────────────── */
+        /* ── Antigravity reveal orchestration ───────────────────
+           Das Register faded als ein Block ein, nicht Zeile für Zeile.
+           15 gestaffelte Einzelreveals wären dekorative Bewegung
+           ohne Verkaufszweck. */
         var revealTargets = document.querySelectorAll([
-            '.icp-card', '.sys-cell', '.benefit-card', '.ablauf-step',
+            '.icp-card', '.datenblatt', '.ablauf-step', '.kontrakt', '.arch', '.fragen',
+            '.stack-card', '.beweis-grid', '.akte-register', '.branchen',
             '.trust-grid', '.contact-text-col', '.contact-detail',
             '.audit-blueprint', '.cal-embed-wrap', '.rechner'
         ].join(','));
@@ -2309,7 +3111,7 @@
          BOOKING MODAL
     ═══════════════════════════════════════════════════════ -->
 
-<div id="booking-modal" role="dialog" aria-modal="true" aria-label="Kostenlose Beratungsstunde buchen">
+<div id="booking-modal" role="dialog" aria-modal="true" aria-label="Kostenlosen KI-Audit buchen">
   <div class="bm-backdrop" id="bm-backdrop"></div>
   <div class="bm-box">
     <button class="bm-close" id="bm-close" type="button" aria-label="Schließen">
@@ -2323,7 +3125,7 @@
     <div class="bm-step is-active" id="bm-step-0">
       <p class="bm-label">Schritt 1 von 2</p>
       <h2 class="bm-title">Ihre Kontaktdaten</h2>
-      <p class="bm-sub">Damit wir die Beratungsstunde vorbereiten und Sie erreichen können.</p>
+      <p class="bm-sub">Damit wir den KI-Audit vorbereiten und Sie erreichen können.</p>
       <div class="bm-field">
         <label for="bm-name">Ihr Name</label>
         <input type="text" id="bm-name" placeholder="Max Mustermann" autocomplete="name" maxlength="200">
@@ -2350,14 +3152,25 @@
     </div>
     <div class="bm-step" id="bm-step-1">
       <p class="bm-label">Schritt 2 von 2</p>
-      <h2 class="bm-title">Ihr Anfragevolumen</h2>
-      <p class="bm-sub">Wie viele E-Mail-Anfragen landen durchschnittlich pro Woche bei Ihnen?</p>
+      <h2 class="bm-title">Ihr Engpass und Volumen</h2>
+      <p class="bm-sub">Wo verlieren Sie die meiste Zeit, und wie oft tritt das auf?</p>
+      <div class="bm-field">
+        <label for="bm-engpass">Haupt-Engpass</label>
+        <select id="bm-engpass" class="bm-select">
+          <option value="">Bitte wählen</option>
+          <option value="lead-qualifizierung">Lead-Qualifizierung und Erstkontakt</option>
+          <option value="bestandskunden">Bestandskunden-Kommunikation</option>
+          <option value="support">Support und Ticketing</option>
+          <option value="reporting">Reporting und Datenpflege</option>
+          <option value="sonstiges">Sonstiger Prozess</option>
+        </select>
+      </div>
       <div class="bm-slider-block">
         <div class="bm-slider-value" aria-live="polite">
           <span id="bm-volume-display">80</span>
-          <span class="bm-slider-unit">Anfragen / Woche</span>
+          <span class="bm-slider-unit">Vorgänge / Woche</span>
         </div>
-        <input type="range" id="bm-volume" class="bm-slider" min="0" max="300" step="5" value="80" aria-valuemin="0" aria-valuemax="300" aria-valuenow="80" aria-label="Anfragen pro Woche">
+        <input type="range" id="bm-volume" class="bm-slider" min="0" max="300" step="5" value="80" aria-valuemin="0" aria-valuemax="300" aria-valuenow="80" aria-label="Vorgänge pro Woche">
         <div class="bm-slider-scale" aria-hidden="true">
           <span>0</span>
           <span>150</span>
@@ -2379,6 +3192,27 @@
   </div>
 </div>
 <script src="scripts/booking-modal.js"></script>
+<script src="scripts/branchen-tabs.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2412,6 +3246,8 @@
 
 <!-- ── Calculator (after sync-safe boundary) ───────────── -->
 <script src="scripts/aqut-rechner.js"></script>
-
+<script src="scripts/aqut-sim.js"></script>
+    <script src="scripts/lead-magnet.js"></script>
+    <script src="scripts/scroll-motion.js"></script>
 </body>
 </html>

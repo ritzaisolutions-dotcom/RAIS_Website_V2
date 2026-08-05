@@ -2,6 +2,9 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "redirects": [
+    { "source": "/aqut", "destination": "/ams.html", "permanent": true },
+    { "source": "/aqut/", "destination": "/ams.html", "permanent": true },
+    { "source": "/aqut.html", "destination": "/ams.html", "permanent": true },
     { "source": "/prozesshandbuch", "destination": "/", "permanent": true },
     { "source": "/prozesshandbuch/", "destination": "/", "permanent": true },
     { "source": "/prozesshandbuch.html", "destination": "/", "permanent": true },

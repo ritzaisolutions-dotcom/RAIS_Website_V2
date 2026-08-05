@@ -1,10 +1,20 @@
 /* Shared multipage shell + section styles (RAIS tokens) */
-@import url('../fonts/editorial-faces.css'); /* Source Serif 4 (Headings) + Libre Franklin, self-hosted */
+@import url('../fonts/editorial-faces.css'); /* Source Serif 4 (Headings) + Instrument Sans, self-hosted */
 :root {
   /* Editorial Text-Serif fuer Headings (brand_steer): bewusst KEINE Display-Serif */
   --serif: 'Source Serif 4', 'Iowan Old Style', Georgia, serif;
+  /* Fliesstext: neutrale Grotesk, ausdruecklich nicht geometrisch (brand_steer) */
+  --sans: 'Instrument Sans', 'Inter', system-ui, -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
   --orange: #EC6A37;
   --orange-hover: #F37A48;
+  /* Schrift auf Mandarin. Weiss ergab nur 3.14:1 und riss die
+     4.5:1 auf jedem primaeren CTA. Charcoal kommt auf 4.52:1,
+     im Hover auf --orange-hover sogar auf 5.20:1.
+     Achtung: 4.52 ist knapp. Wird --orange je aufgehellt, muss
+     dieser Wert neu gerechnet werden. */
+  --on-orange: #2F2A24;
   --background: #F5F2EC;
   --surface: #FBF8F3;
   --sage: #789464;
@@ -14,14 +24,70 @@
   --stone: #7B746B;
   --border: #D9D1C7;
   --nav-h: 72px;
+
+  /* Racing Green als zweite Tinte: Linien-, Label- und Markenrollen */
+  --green-ink: #004225;
+  --green-rule: rgba(0, 66, 37, 0.22);
+  --green-rule-soft: rgba(0, 66, 37, 0.10);
+  --green-wash: rgba(0, 66, 37, 0.04);
+
+  /* Racing Green als LEITFLAECHE (Amendment brand_steer, 05.08.2026).
+     Muss mit dem :root-Block in index.html synchron bleiben, die Tokens
+     liegen dupliziert. Auf den Unterseiten bisher ungenutzt, hier nur
+     definiert damit index und Unterseiten nicht divergieren. */
+  --green-900: #002A18;
+  --green-800: #004225;
+  --green-700: #0A5231;
+  --linen-on-green: #FBF8F3;
+  --sage-light: #9FB88C;   /* --sage haette auf Gruen nur 2.8:1 */
+  --rule-on-green: rgba(251, 248, 243, 0.14);
+  --fill-on-green: rgba(251, 248, 243, 0.06);
+  --focus-on-green: rgba(159, 184, 140, 0.55);
+
+  /* Skalen */
+  --radius-sm: 0.7rem;
+  --radius-md: 1.1rem;
+  --radius-lg: 1.5rem;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 1px 2px rgba(47, 42, 36, 0.05);
+  --shadow-md: 0 6px 20px rgba(47, 42, 36, 0.08);
+  --shadow-lg: 0 14px 34px rgba(47, 42, 36, 0.14);
+
+  --space-2xs: 0.35rem;
+  --space-xs: 0.6rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: clamp(3rem, 6vw, 4.5rem);
+  --space-band: clamp(4.5rem, 8vw, 7.5rem);
+
+  --dur-fast: 0.2s;
+  --dur-mid: 0.32s;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
 [hidden] { display: none !important; }
+
+/* Nur fuer Screenreader. Nicht display:none, das wuerde den Text auch
+   dort entfernen. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
 html { scroll-behavior: smooth; color-scheme: light; overflow-x: hidden; }
 body {
   margin: 0;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: var(--sans);
   background: var(--background);
   color: var(--charcoal);
   line-height: 1.65;
@@ -33,12 +99,21 @@ section[id] { scroll-margin-top: var(--nav-h); }
 img { max-width: 100%; height: auto; }
 a { color: inherit; }
 .mono-label {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--mono);
   font-size: 0.72rem;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   text-transform: none;
-  color: var(--stone);
+  color: var(--green-ink);
   font-weight: 500;
+}
+.mono-label::before {
+  content: "";
+  width: 1.35rem;
+  height: 1px;
+  background: var(--green-rule);
 }
 .section-wrap {
   width: min(1100px, calc(100% - 2.5rem));
@@ -69,7 +144,7 @@ a { color: inherit; }
   min-height: 44px;
   padding: 0.7rem 1.35rem;
   background: var(--orange);
-  color: #fff;
+  color: var(--on-orange);
   border: none;
   border-radius: 0.55rem;
   font-weight: 700;
@@ -193,7 +268,7 @@ a { color: inherit; }
   width: 100%;
   min-height: 48px;
   background: var(--orange);
-  color: #fff;
+  color: var(--on-orange);
   border: none;
   border-radius: 0.55rem;
   font-weight: 700;
@@ -208,27 +283,46 @@ a { color: inherit; }
   .nav-right .btn-primary { display: none; }
 }
 
-/* Page hero (inner pages) */
+/* Page hero (inner pages).
+   Seit 05.08.2026 gruene Leitflaeche statt beigem Verlauf. Vorher
+   waren alle fuenf Unterseiten-Heroes byteweise identisch hell, die
+   Unterseiten hatten damit keinerlei visuelle Verbindung zur
+   Startseite. Jetzt oeffnet und schliesst jede Seite auf Gruen,
+   dazwischen die hellen Baender. */
 .page-hero {
-  padding: calc(var(--nav-h) + 3.5rem) 0 3rem;
+  padding: calc(var(--nav-h) + 4rem) 0 clamp(3rem, 6vw, 4.5rem);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: var(--linen-on-green, #FBF8F3);
   background:
-    radial-gradient(circle at 85% 10%, rgba(120,148,100,0.18), transparent 35%),
-    linear-gradient(180deg, #FBF8F3, #F5F2EC);
+    linear-gradient(180deg, var(--green-900, #002A18) 0%, transparent 22%),
+    linear-gradient(0deg, var(--green-900, #002A18) 0%, transparent 18%),
+    var(--green-800, #004225);
 }
 .page-hero__inner { width: min(1100px, calc(100% - 2.5rem)); margin: 0 auto; }
 .page-hero h1 {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: clamp(2rem, 4vw, 3rem);
-  line-height: 1.15;
+  font-size: clamp(2.1rem, 4.2vw, 3.2rem);
+  line-height: 1.14;
+  letter-spacing: -0.018em;
   margin: 0.5rem 0 0.85rem;
   max-width: 18ch;
+  color: var(--linen-on-green, #FBF8F3);
 }
 .page-hero p {
-  color: var(--stone);
+  color: rgba(251, 248, 243, 0.78);
   max-width: 38rem;
   margin: 0 0 1.5rem;
   font-size: 1.08rem;
+}
+.page-hero .mono-label { color: var(--sage-light, #9FB88C); }
+.page-hero .mono-label::before { background: var(--sage-light, #9FB88C); }
+.page-hero a { color: var(--sage-light, #9FB88C); }
+.page-hero :focus-visible {
+  outline: 2px solid var(--focus-on-green, rgba(159, 184, 140, 0.55));
+  outline-offset: 3px;
 }
 
 /* Trust strip */
@@ -345,13 +439,25 @@ a { color: inherit; }
 }
 .teaser-card a { font-weight: 700; color: var(--orange); }
 
-/* Contact block */
+/* Contact block.
+   Lief vorher als Verlauf Charcoal -> Gruen. Zwei nah beieinander
+   liegende dunkle Toene ergeben eine matschige Mitte; seit Racing
+   Green Leitflaeche ist, traegt der Abschluss dieselbe Flaeche wie
+   #hero und #sicherheit statt einer eigenen Mischung. */
 #contact {
-  background: linear-gradient(160deg, #2F2A24, #004225);
-  color: #FBF8F3;
+  background:
+    linear-gradient(180deg, var(--green-900, #002A18) 0%, transparent 20%),
+    linear-gradient(0deg, var(--green-900, #002A18) 0%, transparent 16%),
+    var(--green-800, #004225);
+  color: var(--linen-on-green, #FBF8F3);
 }
-#contact .section-h2 { color: #FBF8F3; }
-#contact .mono-label { color: var(--orange); }
+#contact .section-h2 { color: var(--linen-on-green, #FBF8F3); }
+/* Lief in Mandarin. Auf Racing Green sind das nur 3.7:1 und
+   damit unter den 4.5:1 fuer Kleintext. Salbei kommt auf 5.4:1,
+   und Orange bleibt der eigentlichen Aktion vorbehalten, was
+   sich mit "Orange nur fuer Aktion" aus brand_steer deckt. */
+#contact .mono-label { color: var(--sage-light, #9FB88C); }
+#contact .mono-label::before { background: var(--sage-light, #9FB88C); }
 .contact-grid {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
@@ -369,7 +475,7 @@ a { color: inherit; }
 .cal-card-sub { color: rgba(251,248,243,0.75); margin: 0 0 1.25rem; font-size: 0.95rem; }
 .cal-load-btn {
   background: var(--orange);
-  color: #fff;
+  color: var(--on-orange);
   border: none;
   border-radius: 0.55rem;
   min-height: 48px;
@@ -451,7 +557,7 @@ a { color: inherit; }
   width: 100%;
   min-height: 48px;
   background: var(--orange);
-  color: #fff;
+  color: var(--on-orange);
   border: none;
   border-radius: 0.55rem;
   font-weight: 700;
@@ -669,6 +775,10 @@ a { color: inherit; }
 #collab-path {
   margin-top: 2rem;
 }
+/* Primitiv-Variante, in der immer nur ein Schritt sichtbar war.
+   Abgeloest durch den Wellen-Stepper (.collab-path__* in
+   antigravity-polish.css), bleibt aber als Rueckfall fuer Markup
+   ohne .collab-path stehen. */
 .collab-step {
   display: none;
   border: 1px solid var(--border);
@@ -678,6 +788,20 @@ a { color: inherit; }
 }
 .collab-step.is-active { display: block; }
 .collab-step.is-completed { opacity: 0.7; }
+
+/* Innerhalb des Wellen-Steppers stehen alle Schritte gleichzeitig.
+   Ohne diese Rueckname wuerde `display: none` oben sie ausblenden:
+   diese Datei laedt nach antigravity-polish.css und gewinnt dort bei
+   gleicher Spezifitaet. Deshalb hier explizit zuruecknehmen. */
+.collab-path .collab-step,
+.collab-path .collab-step.is-active {
+  display: block;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  background: none;
+}
+.collab-path .collab-step.is-completed { opacity: 1; }
 .collab-nav {
   display: flex;
   flex-wrap: wrap;
@@ -695,7 +819,7 @@ a { color: inherit; }
 }
 .collab-nav button[aria-current="step"] {
   background: var(--orange);
-  color: #fff;
+  color: var(--on-orange);
   border-color: var(--orange);
 }
 .collab-controls {
@@ -720,7 +844,7 @@ a { color: inherit; }
   left: -9999px;
   top: 0;
   background: var(--orange);
-  color: #fff;
+  color: var(--on-orange);
   padding: 0.75rem 1rem;
   z-index: 10000;
 }
@@ -732,22 +856,11 @@ a { color: inherit; }
    Farben/Fonts unveraendert, nur Ausfuehrung.
    ============================================================ */
 
-/* Innenseiten-Hero bekommt die Atmosphaeren-Rastertextur der Legacy-Home,
-   damit er nicht als tote Gradient-Flaeche wirkt. */
-.page-hero { position: relative; overflow: hidden; }
-.page-hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(rgba(236, 106, 55, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(236, 106, 55, 0.05) 1px, transparent 1px);
-  background-size: 46px 46px;
-  -webkit-mask-image: radial-gradient(ellipse 78% 65% at 72% 18%, #000 18%, transparent 100%);
-  mask-image: radial-gradient(ellipse 78% 65% at 72% 18%, #000 18%, transparent 100%);
-}
+/* Der Hero trug hier frueher ein oranges 46px-Quadratraster. Das ist
+   generisches Tech-Vokabular; die Hoehenlinien der Startseite sind die
+   Bildsprache von Grundstuecken und damit an der Referenzbranche
+   verankert. Die Regel steht in der Pattern-Bibliothek am Dateiende,
+   .page-hero ist dort in der Selektorliste. */
 .page-hero__inner { position: relative; z-index: 1; }
 
 /* Dezentes Leben fuer die verlinkten/interaktiven Karten der neuen Seiten
@@ -780,3 +893,1553 @@ a { color: inherit; }
 
 /* Die eine Sage-Vollflaeche pro Seite grosszuegiger rhythmisieren. */
 .sage-block { padding: clamp(4rem, 9vw, 7rem) 0; }
+
+/* ── Inverted pyramid (Über uns) ───────────────────────── */
+.pyramid-block {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+.pyramid {
+  margin: 2rem auto 0;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+}
+.pyramid__layer {
+  width: 100%;
+  border-radius: 0.85rem;
+  padding: 1.15rem 1.25rem;
+  text-align: center;
+  border: 1px solid var(--border);
+  clip-path: polygon(0 0, 100% 0, 92% 100%, 8% 100%);
+}
+.pyramid__layer strong {
+  display: block;
+  font-family: var(--serif, 'Source Serif 4', Georgia, serif);
+  font-size: 1.15rem;
+  color: var(--charcoal);
+  margin-bottom: 0.35rem;
+}
+.pyramid__layer span {
+  display: block;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--stone);
+}
+.pyramid__layer--team {
+  width: 100%;
+  background: #fff;
+  clip-path: polygon(0 0, 100% 0, 88% 100%, 12% 100%);
+}
+.pyramid__layer--lead {
+  width: 78%;
+  background: rgba(0, 66, 37, 0.08);
+  border-color: rgba(0, 66, 37, 0.22);
+  clip-path: polygon(6% 0, 94% 0, 82% 100%, 18% 100%);
+}
+.pyramid__layer--foundation {
+  width: 52%;
+  background: var(--racing-green, #004225);
+  border-color: var(--racing-green, #004225);
+  color: #fff;
+  clip-path: polygon(10% 0, 90% 0, 50% 100%);
+  padding-bottom: 1.75rem;
+}
+.pyramid__layer--foundation strong,
+.pyramid__layer--foundation span { color: #fff; }
+.pyramid__layer--foundation span { opacity: 0.88; }
+.pyramid-why {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+}
+.pyramid-why h3 {
+  margin: 0 0 0.5rem;
+  font-family: var(--serif, 'Source Serif 4', Georgia, serif);
+  font-size: 1.25rem;
+}
+.pyramid-why p {
+  margin: 0;
+  color: var(--stone);
+  line-height: 1.6;
+}
+.principle-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.principle-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+  padding: 1.2rem 1.1rem;
+}
+.principle-card h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.05rem;
+  font-family: var(--serif, 'Source Serif 4', Georgia, serif);
+}
+.principle-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--stone);
+  line-height: 1.5;
+}
+@media (max-width: 860px) {
+  .principle-grid { grid-template-columns: 1fr 1fr; }
+  .pyramid__layer--lead { width: 88%; }
+  .pyramid__layer--foundation { width: 68%; }
+}
+@media (max-width: 560px) {
+  .principle-grid { grid-template-columns: 1fr; }
+  .pyramid__layer--team,
+  .pyramid__layer--lead,
+  .pyramid__layer--foundation {
+    width: 100%;
+    clip-path: none;
+  }
+}
+
+/* ── Referenzen system cards ───────────────────────────── */
+.ref-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+.ref-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 1.5rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+}
+.ref-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px rgba(47, 42, 36, 0.08);
+}
+.ref-card__badge {
+  align-self: flex-start;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(236, 106, 55, 0.12);
+  color: var(--orange);
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+.ref-card__title {
+  margin: 0 0 0.35rem;
+  font-family: var(--serif, 'Source Serif 4', Georgia, serif);
+  font-size: 1.3rem;
+  line-height: 1.25;
+}
+.ref-card__label {
+  margin: 0.7rem 0 0.15rem;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+.ref-card > p:not(.ref-card__label) {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--stone);
+  line-height: 1.55;
+}
+.ref-card ul {
+  margin: 0.25rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--charcoal);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+.ref-card:last-child {
+  grid-column: 1 / -1;
+  max-width: 100%;
+}
+@media (max-width: 760px) {
+  .ref-grid { grid-template-columns: 1fr; }
+  .ref-card:last-child { grid-column: auto; }
+}
+
+/* ── Zusammenarbeit overview chips ─────────────────────── */
+.collab-overview {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+}
+.collab-chip {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 0.9rem 0.75rem;
+  text-align: center;
+}
+.collab-chip strong {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--orange);
+  letter-spacing: 0.06em;
+}
+.collab-chip span {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.88rem;
+  color: var(--charcoal);
+  font-weight: 600;
+}
+@media (max-width: 760px) {
+  .collab-overview { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── AQuT interactive pipeline simulator ───────────────── */
+.aqut-sim-section {
+  padding: clamp(3rem, 7vw, 5rem) 0;
+  background: var(--surface);
+}
+.aqut-sim {
+  position: relative;
+  margin-top: 1.75rem;
+  padding: 1.75rem 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 1.15rem;
+  background: #fff;
+  overflow: hidden;
+}
+.aqut-sim__glow {
+  position: absolute;
+  inset: -20% auto auto 40%;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(236, 106, 55, 0.18), transparent 70%);
+  pointer-events: none;
+  animation: aqut-glow 6s ease-in-out infinite;
+}
+@keyframes aqut-glow {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+  50% { transform: translate(-30px, 20px) scale(1.15); opacity: 1; }
+}
+.aqut-sim__rail {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  position: relative;
+  z-index: 1;
+}
+.aqut-sim__node {
+  position: relative;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+  padding: 1rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-height: 6.5rem;
+  transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+}
+.aqut-sim__node strong {
+  font-size: 0.98rem;
+  color: var(--charcoal);
+}
+.aqut-sim__node > span:last-child {
+  font-size: 0.82rem;
+  color: var(--stone);
+  line-height: 1.4;
+}
+.aqut-sim__pulse {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--border);
+  margin-bottom: 0.35rem;
+}
+.aqut-sim__node.is-active {
+  border-color: var(--orange);
+  background: rgba(236, 106, 55, 0.08);
+  transform: translateY(-2px);
+}
+.aqut-sim__node.is-active .aqut-sim__pulse {
+  background: var(--orange);
+  box-shadow: 0 0 0 6px rgba(236, 106, 55, 0.18);
+  animation: aqut-pulse 1s ease-in-out infinite;
+}
+.aqut-sim__node.is-done {
+  border-color: rgba(0, 66, 37, 0.35);
+  background: rgba(0, 66, 37, 0.06);
+}
+.aqut-sim__node.is-done .aqut-sim__pulse {
+  background: var(--racing-green, #004225);
+}
+@keyframes aqut-pulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(236, 106, 55, 0.15); }
+  50% { box-shadow: 0 0 0 10px rgba(236, 106, 55, 0.05); }
+}
+.aqut-sim__card {
+  position: relative;
+  z-index: 1;
+  margin-top: 1.25rem;
+  padding: 1.1rem 1.2rem;
+  border-radius: 0.85rem;
+  border: 1px dashed rgba(236, 106, 55, 0.45);
+  background: linear-gradient(135deg, rgba(251, 248, 243, 0.95), rgba(255, 255, 255, 0.9));
+}
+.aqut-sim__card-label {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--orange);
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+.aqut-sim__card p {
+  margin: 0;
+  color: var(--charcoal);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.aqut-sim__actions {
+  position: relative;
+  z-index: 1;
+  margin-top: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  align-items: center;
+}
+.aqut-sim--home {
+  margin: 2rem 0 0;
+}
+.sage-block .aqut-sim--home {
+  background: rgba(251, 248, 243, 0.96);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+@media (max-width: 860px) {
+  .aqut-sim__rail { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 520px) {
+  .aqut-sim__rail { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aqut-sim__glow,
+  .aqut-sim__node.is-active .aqut-sim__pulse { animation: none; }
+}
+
+/* ── Über uns: Grundwerte row + Team + Vision ──────────── */
+.values-row {
+  list-style: none;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.85rem;
+  counter-reset: none;
+}
+.values-row__item {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+  padding: 1.15rem 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-height: 100%;
+}
+.values-row__num {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--orange);
+}
+.values-row__item h3 {
+  margin: 0;
+  font-family: var(--serif, 'Source Serif 4', Georgia, serif);
+  font-size: 1.05rem;
+  line-height: 1.3;
+  color: var(--charcoal);
+}
+.values-row__item p {
+  margin: 0;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--stone);
+}
+.team-block {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1.75rem;
+}
+.team-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.team-card img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  background: #1a1a1a;
+}
+.team-card__meta {
+  padding: 1.25rem 1.35rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.team-card__role {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+.team-card__meta h3 {
+  margin: 0;
+  font-family: var(--serif, 'Source Serif 4', Georgia, serif);
+  font-size: 1.45rem;
+  color: var(--charcoal);
+}
+.team-card__meta p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--stone);
+}
+.team-card__meta a {
+  font-weight: 700;
+  color: var(--orange);
+  text-decoration: none;
+}
+.team-card__meta a:hover { text-decoration: underline; }
+.vision-block {
+  margin-top: 3.5rem;
+  padding: 2rem 1.75rem;
+  border-radius: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+.vision-block .section-h2 { margin-top: 0.5rem; }
+.vision-block .section-sub { margin-bottom: 0; max-width: 42rem; }
+@media (max-width: 980px) {
+  .values-row {
+    grid-template-columns: repeat(5, minmax(11.5rem, 1fr));
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .values-row__item { scroll-snap-align: start; }
+}
+@media (max-width: 720px) {
+  .team-grid { grid-template-columns: 1fr; }
+  .values-row {
+    grid-template-columns: 1fr;
+    overflow: visible;
+  }
+}
+
+/* CTA-Zeile. Wird auch von aqut.html genutzt, das home.css nicht laedt. */
+.home-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem 1.25rem;
+  margin-top: 2rem;
+}
+
+.home-cta-link {
+  font-weight: 700;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Aenderungsprotokoll. Wird nur gerendert, wenn changelog-data.mjs
+   Eintraege enthaelt, siehe renderChangelog(). */
+.changelog {
+  margin-top: var(--space-xl);
+  border-top: 1px solid var(--green-rule);
+  padding-top: var(--space-md);
+}
+.changelog__title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.25rem;
+  margin: 0 0 0.35rem;
+}
+.changelog__lead {
+  margin: 0 0 1.25rem;
+  font-size: 0.94rem;
+  color: var(--stone);
+  max-width: 40rem;
+}
+.changelog__list { list-style: none; margin: 0; padding: 0; }
+.changelog__row {
+  display: grid;
+  grid-template-columns: 9rem minmax(0, 1fr) auto;
+  gap: 0.3rem 1.5rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--green-rule-soft);
+  align-items: baseline;
+}
+.changelog__when {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--green-ink);
+}
+.changelog__what { font-size: 0.96rem; line-height: 1.55; }
+.changelog__meta {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--stone);
+  white-space: nowrap;
+}
+@media (max-width: 720px) {
+  .changelog__row { grid-template-columns: 1fr; gap: 0.2rem; }
+  .changelog__meta { white-space: normal; }
+}
+
+/* Flaechenwechsel fuer Unterseiten. home.css definiert .home-band nur fuer
+   die Startseite, referenzen.html laedt home.css nicht. */
+.band-linen { background: var(--surface); }
+.band-cloud { background: var(--background); }
+
+/* ═══════════════════════════════════════════════════════════════════
+   SYSTEMKATALOG — Suche und Anfrage je Eintrag
+   ═══════════════════════════════════════════════════════════════════ */
+
+.katalog__search {
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--green-rule);
+}
+.katalog__search label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--green-ink);
+  margin-bottom: 0.5rem;
+}
+.katalog__search input {
+  width: min(30rem, 100%);
+  min-height: 48px;
+  padding: 0.7rem 0.95rem;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--charcoal);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+.katalog__search input:focus-visible {
+  outline: 2px solid var(--green-ink);
+  outline-offset: 1px;
+  border-color: var(--green-ink);
+}
+.katalog__status {
+  margin: 0.6rem 0 0;
+  font-size: 0.9rem;
+  color: var(--stone);
+  min-height: 1.4em;
+}
+
+/* Waehrend der Suche traeten Branchen-Ueberschriften wieder in Kraft,
+   damit Treffer aus allen Panels zuordenbar bleiben. */
+.branchen.is-searching .branchen__panel-title { display: block; }
+.branchen.is-searching .branchen__tablist { opacity: 0.4; pointer-events: none; }
+
+.branchen-wrap { margin-top: var(--space-xl); }
+
+/* Anfrage je Eintrag. Nur im Katalog, auf der Startseite waeren
+   fuenfzehn CTAs Laerm. */
+.akte__cta { margin: 1.1rem 0 0; }
+.akte__cta-btn {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.55rem 1.1rem;
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.02em;
+  color: var(--green-ink);
+  background: transparent;
+  border: 1px solid var(--green-rule);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+}
+.akte__cta-btn:hover {
+  background: var(--green-ink);
+  border-color: var(--green-ink);
+  color: var(--surface);
+}
+.akte__cta-btn:focus-visible {
+  outline: 2px solid var(--green-ink);
+  outline-offset: 2px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   SYSTEMAKTE — das Register
+   Ein Use Case ist ein Akteneintrag, kein Werbekaertchen. Deshalb
+   Linien statt Karten (brand_steer verbietet generische SaaS-Card-Grids)
+   und Racing Green als zweite Tinte statt einer zweiten Vollflaeche.
+   Basis: natives details/summary. Ohne JS nutzbar, Tastatur inklusive.
+   ═══════════════════════════════════════════════════════════════════ */
+
+.akte-register {
+  border-top: 1px solid var(--green-rule);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.akte-register > li { display: block; }
+
+.akte {
+  border-bottom: 1px solid var(--green-rule-soft);
+  position: relative;
+}
+.akte::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 2px;
+  background: var(--green-ink);
+  opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease);
+}
+.akte[open]::before { opacity: 1; }
+.akte[open] { background: var(--green-wash); }
+
+.akte__head {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 0.3rem 1.25rem;
+  padding: 1.15rem 1.25rem 1.15rem 1.5rem;
+  cursor: pointer;
+  min-height: 44px;
+  list-style: none;
+}
+.akte__head::-webkit-details-marker { display: none; }
+.akte__head::marker { content: ""; }
+.akte__head:hover { background: var(--green-wash); }
+.akte__head:focus-visible {
+  outline: 2px solid var(--green-ink);
+  outline-offset: -3px;
+}
+
+.akte__code {
+  grid-column: 1;
+  grid-row: 1;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--green-ink);
+}
+
+.akte__title {
+  grid-column: 2;
+  grid-row: 1;
+  font-family: var(--serif);
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--charcoal);
+  margin: 0;
+}
+
+/* Ausloeser statt Feature-Satz: der Leser erkennt seinen eigenen Alltag */
+.akte__trigger {
+  grid-column: 2;
+  grid-row: 2;
+  margin: 0.15rem 0 0;
+  color: var(--stone);
+  font-size: 0.94rem;
+  max-width: 46rem;
+}
+
+/* Statusstempel. Nur echte Live-Systeme tragen ihn. */
+.akte__status {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: var(--green-ink);
+  border: 1px solid var(--green-rule);
+  border-radius: var(--radius-pill);
+  padding: 0.2rem 0.6rem;
+  white-space: nowrap;
+}
+.akte__status::before {
+  content: "";
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: var(--green-ink);
+}
+
+.akte__toggle {
+  grid-column: 3;
+  grid-row: 2;
+  justify-self: end;
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--green-ink);
+  white-space: nowrap;
+}
+.akte__toggle::after {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg) translateY(-2px);
+  transition: transform var(--dur-fast) var(--ease);
+}
+.akte[open] .akte__toggle::after { transform: rotate(-135deg) translateY(-2px); }
+.akte__toggle-open { display: none; }
+.akte[open] .akte__toggle-open { display: inline; }
+.akte[open] .akte__toggle-closed { display: none; }
+
+.akte__body {
+  padding: 0.25rem 1.25rem 1.6rem 1.5rem;
+  max-width: 52rem;
+}
+.akte[open] .akte__body { animation: akte-in var(--dur-mid) var(--ease); }
+@keyframes akte-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.akte__rows {
+  display: grid;
+  grid-template-columns: 8.5rem minmax(0, 1fr);
+  gap: 0.7rem 1.5rem;
+  margin: 0;
+}
+.akte__rows dt {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  color: var(--green-ink);
+  padding-top: 0.18rem;
+}
+.akte__rows dd {
+  margin: 0;
+  color: var(--charcoal);
+  font-size: 0.96rem;
+  line-height: 1.6;
+}
+
+/* Ablauf: echte Reihenfolge, deshalb ist Nummerierung hier zulaessig */
+.akte__flow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: akte-step;
+}
+/* Der Ablauf ist eine echte Reihenfolge, deshalb bleibt er nummeriert
+   und laeuft als Kette mit Pfeilen statt als lose Aufzaehlung. Das ist
+   das einzige Diagramm je Eintrag und traegt den Inhalt, nicht Deko. */
+.akte__flow-step {
+  counter-increment: akte-step;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.9rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.3rem 0.7rem;
+}
+.akte__flow-step::before {
+  content: counter(akte-step);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--green-ink);
+}
+.akte__flow-arrow {
+  display: inline-flex;
+  align-items: center;
+  color: var(--green-rule);
+}
+.akte__flow-arrow .ico { width: 1.05rem; height: 1.05rem; }
+
+/* Anbindungen mit Symbol statt Komma-Kette, damit auf einen Blick
+   erkennbar ist, welche Systeme beruehrt werden. */
+.akte__systems {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.1rem;
+}
+.akte__sys {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.88rem;
+  color: var(--charcoal);
+}
+.akte__sys .ico {
+  width: 1.05rem;
+  height: 1.05rem;
+  color: var(--green-ink);
+  flex: 0 0 auto;
+}
+
+/* Der Trust-Hebel: was das System bewusst nicht tut. Steht seit
+   05.08.2026 als eigene Flaeche unter der Liste statt als Zeile
+   darin, damit die Einschraenkung nicht als Nebensache liest.
+   Einzige Orange-Betonung im Register. */
+.akte__limit {
+  margin: 1.1rem 0 0;
+  padding: 0.75rem 0.9rem 0.8rem;
+  background: rgba(236, 106, 55, 0.06);
+  border-left: 2px solid var(--orange);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--charcoal);
+  max-width: 46rem;
+}
+.akte__limit-label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: var(--orange);
+  margin-bottom: 0.25rem;
+}
+
+/* Basisgroesse fuer alle Sprite-Symbole. */
+.ico {
+  width: 1.1rem;
+  height: 1.1rem;
+  display: inline-block;
+  vertical-align: middle;
+  flex: 0 0 auto;
+}
+
+@media (max-width: 720px) {
+  .akte__head {
+    grid-template-columns: minmax(0, 1fr) auto;
+    padding: 1rem 1rem 1rem 1.15rem;
+  }
+  .akte__code { grid-column: 1; grid-row: 1; }
+  .akte__status { grid-column: 2; grid-row: 1; }
+  .akte__title { grid-column: 1 / -1; grid-row: 2; }
+  .akte__trigger { grid-column: 1 / -1; grid-row: 3; }
+  .akte__toggle {
+    grid-column: 1 / -1;
+    grid-row: 4;
+    justify-self: start;
+    margin-top: 0.55rem;
+  }
+  .akte__body { padding: 0.25rem 1rem 1.4rem 1.15rem; }
+  .akte__rows { grid-template-columns: 1fr; gap: 0.2rem; }
+  .akte__rows dd { margin-bottom: 0.9rem; }
+  .akte__rows dd:last-child { margin-bottom: 0; }
+}
+
+/* Frage-Variante des Registers: kein Kürzel, kein Status, nur Frage
+   und Antwort. Gleiche Mechanik, schlankeres Raster. */
+.akte--frage .akte__head {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  padding: 1rem 1.25rem 1rem 1.35rem;
+}
+.akte--frage .akte__title {
+  grid-column: 1;
+  grid-row: 1;
+  font-size: 1.02rem;
+}
+.akte--frage .akte__toggle {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+}
+.akte--frage .akte__body {
+  padding: 0 1.25rem 1.35rem 1.35rem;
+}
+.akte--frage .akte__body p {
+  margin: 0;
+  font-size: 0.96rem;
+  line-height: 1.6;
+  color: var(--charcoal);
+  max-width: 52rem;
+}
+@media (max-width: 720px) {
+  .akte--frage .akte__head { grid-template-columns: minmax(0, 1fr); }
+  .akte--frage .akte__title { grid-column: 1; grid-row: 1; }
+  .akte--frage .akte__toggle {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: start;
+    margin-top: 0.5rem;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   BRANCHEN — Reiter als Progressive Enhancement.
+   Ohne JS stehen alle Panels sichtbar untereinander, jedes mit eigener
+   Ueberschrift. Erst JS macht daraus Reiter und blendet die Titel aus.
+   ═══════════════════════════════════════════════════════════════════ */
+
+.branchen { margin-top: var(--space-xl); }
+
+/* Ohne JS taeten die Reiter nichts, also bleiben sie verborgen und die
+   Panels stehen sichtbar untereinander. Erst .js-branchen dreht das um. */
+.branchen__tablist { display: none; }
+.js-branchen .branchen__tablist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.75rem;
+  border-bottom: 1px solid var(--green-rule);
+  margin-bottom: var(--space-md);
+  padding: 0;
+}
+.branchen__tab {
+  appearance: none;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  color: var(--stone);
+  cursor: pointer;
+  padding: 0.6rem 0;
+  min-height: 44px;
+  margin-bottom: -1px;
+}
+.branchen__tab:hover { color: var(--charcoal); }
+.branchen__tab[aria-selected="true"] {
+  color: var(--green-ink);
+  border-bottom-color: var(--green-ink);
+  font-weight: 600;
+}
+.branchen__tab:focus-visible {
+  outline: 2px solid var(--green-ink);
+  outline-offset: 2px;
+}
+
+.branchen__panel + .branchen__panel { margin-top: var(--space-lg); }
+.js-branchen .branchen__panel-title { display: none; }
+.branchen__panel-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.25rem;
+  margin: 0 0 0.75rem;
+}
+.branchen__note {
+  margin: var(--space-sm) 0 0;
+  font-size: 0.9rem;
+  color: var(--stone);
+}
+.branchen__note a { color: var(--green-ink); }
+
+@media (prefers-reduced-motion: reduce) {
+  .akte[open] .akte__body { animation: none; }
+  .akte::before,
+  .akte__toggle::after { transition: none; }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   PATTERN-BIBLIOTHEK
+
+   Wiederverwendbare Bausteine des Designsystems, Stand
+   05.08.2026. Bewusst hier und nicht in home.css: home.css
+   laedt ausschliesslich index.html, dort waeren die Muster auf
+   einer Seite gefangen. Diese Datei laedt jede Seite.
+
+   Fertige Copy-Paste-Beispiele mit Markup:
+   Claude_and_brand.md/design-patterns.md
+   ═══════════════════════════════════════════════════════════ */
+
+
+/* ── 1. Gruene Leitflaeche ─────────────────────────────────
+   Hoechstens drei pro Seite. Der Bandwechsel traegt damit eine
+   Aussage statt nur Rhythmus: helle Baender sind der Kontext
+   draussen, gruene Flaechen sind "innerhalb der Grenze".
+   Die eine Sage-Vollflaeche pro Seite bleibt davon unberuehrt.
+
+   `isolation: isolate` ist Pflicht, sonst faellt die
+   Hoehenlinien-Ebene (z-index: -1) hinter den Hintergrund.  */
+
+.surface-green,
+.home-band--green {
+  position: relative;
+  isolation: isolate;
+  color: var(--linen-on-green, #FBF8F3);
+  /* Kanten leicht abtiefen statt in die helle Nachbarflaeche
+     auszublenden: ein Verlauf Gruen -> Cloud wird matschig,
+     eine harte Kante bei diesem Kontrast liest praezise. */
+  background:
+    linear-gradient(180deg, var(--green-900, #002A18) 0%, transparent 20%),
+    linear-gradient(0deg, var(--green-900, #002A18) 0%, transparent 16%),
+    var(--green-800, #004225);
+}
+
+
+/* ── 2. Signature: topografische Hoehenlinien ──────────────
+   Technik aus halide-topo-hero (21st.dev), Inszenierung
+   bewusst nicht: kein Maus-Parallax, keine Entrance-Animation.
+
+   Warum Hoehenlinien und kein Quadratraster: Konturlinien sind
+   Vermessung, Gelaende, Kataster, Grenzverlauf. Die
+   Referenzbranche ist Immobilien, das ist die Bildsprache von
+   Grundstuecken. Ein Quadratraster waere generisches
+   Tech-Vokabular.
+
+   Zwei ueberlagerte Ellipsensysteme mit unterschiedlichem
+   Ringabstand ergeben sich kreuzende Gelaende; ein einzelnes
+   System sieht aus wie eine Zielscheibe. Reine CSS-Gradients,
+   kein Canvas, keine Dependency, statisch.
+
+   `.topo-lines` an jedes positionierte Element mit
+   `isolation: isolate`. Auf .surface-green liegt es schon.
+   Staerke ueber --topo-opacity, Standard 0.15. Wo ein Foto
+   konkurriert, hoeher setzen (Hero: 0.3).                   */
+
+.topo-lines::before,
+.surface-green::before,
+.page-hero::before,
+.home-band--green::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  color: var(--sage-light, #9FB88C);
+  background-image:
+    repeating-radial-gradient(ellipse 78% 58% at 18% 22%, transparent 0 25px, currentColor 25px 26px),
+    repeating-radial-gradient(ellipse 96% 72% at 84% 80%, transparent 0 33px, currentColor 33px 34px);
+  opacity: var(--topo-opacity, 0.15);
+  /* Zu den Raendern ausblenden, damit die Linien nicht an der
+     Sektionskante abgeschnitten wirken. */
+  -webkit-mask-image: radial-gradient(ellipse 88% 78% at 50% 45%, #000 18%, transparent 76%);
+  mask-image: radial-gradient(ellipse 88% 78% at 50% 45%, #000 18%, transparent 76%);
+}
+
+@media (max-width: 700px) {
+  /* Enger gestellte Ringe, damit auf schmalen Viewports nicht
+     nur ein einzelner Bogen im Bild steht. */
+  .topo-lines::before,
+  .surface-green::before,
+  .home-band--green::before {
+    background-image:
+      repeating-radial-gradient(ellipse 90% 62% at 22% 20%, transparent 0 17px, currentColor 17px 18px),
+      repeating-radial-gradient(ellipse 100% 76% at 80% 82%, transparent 0 23px, currentColor 23px 24px);
+    opacity: calc(var(--topo-opacity, 0.15) * 0.87);
+  }
+}
+
+
+/* ── 3. Typografie auf gruenem Grund ───────────────────────
+   Linen auf #004225 ergibt 10.98:1. --sage kaeme nur auf
+   3.44:1 und ist dort als Textfarbe unbrauchbar, dafuer gibt
+   es --sage-light mit 5.38:1. Mandarin kommt auf Gruen nur auf
+   3.70:1, deshalb dort keine Orange-Labels.                 */
+
+.surface-green .section-h2,
+.home-band--green .section-h2 { color: var(--linen-on-green, #FBF8F3); }
+
+.surface-green .section-sub,
+.home-band--green .section-sub { color: rgba(251, 248, 243, 0.78); }
+
+.surface-green .mono-label,
+.home-band--green .mono-label { color: var(--sage-light, #9FB88C); }
+
+.surface-green .mono-label::before,
+.home-band--green .mono-label::before { background: var(--sage-light, #9FB88C); }
+
+.surface-green a,
+.home-band--green a { color: var(--sage-light, #9FB88C); }
+
+/* Fokus muss auf Gruen sichtbar bleiben. Der globale
+   Orange-Ring bei 0.38 Alpha traegt hier nicht. */
+.surface-green :focus-visible,
+.home-band--green :focus-visible {
+  outline: 2px solid var(--focus-on-green, rgba(159, 184, 140, 0.55));
+  outline-offset: 3px;
+}
+
+
+/* ── 4. Karte auf gruenem Grund ────────────────────────────
+   Kein Schatten: auf dunklem Grund unsichtbar und nur Ballast.
+   Tiefe kommt aus Fuellung plus Haarlinie.
+   `--lead` hebt genau den einen Knoten an, der die Aussage
+   traegt. Nicht mehrere pro Gruppe, sonst hebt sich nichts ab. */
+
+.card-green {
+  background: var(--fill-on-green, rgba(251, 248, 243, 0.06));
+  border: 1px solid var(--rule-on-green, rgba(251, 248, 243, 0.14));
+  border-radius: var(--radius-md, 1.1rem);
+  padding: 1.1rem 1.15rem;
+  box-shadow: none;
+  color: rgba(251, 248, 243, 0.84);
+}
+
+.card-green--lead {
+  background:
+    linear-gradient(160deg, rgba(159, 184, 140, 0.16) 0%, rgba(251, 248, 243, 0.04) 100%);
+  border-color: rgba(159, 184, 140, 0.45);
+}
+
+.card-green__label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  color: var(--sage-light, #9FB88C);
+  margin-bottom: 0.6rem;
+}
+
+
+/* ── 5. Endlosschleife ─────────────────────────────────────
+   Nachbau von InfiniteSlider (21st.dev), dort React mit
+   framer-motion und react-use-measure. Hier reines CSS.
+
+   Bedingung: der Inhalt steht ZWEIMAL im Markup, die zweite
+   Kopie traegt aria-hidden="true", sonst liest ein Screenreader
+   alles doppelt. Die Spur wandert um -50% und springt damit
+   exakt auf die Kopie, also nahtlos. Werden die beiden
+   Haelften ungleich breit, ruckelt die Naht sichtbar.
+
+   Dauer ueber --marquee-duration, am besten aus der Anzahl der
+   Elemente berechnet, damit die Geschwindigkeit gleich bleibt
+   wenn Eintraege dazukommen oder wegfallen.                 */
+
+.marquee {
+  overflow: hidden;
+  /* Raender ausblenden, sonst schneiden die Inhalte hart an der
+     Containerkante ab und der Lauf wirkt wie ein Fehler.
+     Mitskalieren: feste 4rem fressen auf 375px ein Drittel. */
+  --marquee-fade: clamp(1.25rem, 5vw, 4rem);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 var(--marquee-fade), #000 calc(100% - var(--marquee-fade)), transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 var(--marquee-fade), #000 calc(100% - var(--marquee-fade)), transparent);
+}
+
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll var(--marquee-duration, 32s) linear infinite;
+}
+
+/* Innehalten, sobald jemand hinsieht oder mit der Tastatur
+   hineingeht. Was man nicht fixieren kann, wird nicht gelesen. */
+.marquee:hover .marquee__track,
+.marquee:focus-within .marquee__track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-scroll {
+  to { transform: translateX(-50%); }
+}
+
+/* Ohne Bewegung wird aus dem Lauf eine Leiste, die man selbst
+   schieben kann. Die Kopie faellt weg, sonst stuende alles
+   doppelt da. */
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .marquee__track { animation: none; }
+  .marquee__track > [aria-hidden="true"] { display: none; }
+}
+
+.no-anim .marquee { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+.no-anim .marquee__track { animation: none; }
+.no-anim .marquee__track > [aria-hidden="true"] { display: none; }
+
+
+/* ── Anatomie eines Katalogeintrags ────────────────────────
+   Vier Stufen, verbunden. Erklaert einmal gross, was in den 24
+   Eintraegen darunter jeweils knapp steht. Nummerierung ist hier
+   legitim, weil es eine echte Reihenfolge ist: der Vorgang laeuft
+   von links nach rechts durch das System und endet beim Menschen.
+
+   Die vierte Stufe traegt die Grenze und ist deshalb die einzige
+   mit Orange-Akzent. */
+
+.anatomie {
+  list-style: none;
+  margin: 2.5rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  counter-reset: anatomie;
+}
+
+.anatomie__stage {
+  counter-increment: anatomie;
+  position: relative;
+  padding: 0 clamp(0.9rem, 2vw, 1.4rem) 0 0;
+}
+
+/* Verbinder zwischen den Stufen. Laeuft auf Hoehe der Symbolreihe,
+   nicht ueber die ganze Karte, damit die Kette lesbar bleibt. */
+.anatomie__stage::after {
+  content: "";
+  position: absolute;
+  top: 1.1rem;
+  left: 2.6rem;
+  right: 0;
+  height: 1px;
+  background: var(--green-rule);
+}
+.anatomie__stage:last-child::after { display: none; }
+
+.anatomie__ico {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--green-rule);
+  color: var(--green-ink);
+}
+.anatomie__ico .ico { width: 1.15rem; height: 1.15rem; }
+
+.anatomie__label {
+  display: block;
+  margin: 0.85rem 0 0.35rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  color: var(--green-ink);
+}
+.anatomie__label::before {
+  content: counter(anatomie) " ";
+  opacity: 0.55;
+}
+
+.anatomie__what {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--charcoal);
+}
+
+/* Das konkrete Beispiel, abgesetzt von der Erklaerung darueber. */
+.anatomie__example {
+  margin: 0;
+  padding-left: 0.8rem;
+  border-left: 1px solid var(--green-rule-soft);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--stone);
+}
+
+.anatomie__stage--limit .anatomie__ico {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+.anatomie__stage--limit .anatomie__label { color: var(--orange); }
+.anatomie__stage--limit .anatomie__example { border-left-color: var(--orange); }
+
+.anatomie__note {
+  margin: 2rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--charcoal);
+  max-width: 44rem;
+}
+
+@media (max-width: 900px) {
+  .anatomie { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 0; }
+  /* Der Verbinder haengt sonst am Zeilenende in der Luft. */
+  .anatomie__stage:nth-child(2n)::after { display: none; }
+}
+
+@media (max-width: 560px) {
+  .anatomie { grid-template-columns: 1fr; gap: 1.75rem; }
+  .anatomie__stage { padding-right: 0; }
+  .anatomie__stage::after { display: none; }
+}
+
+
+/* ── System-Kachel ─────────────────────────────────────────
+   Bild, darauf Code und Titel, darunter die Werkzeuge. Vorbild
+   ist die Kachelreihe von apex-consulting.ai. Zweck: die meisten
+   lesen keine Copy ausserhalb von Ueberschriften.
+
+   Der Verlauf ueber dem Bild ist keine Optik, sondern Lesbarkeit.
+   Ohne ihn stuende heller Text auf einem beliebig hellen
+   Bildausschnitt. Er ist deshalb kraeftig genug, dass der Text
+   auch auf weissem Bildgrund die 4.5:1 haelt.
+
+   Solange kein Screenshot vorliegt, traegt .system-tile__ph eine
+   in CSS gezeichnete Workflow-Andeutung. Kommt ein Bild, wird es
+   ueber --tile-image gesetzt und deckt den Platzhalter ab.     */
+
+.system-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+  margin: 2.5rem 0 0;
+}
+
+.system-tile {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 19rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.4rem;
+  padding: 1.25rem 1.25rem 1.35rem;
+  border-radius: var(--radius-lg, 1.5rem);
+  border: 1px solid var(--rule-on-green, rgba(251, 248, 243, 0.14));
+  background-color: var(--green-800, #004225);
+  background-image: var(--tile-image, none);
+  background-size: cover;
+  background-position: center top;
+  color: var(--linen-on-green, #FBF8F3);
+  transition: transform var(--dur-mid, 0.32s) var(--ease), box-shadow var(--dur-mid, 0.32s) var(--ease);
+}
+
+/* Der Leseverlauf. Liegt ueber Bild und Platzhalter, unter dem Text. */
+.system-tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg,
+    rgba(0, 42, 24, 0.15) 0%,
+    rgba(0, 42, 24, 0.72) 52%,
+    rgba(0, 42, 24, 0.94) 100%);
+}
+
+/* Platzhalter bis der Workflow-Screenshot da ist: angedeutete
+   Knotenreihe im Stil der bestehenden .arch- und .aqut-sim-Bilder. */
+.system-tile__ph {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image:
+    radial-gradient(circle at 22% 28%, var(--sage-light, #9FB88C) 0 5px, transparent 6px),
+    radial-gradient(circle at 50% 20%, var(--sage-light, #9FB88C) 0 5px, transparent 6px),
+    radial-gradient(circle at 78% 32%, var(--sage-light, #9FB88C) 0 5px, transparent 6px),
+    linear-gradient(90deg, transparent 22%, var(--sage-light, #9FB88C) 22% 78%, transparent 78%);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 0, 0 0, 0 0, 0 27%;
+  opacity: 0.28;
+}
+/* Liegt ein Bild an, verschwindet der Platzhalter. */
+.system-tile[style*="--tile-image"] .system-tile__ph { display: none; }
+
+.system-tile__code {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--sage-light, #9FB88C);
+}
+
+.system-tile__title {
+  font-family: var(--serif, 'Source Serif 4', Georgia, serif);
+  font-weight: 400;
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.018em;
+  margin: 0;
+}
+.system-tile__title a {
+  color: var(--linen-on-green, #FBF8F3);
+  text-decoration: none;
+}
+/* Die ganze Kachel ist klickbar, der Titel bleibt aber eine echte
+   Ueberschrift mit einem Link darin, statt alles in ein <a> zu
+   packen. Screenreader bekommen so weiter die Struktur. */
+.system-tile__title a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.system-tile__title a:hover { text-decoration: underline; text-underline-offset: 0.16em; }
+.system-tile__title a:focus-visible {
+  outline: 2px solid var(--focus-on-green, rgba(159, 184, 140, 0.55));
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.system-tile__trigger {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: rgba(251, 248, 243, 0.82);
+}
+
+.system-tile__tools {
+  list-style: none;
+  margin: 0.65rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.9rem;
+}
+.system-tile__tools img {
+  height: 1.15rem;
+  width: auto;
+  max-width: 5rem;
+  object-fit: contain;
+  /* Auf dunklem Grund aufhellen statt Originalfarbe: bunte Logos
+     auf Gruen wuerden mit dem Titel um Aufmerksamkeit streiten. */
+  filter: grayscale(1) brightness(0) invert(1);
+  opacity: 0.72;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .system-tile:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 36px rgba(0, 42, 24, 0.28);
+  }
+}
+
+
+/* ── Flaggschiff-Systemseiten ──────────────────────────────
+   Groessere Fassungen der Bausteine aus dem Katalog. Bewusst
+   dieselben Klassen mit Modifier statt eigener Selektoren:
+   was hier steht, steht auch im Register, nur groesser.      */
+
+.system-tiles--single {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 46rem;
+}
+.system-tiles--single .system-tile { min-height: 22rem; }
+
+.akte__flow--large {
+  margin: 2rem 0 0;
+  gap: 0.6rem;
+}
+.akte__flow--large .akte__flow-step {
+  font-size: 1rem;
+  padding: 0.55rem 1rem;
+}
+.akte__flow--large .akte__flow-arrow .ico { width: 1.3rem; height: 1.3rem; }
+
+.akte__systems--large {
+  margin-top: 1.25rem;
+  gap: 0.7rem 1.6rem;
+}
+.akte__systems--large .akte__sys { font-size: 1rem; }
+.akte__systems--large .ico { width: 1.2rem; height: 1.2rem; }
+
+/* Die Uebergabe ist der Punkt, an dem ein Mensch entscheidet.
+   Eigene Flaeche, damit sie nicht als Nebensatz liest. */
+.sys-handover {
+  margin: 2.5rem 0 0;
+  padding: 1.25rem 1.35rem 1.4rem;
+  background: var(--green-wash, rgba(0, 66, 37, 0.04));
+  border-left: 2px solid var(--green-rule, rgba(0, 66, 37, 0.22));
+  border-radius: 0 var(--radius-md, 1.1rem) var(--radius-md, 1.1rem) 0;
+  max-width: 46rem;
+}
+.sys-handover p {
+  margin: 0.35rem 0 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--charcoal, #2F2A24);
+}
+
+.sys-grenze-note {
+  margin: 1.5rem 0 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--sage-light, #9FB88C);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(251, 248, 243, 0.78);
+  max-width: 44rem;
+}
+
+
+/* ── Lead-Magnet: Cover ────────────────────────────────────
+   Leicht geneigt mit Schatten, damit es als Druckerzeugnis
+   liest und nicht als Screenshot. Faellt die Bilddatei, bleibt
+   die Sektion unveraendert nutzbar: das <img> verschwindet
+   einfach, das Raster hat keine feste Hoehe.                */
+
+.lm-cover {
+  display: block;
+  width: min(15rem, 60%);
+  height: auto;
+  margin: 0 0 1.75rem;
+  border-radius: 0.35rem;
+  transform: rotate(-2.5deg);
+  box-shadow:
+    0 1px 2px rgba(47, 42, 36, 0.08),
+    0 18px 40px rgba(47, 42, 36, 0.18);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lm-cover { transform: none; }
+}

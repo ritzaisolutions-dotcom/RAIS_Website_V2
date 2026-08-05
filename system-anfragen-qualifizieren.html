@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>So arbeiten wir | RAIS</title>
-  <meta name="description" content="Zusammenarbeit mit RAIS in fünf klaren Schritten: Erstkontakt, Discovery, Sales, Onboarding, Go-Live.">
+  <title>Anfragen qualifizieren | RAIS</title>
+  <meta name="description" content="Anfragen qualifizieren: Eine Anfrage trifft ein, über Formular, Portal, Mail oder Telefon. Ablauf, Übergabepunkt und was das System ausdrücklich nicht tut.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" href="favicon.png?v=3">
-  <meta property="og:title" content="So arbeiten wir | RAIS">
-  <meta property="og:description" content="Zusammenarbeit mit RAIS in fünf klaren Schritten: Erstkontakt, Discovery, Sales, Onboarding, Go-Live.">
-  <meta property="og:url" content="https://ritz-ai.solutions/zusammenarbeit.html">
+  <meta property="og:title" content="Anfragen qualifizieren | RAIS">
+  <meta property="og:description" content="Anfragen qualifizieren: Eine Anfrage trifft ein, über Formular, Portal, Mail oder Telefon. Ablauf, Übergabepunkt und was das System ausdrücklich nicht tut.">
+  <meta property="og:url" content="https://ritz-ai.solutions/system-anfragen-qualifizieren.html">
   <meta property="og:type" content="website">
   <script src="scripts/public-config.js"></script>
   <script src="scripts/sentry-klaro-bootstrap.js"></script>
@@ -69,7 +69,7 @@
       <ul class="nav-list" role="list">
         <li><a href="/#systeme">Systeme</a></li>
         <li><a href="/#methodik">Methode</a></li>
-        <li><a href="referenzen.html">Systemkatalog</a></li>
+        <li><a href="referenzen.html" aria-current="page">Systemkatalog</a></li>
         <li><a href="ueber-uns.html">Über uns</a></li>
       </ul>
     </div>
@@ -96,123 +96,55 @@
 <main id="main">
 <section class="page-hero">
   <div class="page-hero__inner">
-    <span class="mono-label">Zusammenarbeit</span>
-    <h1>Fünf Schritte. Kein Projektchaos.</h1>
-    <p>Vom ersten Termin bis zum laufenden System. Jeder Schritt hat ein klares Ergebnis.</p>
+    <span class="mono-label">Systemakte · ANF</span>
+    <h1>Anfragen qualifizieren</h1>
+    <p>Eine Anfrage trifft ein, über Formular, Portal, Mail oder Telefon.</p>
+    <button type="button" class="btn-primary js-open-booking" data-source="system-ANF">Dieses System anfragen</button>
   </div>
 </section>
-<!-- Wellen-Stepper. Das CSS dafuer liegt seit laengerem fertig und
-     animiert in antigravity-polish.css (.collab-path__*), wurde aber
-     von keinem Markup benutzt; die Seite zeigte stattdessen eine
-     Primitiv-Variante, bei der immer nur ein Schritt sichtbar war.
-     Hier stehen alle fuenf Schritte gleichzeitig, der aktive wird
-     hervorgehoben. Ohne JavaScript ist damit der ganze Prozess
-     lesbar statt nur Schritt eins.
-     scripts/collab-path.js braucht: .collab-step[data-step],
-     [data-step-btn], #collab-prev, #collab-next, #collab-counter. -->
-<section>
+
+<section class="band-linen" aria-labelledby="sys-bild-title">
   <div class="section-wrap">
-    <div class="collab-path" id="collab-path" data-active-step="1" aria-label="Zusammenarbeit in fünf Schritten">
-      <div class="collab-path__viewport">
-        <div class="collab-path__track">
-          <svg class="collab-path__svg collab-path__svg--wave" viewBox="0 0 1200 256" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-            <defs>
-              <linearGradient id="collabPathGradient" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stop-color="#004225"/>
-                <stop offset="55%" stop-color="#789464"/>
-                <stop offset="100%" stop-color="#004225"/>
-              </linearGradient>
-            </defs>
-            <path class="collab-path__line collab-path__line--bg" fill="none" d="M0 128 C60 128 60 60 120 60 C180 60 300 196 360 196 C420 196 540 60 600 60 C660 60 780 196 840 196 C900 196 1020 60 1080 60 C1140 60 1140 128 1200 128"/>
-            <path class="collab-path__line collab-path__line--dash" fill="none" d="M0 128 C60 128 60 60 120 60 C180 60 300 196 360 196 C420 196 540 60 600 60 C660 60 780 196 840 196 C900 196 1020 60 1080 60 C1140 60 1140 128 1200 128"/>
-          </svg>
-          <svg class="collab-path__svg collab-path__svg--stack" viewBox="0 0 8 600" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-            <path class="collab-path__line collab-path__line--bg" fill="none" d="M4 0 L4 600"/>
-            <path class="collab-path__line collab-path__line--dash" fill="none" d="M4 0 L4 600"/>
-          </svg>
+    <h2 class="sr-only" id="sys-bild-title">Das System auf einen Blick</h2>
+    <div class="system-tiles system-tiles--single">
+      <article class="system-tile" style="--tile-image: url('images/AMS%20-%20Use%20Case.png')">
+        <span class="system-tile__ph" aria-hidden="true"></span>
+        <span class="system-tile__code">ANF</span>
+        <h3 class="system-tile__title"><a href="system-anfragen-qualifizieren.html">Anfragen qualifizieren</a></h3>
+        <p class="system-tile__trigger">Eine Anfrage trifft ein, über Formular, Portal, Mail oder Telefon.</p>
+        <ul class="system-tile__tools"><li><img src="images/n8n-color.svg" alt="n8n" width="80" height="24" loading="lazy" decoding="async"></li><li><img src="images/supabase.svg" alt="Supabase" width="80" height="24" loading="lazy" decoding="async"></li></ul>
+      </article>
+    </div>
+  </div>
+</section>
 
-          <ol class="collab-path__steps">
-            
-            <li class="collab-step is-active" data-step="1" data-position="up">
-              <div class="collab-step__inner">
-                <button type="button" class="collab-step__btn" data-step-btn="1" aria-current="step">
-                  <span class="collab-step__num">01</span>
-                  <span class="sr-only">Schritt 1: Appointment Setting</span>
-                </button>
-                <div class="collab-step__card">
-                  <h3 class="collab-step__title">Appointment Setting</h3>
-                  <p class="collab-step__desc">Erstkontakt und Terminvereinbarung. Wir klären kurz, ob Volumen und Setup zu RAIS passen.</p>
-                </div>
-              </div>
-            </li>
-            <li class="collab-step" data-step="2" data-position="down">
-              <div class="collab-step__inner">
-                <button type="button" class="collab-step__btn" data-step-btn="2">
-                  <span class="collab-step__num">02</span>
-                  <span class="sr-only">Schritt 2: Discovery Call</span>
-                </button>
-                <div class="collab-step__card">
-                  <h3 class="collab-step__title">Discovery Call</h3>
-                  <p class="collab-step__desc">Pain-Analyse und Prozessaufnahme. Wir finden heraus, wo Zeit verloren geht und welches System den größten Hebel hat.</p>
-                </div>
-              </div>
-            </li>
-            <li class="collab-step" data-step="3" data-position="up">
-              <div class="collab-step__inner">
-                <button type="button" class="collab-step__btn" data-step-btn="3">
-                  <span class="collab-step__num">03</span>
-                  <span class="sr-only">Schritt 3: Sales Call und Konzept</span>
-                </button>
-                <div class="collab-step__card">
-                  <h3 class="collab-step__title">Sales Call und Konzept</h3>
-                  <p class="collab-step__desc">Maßgeschneidertes Lösungskonzept, Scope, Timeline und Preis. Schriftlich, nachvollziehbar, ohne Überraschungen.</p>
-                </div>
-              </div>
-            </li>
-            <li class="collab-step" data-step="4" data-position="down">
-              <div class="collab-step__inner">
-                <button type="button" class="collab-step__btn" data-step-btn="4">
-                  <span class="collab-step__num">04</span>
-                  <span class="sr-only">Schritt 4: Technisches Onboarding</span>
-                </button>
-                <div class="collab-step__card">
-                  <h3 class="collab-step__title">Technisches Onboarding</h3>
-                  <p class="collab-step__desc">Systemaufbau, CRM-Anbindung und Integration in Ihre bestehenden Tools. Test mit echten Abläufen.</p>
-                </div>
-              </div>
-            </li>
-            <li class="collab-step" data-step="5" data-position="up">
-              <div class="collab-step__inner">
-                <button type="button" class="collab-step__btn" data-step-btn="5">
-                  <span class="collab-step__num">05</span>
-                  <span class="sr-only">Schritt 5: Go-Live und Monitoring</span>
-                </button>
-                <div class="collab-step__card">
-                  <h3 class="collab-step__title">Go-Live und Monitoring</h3>
-                  <p class="collab-step__desc">Übergabe, Live-Betrieb und Monitoring. Anpassungen laufen mit, ohne dass Sie das System selbst betreiben.</p>
-                </div>
-              </div>
-            </li>
-          </ol>
-        </div>
-      </div>
+<section aria-labelledby="sys-ablauf-title">
+  <div class="section-wrap">
+    <span class="mono-label">Ablauf</span>
+    <h2 class="section-h2 section-h2--anchor" id="sys-ablauf-title">Was das System selbst erledigt</h2>
+    <p class="section-sub">Vier Schritte, in dieser Reihenfolge, jedes Mal gleich.</p>
+    <ol class="akte__flow akte__flow--large"><li class="akte__flow-step">Aufnehmen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Rückfragen stellen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Einordnen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Weiterleiten</li></ol>
 
-      <div class="collab-path__controls">
-        <button type="button" class="collab-path__nav" id="collab-prev">Zurück</button>
-        <span class="collab-path__counter" id="collab-counter" aria-live="polite">Schritt 1 von 5</span>
-        <button type="button" class="collab-path__nav collab-path__nav--next" id="collab-next">Weiter</button>
-      </div>
+    <div class="sys-handover">
+      <span class="mono-label">Übergabe</span>
+      <p>Sobald Bedarf, Budget und Zeitrahmen geklärt sind, geht der Vorgang mit vollständiger Notiz an einen Menschen.</p>
     </div>
 
-    <div class="mitwirkung">
-      <span class="mono-label">Mitwirkung</span>
-      <h2 class="section-h2">Was wir von Ihnen brauchen</h2>
-      <ul class="list-plain">
-        <li>Zugang zu den relevanten Postfächern und dem Kalender</li>
-        <li>Ansprechperson für Rückfragen im Büro</li>
-        <li>Klare Freigaben zu Textbausteinen und Qualifizierungskriterien</li>
-      </ul>
-    </div>
+    <span class="mono-label" style="margin-top:2.5rem;">Anbindung</span>
+    <h2 class="section-h2">Woran es angeschlossen wird</h2>
+    <ul class="akte__systems akte__systems--large"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-form"></use></svg>Formular</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>Postfach</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-phone"></use></svg>Telefonie</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-crm"></use></svg>CRM</li></ul>
+  </div>
+</section>
+
+<!-- Gruener Anker. Die Grenze ist das eigentliche Vertrauenssignal,
+     deshalb traegt sie die dunkle Flaeche und nicht den Nebensatz. -->
+<section class="surface-green" aria-labelledby="sys-grenze-title">
+  <div class="section-wrap">
+    <span class="mono-label">Nicht im Zug</span>
+    <h2 class="section-h2" id="sys-grenze-title">Was dieses System ausdrücklich nicht tut</h2>
+    <p class="section-sub">Keine Preiszusagen, keine Vertragsauskünfte, keine Absage an Interessenten ohne menschliche Freigabe.</p>
+    <p class="sys-grenze-note">Ein System, das seine Grenze nicht kennt, gehört nicht in Ihren Betrieb. Deshalb steht sie hier und nicht im Kleingedruckten.</p>
+    <p style="margin-top:2rem;"><a class="home-cta-link" href="referenzen.html">Alle 24 Systeme im Katalog</a></p>
   </div>
 </section>
 </main>
@@ -343,8 +275,6 @@
     </div>
   </div>
 </div>
-
-<script src="scripts/collab-path.js"></script>
 
 <script src="scripts/site-nav.js"></script>
 <script src="scripts/booking-modal.js"></script>
