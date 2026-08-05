@@ -9,7 +9,18 @@ const copyTargets = [
   { from: 'scripts', to: 'scripts' },
   { from: 'downloads', to: 'downloads' },
   { from: 'vendor', to: 'vendor' },
-  { from: 'images', to: 'images' },
+  // images/ wird NICHT kopiert (entfernt 05.08.2026).
+  //
+  // Jeder Bildpfad steht im HTML, und Vite bundelt daraus selbst nach
+  // dist/assets mit Hash im Dateinamen. Geprueft: weder ein kopiertes
+  // Stylesheet noch ein Skript verweist auf images/, und im gebauten
+  // HTML steht kein einziger Verweis darauf. Die Kopie war reine
+  // Doppelung und hat 26 MB ausgeliefert, davon 19 MB Dateien, die
+  // nirgends referenziert sind.
+  //
+  // Wer kuenftig einen Bildpfad ERST ZUR LAUFZEIT zusammenbaut (etwa in
+  // einem Skript), muss das hier wieder aufnehmen oder das Bild nach
+  // public/ legen. Nur dann greift Vite nicht.
   { from: 'fonts', to: 'fonts' },
   { from: 'klaro-config.js', to: 'klaro-config.js' },
   { from: 'styles/klaro-overrides.css', to: 'styles/klaro-overrides.css' },
