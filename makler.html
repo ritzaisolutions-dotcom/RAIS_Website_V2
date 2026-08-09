@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Erstgespräch für Maklerbüros | RAIS</title>
+  <meta name="description" content="Portalanfragen automatisch aufnehmen, prüfen und mit Terminvorschlag beantworten. Erstgespräch für Maklerbüros ab etwa zehn Portalanfragen pro Woche.">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" href="favicon.png?v=3">
+  <meta property="og:title" content="Erstgespräch für Maklerbüros | RAIS">
+  <meta property="og:description" content="Portalanfragen automatisch aufnehmen, prüfen und mit Terminvorschlag beantworten.">
+  <meta property="og:url" content="https://ritz-ai.solutions/makler.html">
+  <meta property="og:type" content="website">
+  <script src="scripts/public-config.js"></script>
+  <script src="scripts/sentry-klaro-bootstrap.js"></script>
+  <script src="klaro-config.js"></script>
+  <script src="vendor/klaro/klaro.js"></script>
+  <link rel="stylesheet" href="vendor/klaro/klaro.min.css">
+  <link rel="stylesheet" href="styles/klaro-overrides.css">
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="styles/antigravity-polish.css">
+  <link rel="stylesheet" href="styles/tailwind.generated.css">
+  <link rel="stylesheet" href="styles/site-multipage.css">
+  <link rel="stylesheet" href="styles/home.css">
+  <link rel="stylesheet" href="styles/makler.css">
+</head>
+<body class="page-makler">
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+<header class="makler-header" role="banner">
+  <div class="makler-header__inner">
+    <div class="makler-wordmark" aria-label="RAIS">
+      <img src="favicon.svg" alt="" width="36" height="36" aria-hidden="true">
+      <span class="makler-wordmark__text">RAIS</span>
+    </div>
+    <a class="makler-cta makler-cta--primary" href="#buchung">
+      <span class="makler-cta__label">Erstgespräch buchen</span>
+    </a>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- 1. Hero -->
+  <section class="makler-hero makler-band--cloud" aria-labelledby="makler-hero-title">
+    <div class="makler-wrap">
+      <div class="makler-hero__grid">
+        <div class="makler-hero__copy">
+          <span class="makler-eyebrow">Für Maklerbüros ab etwa zehn Portalanfragen pro Woche</span>
+          <!-- H1 PLACEHOLDER: vor Deploy an den tatsächlichen Reel-Wortlaut anpassen.
+               Interim Richtung A (Verlust-Rahmen). -->
+          <h1 class="makler-hero__h1" id="makler-hero-title">Jede Anfrage, die zwei Tage liegen bleibt, ist meistens schon beim Wettbewerber.</h1>
+          <div class="makler-hero__sub">
+            <p>Eingehende Portalanfragen werden automatisch aufgenommen, auf Bedarf und Zeitrahmen geprüft und mit einem Terminvorschlag beantwortet.</p>
+            <p>Ihr Team sieht nur noch die Interessenten, bei denen sich der Anruf lohnt.</p>
+          </div>
+          <div class="makler-cta-row">
+            <a class="makler-cta makler-cta--primary" href="#buchung">
+              <span class="makler-cta__label">Erstgespräch buchen</span>
+              <span class="makler-cta__micro">20 Minuten, kostenlos</span>
+            </a>
+            <a class="makler-cta makler-cta--ghost" href="#handbuch">
+              <span class="makler-cta__label">Prozesshandbuch ansehen</span>
+              <span class="makler-cta__micro">kein Termin nötig</span>
+            </a>
+          </div>
+        </div>
+        <div class="makler-hero__sim">
+          <div class="aqut-sim" id="aqut-sim" data-step="0" data-autoplay data-replay-label="Nochmal ansehen">
+            <div class="aqut-sim__glow" aria-hidden="true"></div>
+            <ol class="aqut-sim__rail" aria-label="Anfrage Pipeline">
+              <li class="aqut-sim__node" data-node="1">
+                <span class="aqut-sim__pulse" aria-hidden="true"></span>
+                <strong>Portal-Mail</strong>
+                <span>Anfrage trifft ein</span>
+              </li>
+              <li class="aqut-sim__node" data-node="2">
+                <span class="aqut-sim__pulse" aria-hidden="true"></span>
+                <strong>Prüfung</strong>
+                <span>Bedarf und Zeitrahmen</span>
+              </li>
+              <li class="aqut-sim__node" data-node="3">
+                <span class="aqut-sim__pulse" aria-hidden="true"></span>
+                <strong>Kalender</strong>
+                <span>Terminvorschlag</span>
+              </li>
+              <li class="aqut-sim__node" data-node="4">
+                <span class="aqut-sim__pulse" aria-hidden="true"></span>
+                <strong>CRM</strong>
+                <span>Nur lohnende Leads</span>
+              </li>
+            </ol>
+            <div class="aqut-sim__card" id="aqut-sim-card" aria-live="polite">
+              <span class="aqut-sim__card-label">Live-Simulation</span>
+              <p id="aqut-sim-status">Bereit.</p>
+            </div>
+            <div class="aqut-sim__actions">
+              <button type="button" class="btn-primary" id="aqut-sim-play">Simulation starten</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Disqualifier -->
+  <aside class="makler-disq" aria-label="Qualifizierung">
+    <p>Unter etwa zehn Anfragen pro Woche raten wir ab. Da rechnet sich der Aufwand meistens nicht, und das sagen wir lieber jetzt als im Gespräch.</p>
+  </aside>
+
+  <!-- 3. Four problem cards -->
+  <section class="makler-pain makler-band--cloud" aria-labelledby="makler-pain-title">
+    <div class="makler-wrap">
+      <h2 class="makler-h2" id="makler-pain-title">Wo Anfragen heute versanden</h2>
+      <div class="makler-pain__grid">
+        <article class="makler-pain-card">
+          <span class="makler-pain-card__mark" aria-hidden="true"></span>
+          <h3>Die Anfrage kommt abends, die Antwort morgen Mittag</h3>
+          <p>Der Interessent hat in der Zwischenzeit drei andere Büros angeschrieben.</p>
+          <p>Wer zuerst antwortet, führt das Gespräch.</p>
+        </article>
+        <article class="makler-pain-card">
+          <span class="makler-pain-card__mark" aria-hidden="true"></span>
+          <h3>Die Hälfte der Anfragen ist nicht ernst gemeint</h3>
+          <p>Ihr Team sortiert sie trotzdem von Hand.</p>
+          <p>Diese Zeit fehlt bei den Interessenten, die tatsächlich kaufen oder mieten wollen.</p>
+        </article>
+        <article class="makler-pain-card">
+          <span class="makler-pain-card__mark" aria-hidden="true"></span>
+          <h3>Der Termin entsteht in vier Mails</h3>
+          <p>Rückfrage, Antwort, Terminvorschlag, Bestätigung.</p>
+          <p>Bei dreissig Anfragen pro Woche sind das hundertzwanzig Nachrichten, die niemand schreiben wollte.</p>
+        </article>
+        <article class="makler-pain-card">
+          <span class="makler-pain-card__mark" aria-hidden="true"></span>
+          <h3>Niemand weiss, wie viele Anfragen versandet sind</h3>
+          <p>Ohne Übersicht fällt nur auf, was reklamiert wird.</p>
+          <p>Der Rest verschwindet still.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Three steps -->
+  <section class="makler-steps-section makler-band--linen" aria-labelledby="makler-steps-title">
+    <div class="makler-wrap">
+      <h2 class="makler-h2" id="makler-steps-title">Drei Schritte bis zum laufenden System</h2>
+      <div class="makler-steps" id="makler-steps">
+        <ol class="makler-steps__rail" aria-label="Ablauf">
+          <li class="makler-steps__node">
+            <h3>Wir schauen drauf</h3>
+            <p>20 Minuten. Anfragevolumen, CRM, wo es heute klemmt. Wenn sich nichts lohnt, sagen wir das.</p>
+          </li>
+          <li class="makler-steps__connector" aria-hidden="true"></li>
+          <li class="makler-steps__node">
+            <h3>Wir bauen</h3>
+            <p>Anbindung an Ihr bestehendes CRM und Ihren Kalender. Vier bis sechs Wochen bis zum ersten laufenden System.</p>
+          </li>
+          <li class="makler-steps__connector" aria-hidden="true"></li>
+          <li class="makler-steps__node">
+            <h3>Es läuft</h3>
+            <p>Dokumentiert übergeben, in Ihrer Umgebung, ohne Vendor-Lock-in.</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Calculator -->
+  <section class="makler-calc makler-band--cloud" id="rechner" aria-labelledby="makler-calc-title">
+    <div class="makler-wrap">
+      <h2 class="makler-h2" id="makler-calc-title">Was Ihr Volumen heute kostet</h2>
+      <p class="makler-lead">Nur aus Ihren Angaben. Keine Kontaktdaten, keine Lead-Erfassung.</p>
+      <div class="makler-calc__panel" id="makler-rechner">
+        <div class="makler-calc__field">
+          <div class="makler-calc__label-row">
+            <label for="mk-volume">Portalanfragen pro Woche</label>
+            <span class="makler-calc__value" id="mk-volume-out">25</span>
+          </div>
+          <input id="mk-volume" type="range" min="5" max="150" step="1" value="25" aria-valuemin="5" aria-valuemax="150" aria-valuenow="25">
+        </div>
+        <div class="makler-calc__field">
+          <div class="makler-calc__label-row">
+            <label for="mk-minutes">Minuten pro Anfrage bis zum Termin</label>
+            <span class="makler-calc__value" id="mk-minutes-out">12</span>
+          </div>
+          <input id="mk-minutes" type="range" min="3" max="40" step="1" value="12" aria-valuemin="3" aria-valuemax="40" aria-valuenow="12">
+        </div>
+        <details class="makler-calc__advanced">
+          <summary>Internen Stundensatz anpassen</summary>
+          <div class="makler-calc__field">
+            <div class="makler-calc__label-row">
+              <label for="mk-rate">Interner Stundensatz</label>
+            </div>
+            <div class="makler-calc__rate-row">
+              <input id="mk-rate" type="number" min="10" max="200" step="1" value="45" inputmode="decimal">
+              <span aria-hidden="true">Euro</span>
+            </div>
+          </div>
+        </details>
+        <div class="makler-calc__result">
+          <div class="makler-calc__number" id="mk-output" aria-live="polite">
+            <span class="makler-calc__euro">€</span><span id="mk-euro">0</span>
+          </div>
+          <p class="makler-calc__derive" id="mk-derive">0 Stunden pro Monat nach Ihren Angaben</p>
+          <p class="makler-calc__disclaimer">Diese Zahl stammt ausschliesslich aus Ihren eigenen Angaben. Wir behaupten nichts über Ihr Büro.</p>
+          <a class="makler-cta makler-cta--primary" href="#buchung">
+            <span class="makler-cta__label">Erstgespräch buchen</span>
+            <span class="makler-cta__micro">20 Minuten, kostenlos</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Proof -->
+  <section class="makler-proof makler-band--linen" aria-labelledby="makler-proof-title">
+    <div class="makler-wrap">
+      <h2 class="makler-h2" id="makler-proof-title">Was wir belegen können</h2>
+      <div class="makler-proof__intro">
+        <p>Andere zeigen Logos, die nie Kunden waren. Wir kennzeichnen jeden Eintrag danach, wie belastbar er ist.</p>
+        <p>Aktuell trägt kein Eintrag den Stempel Live im Betrieb, weil die Freigaben zur Nennung noch ausstehen.</p>
+      </div>
+      <div class="makler-proof__grid">
+        <article class="makler-stamp">
+          <span class="makler-stamp__label">Live im Betrieb</span>
+          <p>Läuft bei einem Kunden. Freigabe zur Nennung liegt vor.</p>
+        </article>
+        <article class="makler-stamp makler-stamp--soft">
+          <span class="makler-stamp__label">Im Aufbau</span>
+          <p>Funktioniert im Test. Den Alltag hat es noch nicht überstanden.</p>
+        </article>
+        <article class="makler-stamp makler-stamp--soft">
+          <span class="makler-stamp__label">Übertragbar</span>
+          <p>Muster, das wir beherrschen. Ohne Live-Beleg, und wir sagen das auch so.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Who builds it -->
+  <section class="makler-who makler-band--cloud" aria-labelledby="makler-who-title">
+    <div class="makler-wrap">
+      <h2 class="makler-h2" id="makler-who-title">Wer das baut</h2>
+      <div class="makler-who__grid">
+        <figure class="makler-who__media">
+          <!-- Video-Slot: videos/makler-reel.mp4 einbinden, sobald das Reel-Fragment vorliegt.
+               Bis dahin Profilbild als Kontinuitätsanker. -->
+          <img src="images/profilbild.webp" width="720" height="720" loading="lazy" decoding="async" alt="Kevin Ritz, Geschäftsführer von RAIS">
+        </figure>
+        <div class="makler-who__copy">
+          <p>Ich bin Kevin Ritz, Geschäftsführer von RAIS aus Koblenz.</p>
+          <p>Vom ersten Gespräch bis zum laufenden System arbeiten Sie direkt mit mir, nicht mit einem Projektteam.</p>
+          <p>Davor habe ich in einem grossen deutschen Telekommunikationskonzern gearbeitet, dort lernt man, was Systeme aushalten müssen, bevor sie in Betrieb gehen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Trust -->
+  <aside class="makler-trust" aria-label="Hosting und Datenschutz">
+    <p>Selbst gehostet in der EU · Datenbank Frankfurt · AVV nach Art. 28 DSGVO · Kundendaten bleiben in der EU</p>
+  </aside>
+
+  <!-- 9. Booking -->
+  <section class="makler-book makler-band--linen" id="buchung" aria-labelledby="makler-book-title">
+    <div class="makler-wrap">
+      <h2 class="makler-h2" id="makler-book-title">Erstgespräch buchen</h2>
+      <div class="makler-book__expect">
+        <p><strong>Was im Termin passiert.</strong> Wir gehen Ihr Anfragevolumen durch und schauen, wo die Zeit hingeht.</p>
+        <p><strong>Was nicht passiert.</strong> Kein Pitch, wenn es nicht passt. Kein Verkaufsdruck.</p>
+        <p><strong>Danach.</strong> Sie bekommen eine Einschätzung, ob sich ein System bei Ihnen rechnet. Auch wenn die Antwort nein ist.</p>
+      </div>
+      <div class="cal-inline" data-cal-inline data-source="makler" id="cal-inline-makler"></div>
+    </div>
+  </section>
+
+  <!-- 10. Exit handbook -->
+  <section id="handbuch" class="makler-handbuch makler-band--cloud" aria-labelledby="handbuch-title">
+    <div class="makler-wrap">
+      <div class="lm-grid">
+        <div>
+          <img class="lm-cover" src="images/cover.webp" alt="" width="560" height="791" loading="lazy" decoding="async" onerror="this.remove()">
+          <span class="mono-label">Noch nicht so weit?</span>
+          <h2 class="section-h2" id="handbuch-title">Prozesshandbuch ohne Termin</h2>
+          <p class="section-sub">Wie Sie Ihre wiederkehrenden Vorgänge selbst aufnehmen und entscheiden, was sich zu automatisieren lohnt. Dieselbe Systematik, mit der wir im Erstgespräch arbeiten.</p>
+        </div>
+        <div class="lm-box">
+          <form id="lm-form" class="lm-form" novalidate>
+            <div class="lm-field">
+              <label for="lm-name">Ihr Name</label>
+              <input type="text" id="lm-name" name="name" autocomplete="name" maxlength="200" required>
+            </div>
+            <div class="lm-field">
+              <label for="lm-email">E-Mail-Adresse</label>
+              <input type="email" id="lm-email" name="email" autocomplete="email" maxlength="254" required>
+            </div>
+            <div class="lm-field lm-honeypot" aria-hidden="true">
+              <label for="lm-website">Website</label>
+              <input type="text" id="lm-website" name="website" tabindex="-1" autocomplete="off">
+            </div>
+            <label class="lm-check" for="lm-privacy">
+              <input type="checkbox" id="lm-privacy" required>
+              <span>Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a> gelesen.</span>
+            </label>
+            <label class="lm-check" for="lm-marketing">
+              <input type="checkbox" id="lm-marketing">
+              <span>Ich möchte gelegentlich Hinweise zu neuen Systemen erhalten. Jederzeit widerrufbar.</span>
+            </label>
+            <button type="submit" id="lm-submit" class="btn-primary lm-submit">Prozesshandbuch herunterladen</button>
+            <p class="lm-note">Kein Verkaufsanruf. Sie bekommen das PDF und sonst nichts, solange Sie nichts anderes ankreuzen.</p>
+          </form>
+          <div id="lm-success" class="lm-success">
+            <p class="lm-success__title">Fertig. Hier ist Ihr Handbuch.</p>
+            <a id="lm-download-btn" class="btn-primary" href="downloads/rais-prozesshandbuch-2026.pdf" download="RAIS-Prozesshandbuch-2026.pdf">PDF öffnen</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- 11. Footer -->
+<footer class="makler-footer">
+  <div class="makler-footer__inner">
+    <nav aria-label="Rechtliches">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="mailto:kevin@ritz-ai.solutions">kevin@ritz-ai.solutions</a>
+    </nav>
+    <span>© 2026 Ritz AI Solutions · RAIS · Koblenz</span>
+  </div>
+</footer>
+
+<div id="makler-sticky" aria-hidden="true">
+  <a class="makler-cta makler-cta--primary" href="#buchung">
+    <span class="makler-cta__label">Erstgespräch buchen</span>
+    <span class="makler-cta__micro">20 Minuten, kostenlos</span>
+  </a>
+</div>
+
+<script src="scripts/makler-page.js"></script>
+<script src="scripts/makler-rechner.js"></script>
+<script src="scripts/aqut-sim.js"></script>
+<script src="scripts/lead-magnet.js"></script>
+<script src="scripts/cal-embed.js"></script>
+</body>
+</html>

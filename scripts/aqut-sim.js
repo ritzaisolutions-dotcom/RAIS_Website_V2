@@ -10,6 +10,9 @@
   var nodes = root.querySelectorAll('.aqut-sim__node');
   var timer = null;
   var running = false;
+  var autoplay = root.hasAttribute('data-autoplay');
+  var replayLabel = root.getAttribute('data-replay-label') || 'Nochmal abspielen';
+  var defaultPlayLabel = playBtn ? playBtn.textContent : 'Demo Anfrage testen';
 
   var messages = [
     'Bereit. Starten Sie die Simulation.',
@@ -51,7 +54,7 @@
   function finish() {
     setStep(4);
     stop();
-    if (playBtn) playBtn.textContent = 'Nochmal abspielen';
+    if (playBtn) playBtn.textContent = replayLabel;
   }
 
   function runStep(step) {
@@ -84,11 +87,22 @@
     setStep(0);
     if (playBtn) {
       playBtn.disabled = false;
-      playBtn.textContent = 'Demo Anfrage testen';
+      playBtn.textContent = defaultPlayLabel;
     }
   }
 
   if (playBtn) playBtn.addEventListener('click', start);
   if (resetBtn) resetBtn.addEventListener('click', reset);
   setStep(0);
+
+  if (autoplay) {
+    // Ein Durchlauf nach dem ersten Paint. Manuelle Starts bleiben über den Button.
+    if (typeof window.requestAnimationFrame === 'function') {
+      window.requestAnimationFrame(function () {
+        start();
+      });
+    } else {
+      start();
+    }
+  }
 })();

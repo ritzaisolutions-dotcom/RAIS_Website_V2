@@ -1,0 +1,783 @@
+/* Makler short-form landing (/makler.html). Page-scoped shell + sections. */
+
+.page-makler {
+  --mandarin: var(--orange, #EC6A37);
+  --mandarin-hover: var(--orange-hover, #F37A48);
+  --cloud: var(--background, #F5F2EC);
+  --linen: var(--surface, #FBF8F3);
+  --step--1: clamp(0.83rem, 0.8rem + 0.15vw, 0.9rem);
+  --step-0: clamp(1rem, 0.95rem + 0.25vw, 1.13rem);
+  --step-1: clamp(1.33rem, 1.2rem + 0.6vw, 1.6rem);
+  --step-2: clamp(1.78rem, 1.5rem + 1.4vw, 2.4rem);
+  --step-3: clamp(2.37rem, 1.9rem + 2.4vw, 3.6rem);
+  --step-4: clamp(3.16rem, 2.2rem + 4.8vw, 5.6rem);
+
+  background: var(--cloud);
+  color: var(--charcoal, #2F2A24);
+  font-family: var(--sans);
+  font-size: var(--step-0);
+  line-height: 1.55;
+  padding-bottom: 0;
+}
+
+.page-makler #navbar,
+.page-makler #mobile-overlay {
+  display: none !important;
+}
+
+/* ── Mini header ─────────────────────────────────────────────── */
+
+.makler-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  height: 64px;
+  background: var(--linen);
+  border-bottom: 1px solid var(--border, #D9D1C7);
+}
+
+.makler-header__inner {
+  max-width: 72rem;
+  margin: 0 auto;
+  height: 100%;
+  padding: 0 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.makler-wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--charcoal, #2F2A24);
+  pointer-events: none;
+  user-select: none;
+}
+
+.makler-wordmark img {
+  display: block;
+  width: 36px;
+  height: 36px;
+}
+
+.makler-wordmark__text {
+  font-family: var(--sans);
+  font-weight: 650;
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+}
+
+.makler-header .makler-cta {
+  min-height: 44px;
+}
+
+/* ── Shared section wrap ─────────────────────────────────────── */
+
+.makler-wrap {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 3.5rem 1.25rem;
+}
+
+.makler-band--linen {
+  background: var(--linen);
+}
+
+.makler-band--cloud {
+  background: var(--cloud);
+}
+
+.makler-eyebrow {
+  display: block;
+  font-family: var(--mono);
+  font-size: var(--step--1);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--racing-green, #004225);
+  margin: 0 0 1rem;
+}
+
+.makler-h2 {
+  font-family: var(--sans);
+  font-weight: 650;
+  font-size: var(--step-2);
+  line-height: 1.2;
+  color: var(--charcoal, #2F2A24);
+  margin: 0 0 0.75rem;
+}
+
+.makler-lead {
+  margin: 0;
+  color: var(--stone, #7B746B);
+  font-size: var(--step-0);
+  max-width: 40rem;
+}
+
+/* ── CTAs ─────────────────────────────────────────────────────── */
+
+.makler-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: stretch;
+}
+
+.makler-cta {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  min-width: 11rem;
+  padding: 0.65rem 1.35rem;
+  border-radius: 4px;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid transparent;
+  font-family: var(--sans);
+  transition: background var(--dur-fast, 0.2s) var(--ease, ease),
+    border-color var(--dur-fast, 0.2s) var(--ease, ease),
+    color var(--dur-fast, 0.2s) var(--ease, ease);
+}
+
+.makler-cta__label {
+  font-size: 1rem;
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+.makler-cta__micro {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: var(--step--1);
+  font-weight: 450;
+  opacity: 0.85;
+}
+
+.makler-cta--primary {
+  background: var(--mandarin);
+  color: var(--on-orange, #2F2A24);
+  border-color: var(--mandarin);
+}
+
+.makler-cta--primary:hover {
+  background: var(--mandarin-hover);
+  border-color: var(--mandarin-hover);
+}
+
+.makler-cta--ghost {
+  background: transparent;
+  color: var(--charcoal, #2F2A24);
+  border-color: var(--border, #D9D1C7);
+}
+
+.makler-cta--ghost:hover {
+  border-color: var(--charcoal, #2F2A24);
+}
+
+.makler-cta:focus-visible {
+  outline: 2px solid var(--racing-green, #004225);
+  outline-offset: 3px;
+}
+
+/* ── Hero ─────────────────────────────────────────────────────── */
+
+.makler-hero {
+  padding: 2rem 0 1rem;
+}
+
+.makler-hero__grid {
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+}
+
+.makler-hero__h1 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: var(--step-3);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: var(--charcoal, #2F2A24);
+  margin: 0 0 1rem;
+  max-width: 18ch;
+}
+
+.makler-hero__sub {
+  margin: 0 0 1.5rem;
+  color: var(--charcoal, #2F2A24);
+  font-size: var(--step-0);
+  max-width: 36rem;
+}
+
+.makler-hero__sub p {
+  margin: 0 0 0.65rem;
+}
+
+.makler-hero__sub p:last-child {
+  margin-bottom: 0;
+}
+
+.makler-hero__sim .aqut-sim {
+  margin: 0;
+}
+
+.makler-hero__sim .aqut-sim__glow {
+  /* Orange pipeline is the loud element; keep glow restrained on LP. */
+  opacity: 0.7;
+}
+
+@media (min-width: 900px) {
+  .makler-hero__grid {
+    grid-template-columns: 55fr 45fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .makler-hero {
+    padding: 3rem 0 2rem;
+  }
+}
+
+/* On narrow phones keep only H1, subline, CTAs above the fold. */
+@media (max-width: 430px) {
+  .makler-hero {
+    padding-top: 1.25rem;
+  }
+
+  .makler-hero__sim {
+    margin-top: 0.5rem;
+  }
+}
+
+/* ── Disqualifier ─────────────────────────────────────────────── */
+
+.makler-disq {
+  border-top: 1px solid var(--border, #D9D1C7);
+  border-bottom: 1px solid var(--border, #D9D1C7);
+  padding: 1rem 1.25rem;
+  text-align: center;
+}
+
+.makler-disq p {
+  margin: 0 auto;
+  max-width: 42rem;
+  color: var(--stone, #7B746B);
+  font-size: var(--step--1);
+  line-height: 1.5;
+}
+
+/* ── Pain cards ───────────────────────────────────────────────── */
+
+.makler-pain__grid {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: 1fr;
+  margin-top: 1.75rem;
+}
+
+.makler-pain-card {
+  background: var(--linen);
+  border: 1px solid var(--border, #D9D1C7);
+  border-radius: 4px;
+  padding: 1.25rem 1.15rem 1.35rem;
+}
+
+.makler-pain-card__mark {
+  display: block;
+  width: 2.25rem;
+  height: 4px;
+  background: var(--mandarin);
+  border-radius: 1px;
+  margin-bottom: 0.9rem;
+}
+
+.makler-pain-card h3 {
+  font-family: var(--sans);
+  font-size: var(--step-1);
+  font-weight: 650;
+  line-height: 1.25;
+  margin: 0 0 0.6rem;
+  color: var(--charcoal, #2F2A24);
+}
+
+.makler-pain-card p {
+  margin: 0 0 0.5rem;
+  color: var(--stone, #7B746B);
+  font-size: var(--step-0);
+}
+
+.makler-pain-card p:last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width: 720px) {
+  .makler-pain__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ── Three steps pipeline ─────────────────────────────────────── */
+
+.makler-steps__rail {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem;
+  counter-reset: makler-step;
+}
+
+.makler-steps__node {
+  position: relative;
+  padding: 1.15rem 1.15rem 1.25rem 1.15rem;
+  background: var(--linen);
+  border: 1px solid var(--border, #D9D1C7);
+  border-radius: 4px;
+}
+
+.makler-steps__node::before {
+  counter-increment: makler-step;
+  content: counter(makler-step);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-bottom: 0.75rem;
+  border-radius: 999px;
+  background: var(--mandarin);
+  color: var(--on-orange, #2F2A24);
+  font-family: var(--mono);
+  font-size: var(--step--1);
+  font-weight: 600;
+}
+
+.makler-steps__node h3 {
+  margin: 0 0 0.45rem;
+  font-family: var(--sans);
+  font-size: var(--step-1);
+  font-weight: 650;
+}
+
+.makler-steps__node p {
+  margin: 0;
+  color: var(--stone, #7B746B);
+  font-size: var(--step-0);
+}
+
+.makler-steps__connector {
+  display: none;
+  height: 3px;
+  background: var(--mandarin);
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+.makler-steps.is-drawn .makler-steps__connector {
+  transform: scaleX(1);
+  transition: transform 0.7s ease-out;
+}
+
+@media (min-width: 900px) {
+  .makler-steps__rail {
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .makler-steps__connector {
+    display: block;
+    align-self: center;
+    width: 100%;
+    min-width: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .makler-steps__connector {
+    transform: scaleX(1);
+    transition: none;
+  }
+}
+
+/* ── Calculator ───────────────────────────────────────────────── */
+
+.makler-calc__panel {
+  margin-top: 1.75rem;
+  background: var(--linen);
+  border: 1px solid var(--border, #D9D1C7);
+  border-radius: 4px;
+  padding: 1.35rem 1.2rem 1.5rem;
+}
+
+.makler-calc__field {
+  margin-bottom: 1.35rem;
+}
+
+.makler-calc__field:last-of-type {
+  margin-bottom: 0;
+}
+
+.makler-calc__label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.55rem;
+}
+
+.makler-calc__label-row label {
+  font-weight: 550;
+  color: var(--charcoal, #2F2A24);
+}
+
+.makler-calc__value {
+  font-family: var(--mono);
+  font-size: var(--step--1);
+  color: var(--stone, #7B746B);
+}
+
+.makler-calc input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--border, #D9D1C7);
+  outline: none;
+}
+
+.makler-calc input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--mandarin);
+  border: 2px solid var(--linen);
+  box-shadow: 0 0 0 1px var(--mandarin);
+  cursor: pointer;
+}
+
+.makler-calc input[type="range"]::-moz-range-thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--mandarin);
+  border: 2px solid var(--linen);
+  box-shadow: 0 0 0 1px var(--mandarin);
+  cursor: pointer;
+}
+
+.makler-calc__advanced {
+  margin-top: 1rem;
+  border-top: 1px solid var(--border, #D9D1C7);
+  padding-top: 0.75rem;
+}
+
+.makler-calc__advanced summary {
+  cursor: pointer;
+  color: var(--stone, #7B746B);
+  font-size: var(--step--1);
+  list-style: none;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.makler-calc__advanced summary::-webkit-details-marker {
+  display: none;
+}
+
+.makler-calc__advanced[open] summary {
+  margin-bottom: 0.75rem;
+}
+
+.makler-calc__rate-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.makler-calc__rate-row input[type="number"] {
+  width: 5.5rem;
+  min-height: 44px;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--border, #D9D1C7);
+  border-radius: 4px;
+  background: var(--cloud);
+  color: var(--charcoal, #2F2A24);
+  font-family: var(--sans);
+  font-size: var(--step-0);
+}
+
+.makler-calc__result {
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border, #D9D1C7);
+}
+
+.makler-calc__number {
+  font-family: var(--serif);
+  font-size: var(--step-4);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--charcoal, #2F2A24);
+  letter-spacing: -0.02em;
+}
+
+.makler-calc__euro {
+  color: var(--mandarin);
+}
+
+.makler-calc__derive {
+  margin: 0.65rem 0 0;
+  color: var(--stone, #7B746B);
+  font-size: var(--step--1);
+}
+
+.makler-calc__disclaimer {
+  margin: 1rem 0 1.15rem;
+  color: var(--stone, #7B746B);
+  font-size: var(--step--1);
+  max-width: 36rem;
+}
+
+.makler-calc__result .makler-cta {
+  width: 100%;
+  max-width: 20rem;
+}
+
+/* ── Proof ────────────────────────────────────────────────────── */
+
+.makler-proof__intro {
+  max-width: 40rem;
+  margin-bottom: 1.75rem;
+}
+
+.makler-proof__intro p {
+  margin: 0 0 0.65rem;
+  color: var(--stone, #7B746B);
+}
+
+.makler-proof__intro p:last-child {
+  margin-bottom: 0;
+}
+
+.makler-proof__grid {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: 1fr;
+}
+
+.makler-stamp {
+  border: 1px solid var(--border, #D9D1C7);
+  border-radius: 4px;
+  background: var(--linen);
+  padding: 1.1rem 1.15rem;
+}
+
+.makler-stamp__label {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: var(--step--1);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--racing-green, #004225);
+  margin-bottom: 0.45rem;
+}
+
+.makler-stamp--soft .makler-stamp__label {
+  color: var(--stone, #7B746B);
+}
+
+.makler-stamp p {
+  margin: 0;
+  color: var(--charcoal, #2F2A24);
+  font-size: var(--step-0);
+}
+
+@media (min-width: 720px) {
+  .makler-proof__grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/* ── Who builds it ────────────────────────────────────────────── */
+
+.makler-who__grid {
+  display: grid;
+  gap: 1.75rem;
+  align-items: center;
+}
+
+.makler-who__media {
+  margin: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--border, #D9D1C7);
+  background: var(--linen);
+  aspect-ratio: 1 / 1;
+  max-width: 22rem;
+}
+
+.makler-who__media img,
+.makler-who__media video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.makler-who__copy p {
+  margin: 0 0 0.75rem;
+  color: var(--charcoal, #2F2A24);
+}
+
+.makler-who__copy p:last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width: 800px) {
+  .makler-who__grid {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 2.5rem;
+  }
+}
+
+/* ── Trust strip ──────────────────────────────────────────────── */
+
+.makler-trust {
+  padding: 1rem 1.25rem;
+  text-align: center;
+  border-top: 1px solid var(--border, #D9D1C7);
+  border-bottom: 1px solid var(--border, #D9D1C7);
+}
+
+.makler-trust p {
+  margin: 0 auto;
+  max-width: 48rem;
+  color: var(--stone, #7B746B);
+  font-size: var(--step--1);
+  line-height: 1.55;
+}
+
+/* ── Booking ──────────────────────────────────────────────────── */
+
+.makler-book__expect {
+  display: grid;
+  gap: 1rem;
+  margin: 1.5rem 0 1.75rem;
+  max-width: 40rem;
+}
+
+.makler-book__expect p {
+  margin: 0;
+  color: var(--charcoal, #2F2A24);
+}
+
+.makler-book__expect strong {
+  display: block;
+  margin-bottom: 0.2rem;
+  font-weight: 650;
+}
+
+.makler-book .cal-inline {
+  min-height: 420px;
+}
+
+/* ── Handbook exit ────────────────────────────────────────────── */
+
+.makler-handbuch .lm-grid {
+  align-items: start;
+}
+
+/* ── Minimal footer ───────────────────────────────────────────── */
+
+.makler-footer {
+  padding: 1.75rem 1.25rem 2.5rem;
+  border-top: 1px solid var(--border, #D9D1C7);
+  background: var(--linen);
+}
+
+.makler-footer__inner {
+  max-width: 72rem;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--stone, #7B746B);
+  font-size: var(--step--1);
+}
+
+.makler-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+}
+
+.makler-footer a {
+  color: var(--stone, #7B746B);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.makler-footer a:hover {
+  color: var(--charcoal, #2F2A24);
+}
+
+/* ── Mobile sticky CTA ────────────────────────────────────────── */
+
+#makler-sticky {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 35;
+  padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom, 0px));
+  background: rgba(251, 248, 243, 0.96);
+  border-top: 1px solid var(--border, #D9D1C7);
+  backdrop-filter: blur(8px);
+}
+
+#makler-sticky.is-visible {
+  display: block;
+}
+
+#makler-sticky .makler-cta {
+  width: 100%;
+}
+
+@media (min-width: 901px) {
+  #makler-sticky {
+    display: none !important;
+  }
+}
+
+.page-makler.has-makler-sticky {
+  padding-bottom: 5.5rem;
+}
+
+@media (min-width: 901px) {
+  .page-makler.has-makler-sticky {
+    padding-bottom: 0;
+  }
+}
+
+/* ── Reduced motion global kill for this page ─────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .page-makler *,
+  .page-makler *::before,
+  .page-makler *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
