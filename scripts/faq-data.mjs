@@ -50,7 +50,10 @@ export const FAQ = [
   },
   {
     q: 'Arbeiten Sie auch außerhalb der genannten Branchen?',
-    a: 'Ja, im Einzelfall. Immobilien, Handwerk, Handel und Beratung sind die Bereiche, in denen wir die meisten Prozesse dokumentiert haben. Wenn wir in Ihrem Fall keinen echten Mehrwert sehen, sagen wir ab, statt ein Projekt anzunehmen.',
+    // Nannte bis 09.08.2026 vier Branchen. Seit die Seite nur noch
+    // Immobilien führt, wäre das eine Aufzählung von Bereichen, die der
+    // Besucher nirgends findet. Letzter Satz bleibt wörtlich.
+    a: 'Ja, im Einzelfall. Immobilien ist der Bereich, in dem wir die meisten Prozesse dokumentiert haben. Die Systeme selbst sind nicht immobilienspezifisch, ein Anfrageeingang mit Prüfung und Übergabe sieht anderswo ähnlich aus. Wenn wir in Ihrem Fall keinen echten Mehrwert sehen, sagen wir ab, statt ein Projekt anzunehmen.',
   },
 ];
 

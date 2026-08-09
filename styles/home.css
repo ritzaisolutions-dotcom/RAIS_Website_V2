@@ -683,7 +683,6 @@
 
 .diagnose {
   margin-top: 2rem;
-  max-width: 44rem;
 }
 
 .diagnose__title {
@@ -694,30 +693,45 @@
   margin: 0 0 0.9rem;
 }
 
-.diagnose__list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  border-top: 1px solid var(--green-rule-soft, rgba(0, 66, 37, 0.1));
+/* Vier gleich breite Karten statt vier Bullets. Formensprache wie
+   .icp-card weiter oben, damit die Sektion eine Handschrift hat und
+   nicht zwei. Die Bullets lasen sich wie eine Notiz, obwohl sie den
+   Leser abholen sollen. */
+.diagnose__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
 }
 
-.diagnose__list li {
-  position: relative;
-  padding: 0.7rem 0 0.7rem 1.6rem;
-  border-bottom: 1px solid var(--green-rule-soft, rgba(0, 66, 37, 0.1));
-  font-size: 1rem;
-  line-height: 1.5;
+.diagnose__card {
+  background: var(--surface, #FBF8F3);
+  border: 1px solid var(--border, #D9D1C7);
+  border-radius: 4px;
+  padding: 1.25rem 1.15rem;
+}
+
+.diagnose__card h3 {
+  margin: 0 0 0.5rem;
+  font-family: var(--sans);
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.35;
   color: var(--charcoal, #2F2A24);
 }
 
-.diagnose__list li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 1.15em;
-  width: 0.7rem;
-  height: 1px;
-  background: var(--green-rule, rgba(0, 66, 37, 0.22));
+.diagnose__card p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--stone, #7B746B);
+}
+
+@media (max-width: 1000px) {
+  .diagnose__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 560px) {
+  .diagnose__grid { grid-template-columns: 1fr; }
 }
 
 /* Schliesst das Logikloch: die Legende erklaerte Stempel, die im

@@ -24,6 +24,14 @@ RAIS soll nicht wie ein AI-Lab, eine Trend-Agentur oder eine vage Digitalberatun
 
 **Änderung gegenüber Version 2 (Entscheidung vom 04.08.2026):** Die harte Verengung auf Maklerbüros wird zurückgenommen. Der ICP ist wieder der operative Mittelstand, Immobilien bleibt aber die Referenzbranche mit der größten Tiefe. Hintergrund: Die Startseite war bereits auf „operativer Mittelstand“ umpositioniert, während dieses Dokument noch Makler-only forderte. Mit der Systemakte (`scripts/systemakte-data.mjs`) führt die Seite jetzt vier Branchen. Hausverwaltungen sind kein Ausschluss mehr.
 
+**Präzisierung vom 09.08.2026, Umsetzungsfile 1:** Innerhalb der Referenzbranche ist die Ausrichtung die Immobilienwirtschaft, nicht nur der Verkauf. Die verkaufende Copy bleibt auf Maklerbüros ausgerichtet, weil dort der Engpass am schärfsten formulierbar ist. Hausverwaltung ist damit kein verworfener Pivot, sondern erscheint auf der Systemseite als Use Case, etwa Mieteranfragen bei Beschwerden, Ticketing und Kundensupport über WhatsApp und E-Mail parallel. Anlass war ein Widerspruch zwischen `CLAUDE.md` Version 3, die noch Makler-only führte, und der Live-Seite. `brand.md` ist die höhere Autorität, `CLAUDE.md` wurde nachgezogen.
+
+**Was das für die Startseite konkret heisst (09.08.2026):** Hero und `#zielgruppe` sprechen Maklerbüros direkt an, nicht den Mittelstand im Allgemeinen. Die H1 lautet „Ihr Maklerbüro hat kein Tool-Problem", die Eyebrow nennt das Volumenkriterium ohne Mitarbeiterzahl, die Passt-Karte listet Anfragen pro Woche statt Teamgrösse.
+
+Das ist **kein** Widerspruch zum ICP oben. Der ICP bleibt der operative Mittelstand, die Branchen-Tabs und die Systemakte führen weiter vier Branchen. Getrennt sind Ansprache und Reichweite: Die Startseite adressiert die Nische, in der wir am glaubwürdigsten sind, und öffnet weiter unten über den Systemkatalog. Wer diesen Absatz liest und die Startseite wieder auf „operativer Mittelstand" zurückschreiben will, ändert damit eine bewusste Entscheidung, keinen Fehler.
+
+Offen und bewusst nicht mit angefasst: die Meta-Titel und Descriptions der Startseite nennen weiter den Mittelstand. Das ist eine SEO-Entscheidung mit eigener Abwägung, nicht Copy.
+
 ## Audience
 
 **Zielgruppe (ICP), verbindlich:**

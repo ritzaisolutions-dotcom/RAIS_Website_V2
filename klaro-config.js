@@ -98,6 +98,7 @@ var klaroConfig = {
       poweredBy: 'Verwaltet mit Klaro',
       purposes: {
         security: 'Sicherheit & Fehlerbehebung',
+        booking: 'Terminbuchung',
       },
     },
   },
@@ -109,6 +110,19 @@ var klaroConfig = {
       description:
         'Sentry erfasst technische Fehler, damit wir die Stabilität der Website sicherstellen können. Verarbeitung auf EU-Servern (ingest.de.sentry.io). Anbieter: Functional Software Inc., San Francisco, USA.',
       purposes: ['security'],
+      required: false,
+      optOut: false,
+    },
+    /* Der Terminkalender ist auf jeder Seite eingebettet, laedt aber
+       erst nach Einwilligung. Ohne Einwilligung steht ein Platzhalter
+       mit Ladebutton, siehe scripts/cal-embed.js. Kein Autoload, kein
+       contextualConsentOnly, weil Klaro hier nichts selbst einhaengt. */
+    {
+      name: 'cal',
+      title: 'Cal.com (Terminbuchung)',
+      description:
+        'Cal.com stellt den Terminkalender bereit. Beim Laden wird Ihre IP-Adresse an Cal.com übertragen, Ihre Buchungsangaben geben Sie direkt dort ein. Anbieter: Cal.com, Inc., San Francisco, USA.',
+      purposes: ['booking'],
       required: false,
       optOut: false,
     },

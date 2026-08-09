@@ -15,6 +15,7 @@ import {
   renderBranchen,
   renderSystemTile,
   renderSystemTiles,
+  systemCount,
   flagships
 } from './systemakte-data.mjs';
 
@@ -279,7 +280,7 @@ page({
   active: 'referenzen',
   title: 'Systemkatalog | RAIS',
   description:
-    'Der Systemkatalog von RAIS: 24 Systeme zum Anfragen. Anfragen qualifizieren, Support, Ticketing, Dokumente, Content und Reporting, für Immobilien, Handwerk, Handel und Beratung.',
+    `Der Systemkatalog von RAIS: ${systemCount()} Systeme zum Anfragen. Anfragen qualifizieren, Support, Ticketing, Dokumente, Content und Reporting, für Maklerbüros mit Anfragevolumen.`,
   path: 'referenzen.html',
   extraScripts:
     '<script src="scripts/branchen-tabs.js"></script>\n<script src="scripts/katalog-filter.js"></script>\n',
@@ -288,7 +289,7 @@ page({
   <div class="page-hero__inner">
     <span class="mono-label">Systemkatalog</span>
     <h1>Suchen Sie sich Ihr System aus</h1>
-    <p>Vierundzwanzig Systeme, die wir bauen. Jeder Eintrag nennt den Auslöser, den Ablauf, die Stelle für die menschliche Übergabe und ausdrücklich das, was das System nicht tut. Was passt, fragen Sie direkt an.</p>
+    <p>${systemCount()} Systeme, die wir bauen. Jeder Eintrag nennt den Auslöser, den Ablauf, die Stelle für die menschliche Übergabe und ausdrücklich das, was das System nicht tut. Was passt, fragen Sie direkt an.</p>
   </div>
 </section>
 
@@ -778,7 +779,7 @@ ${renderSystemTile(rec)}
     <h2 class="section-h2" id="sys-grenze-title">Was dieses System ausdrücklich nicht tut</h2>
     <p class="section-sub">${escHtml(rec.limit)}</p>
     <p class="sys-grenze-note">Ein System, das seine Grenze nicht kennt, gehört nicht in Ihren Betrieb. Deshalb steht sie hier und nicht im Kleingedruckten.</p>
-    <p style="margin-top:2rem;"><a class="home-cta-link" href="referenzen.html">Alle 24 Systeme im Katalog</a></p>
+    <p style="margin-top:2rem;"><a class="home-cta-link" href="referenzen.html">Alle ${systemCount()} Systeme im Katalog</a></p>
   </div>
 </section>
 `,

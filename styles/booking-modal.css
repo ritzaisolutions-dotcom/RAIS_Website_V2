@@ -50,27 +50,12 @@
 .bm-step { display: none; }
 .bm-step.is-active { display: block; }
 
-.bm-progress {
-  display: flex;
-  gap: 6px;
-  margin-bottom: 2rem;
-}
-.bm-dot {
-  flex: 1;
-  height: 3px;
-  border-radius: 2px;
-  background: var(--border, #D9D1C7);
-}
-.bm-dot.done { background: var(--orange, #EC6A37); }
+/* Fortschrittspunkte, Formularfelder, Slider und die
+   Zurueck/Weiter-Leiste sind mit dem zweistufigen Formular
+   entfallen. Das Modal zeigt nur noch den Kalender. Der
+   Fehlerzustand .bm-error lebt weiter in styles/home.css,
+   dort nutzt ihn scripts/lead-magnet.js. */
 
-.bm-label {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--stone, #7B746B);
-  margin-bottom: 0.5rem;
-}
 .bm-title {
   font-size: 1.25rem;
   font-weight: 700;
@@ -84,208 +69,98 @@
   margin-bottom: 1.75rem;
 }
 
-.bm-field { margin-bottom: 1.1rem; }
-.bm-field label {
+
+/* ─────────────────────────────────────────────────────────────
+   CAL INLINE-EMBED
+   Ein Regelsatz fuer beide Einbauorte, das Modal und die
+   Kontaktsektion. Bis zur Einwilligung steht statt des Iframes
+   der Platzhalter .cal-gate, gerendert in scripts/cal-embed.js.
+───────────────────────────────────────────────────────────── */
+
+/* Keine min-height im Ruhezustand, sonst steht unter dem
+   Platzhalter eine leere Flaeche. Reserviert wird erst, wenn
+   der Iframe unterwegs ist. */
+.bm-cal-wrap,
+.cal-inline {
+  margin-top: 1rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Cal setzt die Hoehe des Iframes selbst, der Container darf
+   deshalb nicht mitwachsen wollen. */
+.bm-cal-wrap > iframe,
+.cal-inline > iframe {
+  width: 100%;
+  border: 0;
   display: block;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--charcoal, #2F2A24);
-  margin-bottom: 0.35rem;
 }
-.bm-field input {
-  width: 100%;
-  padding: 0.65rem 0.85rem;
-  border: 1.5px solid var(--border, #D9D1C7);
-  border-radius: 0.5rem;
-  background: #fff;
-  font-size: 0.95rem;
-  color: var(--charcoal, #2F2A24);
-  font-family: inherit;
-  outline: none;
-}
-.bm-field input:focus { border-color: var(--orange, #EC6A37); }
-.bm-field input.bm-error { border-color: #d94f3b; }
-.bm-field select,
-.bm-select {
-  width: 100%;
-  min-height: 44px;
-  padding: 0.65rem 0.85rem;
-  border: 1.5px solid var(--border, #D9D1C7);
-  border-radius: 0.5rem;
-  background: #fff;
-  font-size: 0.95rem;
-  color: var(--charcoal, #2F2A24);
-  font-family: inherit;
-  outline: none;
-  margin-bottom: 1.1rem;
-  cursor: pointer;
-}
-.bm-field select:focus,
-.bm-select:focus { border-color: var(--orange, #EC6A37); }
-.bm-field select.bm-error,
-.bm-select.bm-error { border-color: #d94f3b; }
 
-.bm-check {
+.bm-cal-wrap.is-loading,
+.cal-inline.is-loading {
+  min-height: 26rem;
+  background: var(--surface, #FBF8F3);
+  border: 1px solid var(--border, #D9D1C7);
+  border-radius: var(--radius-md, 1.1rem);
+}
+
+/* Platzhalter vor der Einwilligung */
+.cal-gate {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
-  gap: 0.55rem;
-  font-size: 0.82rem;
-  color: var(--charcoal, #2F2A24);
-  margin-bottom: 1.1rem;
-  cursor: pointer;
-}
-.bm-check input { margin-top: 0.2rem; flex-shrink: 0; }
-.bm-check.bm-error { color: #d94f3b; }
-.bm-check a { color: inherit; text-decoration: underline; }
-
-.bm-options {
-  display: grid;
-  gap: 0.6rem;
-  margin-bottom: 1.75rem;
-}
-.bm-option {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  min-height: 44px;
-  border: 1.5px solid var(--border, #D9D1C7);
-  border-radius: 0.6rem;
-  cursor: pointer;
-  background: #fff;
-  font-size: 0.92rem;
-  color: var(--charcoal, #2F2A24);
-  font-family: inherit;
+  gap: 0.85rem;
+  padding: 1.75rem;
+  background: var(--surface, #FBF8F3);
+  border: 1px solid var(--border, #D9D1C7);
+  border-radius: var(--radius-md, 1.1rem);
   text-align: left;
-  width: 100%;
-}
-.bm-option:hover,
-.bm-option.selected {
-  border-color: var(--orange, #EC6A37);
-  background: #fff8f4;
-}
-.bm-option.selected { font-weight: 600; }
-
-.bm-slider-block {
-  margin: 0.5rem 0 1.75rem;
-  padding: 1.25rem 1.15rem 1.1rem;
-  background: #fff;
-  border: 1.5px solid var(--border, #D9D1C7);
-  border-radius: 0.85rem;
 }
 
-.bm-slider-value {
-  display: flex;
-  align-items: baseline;
-  gap: 0.55rem;
-  margin-bottom: 1.1rem;
-}
-
-.bm-slider-value #bm-volume-display {
-  font-family: var(--serif, 'Source Serif 4', Georgia, serif);
-  font-size: 2.5rem;
-  font-weight: 600;
-  line-height: 1;
-  color: var(--racing-green, #004225);
-  letter-spacing: -0.03em;
-}
-
-.bm-slider-unit {
-  font-size: 0.85rem;
-  color: var(--stone, #7B746B);
-  font-weight: 600;
-}
-
-.bm-slider {
-  --bm-slider-pct: 26.666%;
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100%;
-  height: 8px;
-  border-radius: 999px;
-  background: linear-gradient(
-    90deg,
-    var(--orange, #EC6A37) 0%,
-    var(--orange, #EC6A37) var(--bm-slider-pct),
-    var(--border, #D9D1C7) var(--bm-slider-pct),
-    var(--border, #D9D1C7) 100%
-  );
-  outline: none;
-  cursor: pointer;
+.cal-gate__title {
   margin: 0;
+  font-family: var(--sans, sans-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--charcoal, #2F2A24);
 }
 
-.bm-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: #fff;
-  border: 3px solid var(--orange, #EC6A37);
-  box-shadow: 0 4px 12px rgba(47, 42, 36, 0.18);
-  cursor: pointer;
-}
-
-.bm-slider::-moz-range-thumb {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: #fff;
-  border: 3px solid var(--orange, #EC6A37);
-  box-shadow: 0 4px 12px rgba(47, 42, 36, 0.18);
-  cursor: pointer;
-}
-
-.bm-slider-scale {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 0.65rem;
-  font-family: 'JetBrains Mono', 'Courier New', monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.06em;
+.cal-gate__note {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
   color: var(--stone, #7B746B);
 }
 
-.bm-actions {
-  display: flex;
-  gap: 0.75rem;
-  justify-content: flex-end;
-  margin-top: 0.5rem;
-}
-.bm-btn-back {
-  background: none;
-  border: 1.5px solid var(--border, #D9D1C7);
-  border-radius: 0.5rem;
-  padding: 0.6rem 1.2rem;
-  min-height: 44px;
-  font-size: 0.9rem;
-  color: var(--stone, #7B746B);
-  cursor: pointer;
-  font-family: inherit;
-}
-.bm-btn-next {
-  background: var(--orange, #EC6A37);
-  border: none;
-  border-radius: 0.5rem;
-  padding: 0.6rem 1.5rem;
-  min-height: 44px;
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--on-orange, #2F2A24);
-  cursor: pointer;
-  font-family: inherit;
-  text-decoration: none;
+.cal-gate__note a { color: var(--charcoal, #2F2A24); }
+
+.cal-gate__btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  background: var(--orange, #EC6A37);
+  color: var(--on-orange, #2F2A24);
+  font-family: var(--sans, sans-serif);
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
 }
-.bm-btn-next:hover { background: var(--orange-hover, #F37A48); }
 
-.bm-cal-wrap {
-  min-height: 4rem;
-  margin-top: 1rem;
-}
+.cal-gate__btn:hover { background: var(--orange-hover, #F37A48); }
+.cal-gate__btn[disabled] { opacity: 0.65; cursor: default; }
+
+/* Der Kalender braucht die Breite der Monatsansicht, das alte
+   540px-Modal war fuer ein Formular gebaut. */
+#booking-modal .bm-box { max-width: 1040px; }
 
 @media (max-width: 480px) {
   .bm-box { padding: 2rem 1.25rem 1.25rem; border-radius: 1rem; }
+  .cal-gate { padding: 1.25rem; }
+  .bm-cal-wrap.is-loading,
+  .cal-inline.is-loading { min-height: 22rem; }
 }

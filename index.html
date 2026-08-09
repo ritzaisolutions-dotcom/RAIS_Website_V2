@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>RAIS | Prozessautomatisierung mit KI für den Mittelstand</title>
-    <meta name="description" content="KI-Systeme für den Mittelstand: live in Ihrer Infrastruktur, DSGVO-konform, ohne Vendor-Lock-in. Ehrliche Einschätzung, wo Automatisierung lohnt. Kostenlosen KI-Audit buchen.">
+    <!-- Ausrichtung auf Maklerbüros seit 09.08.2026, passend zu Hero und
+         #zielgruppe. Begründung in Claude_and_brand.md/brand.md. -->
+    <title>RAIS | KI-Systeme für Maklerbüros mit Anfragevolumen</title>
+    <meta name="description" content="KI-Systeme für Maklerbüros: Portalanfragen qualifizieren, Termine buchen, CRM pflegen. Live in Ihrer Infrastruktur, DSGVO-konform, ohne Vendor-Lock-in. Kostenlosen KI-Audit buchen.">
     <meta name="google-site-verification" content="A6q1zlZLweKSa1vIxp-owVoxpEXPyIW-gPWdY6N79ZI">
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -13,15 +15,15 @@
     <link rel="apple-touch-icon" href="favicon.png?v=3">
 
     <!-- OpenGraph -->
-    <meta property="og:title" content="RAIS | Prozessautomatisierung mit KI für den Mittelstand">
-    <meta property="og:description" content="KI-Systeme für den Mittelstand: live in Ihrer Infrastruktur, DSGVO-konform, ohne Vendor-Lock-in. Ehrliche Einschätzung, wo Automatisierung lohnt.">
+    <meta property="og:title" content="RAIS | KI-Systeme für Maklerbüros mit Anfragevolumen">
+    <meta property="og:description" content="KI-Systeme für Maklerbüros: Portalanfragen qualifizieren, Termine buchen, CRM pflegen. Live in Ihrer Infrastruktur, DSGVO-konform, ohne Vendor-Lock-in.">
     <meta property="og:url" content="https://ritz-ai.solutions">
     <meta property="og:type" content="website">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="RAIS | Prozessautomatisierung mit KI für den Mittelstand">
-    <meta name="twitter:description" content="KI-Systeme für den Mittelstand: live in Ihrer Infrastruktur, DSGVO-konform, ohne Vendor-Lock-in. Ehrliche Einschätzung, wo Automatisierung lohnt.">
+    <meta name="twitter:title" content="RAIS | KI-Systeme für Maklerbüros mit Anfragevolumen">
+    <meta name="twitter:description" content="KI-Systeme für Maklerbüros: Portalanfragen qualifizieren, Termine buchen, CRM pflegen. Live in Ihrer Infrastruktur, DSGVO-konform, ohne Vendor-Lock-in.">
 
     <!-- Schema.org -->
     <script type="application/ld+json">
@@ -30,7 +32,7 @@
       "@type": "ProfessionalService",
       "name": "RAIS (Ritz AI Solutions)",
       "url": "https://ritz-ai.solutions",
-      "description": "Prozessautomatisierung und KI-Systeme für den deutschsprachigen Mittelstand. Live in Ihrer Infrastruktur, DSGVO-konform, ohne Vendor-Lock-in.",
+      "description": "Prozessautomatisierung und KI-Systeme für Maklerbüros im deutschsprachigen Raum. Live in Ihrer Infrastruktur, DSGVO-konform, ohne Vendor-Lock-in.",
       "brand": { "@type": "Brand", "name": "RAIS" },
       "areaServed": ["DE", "AT", "CH"]
     }
@@ -368,6 +370,32 @@
             border-radius: 100px;
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
+        }
+
+        /* Eyebrow ueber der H1. Laenger als ein Label, deshalb mit
+           Zeilenhoehe und Umbruch statt einer harten Pill-Zeile. */
+        .hero-label--eyebrow {
+            margin: 0;
+            /* Breit genug fuer zwei Zeilen. Bei 46ch brach der Satz
+               auf drei um und drueckte die H1 aus dem ersten Bild. */
+            max-width: 64ch;
+            line-height: 1.5;
+            padding: 0.55rem 1.25rem;
+            text-wrap: balance;
+        }
+
+        /* Auf schmalen Viewports traegt die Pill den Satz nicht mehr,
+           dort bleibt nur die Typografie. */
+        @media (max-width: 640px) {
+            .hero-label--eyebrow {
+                border: none;
+                background: none;
+                padding: 0;
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+                letter-spacing: 0.1em;
+                font-size: 0.7rem;
+            }
         }
 
         /* H1 */
@@ -1313,7 +1341,9 @@
             border: 1px solid rgba(255, 255, 255, 0.55);
             border-radius: 1.5rem;
             width: 100%;
-            max-width: 540px;
+            /* Der Kalender braucht die Breite der Monatsansicht. Die
+               540px stammen aus der Zeit des Formulars. */
+            max-width: 1040px;
             max-height: 90vh;
             overflow-y: auto;
             padding: 2.5rem 2rem 2rem;
@@ -1330,6 +1360,8 @@
             color: var(--stone);
             line-height: 1;
             padding: 0.25rem;
+            min-width: 44px;
+            min-height: 44px;
             transition: color 0.15s;
         }
         .bm-close:hover { color: var(--charcoal); }
@@ -1337,28 +1369,11 @@
         .bm-step { display: none; }
         .bm-step.is-active { display: block; }
 
-        .bm-progress {
-            display: flex;
-            gap: 6px;
-            margin-bottom: 2rem;
-        }
-        .bm-dot {
-            flex: 1;
-            height: 3px;
-            border-radius: 2px;
-            background: var(--border);
-            transition: background 0.25s;
-        }
-        .bm-dot.done { background: var(--orange); }
+        /* Fortschrittspunkte, Formularfelder, Auswahlkacheln und die
+           Zurueck/Weiter-Leiste sind mit dem zweistufigen Formular
+           entfallen. Das Modal zeigt jetzt nur noch den Kalender,
+           dessen Regeln stehen in styles/booking-modal.css. */
 
-        .bm-label {
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--stone);
-            margin-bottom: 0.5rem;
-        }
         .bm-title {
             font-size: 1.25rem;
             font-weight: 700;
@@ -1372,117 +1387,8 @@
             margin-bottom: 1.75rem;
         }
 
-        .bm-field { margin-bottom: 1.1rem; }
-        .bm-field label {
-            display: block;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--charcoal);
-            margin-bottom: 0.35rem;
-        }
-        .bm-field input {
-            width: 100%;
-            padding: 0.65rem 0.85rem;
-            border: 1.5px solid var(--border);
-            border-radius: 0.5rem;
-            background: #fff;
-            font-size: 0.95rem;
-            color: var(--charcoal);
-            font-family: inherit;
-            transition: border-color 0.15s;
-            outline: none;
-        }
-        .bm-field input:focus { border-color: var(--orange); }
-        .bm-field input.bm-error { border-color: #d94f3b; }
-
-        .bm-check {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.55rem;
-            font-size: 0.82rem;
-            color: var(--charcoal);
-            margin-bottom: 1.1rem;
-            cursor: pointer;
-        }
-        .bm-check input { margin-top: 0.2rem; flex-shrink: 0; }
-        .bm-check.bm-error { color: #d94f3b; }
-        .bm-check a { color: inherit; text-decoration: underline; }
-
-        .bm-options {
-            display: grid;
-            gap: 0.6rem;
-            margin-bottom: 1.75rem;
-        }
-        .bm-option {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.75rem 1rem;
-            border: 1.5px solid var(--border);
-            border-radius: 0.6rem;
-            cursor: pointer;
-            background: #fff;
-            font-size: 0.92rem;
-            color: var(--charcoal);
-            font-family: inherit;
-            text-align: left;
-            transition: border-color 0.15s, background 0.15s;
-            width: 100%;
-        }
-        .bm-option:hover { border-color: var(--orange); background: #fff8f4; }
-        .bm-option.selected { border-color: var(--orange); background: #fff8f4; font-weight: 600; }
-        .bm-option-icon { font-size: 1.15rem; flex-shrink: 0; }
-
-        .bm-actions {
-            display: flex;
-            gap: 0.75rem;
-            justify-content: flex-end;
-            margin-top: 0.5rem;
-        }
-        .bm-btn-back {
-            background: none;
-            border: 1.5px solid var(--border);
-            border-radius: 0.5rem;
-            padding: 0.6rem 1.2rem;
-            font-size: 0.9rem;
-            color: var(--stone);
-            cursor: pointer;
-            font-family: inherit;
-            transition: border-color 0.15s, color 0.15s;
-        }
-        .bm-btn-back:hover { border-color: var(--charcoal); color: var(--charcoal); }
-        .bm-btn-next {
-            background: var(--orange);
-            border: none;
-            border-radius: 0.5rem;
-            padding: 0.6rem 1.5rem;
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--on-orange);
-            cursor: pointer;
-            font-family: inherit;
-            transition: background 0.15s;
-        }
-        .bm-btn-next:hover { background: var(--orange-hover); }
-
-        .bm-cal-wrap {
-            min-height: 630px;
-            margin: 0 -2rem -2rem;
-            border-radius: 0 0 1.25rem 1.25rem;
-            overflow: hidden;
-        }
-
-        .bm-cal-wrap iframe {
-            width: 100%;
-            height: 630px;
-            border: 0;
-            display: block;
-        }
-
         @media (max-width: 480px) {
             .bm-box { padding: 2rem 1.25rem 1.25rem; border-radius: 1rem; }
-            .bm-cal-wrap { margin: 0 -1.25rem -1.25rem; }
-            .bm-cal-wrap iframe { height: 580px; }
         }
 
         /* ─────────────────────────────────────────────────────
@@ -1623,7 +1529,7 @@
       "name": "Arbeiten Sie auch außerhalb der genannten Branchen?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Ja, im Einzelfall. Immobilien, Handwerk, Handel und Beratung sind die Bereiche, in denen wir die meisten Prozesse dokumentiert haben. Wenn wir in Ihrem Fall keinen echten Mehrwert sehen, sagen wir ab, statt ein Projekt anzunehmen."
+        "text": "Ja, im Einzelfall. Immobilien ist der Bereich, in dem wir die meisten Prozesse dokumentiert haben. Die Systeme selbst sind nicht immobilienspezifisch, ein Anfrageeingang mit Prüfung und Übergabe sieht anderswo ähnlich aus. Wenn wir in Ihrem Fall keinen echten Mehrwert sehen, sagen wir ab, statt ein Projekt anzunehmen."
       }
     }
   ]
@@ -1708,10 +1614,17 @@
                     <img src="favicon.svg" alt="" width="36" height="36">
                     <span class="hero-brand-emblem__word">RAIS</span>
                 </div>
+                <!-- Zielgruppe vor der Headline, sonst erfaehrt der Besucher
+                     erst nach mehreren Bildschirmen, ob er gemeint ist.
+                     Kriterium ist Volumen, nicht Mitarbeiterzahl. -->
+                <p class="hero-label hero-label--eyebrow">Für Maklerbüros mit wiederkehrendem Anfragevolumen ab etwa zehn Anfragen pro Woche</p>
                 <h1 class="hero-h1">
-                    <span class="hero-h1__line hero-h1__line--light">Ihr Mittelstand hat kein</span>
-                    <span class="hero-h1__line hero-h1__line--light"><span class="hero-h1__mark--charcoal">Tool-Problem.</span></span>
-                    <span class="hero-h1__line hero-h1__line--light">Er hat ein</span>
+                    <!-- Umbruch anders als zu "Mittelstand": "Maklerbüro" ist
+                         laenger, "Ihr Maklerbüro hat kein" brach auf zwei
+                         Zeilen um und machte die H1 eine Zeile hoeher. -->
+                    <span class="hero-h1__line hero-h1__line--light">Ihr Maklerbüro hat</span>
+                    <span class="hero-h1__line hero-h1__line--light">kein <span class="hero-h1__mark--charcoal">Tool-Problem.</span></span>
+                    <span class="hero-h1__line hero-h1__line--light">Es hat ein</span>
                     <span class="hero-h1__line hero-h1__line--light"><span class="hero-h1__mark">System-Problem.</span></span>
                 </h1>
 
@@ -1812,29 +1725,41 @@
         <section id="zielgruppe" class="home-band home-band--cloud" aria-labelledby="zielgruppe-title">
             <div class="section-wrap">
                 <span class="mono-label">Mit wem wir arbeiten</span>
-                <h2 class="section-h2" id="zielgruppe-title">Fokussiert auf den operativen Mittelstand</h2>
-                <p class="section-sub">Wiederkehrende Prozesse, spürbares Volumen, kein internes KI-Team.</p>
+                <h2 class="section-h2" id="zielgruppe-title">Fokussiert auf Maklerbüros mit Anfragevolumen</h2>
+                <p class="section-sub">Wiederkehrende Anfragen, spürbares Volumen, kein internes KI-Team.</p>
 
                 <!-- Beobachtungen, keine Behauptungen. Brauchen deshalb
                      keinen Beleg und holen den Leser ab, bevor die
                      Qualifizierung ihn prüft. -->
                 <div class="diagnose">
                     <p class="diagnose__title">Woran Sie merken, dass es Zeit wird</p>
-                    <ul class="diagnose__list">
-                        <li>Die Geschäftsführung ist Flaschenhals für Vorgänge, die sie nicht treffen müsste.</li>
-                        <li>Wissen liegt in einem Kopf und nicht im System.</li>
-                        <li>Dieselben Fehler wiederholen sich, weil nichts dokumentiert ist.</li>
-                        <li>Anfragen versanden, weil niemand Zeit hat, sie zu sichten.</li>
-                    </ul>
+                    <div class="diagnose__grid">
+                        <article class="diagnose__card">
+                            <h3>Sie hängen selbst in den Vorgängen</h3>
+                            <p>Objektanfragen, Rückrufe und Terminabstimmung landen bei der Geschäftsführung, obwohl sie das nicht müssten. Was Sie nicht selbst anfassen, bleibt liegen.</p>
+                        </article>
+                        <article class="diagnose__card">
+                            <h3>Wissen liegt in einem Kopf</h3>
+                            <p>Welcher Interessent zu welchem Objekt passt, weiß eine einzelne Person. Ist sie im Termin oder im Urlaub, steht der Vorgang.</p>
+                        </article>
+                        <article class="diagnose__card">
+                            <h3>Dieselben Rückfragen wiederholen sich</h3>
+                            <p>Unterlagen fehlen, dieselben Fragen kommen zurück, festgehalten ist nichts davon. Jede Korrektur bleibt eine Einzelentscheidung statt eine Regel.</p>
+                        </article>
+                        <article class="diagnose__card">
+                            <h3>Portalanfragen versanden</h3>
+                            <p>Die Anfragen treffen ein, aber niemand hat Zeit, sie zu sichten. Bis jemand zurückruft, ist die Anfrage kalt.</p>
+                        </article>
+                    </div>
                 </div>
                 <div class="icp-grid">
                     <article class="icp-card icp-card--yes">
                         <span class="icp-card__badge" aria-hidden="true"><i data-lucide="check"></i></span>
                         <h3 class="icp-card__heading">Passt</h3>
                         <ul>
-                            <li><span class="icp-mark" aria-hidden="true"><i data-lucide="check"></i></span> 5 bis 200 Mitarbeitende</li>
-                            <li><span class="icp-mark" aria-hidden="true"><i data-lucide="check"></i></span> Wiederkehrende Prozesse mit Volumen</li>
-                            <li><span class="icp-mark" aria-hidden="true"><i data-lucide="check"></i></span> Bestehende Tools und CRMs</li>
+                            <li><span class="icp-mark" aria-hidden="true"><i data-lucide="check"></i></span> Ab etwa zehn Anfragen pro Woche</li>
+                            <li><span class="icp-mark" aria-hidden="true"><i data-lucide="check"></i></span> Anfragen aus Portalen, Website und Telefon</li>
+                            <li><span class="icp-mark" aria-hidden="true"><i data-lucide="check"></i></span> Bestehendes Makler-CRM, das bleiben soll</li>
                             <li><span class="icp-mark" aria-hidden="true"><i data-lucide="check"></i></span> Offenheit für KI und Datenverantwortung</li>
                         </ul>
                     </article>
@@ -1842,7 +1767,7 @@
                         <span class="icp-card__badge" aria-hidden="true"><i data-lucide="x"></i></span>
                         <h3 class="icp-card__heading">Passt nicht</h3>
                         <ul>
-                            <li><span class="icp-mark" aria-hidden="true"><i data-lucide="x"></i></span> Kaum wiederkehrende Prozesse</li>
+                            <li><span class="icp-mark" aria-hidden="true"><i data-lucide="x"></i></span> Wenige Anfragen, jede ein Einzelfall</li>
                             <li><span class="icp-mark" aria-hidden="true"><i data-lucide="x"></i></span> Nur Strategiepapiere, keine Umsetzung</li>
                             <li><span class="icp-mark" aria-hidden="true"><i data-lucide="x"></i></span> Keine Bereitschaft zu klaren Freigaben</li>
                         </ul>
@@ -1851,7 +1776,7 @@
                 <!-- Autorität entsteht durch die Bereitschaft, Nein zu sagen. -->
                 <div class="beweis-negativ" style="margin-top:2rem;max-width:44rem;">
                     <span class="beweis-negativ__label">Wovon wir abraten</span>
-                    <p>Von Automatisierung bei Vorgängen unter etwa zehn Fällen pro Woche. Von KI dort, wo eine Vorlage oder eine saubere Checkliste denselben Effekt hat. Von jedem System, das eine Entscheidung trifft, für die am Ende ein Mensch geradestehen muss.</p>
+                    <p>Von Automatisierung bei weniger als etwa zehn Anfragen pro Woche. Von KI dort, wo eine Vorlage oder eine saubere Checkliste denselben Effekt hat. Von jedem System, das eine Entscheidung trifft, für die am Ende ein Mensch geradestehen muss.</p>
                 </div>
             </div>
         </section>
@@ -2102,13 +2027,7 @@
       </details></li>
     </ul>
     <div class="branchen" id="branchen">
-      <div class="branchen__tablist" role="tablist" aria-label="Branchen">
-        <button type="button" class="branchen__tab" role="tab" id="branche-tab-immobilien" aria-controls="branche-panel-immobilien" aria-selected="true" tabindex="0">Immobilien</button>
-        <button type="button" class="branchen__tab" role="tab" id="branche-tab-handwerk" aria-controls="branche-panel-handwerk" aria-selected="false" tabindex="-1">Handwerk und Bau</button>
-        <button type="button" class="branchen__tab" role="tab" id="branche-tab-handel" aria-controls="branche-panel-handel" aria-selected="false" tabindex="-1">Handel und Großhandel</button>
-        <button type="button" class="branchen__tab" role="tab" id="branche-tab-beratung" aria-controls="branche-panel-beratung" aria-selected="false" tabindex="-1">Agenturen und Beratung</button>
-      </div>
-      <section class="branchen__panel" id="branche-panel-immobilien" role="tabpanel" aria-labelledby="branche-tab-immobilien">
+      <section class="branchen__panel is-active" id="branche-panel-immobilien">
         <h3 class="branchen__panel-title" id="branche-immobilien">Maklerbüros und Hausverwaltungen</h3>
         <p class="section-sub">Unsere Referenzbranche. Hier sind die Prozesse am dichtesten dokumentiert.</p>
     <ul class="akte-register">
@@ -2159,164 +2078,11 @@
     </ul>
       <p class="branchen__note">Alle 5 Einträge für Immobilien stehen in der <a href="referenzen.html#branche-immobilien">vollständigen Liste</a>.</p>
       </section>
-      <section class="branchen__panel" id="branche-panel-handwerk" role="tabpanel" aria-labelledby="branche-tab-handwerk">
-        <h3 class="branchen__panel-title" id="branche-handwerk">SHK, Elektro, Bau und Ausbau</h3>
-        <p class="section-sub">Viele kurze Vorgänge, wenig Zeit im Büro und ein Team, das überwiegend auf der Baustelle ist.</p>
-    <ul class="akte-register">
-      <li class="akte-item" data-search="angebotsanfragen aufnehmen eine anfrage kommt per telefon oder formular, oft während niemand im büro ist. telefonie, formular, kalender, handwerkersoftware hwk-a"><details class="akte">
-        <summary class="akte__head">
-          <span class="akte__code">HWK-A</span>
-          <span class="akte__title">Angebotsanfragen aufnehmen</span>
-          <span class="akte__trigger">Auslöser: Eine Anfrage kommt per Telefon oder Formular, oft während niemand im Büro ist.</span>
-          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
-        </summary>
-        <div class="akte__body">
-          <dl class="akte__rows">
-            <dt>Ablauf</dt>
-            <dd><ol class="akte__flow"><li class="akte__flow-step">Anliegen und Objekt aufnehmen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Leistungsart und Dringlichkeit klären</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Auf Machbarkeit im Gebiet prüfen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Ortstermin vorschlagen</li></ol></dd>
-            <dt>Übergabe</dt>
-            <dd>Der fertige Vorgang liegt morgens mit allen Angaben zur Kalkulation bereit.</dd>
-            <dt>Anbindung</dt>
-            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-phone"></use></svg>Telefonie</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-form"></use></svg>Formular</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-calendar"></use></svg>Kalender</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-tool"></use></svg>Handwerkersoftware</li></ul></dd>
-          </dl>
-          <p class="akte__limit">
-            <span class="akte__limit-label">Nicht im Zug</span>
-            Keine Preisangaben, keine Terminzusagen ohne Abgleich mit Ihrer Disposition.
-          </p>
-        </div>
-      </details></li>
-      <li class="akte-item" data-search="terminfenster und disposition ein termin fällt aus oder ein notdienst schiebt sich dazwischen. kalender, handwerkersoftware, sms und mail hwk-b"><details class="akte">
-        <summary class="akte__head">
-          <span class="akte__code">HWK-B</span>
-          <span class="akte__title">Terminfenster und Disposition</span>
-          <span class="akte__trigger">Auslöser: Ein Termin fällt aus oder ein Notdienst schiebt sich dazwischen.</span>
-          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
-        </summary>
-        <div class="akte__body">
-          <dl class="akte__rows">
-            <dt>Ablauf</dt>
-            <dd><ol class="akte__flow"><li class="akte__flow-step">Betroffene Termine erkennen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Kunden informieren</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Ersatzfenster anbieten</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Kalender nachziehen</li></ol></dd>
-            <dt>Übergabe</dt>
-            <dd>Verschiebungen bei Großaufträgen entscheidet immer die Disposition.</dd>
-            <dt>Anbindung</dt>
-            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-calendar"></use></svg>Kalender</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-tool"></use></svg>Handwerkersoftware</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>SMS und Mail</li></ul></dd>
-          </dl>
-          <p class="akte__limit">
-            <span class="akte__limit-label">Nicht im Zug</span>
-            Keine eigenständige Umplanung von Terminen mit Fristbindung oder Abnahme.
-          </p>
-        </div>
-      </details></li>
-    </ul>
-      <p class="branchen__note">Alle 4 Einträge für Handwerk und Bau stehen in der <a href="referenzen.html#branche-handwerk">vollständigen Liste</a>.</p>
-      </section>
-      <section class="branchen__panel" id="branche-panel-handel" role="tabpanel" aria-labelledby="branche-tab-handel">
-        <h3 class="branchen__panel-title" id="branche-handel">Handel, Großhandel und E-Commerce</h3>
-        <p class="section-sub">Hohes Belegvolumen, viele gleichförmige Rückfragen und Stammdaten, die nie ganz aktuell sind.</p>
-    <ul class="akte-register">
-      <li class="akte-item" data-search="bestell- und lieferantenpost bestellungen und auftragsbestätigungen kommen als pdf oder mail in unterschiedlichen formaten. postfach, warenwirtschaft, dateiablage hdl-a"><details class="akte">
-        <summary class="akte__head">
-          <span class="akte__code">HDL-A</span>
-          <span class="akte__title">Bestell- und Lieferantenpost</span>
-          <span class="akte__trigger">Auslöser: Bestellungen und Auftragsbestätigungen kommen als PDF oder Mail in unterschiedlichen Formaten.</span>
-          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
-        </summary>
-        <div class="akte__body">
-          <dl class="akte__rows">
-            <dt>Ablauf</dt>
-            <dd><ol class="akte__flow"><li class="akte__flow-step">Beleg erkennen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Positionen auslesen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Gegen die Bestellung prüfen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">In die Warenwirtschaft schreiben</li></ol></dd>
-            <dt>Übergabe</dt>
-            <dd>Abweichungen bei Menge, Preis oder Termin gehen an den Einkauf, nicht ins System.</dd>
-            <dt>Anbindung</dt>
-            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>Postfach</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-box"></use></svg>Warenwirtschaft</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-files"></use></svg>Dateiablage</li></ul></dd>
-          </dl>
-          <p class="akte__limit">
-            <span class="akte__limit-label">Nicht im Zug</span>
-            Keine Freigabe von Zahlungen, keine Bestellauslösung, keine Änderung von Konditionen.
-          </p>
-        </div>
-      </details></li>
-      <li class="akte-item" data-search="retouren und reklamationen ein kunde meldet eine rücksendung oder einen defekt. shop, warenwirtschaft, versanddienstleister, postfach hdl-b"><details class="akte">
-        <summary class="akte__head">
-          <span class="akte__code">HDL-B</span>
-          <span class="akte__title">Retouren und Reklamationen</span>
-          <span class="akte__trigger">Auslöser: Ein Kunde meldet eine Rücksendung oder einen Defekt.</span>
-          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
-        </summary>
-        <div class="akte__body">
-          <dl class="akte__rows">
-            <dt>Ablauf</dt>
-            <dd><ol class="akte__flow"><li class="akte__flow-step">Bestellung zuordnen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Fall kategorisieren</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Rücksendeunterlagen erzeugen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Status an den Kunden melden</li></ol></dd>
-            <dt>Übergabe</dt>
-            <dd>Kulanz und Erstattung oberhalb des vereinbarten Betrags entscheidet ein Mensch.</dd>
-            <dt>Anbindung</dt>
-            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-box"></use></svg>Shop</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-box"></use></svg>Warenwirtschaft</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-box"></use></svg>Versanddienstleister</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>Postfach</li></ul></dd>
-          </dl>
-          <p class="akte__limit">
-            <span class="akte__limit-label">Nicht im Zug</span>
-            Keine Erstattungen, keine Gutschriften, keine Zusagen zu Fristen außerhalb Ihrer Regeln.
-          </p>
-        </div>
-      </details></li>
-    </ul>
-      <p class="branchen__note">Alle 4 Einträge für Handel und Großhandel stehen in der <a href="referenzen.html#branche-handel">vollständigen Liste</a>.</p>
-      </section>
-      <section class="branchen__panel" id="branche-panel-beratung" role="tabpanel" aria-labelledby="branche-tab-beratung">
-        <h3 class="branchen__panel-title" id="branche-beratung">Agenturen, Coaches und Beratungen</h3>
-        <p class="section-sub">Wenig Verwaltung im Team, dafür viel Abstimmung rund um Anfragen, Onboarding und Projektstatus.</p>
-    <ul class="akte-register">
-      <li class="akte-item" data-search="anfragen qualifizieren und erstgespräch vorbereiten eine anfrage kommt über website, empfehlung oder ein soziales netzwerk. website-formular, kalender, crm agt-a"><details class="akte">
-        <summary class="akte__head">
-          <span class="akte__code">AGT-A</span>
-          <span class="akte__title">Anfragen qualifizieren und Erstgespräch vorbereiten</span>
-          <span class="akte__trigger">Auslöser: Eine Anfrage kommt über Website, Empfehlung oder ein soziales Netzwerk.</span>
-          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
-        </summary>
-        <div class="akte__body">
-          <dl class="akte__rows">
-            <dt>Ablauf</dt>
-            <dd><ol class="akte__flow"><li class="akte__flow-step">Anliegen und Ausgangslage erfragen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Passung zu Ihrem Angebot prüfen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Termin vorschlagen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Gesprächsnotiz vorbereiten</li></ol></dd>
-            <dt>Übergabe</dt>
-            <dd>Sie gehen mit einer fertigen Vorbereitung ins Gespräch, nicht mit einer leeren Seite.</dd>
-            <dt>Anbindung</dt>
-            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-form"></use></svg>Website-Formular</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-calendar"></use></svg>Kalender</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-crm"></use></svg>CRM</li></ul></dd>
-          </dl>
-          <p class="akte__limit">
-            <span class="akte__limit-label">Nicht im Zug</span>
-            Keine Honorarangaben, keine Zusagen zu Kapazität oder Startterminen.
-          </p>
-        </div>
-      </details></li>
-      <li class="akte-item" data-search="kunden-onboarding ein angebot ist angenommen. postfach, kalender, projektwerkzeug, dateiablage agt-b"><details class="akte">
-        <summary class="akte__head">
-          <span class="akte__code">AGT-B</span>
-          <span class="akte__title">Kunden-Onboarding</span>
-          <span class="akte__trigger">Auslöser: Ein Angebot ist angenommen.</span>
-          <span class="akte__toggle"><span class="akte__toggle-closed">Eintrag öffnen</span><span class="akte__toggle-open">Eintrag schließen</span></span>
-        </summary>
-        <div class="akte__body">
-          <dl class="akte__rows">
-            <dt>Ablauf</dt>
-            <dd><ol class="akte__flow"><li class="akte__flow-step">Unterlagen und Zugänge anfordern</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Vollständigkeit prüfen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Projektraum und Termine anlegen</li><li class="akte__flow-arrow" aria-hidden="true"><svg class="ico"><use href="#i-arrow"></use></svg></li><li class="akte__flow-step">Startfreigabe melden</li></ol></dd>
-            <dt>Übergabe</dt>
-            <dd>Fehlt nach zwei Erinnerungen etwas, meldet sich das System bei Ihnen statt beim Kunden.</dd>
-            <dt>Anbindung</dt>
-            <dd><ul class="akte__systems"><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-mail"></use></svg>Postfach</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-calendar"></use></svg>Kalender</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-board"></use></svg>Projektwerkzeug</li><li class="akte__sys"><svg class="ico" aria-hidden="true"><use href="#i-files"></use></svg>Dateiablage</li></ul></dd>
-          </dl>
-          <p class="akte__limit">
-            <span class="akte__limit-label">Nicht im Zug</span>
-            Keine Vertragsänderungen, keine Aufnahme von Zahlungsdaten, keine Zusagen zum Leistungsumfang.
-          </p>
-        </div>
-      </details></li>
-    </ul>
-      <p class="branchen__note">Alle 4 Einträge für Agenturen und Beratung stehen in der <a href="referenzen.html#branche-beratung">vollständigen Liste</a>.</p>
-      </section>
     </div>
                 <!-- systemakte:end -->
                 <div class="home-cta-row">
                     <button type="button" class="btn-primary js-open-booking" data-source="systemakte">Passendes System besprechen</button>
-                    <a class="home-cta-link" href="referenzen.html">Alle 24 Systeme im Katalog</a>
+                    <a class="home-cta-link" href="referenzen.html">Alle Systeme im Katalog</a>
                 </div>
             </div>
         </section>
@@ -2712,7 +2478,7 @@
             <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
           </summary>
           <div class="akte__body">
-            <p>Ja, im Einzelfall. Immobilien, Handwerk, Handel und Beratung sind die Bereiche, in denen wir die meisten Prozesse dokumentiert haben. Wenn wir in Ihrem Fall keinen echten Mehrwert sehen, sagen wir ab, statt ein Projekt anzunehmen.</p>
+            <p>Ja, im Einzelfall. Immobilien ist der Bereich, in dem wir die meisten Prozesse dokumentiert haben. Die Systeme selbst sind nicht immobilienspezifisch, ein Anfrageeingang mit Prüfung und Übergabe sieht anderswo ähnlich aus. Wenn wir in Ihrem Fall keinen echten Mehrwert sehen, sagen wir ab, statt ein Projekt anzunehmen.</p>
           </div>
         </details></li>
       </ul>
@@ -2865,10 +2631,13 @@
                         </article>
                     </div>
 
+                    <!-- Kein vorgeschaltetes Formular mehr. Der Kalender steht
+                         direkt hier, die Qualifizierungsfragen sind Pflichtfelder
+                         in der Buchungsmaske. Bis zur Einwilligung zeigt der
+                         Container den Platzhalter aus scripts/cal-embed.js. -->
                     <div class="contact-deliver__cta">
-                        <button type="button" id="contact-demo-btn" class="cal-load-btn js-open-booking" data-source="contact">
-                            Kostenlosen KI-Audit buchen
-                        </button>
+                        <p class="cal-card-sub">20 Minuten, kostenlos. Drei konkrete Automatisierungs-Ideen für Ihren Betrieb.</p>
+                        <div class="cal-inline cal-inline--contact" data-cal-inline data-source="contact" id="cal-inline-contact"></div>
                         <p class="contact-deliver__trust">Kevin Ritz · KI-Audit · kein Verkaufsdruck</p>
                         <div class="contact-details contact-details--inline">
                             <a href="mailto:kevin@ritz-ai.solutions" class="contact-detail-link">kevin@ritz-ai.solutions</a>
@@ -3117,80 +2886,14 @@
     <button class="bm-close" id="bm-close" type="button" aria-label="Schließen">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
-    <div class="bm-progress" id="bm-progress">
-      <div class="bm-dot" data-step="0"></div>
-      <div class="bm-dot" data-step="1"></div>
-      <div class="bm-dot" data-step="2"></div>
-    </div>
     <div class="bm-step is-active" id="bm-step-0">
-      <p class="bm-label">Schritt 1 von 2</p>
-      <h2 class="bm-title">Ihre Kontaktdaten</h2>
-      <p class="bm-sub">Damit wir den KI-Audit vorbereiten und Sie erreichen können.</p>
-      <div class="bm-field">
-        <label for="bm-name">Ihr Name</label>
-        <input type="text" id="bm-name" placeholder="Max Mustermann" autocomplete="name" maxlength="200">
-      </div>
-      <div class="bm-field">
-        <label for="bm-email">E-Mail-Adresse</label>
-        <input type="email" id="bm-email" placeholder="max@muster.de" autocomplete="email" maxlength="254">
-      </div>
-      <div class="bm-field">
-        <label for="bm-phone">Telefon</label>
-        <input type="tel" id="bm-phone" placeholder="+49 170 1234567" autocomplete="tel" maxlength="40" inputmode="tel">
-      </div>
-      <div class="bm-field" style="position:absolute;left:-9999px;" aria-hidden="true">
-        <label for="bm-website">Website</label>
-        <input type="text" id="bm-website" name="website" tabindex="-1" autocomplete="off">
-      </div>
-      <label class="bm-check" for="bm-privacy">
-        <input type="checkbox" id="bm-privacy" required>
-        <span>Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a> gelesen.</span>
-      </label>
-      <div class="bm-actions">
-        <button type="button" class="bm-btn-next" id="bm-next-0">Weiter</button>
-      </div>
-    </div>
-    <div class="bm-step" id="bm-step-1">
-      <p class="bm-label">Schritt 2 von 2</p>
-      <h2 class="bm-title">Ihr Engpass und Volumen</h2>
-      <p class="bm-sub">Wo verlieren Sie die meiste Zeit, und wie oft tritt das auf?</p>
-      <div class="bm-field">
-        <label for="bm-engpass">Haupt-Engpass</label>
-        <select id="bm-engpass" class="bm-select">
-          <option value="">Bitte wählen</option>
-          <option value="lead-qualifizierung">Lead-Qualifizierung und Erstkontakt</option>
-          <option value="bestandskunden">Bestandskunden-Kommunikation</option>
-          <option value="support">Support und Ticketing</option>
-          <option value="reporting">Reporting und Datenpflege</option>
-          <option value="sonstiges">Sonstiger Prozess</option>
-        </select>
-      </div>
-      <div class="bm-slider-block">
-        <div class="bm-slider-value" aria-live="polite">
-          <span id="bm-volume-display">80</span>
-          <span class="bm-slider-unit">Vorgänge / Woche</span>
-        </div>
-        <input type="range" id="bm-volume" class="bm-slider" min="0" max="300" step="5" value="80" aria-valuemin="0" aria-valuemax="300" aria-valuenow="80" aria-label="Vorgänge pro Woche">
-        <div class="bm-slider-scale" aria-hidden="true">
-          <span>0</span>
-          <span>150</span>
-          <span>300</span>
-        </div>
-      </div>
-      <div class="bm-actions">
-        <button type="button" class="bm-btn-back" id="bm-back-1">Zurück</button>
-        <button type="button" class="bm-btn-next" id="bm-next-1">Termin buchen</button>
-      </div>
-    </div>
-    <div class="bm-step" id="bm-step-2">
-      <p class="bm-label">Fast geschafft</p>
       <h2 class="bm-title">Wählen Sie Ihren Termin</h2>
-      <p class="bm-sub">60 Minuten, kostenlos. Die Buchung öffnet sich bei Cal.com in einem neuen Tab. Es werden keine Angaben aus diesem Formular an Cal.com übergeben.</p>
-      <p class="bm-sub" id="bm-submit-status" role="status" aria-live="polite"></p>
+      <p class="bm-sub">20 Minuten, kostenlos. Sie geben Ihre Angaben direkt im Kalender ein, ein zweites Formular gibt es nicht.</p>
       <div class="bm-cal-wrap" id="bm-cal-wrap"></div>
     </div>
   </div>
 </div>
+<script src="scripts/cal-embed.js"></script>
 <script src="scripts/booking-modal.js"></script>
 <script src="scripts/branchen-tabs.js"></script>
 

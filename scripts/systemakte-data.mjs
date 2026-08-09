@@ -36,9 +36,11 @@
  * FLAGGSCHIFFE UND EIGENE SEITEN
  *
  * Nur Eintraege mit `slug` bekommen eine Unterseite. Aktuell sind das die
- * fuenf universellen Systeme, weil sie in allen vier Branchen greifen.
+ * fuenf universellen Systeme, weil sie branchenunabhaengig greifen. Sie
+ * haengen bewusst an UNIVERSAL und nicht an einer Branche, deshalb hat
+ * das Abschalten von Branchen keine Unterseite entfernt.
  *
- * Bewusst nicht alle 24: ein Eintrag traegt rund 80 Woerter. Vierundzwanzig
+ * Bewusst nicht jeder: ein Eintrag traegt rund 80 Woerter. Zwei Dutzend
  * Seiten daraus waeren duenne Doorway-Seiten ohne Nutzen fuer Leser und mit
  * Abstrafungsrisiko bei Google. Wer einen weiteren Eintrag zur Seite machen
  * will, schreibt vorher den Inhalt dafuer.
@@ -180,8 +182,16 @@ export const UNIVERSAL = [
   },
 ];
 
-/** Branchen. Immobilien ist die Referenzbranche und steht zuerst. */
-export const BRANCHEN = [
+/**
+ * Branchen. Immobilien ist die Referenzbranche und steht zuerst.
+ *
+ * Seit 09.08.2026 zeigt die Seite nur noch Immobilien, passend zur
+ * Makler-Ansprache in Hero und `#zielgruppe`. Die anderen drei tragen
+ * `active: false` und werden von der Ausleitung unten herausgefiltert.
+ * Die Daten bleiben absichtlich stehen, das Zurueckholen einer Branche
+ * ist damit das Entfernen einer Zeile und keine Recherche im Git-Log.
+ */
+const ALL_BRANCHEN = [
   {
     slug: 'immobilien',
     label: 'Immobilien',
@@ -283,6 +293,7 @@ export const BRANCHEN = [
     ],
   },
   {
+    active: false,
     slug: 'handwerk',
     label: 'Handwerk und Bau',
     title: 'SHK, Elektro, Bau und Ausbau',
@@ -362,6 +373,7 @@ export const BRANCHEN = [
     ],
   },
   {
+    active: false,
     slug: 'handel',
     label: 'Handel und Großhandel',
     title: 'Handel, Großhandel und E-Commerce',
@@ -441,6 +453,7 @@ export const BRANCHEN = [
     ],
   },
   {
+    active: false,
     slug: 'beratung',
     label: 'Agenturen und Beratung',
     title: 'Agenturen, Coaches und Beratungen',
@@ -520,6 +533,25 @@ export const BRANCHEN = [
     ],
   },
 ];
+
+/**
+ * Was die Seite tatsaechlich zeigt. Eine Branche auf `active: false`
+ * verschwindet aus den Reitern, aus dem Systemkatalog und aus
+ * flagships(), ohne dass ihre Eintraege verloren gehen.
+ */
+export const BRANCHEN = ALL_BRANCHEN.filter((b) => b.active !== false);
+
+/**
+ * Wie viele Systeme der Katalog tatsaechlich zeigt.
+ *
+ * Stand bis 09.08.2026 an vier Stellen als "24" im Text. Nach dem
+ * Abschalten von drei Branchen waren es 12, die Seite haette also eine
+ * Zahl behauptet, die der Besucher nicht nachzaehlen kann. Zahlen ueber
+ * den eigenen Bestand gehoeren abgeleitet, nicht getippt.
+ */
+export function systemCount() {
+  return UNIVERSAL.length + BRANCHEN.reduce((n, b) => n + b.records.length, 0);
+}
 
 /* ── Rendering ────────────────────────────────────────────────────────────── */
 
@@ -654,6 +686,12 @@ export function renderBranchen({ limit = 0, linkTo = '', cta = false } = {}) {
       `        <button type="button" class="branchen__tab" role="tab" id="branche-tab-${b.slug}" aria-controls="branche-panel-${b.slug}" aria-selected="${i === 0 ? 'true' : 'false'}" tabindex="${i === 0 ? '0' : '-1'}">${esc(b.label)}</button>`
   ).join('\n');
 
+  /* Eine einzelne Branche braucht keine Reiterleiste. Ein Tablist mit
+     genau einem Tab ist Bedienelement ohne Auswahl, und die
+     Tab-Rollen wuerden nur Screenreadern eine Navigation ankuendigen,
+     die es nicht gibt. */
+  const single = BRANCHEN.length < 2;
+
   const panels = BRANCHEN.map((b) => {
     const recs = limit > 0 ? b.records.slice(0, limit) : b.records;
     const more =
@@ -662,18 +700,25 @@ export function renderBranchen({ limit = 0, linkTo = '', cta = false } = {}) {
         : b.moreHref
           ? `\n      <p class="branchen__note"><a href="${b.moreHref}">${esc(b.moreLabel)}</a></p>`
           : '';
-    return `      <section class="branchen__panel" id="branche-panel-${b.slug}" role="tabpanel" aria-labelledby="branche-tab-${b.slug}">
+    const panelAttrs = single
+      ? `id="branche-panel-${b.slug}"`
+      : `id="branche-panel-${b.slug}" role="tabpanel" aria-labelledby="branche-tab-${b.slug}"`;
+    return `      <section class="branchen__panel${single ? ' is-active' : ''}" ${panelAttrs}>
         <h3 class="branchen__panel-title" id="branche-${b.slug}">${esc(b.title)}</h3>
         <p class="section-sub">${esc(b.lead)}</p>
 ${renderRegister(recs, { cta })}${more}
       </section>`;
   }).join('\n');
 
-  return `    <div class="branchen" id="branchen">
-      <div class="branchen__tablist" role="tablist" aria-label="Branchen">
+  const tablist = single
+    ? ''
+    : `      <div class="branchen__tablist" role="tablist" aria-label="Branchen">
 ${tabs}
       </div>
-${panels}
+`;
+
+  return `    <div class="branchen" id="branchen">
+${tablist}${panels}
     </div>`;
 }
 

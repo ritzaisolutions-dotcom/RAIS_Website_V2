@@ -144,7 +144,7 @@
     <h2 class="section-h2" id="sys-grenze-title">Was dieses System ausdrücklich nicht tut</h2>
     <p class="section-sub">Keine Kulanzentscheidungen, keine Zusagen zu Preisen und Fristen, keine Auskunft zu laufenden Verträgen.</p>
     <p class="sys-grenze-note">Ein System, das seine Grenze nicht kennt, gehört nicht in Ihren Betrieb. Deshalb steht sie hier und nicht im Kleingedruckten.</p>
-    <p style="margin-top:2rem;"><a class="home-cta-link" href="referenzen.html">Alle 24 Systeme im Katalog</a></p>
+    <p style="margin-top:2rem;"><a class="home-cta-link" href="referenzen.html">Alle 12 Systeme im Katalog</a></p>
   </div>
 </section>
 </main>
@@ -153,14 +153,14 @@
     <div class="contact-grid">
       <div class="contact-text-col">
         <span class="mono-label">Kostenlose KI-Audits</span>
-        <h2 class="section-h2">60 Minuten. Kostenlos. Klare nächste Schritte.</h2>
+        <h2 class="section-h2">20 Minuten. Kostenlos. Klare nächste Schritte.</h2>
         <p class="contact-copy">Wir analysieren Ihre Prozesse und zeigen, wo Zeit verloren geht. Sie bekommen drei umsetzbare Use Cases.</p>
         <p class="contact-copy">Kein Verkaufsdruck. Blueprint inklusive.</p>
       </div>
       <div class="cal-embed-wrap">
         <p class="cal-card-title">Kostenlosen KI-Audit buchen</p>
-        <p class="cal-card-sub">60 Minuten, kostenlos. Drei konkrete Automatisierungs-Ideen für Ihren Betrieb.</p>
-        <button type="button" id="contact-demo-btn" class="cal-load-btn js-open-booking" data-source="contact">Kostenlosen KI-Audit buchen</button>
+        <p class="cal-card-sub">20 Minuten, kostenlos. Drei konkrete Automatisierungs-Ideen für Ihren Betrieb.</p>
+        <div class="cal-inline" data-cal-inline data-source="contact" id="cal-inline-contact"></div>
       </div>
     </div>
     <div class="contact-details">
@@ -201,82 +201,16 @@
     <button class="bm-close" id="bm-close" type="button" aria-label="Schließen">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
-    <div class="bm-progress" id="bm-progress">
-      <div class="bm-dot" data-step="0"></div>
-      <div class="bm-dot" data-step="1"></div>
-      <div class="bm-dot" data-step="2"></div>
-    </div>
     <div class="bm-step is-active" id="bm-step-0">
-      <p class="bm-label">Schritt 1 von 2</p>
-      <h2 class="bm-title">Ihre Kontaktdaten</h2>
-      <p class="bm-sub">Damit wir den KI-Audit vorbereiten und Sie erreichen können.</p>
-      <div class="bm-field">
-        <label for="bm-name">Ihr Name</label>
-        <input type="text" id="bm-name" placeholder="Max Mustermann" autocomplete="name" maxlength="200">
-      </div>
-      <div class="bm-field">
-        <label for="bm-email">E-Mail-Adresse</label>
-        <input type="email" id="bm-email" placeholder="max@muster.de" autocomplete="email" maxlength="254">
-      </div>
-      <div class="bm-field">
-        <label for="bm-phone">Telefon</label>
-        <input type="tel" id="bm-phone" placeholder="+49 170 1234567" autocomplete="tel" maxlength="40" inputmode="tel">
-      </div>
-      <div class="bm-field" style="position:absolute;left:-9999px;" aria-hidden="true">
-        <label for="bm-website">Website</label>
-        <input type="text" id="bm-website" name="website" tabindex="-1" autocomplete="off">
-      </div>
-      <label class="bm-check" for="bm-privacy">
-        <input type="checkbox" id="bm-privacy" required>
-        <span>Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a> gelesen.</span>
-      </label>
-      <div class="bm-actions">
-        <button type="button" class="bm-btn-next" id="bm-next-0">Weiter</button>
-      </div>
-    </div>
-    <div class="bm-step" id="bm-step-1">
-      <p class="bm-label">Schritt 2 von 2</p>
-      <h2 class="bm-title">Ihr Engpass und Volumen</h2>
-      <p class="bm-sub">Wo verlieren Sie die meiste Zeit, und wie oft tritt das auf?</p>
-      <div class="bm-field">
-        <label for="bm-engpass">Haupt-Engpass</label>
-        <select id="bm-engpass" class="bm-select">
-          <option value="">Bitte wählen</option>
-          <option value="lead-qualifizierung">Lead-Qualifizierung und Erstkontakt</option>
-          <option value="bestandskunden">Bestandskunden-Kommunikation</option>
-          <option value="support">Support und Ticketing</option>
-          <option value="reporting">Reporting und Datenpflege</option>
-          <option value="sonstiges">Sonstiger Prozess</option>
-        </select>
-      </div>
-      <div class="bm-slider-block">
-        <div class="bm-slider-value" aria-live="polite">
-          <span id="bm-volume-display">80</span>
-          <span class="bm-slider-unit">Vorgänge / Woche</span>
-        </div>
-        <input type="range" id="bm-volume" class="bm-slider" min="0" max="300" step="5" value="80" aria-valuemin="0" aria-valuemax="300" aria-valuenow="80" aria-label="Vorgänge pro Woche">
-        <div class="bm-slider-scale" aria-hidden="true">
-          <span>0</span>
-          <span>150</span>
-          <span>300</span>
-        </div>
-      </div>
-      <div class="bm-actions">
-        <button type="button" class="bm-btn-back" id="bm-back-1">Zurück</button>
-        <button type="button" class="bm-btn-next" id="bm-next-1">Termin buchen</button>
-      </div>
-    </div>
-    <div class="bm-step" id="bm-step-2">
-      <p class="bm-label">Fast geschafft</p>
       <h2 class="bm-title">Wählen Sie Ihren Termin</h2>
-      <p class="bm-sub">60 Minuten, kostenlos. Die Buchung öffnet sich bei Cal.com in einem neuen Tab. Es werden keine Angaben aus diesem Formular an Cal.com übergeben.</p>
-      <p class="bm-sub" id="bm-submit-status" role="status" aria-live="polite"></p>
+      <p class="bm-sub">20 Minuten, kostenlos. Sie geben Ihre Angaben direkt im Kalender ein, ein zweites Formular gibt es nicht.</p>
       <div class="bm-cal-wrap" id="bm-cal-wrap"></div>
     </div>
   </div>
 </div>
 
 <script src="scripts/site-nav.js"></script>
+<script src="scripts/cal-embed.js"></script>
 <script src="scripts/booking-modal.js"></script>
 </body>
 </html>

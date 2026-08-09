@@ -1,46 +1,46 @@
 {
   "index.html": {
-    "hash": "b36d3de05507e2d2",
-    "lastmod": "2026-07-30"
+    "hash": "675bcae3c42d400a",
+    "lastmod": "2026-08-09"
   },
   "ams.html": {
-    "hash": "37cf70942dc529a9",
-    "lastmod": "2026-08-05"
+    "hash": "380ec338733aa0e8",
+    "lastmod": "2026-08-09"
   },
   "referenzen.html": {
-    "hash": "7a2d4544179b15a9",
-    "lastmod": "2026-08-05"
+    "hash": "8c9c2d3b09d72fd0",
+    "lastmod": "2026-08-09"
   },
   "zusammenarbeit.html": {
-    "hash": "276d46944beb1a2b",
-    "lastmod": "2026-07-30"
+    "hash": "b680cac68f150144",
+    "lastmod": "2026-08-09"
   },
   "ueber-uns.html": {
-    "hash": "58deec0a2340129f",
-    "lastmod": "2026-07-30"
+    "hash": "d346fe004be09735",
+    "lastmod": "2026-08-09"
   },
   "persoenlichkeit.html": {
-    "hash": "3cca227d6285bccf",
-    "lastmod": "2026-07-30"
+    "hash": "6c3cbd7c40191f72",
+    "lastmod": "2026-08-09"
   },
   "system-anfragen-qualifizieren.html": {
-    "hash": "29885c312fff150a",
-    "lastmod": "2026-08-05"
+    "hash": "2171cb9cd30376df",
+    "lastmod": "2026-08-09"
   },
   "system-support-agent.html": {
-    "hash": "09c228c0f6ed2c3d",
-    "lastmod": "2026-08-05"
+    "hash": "7d105592ac108569",
+    "lastmod": "2026-08-09"
   },
   "system-onboarding.html": {
-    "hash": "1389a58fb47491a8",
-    "lastmod": "2026-08-05"
+    "hash": "f35c8fdc47f2a5a6",
+    "lastmod": "2026-08-09"
   },
   "system-dokumente-auslesen.html": {
-    "hash": "7752e4a9dd58d8c1",
-    "lastmod": "2026-08-05"
+    "hash": "5cc20583c244ccab",
+    "lastmod": "2026-08-09"
   },
   "system-reporting.html": {
-    "hash": "71eab2f33ae8cd9f",
-    "lastmod": "2026-08-05"
+    "hash": "cac3297579320294",
+    "lastmod": "2026-08-09"
   }
 }

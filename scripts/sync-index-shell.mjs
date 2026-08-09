@@ -135,14 +135,24 @@ if (cutEnd < 0) {
 let before = html.slice(0, modalStart);
 before = before.replace(/\s*<script src="scripts\/site-nav\.js"><\/script>\s*$/m, '\n');
 
+// cal-embed.js muss vor booking-modal.js stehen, das Modal ruft
+// beim Oeffnen window.RAISCal.mount auf.
+const modalScripts =
+  '\n<script src="scripts/cal-embed.js"></script>' +
+  '\n<script src="scripts/booking-modal.js"></script>\n\n';
+
 const after = html.slice(cutEnd);
 html =
   before +
   bookingModalHtml.trim() +
-  '\n<script src="scripts/booking-modal.js"></script>\n\n' +
+  modalScripts +
   after;
 
 // Remove duplicate booking-modal.js if tilt block already had nothing and we doubled
+html = html.replace(
+  /(<script src="scripts\/cal-embed\.js"><\/script>\s*){2,}/g,
+  '<script src="scripts/cal-embed.js"></script>\n'
+);
 html = html.replace(
   /(<script src="scripts\/booking-modal\.js"><\/script>\s*){2,}/g,
   '<script src="scripts/booking-modal.js"></script>\n'
