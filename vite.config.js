@@ -19,6 +19,7 @@ export default defineConfig({
         zusammenarbeit: resolve(__dirname, 'zusammenarbeit.html'),
         ueberUns: resolve(__dirname, 'ueber-uns.html'),
         persoenlichkeit: resolve(__dirname, 'persoenlichkeit.html'),
+        aiRoadmap: resolve(__dirname, 'ai-roadmap.html'),
         // Flaggschiff-Systemseiten. Erzeugt von scripts/build-pages.mjs aus
         // allen Eintraegen mit `slug` in scripts/systemakte-data.mjs.
         // Kein Globbing hier: wer dort einen Slug ergaenzt, traegt die Seite

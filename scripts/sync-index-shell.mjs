@@ -34,6 +34,7 @@ const homeFooterLegal = `<nav class="footer-legal" aria-label="Seitenlinks">
                 <a href="zusammenarbeit.html">So arbeiten wir</a>
                 <a href="referenzen.html">Systemkatalog</a>
                 <a href="ams.html">AMS Beispielsystem</a>
+                <a href="ai-roadmap.html">KI-Roadmap</a>
                 <a href="persoenlichkeit.html">Persönlichkeit</a>
                 <a href="#contact">Kontakt</a>
                 <a href="impressum.html">Impressum</a>
@@ -144,7 +145,7 @@ const modalScripts =
 const after = html.slice(cutEnd);
 html =
   before +
-  bookingModalHtml.trim() +
+  bookingModalHtml().trim() +
   modalScripts +
   after;
 

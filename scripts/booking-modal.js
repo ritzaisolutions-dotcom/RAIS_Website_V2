@@ -33,9 +33,11 @@
     document.body.classList.add('noscroll');
 
     if (calWrap && window.RAISCal) {
+      var pageCal = document.body && document.body.getAttribute('data-cal-url');
       window.RAISCal.mount(calWrap, {
         source: options.source || null,
-        icpSegment: options.icp_segment || null
+        icpSegment: options.icp_segment || null,
+        calUrl: pageCal || undefined
       });
     }
 

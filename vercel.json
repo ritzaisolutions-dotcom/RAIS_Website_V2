@@ -9,7 +9,9 @@
     { "source": "/prozesshandbuch/", "destination": "/", "permanent": true },
     { "source": "/prozesshandbuch.html", "destination": "/", "permanent": true },
     { "source": "/demo.html", "destination": "/", "permanent": true },
-    { "source": "/landingpage.html", "destination": "/", "permanent": true }
+    { "source": "/landingpage.html", "destination": "/", "permanent": true },
+    { "source": "/makler.html", "destination": "/ai-roadmap.html", "permanent": true },
+    { "source": "/makler", "destination": "/ai-roadmap.html", "permanent": true }
   ],
   "headers": [
     {

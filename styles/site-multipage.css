@@ -276,6 +276,14 @@ a { color: inherit; }
   cursor: pointer;
   font-family: inherit;
 }
+a.mobile-cta,
+a.sticky-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-sizing: border-box;
+}
 
 @media (max-width: 900px) {
   .nav-center { display: none; }
@@ -458,10 +466,14 @@ a { color: inherit; }
    sich mit "Orange nur fuer Aktion" aus brand_steer deckt. */
 #contact .mono-label { color: var(--sage-light, #9FB88C); }
 #contact .mono-label::before { background: var(--sage-light, #9FB88C); }
+#contact .section-wrap {
+  width: min(1280px, calc(100% - 2rem));
+  padding-block: clamp(3rem, 5.5vw, 5rem);
+}
 .contact-grid {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 2rem;
+  grid-template-columns: minmax(16rem, 0.72fr) minmax(0, 1.45fr);
+  gap: clamp(1.5rem, 4vw, 3.25rem);
   align-items: start;
 }
 .contact-copy { color: rgba(251,248,243,0.8); margin: 0.5rem 0 0; }
@@ -470,6 +482,7 @@ a { color: inherit; }
   border: 1px solid rgba(251,248,243,0.18);
   border-radius: 1rem;
   padding: 1.5rem;
+  min-width: 0;
 }
 .cal-card-title { font-weight: 700; margin: 0 0 0.35rem; }
 .cal-card-sub { color: rgba(251,248,243,0.75); margin: 0 0 1.25rem; font-size: 0.95rem; }
@@ -1131,7 +1144,10 @@ a { color: inherit; }
   border-radius: 50%;
   background: radial-gradient(circle, rgba(236, 106, 55, 0.18), transparent 70%);
   pointer-events: none;
-  animation: aqut-glow 6s ease-in-out infinite;
+  /* Zwei Durchlaeufe statt Dauerschleife. brand.md, Abschnitt
+     Bewegung: Reveals laufen einmal, nichts pulsiert dauerhaft im
+     Hintergrund. */
+  animation: aqut-glow 6s ease-in-out 2;
 }
 @keyframes aqut-glow {
   0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
@@ -2430,14 +2446,15 @@ a { color: inherit; }
 
 .lm-cover {
   display: block;
-  width: min(15rem, 60%);
+  width: 100%;
+  max-width: 20rem;
   height: auto;
-  margin: 0 0 1.75rem;
-  border-radius: 0.35rem;
-  transform: rotate(-2.5deg);
+  margin: 0;
+  border-radius: 0.2rem;
+  background: var(--surface, #FBF8F3);
   box-shadow:
     0 1px 2px rgba(47, 42, 36, 0.08),
-    0 18px 40px rgba(47, 42, 36, 0.18);
+    0 22px 48px rgba(47, 42, 36, 0.2);
 }
 
 @media (prefers-reduced-motion: reduce) {

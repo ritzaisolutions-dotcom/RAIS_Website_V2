@@ -3,8 +3,9 @@
  * Canonical shell: change only here, then run `npm run pages`
  * (build-pages + sync-index-shell). Do not hand-edit Nav/Footer/Modal on pages.
  */
-export const bookingModalHtml = `
-<div id="booking-modal" role="dialog" aria-modal="true" aria-label="Kostenlosen KI-Audit buchen">
+export function bookingModalHtml(dauer = '20 Minuten', ariaLabel = 'Kostenlosen KI-Audit buchen') {
+  return `
+<div id="booking-modal" role="dialog" aria-modal="true" aria-label="${ariaLabel}">
   <div class="bm-backdrop" id="bm-backdrop"></div>
   <div class="bm-box">
     <button class="bm-close" id="bm-close" type="button" aria-label="Schließen">
@@ -12,16 +13,69 @@ export const bookingModalHtml = `
     </button>
     <div class="bm-step is-active" id="bm-step-0">
       <h2 class="bm-title">Wählen Sie Ihren Termin</h2>
-      <p class="bm-sub">20 Minuten, kostenlos. Sie geben Ihre Angaben direkt im Kalender ein, ein zweites Formular gibt es nicht.</p>
+      <p class="bm-sub">${dauer}, kostenlos. Sie geben Ihre Angaben direkt im Kalender ein, ein zweites Formular gibt es nicht.</p>
       <div class="bm-cal-wrap" id="bm-cal-wrap"></div>
     </div>
   </div>
 </div>
 `;
+}
 
-export function navHtml(active) {
+/**
+ * options.minimal: Landingpage-Modus. Ohne Seitenlinks, ohne Hamburger,
+ * ohne Mobile-Overlay, nur Marke und ein CTA. Gedacht fuer Seiten mit
+ * genau einem Ziel, auf denen jeder weitere Link ein Ausstieg ist.
+ * site-nav.js prueft Hamburger und Overlay auf null, das Weglassen ist
+ * daher gefahrlos. Nur opt-in setzen, der Rest der Seiten bleibt gleich.
+ */
+export function navHtml(active, options = {}) {
   const link = (href, label, key) =>
     `<li><a href="${href}"${active === key ? ' aria-current="page"' : ''}>${label}</a></li>`;
+  const ctaLabel = options.ctaLabel || 'Kostenlosen KI-Audit buchen';
+  const ctaHref = options.ctaHref;
+  const minimal = !!options.minimal;
+  const navCta = ctaHref
+    ? `<a class="btn-primary" id="nav-demo-btn" href="${ctaHref}">${ctaLabel}</a>`
+    : `<button type="button" class="btn-primary js-open-booking" id="nav-demo-btn" data-source="nav">${ctaLabel}</button>`;
+  const mobileCta = ctaHref
+    ? `<a class="mobile-cta" id="mobile-demo-btn" href="${ctaHref}" data-close-menu>${ctaLabel}</a>`
+    : `<button type="button" class="mobile-cta js-open-booking" id="mobile-demo-btn" data-source="mobile-nav">${ctaLabel}</button>`;
+
+  const navCenter = minimal
+    ? ''
+    : `
+    <div class="nav-center" role="none">
+      <ul class="nav-list" role="list">
+        ${link('/#systeme', 'Systeme', 'systeme')}
+        ${link('/#methodik', 'Methode', 'methodik')}
+        ${link('referenzen.html', 'Systemkatalog', 'referenzen')}
+        ${link('ueber-uns.html', 'Über uns', 'ueber-uns')}
+      </ul>
+    </div>`;
+
+  const hamburger = minimal
+    ? ''
+    : `
+      <button class="nav-hamburger" id="hamburger-btn" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-overlay">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>`;
+
+  const overlay = minimal
+    ? ''
+    : `
+<div id="mobile-overlay" role="dialog" aria-label="Navigation" aria-modal="true">
+  <div class="mobile-nav-inner">
+    <a href="/#systeme" class="mobile-link" data-close-menu>Systeme</a>
+    <a href="/#methodik" class="mobile-link" data-close-menu>Methode</a>
+    <a href="referenzen.html" class="mobile-link" data-close-menu>Systemkatalog</a>
+    <a href="ueber-uns.html" class="mobile-link" data-close-menu>Über uns</a>
+    <a href="zusammenarbeit.html" class="mobile-link" data-close-menu>So arbeiten wir</a>
+    <a href="persoenlichkeit.html" class="mobile-link" data-close-menu>Persönlichkeit</a>
+    <hr class="mobile-hr">
+    ${mobileCta}
+  </div>
+</div>`;
+
   return `
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
 <nav id="navbar" aria-label="Hauptnavigation">
@@ -32,52 +86,55 @@ export function navHtml(active) {
         <span class="nav-wordmark">RAIS</span>
         <span class="nav-submark">Ritz AI Solutions</span>
       </div>
-    </a>
-    <div class="nav-center" role="none">
-      <ul class="nav-list" role="list">
-        ${link('/#systeme', 'Systeme', 'systeme')}
-        ${link('/#methodik', 'Methode', 'methodik')}
-        ${link('referenzen.html', 'Systemkatalog', 'referenzen')}
-        ${link('ueber-uns.html', 'Über uns', 'ueber-uns')}
-      </ul>
-    </div>
+    </a>${navCenter}
     <div class="nav-right">
-      <button type="button" class="btn-primary js-open-booking" id="nav-demo-btn" data-source="nav">Kostenlosen KI-Audit buchen</button>
-      <button class="nav-hamburger" id="hamburger-btn" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-overlay">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
+      ${navCta}${hamburger}
     </div>
   </div>
-</nav>
-<div id="mobile-overlay" role="dialog" aria-label="Navigation" aria-modal="true">
-  <div class="mobile-nav-inner">
-    <a href="/#systeme" class="mobile-link" data-close-menu>Systeme</a>
-    <a href="/#methodik" class="mobile-link" data-close-menu>Methode</a>
-    <a href="referenzen.html" class="mobile-link" data-close-menu>Systemkatalog</a>
-    <a href="ueber-uns.html" class="mobile-link" data-close-menu>Über uns</a>
-    <a href="zusammenarbeit.html" class="mobile-link" data-close-menu>So arbeiten wir</a>
-    <a href="persoenlichkeit.html" class="mobile-link" data-close-menu>Persönlichkeit</a>
-    <hr class="mobile-hr">
-    <button type="button" class="mobile-cta js-open-booking" id="mobile-demo-btn" data-source="mobile-nav">Kostenlosen KI-Audit buchen</button>
-  </div>
-</div>
+</nav>${overlay}
 `;
 }
 
-export const contactHtml = `
+/**
+ * gate: optionales Markup, das vor dem Kalender steht. Ist es gesetzt,
+ * traegt der Kalender-Container `data-cal-deferred` statt
+ * `data-cal-inline`. Damit fasst ihn das autoMount in cal-embed.js
+ * nicht an; die Seite haengt ihn selbst ein, sobald das Gate erfuellt
+ * ist. Ohne `gate` bleibt alles wie zuvor.
+ */
+export function contactHtml({
+  calUrl,
+  dauer = '20 Minuten',
+  label = 'Kostenlose KI-Audits',
+  title,
+  copy,
+  calTitle = 'Kostenlosen KI-Audit buchen',
+  calSub,
+  gate = '',
+  media = ''
+} = {}) {
+  const calAttr = calUrl ? ` data-cal-url="${calUrl}"` : '';
+  const headline = title || `${dauer}. Kostenlos. Klare nächste Schritte.`;
+  const paragraphs = copy || [
+    'Wir analysieren Ihre Prozesse und zeigen, wo Zeit verloren geht. Sie bekommen drei umsetzbare Use Cases.',
+    'Kein Verkaufsdruck. Blueprint inklusive.'
+  ];
+  const sub = calSub || `${dauer}, kostenlos. Drei konkrete Automatisierungs-Ideen für Ihren Betrieb.`;
+  const calFlag = gate ? 'data-cal-deferred' : 'data-cal-inline';
+  const calHidden = gate ? ' hidden' : '';
+  return `
 <section id="contact">
   <div class="section-wrap">
     <div class="contact-grid">
       <div class="contact-text-col">
-        <span class="mono-label">Kostenlose KI-Audits</span>
-        <h2 class="section-h2">20 Minuten. Kostenlos. Klare nächste Schritte.</h2>
-        <p class="contact-copy">Wir analysieren Ihre Prozesse und zeigen, wo Zeit verloren geht. Sie bekommen drei umsetzbare Use Cases.</p>
-        <p class="contact-copy">Kein Verkaufsdruck. Blueprint inklusive.</p>
+        <span class="mono-label">${label}</span>
+        <h2 class="section-h2">${headline}</h2>
+        ${paragraphs.map((text) => `<p class="contact-copy">${text}</p>`).join('\n        ')}${media}
       </div>
       <div class="cal-embed-wrap">
-        <p class="cal-card-title">Kostenlosen KI-Audit buchen</p>
-        <p class="cal-card-sub">20 Minuten, kostenlos. Drei konkrete Automatisierungs-Ideen für Ihren Betrieb.</p>
-        <div class="cal-inline" data-cal-inline data-source="contact" id="cal-inline-contact"></div>
+        <p class="cal-card-title">${calTitle}</p>
+        <p class="cal-card-sub">${sub}</p>${gate}
+        <div class="cal-inline" ${calFlag} data-source="contact" id="cal-inline-contact"${calAttr}${calHidden}></div>
       </div>
     </div>
     <div class="contact-details">
@@ -87,10 +144,37 @@ export const contactHtml = `
   </div>
 </section>
 `;
+}
 
-export const footerHtml = `
+/**
+ * minimal: Landingpage-Modus, passend zu navHtml({ minimal: true }).
+ * Es bleiben nur die Links, die nach § 5 TMG von jeder Seite aus
+ * erreichbar sein muessen. Alles andere waere auf einer Seite mit
+ * genau einem Ziel ein Ausstieg.
+ */
+export function footerHtml({ stickyHref, stickyLabel = 'KI-Audit buchen', minimal = false } = {}) {
+  const sticky = stickyHref
+    ? `<a class="sticky-cta-btn" id="sticky-demo-btn" href="${stickyHref}">${stickyLabel}</a>`
+    : `<button type="button" class="sticky-cta-btn js-open-booking" id="sticky-demo-btn" data-source="sticky">${stickyLabel}</button>`;
+  const footerLinks = minimal
+    ? `
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>`
+    : `
+      <a href="/#systeme">Systeme</a>
+      <a href="/#methodik">Methode</a>
+      <a href="zusammenarbeit.html">So arbeiten wir</a>
+      <a href="referenzen.html">Systemkatalog</a>
+      <a href="ams.html">AMS Beispielsystem</a>
+      <a href="ai-roadmap.html">KI-Roadmap</a>
+      <a href="persoenlichkeit.html">Persönlichkeit</a>
+      <a href="#contact">Kontakt</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="https://linkedin.com/in/kevin-ritz-rais" target="_blank" rel="noopener noreferrer">LinkedIn</a>`;
+  return `
 <div id="sticky-cta" aria-hidden="true">
-  <button type="button" class="sticky-cta-btn js-open-booking" id="sticky-demo-btn" data-source="sticky">KI-Audit buchen</button>
+  ${sticky}
 </div>
 <footer id="footer">
   <div class="footer-inner">
@@ -98,24 +182,18 @@ export const footerHtml = `
       <img src="favicon.svg" alt="" width="40" height="40" aria-hidden="true">
       <span>RAIS</span>
     </a>
-    <nav class="footer-legal" aria-label="Seitenlinks">
-      <a href="/#systeme">Systeme</a>
-      <a href="/#methodik">Methode</a>
-      <a href="zusammenarbeit.html">So arbeiten wir</a>
-      <a href="referenzen.html">Systemkatalog</a>
-      <a href="ams.html">AMS Beispielsystem</a>
-      <a href="persoenlichkeit.html">Persönlichkeit</a>
-      <a href="#contact">Kontakt</a>
-      <a href="impressum.html">Impressum</a>
-      <a href="datenschutz.html">Datenschutz</a>
-      <a href="https://linkedin.com/in/kevin-ritz-rais" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <nav class="footer-legal" aria-label="Seitenlinks">${footerLinks}
     </nav>
     <span class="footer-copy">© 2026 Ritz AI Solutions · RAIS · Koblenz</span>
   </div>
 </footer>
 `;
+}
 
-export function headHtml({ title, description, path }) {
+export function headHtml({ title, description, path, extraCss = [], bodyAttrs = '', ogImage = '' }) {
+  const extraCssLinks = extraCss
+    .map((href) => `  <link rel="stylesheet" href="${href}">`)
+    .join('\n');
   return `<!DOCTYPE html>
 <html lang="de" class="scroll-smooth">
 <head>
@@ -129,6 +207,9 @@ export function headHtml({ title, description, path }) {
   <meta property="og:description" content="${description}">
   <meta property="og:url" content="https://ritz-ai.solutions/${path}">
   <meta property="og:type" content="website">
+${ogImage ? `  <meta property="og:image" content="https://ritz-ai.solutions/${ogImage}">
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:image" content="https://ritz-ai.solutions/${ogImage}">` : ''}
   <script src="scripts/public-config.js"></script>
   <script src="scripts/sentry-klaro-bootstrap.js"></script>
   <script src="klaro-config.js"></script>
@@ -148,8 +229,9 @@ export function headHtml({ title, description, path }) {
        und dort verschiedene Eigenschaften, deshalb ist das gefahrlos. -->
   <link rel="stylesheet" href="styles/home.css">
   <link rel="stylesheet" href="styles/booking-modal.css">
+${extraCssLinks}
 </head>
-<body>
+<body${bodyAttrs}>
 ${spriteHtml}`;
 }
 

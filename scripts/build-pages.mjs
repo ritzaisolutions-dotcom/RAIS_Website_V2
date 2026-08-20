@@ -22,14 +22,45 @@ import {
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, '..');
 
-function page({ file, active, title, description, path, main, extraScripts = '' }) {
+function page({
+  file,
+  active,
+  title,
+  description,
+  path,
+  main,
+  extraScripts = '',
+  extraCss = [],
+  calUrl,
+  dauer,
+  navCta,
+  contact,
+  stickyHref,
+  stickyLabel,
+  bookingAriaLabel,
+  bodyAttrs = '',
+  footerMinimal = false,
+  ogImage = '',
+  afterContact = ''
+}) {
+  const resolvedBodyAttrs = calUrl
+    ? `${bodyAttrs} data-cal-url="${calUrl}"`.trim()
+    : bodyAttrs;
   const html =
-    headHtml({ title, description, path }) +
-    navHtml(active) +
+    headHtml({
+      title,
+      description,
+      path,
+      extraCss,
+      bodyAttrs: resolvedBodyAttrs ? ` ${resolvedBodyAttrs}` : '',
+      ogImage
+    }) +
+    navHtml(active, navCta || {}) +
     `<main id="main">${main}</main>` +
-    contactHtml +
-    footerHtml +
-    bookingModalHtml +
+    contactHtml({ calUrl, dauer, ...(contact || {}) }) +
+    afterContact +
+    footerHtml({ stickyHref, stickyLabel, minimal: footerMinimal }) +
+    bookingModalHtml(dauer, bookingAriaLabel) +
     extraScripts +
     scriptsHtml;
   writeFileSync(resolve(root, file), html, 'utf8');
@@ -672,6 +703,347 @@ page({
     <p class="section-sub" style="margin-top:1.25rem;"><a href="https://www.youtube.com/@kevin_ritz" target="_blank" rel="noopener noreferrer">Kanal @kevin_ritz</a></p>
   </div>
 </section>
+`
+});
+
+const AI_ROADMAP_CAL = 'https://cal.com/ritzaisolutions/immo-ai-roadmap';
+
+page({
+  file: 'ai-roadmap.html',
+  active: null,
+  title: 'Kostenlose KI-Roadmap für Immobilienbetriebe | RAIS',
+  description:
+    'Kostenloses 60-Minuten-Erstgespräch für Immobilienbetriebe. Danach eine schriftliche KI-Roadmap, die Sie behalten. Ab etwa zehn Vorgängen pro Woche.',
+  path: 'ai-roadmap.html',
+  extraCss: ['styles/ai-roadmap.css'],
+  ogImage: 'og-cover.webp',
+  calUrl: AI_ROADMAP_CAL,
+  dauer: '60 Minuten',
+  bookingAriaLabel: 'KI-Roadmap buchen',
+  // Landingpage-Modus: Nav und Footer ohne Seitenlinks. Jeder weitere
+  // Link auf dieser Seite ist ein Ausstieg aus dem einzigen Ziel.
+  navCta: { ctaHref: '#contact', ctaLabel: 'Erstgespräch buchen', minimal: true },
+  stickyHref: '#contact',
+  stickyLabel: 'Kostenloses Erstgespräch buchen',
+  footerMinimal: true,
+  contact: {
+    label: 'KI-Roadmap',
+    title: 'Termin wählen',
+    copy: [],
+    calTitle: 'KI-Roadmap buchen',
+    calSub: '60 Minuten, kostenlos. Wird aufgezeichnet.',
+    // Zeigt, was am Ende in der Hand liegt. Steht bewusst im
+    // Buchungsblock und nicht in einer eigenen Sektion: es ist das
+    // Ergebnis des Termins, kein zweites Angebot.
+    media: `
+        <figure class="contact-deliverable">
+          <img src="images/cover.webp" alt="Titelseite der schriftlichen Roadmap für Immobilienmakler und Hausverwaltungen" width="1055" height="1491" loading="lazy" decoding="async" onerror="this.parentNode.remove()">
+          <figcaption><strong>Ihre Roadmap.</strong> Schriftlich, auf Ihren Betrieb bezogen. Sie behalten sie auch dann, wenn wir nicht zusammenarbeiten.</figcaption>
+        </figure>`,
+    // Drei Fragen vor dem Kalender. Keine Kontaktdaten: die entstehen
+    // erst in der Cal-Maske. cal-embed.js laesst den Container in Ruhe,
+    // solange er data-cal-deferred traegt.
+    gate: `
+        <div class="roadmap-gate" id="roadmap-gate">
+          <div class="roadmap-gate__head">
+            <span class="roadmap-gate__count" id="gate-count">Frage 1 von 3</span>
+            <div class="roadmap-gate__bars" aria-hidden="true">
+              <span class="roadmap-gate__bar is-filled" data-gbar="1"></span>
+              <span class="roadmap-gate__bar" data-gbar="2"></span>
+              <span class="roadmap-gate__bar" data-gbar="3"></span>
+            </div>
+          </div>
+          <p class="roadmap-gate__lead">Drei Fragen, dann sehen Sie den Kalender. Damit ich vorbereitet ins Gespräch gehe.</p>
+
+          <fieldset class="roadmap-gate__q" data-gstep="1">
+            <legend>Wo tut es am meisten weh?</legend>
+            <div class="roadmap-gate__choice" role="radiogroup" aria-label="Hauptproblem">
+              <button type="button" class="roadmap-gate__opt" data-gate="pain" data-value="manuelle-bearbeitung" role="radio" aria-checked="false">Anfragen von Hand bearbeiten kostet zu viel Zeit</button>
+              <button type="button" class="roadmap-gate__opt" data-gate="pain" data-value="mieteranliegen" role="radio" aria-checked="false">Mieteranliegen im Griff behalten</button>
+              <button type="button" class="roadmap-gate__opt" data-gate="pain" data-value="reaktionszeit" role="radio" aria-checked="false">Zu langsame Reaktion auf neue Anfragen</button>
+              <button type="button" class="roadmap-gate__opt" data-gate="pain" data-value="terminierung" role="radio" aria-checked="false">Termine vereinbaren frisst den Tag</button>
+            </div>
+          </fieldset>
+
+          <fieldset class="roadmap-gate__q" data-gstep="2" hidden>
+            <legend>Womit arbeiten Sie?</legend>
+            <div class="rq-fields">
+              <div>
+                <label for="gate-ecosystem">Mail und Kalender</label>
+                <select id="gate-ecosystem">
+                  <option value="">Bitte wählen</option>
+                  <option value="google">Google Workspace</option>
+                  <option value="microsoft365">Microsoft 365</option>
+                  <option value="imap">Eigener Server per IMAP</option>
+                  <option value="gemischt">Gemischt</option>
+                  <option value="weiss-nicht">Weiß ich nicht</option>
+                </select>
+              </div>
+              <div>
+                <label for="gate-crm">CRM</label>
+                <select id="gate-crm">
+                  <option value="">Bitte wählen</option>
+                  <option value="onoffice">onOffice</option>
+                  <option value="propstack">Propstack</option>
+                  <option value="flowfact">FlowFact</option>
+                  <option value="haufe">Haufe</option>
+                  <option value="excel">Excel oder keins</option>
+                  <option value="anderes">Anderes</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="roadmap-gate__q" data-gstep="3" hidden>
+            <legend>Wie viele Vorgänge pro Woche?</legend>
+            <p class="roadmap-gate__hint">Anfragen oder Mieteranliegen, je nachdem was bei Ihnen überwiegt.</p>
+            <div class="roadmap-slider">
+              <div class="roadmap-slider__row">
+                <label for="gate-volume">Vorgänge pro Woche</label>
+                <span class="roadmap-slider__value" id="gate-volume-out">25</span>
+              </div>
+              <input id="gate-volume" type="range" min="5" max="150" step="1" value="25">
+            </div>
+            <label class="lm-check" for="gate-privacy">
+              <input type="checkbox" id="gate-privacy" required>
+              <span>Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a> gelesen und bin einverstanden, dass diese drei Angaben zur Vorbereitung des Gesprächs gespeichert werden.</span>
+            </label>
+          </fieldset>
+
+          <p class="rq-error" id="gate-error" hidden role="alert"></p>
+          <div class="roadmap-gate__nav">
+            <button type="button" class="rq-btn-back" id="gate-back" hidden>Zurück</button>
+            <button type="button" class="btn-primary" id="gate-submit">Weiter</button>
+          </div>
+          <p class="roadmap-gate__note">Name, E-Mail und Telefon geben Sie erst im Kalender an, und dort nur einmal.</p>
+        </div>
+        <p class="roadmap-gate__done" id="gate-done" hidden>Danke. Wählen Sie unten Ihren Termin.</p>`
+  },
+  extraScripts:
+    '\n<script src="scripts/ai-roadmap-funnel.js"></script>\n',
+  afterContact: `
+<section class="home-band home-band--linen" id="faq" aria-labelledby="roadmap-faq-title">
+  <div class="section-wrap">
+    <h2 class="section-h2" id="roadmap-faq-title">Bevor Sie fragen</h2>
+    <ul class="akte-register akte-register--faq">
+      <li><details class="akte akte--frage">
+        <summary class="akte__head">
+          <span class="akte__title">Und wenn wir danach zusammenarbeiten?</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <p>Die Laufzeit beträgt zwölf Monate. Dazu kommt unsere Garantie an Sie: Wenn die vorher gemeinsam festgelegten Ergebnisse nach drei Monaten nicht erreicht sind, kommen Sie ohne Haken aus dem Vertrag und müssen das nicht begründen. Drei Monate braucht ein System, um eingeregelt zu werden. Diese Garantie gibt es, weil Sie mit dem aufgezeichneten Gespräch etwas beigetragen haben. Voraussetzung ist, dass wir Zugang bekommen und Ihr Team das System auch nutzt.</p>
+        </div>
+      </details></li>
+      <li><details class="akte akte--frage">
+        <summary class="akte__head">
+          <span class="akte__title">Was kostet es?</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <p>Wir nennen keinen öffentlichen Preis, weil der Zuschnitt jedes Systems den Aufwand bestimmt und eine Zahl ohne Kontext niemandem hilft. Der Rahmen hängt an drei Dingen: wie viele Prozesse Sie automatisieren, wie sauber Ihre Daten heute vorliegen, und ob wir den Betrieb übernehmen. Sie bekommen ein schriftliches Angebot mit Umfang, Zeitplan und Preis, bevor irgendetwas gebaut wird.</p>
+        </div>
+      </details></li>
+      <li><details class="akte akte--frage">
+        <summary class="akte__head">
+          <span class="akte__title">Können wir unser CRM behalten?</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <p>Ja, das ist der Normalfall. Wir bauen an Ihre Systeme an, statt Ihnen eine Plattform zu verkaufen. Jedes CRM, das uns bisher begegnet ist, ließ sich anbinden, unterschiedlich ist nur der Aufwand. Wenn Sie heute mit Excel arbeiten, bauen wir zuerst die Ablage: am Anfang mehr Aufwand, danach sauberer als bei den meisten.</p>
+        </div>
+      </details></li>
+      <li><details class="akte akte--frage">
+        <summary class="akte__head">
+          <span class="akte__title">Was ist, wenn mein Team nicht mitzieht?</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <p>Die Systeme laufen dort, wo Ihr Team ohnehin arbeitet: im Postfach, im CRM, im Ticketsystem. Es gibt in der Regel keine neue Oberfläche, die jemand lernen muss. Wo doch, gehört die Einweisung zur Übergabe und nicht auf eine Extrarechnung.</p>
+        </div>
+      </details></li>
+      <li><details class="akte akte--frage">
+        <summary class="akte__head">
+          <span class="akte__title">Was passiert mit der Aufzeichnung?</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <p>Aus dem Gespräch wird ein Beitrag für meinen YouTube-Kanal. Mandantendaten, Objektadressen und Umsatzzahlen kommen nicht ins Video. Sie sehen den Schnitt, bevor er online geht, und Sie können die Freigabe auch danach noch zurückziehen. Wenn Sie gar nicht aufgezeichnet werden möchten, sagen Sie mir vorher Bescheid, dann reden wir trotzdem.</p>
+        </div>
+      </details></li>
+      <li><details class="akte akte--frage">
+        <summary class="akte__head">
+          <span class="akte__title">Warum sehe ich hier keine Kundenlogos?</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <p>Keine Kundenlogos ohne Mandat, keine erfundenen Prozentzahlen, keine Vorher-Nachher-Werte, die niemand gemessen hat. Jeder Eintrag in unserem Systemkatalog trägt stattdessen einen Stempel, der sagt, wie belastbar er ist: Live im Betrieb, Im Aufbau oder Übertragbar. Aktuell trägt keiner den Stempel Live im Betrieb, weil die Freigaben zur Nennung noch ausstehen. Auch das sagen wir lieber, als es zu verschweigen.</p>
+        </div>
+      </details></li>
+    </ul>
+  </div>
+</section>
+
+<section class="home-band home-band--cloud" id="rechner" aria-labelledby="roadmap-calc-title">
+  <div class="section-wrap">
+    <h2 class="section-h2" id="roadmap-calc-title">Noch unsicher? Rechnen Sie nach</h2>
+    <p class="section-sub">Drei Regler, keine Kontaktdaten. Die Zahl gehört Ihnen, auch ohne Termin.</p>
+    <div class="rechner roadmap-calc" id="roadmap-calc">
+      <div class="roadmap-calc__inputs">
+        <div class="roadmap-slider">
+          <div class="roadmap-slider__row">
+            <label for="rf-volume">Vorgänge pro Woche</label>
+            <span class="roadmap-slider__value" id="rf-volume-out">25</span>
+          </div>
+          <input id="rf-volume" type="range" min="5" max="150" step="1" value="25">
+        </div>
+        <div class="roadmap-slider">
+          <div class="roadmap-slider__row">
+            <label for="rf-minutes">Minuten pro Vorgang bis zur Erledigung</label>
+            <span class="roadmap-slider__value" id="rf-minutes-out">10</span>
+          </div>
+          <input id="rf-minutes" type="range" min="3" max="40" step="1" value="10">
+        </div>
+        <div class="rq-fields">
+          <div>
+            <label for="rf-rate">Interner Stundensatz in Euro</label>
+            <input id="rf-rate" type="number" min="10" max="200" step="1" value="45" inputmode="decimal">
+          </div>
+        </div>
+      </div>
+      <div class="roadmap-calc__out">
+        <span class="rq-step__eyebrow">Ihr Ergebnis</span>
+        <p class="roadmap-result__hours" id="rf-hours"></p>
+        <p class="roadmap-result__note" id="rf-bound"></p>
+        <p class="roadmap-result__euro" id="rf-euro"></p>
+        <p class="roadmap-result__note" id="rf-rate-copy"></p>
+        <p class="roadmap-result__preview" id="rf-preview"></p>
+        <p class="roadmap-result__disclaimer">Nur aus Ihren eigenen Angaben gerechnet. Wir behaupten nichts über Ihren Betrieb.</p>
+        <div class="roadmap-result__cta">
+          <a class="btn-primary" href="#contact">Kostenloses Erstgespräch buchen</a>
+        </div>
+      </div>
+      <p class="roadmap-sr" id="rf-live" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+`,
+  main: `
+<section class="page-hero page-hero--roadmap" aria-labelledby="roadmap-hero-title">
+  <div class="page-hero__inner">
+    <div class="roadmap-hero">
+      <div class="roadmap-hero__copy">
+        <span class="mono-label">Für Maklerbüros ab etwa zehn Anfragen pro Woche</span>
+        <h1 id="roadmap-hero-title">Wer zuerst antwortet, bekommt den Termin.</h1>
+        <p class="roadmap-hero__sub">Die meisten Anfragen verlieren Sie nicht im Gespräch, sondern vorher.</p>
+        <ul class="roadmap-hero__offer">
+          <li>60 Minuten, kostenlos</li>
+          <li>Schriftliche Roadmap, die Sie behalten</li>
+          <li>Kein Pitch, kein Angebot im Termin</li>
+        </ul>
+        <div class="roadmap-hero__actions">
+          <a class="btn-primary" href="#contact">Kostenloses Erstgespräch buchen</a>
+        </div>
+        <p class="roadmap-hero__rec">Das Gespräch wird aufgezeichnet und auf YouTube veröffentlicht. <a href="#gegenleistung">Was das heißt</a></p>
+      </div>
+      <figure class="roadmap-hero__me">
+        <img src="images/profilbild.webp" width="720" height="720" loading="eager" fetchpriority="high" decoding="async" alt="Kevin Ritz, Geschäftsführer von RAIS">
+        <figcaption><strong>Kevin Ritz</strong>Sie reden mit mir, nicht mit einem Vertrieb.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<aside class="roadmap-disq" aria-label="Qualifizierung">
+  <p>Unter etwa zehn Anfragen pro Woche raten wir ab. Da rechnet sich der Aufwand meistens nicht, und das sagen wir lieber jetzt als im Gespräch.</p>
+</aside>
+
+<section class="home-band home-band--cloud" aria-labelledby="roadmap-when-title">
+  <div class="section-wrap">
+    <h2 class="section-h2" id="roadmap-when-title">Dieselbe Anfrage, zwei Abende</h2>
+    <div class="roadmap-when">
+      <article class="roadmap-when__col">
+        <h3 class="roadmap-when__head">Heute</h3>
+        <ol class="roadmap-when__list">
+          <li><span class="roadmap-when__t">18:42</span><strong>Anfrage kommt rein</strong><span>Sie sind beim Essen.</span></li>
+          <li><span class="roadmap-when__t">09:15</span><strong>Sie sehen sie</strong><span>Zwei Büros haben längst geantwortet.</span></li>
+          <li><span class="roadmap-when__t">11:30</span><strong>Sie rufen zurück</strong><span>Die Besichtigung läuft schon.</span></li>
+        </ol>
+      </article>
+      <article class="roadmap-when__col roadmap-when__col--sys">
+        <h3 class="roadmap-when__head">Mit System</h3>
+        <ol class="roadmap-when__list">
+          <li><span class="roadmap-when__t">18:42</span><strong>Anfrage kommt rein</strong><span>Geprüft auf Bedarf und Zeitrahmen.</span></li>
+          <li><span class="roadmap-when__t">18:43</span><strong>Antwort mit Terminvorschlag</strong><span>Nach Ihren Kriterien.</span></li>
+          <li><span class="roadmap-when__t">18:51</span><strong>Interessent bucht selbst</strong><span>Im CRM, mit Notiz.</span></li>
+        </ol>
+      </article>
+    </div>
+    <p class="roadmap-when__note">Illustrativ, keine gemessenen Werte. Das passiert nicht bei jeder Anfrage. Sie erfahren nur nie, bei welchen.</p>
+  </div>
+</section>
+
+<section class="home-band home-band--linen" aria-labelledby="roadmap-agenda-title">
+  <div class="section-wrap">
+    <h2 class="section-h2" id="roadmap-agenda-title">Was in den 60 Minuten passiert</h2>
+    <ol class="roadmap-agenda">
+      <li>
+        <span class="roadmap-agenda__t">0–10</span>
+        <div><strong>Ihre Vorgänge</strong><p>Wo es klemmt, in Ihren Worten.</p></div>
+      </li>
+      <li>
+        <span class="roadmap-agenda__t">10–20</span>
+        <div><strong>Was Sie schon probiert haben</strong><p>Und warum es nicht gehalten hat.</p></div>
+      </li>
+      <li>
+        <span class="roadmap-agenda__t">20–35</span>
+        <div><strong>Was heute geht und was nicht</strong><p>Mit klaren Grenzen statt Hype.</p></div>
+      </li>
+      <li>
+        <span class="roadmap-agenda__t">35–55</span>
+        <div><strong>Ein bis zwei Use Cases, konkret</strong><p>Welches Werkzeug, welcher Rahmen, welcher Aufwand.</p></div>
+      </li>
+      <li>
+        <span class="roadmap-agenda__t">55–60</span>
+        <div><strong>Ehrliche Einschätzung</strong><p>Auch wenn sie lautet: lohnt sich nicht.</p></div>
+      </li>
+    </ol>
+    <p class="roadmap-agenda__note">Kein Pitch und kein Angebot im Termin. Die schriftliche Roadmap kommt danach.</p>
+  </div>
+</section>
+
+<section class="home-band home-band--green roadmap-deal" id="gegenleistung" aria-labelledby="roadmap-deal-title">
+  <div class="section-wrap">
+    <h2 class="section-h2" id="roadmap-deal-title">Warum das kostenlos ist</h2>
+    <p class="section-sub">Aus diesen Gesprächen entstehen meine YouTube-Beiträge. Sie zahlen nichts, ich bekomme den Beitrag. Genau deshalb ist das kein Verkaufsgespräch: Ich habe schon bekommen, wofür ich hier bin.</p>
+    <ul class="roadmap-deal__list">
+      <li>Keine Mandantendaten, keine Objektadressen, keine Umsatzzahlen im Video.</li>
+      <li>Sie sehen den Schnitt vorher und können die Freigabe jederzeit zurückziehen.</li>
+      <li>Ohne Kamera geht auch. Sagen Sie vorher kurz Bescheid.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="home-band home-band--cloud" aria-labelledby="roadmap-who-title">
+  <div class="section-wrap">
+    <div class="roadmap-who__grid">
+      <figure class="roadmap-who__media">
+        <img src="images/profilbild.webp" width="720" height="720" loading="lazy" decoding="async" alt="Kevin Ritz, Geschäftsführer von RAIS">
+      </figure>
+      <div class="roadmap-who__copy">
+        <h2 class="section-h2" id="roadmap-who-title">Wer im Termin sitzt</h2>
+        <p>Kevin Ritz, Geschäftsführer von RAIS aus Koblenz. Sie reden mit mir, nicht mit einem Vertrieb. Wenn wir bauen, baue ich auch selbst.</p>
+        <p>Davor bei 1&amp;1, an Systemen, bei denen ein Ausfall sofort Kunden trifft.</p>
+        <p class="roadmap-who__channel"><a href="https://www.youtube.com/@kevin_ritz" target="_blank" rel="noopener noreferrer">Kanal @kevin_ritz</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<aside class="roadmap-trust" aria-label="Hosting und Datenschutz">
+  <p>Selbst gehostet in der EU · Datenbank Frankfurt · AVV nach Art. 28 DSGVO</p>
+  <p class="roadmap-trust__proof">Kundenlogos und Prozentzahlen finden Sie hier nicht. Warum nicht, steht in den Fragen unter dem Kalender.</p>
+</aside>
 `
 });
 

@@ -48,6 +48,7 @@ const PAGES = [
   { file: 'zusammenarbeit.html', priority: '0.7' },
   { file: 'ueber-uns.html', priority: '0.7' },
   { file: 'persoenlichkeit.html', priority: '0.6' },
+  { file: 'ai-roadmap.html', priority: '0.8' },
   // Die Systemseiten stehen unter referenzen.html, deshalb darunter.
   ...flagships().map((r) => ({ file: `system-${r.slug}.html`, priority: '0.7' })),
 ];

@@ -91,13 +91,39 @@
     }
   }
 
-  if (playBtn) playBtn.addEventListener('click', start);
+  if (playBtn) {
+    playBtn.addEventListener('click', function () {
+      // Erst der ausdrueckliche Klick macht die Statuszeile zur
+      // Live-Region. Beim Autoplay wuerde ein Screenreader sonst
+      // fuenf Meldungen vorlesen, um die niemand gebeten hat.
+      var card = document.getElementById('aqut-sim-card');
+      if (card && !card.hasAttribute('aria-live')) {
+        card.setAttribute('aria-live', 'polite');
+      }
+      start();
+    });
+  }
   if (resetBtn) resetBtn.addEventListener('click', reset);
   setStep(0);
 
   if (autoplay) {
-    // Ein Durchlauf nach dem ersten Paint. Manuelle Starts bleiben über den Button.
-    if (typeof window.requestAnimationFrame === 'function') {
+    // Ein Durchlauf, aber erst wenn die Simulation tatsaechlich im
+    // Bild ist. Auf dem Handy steht sie unter der Hero-Copy und weit
+    // ausserhalb des ersten Viewports: ein Start beim Paint lief ins
+    // Leere, und wer hinunterscrollte, fand nur noch den Endzustand.
+    if (typeof window.IntersectionObserver === 'function') {
+      var obs = new window.IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            obs.disconnect();
+            start();
+          });
+        },
+        { threshold: 0.4 }
+      );
+      obs.observe(root);
+    } else if (typeof window.requestAnimationFrame === 'function') {
       window.requestAnimationFrame(function () {
         start();
       });

@@ -1,0 +1,865 @@
+/* KI-Roadmap Landingpage.
+   Layout kommt aus den Seitenbaendern (.section-wrap, .section-h2,
+   .home-band), hier steht nur, was diese Seite zusaetzlich braucht.
+   Das Markup wird von scripts/build-pages.mjs erzeugt, nicht von
+   Hand: Aenderungen an ai-roadmap.html werden beim naechsten
+   `npm run pages` ueberschrieben. */
+
+/* Sekundaerton der neuen Bloecke. --stone (#7B746B) kommt auf
+   --background nur auf 4,13:1 und auf --surface auf 4,35:1 und
+   reisst damit die 4.5:1 fuer normalen Text. Dieser Ton liegt bei
+   5,22 bzw. 5,51 und bleibt optisch in derselben Familie.
+   --stone selbst bleibt unangetastet, es haengt am ganzen Rest. */
+:root { --stone-aa: #6B645B; }
+
+
+/* ── Hero ─────────────────────────────────────────────────────────
+   Zwei Spalten ab 900px: Text links, Portraet rechts. Darunter
+   einspaltig, und das Portraet steht im DOM hinter der Copy, damit
+   es auf dem Handy den CTA nicht unter die Falz schiebt.
+
+   Die Regel .page-hero--roadmap .page-hero__inner ist entfallen: sie
+   wiederholte site-multipage.css:311 wortgleich. */
+
+.roadmap-hero {
+  display: grid;
+  gap: 2.25rem;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .roadmap-hero {
+    grid-template-columns: minmax(0, 58fr) minmax(0, 42fr);
+    gap: 3rem;
+  }
+}
+
+/* Nur die Fliesstext-Absaetze enger setzen. Ohne :not() gewinnt diese
+   Regel (0,2,1) gegen .roadmap-hero__rec (0,2,0) und kapert dessen
+   margin-bottom. */
+.page-hero .roadmap-hero__copy > p:not(.roadmap-hero__rec) {
+  margin-bottom: 0.65rem;
+}
+
+/* Das Argument der Seite. Gehoert lauter als die Aufzaehlung
+   darunter, sonst schreit das Kleingedruckte am lautesten. */
+.page-hero .roadmap-hero__sub {
+  margin: 0.35rem 0 0;
+  max-width: 34rem;
+  font-size: 1.15rem;
+  line-height: 1.45;
+  color: var(--linen-on-green, #FBF8F3);
+}
+
+.roadmap-hero__offer {
+  list-style: none;
+  margin: 1.35rem 0 1.6rem;
+  padding: 0;
+  max-width: 34rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.roadmap-hero__offer li {
+  position: relative;
+  padding-left: 1.5rem;
+  color: rgba(251, 248, 243, 0.82);
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.roadmap-hero__offer li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 0.85rem;
+  height: 2px;
+  background: var(--sage-light, #9FB88C);
+}
+
+.roadmap-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  align-items: center;
+}
+
+/* Die Aufzeichnung ist eine Pflichtangabe vor der Buchung und
+   steht deshalb direkt unter dem CTA, nicht erst im Cal-Dialog. */
+.page-hero .roadmap-hero__rec {
+  margin: 1.1rem 0 0;
+  max-width: 34rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: rgba(251, 248, 243, 0.72);
+}
+
+/* ── Portraet im Hero ───────────────────────────────────────────── */
+
+.roadmap-hero__me {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  gap: 0.9rem;
+  align-items: center;
+}
+
+.roadmap-hero__me img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid var(--rule-on-green, rgba(251, 248, 243, 0.14));
+}
+
+.roadmap-hero__me figcaption {
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: rgba(251, 248, 243, 0.72);
+}
+
+.roadmap-hero__me figcaption strong {
+  display: block;
+  color: var(--linen-on-green, #FBF8F3);
+  font-weight: 650;
+}
+
+@media (min-width: 900px) {
+  .roadmap-hero__me {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.1rem;
+    max-width: 20rem;
+    margin-left: auto;
+  }
+
+  .roadmap-hero__me img {
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.28);
+  }
+
+  .roadmap-hero__me figcaption {
+    font-size: 0.95rem;
+  }
+}
+
+/* Auf schmalen Geraeten zaehlt jeder Pixel ueber der Falz. */
+@media (max-width: 560px) {
+  .page-hero--roadmap {
+    padding-top: calc(var(--nav-h) + 2.5rem);
+  }
+
+  .roadmap-hero__actions .btn-primary {
+    width: 100%;
+  }
+}
+
+/* ── Disqualifier / trust strips ──────────────────────────────── */
+
+.roadmap-disq,
+.roadmap-trust {
+  border-top: 1px solid var(--border, #D9D1C7);
+  border-bottom: 1px solid var(--border, #D9D1C7);
+  padding: 1rem 1.25rem;
+  text-align: center;
+}
+
+/* --stone auf --background ergibt 4,14:1 und reisst damit die 4.5:1
+   fuer normalen Text. Charcoal kommt auf 10,9:1. Inhaltlich passt es
+   ohnehin besser: der Disqualifier ist eines der staerksten
+   Vertrauenssignale der Seite und sass hier als Fussnote. */
+.roadmap-disq p,
+.roadmap-trust p {
+  margin: 0 auto;
+  max-width: 48rem;
+  color: var(--charcoal, #2F2A24);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+/* ── Gegenleistung: warum das kostenlos ist ───────────────────────
+   Die einzige Sektion auf gruener Leitflaeche. Sie traegt den
+   Unterschied zu jedem anderen Anbieter, deshalb bekommt sie das
+   Gewicht. Schriftfarben fuer .mono-label, .section-h2 und
+   .section-sub kommen bereits aus site-multipage.css (Block
+   .home-band--green), hier steht nur, was dazukommt. */
+
+.roadmap-deal .section-sub {
+  max-width: 46rem;
+}
+
+.roadmap-deal a {
+  color: var(--sage-light, #9FB88C);
+}
+
+/* ── Proof ────────────────────────────────────────────────────── */
+
+/* ── Who builds it ────────────────────────────────────────────── */
+
+.roadmap-who__grid {
+  display: grid;
+  gap: 1.75rem;
+  align-items: center;
+}
+
+.roadmap-who__media {
+  margin: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--border, #D9D1C7);
+  background: var(--surface, #FBF8F3);
+  aspect-ratio: 1 / 1;
+  max-width: 22rem;
+}
+
+.roadmap-who__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.roadmap-who__copy p {
+  margin: 0 0 0.75rem;
+  color: var(--charcoal, #2F2A24);
+}
+
+.roadmap-who__copy p:last-child {
+  margin-bottom: 0;
+}
+
+/* Auf einer Seite, deren Angebot ein aufgezeichnetes Gespraech ist,
+   ist der Kanal das naheliegendste Vertrauenssignal. */
+.roadmap-who__channel a {
+  color: var(--green-ink, #004225);
+  text-underline-offset: 0.2em;
+}
+
+@media (min-width: 800px) {
+  .roadmap-who__grid {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 2.5rem;
+  }
+}
+
+/* ── Regler, gemeinsam von Rechner und Gate benutzt ─────────────── */
+
+.roadmap-slider {
+  margin-bottom: 1.35rem;
+}
+
+.roadmap-slider__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.55rem;
+}
+
+.roadmap-slider__row label {
+  font-weight: 550;
+  color: var(--charcoal, #2F2A24);
+}
+
+.roadmap-slider__value {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--stone, #7B746B);
+}
+
+/* Die Regler standen frueher unter .roadmap-funnel. Diese Klasse
+   gibt es nicht mehr, seit der Rechner .roadmap-calc heisst und das
+   Gate .roadmap-gate. Ohne diese Umschreibung rendern beide Regler
+   als Browser-Standard. */
+.roadmap-calc input[type='range'],
+.roadmap-gate input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--border, #D9D1C7);
+  outline: none;
+}
+
+/* Auf der gruenen Flaeche des Gates wuerde die Schiene in --border
+   fast verschwinden. */
+.roadmap-gate input[type='range'] {
+  background: var(--rule-on-green, rgba(251, 248, 243, 0.14));
+}
+
+.roadmap-calc input[type='range']::-webkit-slider-thumb,
+.roadmap-gate input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--orange, #EC6A37);
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px var(--orange, #EC6A37);
+  cursor: pointer;
+}
+
+.roadmap-calc input[type='range']::-moz-range-thumb,
+.roadmap-gate input[type='range']::-moz-range-thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--orange, #EC6A37);
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px var(--orange, #EC6A37);
+  cursor: pointer;
+}
+
+.roadmap-calc input[type='range']:focus-visible,
+.roadmap-gate input[type='range']:focus-visible {
+  outline: 2px solid var(--orange, #EC6A37);
+  outline-offset: 3px;
+}
+
+.roadmap-calc select,
+.roadmap-gate select {
+  width: 100%;
+  height: 3rem;
+  padding: 0 1rem;
+  border: 1.5px solid var(--border, #D9D1C7);
+  border-radius: 0.35rem;
+  font: inherit;
+  background: #fff;
+  color: var(--charcoal, #2F2A24);
+}
+
+.roadmap-calc select:focus,
+.roadmap-gate select:focus {
+  border-color: var(--racing-green, #004225);
+  outline: none;
+}
+
+/* ── Rechner, flach ───────────────────────────────────────────────
+   Keine Schritte, kein Fortschrittsbalken: Eingaben links, Ergebnis
+   rechts, alles gleichzeitig sichtbar und live gerechnet. */
+
+.roadmap-calc {
+  display: grid;
+  gap: 1.75rem;
+  grid-template-columns: 1fr;
+  margin-top: 2rem;
+}
+
+@media (min-width: 860px) {
+  .roadmap-calc {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 3rem;
+    align-items: start;
+  }
+}
+
+.roadmap-calc__out {
+  padding: 1.5rem 1.4rem;
+  border: 1px solid var(--border, #D9D1C7);
+  border-radius: 4px;
+  background: var(--surface, #FBF8F3);
+}
+
+.roadmap-calc__out .rq-step__eyebrow {
+  margin-bottom: 0.75rem;
+}
+
+/* Eine kurze Live-Region statt aria-live auf dem ganzen Ergebnis.
+   Sonst liest ein Screenreader bei jedem Reglerschritt alle sechs
+   Absaetze vor. */
+.roadmap-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Gate vor dem Kalender ────────────────────────────────────────
+   Achtung: das Gate steht in .cal-embed-wrap und damit auf der
+   gruenen Flaeche von #contact. Alle geerbten Schriftfarben aus
+   home.css (.lm-check, .rq-error, .rq-btn-back = --stone bzw.
+   Dunkelrot) waeren dort unlesbar und werden hier ueberschrieben. */
+
+.roadmap-gate {
+  margin: 0 0 1.25rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* Autoren-display schlaegt die UA-Regel [hidden] { display: none }.
+   Ohne diese Zeile bliebe das Gate nach dem Absenden stehen und die
+   ausgeblendeten Fragen waeren alle gleichzeitig sichtbar. */
+.roadmap-gate[hidden],
+.roadmap-gate__q[hidden] {
+  display: none !important;
+}
+
+.roadmap-gate__lead {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: rgba(251, 248, 243, 0.86);
+}
+
+.roadmap-gate__head {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+/* Sage-light kommt auf der aufgehellten .cal-embed-wrap nur auf
+   4,30:1 und reisst damit die 4.5:1. Auf reinem Racing Green waere
+   es in Ordnung, hier nicht. */
+.roadmap-gate__count {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: rgba(251, 248, 243, 0.78);
+  white-space: nowrap;
+}
+
+.roadmap-gate__bars {
+  display: flex;
+  gap: 0.3rem;
+  flex: 1;
+}
+
+.roadmap-gate__bar {
+  flex: 1;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--border, #D9D1C7);
+  transition: background var(--dur-fast, 0.2s) ease;
+}
+
+.roadmap-gate__bar.is-filled {
+  background: var(--orange, #EC6A37);
+}
+
+.roadmap-gate__nav {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.roadmap-gate__nav .btn-primary {
+  flex: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .roadmap-gate__bar { transition: none; }
+}
+
+.roadmap-gate__q {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.roadmap-gate__q legend {
+  padding: 0;
+  margin-bottom: 0.75rem;
+  font-family: var(--sans);
+  font-size: 1.02rem;
+  font-weight: 650;
+  color: var(--linen-on-green, #FBF8F3);
+}
+
+.roadmap-gate__q legend:focus-visible {
+  outline: 2px solid var(--focus-on-green, rgba(159, 184, 140, 0.55));
+  outline-offset: 3px;
+}
+
+.roadmap-gate__hint {
+  margin: -0.4rem 0 0.75rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: rgba(251, 248, 243, 0.72);
+}
+
+/* Regler-Beschriftung und Wert stehen hier ebenfalls auf Gruen. */
+.roadmap-gate .roadmap-slider__row label {
+  color: var(--linen-on-green, #FBF8F3);
+}
+
+.roadmap-gate .roadmap-slider__value {
+  color: rgba(251, 248, 243, 0.72);
+}
+
+.roadmap-gate .rq-fields label {
+  color: var(--linen-on-green, #FBF8F3);
+}
+
+/* home.css setzt hier --stone, auf Gruen unlesbar. */
+.roadmap-gate .lm-check {
+  color: rgba(251, 248, 243, 0.86);
+}
+
+.roadmap-gate .lm-check a {
+  color: var(--sage-light, #9FB88C);
+}
+
+/* home.css setzt #93000a, auf Gruen praktisch unsichtbar. */
+.roadmap-gate .rq-error {
+  color: #FFB4A8;
+}
+
+.roadmap-gate .rq-btn-back {
+  color: rgba(251, 248, 243, 0.78);
+}
+
+.roadmap-gate .rq-btn-back:hover {
+  color: var(--linen-on-green, #FBF8F3);
+}
+
+.roadmap-gate__choice {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.roadmap-gate__opt {
+  text-align: left;
+  padding: 0.85rem 1rem;
+  min-height: 44px;
+  border: 1.5px solid var(--border, #D9D1C7);
+  border-radius: 0.6rem;
+  background: var(--surface, #FBF8F3);
+  color: var(--charcoal, #2F2A24);
+  font: inherit;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+/* Racing Green als Aktivrahmen waere auf gruenem Grund unsichtbar,
+   deshalb hier Mandarin. */
+.roadmap-gate__opt.is-active {
+  border-color: var(--orange, #EC6A37);
+  box-shadow: inset 0 0 0 1px var(--orange, #EC6A37);
+}
+
+.roadmap-gate__opt:focus-visible {
+  outline: 2px solid var(--focus-on-green, rgba(159, 184, 140, 0.55));
+  outline-offset: 2px;
+}
+
+.roadmap-gate select {
+  width: 100%;
+  height: 3rem;
+  padding: 0 1rem;
+  border: 1.5px solid var(--border, #D9D1C7);
+  border-radius: 0.35rem;
+  font: inherit;
+  background: #fff;
+  color: var(--charcoal, #2F2A24);
+}
+
+.roadmap-gate .is-invalid {
+  border-color: var(--orange, #EC6A37);
+  outline: 2px solid rgba(236, 106, 55, 0.28);
+}
+
+/* ── Ergebnis des Termins, im Buchungsblock ─────────────────────
+   Kein zweites Angebot, sondern das Bild dessen, was nach dem
+   Gespräch in der Hand liegt. */
+
+/* ── Ergebnis des Termins, im Buchungsblock ─────────────────────
+   Kein zweites Angebot, sondern das Bild dessen, was nach dem
+   Gespraech in der Hand liegt. Bewusst gross: es ist das einzige
+   Bild auf der Seite und das Einzige, was man mitnimmt. */
+
+.contact-deliverable {
+  margin: 1.75rem 0 0;
+  max-width: 21rem;
+}
+
+.contact-deliverable img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 3px;
+  /* Leichte Neigung und harter Schatten: liest als Dokument, das
+     auf dem Tisch liegt, nicht als Grafik im Layout. */
+  transform: rotate(-1.5deg);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.34);
+}
+
+.contact-deliverable figcaption {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: rgba(251, 248, 243, 0.78);
+}
+
+.contact-deliverable figcaption strong {
+  color: var(--linen-on-green, #FBF8F3);
+  font-weight: 650;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-deliverable img { transform: none; }
+}
+
+@media (max-width: 560px) {
+  .contact-deliverable { max-width: 15rem; margin-inline: auto; }
+}
+
+.roadmap-gate__note {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: rgba(251, 248, 243, 0.72);
+}
+
+.roadmap-gate__done {
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--linen-on-green, #FBF8F3);
+  font-weight: 550;
+}
+
+.roadmap-gate__bar {
+  background: var(--rule-on-green, rgba(251, 248, 243, 0.14));
+}
+
+/* Der Kalender liegt bis zum Absenden auf hidden. Ohne diese Regel
+   wuerde eine display-Angabe aus dem Seitenstil das Attribut
+   ueberstimmen. */
+.cal-inline[hidden] {
+  display: none !important;
+}
+
+.roadmap-result__hours {
+  margin: 0 0 0.35rem;
+  font-family: var(--serif, 'Source Serif 4', Georgia, serif);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--racing-green, #004225);
+}
+
+.roadmap-result__euro {
+  margin: 0 0 0.75rem;
+  font-family: var(--serif, 'Source Serif 4', Georgia, serif);
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--charcoal, #2F2A24);
+}
+
+.roadmap-result__preview,
+.roadmap-result__note,
+.roadmap-result__disclaimer {
+  margin: 0 0 0.85rem;
+  color: var(--stone, #7B746B);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  max-width: 54ch;
+}
+
+.roadmap-result__disclaimer {
+  font-size: 0.875rem;
+}
+
+.roadmap-calc .is-invalid {
+  border-color: var(--orange, #EC6A37);
+  outline: 2px solid rgba(236, 106, 55, 0.28);
+}
+
+/* Das Ergebnis endet mit der Buchung, nicht mit einem weiteren
+   Formular. Wer noch nicht so weit ist, nimmt das Handbuch mit. */
+.roadmap-result__cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  margin-top: 1.5rem;
+}
+
+/* ── Vorher/Nachher: derselbe Vorgang, zwei Abende ────────────────
+   Ersetzt das alte Pain-Kartenraster und die Hero-Simulation.
+   Zeigt den Schmerz, statt ihn zu beschreiben. Bewusst statisch:
+   der Vergleich wirkt ohne Ablauf staerker und kostet auf dem Handy
+   keine 670 px Hero-Hoehe. */
+
+.roadmap-when {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  margin-top: 1.75rem;
+}
+
+@media (min-width: 720px) {
+  .roadmap-when { grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+}
+
+.roadmap-when__col {
+  padding: 1.25rem 1.2rem 1.35rem;
+  border: 1px solid var(--border, #D9D1C7);
+  border-radius: 4px;
+  background: var(--surface, #FBF8F3);
+}
+
+/* Die Systemspalte traegt die Marke, die Heute-Spalte bleibt still. */
+.roadmap-when__col--sys {
+  border-color: rgba(0, 66, 37, 0.28);
+  background: rgba(0, 66, 37, 0.04);
+}
+
+.roadmap-when__head {
+  margin: 0 0 1rem;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--stone-aa, #6B645B);
+}
+
+.roadmap-when__col--sys .roadmap-when__head { color: var(--racing-green, #004225); }
+
+.roadmap-when__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.roadmap-when__list li {
+  display: grid;
+  grid-template-columns: 3.6rem minmax(0, 1fr);
+  gap: 0.1rem 0.9rem;
+  align-items: baseline;
+}
+
+.roadmap-when__t {
+  grid-row: span 2;
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--charcoal, #2F2A24);
+}
+
+.roadmap-when__col--sys .roadmap-when__t { color: var(--racing-green, #004225); }
+
+.roadmap-when__list strong {
+  font-size: 1rem;
+  font-weight: 650;
+  line-height: 1.3;
+  color: var(--charcoal, #2F2A24);
+}
+
+.roadmap-when__list li > span:last-child {
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--stone-aa, #6B645B);
+}
+
+.roadmap-when__note {
+  margin: 1.5rem 0 0;
+  max-width: 44rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--stone-aa, #6B645B);
+}
+
+/* ── Ablauf des Termins ───────────────────────────────────────────
+   Der Grund, ueberhaupt zu buchen. Zeitspanne statt Zaehler: die
+   Minuten sind die Information, nicht die Reihenfolge. */
+
+.roadmap-agenda {
+  list-style: none;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+  max-width: 44rem;
+}
+
+.roadmap-agenda li {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  gap: 1rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--border, #D9D1C7);
+}
+
+.roadmap-agenda li:last-child { border-bottom: 1px solid var(--border, #D9D1C7); }
+
+.roadmap-agenda__t {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--green-ink, #004225);
+  padding-top: 0.15rem;
+}
+
+.roadmap-agenda strong {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 650;
+  line-height: 1.3;
+  color: var(--charcoal, #2F2A24);
+}
+
+.roadmap-agenda p {
+  margin: 0.2rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--stone-aa, #6B645B);
+}
+
+.roadmap-agenda__note {
+  margin: 1.25rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--charcoal, #2F2A24);
+  font-weight: 550;
+}
+
+/* ── Gegenleistung, gekuerzte Liste auf Gruen ─────────────────── */
+
+.roadmap-deal__list {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+  max-width: 46rem;
+}
+
+.roadmap-deal__list li {
+  position: relative;
+  padding-left: 1.25rem;
+  color: rgba(251, 248, 243, 0.86);
+  font-size: 0.96rem;
+  line-height: 1.5;
+}
+
+.roadmap-deal__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 0.7rem;
+  height: 2px;
+  background: var(--sage-light, #9FB88C);
+}
+
+/* Beweislage als eine Zeile im Trust-Strip statt als eigener Block. */
+.roadmap-trust__proof {
+  margin-top: 0.5rem !important;
+  color: var(--stone-aa, #6B645B) !important;
+  font-size: 0.88rem !important;
+}

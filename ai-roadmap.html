@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kostenlose KI-Roadmap für Immobilienbetriebe | RAIS</title>
+  <meta name="description" content="Kostenloses 60-Minuten-Erstgespräch für Immobilienbetriebe. Danach eine schriftliche KI-Roadmap, die Sie behalten. Ab etwa zehn Vorgängen pro Woche.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" href="favicon.png?v=3">
+  <meta property="og:title" content="Kostenlose KI-Roadmap für Immobilienbetriebe | RAIS">
+  <meta property="og:description" content="Kostenloses 60-Minuten-Erstgespräch für Immobilienbetriebe. Danach eine schriftliche KI-Roadmap, die Sie behalten. Ab etwa zehn Vorgängen pro Woche.">
+  <meta property="og:url" content="https://ritz-ai.solutions/ai-roadmap.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://ritz-ai.solutions/og-cover.webp">
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:image" content="https://ritz-ai.solutions/og-cover.webp">
+  <script src="scripts/public-config.js"></script>
+  <script src="scripts/sentry-klaro-bootstrap.js"></script>
+  <script src="klaro-config.js"></script>
+  <script src="vendor/klaro/klaro.js"></script>
+  <link rel="stylesheet" href="vendor/klaro/klaro.min.css">
+  <link rel="stylesheet" href="styles/klaro-overrides.css">
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="styles/antigravity-polish.css">
+  <link rel="stylesheet" href="styles/tailwind.generated.css">
+  <link rel="stylesheet" href="styles/site-multipage.css">
+  <!-- home.css war frueher startseiten-exklusiv. Damit lagen der
+       Rechner-Wizard (.rq-*), das Architekturbild (.arch), das
+       Ja-Nein-Raster (.icp-*) und die Ablauf-Zeitleiste nur dort.
+       Folge: der Rechner auf aqut.html rendert als rohes
+       Browser-Default, weil saemtliche .rq-Regeln fehlten.
+       Die beiden Dateien teilen sich genau einen Selektor (#contact)
+       und dort verschiedene Eigenschaften, deshalb ist das gefahrlos. -->
+  <link rel="stylesheet" href="styles/home.css">
+  <link rel="stylesheet" href="styles/booking-modal.css">
+  <link rel="stylesheet" href="styles/ai-roadmap.css">
+</head>
+<body data-cal-url="https://cal.com/ritzaisolutions/immo-ai-roadmap">
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+  <symbol id="i-crm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-5.4 6-5.4s6 2.1 6 5.4"/><path d="M17 9.5h4M17 13h4"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-files" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2.5h8a2 2 0 0 1 2 2V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+  <symbol id="i-board" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M15 4v16"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5h3l1.6 4-2 1.4a12 12 0 0 0 6.5 6.5l1.4-2 4 1.6v3a2 2 0 0 1-2.2 2A17.5 17.5 0 0 1 4 5.7 2 2 0 0 1 6 3.5"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a7.5 7.5 0 0 1-11 6.6L4 20l1.4-4.4A7.5 7.5 0 1 1 20 12"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8 12 3.5 3 8v8l9 4.5 9-4.5z"/><path d="m3 8 9 4.5M21 8l-9 4.5M12 12.5V21"/></symbol>
+  <symbol id="i-form" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h4"/></symbol>
+  <symbol id="i-table" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M3 15h18M10 10v10"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></symbol>
+  <symbol id="i-tool" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 6.5a3.5 3.5 0 0 0 4.6 4.6l-8 8a2.4 2.4 0 0 1-3.4-3.4z"/><path d="M14.5 6.5 17 4"/></symbol>
+  <symbol id="i-megafon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10v4a1.5 1.5 0 0 0 1.5 1.5H8l7 4.5V4L8 8.5H5.5A1.5 1.5 0 0 0 4 10"/><path d="M18 9.5a3.5 3.5 0 0 1 0 5"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 13.7 9l5.5 1.7-5.5 1.7L12 18l-1.7-5.6L4.8 10.7 10.3 9z"/><path d="M18.5 3.5v3M20 5h-3"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/><path d="M12 14.5v2"/></symbol>
+  <symbol id="i-limit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="m6.5 6.5 11 11"/></symbol>
+  <symbol id="i-hand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11"/><path d="M12 10.5V4.5a1.5 1.5 0 0 1 3 0V11"/><path d="M15 11V6.5a1.5 1.5 0 0 1 3 0V14a6 6 0 0 1-6 6h-1a6 6 0 0 1-5.2-3l-1.6-2.8a1.5 1.5 0 0 1 2.4-1.7L9 14.5V11"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+</svg>
+
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+<nav id="navbar" aria-label="Hauptnavigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand" aria-label="RAIS zur Startseite">
+      <img src="favicon.svg" alt="" width="44" height="44" aria-hidden="true">
+      <div class="nav-brand-words">
+        <span class="nav-wordmark">RAIS</span>
+        <span class="nav-submark">Ritz AI Solutions</span>
+      </div>
+    </a>
+    <div class="nav-right">
+      <a class="btn-primary" id="nav-demo-btn" href="#contact">Erstgespräch buchen</a>
+    </div>
+  </div>
+</nav>
+<main id="main">
+<section class="page-hero page-hero--roadmap" aria-labelledby="roadmap-hero-title">
+  <div class="page-hero__inner">
+    <div class="roadmap-hero">
+      <div class="roadmap-hero__copy">
+        <span class="mono-label">Für Maklerbüros ab etwa zehn Anfragen pro Woche</span>
+        <h1 id="roadmap-hero-title">Wer zuerst antwortet, bekommt den Termin.</h1>
+        <p class="roadmap-hero__sub">Die meisten Anfragen verlieren Sie nicht im Gespräch, sondern vorher.</p>
+        <ul class="roadmap-hero__offer">
+          <li>60 Minuten, kostenlos</li>
+          <li>Schriftliche Roadmap, die Sie behalten</li>
+          <li>Kein Pitch, kein Angebot im Termin</li>
+        </ul>
+        <div class="roadmap-hero__actions">
+          <a class="btn-primary" href="#contact">Kostenloses Erstgespräch buchen</a>
+        </div>
+        <p class="roadmap-hero__rec">Das Gespräch wird aufgezeichnet und auf YouTube veröffentlicht. <a href="#gegenleistung">Was das heißt</a></p>
+      </div>
+      <figure class="roadmap-hero__me">
+        <img src="images/profilbild.webp" width="720" height="720" loading="eager" fetchpriority="high" decoding="async" alt="Kevin Ritz, Geschäftsführer von RAIS">
+        <figcaption><strong>Kevin Ritz</strong>Sie reden mit mir, nicht mit einem Vertrieb.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<aside class="roadmap-disq" aria-label="Qualifizierung">
+  <p>Unter etwa zehn Anfragen pro Woche raten wir ab. Da rechnet sich der Aufwand meistens nicht, und das sagen wir lieber jetzt als im Gespräch.</p>
+</aside>
+
+<section class="home-band home-band--cloud" aria-labelledby="roadmap-when-title">
+  <div class="section-wrap">
+    <h2 class="section-h2" id="roadmap-when-title">Dieselbe Anfrage, zwei Abende</h2>
+    <div class="roadmap-when">
+      <article class="roadmap-when__col">
+        <h3 class="roadmap-when__head">Heute</h3>
+        <ol class="roadmap-when__list">
+          <li><span class="roadmap-when__t">18:42</span><strong>Anfrage kommt rein</strong><span>Sie sind beim Essen.</span></li>
+          <li><span class="roadmap-when__t">09:15</span><strong>Sie sehen sie</strong><span>Zwei Büros haben längst geantwortet.</span></li>
+          <li><span class="roadmap-when__t">11:30</span><strong>Sie rufen zurück</strong><span>Die Besichtigung läuft schon.</span></li>
+        </ol>
+      </article>
+      <article class="roadmap-when__col roadmap-when__col--sys">
+        <h3 class="roadmap-when__head">Mit System</h3>
+        <ol class="roadmap-when__list">
+          <li><span class="roadmap-when__t">18:42</span><strong>Anfrage kommt rein</strong><span>Geprüft auf Bedarf und Zeitrahmen.</span></li>
+          <li><span class="roadmap-when__t">18:43</span><strong>Antwort mit Terminvorschlag</strong><span>Nach Ihren Kriterien.</span></li>
+          <li><span class="roadmap-when__t">18:51</span><strong>Interessent bucht selbst</strong><span>Im CRM, mit Notiz.</span></li>
+        </ol>
+      </article>
+    </div>
+    <p class="roadmap-when__note">Illustrativ, keine gemessenen Werte. Das passiert nicht bei jeder Anfrage. Sie erfahren nur nie, bei welchen.</p>
+  </div>
+</section>
+
+<section class="home-band home-band--linen" aria-labelledby="roadmap-agenda-title">
+  <div class="section-wrap">
+    <h2 class="section-h2" id="roadmap-agenda-title">Was in den 60 Minuten passiert</h2>
+    <ol class="roadmap-agenda">
+      <li>
+        <span class="roadmap-agenda__t">0–10</span>
+        <div><strong>Ihre Vorgänge</strong><p>Wo es klemmt, in Ihren Worten.</p></div>
+      </li>
+      <li>
+        <span class="roadmap-agenda__t">10–20</span>
+        <div><strong>Was Sie schon probiert haben</strong><p>Und warum es nicht gehalten hat.</p></div>
+      </li>
+      <li>
+        <span class="roadmap-agenda__t">20–35</span>
+        <div><strong>Was heute geht und was nicht</strong><p>Mit klaren Grenzen statt Hype.</p></div>
+      </li>
+      <li>
+        <span class="roadmap-agenda__t">35–55</span>
+        <div><strong>Ein bis zwei Use Cases, konkret</strong><p>Welches Werkzeug, welcher Rahmen, welcher Aufwand.</p></div>
+      </li>
+      <li>
+        <span class="roadmap-agenda__t">55–60</span>
+        <div><strong>Ehrliche Einschätzung</strong><p>Auch wenn sie lautet: lohnt sich nicht.</p></div>
+      </li>
+    </ol>
+    <p class="roadmap-agenda__note">Kein Pitch und kein Angebot im Termin. Die schriftliche Roadmap kommt danach.</p>
+  </div>
+</section>
+
+<section class="home-band home-band--green roadmap-deal" id="gegenleistung" aria-labelledby="roadmap-deal-title">
+  <div class="section-wrap">
+    <h2 class="section-h2" id="roadmap-deal-title">Warum das kostenlos ist</h2>
+    <p class="section-sub">Aus diesen Gesprächen entstehen meine YouTube-Beiträge. Sie zahlen nichts, ich bekomme den Beitrag. Genau deshalb ist das kein Verkaufsgespräch: Ich habe schon bekommen, wofür ich hier bin.</p>
+    <ul class="roadmap-deal__list">
+      <li>Keine Mandantendaten, keine Objektadressen, keine Umsatzzahlen im Video.</li>
+      <li>Sie sehen den Schnitt vorher und können die Freigabe jederzeit zurückziehen.</li>
+      <li>Ohne Kamera geht auch. Sagen Sie vorher kurz Bescheid.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="home-band home-band--cloud" aria-labelledby="roadmap-who-title">
+  <div class="section-wrap">
+    <div class="roadmap-who__grid">
+      <figure class="roadmap-who__media">
+        <img src="images/profilbild.webp" width="720" height="720" loading="lazy" decoding="async" alt="Kevin Ritz, Geschäftsführer von RAIS">
+      </figure>
+      <div class="roadmap-who__copy">
+        <h2 class="section-h2" id="roadmap-who-title">Wer im Termin sitzt</h2>
+        <p>Kevin Ritz, Geschäftsführer von RAIS aus Koblenz. Sie reden mit mir, nicht mit einem Vertrieb. Wenn wir bauen, baue ich auch selbst.</p>
+        <p>Davor bei 1&amp;1, an Systemen, bei denen ein Ausfall sofort Kunden trifft.</p>
+        <p class="roadmap-who__channel"><a href="https://www.youtube.com/@kevin_ritz" target="_blank" rel="noopener noreferrer">Kanal @kevin_ritz</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<aside class="roadmap-trust" aria-label="Hosting und Datenschutz">
+  <p>Selbst gehostet in der EU · Datenbank Frankfurt · AVV nach Art. 28 DSGVO</p>
+  <p class="roadmap-trust__proof">Kundenlogos und Prozentzahlen finden Sie hier nicht. Warum nicht, steht in den Fragen unter dem Kalender.</p>
+</aside>
+</main>
+<section id="contact">
+  <div class="section-wrap">
+    <div class="contact-grid">
+      <div class="contact-text-col">
+        <span class="mono-label">KI-Roadmap</span>
+        <h2 class="section-h2">Termin wählen</h2>
+        
+        <figure class="contact-deliverable">
+          <img src="images/cover.webp" alt="Titelseite der schriftlichen Roadmap für Immobilienmakler und Hausverwaltungen" width="1055" height="1491" loading="lazy" decoding="async" onerror="this.parentNode.remove()">
+          <figcaption><strong>Ihre Roadmap.</strong> Schriftlich, auf Ihren Betrieb bezogen. Sie behalten sie auch dann, wenn wir nicht zusammenarbeiten.</figcaption>
+        </figure>
+      </div>
+      <div class="cal-embed-wrap">
+        <p class="cal-card-title">KI-Roadmap buchen</p>
+        <p class="cal-card-sub">60 Minuten, kostenlos. Wird aufgezeichnet.</p>
+        <div class="roadmap-gate" id="roadmap-gate">
+          <div class="roadmap-gate__head">
+            <span class="roadmap-gate__count" id="gate-count">Frage 1 von 3</span>
+            <div class="roadmap-gate__bars" aria-hidden="true">
+              <span class="roadmap-gate__bar is-filled" data-gbar="1"></span>
+              <span class="roadmap-gate__bar" data-gbar="2"></span>
+              <span class="roadmap-gate__bar" data-gbar="3"></span>
+            </div>
+          </div>
+          <p class="roadmap-gate__lead">Drei Fragen, dann sehen Sie den Kalender. Damit ich vorbereitet ins Gespräch gehe.</p>
+
+          <fieldset class="roadmap-gate__q" data-gstep="1">
+            <legend>Wo tut es am meisten weh?</legend>
+            <div class="roadmap-gate__choice" role="radiogroup" aria-label="Hauptproblem">
+              <button type="button" class="roadmap-gate__opt" data-gate="pain" data-value="manuelle-bearbeitung" role="radio" aria-checked="false">Anfragen von Hand bearbeiten kostet zu viel Zeit</button>
+              <button type="button" class="roadmap-gate__opt" data-gate="pain" data-value="mieteranliegen" role="radio" aria-checked="false">Mieteranliegen im Griff behalten</button>
+              <button type="button" class="roadmap-gate__opt" data-gate="pain" data-value="reaktionszeit" role="radio" aria-checked="false">Zu langsame Reaktion auf neue Anfragen</button>
+              <button type="button" class="roadmap-gate__opt" data-gate="pain" data-value="terminierung" role="radio" aria-checked="false">Termine vereinbaren frisst den Tag</button>
+            </div>
+          </fieldset>
+
+          <fieldset class="roadmap-gate__q" data-gstep="2" hidden>
+            <legend>Womit arbeiten Sie?</legend>
+            <div class="rq-fields">
+              <div>
+                <label for="gate-ecosystem">Mail und Kalender</label>
+                <select id="gate-ecosystem">
+                  <option value="">Bitte wählen</option>
+                  <option value="google">Google Workspace</option>
+                  <option value="microsoft365">Microsoft 365</option>
+                  <option value="imap">Eigener Server per IMAP</option>
+                  <option value="gemischt">Gemischt</option>
+                  <option value="weiss-nicht">Weiß ich nicht</option>
+                </select>
+              </div>
+              <div>
+                <label for="gate-crm">CRM</label>
+                <select id="gate-crm">
+                  <option value="">Bitte wählen</option>
+                  <option value="onoffice">onOffice</option>
+                  <option value="propstack">Propstack</option>
+                  <option value="flowfact">FlowFact</option>
+                  <option value="haufe">Haufe</option>
+                  <option value="excel">Excel oder keins</option>
+                  <option value="anderes">Anderes</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="roadmap-gate__q" data-gstep="3" hidden>
+            <legend>Wie viele Vorgänge pro Woche?</legend>
+            <p class="roadmap-gate__hint">Anfragen oder Mieteranliegen, je nachdem was bei Ihnen überwiegt.</p>
+            <div class="roadmap-slider">
+              <div class="roadmap-slider__row">
+                <label for="gate-volume">Vorgänge pro Woche</label>
+                <span class="roadmap-slider__value" id="gate-volume-out">25</span>
+              </div>
+              <input id="gate-volume" type="range" min="5" max="150" step="1" value="25">
+            </div>
+            <label class="lm-check" for="gate-privacy">
+              <input type="checkbox" id="gate-privacy" required>
+              <span>Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a> gelesen und bin einverstanden, dass diese drei Angaben zur Vorbereitung des Gesprächs gespeichert werden.</span>
+            </label>
+          </fieldset>
+
+          <p class="rq-error" id="gate-error" hidden role="alert"></p>
+          <div class="roadmap-gate__nav">
+            <button type="button" class="rq-btn-back" id="gate-back" hidden>Zurück</button>
+            <button type="button" class="btn-primary" id="gate-submit">Weiter</button>
+          </div>
+          <p class="roadmap-gate__note">Name, E-Mail und Telefon geben Sie erst im Kalender an, und dort nur einmal.</p>
+        </div>
+        <p class="roadmap-gate__done" id="gate-done" hidden>Danke. Wählen Sie unten Ihren Termin.</p>
+        <div class="cal-inline" data-cal-deferred data-source="contact" id="cal-inline-contact" data-cal-url="https://cal.com/ritzaisolutions/immo-ai-roadmap" hidden></div>
+      </div>
+    </div>
+    <div class="contact-details">
+      <a href="mailto:kevin@ritz-ai.solutions" class="contact-detail-link">kevin@ritz-ai.solutions</a>
+      <a href="tel:+4915129755134" class="contact-detail-link">+49 151 297 551 34</a>
+    </div>
+  </div>
+</section>
+
+<section class="home-band home-band--linen" id="faq" aria-labelledby="roadmap-faq-title">
+  <div class="section-wrap">
+    <h2 class="section-h2" id="roadmap-faq-title">Bevor Sie fragen</h2>
+    <ul class="akte-register akte-register--faq">
+      <li><details class="akte akte--frage">
+        <summary class="akte__head">
+          <span class="akte__title">Und wenn wir danach zusammenarbeiten?</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <p>Die Laufzeit beträgt zwölf Monate. Dazu kommt unsere Garantie an Sie: Wenn die vorher gemeinsam festgelegten Ergebnisse nach drei Monaten nicht erreicht sind, kommen Sie ohne Haken aus dem Vertrag und müssen das nicht begründen. Drei Monate braucht ein System, um eingeregelt zu werden. Diese Garantie gibt es, weil Sie mit dem aufgezeichneten Gespräch etwas beigetragen haben. Voraussetzung ist, dass wir Zugang bekommen und Ihr Team das System auch nutzt.</p>
+        </div>
+      </details></li>
+      <li><details class="akte akte--frage">
+        <summary class="akte__head">
+          <span class="akte__title">Was kostet es?</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <p>Wir nennen keinen öffentlichen Preis, weil der Zuschnitt jedes Systems den Aufwand bestimmt und eine Zahl ohne Kontext niemandem hilft. Der Rahmen hängt an drei Dingen: wie viele Prozesse Sie automatisieren, wie sauber Ihre Daten heute vorliegen, und ob wir den Betrieb übernehmen. Sie bekommen ein schriftliches Angebot mit Umfang, Zeitplan und Preis, bevor irgendetwas gebaut wird.</p>
+        </div>
+      </details></li>
+      <li><details class="akte akte--frage">
+        <summary class="akte__head">
+          <span class="akte__title">Können wir unser CRM behalten?</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <p>Ja, das ist der Normalfall. Wir bauen an Ihre Systeme an, statt Ihnen eine Plattform zu verkaufen. Jedes CRM, das uns bisher begegnet ist, ließ sich anbinden, unterschiedlich ist nur der Aufwand. Wenn Sie heute mit Excel arbeiten, bauen wir zuerst die Ablage: am Anfang mehr Aufwand, danach sauberer als bei den meisten.</p>
+        </div>
+      </details></li>
+      <li><details class="akte akte--frage">
+        <summary class="akte__head">
+          <span class="akte__title">Was ist, wenn mein Team nicht mitzieht?</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <p>Die Systeme laufen dort, wo Ihr Team ohnehin arbeitet: im Postfach, im CRM, im Ticketsystem. Es gibt in der Regel keine neue Oberfläche, die jemand lernen muss. Wo doch, gehört die Einweisung zur Übergabe und nicht auf eine Extrarechnung.</p>
+        </div>
+      </details></li>
+      <li><details class="akte akte--frage">
+        <summary class="akte__head">
+          <span class="akte__title">Was passiert mit der Aufzeichnung?</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <p>Aus dem Gespräch wird ein Beitrag für meinen YouTube-Kanal. Mandantendaten, Objektadressen und Umsatzzahlen kommen nicht ins Video. Sie sehen den Schnitt, bevor er online geht, und Sie können die Freigabe auch danach noch zurückziehen. Wenn Sie gar nicht aufgezeichnet werden möchten, sagen Sie mir vorher Bescheid, dann reden wir trotzdem.</p>
+        </div>
+      </details></li>
+      <li><details class="akte akte--frage">
+        <summary class="akte__head">
+          <span class="akte__title">Warum sehe ich hier keine Kundenlogos?</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <p>Keine Kundenlogos ohne Mandat, keine erfundenen Prozentzahlen, keine Vorher-Nachher-Werte, die niemand gemessen hat. Jeder Eintrag in unserem Systemkatalog trägt stattdessen einen Stempel, der sagt, wie belastbar er ist: Live im Betrieb, Im Aufbau oder Übertragbar. Aktuell trägt keiner den Stempel Live im Betrieb, weil die Freigaben zur Nennung noch ausstehen. Auch das sagen wir lieber, als es zu verschweigen.</p>
+        </div>
+      </details></li>
+    </ul>
+  </div>
+</section>
+
+<section class="home-band home-band--cloud" id="rechner" aria-labelledby="roadmap-calc-title">
+  <div class="section-wrap">
+    <h2 class="section-h2" id="roadmap-calc-title">Noch unsicher? Rechnen Sie nach</h2>
+    <p class="section-sub">Drei Regler, keine Kontaktdaten. Die Zahl gehört Ihnen, auch ohne Termin.</p>
+    <div class="rechner roadmap-calc" id="roadmap-calc">
+      <div class="roadmap-calc__inputs">
+        <div class="roadmap-slider">
+          <div class="roadmap-slider__row">
+            <label for="rf-volume">Vorgänge pro Woche</label>
+            <span class="roadmap-slider__value" id="rf-volume-out">25</span>
+          </div>
+          <input id="rf-volume" type="range" min="5" max="150" step="1" value="25">
+        </div>
+        <div class="roadmap-slider">
+          <div class="roadmap-slider__row">
+            <label for="rf-minutes">Minuten pro Vorgang bis zur Erledigung</label>
+            <span class="roadmap-slider__value" id="rf-minutes-out">10</span>
+          </div>
+          <input id="rf-minutes" type="range" min="3" max="40" step="1" value="10">
+        </div>
+        <div class="rq-fields">
+          <div>
+            <label for="rf-rate">Interner Stundensatz in Euro</label>
+            <input id="rf-rate" type="number" min="10" max="200" step="1" value="45" inputmode="decimal">
+          </div>
+        </div>
+      </div>
+      <div class="roadmap-calc__out">
+        <span class="rq-step__eyebrow">Ihr Ergebnis</span>
+        <p class="roadmap-result__hours" id="rf-hours"></p>
+        <p class="roadmap-result__note" id="rf-bound"></p>
+        <p class="roadmap-result__euro" id="rf-euro"></p>
+        <p class="roadmap-result__note" id="rf-rate-copy"></p>
+        <p class="roadmap-result__preview" id="rf-preview"></p>
+        <p class="roadmap-result__disclaimer">Nur aus Ihren eigenen Angaben gerechnet. Wir behaupten nichts über Ihren Betrieb.</p>
+        <div class="roadmap-result__cta">
+          <a class="btn-primary" href="#contact">Kostenloses Erstgespräch buchen</a>
+        </div>
+      </div>
+      <p class="roadmap-sr" id="rf-live" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+
+<div id="sticky-cta" aria-hidden="true">
+  <a class="sticky-cta-btn" id="sticky-demo-btn" href="#contact">Kostenloses Erstgespräch buchen</a>
+</div>
+<footer id="footer">
+  <div class="footer-inner">
+    <a href="/" class="footer-brand" aria-label="RAIS Startseite">
+      <img src="favicon.svg" alt="" width="40" height="40" aria-hidden="true">
+      <span>RAIS</span>
+    </a>
+    <nav class="footer-legal" aria-label="Seitenlinks">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </nav>
+    <span class="footer-copy">© 2026 Ritz AI Solutions · RAIS · Koblenz</span>
+  </div>
+</footer>
+
+<div id="booking-modal" role="dialog" aria-modal="true" aria-label="KI-Roadmap buchen">
+  <div class="bm-backdrop" id="bm-backdrop"></div>
+  <div class="bm-box">
+    <button class="bm-close" id="bm-close" type="button" aria-label="Schließen">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="bm-step is-active" id="bm-step-0">
+      <h2 class="bm-title">Wählen Sie Ihren Termin</h2>
+      <p class="bm-sub">60 Minuten, kostenlos. Sie geben Ihre Angaben direkt im Kalender ein, ein zweites Formular gibt es nicht.</p>
+      <div class="bm-cal-wrap" id="bm-cal-wrap"></div>
+    </div>
+  </div>
+</div>
+
+<script src="scripts/ai-roadmap-funnel.js"></script>
+
+<script src="scripts/site-nav.js"></script>
+<script src="scripts/cal-embed.js"></script>
+<script src="scripts/booking-modal.js"></script>
+</body>
+</html>

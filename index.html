@@ -2539,19 +2539,16 @@
         <section id="handbuch" class="home-band home-band--cloud" aria-labelledby="handbuch-title">
             <div class="section-wrap">
                 <div class="lm-grid">
-                    <div>
-                        <!-- Cover des Prozesshandbuchs. 560px breit reicht:
-                             angezeigt wird es auf 255px, das deckt auch
-                             2x-Displays. Die Quelle (1055x1491, 1.8 MB) bleibt
-                             als cover.png im Repo, ausgeliefert wird die WebP
-                             mit 49 KB. Faellt die Datei, entfernt sich das
-                             Bild selbst und die Sektion bleibt nutzbar. -->
-                        <img class="lm-cover" src="images/cover.webp" alt="" width="560" height="791" loading="lazy" decoding="async" onerror="this.remove()">
+                    <figure class="lm-cover-wrap">
+                        <!-- Quelle: images/cover.png (1055x1491). Ausgeliefert
+                             wird cover.webp. Faellt die Datei, bleibt die
+                             Sektion ohne Bild nutzbar. -->
+                        <img class="lm-cover" src="images/cover.webp" alt="Cover des Prozesshandbuchs: Prozesse rechtssicher digitalisieren — Praxisleitfaden für Immobilienmakler und Hausverwaltungen" width="1055" height="1491" loading="lazy" decoding="async" onerror="this.parentNode.remove()">
+                    </figure>
+                    <div class="lm-copy">
                         <span class="mono-label">Noch nicht so weit?</span>
                         <h2 class="section-h2" id="handbuch-title">Das Prozesshandbuch, ohne Termin</h2>
                         <p class="section-sub">Wie Sie Ihre wiederkehrenden Vorgänge selbst aufnehmen, bewerten und entscheiden, was sich zu automatisieren lohnt. Dieselbe Systematik, mit der wir im Audit arbeiten. Sie brauchen uns dafür nicht.</p>
-                    </div>
-
                     <div class="lm-box">
                         <form id="lm-form" class="lm-form" novalidate>
                             <div class="lm-field">
@@ -2582,6 +2579,7 @@
                             <p class="lm-success__title">Fertig. Hier ist Ihr Handbuch.</p>
                             <a id="lm-download-btn" class="btn-primary" href="downloads/rais-prozesshandbuch-2026.pdf" download="RAIS-Prozesshandbuch-2026.pdf">PDF öffnen</a>
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -2675,6 +2673,7 @@
                 <a href="zusammenarbeit.html">So arbeiten wir</a>
                 <a href="referenzen.html">Systemkatalog</a>
                 <a href="ams.html">AMS Beispielsystem</a>
+                <a href="ai-roadmap.html">KI-Roadmap</a>
                 <a href="persoenlichkeit.html">Persönlichkeit</a>
                 <a href="#contact">Kontakt</a>
                 <a href="impressum.html">Impressum</a>

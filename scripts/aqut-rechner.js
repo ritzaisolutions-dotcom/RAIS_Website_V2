@@ -146,7 +146,7 @@
     }
   }
 
-  function setStep(n) {
+  function setStep(n, opts) {
     step = n;
     for (var i = 0; i < steps.length; i++) {
       var el = steps[i];
@@ -176,7 +176,7 @@
     if (resetBtn) resetBtn.hidden = step !== 4;
     if (ctaBtn) ctaBtn.hidden = step !== 4;
 
-    if (step <= maxInputStep) {
+    if (opts && opts.focus && step <= maxInputStep) {
       focusFirstField(step);
     }
 
@@ -346,7 +346,7 @@
     nextBtn.addEventListener('click', function () {
       if (!validateStep(step)) return;
       if (step < maxInputStep) {
-        setStep(step + 1);
+        setStep(step + 1, { focus: true });
         return;
       }
       setStep(4);
@@ -356,14 +356,14 @@
   if (backBtn) {
     backBtn.addEventListener('click', function () {
       clearError();
-      if (step > 1 && step <= maxInputStep) setStep(step - 1);
+      if (step > 1 && step <= maxInputStep) setStep(step - 1, { focus: true });
     });
   }
 
   if (resetBtn) {
     resetBtn.addEventListener('click', function () {
       clearError();
-      setStep(1);
+      setStep(1, { focus: true });
     });
   }
 

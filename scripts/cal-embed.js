@@ -45,6 +45,7 @@
   /* Nur diese Werte akzeptiert submit-audit-lead als pain_point. */
   var PAIN_POINTS = [
     'inseratsanfragen-qualifizieren',
+    'mieteranliegen-management',
     'terminierung-besichtigungen',
     'onboarding-vertragsunterschrift',
     'wiederkehrende-kundenfragen',
@@ -173,7 +174,8 @@
 
   function renderFallbackLink(entry) {
     var link = document.createElement('a');
-    link.href = target.origin + '/' + target.link;
+    var resolved = entry.target || target;
+    link.href = resolved.origin + '/' + resolved.link;
     link.target = '_blank';
     link.rel = 'noopener noreferrer';
     link.className = 'cal-gate__btn';
@@ -239,16 +241,20 @@
     });
 
     var ns = entry.ns;
-    window.Cal('init', ns, { origin: target.origin });
-    window.Cal.ns[ns]('inline', {
+    var resolved = entry.target || target;
+    var hideDetails = resolved.link.indexOf('immo-ai-roadmap') !== -1;
+    window.Cal('init', ns, { origin: resolved.origin });
+    var inlineOpts = {
       elementOrSelector: entry.el,
-      calLink: target.link,
-      layout: 'month_view'
-    });
+      calLink: resolved.link,
+      layout: 'month_view',
+      config: Object.assign({ locale: 'de' }, entry.config || {})
+    };
+    window.Cal.ns[ns]('inline', inlineOpts);
     window.Cal.ns[ns]('ui', {
       theme: 'light',
       cssVarsPerTheme: { light: { 'cal-brand': '#EC6A37' } },
-      hideEventTypeDetails: false
+      hideEventTypeDetails: hideDetails
     });
     window.Cal.ns[ns]('on', {
       action: 'bookingSuccessful',
@@ -256,8 +262,8 @@
         entry.el.classList.remove('is-loading');
         submitLead(entry, event && event.detail ? event.detail.data : null);
         /* Local diagnostic only on /makler.html. No persistence. */
-        if (window.RAISMakler && typeof window.RAISMakler.track === 'function') {
-          window.RAISMakler.track('booking_confirmed', {
+        if (window.RAISFunnel && typeof window.RAISFunnel.track === 'function') {
+          window.RAISFunnel.track('booking_confirmed', {
             source: entry.source || null
           });
         }
@@ -351,6 +357,20 @@
 
   var counter = 0;
 
+  function pageCalUrl() {
+    var body = document.body;
+    return body && body.getAttribute('data-cal-url');
+  }
+
+  function resolveEntryTarget(el, options) {
+    var raw =
+      (options && options.calUrl) ||
+      (el && el.getAttribute('data-cal-url')) ||
+      pageCalUrl() ||
+      cfg.calComUrl;
+    return resolveTarget(raw);
+  }
+
   function mount(el, opts) {
     if (!el) return null;
     var options = opts || {};
@@ -361,6 +381,15 @@
       /* Source darf sich aendern, der Kalender bleibt stehen. */
       if (options.source) existing.source = sanitizeSource(options.source);
       if (options.icpSegment) existing.icpSegment = options.icpSegment;
+      if (options.calUrl) existing.target = resolveTarget(options.calUrl);
+      if (options.config) existing.config = options.config;
+      if (existing.loaded && options.config) {
+        existing.loaded = false;
+        existing.leadSent = false;
+        existing.el.innerHTML = '';
+        if (hasConsent()) activate(existing);
+        return existing;
+      }
       if (!existing.loaded && hasConsent()) activate(existing);
       return existing;
     }
@@ -374,7 +403,9 @@
       mountedAt: Date.now(),
       consentedAt: 0,
       source: sanitizeSource(options.source),
-      icpSegment: options.icpSegment || null
+      icpSegment: options.icpSegment || null,
+      target: resolveEntryTarget(el, options),
+      config: options.config || null
     };
     mounted.push(entry);
 
@@ -408,7 +439,10 @@
 
     if (typeof window.IntersectionObserver !== 'function') {
       nodes.forEach(function (el) {
-        mount(el, { source: el.getAttribute('data-source') });
+        mount(el, {
+          source: el.getAttribute('data-source'),
+          calUrl: el.getAttribute('data-cal-url') || pageCalUrl()
+        });
       });
       return;
     }
@@ -417,7 +451,10 @@
       entries.forEach(function (item) {
         if (!item.isIntersecting) return;
         observer.unobserve(item.target);
-        mount(item.target, { source: item.target.getAttribute('data-source') });
+        mount(item.target, {
+          source: item.target.getAttribute('data-source'),
+          calUrl: item.target.getAttribute('data-cal-url') || pageCalUrl()
+        });
       });
     }, { rootMargin: '400px 0px' });
 

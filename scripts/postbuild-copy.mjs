@@ -8,6 +8,10 @@ const dist = resolve(root, 'dist');
 const copyTargets = [
   { from: 'scripts', to: 'scripts' },
   { from: 'downloads', to: 'downloads' },
+  // Einzelbild fuer die Link-Vorschau (og:image). Scraper koennen
+  // keine gehashten Vite-Assets aufloesen, und images/ wird bewusst
+  // nicht ausgeliefert. Deshalb genau diese eine Datei.
+  { from: 'images/cover.webp', to: 'og-cover.webp' },
   { from: 'vendor', to: 'vendor' },
   // images/ wird NICHT kopiert (entfernt 05.08.2026).
   //
@@ -27,6 +31,7 @@ const copyTargets = [
   { from: 'styles/site-multipage.css', to: 'styles/site-multipage.css' },
   { from: 'styles/home.css', to: 'styles/home.css' },
   { from: 'styles/booking-modal.css', to: 'styles/booking-modal.css' },
+  { from: 'styles/ai-roadmap.css', to: 'styles/ai-roadmap.css' },
   { from: 'styles/antigravity-polish.css', to: 'styles/antigravity-polish.css' },
   { from: 'styles/tailwind.generated.css', to: 'styles/tailwind.generated.css' },
   { from: 'fonts.css', to: 'fonts.css' },
@@ -46,6 +51,10 @@ const sharedStyles = [
   'styles/booking-modal.css',
 ];
 
+const pageStyles = {
+  'ai-roadmap.html': ['styles/ai-roadmap.css'],
+};
+
 mkdirSync(dist, { recursive: true });
 
 for (const { from, to } of copyTargets) {
@@ -54,10 +63,11 @@ for (const { from, to } of copyTargets) {
   cpSync(source, resolve(dist, to), { recursive: true });
 }
 
-function ensureStyles(html) {
+function ensureStyles(html, pageName) {
   let out = html;
   const tags = [];
-  for (const href of sharedStyles) {
+  const hrefs = sharedStyles.concat(pageStyles[pageName] || []);
+  for (const href of hrefs) {
     if (out.includes(href)) continue;
     tags.push(`  <link rel="stylesheet" href="${href}">`);
   }
@@ -69,7 +79,7 @@ function ensureStyles(html) {
 for (const name of readdirSync(dist)) {
   if (!name.endsWith('.html')) continue;
   const file = resolve(dist, name);
-  const next = ensureStyles(readFileSync(file, 'utf8'));
+  const next = ensureStyles(readFileSync(file, 'utf8'), name);
   writeFileSync(file, next);
 }
 

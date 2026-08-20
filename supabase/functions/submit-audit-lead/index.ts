@@ -275,6 +275,7 @@ Deno.serve(async (request) => {
     const formOpenedAt = textOrNull(input.form_opened_at, 40);
     const allowedPainPoints = new Set([
       "inseratsanfragen-qualifizieren",
+      "mieteranliegen-management",
       "terminierung-besichtigungen",
       "onboarding-vertragsunterschrift",
       "wiederkehrende-kundenfragen",

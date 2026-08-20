@@ -4,3 +4,8 @@
 # Origin-Allowlist, Rate-Limit (register_audit_lead_attempt), Honeypot/Timing und
 # strikte Eingabevalidierung.
 verify_jwt = false
+
+[functions.submit-funnel-lead]
+# Qualifizierung + Events von /ai-roadmap.html. Gleicher Schutz wie Audit-Lead:
+# Origin-Allowlist, Rate-Limit (register_funnel_attempt), Timing, Feldgrenzen.
+verify_jwt = false
