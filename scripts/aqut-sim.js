@@ -13,14 +13,25 @@
   var autoplay = root.hasAttribute('data-autoplay');
   var replayLabel = root.getAttribute('data-replay-label') || 'Nochmal abspielen';
   var defaultPlayLabel = playBtn ? playBtn.textContent : 'Demo Anfrage testen';
+  var lastStep = nodes.length || 4;
+  var isStory = root.classList.contains('aqut-sim--story');
 
-  var messages = [
-    'Bereit. Starten Sie die Simulation.',
-    'Neue Portal-Mail erfasst und dem Objekt zugeordnet.',
-    'KI prüft Kaufabsicht, Vollständigkeit und Bonitäts-Hinweise.',
-    'Interessent erhält Terminlink und bucht selbst.',
-    'CRM aktualisiert, Reminder gesetzt. A-Lead ist beim Team.'
-  ];
+  var messages = isStory
+    ? [
+        'Bereit. Starten Sie die Simulation.',
+        'Neue Anfrage von ImmScout24 erfasst.',
+        'RAIS prüft Kaufabsicht, Vollständigkeit und Bonitäts-Hinweise.',
+        'Qualifiziert als A-LEAD.',
+        'Interessent erhält Terminlink und bucht selbst.',
+        'CRM aktualisiert. A-Lead ist beim Team.'
+      ]
+    : [
+        'Bereit. Starten Sie die Simulation.',
+        'Neue Portal-Mail erfasst und dem Objekt zugeordnet.',
+        'KI prüft Kaufabsicht, Vollständigkeit und Bonitäts-Hinweise.',
+        'Interessent erhält Terminlink und bucht selbst.',
+        'CRM aktualisiert, Reminder gesetzt. A-Lead ist beim Team.'
+      ];
 
   function setStep(step) {
     root.setAttribute('data-step', String(step));
@@ -42,8 +53,6 @@
     if (playBtn) playBtn.disabled = false;
   }
 
-  // Wer reduzierte Bewegung angefordert hat, bekommt das Ergebnis
-  // statt der Abfolge. Die Information ist dieselbe, nur ohne Takt.
   function prefersReducedMotion() {
     return (
       typeof window.matchMedia === 'function' &&
@@ -52,14 +61,14 @@
   }
 
   function finish() {
-    setStep(4);
+    setStep(lastStep);
     stop();
     if (playBtn) playBtn.textContent = replayLabel;
   }
 
   function runStep(step) {
     setStep(step);
-    if (step >= 4) {
+    if (step >= lastStep) {
       finish();
       return;
     }
@@ -93,9 +102,6 @@
 
   if (playBtn) {
     playBtn.addEventListener('click', function () {
-      // Erst der ausdrueckliche Klick macht die Statuszeile zur
-      // Live-Region. Beim Autoplay wuerde ein Screenreader sonst
-      // fuenf Meldungen vorlesen, um die niemand gebeten hat.
       var card = document.getElementById('aqut-sim-card');
       if (card && !card.hasAttribute('aria-live')) {
         card.setAttribute('aria-live', 'polite');
@@ -107,10 +113,6 @@
   setStep(0);
 
   if (autoplay) {
-    // Ein Durchlauf, aber erst wenn die Simulation tatsaechlich im
-    // Bild ist. Auf dem Handy steht sie unter der Hero-Copy und weit
-    // ausserhalb des ersten Viewports: ein Start beim Paint lief ins
-    // Leere, und wer hinunterscrollte, fand nur noch den Endzustand.
     if (typeof window.IntersectionObserver === 'function') {
       var obs = new window.IntersectionObserver(
         function (entries) {

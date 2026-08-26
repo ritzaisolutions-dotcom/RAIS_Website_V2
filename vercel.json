@@ -11,7 +11,9 @@
     { "source": "/demo.html", "destination": "/", "permanent": true },
     { "source": "/landingpage.html", "destination": "/", "permanent": true },
     { "source": "/makler.html", "destination": "/ai-roadmap.html", "permanent": true },
-    { "source": "/makler", "destination": "/ai-roadmap.html", "permanent": true }
+    { "source": "/makler", "destination": "/ai-roadmap.html", "permanent": true },
+    { "source": "/ai-roadmap", "destination": "/ai-roadmap.html", "permanent": true },
+    { "source": "/ai-roadmap/", "destination": "/ai-roadmap.html", "permanent": true }
   ],
   "headers": [
     {

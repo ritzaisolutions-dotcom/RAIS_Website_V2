@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kostenlose KI-Roadmap für Immobilienbetriebe | RAIS</title>
-  <meta name="description" content="Kostenloses 60-Minuten-Erstgespräch für Immobilienbetriebe. Danach eine schriftliche KI-Roadmap, die Sie behalten. Ab etwa zehn Vorgängen pro Woche.">
+  <title>KI-Automatisierung für Immobilienunternehmen | RAIS</title>
+  <meta name="description" content="Anfragen und Mieteranliegen noch per Hand? Wir zeigen, was sich automatisieren lässt. 60 Minuten, konkreter Plan, kein Pitch.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" href="favicon.png?v=3">
-  <meta property="og:title" content="Kostenlose KI-Roadmap für Immobilienbetriebe | RAIS">
-  <meta property="og:description" content="Kostenloses 60-Minuten-Erstgespräch für Immobilienbetriebe. Danach eine schriftliche KI-Roadmap, die Sie behalten. Ab etwa zehn Vorgängen pro Woche.">
+  <meta property="og:title" content="KI-Automatisierung für Immobilienunternehmen | RAIS">
+  <meta property="og:description" content="Anfragen und Mieteranliegen noch per Hand? Wir zeigen, was sich automatisieren lässt. 60 Minuten, konkreter Plan, kein Pitch.">
   <meta property="og:url" content="https://ritz-ai.solutions/ai-roadmap.html">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://ritz-ai.solutions/og-cover.webp">
@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="styles/booking-modal.css">
   <link rel="stylesheet" href="styles/ai-roadmap.css">
 </head>
-<body data-cal-url="https://cal.com/ritzaisolutions/immo-ai-roadmap">
+<body class="page-roadmap" data-cal-url="https://cal.com/ritzaisolutions/immo-ai-roadmap">
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
   <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
   <symbol id="i-crm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-5.4 6-5.4s6 2.1 6 5.4"/><path d="M17 9.5h4M17 13h4"/></symbol>
@@ -70,126 +70,502 @@
       </div>
     </a>
     <div class="nav-right">
-      <a class="btn-primary" id="nav-demo-btn" href="#contact">Erstgespräch buchen</a>
+      <a class="btn-primary" id="nav-demo-btn" href="#contact">KI-Roadmap</a>
     </div>
   </div>
 </nav>
 <main id="main">
-<section class="page-hero page-hero--roadmap" aria-labelledby="roadmap-hero-title">
+<section class="page-hero page-hero--roadmap page-hero--roadmap-atmosphere rs-product" aria-labelledby="roadmap-hero-title">
   <div class="page-hero__inner">
-    <div class="roadmap-hero">
+    <div class="roadmap-hero roadmap-hero--split">
       <div class="roadmap-hero__copy">
-        <span class="mono-label">Für Maklerbüros ab etwa zehn Anfragen pro Woche</span>
-        <h1 id="roadmap-hero-title">Wer zuerst antwortet, bekommt den Termin.</h1>
-        <p class="roadmap-hero__sub">Die meisten Anfragen verlieren Sie nicht im Gespräch, sondern vorher.</p>
-        <ul class="roadmap-hero__offer">
-          <li>60 Minuten, kostenlos</li>
-          <li>Schriftliche Roadmap, die Sie behalten</li>
-          <li>Kein Pitch, kein Angebot im Termin</li>
-        </ul>
+        <span class="mono-label">Für Maklerbüros und Hausverwaltungen</span>
+        <h1 id="roadmap-hero-title">Jede vernachlässigte Anfrage kostet Sie bares Geld.</h1>
+        <p class="roadmap-hero__sub">Nicht weil Ihre Mitarbeiter schlecht arbeiten. Sondern weil diese Arbeit anfällt, egal wie gut jemand ist.</p>
         <div class="roadmap-hero__actions">
-          <a class="btn-primary" href="#contact">Kostenloses Erstgespräch buchen</a>
+          <a class="btn-primary" href="#vsl">Sehen, wie das automatisiert werden kann</a>
         </div>
-        <p class="roadmap-hero__rec">Das Gespräch wird aufgezeichnet und auf YouTube veröffentlicht. <a href="#gegenleistung">Was das heißt</a></p>
       </div>
-      <figure class="roadmap-hero__me">
-        <img src="images/profilbild.webp" width="720" height="720" loading="eager" fetchpriority="high" decoding="async" alt="Kevin Ritz, Geschäftsführer von RAIS">
-        <figcaption><strong>Kevin Ritz</strong>Sie reden mit mir, nicht mit einem Vertrieb.</figcaption>
+      <div class="roadmap-hero-ui" id="roadmap-hero-ui" data-phase="0" aria-hidden="true">
+        <div class="roadmap-hero-ui__chrome">
+          <span class="roadmap-hero-ui__dot"></span>
+          <span class="roadmap-hero-ui__dot"></span>
+          <span class="roadmap-hero-ui__dot"></span>
+          <span class="roadmap-hero-ui__title">Neue Anfrage</span>
+        </div>
+        <div class="roadmap-hero-ui__meta">
+          <span>ImmScout24</span>
+          <span>vor 2 Min</span>
+        </div>
+        <p class="roadmap-hero-ui__snippet">3-Zimmer-Wohnung Koblenz · Kauf · „Können wir diese Woche besichtigen?“</p>
+        <ul class="roadmap-hero-ui__checks">
+          <li data-check="1"><span class="roadmap-hero-ui__tick" aria-hidden="true"></span>Kaufabsicht prüfen</li>
+          <li data-check="2"><span class="roadmap-hero-ui__tick" aria-hidden="true"></span>Vollständigkeit</li>
+          <li data-check="3"><span class="roadmap-hero-ui__tick" aria-hidden="true"></span>Bonitätshinweise</li>
+        </ul>
+        <div class="roadmap-hero-ui__status">
+          <span class="roadmap-hero-ui__badge" data-badge>Wartend</span>
+          <span class="roadmap-hero-ui__termin" data-termin hidden>Terminlink gesendet</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="home-band home-band--cloud rs-editorial roadmap-band--tight-bottom" aria-labelledby="roadmap-reframe-title">
+  <div class="section-wrap roadmap-problem">
+    <span class="mono-label">Das Problem</span>
+    <h2 class="section-h2 roadmap-problem__hook" id="roadmap-reframe-title">Was Sie in Kauf nehmen</h2>
+    <p class="section-sub">Jede vernachlässigte Anfrage kostet Sie Umsatz und Kunden. An mehreren Seiten zugleich.</p>
+    <div class="roadmap-hurt" aria-label="Was Sie in Kauf nehmen">
+      <article class="roadmap-hurt__card">
+        <span class="roadmap-hurt__ico" aria-hidden="true"><svg class="ico"><use href="#i-calendar"></use></svg></span>
+        <div class="roadmap-hurt__copy">
+          <h3>Verkaufsdauer</h3>
+          <p>Ihr Objekt steht länger. Jede Woche, die Sie brauchen, zählt für Ihren Mandanten.</p>
+        </div>
+      </article>
+      <article class="roadmap-hurt__card">
+        <span class="roadmap-hurt__ico" aria-hidden="true"><svg class="ico"><use href="#i-mail"></use></svg></span>
+        <div class="roadmap-hurt__copy">
+          <h3>Verlorener Umsatz</h3>
+          <p>Sie haken nicht rechtzeitig nach. Der kaufbereite Interessent ist weg, bevor Sie antworten.</p>
+        </div>
+      </article>
+      <article class="roadmap-hurt__card">
+        <span class="roadmap-hurt__ico" aria-hidden="true"><svg class="ico"><use href="#i-hand"></use></svg></span>
+        <div class="roadmap-hurt__copy">
+          <h3>Team</h3>
+          <p>Ihr Team ertrinkt in manueller, unanspruchsvoller Arbeit. Die Moral sinkt. Würdigere Aufgaben bleiben liegen.</p>
+        </div>
+      </article>
+      <article class="roadmap-hurt__card">
+        <span class="roadmap-hurt__ico" aria-hidden="true"><svg class="ico"><use href="#i-chat"></use></svg></span>
+        <div class="roadmap-hurt__copy">
+          <h3>Beratung</h3>
+          <p>Sie haben keine Zeit für die Beratung. Die Vorarbeit frisst Ihren Tag.</p>
+        </div>
+      </article>
+      <article class="roadmap-hurt__card">
+        <span class="roadmap-hurt__ico" aria-hidden="true"><svg class="ico"><use href="#i-megafon"></use></svg></span>
+        <div class="roadmap-hurt__copy">
+          <h3>Ruf</h3>
+          <p>Sie antworten zu spät. Der Verkauf dauert zu lange. Ihr Ruf leidet, bevor der Abschluss kommt.</p>
+        </div>
+      </article>
+    </div>
+    <p class="roadmap-problem__hours">8–10 Stunden. Jede Woche.</p>
+    <p class="roadmap-problem__hours-note">Nur die Vorarbeit, die Sie sehen. Ohne den Auftrag, der Ihnen deshalb entgeht.</p>
+  </div>
+</section>
+
+<section class="home-band home-band--linen rs-data roadmap-band--tight-top" id="rechner" aria-labelledby="roadmap-calc-title">
+  <div class="section-wrap">
+    <h2 class="section-h2" id="roadmap-calc-title">Rechnen wir es aus.</h2>
+    <p class="section-sub">Ihre Zahlen. Nicht unsere.</p>
+    <div class="rechner roadmap-calc roadmap-calc--signature" id="roadmap-calc">
+      <div class="roadmap-calc__inputs">
+        <div class="roadmap-slider">
+          <div class="roadmap-slider__row">
+            <label for="rf-volume">Anfragen oder Vorgänge pro Woche</label>
+            <span class="roadmap-slider__value" id="rf-volume-out">25</span>
+          </div>
+          <div class="roadmap-slider__track">
+            <input id="rf-volume" type="range" min="5" max="150" step="1" value="25">
+            <div class="roadmap-slider__scale" aria-hidden="true">
+              <span class="roadmap-slider__mark" style="--p: 0%"><i></i>5</span>
+              <span class="roadmap-slider__mark" style="--p: 31.03%"><i></i>50</span>
+              <span class="roadmap-slider__mark" style="--p: 65.52%"><i></i>100</span>
+              <span class="roadmap-slider__mark" style="--p: 100%"><i></i>150</span>
+            </div>
+          </div>
+        </div>
+        <div class="roadmap-slider">
+          <div class="roadmap-slider__row">
+            <label for="rf-minutes">Minuten pro Vorgang</label>
+            <span class="roadmap-slider__value" id="rf-minutes-out">10</span>
+          </div>
+          <div class="roadmap-slider__track">
+            <input id="rf-minutes" type="range" min="3" max="40" step="1" value="10">
+            <div class="roadmap-slider__scale" aria-hidden="true">
+              <span class="roadmap-slider__mark" style="--p: 0%"><i></i>3</span>
+              <span class="roadmap-slider__mark" style="--p: 18.92%"><i></i>10</span>
+              <span class="roadmap-slider__mark" style="--p: 45.95%"><i></i>20</span>
+              <span class="roadmap-slider__mark" style="--p: 72.97%"><i></i>30</span>
+              <span class="roadmap-slider__mark" style="--p: 100%"><i></i>40</span>
+            </div>
+          </div>
+        </div>
+        <div class="rq-fields">
+          <div>
+            <label for="rf-rate">Interner Stundenwert in Euro</label>
+            <input id="rf-rate" type="number" min="10" max="200" step="1" value="25" inputmode="decimal">
+          </div>
+        </div>
+      </div>
+      <div class="roadmap-calc__out">
+        <span class="rq-step__eyebrow">Geschätzte Personalkosten</span>
+        <p class="roadmap-result__euro roadmap-result__euro--hero" id="rf-euro"></p>
+        <p class="roadmap-result__scope">nur für manuelle Vorarbeit</p>
+        <p class="roadmap-result__hours" id="rf-hours"></p>
+        <p class="roadmap-result__note" id="rf-bound"></p>
+        <p class="roadmap-result__note" id="rf-rate-copy"></p>
+        <p class="roadmap-result__preview" id="rf-preview"></p>
+        <p class="roadmap-result__cost-note">Und das ist nur die Zeit, die Sie sehen. Die Anfrage, die am Samstagabend eingeht und Montagmorgen auf Platz 40 liegt, steht auf keiner Lohnabrechnung. Der Auftrag, der deshalb woanders landet, auch nicht.</p>
+        <p class="roadmap-result__disclaimer">Nur aus Ihren eigenen Angaben gerechnet. Wir behaupten nichts über Ihren Betrieb.</p>
+      </div>
+      <p class="roadmap-sr" id="rf-live" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+
+<section class="home-band rs-contrast roadmap-band--system" aria-labelledby="roadmap-process-title">
+  <div class="section-wrap roadmap-process">
+    <div class="roadmap-process__head">
+      <div class="roadmap-process__copy">
+        <h2 class="section-h2" id="roadmap-process-title">Erst der Prozess. Dann die KI.</h2>
+        <p class="section-sub">Daten und Prozesse zuerst als Fundament.</p>
+        <p>Wer auf KI baut, ohne Fundament, baut instabil. Es braucht klar definierte Standardprozesse und eine saubere Datenmenge, bevor KI überhaupt angegangen wird. Sonst werden die Ergebnisse nicht besser.</p>
+        <p>KI auf einen Scherbenhaufen zu setzen macht alles nur schlimmer.</p>
+      </div>
+      <figure class="roadmap-visual roadmap-visual--process">
+        <img src="images/roadmap/bg-process.png" width="1600" height="900" alt="Kran und Datenbank als Fundament: Prozesse und Daten zuerst." loading="lazy" decoding="async">
       </figure>
     </div>
-  </div>
-</section>
-
-<aside class="roadmap-disq" aria-label="Qualifizierung">
-  <p>Unter etwa zehn Anfragen pro Woche raten wir ab. Da rechnet sich der Aufwand meistens nicht, und das sagen wir lieber jetzt als im Gespräch.</p>
-</aside>
-
-<section class="home-band home-band--cloud" aria-labelledby="roadmap-when-title">
-  <div class="section-wrap">
-    <h2 class="section-h2" id="roadmap-when-title">Dieselbe Anfrage, zwei Abende</h2>
-    <div class="roadmap-when">
-      <article class="roadmap-when__col">
-        <h3 class="roadmap-when__head">Heute</h3>
-        <ol class="roadmap-when__list">
-          <li><span class="roadmap-when__t">18:42</span><strong>Anfrage kommt rein</strong><span>Sie sind beim Essen.</span></li>
-          <li><span class="roadmap-when__t">09:15</span><strong>Sie sehen sie</strong><span>Zwei Büros haben längst geantwortet.</span></li>
-          <li><span class="roadmap-when__t">11:30</span><strong>Sie rufen zurück</strong><span>Die Besichtigung läuft schon.</span></li>
+    <div class="roadmap-process__cols">
+      <article class="roadmap-process__col roadmap-process__col--wrong">
+        <span class="roadmap-process__tag">Falsch</span>
+        <h3>Tool first</h3>
+        <ol>
+          <li>Modell wählen</li>
+          <li>Prompt schreiben</li>
+          <li>Irgendwas anbinden</li>
+          <li>Hoffen, dass es passt</li>
         </ol>
       </article>
-      <article class="roadmap-when__col roadmap-when__col--sys">
-        <h3 class="roadmap-when__head">Mit System</h3>
-        <ol class="roadmap-when__list">
-          <li><span class="roadmap-when__t">18:42</span><strong>Anfrage kommt rein</strong><span>Geprüft auf Bedarf und Zeitrahmen.</span></li>
-          <li><span class="roadmap-when__t">18:43</span><strong>Antwort mit Terminvorschlag</strong><span>Nach Ihren Kriterien.</span></li>
-          <li><span class="roadmap-when__t">18:51</span><strong>Interessent bucht selbst</strong><span>Im CRM, mit Notiz.</span></li>
+      <article class="roadmap-process__col roadmap-process__col--rais">
+        <span class="roadmap-process__tag">RAIS</span>
+        <h3>Prozess first</h3>
+        <ol>
+          <li>Prozess</li>
+          <li>Daten</li>
+          <li>Entscheidungspunkte</li>
+          <li>System</li>
         </ol>
       </article>
     </div>
-    <p class="roadmap-when__note">Illustrativ, keine gemessenen Werte. Das passiert nicht bei jeder Anfrage. Sie erfahren nur nie, bei welchen.</p>
+    <p class="roadmap-process__punch">Ist nur die falsche Reihenfolge.</p>
+    <p>Erst muss klar sein, was passieren soll. Dann kann ein System die Arbeit übernehmen.</p>
   </div>
 </section>
 
-<section class="home-band home-band--linen" aria-labelledby="roadmap-agenda-title">
+<section class="home-band home-band--linen rs-product" id="vsl" aria-labelledby="roadmap-vsl-title">
   <div class="section-wrap">
-    <h2 class="section-h2" id="roadmap-agenda-title">Was in den 60 Minuten passiert</h2>
-    <ol class="roadmap-agenda">
-      <li>
-        <span class="roadmap-agenda__t">0–10</span>
-        <div><strong>Ihre Vorgänge</strong><p>Wo es klemmt, in Ihren Worten.</p></div>
-      </li>
-      <li>
-        <span class="roadmap-agenda__t">10–20</span>
-        <div><strong>Was Sie schon probiert haben</strong><p>Und warum es nicht gehalten hat.</p></div>
-      </li>
-      <li>
-        <span class="roadmap-agenda__t">20–35</span>
-        <div><strong>Was heute geht und was nicht</strong><p>Mit klaren Grenzen statt Hype.</p></div>
-      </li>
-      <li>
-        <span class="roadmap-agenda__t">35–55</span>
-        <div><strong>Ein bis zwei Use Cases, konkret</strong><p>Welches Werkzeug, welcher Rahmen, welcher Aufwand.</p></div>
-      </li>
-      <li>
-        <span class="roadmap-agenda__t">55–60</span>
-        <div><strong>Ehrliche Einschätzung</strong><p>Auch wenn sie lautet: lohnt sich nicht.</p></div>
-      </li>
-    </ol>
-    <p class="roadmap-agenda__note">Kein Pitch und kein Angebot im Termin. Die schriftliche Roadmap kommt danach.</p>
+    <h2 class="section-h2" id="roadmap-vsl-title">Wie das bei Ihnen konkret aussehen kann</h2>
+    <p class="section-sub">Keine Theorie. Wir nehmen einen echten Prozess aus einem Immobilienunternehmen und zeigen, was davon automatisiert werden kann.</p>
+    <div class="roadmap-vsl" id="roadmap-vsl">
+      <button type="button" class="roadmap-vsl__play" id="vsl-play" aria-label="Video abspielen">
+        <img class="roadmap-vsl__poster" src="images/profilbild.webp" width="1280" height="720" alt="" loading="lazy" decoding="async">
+        <span class="roadmap-vsl__btn" aria-hidden="true"></span>
+        <span class="roadmap-vsl__label">Video ansehen</span>
+      </button>
+      <p class="roadmap-vsl__pending" id="vsl-pending" hidden>Das Video folgt in Kürze. Bis dahin: Prozess und Zahlen darunter.</p>
+    </div>
+    <div class="roadmap-vsl__cta">
+      <a class="btn-primary" href="#contact">KI-Roadmap anfragen</a>
+    </div>
   </div>
 </section>
 
-<section class="home-band home-band--green roadmap-deal" id="gegenleistung" aria-labelledby="roadmap-deal-title">
+<section class="home-band home-band--cloud rs-product" aria-labelledby="roadmap-workflow-title">
   <div class="section-wrap">
-    <h2 class="section-h2" id="roadmap-deal-title">Warum das kostenlos ist</h2>
-    <p class="section-sub">Aus diesen Gesprächen entstehen meine YouTube-Beiträge. Sie zahlen nichts, ich bekomme den Beitrag. Genau deshalb ist das kein Verkaufsgespräch: Ich habe schon bekommen, wofür ich hier bin.</p>
-    <ul class="roadmap-deal__list">
-      <li>Keine Mandantendaten, keine Objektadressen, keine Umsatzzahlen im Video.</li>
-      <li>Sie sehen den Schnitt vorher und können die Freigabe jederzeit zurückziehen.</li>
-      <li>Ohne Kamera geht auch. Sagen Sie vorher kurz Bescheid.</li>
-    </ul>
+    <h2 class="section-h2" id="roadmap-workflow-title">So läuft eine Anfrage durch</h2>
+    <p class="section-sub">ImmScout24 bis CRM. Ohne manuelle Vorarbeit dazwischen.</p>
+    <div class="aqut-sim aqut-sim--story" id="aqut-sim" data-step="0">
+      <ol class="aqut-sim__story" aria-label="Anfrage-Workflow">
+        <li class="aqut-sim__node" data-node="1">
+          <span class="aqut-sim__pulse" aria-hidden="true"></span>
+          <strong>ImmScout24</strong>
+          <span>Anfrage trifft ein</span>
+        </li>
+        <li class="aqut-sim__node" data-node="2">
+          <span class="aqut-sim__pulse" aria-hidden="true"></span>
+          <strong>RAIS Analyse</strong>
+          <span>Bedarf, Zeitrahmen, Vollständigkeit</span>
+        </li>
+        <li class="aqut-sim__node" data-node="3">
+          <span class="aqut-sim__pulse" aria-hidden="true"></span>
+          <strong>Qualifiziert</strong>
+          <span>Status A-LEAD</span>
+        </li>
+        <li class="aqut-sim__node" data-node="4">
+          <span class="aqut-sim__pulse" aria-hidden="true"></span>
+          <strong>Termin</strong>
+          <span>Buchungslink gesendet</span>
+        </li>
+        <li class="aqut-sim__node" data-node="5">
+          <span class="aqut-sim__pulse" aria-hidden="true"></span>
+          <strong>CRM</strong>
+          <span>Notiz und Status</span>
+        </li>
+      </ol>
+      <div class="aqut-sim__card" id="aqut-sim-card">
+        <span class="aqut-sim__card-label">Live-Status</span>
+        <p id="aqut-sim-status">Bereit. Starten Sie die Simulation.</p>
+      </div>
+      <div class="aqut-sim__actions">
+        <button type="button" class="btn-primary" id="aqut-sim-play">Demo Anfrage testen</button>
+        <button type="button" class="home-cta-link" id="aqut-sim-reset" hidden>Zurücksetzen</button>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="home-band home-band--cloud" aria-labelledby="roadmap-who-title">
+<section class="home-band rs-contrast roadmap-band--human" aria-labelledby="roadmap-human-title">
   <div class="section-wrap">
-    <div class="roadmap-who__grid">
+    <h2 class="section-h2" id="roadmap-human-title">Nicht alles sollte automatisiert werden.</h2>
+    <p class="section-sub">KI ist ein Werkzeug, um Ihr Team zu entlasten. Kein Ersatz für den einzigartigen menschlichen Kontakt.</p>
+    <div class="roadmap-human roadmap-human--compact">
+      <article class="roadmap-human__col roadmap-human__col--mensch">
+        <figure class="roadmap-human__thumb">
+          <img src="images/roadmap/bg-human.png" width="800" height="900" alt="Makler im Anzug, Mensch-Seite." loading="lazy" decoding="async">
+        </figure>
+        <h3>Mensch</h3>
+        <ul>
+          <li>Beratung</li>
+          <li>Verhandlung</li>
+          <li>Abschluss</li>
+          <li>Verantwortung</li>
+        </ul>
+      </article>
+      <div class="roadmap-human__bridge" aria-hidden="true"><span>RAIS</span></div>
+      <article class="roadmap-human__col roadmap-human__col--system">
+        <figure class="roadmap-human__thumb">
+          <img src="images/roadmap/bg-system.png" width="800" height="900" alt="System-Roboter, Maschinen-Seite." loading="lazy" decoding="async">
+        </figure>
+        <h3>System</h3>
+        <ul>
+          <li>Erfassen</li>
+          <li>Prüfen</li>
+          <li>Qualifizieren</li>
+          <li>Terminieren</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="home-band home-band--linen rs-product" aria-labelledby="roadmap-cases-title">
+  <div class="section-wrap">
+    <h2 class="section-h2" id="roadmap-cases-title">Wo das greift</h2>
+    <p class="section-sub">Wiederkehrende Vorarbeit. Kein Ersatz für Fachurteil.</p>
+    <div class="roadmap-cases roadmap-cases--dense">
+      <article class="roadmap-cases__card">
+        <span class="roadmap-cases__ico" aria-hidden="true"><svg class="ico"><use href="#i-mail"></use></svg></span>
+        <h3>Interessentenanfragen</h3>
+        <p>Erfassen, verstehen, qualifizieren, beantworten.</p>
+      </article>
+      <article class="roadmap-cases__card">
+        <span class="roadmap-cases__ico" aria-hidden="true"><svg class="ico"><use href="#i-chat"></use></svg></span>
+        <h3>Mieteranliegen</h3>
+        <p>Aufnehmen, zuordnen, nächsten Schritt vorbereiten.</p>
+      </article>
+      <article class="roadmap-cases__card">
+        <span class="roadmap-cases__ico" aria-hidden="true"><svg class="ico"><use href="#i-calendar"></use></svg></span>
+        <h3>Terminvereinbarung</h3>
+        <p>Verfügbarkeiten, Koordination, Nachfassen.</p>
+      </article>
+      <article class="roadmap-cases__card">
+        <span class="roadmap-cases__ico" aria-hidden="true"><svg class="ico"><use href="#i-crm"></use></svg></span>
+        <h3>CRM</h3>
+        <p>Strukturieren und in bestehende Systeme schreiben.</p>
+      </article>
+      <article class="roadmap-cases__card">
+        <span class="roadmap-cases__ico" aria-hidden="true"><svg class="ico"><use href="#i-doc"></use></svg></span>
+        <h3>Dokumente</h3>
+        <p>Daten extrahieren, strukturieren, weitergeben.</p>
+      </article>
+      <article class="roadmap-cases__card">
+        <span class="roadmap-cases__ico" aria-hidden="true"><svg class="ico"><use href="#i-table"></use></svg></span>
+        <h3>Reporting</h3>
+        <p>Zahlen zusammenführen, Reports vorbereiten.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="home-band home-band--cloud rs-data" aria-labelledby="roadmap-proof-title">
+  <div class="section-wrap">
+    <span class="mono-label">Beispielsystem AMS</span>
+    <h2 class="section-h2" id="roadmap-proof-title">15 Stunden auf 2 Minuten.</h2>
+    <p class="roadmap-proof__lead">Erstreaktion. Gemessen am Beispielsystem AMS, nicht an einem erfundenen Vorher-Nachher.</p>
+    <div class="roadmap-proof__stats roadmap-proof__stats--hero">
+      <div class="roadmap-proof__stat">
+        <span class="roadmap-proof__num" data-proof-count>15h → 2min</span>
+        <span class="roadmap-proof__label">Reaktionszeit</span>
+      </div>
+      <div class="roadmap-proof__stat">
+        <span class="roadmap-proof__num">~40h</span>
+        <span class="roadmap-proof__label">manuelle Arbeit weniger pro Monat</span>
+      </div>
+    </div>
+    <div class="roadmap-who__grid roadmap-proof__kevin">
       <figure class="roadmap-who__media">
         <img src="images/profilbild.webp" width="720" height="720" loading="lazy" decoding="async" alt="Kevin Ritz, Geschäftsführer von RAIS">
       </figure>
       <div class="roadmap-who__copy">
-        <h2 class="section-h2" id="roadmap-who-title">Wer im Termin sitzt</h2>
-        <p>Kevin Ritz, Geschäftsführer von RAIS aus Koblenz. Sie reden mit mir, nicht mit einem Vertrieb. Wenn wir bauen, baue ich auch selbst.</p>
-        <p>Davor bei 1&amp;1, an Systemen, bei denen ein Ausfall sofort Kunden trifft.</p>
-        <p class="roadmap-who__channel"><a href="https://www.youtube.com/@kevin_ritz" target="_blank" rel="noopener noreferrer">Kanal @kevin_ritz</a></p>
+        <h3>Kevin Ritz</h3>
+        <p>Geschäftsführer von RAIS aus Koblenz. Sie reden mit mir, nicht mit einem Vertrieb. Wenn wir bauen, baue ich auch selbst.</p>
+        <p>Davor bei 1&amp;1, an Systemen, bei denen ein Ausfall sofort Kunden trifft. Als KI-Datenanalyst für Qualitätsmanagement weiß ich, wie existenziell der Erfolg von KI-Infrastrukturen an Überprüfung und Monitoring der Antwortqualität hängt.</p>
+        <p>KI ohne prüfende Instanzen bringt Unvorhersehbarkeit. KI mit den richtigen Schutzebenen bringt Arbeitsentlastung und echtes gespartes Geld für Ihr Unternehmen.</p>
       </div>
     </div>
   </div>
 </section>
 
-<aside class="roadmap-trust" aria-label="Hosting und Datenschutz">
-  <p>Selbst gehostet in der EU · Datenbank Frankfurt · AVV nach Art. 28 DSGVO</p>
-  <p class="roadmap-trust__proof">Kundenlogos und Prozentzahlen finden Sie hier nicht. Warum nicht, steht in den Fragen unter dem Kalender.</p>
-</aside>
+<section class="home-band home-band--linen rs-contrast" aria-labelledby="roadmap-antihype-title">
+  <div class="section-wrap roadmap-antihype">
+    <h2 class="section-h2" id="roadmap-antihype-title">Brauchen Sie wirklich das neueste KI-Modell?</h2>
+    <p class="roadmap-antihype__answer">Wahrscheinlich nicht.</p>
+    <p>Das teuerste Modell macht Ihren Prozess nicht besser. Eine Anfrage lesen, sortieren und weiterleiten braucht kein Spitzenmodell. Oft reicht ein günstigeres, das den Job zuverlässig erledigt.</p>
+    <p>Wir wählen danach, was sich rechnet. Nicht danach, was gerade laut vermarktet wird.</p>
+    <p class="roadmap-antihype__punch"><strong>KI muss Geld sparen. Sonst ist es Spielzeug.</strong></p>
+    <p class="roadmap-antihype__stack-lead">Deshalb der Stack: mehrere Werkzeuge und Modelle. Was zum Prozess passt, bleibt.</p>
+    <div class="techstack">
+      <div class="marquee techstack__marquee" style="--marquee-duration: 17.5s">
+        <div class="marquee__track">
+          <ul class="techstack__list">
+            <li class="techstack__item">
+              <img src="images/n8n-color.svg" alt="n8n" width="120" height="40" loading="lazy" decoding="async">
+            </li>
+            <li class="techstack__item">
+              <img src="images/supabase.svg" alt="Supabase" width="120" height="40" loading="lazy" decoding="async">
+            </li>
+            <li class="techstack__item">
+              <img src="images/mistral.svg" alt="Mistral" width="120" height="40" loading="lazy" decoding="async">
+            </li>
+            <li class="techstack__item">
+              <img src="images/Azure%20logo.svg" alt="Microsoft Azure" width="120" height="40" loading="lazy" decoding="async">
+            </li>
+            <li class="techstack__item">
+              <img src="images/google-cloud.svg" alt="Google Cloud" width="120" height="40" loading="lazy" decoding="async">
+            </li>
+            <li class="techstack__item">
+              <img src="images/anthropic.svg" alt="Claude" width="120" height="40" loading="lazy" decoding="async">
+            </li>
+            <li class="techstack__item">
+              <img src="images/codex-openai.svg" alt="Codex" width="120" height="40" loading="lazy" decoding="async">
+            </li>
+          </ul>
+          <ul class="techstack__list" aria-hidden="true">
+            <li class="techstack__item">
+              <img src="images/n8n-color.svg" alt="n8n" width="120" height="40" loading="lazy" decoding="async">
+            </li>
+            <li class="techstack__item">
+              <img src="images/supabase.svg" alt="Supabase" width="120" height="40" loading="lazy" decoding="async">
+            </li>
+            <li class="techstack__item">
+              <img src="images/mistral.svg" alt="Mistral" width="120" height="40" loading="lazy" decoding="async">
+            </li>
+            <li class="techstack__item">
+              <img src="images/Azure%20logo.svg" alt="Microsoft Azure" width="120" height="40" loading="lazy" decoding="async">
+            </li>
+            <li class="techstack__item">
+              <img src="images/google-cloud.svg" alt="Google Cloud" width="120" height="40" loading="lazy" decoding="async">
+            </li>
+            <li class="techstack__item">
+              <img src="images/anthropic.svg" alt="Claude" width="120" height="40" loading="lazy" decoding="async">
+            </li>
+            <li class="techstack__item">
+              <img src="images/codex-openai.svg" alt="Codex" width="120" height="40" loading="lazy" decoding="async">
+            </li>
+          </ul>
+        </div>
+      </div>
+      <p class="techstack__trust">
+        <svg class="ico" aria-hidden="true"><use href="#i-lock"></use></svg>
+        EU-Hosting · AVV nach Art. 28
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="home-band home-band--cloud rs-editorial" id="angebot" aria-labelledby="roadmap-offer-title">
+  <div class="section-wrap">
+    <div class="roadmap-offer">
+      <div class="roadmap-offer__copy">
+        <span class="mono-label">Das Angebot</span>
+        <h2 class="section-h2" id="roadmap-offer-title">Wir finden heraus, wo es bei Ihnen Sinn ergibt.</h2>
+        <p class="section-sub">Die kostenlose KI-Roadmap. Kein Beratungsgespräch. Ein Prozess-Check.</p>
+        <ul class="roadmap-offer__checks">
+          <li>Was kostet der Prozess heute?</li>
+          <li>Was davon muss wirklich ein Mensch machen?</li>
+          <li>Was kann automatisiert werden?</li>
+          <li>Was würde das wirtschaftlich bringen?</li>
+        </ul>
+        <p class="roadmap-offer__meta">60 Minuten. Konkreter Plan. Kein vorbereiteter Pitch.</p>
+        <p class="roadmap-offer__trust"><strong>Kein Verkaufsgespräch.</strong> Wenn wir keinen sinnvollen Anwendungsfall sehen, sagen wir es Ihnen.</p>
+        <a class="btn-primary" href="#contact">KI-Roadmap anfragen</a>
+      </div>
+      <figure class="contact-deliverable roadmap-offer__media">
+        <img src="images/cover.webp" alt="Titelseite der schriftlichen Roadmap für Immobilienmakler und Hausverwaltungen" width="1055" height="1491" loading="lazy" decoding="async" onerror="this.parentNode.remove()">
+        <figcaption><strong>Ihre Roadmap.</strong> Schriftlich. Sie behalten sie auch dann, wenn wir nicht zusammenarbeiten.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="rs-editorial roadmap-qual-strip" aria-labelledby="roadmap-qual-title">
+  <div class="section-wrap">
+    <h2 class="section-h2" id="roadmap-qual-title">Nicht jeder braucht KI.</h2>
+    <p class="section-sub">Ehrlich gesagt: Unter einer klaren Schwelle raten wir ab. Darüber lohnt der Prozess-Check.</p>
+    <div class="roadmap-qual">
+      <article class="roadmap-qual__no">
+        <h3>Eher nicht</h3>
+        <ul>
+          <li>Unter etwa zehn Vorgängen pro Woche</li>
+          <li>Kein wiederkehrender Ablauf</li>
+          <li>Niemand trägt den Prozess wirklich</li>
+          <li>Jeder Fall ist jedes Mal anders</li>
+        </ul>
+      </article>
+      <article class="roadmap-qual__yes">
+        <h3>Dann schon</h3>
+        <ul>
+          <li>Täglich gleiche Anfragen oder Mieterfälle</li>
+          <li>Portal und Mail laufen parallel</li>
+          <li>Vorarbeit blockiert die Beratung</li>
+          <li>Das Team stapelt, statt zu schließen</li>
+        </ul>
+      </article>
+    </div>
+    <p class="roadmap-qual__hard">Unter etwa zehn Vorgängen pro Woche rechnet sich der Aufwand meistens nicht. Dann sagen wir es Ihnen.</p>
+  </div>
+</section>
+
+<section class="home-band rs-contrast roadmap-band--system roadmap-final" aria-labelledby="roadmap-final-title">
+  <div class="roadmap-orbit" aria-hidden="true">
+    <div class="roadmap-orbit__core">
+      <img src="favicon.svg" width="48" height="48" alt="">
+      <span>RAIS</span>
+    </div>
+    <div class="roadmap-orbit__ring">
+      <span class="roadmap-orbit__node roadmap-orbit__node--1"></span>
+      <span class="roadmap-orbit__node roadmap-orbit__node--2"></span>
+      <span class="roadmap-orbit__node roadmap-orbit__node--3"></span>
+      <span class="roadmap-orbit__node roadmap-orbit__node--4"></span>
+      <span class="roadmap-orbit__dot roadmap-orbit__dot--1"></span>
+      <span class="roadmap-orbit__dot roadmap-orbit__dot--2"></span>
+      <span class="roadmap-orbit__dot roadmap-orbit__dot--3"></span>
+      <span class="roadmap-orbit__dot roadmap-orbit__dot--4"></span>
+    </div>
+  </div>
+  <div class="section-wrap roadmap-final__inner">
+    <h2 class="section-h2" id="roadmap-final-title">Rechnen wir es für Ihr Unternehmen aus.</h2>
+    <p class="section-sub">Ihre Zahlen. Nicht unsere.</p>
+    <a class="btn-primary" href="#contact">KI-Roadmap anfragen</a>
+  </div>
+</section>
 </main>
 <section id="contact">
   <div class="section-wrap">
@@ -197,15 +573,12 @@
       <div class="contact-text-col">
         <span class="mono-label">KI-Roadmap</span>
         <h2 class="section-h2">Termin wählen</h2>
-        
-        <figure class="contact-deliverable">
-          <img src="images/cover.webp" alt="Titelseite der schriftlichen Roadmap für Immobilienmakler und Hausverwaltungen" width="1055" height="1491" loading="lazy" decoding="async" onerror="this.parentNode.remove()">
-          <figcaption><strong>Ihre Roadmap.</strong> Schriftlich, auf Ihren Betrieb bezogen. Sie behalten sie auch dann, wenn wir nicht zusammenarbeiten.</figcaption>
-        </figure>
+        <p class="contact-copy">Drei kurze Fragen, dann der Kalender. Die schriftliche Roadmap behalten Sie.</p>
+        <p class="contact-copy">Kein Pitch. Wenn wir keinen sinnvollen Anwendungsfall sehen, sagen wir es Ihnen.</p>
       </div>
       <div class="cal-embed-wrap">
         <p class="cal-card-title">KI-Roadmap buchen</p>
-        <p class="cal-card-sub">60 Minuten, kostenlos. Wird aufgezeichnet.</p>
+        <p class="cal-card-sub">60 Minuten, kostenlos.</p>
         <div class="roadmap-gate" id="roadmap-gate">
           <div class="roadmap-gate__head">
             <span class="roadmap-gate__count" id="gate-count">Frage 1 von 3</span>
@@ -296,47 +669,83 @@
     <ul class="akte-register akte-register--faq">
       <li><details class="akte akte--frage">
         <summary class="akte__head">
+          <span class="akte__title">Wie läuft die Roadmap ab?</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <p>60 Minuten. Wir schauen uns einen echten Prozess an. Was kostet er heute, was muss ein Mensch machen, was lässt sich automatisieren, was bringt das wirtschaftlich. Danach eine schriftliche Roadmap. Kein Pitch.</p>
+        </div>
+      </details></li>
+      <li><details class="akte akte--frage">
+        <summary class="akte__head">
+          <span class="akte__title">Was kostet die spätere Umsetzung?</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <p>Kein öffentlicher Preis. Der Aufwand hängt an Prozessen, Datenlage und Betrieb. Sie bekommen ein schriftliches Angebot mit Umfang, Zeitplan und Preis, bevor irgendetwas gebaut wird.</p>
+        </div>
+      </details></li>
+      <li><details class="akte akte--frage">
+        <summary class="akte__head">
+          <span class="akte__title">Muss ich meine Software wechseln?</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <p>Nein. Wir bauen an Ihre Systeme an. Ein Wechsel ist nie die Voraussetzung.</p>
+        </div>
+      </details></li>
+      <li><details class="akte akte--frage">
+        <summary class="akte__head">
+          <span class="akte__title">Welche Systeme können integriert werden?</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <p>Jedes CRM, das uns bisher begegnet ist, ließ sich anbinden. Unterschiedlich ist nur der Aufwand. Typisch: onOffice, Propstack, FlowFact, Haufe, Microsoft 365, Google Workspace. Bei Excel bauen wir zuerst die Ablage.</p>
+        </div>
+      </details></li>
+      <li><details class="akte akte--frage">
+        <summary class="akte__head">
+          <span class="akte__title">Ist das DSGVO-konform?</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <p>Selbst gehostet in der EU, Datenbank Frankfurt, AVV nach Art. 28 DSGVO. Was bei Ihnen angebunden wird und wo Daten liegen, steht in der Roadmap, bevor gebaut wird.</p>
+        </div>
+      </details></li>
+      <li><details class="akte akte--frage">
+        <summary class="akte__head">
+          <span class="akte__title">Muss ich technisches Wissen haben?</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <p>Für den Betrieb nicht. Sie brauchen jemanden, der fachlich entscheidet, was das System darf, und Freigaben erteilt.</p>
+        </div>
+      </details></li>
+      <li><details class="akte akte--frage">
+        <summary class="akte__head">
+          <span class="akte__title">Was passiert nach der Roadmap?</span>
+          <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
+        </summary>
+        <div class="akte__body">
+          <p>Sie behalten die Roadmap. Wenn es sich lohnt und Sie wollen, bauen wir. Wenn nicht, endet es dort.</p>
+        </div>
+      </details></li>
+      <li><details class="akte akte--frage">
+        <summary class="akte__head">
           <span class="akte__title">Und wenn wir danach zusammenarbeiten?</span>
           <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
         </summary>
         <div class="akte__body">
-          <p>Die Laufzeit beträgt zwölf Monate. Dazu kommt unsere Garantie an Sie: Wenn die vorher gemeinsam festgelegten Ergebnisse nach drei Monaten nicht erreicht sind, kommen Sie ohne Haken aus dem Vertrag und müssen das nicht begründen. Drei Monate braucht ein System, um eingeregelt zu werden. Diese Garantie gibt es, weil Sie mit dem aufgezeichneten Gespräch etwas beigetragen haben. Voraussetzung ist, dass wir Zugang bekommen und Ihr Team das System auch nutzt.</p>
+          <p>Laufzeit zwölf Monate. Garantie: Wenn die vorher gemeinsam festgelegten Ergebnisse nach drei Monaten nicht stehen, kommen Sie ohne Haken aus dem Vertrag. Voraussetzung: Zugang und Nutzung durch Ihr Team.</p>
         </div>
       </details></li>
       <li><details class="akte akte--frage">
         <summary class="akte__head">
-          <span class="akte__title">Was kostet es?</span>
+          <span class="akte__title">Was passiert mit meinen Daten?</span>
           <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
         </summary>
         <div class="akte__body">
-          <p>Wir nennen keinen öffentlichen Preis, weil der Zuschnitt jedes Systems den Aufwand bestimmt und eine Zahl ohne Kontext niemandem hilft. Der Rahmen hängt an drei Dingen: wie viele Prozesse Sie automatisieren, wie sauber Ihre Daten heute vorliegen, und ob wir den Betrieb übernehmen. Sie bekommen ein schriftliches Angebot mit Umfang, Zeitplan und Preis, bevor irgendetwas gebaut wird.</p>
-        </div>
-      </details></li>
-      <li><details class="akte akte--frage">
-        <summary class="akte__head">
-          <span class="akte__title">Können wir unser CRM behalten?</span>
-          <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
-        </summary>
-        <div class="akte__body">
-          <p>Ja, das ist der Normalfall. Wir bauen an Ihre Systeme an, statt Ihnen eine Plattform zu verkaufen. Jedes CRM, das uns bisher begegnet ist, ließ sich anbinden, unterschiedlich ist nur der Aufwand. Wenn Sie heute mit Excel arbeiten, bauen wir zuerst die Ablage: am Anfang mehr Aufwand, danach sauberer als bei den meisten.</p>
-        </div>
-      </details></li>
-      <li><details class="akte akte--frage">
-        <summary class="akte__head">
-          <span class="akte__title">Was ist, wenn mein Team nicht mitzieht?</span>
-          <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
-        </summary>
-        <div class="akte__body">
-          <p>Die Systeme laufen dort, wo Ihr Team ohnehin arbeitet: im Postfach, im CRM, im Ticketsystem. Es gibt in der Regel keine neue Oberfläche, die jemand lernen muss. Wo doch, gehört die Einweisung zur Übergabe und nicht auf eine Extrarechnung.</p>
-        </div>
-      </details></li>
-      <li><details class="akte akte--frage">
-        <summary class="akte__head">
-          <span class="akte__title">Was passiert mit der Aufzeichnung?</span>
-          <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
-        </summary>
-        <div class="akte__body">
-          <p>Aus dem Gespräch wird ein Beitrag für meinen YouTube-Kanal. Mandantendaten, Objektadressen und Umsatzzahlen kommen nicht ins Video. Sie sehen den Schnitt, bevor er online geht, und Sie können die Freigabe auch danach noch zurückziehen. Wenn Sie gar nicht aufgezeichnet werden möchten, sagen Sie mir vorher Bescheid, dann reden wir trotzdem.</p>
+          <p>Die drei Qualifizierungsangaben speichern wir zur Gesprächsvorbereitung. Name, E-Mail und Telefon entstehen erst in der Terminbuchung. Details in der Datenschutzerklärung.</p>
         </div>
       </details></li>
       <li><details class="akte akte--frage">
@@ -345,59 +754,15 @@
           <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
         </summary>
         <div class="akte__body">
-          <p>Keine Kundenlogos ohne Mandat, keine erfundenen Prozentzahlen, keine Vorher-Nachher-Werte, die niemand gemessen hat. Jeder Eintrag in unserem Systemkatalog trägt stattdessen einen Stempel, der sagt, wie belastbar er ist: Live im Betrieb, Im Aufbau oder Übertragbar. Aktuell trägt keiner den Stempel Live im Betrieb, weil die Freigaben zur Nennung noch ausstehen. Auch das sagen wir lieber, als es zu verschweigen.</p>
+          <p>Keine Logos ohne Mandat. Die Zahlen oben kommen vom Beispielsystem AMS und sind gemessen. Freigaben zur Kundennennung stehen noch aus. Auch das sagen wir lieber offen.</p>
         </div>
       </details></li>
     </ul>
   </div>
 </section>
 
-<section class="home-band home-band--cloud" id="rechner" aria-labelledby="roadmap-calc-title">
-  <div class="section-wrap">
-    <h2 class="section-h2" id="roadmap-calc-title">Noch unsicher? Rechnen Sie nach</h2>
-    <p class="section-sub">Drei Regler, keine Kontaktdaten. Die Zahl gehört Ihnen, auch ohne Termin.</p>
-    <div class="rechner roadmap-calc" id="roadmap-calc">
-      <div class="roadmap-calc__inputs">
-        <div class="roadmap-slider">
-          <div class="roadmap-slider__row">
-            <label for="rf-volume">Vorgänge pro Woche</label>
-            <span class="roadmap-slider__value" id="rf-volume-out">25</span>
-          </div>
-          <input id="rf-volume" type="range" min="5" max="150" step="1" value="25">
-        </div>
-        <div class="roadmap-slider">
-          <div class="roadmap-slider__row">
-            <label for="rf-minutes">Minuten pro Vorgang bis zur Erledigung</label>
-            <span class="roadmap-slider__value" id="rf-minutes-out">10</span>
-          </div>
-          <input id="rf-minutes" type="range" min="3" max="40" step="1" value="10">
-        </div>
-        <div class="rq-fields">
-          <div>
-            <label for="rf-rate">Interner Stundensatz in Euro</label>
-            <input id="rf-rate" type="number" min="10" max="200" step="1" value="45" inputmode="decimal">
-          </div>
-        </div>
-      </div>
-      <div class="roadmap-calc__out">
-        <span class="rq-step__eyebrow">Ihr Ergebnis</span>
-        <p class="roadmap-result__hours" id="rf-hours"></p>
-        <p class="roadmap-result__note" id="rf-bound"></p>
-        <p class="roadmap-result__euro" id="rf-euro"></p>
-        <p class="roadmap-result__note" id="rf-rate-copy"></p>
-        <p class="roadmap-result__preview" id="rf-preview"></p>
-        <p class="roadmap-result__disclaimer">Nur aus Ihren eigenen Angaben gerechnet. Wir behaupten nichts über Ihren Betrieb.</p>
-        <div class="roadmap-result__cta">
-          <a class="btn-primary" href="#contact">Kostenloses Erstgespräch buchen</a>
-        </div>
-      </div>
-      <p class="roadmap-sr" id="rf-live" aria-live="polite"></p>
-    </div>
-  </div>
-</section>
-
 <div id="sticky-cta" aria-hidden="true">
-  <a class="sticky-cta-btn" id="sticky-demo-btn" href="#contact">Kostenloses Erstgespräch buchen</a>
+  <a class="sticky-cta-btn" id="sticky-demo-btn" href="#contact">KI-Roadmap anfragen</a>
 </div>
 <footer id="footer">
   <div class="footer-inner">
@@ -427,6 +792,8 @@
   </div>
 </div>
 
+<script src="scripts/roadmap-hero-ui.js"></script>
+<script src="scripts/aqut-sim.js"></script>
 <script src="scripts/ai-roadmap-funnel.js"></script>
 
 <script src="scripts/site-nav.js"></script>

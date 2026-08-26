@@ -140,8 +140,9 @@ export function renderTechstack() {
 
   const run = items.map(logo).join('\n');
 
-  // Sekunden pro Logo. 4.5s liest ruhig, ohne dass der Blick haengt.
-  const duration = (items.length * 4.5).toFixed(1);
+  // Sekunden pro Logo. 2.5s: Strip zieht zuegig von vorne nach,
+  // ohne zu hetzen. Pause bei Hover/Fokus bleibt.
+  const duration = (items.length * 2.5).toFixed(1);
 
   // Kein Fliesstext mehr ueber oder unter dem Streifen: Besucher
   // koennen ohnehin nicht unterscheiden, welches Werkzeug wofuer

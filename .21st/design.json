@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "project": {
+    "name": "rais-website",
+    "productType": "b2b-marketing-site",
+    "stack": ["vanilla-html", "css", "vite"]
+  },
+  "sources": {
+    "tokens": ["styles/ai-roadmap.css", "styles/home.css", "styles/site-multipage.css"],
+    "components": ["scripts/techstack-data.mjs", "scripts/build-pages.mjs"],
+    "assets": ["images/", "favicon.svg"],
+    "instructions": ["Claude_and_brand.md/brand.md", "Claude_and_brand.md/design-patterns.md"]
+  },
+  "design": {
+    "colorMode": "light-with-dark-bands",
+    "colors": {
+      "canvas": "#F5F2EC",
+      "surface": "#FBF8F3",
+      "system": "#003F2D",
+      "ink": "#111714",
+      "action": "#F4773C",
+      "ui": "#E8EDE9"
+    },
+    "typography": {
+      "display": "serif (brand headlines)",
+      "body": "sans",
+      "meta": "mono labels"
+    },
+    "spacing": { "section": "clamp(4.5rem, 8vw, 7rem)" },
+    "radius": { "control": "0.4rem" },
+    "shadows": { "doc": "hard document shadow, no glow" },
+    "motion": { "logoMarquee": "CSS InfiniteSlider rebuild", "orbit": "CSS rotate 40s" },
+    "density": "editorial-sparse"
+  },
+  "components": {
+    "installed": [],
+    "preferredPrimitives": ["vanilla rebuilds only"],
+    "patterns": [
+      "InfiniteSlider logo marquee (techstack)",
+      "animated-card-diagram architecture nodes",
+      "halide-topo-hero contour lines (no parallax)"
+    ]
+  },
+  "constraints": {
+    "must": [
+      "Vanilla HTML/CSS; 21st is reference only, never install React/framer packages",
+      "RAIS tokens: cream canvas, racing green, terracotta action",
+      "Sie-form Kevin voice; no invented metrics",
+      "No purple gradients, glow blobs, or generic AI stock"
+    ],
+    "avoid": [
+      "Installing 21st React components into the site",
+      "Technology brand names in the proof ticker",
+      "Duplicate page headlines baked into images"
+    ]
+  },
+  "decisions": [
+    {
+      "id": "roadmap-hover-motion-2026-08-26",
+      "surface": "ai-roadmap.html",
+      "choice": "A-signal-plus-selective-B",
+      "summary": "Signal Hover on cases/process/human/CTA/offer cover; aqut story node hover is visual-only (no autoplay pause JS).",
+      "rejected": ["C-atmosphere-section-orbit-speed", "full-B-hero-ui-pause"]
+    }
+  ],
+  "explore": {
+    "surface": "ai-roadmap.html Anti-Hype section (#roadmap-antihype)",
+    "question": "How should model-economics + tech stack proof be composed?",
+    "status": "awaiting-selection",
+    "directions": ["stack-as-proof", "fit-matrix", "process-anchor-band"],
+    "blocked": "21st CLI search/generate returned HTTP 401; re-login required for fresh catalog pulls"
+  },
+  "evidence": [
+    { "fact": "project.stack:vanilla", "source": "package.json + build-pages.mjs" },
+    { "fact": "tokens:rm-*", "source": "styles/ai-roadmap.css" },
+    { "fact": "pattern:InfiniteSlider", "source": "scripts/techstack-data.mjs" },
+    { "fact": "21st.auth:expired", "source": "21st search HTTP 401 @ 2026-08-26" },
+    { "fact": "motion:roadmap-signal-hover", "source": "styles/ai-roadmap.css Signal Hover block" }
+  ],
+  "generatedAt": "2026-08-26T08:01:09.030Z",
+  "updatedAt": "2026-08-26T10:10:00.000Z"
+}

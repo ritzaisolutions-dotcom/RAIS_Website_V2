@@ -16,6 +16,7 @@ const NOTION_VERSION = "2022-06-28";
 
 const ALLOWED_EVENTS = new Set([
   "lp_view",
+  "vsl_start",
   "sim_start",
   "funnel_step_1",
   "funnel_step_2",

@@ -24,6 +24,7 @@
 
   var ALLOWED_EVENTS = {
     lp_view: true,
+    vsl_start: true,
     funnel_step_1: true,
     funnel_step_2: true,
     funnel_step_3: true,
@@ -120,9 +121,8 @@
   var calc = {
     volumenWoche: 25,
     minutenProVorgang: 10,
-    /* Vollkostensatz einer Teamstunde. Gleicher Startwert wie im
-       Startseiten-Rechner, damit die Seite sich nicht widerspricht. */
-    stundensatz: 45
+    /* Konservativer Default fuer die Landingpage (LinkedIn-Post). */
+    stundensatz: 25
   };
 
   function loadCalc() {
@@ -132,7 +132,7 @@
       var parsed = JSON.parse(raw);
       calc.volumenWoche = clampNum(parsed.volumenWoche, 5, 150, 25);
       calc.minutenProVorgang = clampNum(parsed.minutenProVorgang, 3, 40, 10);
-      calc.stundensatz = clampNum(parsed.stundensatz, 10, 200, 45);
+      calc.stundensatz = clampNum(parsed.stundensatz, 10, 200, 25);
     } catch (e) {
       /* private mode */
     }
@@ -224,7 +224,7 @@
     [
       ['rf-volume', 'volumenWoche', 5, 150, 25],
       ['rf-minutes', 'minutenProVorgang', 3, 40, 10],
-      ['rf-rate', 'stundensatz', 10, 200, 45]
+      ['rf-rate', 'stundensatz', 10, 200, 25]
     ].forEach(function (spec) {
       var el = document.getElementById(spec[0]);
       if (!el) return;
@@ -502,30 +502,21 @@
     paintGate(false);
   }
 
-  /* ── Ablauf-Linien ── */
+  /* ── VSL-Platzhalter ── */
 
-  var steps = document.getElementById('roadmap-steps');
-  if (steps) {
-    var reduced =
-      typeof window.matchMedia === 'function' &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced) {
-      steps.classList.add('is-drawn');
-    } else if (typeof IntersectionObserver === 'function') {
-      var obs = new IntersectionObserver(
-        function (entries) {
-          entries.forEach(function (entry) {
-            if (!entry.isIntersecting) return;
-            steps.classList.add('is-drawn');
-            obs.disconnect();
-          });
-        },
-        { threshold: 0.35 }
-      );
-      obs.observe(steps);
-    } else {
-      steps.classList.add('is-drawn');
-    }
+  var vslRoot = document.getElementById('roadmap-vsl');
+  var vslPlay = document.getElementById('vsl-play');
+  var vslPending = document.getElementById('vsl-pending');
+  var vslStarted = false;
+  if (vslPlay && vslRoot) {
+    vslPlay.addEventListener('click', function () {
+      if (!vslStarted) {
+        vslStarted = true;
+        track('vsl_start');
+      }
+      vslRoot.classList.add('is-pending');
+      if (vslPending) vslPending.hidden = false;
+    });
   }
 
   track('lp_view');
