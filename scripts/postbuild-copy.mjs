@@ -34,6 +34,8 @@ const copyTargets = [
   { from: 'styles/ai-roadmap.css', to: 'styles/ai-roadmap.css' },
   { from: 'styles/antigravity-polish.css', to: 'styles/antigravity-polish.css' },
   { from: 'styles/tailwind.generated.css', to: 'styles/tailwind.generated.css' },
+  { from: 'styles/ai-roadmap.css', to: 'styles/ai-roadmap.css' },
+  { from: 'styles/glass-motion.css', to: 'styles/glass-motion.css' },
   { from: 'fonts.css', to: 'fonts.css' },
   { from: 'favicon.svg', to: 'favicon.svg' },
   { from: 'favicon.png', to: 'favicon.png' },
@@ -49,6 +51,7 @@ const sharedStyles = [
   'styles/site-multipage.css',
   'styles/home.css',
   'styles/booking-modal.css',
+  'styles/glass-motion.css',
 ];
 
 const pageStyles = {

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none" role="img" aria-hidden="true">
+  <defs>
+    <linearGradient id="g-chat" x1="18" y1="18" x2="102" y2="102" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#A8D0AE"/>
+      <stop offset="40%" stop-color="#4E9460"/>
+      <stop offset="100%" stop-color="#004225"/>
+    </linearGradient>
+    <linearGradient id="g-chat-shine" x1="25" y1="20" x2="90" y2="90" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.7"/>
+      <stop offset="60%" stop-color="#fff" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="f-chat" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2.4" result="b"/>
+      <feOffset dy="3" result="o"/>
+      <feFlood flood-color="#004225" flood-opacity="0.32"/>
+      <feComposite in2="o" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <g filter="url(#f-chat)">
+    <path d="M28 30c0-6 5-11 11-11h42c6 0 11 5 11 11v34c0 6-5 11-11 11H52l-16 16v-16H39c-6 0-11-5-11-11V30z" fill="url(#g-chat)" opacity="0.93"/>
+    <path d="M28 30c0-6 5-11 11-11h42c6 0 11 5 11 11v34c0 6-5 11-11 11H52l-16 16v-16H39c-6 0-11-5-11-11V30z" fill="url(#g-chat-shine)"/>
+    <path d="M34 32c0-3.3 2.7-6 6-6h40c3.3 0 6 2.7 6 6v30c0 3.3-2.7 6-6 6H50.5L40 84v-16H40c-3.3 0-6-2.7-6-6V32z" stroke="#E8F5EC" stroke-opacity="0.4" stroke-width="1.4"/>
+    <circle cx="48" cy="48" r="3.2" fill="#FBF8F3" opacity="0.9"/>
+    <circle cx="60" cy="48" r="3.2" fill="#FBF8F3" opacity="0.9"/>
+    <circle cx="72" cy="48" r="3.2" fill="#FBF8F3" opacity="0.9"/>
+  </g>
+</svg>
