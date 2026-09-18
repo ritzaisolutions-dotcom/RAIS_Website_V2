@@ -33,7 +33,8 @@
             });
 
             if (counter) {
-                counter.textContent = 'Schritt ' + n + ' von ' + TOTAL;
+                var copy = 'Schritt ' + n + ' von ' + TOTAL;
+                counter.textContent = window.RAIS && window.RAIS.t ? window.RAIS.t(copy) : copy;
             }
             if (prevBtn) prevBtn.disabled = n <= 1;
             if (nextBtn) nextBtn.disabled = n >= TOTAL;
@@ -70,6 +71,9 @@
         });
 
         setActive(parseInt(root.getAttribute('data-active-step'), 10) || 1);
+        document.addEventListener('rais:lang', function () {
+            setActive(parseInt(root.getAttribute('data-active-step'), 10) || 1);
+        });
     }
 
     if (document.readyState === 'loading') {

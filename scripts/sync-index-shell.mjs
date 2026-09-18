@@ -7,7 +7,7 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { bookingModalHtml, navHtml, spriteHtml } from './page-shell.mjs';
+import { bookingModalHtml, navHtml, spriteHtml, i18nBootHtml, i18nScriptsHtml } from './page-shell.mjs';
 import { UNIVERSAL, renderRegister, renderBranchen } from './systemakte-data.mjs';
 import { renderChangelog } from './changelog-data.mjs';
 import { renderTechstack } from './techstack-data.mjs';
@@ -233,6 +233,26 @@ const techHtml = [TECH_START, renderTechstack(), '                ' + TECH_END]
   .filter(Boolean)
   .join('\n');
 html = html.slice(0, techStart) + techHtml + html.slice(techEnd + TECH_END.length);
+
+// Language toggle + dictionary: keep the boot script in <head> and the
+// runtime scripts before the calculator / sim modules.
+if (!html.includes("localStorage.getItem('rais-lang')")) {
+  html = html.replace(
+    '<meta charset="UTF-8">',
+    `<meta charset="UTF-8">
+    ${i18nBootHtml}`
+  );
+}
+html = html.replace(/\s*<script src="scripts\/i18n-dict\.js"><\/script>\s*/g, '\n');
+html = html.replace(/\s*<script src="scripts\/i18n\.js"><\/script>\s*/g, '\n');
+if (html.includes('<script src="scripts/aqut-rechner.js"></script>')) {
+  html = html.replace(
+    '<script src="scripts/aqut-rechner.js"></script>',
+    i18nScriptsHtml.trim() + '\n<script src="scripts/aqut-rechner.js"></script>'
+  );
+} else {
+  html = html.replace('</body>', i18nScriptsHtml + '</body>');
+}
 
 writeFileSync(indexPath, html, 'utf8');
 console.log('synced index.html shell + systemakte from data module');

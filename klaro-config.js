@@ -63,7 +63,10 @@ var klaroConfig = {
   storageMethod: 'localStorage',
   storageName: 'klaro',
   cookieExpiresAfterDays: 365,
-  lang: 'de',
+  lang: (function () {
+    try { return localStorage.getItem('rais-lang') === 'en' ? 'en' : 'de'; }
+    catch (e) { return 'de'; }
+  }()),
   mustConsent: true,
   acceptAll: true,
   hideDeclineAll: false,
@@ -99,6 +102,40 @@ var klaroConfig = {
       purposes: {
         security: 'Sicherheit & Fehlerbehebung',
         booking: 'Terminbuchung',
+      },
+    },
+    en: {
+      consentNotice: {
+        description:
+          'We use cookies and similar technologies. Some are technically required, others help us, with your consent, detect errors on this website.',
+        learnMore: 'Settings',
+      },
+      consentModal: {
+        title: 'Privacy settings',
+        description: 'Choose which services this website may use.',
+        privacyPolicy: {
+          name: 'privacy policy',
+          text: 'You can find more information in our {privacyPolicy}.',
+        },
+      },
+      acceptAll: 'Accept all',
+      declineAll: 'Necessary only',
+      acceptSelected: 'Save selection',
+      close: 'Close',
+      poweredBy: 'Managed with Klaro',
+      purposes: {
+        security: 'Security and troubleshooting',
+        booking: 'Appointment booking',
+      },
+      sentry: {
+        title: 'Sentry (error monitoring)',
+        description:
+          'Sentry captures technical errors so we can keep the website stable. Processing on EU servers (ingest.de.sentry.io). Provider: Functional Software Inc., San Francisco, USA.',
+      },
+      cal: {
+        title: 'Cal.com (appointment booking)',
+        description:
+          'Cal.com provides the booking calendar. Loading it sends your IP address to Cal.com. You enter your booking details there. Provider: Cal.com, Inc., San Francisco, USA.',
       },
     },
   },

@@ -3,6 +3,31 @@
  * Canonical shell: change only here, then run `npm run pages`
  * (build-pages + sync-index-shell). Do not hand-edit Nav/Footer/Modal on pages.
  */
+
+export const i18nBootHtml = `<script>
+(function () {
+  try {
+    var lang = localStorage.getItem('rais-lang');
+    if (lang === 'en' || lang === 'de') {
+      document.documentElement.lang = lang;
+      document.documentElement.setAttribute('data-lang', lang);
+      if (lang === 'en') document.documentElement.setAttribute('data-lang-pending', '');
+    }
+  } catch (e) { /* private mode */ }
+}());
+</script>`;
+
+export function langToggleHtml() {
+  return `<div class="lang-toggle" data-i18n-ignore role="group" aria-label="Sprache / Language">
+      <button type="button" class="lang-toggle__btn" data-lang-set="de" aria-pressed="true">DE</button>
+      <button type="button" class="lang-toggle__btn" data-lang-set="en" aria-pressed="false">EN</button>
+    </div>`;
+}
+
+export const i18nScriptsHtml = `
+<script src="scripts/i18n-dict.js"></script>
+<script src="scripts/i18n.js"></script>
+`;
 export function bookingModalHtml(dauer = '20 Minuten', ariaLabel = 'Kostenlosen KI-Audit buchen') {
   return `
 <div id="booking-modal" role="dialog" aria-modal="true" aria-label="${ariaLabel}">
@@ -72,6 +97,7 @@ export function navHtml(active, options = {}) {
     <a href="zusammenarbeit.html" class="mobile-link" data-close-menu>So arbeiten wir</a>
     <a href="persoenlichkeit.html" class="mobile-link" data-close-menu>Persönlichkeit</a>
     <hr class="mobile-hr">
+    ${langToggleHtml()}
     ${mobileCta}
   </div>
 </div>`;
@@ -88,6 +114,7 @@ export function navHtml(active, options = {}) {
       </div>
     </a>${navCenter}
     <div class="nav-right">
+      ${langToggleHtml()}
       ${navCta}${hamburger}
     </div>
   </div>
@@ -199,6 +226,7 @@ export function headHtml({ title, description, path, extraCss = [], bodyAttrs = 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  ${i18nBootHtml}
   <title>${title}</title>
   <meta name="description" content="${description}">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">

@@ -3,6 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+(function () {
+  try {
+    var lang = localStorage.getItem('rais-lang');
+    if (lang === 'en' || lang === 'de') {
+      document.documentElement.lang = lang;
+      document.documentElement.setAttribute('data-lang', lang);
+      if (lang === 'en') document.documentElement.setAttribute('data-lang-pending', '');
+    }
+  } catch (e) { /* private mode */ }
+}());
+</script>
   <title>Anfragen qualifizieren | RAIS</title>
   <meta name="description" content="Anfragen qualifizieren: Eine Anfrage trifft ein, über Formular, Portal, Mail oder Telefon. Ablauf, Übergabepunkt und was das System ausdrücklich nicht tut.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -76,6 +88,10 @@
       </ul>
     </div>
     <div class="nav-right">
+      <div class="lang-toggle" data-i18n-ignore role="group" aria-label="Sprache / Language">
+      <button type="button" class="lang-toggle__btn" data-lang-set="de" aria-pressed="true">DE</button>
+      <button type="button" class="lang-toggle__btn" data-lang-set="en" aria-pressed="false">EN</button>
+    </div>
       <button type="button" class="btn-primary js-open-booking" id="nav-demo-btn" data-source="nav">Kostenlosen KI-Audit buchen</button>
       <button class="nav-hamburger" id="hamburger-btn" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-overlay">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -92,6 +108,10 @@
     <a href="zusammenarbeit.html" class="mobile-link" data-close-menu>So arbeiten wir</a>
     <a href="persoenlichkeit.html" class="mobile-link" data-close-menu>Persönlichkeit</a>
     <hr class="mobile-hr">
+    <div class="lang-toggle" data-i18n-ignore role="group" aria-label="Sprache / Language">
+      <button type="button" class="lang-toggle__btn" data-lang-set="de" aria-pressed="true">DE</button>
+      <button type="button" class="lang-toggle__btn" data-lang-set="en" aria-pressed="false">EN</button>
+    </div>
     <button type="button" class="mobile-cta js-open-booking" id="mobile-demo-btn" data-source="mobile-nav">Kostenlosen KI-Audit buchen</button>
   </div>
 </div>
@@ -211,6 +231,9 @@
     </div>
   </div>
 </div>
+
+<script src="scripts/i18n-dict.js"></script>
+<script src="scripts/i18n.js"></script>
 
 <script src="scripts/site-nav.js"></script>
 <script src="scripts/cal-embed.js"></script>

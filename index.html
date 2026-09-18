@@ -2,6 +2,18 @@
 <html lang="de" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
+    <script>
+(function () {
+  try {
+    var lang = localStorage.getItem('rais-lang');
+    if (lang === 'en' || lang === 'de') {
+      document.documentElement.lang = lang;
+      document.documentElement.setAttribute('data-lang', lang);
+      if (lang === 'en') document.documentElement.setAttribute('data-lang-pending', '');
+    }
+  } catch (e) { /* private mode */ }
+}());
+</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Ausrichtung auf Maklerbüros seit 09.08.2026, passend zu Hero und
@@ -266,7 +278,7 @@
 
         @media (max-width: 860px) {
             .nav-center,
-            .btn-primary {
+            .nav-right > .btn-primary {
                 display: none;
             }
 
@@ -1447,7 +1459,7 @@
                 opacity: 0.22;
             }
         }
-</style>
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -1577,11 +1589,14 @@
         <li><a href="#systeme">Systeme</a></li>
         <li><a href="#methodik">Methode</a></li>
         <li><a href="referenzen.html">Systemkatalog</a></li>
-        <li><a href="ai-roadmap.html">KI-Roadmap</a></li>
         <li><a href="ueber-uns.html">Über uns</a></li>
       </ul>
     </div>
     <div class="nav-right">
+      <div class="lang-toggle" data-i18n-ignore role="group" aria-label="Sprache / Language">
+      <button type="button" class="lang-toggle__btn" data-lang-set="de" aria-pressed="true">DE</button>
+      <button type="button" class="lang-toggle__btn" data-lang-set="en" aria-pressed="false">EN</button>
+    </div>
       <button type="button" class="btn-primary js-open-booking" id="nav-demo-btn" data-source="nav">Kostenlosen KI-Audit buchen</button>
       <button class="nav-hamburger" id="hamburger-btn" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-overlay">
         <svg id="hamburger-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -1594,11 +1609,14 @@
     <a href="#systeme" class="mobile-link" data-close-menu>Systeme</a>
     <a href="#methodik" class="mobile-link" data-close-menu>Methode</a>
     <a href="referenzen.html" class="mobile-link" data-close-menu>Systemkatalog</a>
-    <a href="ai-roadmap.html" class="mobile-link" data-close-menu>KI-Roadmap</a>
     <a href="ueber-uns.html" class="mobile-link" data-close-menu>Über uns</a>
     <a href="zusammenarbeit.html" class="mobile-link" data-close-menu>So arbeiten wir</a>
     <a href="persoenlichkeit.html" class="mobile-link" data-close-menu>Persönlichkeit</a>
     <hr class="mobile-hr">
+    <div class="lang-toggle" data-i18n-ignore role="group" aria-label="Sprache / Language">
+      <button type="button" class="lang-toggle__btn" data-lang-set="de" aria-pressed="true">DE</button>
+      <button type="button" class="lang-toggle__btn" data-lang-set="en" aria-pressed="false">EN</button>
+    </div>
     <button type="button" class="mobile-cta js-open-booking" id="mobile-demo-btn" data-source="mobile-nav">Kostenlosen KI-Audit buchen</button>
   </div>
 </div>
@@ -3005,6 +3023,8 @@
 
 
 <!-- ── Calculator (after sync-safe boundary) ───────────── -->
+<script src="scripts/i18n-dict.js"></script>
+<script src="scripts/i18n.js"></script>
 <script src="scripts/aqut-rechner.js"></script>
 <script src="scripts/aqut-sim.js"></script>
     <script src="scripts/lead-magnet.js"></script>

@@ -73,8 +73,13 @@
     return Math.min(max, Math.max(min, n));
   }
 
+  function t(text) {
+    return window.RAIS && typeof window.RAIS.t === 'function' ? window.RAIS.t(text) : text;
+  }
+
   function formatDe(n, digits) {
-    return new Intl.NumberFormat('de-DE', {
+    var locale = window.RAIS && window.RAIS.lang && window.RAIS.lang() === 'en' ? 'en-GB' : 'de-DE';
+    return new Intl.NumberFormat(locale, {
       maximumFractionDigits: digits == null ? 0 : digits,
       minimumFractionDigits: digits == null ? 0 : digits
     }).format(n);
@@ -177,26 +182,29 @@
     var rateEl = document.getElementById('rf-rate-copy');
     var previewEl = document.getElementById('rf-preview');
 
-    if (hoursEl) hoursEl.textContent = formatDe(c.hoursMonth, 1) + ' Stunden pro Monat';
+    if (hoursEl) hoursEl.textContent = t(formatDe(c.hoursMonth, 1) + ' Stunden pro Monat');
     if (boundEl) {
-      boundEl.textContent =
-        'gebunden durch ' + formatDe(calc.volumenWoche) + ' Vorgänge pro Woche';
+      boundEl.textContent = t(
+        'gebunden durch ' + formatDe(calc.volumenWoche) + ' Vorgänge pro Woche'
+      );
     }
-    if (euroEl) euroEl.textContent = formatDe(c.euroYear) + ' Euro pro Jahr';
+    if (euroEl) euroEl.textContent = t(formatDe(c.euroYear) + ' Euro pro Jahr');
     if (rateEl) {
-      rateEl.textContent =
-        'bei einem internen Stundensatz von ' + formatDe(calc.stundensatz) + ' Euro';
+      rateEl.textContent = t(
+        'bei einem internen Stundensatz von ' + formatDe(calc.stundensatz) + ' Euro'
+      );
     }
     if (previewEl) {
       /* Die Kostenzahl steht in Euro, also steht die Rueckgewinnzahl
          auch in Euro. Sonst ist nur die Zahl monetarisiert, die weh
          tut, und die, die hilft, bleibt abstrakt. */
-      previewEl.textContent =
+      previewEl.textContent = t(
         'Davon übernimmt das System nach dem Aufbau typischerweise 70 Prozent. Das sind rund ' +
-        formatDe(c.recovered, 1) +
-        ' Stunden pro Monat oder ' +
-        formatDe(c.recoveredEuro) +
-        ' Euro pro Jahr. 70 Prozent sind eine Vorschau, nicht die Vertragszahl. Den genauen Wert legen wir vor dem Bau gemeinsam fest.';
+          formatDe(c.recovered, 1) +
+          ' Stunden pro Monat oder ' +
+          formatDe(c.recoveredEuro) +
+          ' Euro pro Jahr. 70 Prozent sind eine Vorschau, nicht die Vertragszahl. Den genauen Wert legen wir vor dem Bau gemeinsam fest.'
+      );
     }
 
     /* Kurzfassung fuer die Live-Region. Das ganze Ergebnisfeld als
@@ -204,10 +212,12 @@
     var liveEl = document.getElementById('rf-live');
     if (liveEl) {
       liveEl.textContent =
-        formatDe(c.hoursMonth, 1) +
-        ' Stunden pro Monat, ' +
-        formatDe(c.euroYear) +
-        ' Euro pro Jahr.';
+        t(
+          formatDe(c.hoursMonth, 1) +
+            ' Stunden pro Monat, ' +
+            formatDe(c.euroYear) +
+            ' Euro pro Jahr.'
+        );
     }
   }
 
@@ -299,13 +309,13 @@
       gate.querySelectorAll('[data-gstep]').forEach(function (panel) {
         panel.hidden = Number(panel.getAttribute('data-gstep')) !== gateStep;
       });
-      if (gateCount) gateCount.textContent = 'Frage ' + gateStep + ' von ' + GATE_STEPS;
+      if (gateCount) gateCount.textContent = t('Frage ' + gateStep + ' von ' + GATE_STEPS);
       gateBars.forEach(function (bar) {
         bar.classList.toggle('is-filled', Number(bar.getAttribute('data-gbar')) <= gateStep);
       });
       if (gateBack) gateBack.hidden = gateStep === 1;
       if (gateSubmit) {
-        gateSubmit.textContent = gateStep === GATE_STEPS ? 'Weiter zum Kalender' : 'Weiter';
+        gateSubmit.textContent = t(gateStep === GATE_STEPS ? 'Weiter zum Kalender' : 'Weiter');
       }
       gateError('');
       if (!moveFocus) return;
@@ -440,7 +450,7 @@
            nicht sichtbar ist. */
         if (gateStep === 1) {
           if (!gateState.pain) {
-            gateError('Bitte wählen Sie, wo es am meisten weh tut.');
+            gateError(t('Bitte wählen Sie, wo es am meisten weh tut.'));
             return;
           }
           gateGo(2);
@@ -458,7 +468,7 @@
             missing = true;
           }
           if (missing) {
-            gateError('Bitte Mail-System und CRM angeben.');
+            gateError(t('Bitte Mail-System und CRM angeben.'));
             return;
           }
           gateGo(3);
@@ -467,7 +477,7 @@
 
         if (!gatePrivacy || !gatePrivacy.checked) {
           markInvalid(gatePrivacy, true);
-          gateError('Bitte stimmen Sie der Speicherung zu, dann geht es weiter.');
+          gateError(t('Bitte stimmen Sie der Speicherung zu, dann geht es weiter.'));
           return;
         }
         markInvalid(gatePrivacy, false);
@@ -476,7 +486,7 @@
         emitGateStep(3);
 
         gateSubmit.disabled = true;
-        gateSubmit.textContent = 'Einen Moment…';
+        gateSubmit.textContent = t('Einen Moment…');
 
         /* Der Kalender darf nicht davon abhaengen, ob das Speichern
            klappt. Fehlschlaege landen im Log, der Termin bleibt
@@ -493,7 +503,7 @@
           consent_text: CONSENT_TEXT
         }).then(function () {
           gateSubmit.disabled = false;
-          gateSubmit.textContent = 'Weiter zum Kalender';
+          gateSubmit.textContent = t('Weiter zum Kalender');
           revealCal();
         });
       });
@@ -518,6 +528,11 @@
       if (vslPending) vslPending.hidden = false;
     });
   }
+
+  document.addEventListener('rais:lang', function () {
+    paintCalc();
+    if (gate) paintGate(false);
+  });
 
   track('lp_view');
 })();

@@ -34,6 +34,10 @@
 (function () {
   'use strict';
 
+  function t(text) {
+    return window.RAIS && typeof window.RAIS.t === 'function' ? window.RAIS.t(text) : text;
+  }
+
   var cfg = window.RAIS_PUBLIC_CONFIG || {};
   var SUPABASE_URL = cfg.supabaseUrl || '';
   var SUPABASE_ANON = cfg.supabaseAnonKey || '';
@@ -136,16 +140,16 @@
 
     var title = document.createElement('p');
     title.className = 'cal-gate__title';
-    title.textContent = 'Terminkalender laden';
+    title.textContent = t('Terminkalender laden');
     box.appendChild(title);
 
     var note = document.createElement('p');
     note.className = 'cal-gate__note';
     note.textContent =
-      'Der Kalender kommt von unserem Terminanbieter Cal.com. Mit dem Klick laden Sie ihn nach, dabei wird Ihre IP-Adresse an Cal.com übertragen. Name, E-Mail und Telefonnummer geben Sie anschließend direkt im Kalender ein. Details in der ';
+      t('Der Kalender kommt von unserem Terminanbieter Cal.com. Mit dem Klick laden Sie ihn nach, dabei wird Ihre IP-Adresse an Cal.com übertragen. Name, E-Mail und Telefonnummer geben Sie anschließend direkt im Kalender ein. Details in der ');
     var link = document.createElement('a');
     link.href = 'datenschutz.html';
-    link.textContent = 'Datenschutzerklärung';
+    link.textContent = t('Datenschutzerklärung');
     note.appendChild(link);
     note.appendChild(document.createTextNode('.'));
     box.appendChild(note);
@@ -153,10 +157,10 @@
     var btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'cal-gate__btn';
-    btn.textContent = 'Kalender laden und Termin wählen';
+    btn.textContent = t('Kalender laden und Termin wählen');
     btn.addEventListener('click', function () {
       btn.disabled = true;
-      btn.textContent = 'Kalender wird geladen…';
+      btn.textContent = t('Kalender wird geladen…');
       entry.consentedAt = Date.now();
       if (!grantConsent()) {
         /* Ohne Klaro-Manager keine belastbare Einwilligung, also
@@ -179,7 +183,7 @@
     link.target = '_blank';
     link.rel = 'noopener noreferrer';
     link.className = 'cal-gate__btn';
-    link.textContent = 'Termin bei Cal.com auswählen';
+    link.textContent = t('Termin bei Cal.com auswählen');
     entry.el.innerHTML = '';
     entry.el.appendChild(link);
   }
@@ -248,7 +252,9 @@
       elementOrSelector: entry.el,
       calLink: resolved.link,
       layout: 'month_view',
-      config: Object.assign({ locale: 'de' }, entry.config || {})
+      config: Object.assign({
+        locale: (window.RAIS && window.RAIS.lang && window.RAIS.lang() === 'en') ? 'en' : 'de'
+      }, entry.config || {})
     };
     window.Cal.ns[ns]('inline', inlineOpts);
     window.Cal.ns[ns]('ui', {

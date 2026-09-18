@@ -3,6 +3,18 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+    (function () {
+      try {
+        var lang = localStorage.getItem('rais-lang');
+        if (lang === 'en' || lang === 'de') {
+          document.documentElement.lang = lang;
+          document.documentElement.setAttribute('data-lang', lang);
+          if (lang === 'en') document.documentElement.setAttribute('data-lang-pending', '');
+        }
+      } catch (e) { /* private mode */ }
+    }());
+    </script>
     <title>Impressum | RAIS</title>
     <meta name="robots" content="noindex, follow" />
     <link rel="icon" type="image/png" href="favicon.png?v=3" />
@@ -51,6 +63,35 @@
             margin: 0 auto;
         }
 
+        html[data-lang-pending] body { visibility: hidden; }
+        .lang-toggle {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px;
+            border: 1px solid hsl(var(--border));
+            border-radius: 999px;
+            background: rgba(251, 248, 243, 0.72);
+            flex-shrink: 0;
+        }
+        .lang-toggle__btn {
+            appearance: none;
+            border: 0;
+            background: transparent;
+            color: hsl(var(--muted-stone));
+            font-family: inherit;
+            font-size: 0.7rem;
+            font-weight: 650;
+            letter-spacing: 0.08em;
+            min-width: 2rem;
+            min-height: 1.8rem;
+            padding: 0 0.42rem;
+            border-radius: 999px;
+            cursor: pointer;
+        }
+        .lang-toggle__btn[aria-pressed="true"] {
+            background: #004225;
+            color: #FBF8F3;
+        }
         .topbar {
             display: flex;
             justify-content: space-between;
@@ -243,6 +284,10 @@
 <body>
 <header class="site-shell topbar">
     <a href="/" class="brand">RAIS</a>
+    <div class="lang-toggle" data-i18n-ignore role="group" aria-label="Sprache / Language">
+        <button type="button" class="lang-toggle__btn" data-lang-set="de" aria-pressed="true">DE</button>
+        <button type="button" class="lang-toggle__btn" data-lang-set="en" aria-pressed="false">EN</button>
+    </div>
     <nav class="topnav" aria-label="Seitenlinks">
         <a href="/">Startseite</a>
         <a href="/#systeme">Systeme</a>
@@ -291,5 +336,7 @@ E-Mail: kevin@ritz-ai.solutions</p>
         <a href="datenschutz.html">Datenschutz</a>
     </div>
 </footer>
+<script src="scripts/i18n-dict.js"></script>
+<script src="scripts/i18n.js"></script>
 </body>
 </html>

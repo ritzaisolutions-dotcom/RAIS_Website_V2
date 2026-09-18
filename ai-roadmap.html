@@ -3,6 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+(function () {
+  try {
+    var lang = localStorage.getItem('rais-lang');
+    if (lang === 'en' || lang === 'de') {
+      document.documentElement.lang = lang;
+      document.documentElement.setAttribute('data-lang', lang);
+      if (lang === 'en') document.documentElement.setAttribute('data-lang-pending', '');
+    }
+  } catch (e) { /* private mode */ }
+}());
+</script>
   <title>KI-Automatisierung für Immobilienunternehmen | RAIS</title>
   <meta name="description" content="Anfragen und Mieteranliegen noch per Hand? Wir zeigen, was sich automatisieren lässt. 60 Minuten, konkreter Plan, kein Pitch.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -34,7 +46,6 @@
   <link rel="stylesheet" href="styles/home.css">
   <link rel="stylesheet" href="styles/booking-modal.css">
   <link rel="stylesheet" href="styles/ai-roadmap.css">
-  <link rel="stylesheet" href="styles/glass-motion.css">
 </head>
 <body class="page-roadmap" data-cal-url="https://cal.com/ritzaisolutions/immo-ai-roadmap">
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
@@ -71,6 +82,10 @@
       </div>
     </a>
     <div class="nav-right">
+      <div class="lang-toggle" data-i18n-ignore role="group" aria-label="Sprache / Language">
+      <button type="button" class="lang-toggle__btn" data-lang-set="de" aria-pressed="true">DE</button>
+      <button type="button" class="lang-toggle__btn" data-lang-set="en" aria-pressed="false">EN</button>
+    </div>
       <a class="btn-primary" id="nav-demo-btn" href="#contact">KI-Roadmap</a>
     </div>
   </div>
@@ -567,29 +582,6 @@
     <a class="btn-primary" href="#contact">KI-Roadmap anfragen</a>
   </div>
 </section>
-
-<section id="glass-claims" class="glass-band" aria-labelledby="glass-claims-title">
-  <div class="section-wrap">
-    <h2 class="glass-band__title" id="glass-claims-title">Was Sie bei jedem System erwarten können</h2>
-    <div class="glass-band__grid">
-      <article class="glass-claim">
-        <div class="glass-claim__icon" data-spline-glass="shield" data-spline-src="vendor/spline/shield.splinecode" data-spline-fallback="images/glass/shield.svg" aria-hidden="true"></div>
-        <h3 class="glass-claim__heading">DSGVO-konform. Transparent</h3>
-        <p class="glass-claim__body">EU-Hosting, Datenbank Frankfurt, AVV nach Art. 28. Alle Daten und Prozesse an einem geschützten Ort.</p>
-      </article>
-      <article class="glass-claim">
-        <div class="glass-claim__icon" data-spline-glass="bars" data-spline-src="vendor/spline/bars.splinecode" data-spline-fallback="images/glass/bars.svg" aria-hidden="true"></div>
-        <h3 class="glass-claim__heading">Systeme an einem Ort</h3>
-        <p class="glass-claim__body">Von der Anfrage bis zum Termin: Auslöser, Ablauf und Übergabe klar benannt, ohne Tool-Chaos.</p>
-      </article>
-      <article class="glass-claim">
-        <div class="glass-claim__icon" data-spline-glass="chat" data-spline-src="vendor/spline/chat.splinecode" data-spline-fallback="images/glass/chat.svg" aria-hidden="true"></div>
-        <h3 class="glass-claim__heading">Direkte Begleitung</h3>
-        <p class="glass-claim__body">Sie arbeiten mit Kevin, nicht mit einem anonymen Account-Team. Vom Audit bis zur Roadmap.</p>
-      </article>
-    </div>
-  </div>
-</section>
 </main>
 <section id="contact">
   <div class="section-wrap">
@@ -816,6 +808,9 @@
   </div>
 </div>
 
+<script src="scripts/i18n-dict.js"></script>
+<script src="scripts/i18n.js"></script>
+
 <script src="scripts/roadmap-hero-ui.js"></script>
 <script src="scripts/aqut-sim.js"></script>
 <script src="scripts/ai-roadmap-funnel.js"></script>
@@ -823,7 +818,5 @@
 <script src="scripts/site-nav.js"></script>
 <script src="scripts/cal-embed.js"></script>
 <script src="scripts/booking-modal.js"></script>
-<script src="scripts/motion.js"></script>
-<script src="scripts/spline-glass.js"></script>
 </body>
 </html>

@@ -1,6 +1,10 @@
 (function () {
   'use strict';
 
+  function t(text) {
+    return window.RAIS && typeof window.RAIS.t === 'function' ? window.RAIS.t(text) : text;
+  }
+
   var root = document.getElementById('aqut-sim');
   if (!root) return;
 
@@ -40,7 +44,7 @@
       node.classList.toggle('is-active', id === step);
       node.classList.toggle('is-done', id < step);
     });
-    if (statusEl) statusEl.textContent = messages[step] || messages[0];
+    if (statusEl) statusEl.textContent = t(messages[step] || messages[0]);
     if (resetBtn) resetBtn.hidden = step === 0;
   }
 
@@ -63,7 +67,7 @@
   function finish() {
     setStep(lastStep);
     stop();
-    if (playBtn) playBtn.textContent = replayLabel;
+    if (playBtn) playBtn.textContent = t(replayLabel);
   }
 
   function runStep(step) {
@@ -82,7 +86,7 @@
     running = true;
     if (playBtn) {
       playBtn.disabled = true;
-      playBtn.textContent = 'Simulation läuft…';
+      playBtn.textContent = t('Simulation läuft…');
     }
     if (prefersReducedMotion()) {
       finish();
@@ -96,7 +100,7 @@
     setStep(0);
     if (playBtn) {
       playBtn.disabled = false;
-      playBtn.textContent = defaultPlayLabel;
+      playBtn.textContent = t(defaultPlayLabel);
     }
   }
 
@@ -133,4 +137,13 @@
       start();
     }
   }
+
+  document.addEventListener('rais:lang', function () {
+    var step = parseInt(root.getAttribute('data-step'), 10) || 0;
+    if (statusEl) statusEl.textContent = t(messages[step] || messages[0]);
+    if (!playBtn) return;
+    if (running) playBtn.textContent = t('Simulation läuft…');
+    else if (step >= lastStep) playBtn.textContent = t(replayLabel);
+    else playBtn.textContent = t(defaultPlayLabel);
+  });
 })();

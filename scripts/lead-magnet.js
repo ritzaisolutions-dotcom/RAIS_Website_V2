@@ -85,7 +85,7 @@
     };
 
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Wird gespeichert…';
+    submitBtn.textContent = window.RAIS && window.RAIS.t ? window.RAIS.t('Wird gespeichert…') : 'Wird gespeichert…';
 
     fetch(SUPABASE_URL + '/rest/v1/lead_magnet_downloads', {
       method: 'POST',
@@ -108,8 +108,8 @@
       notifyN8n(record);
     }).catch(function () {
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Prozesshandbuch herunterladen';
-      alert('Speichern fehlgeschlagen. Bitte versuchen Sie es erneut oder schreiben Sie an kevin@ritz-ai.solutions.');
+      submitBtn.textContent = window.RAIS && window.RAIS.t ? window.RAIS.t('Prozesshandbuch herunterladen') : 'Prozesshandbuch herunterladen';
+      alert(window.RAIS && window.RAIS.t ? window.RAIS.t('Speichern fehlgeschlagen. Bitte versuchen Sie es erneut oder schreiben Sie an kevin@ritz-ai.solutions.') : 'Speichern fehlgeschlagen. Bitte versuchen Sie es erneut oder schreiben Sie an kevin@ritz-ai.solutions.');
     });
   });
 }());

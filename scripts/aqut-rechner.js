@@ -7,6 +7,13 @@
 (function () {
   'use strict';
 
+  function t(text) {
+    return window.RAIS && typeof window.RAIS.t === 'function' ? window.RAIS.t(text) : text;
+  }
+  function loc() {
+    return window.RAIS && typeof window.RAIS.lang === 'function' ? window.RAIS.lang() : 'de';
+  }
+
   var WEEKS_PER_MONTH = 4.33;
 
   var root = document.getElementById('aqut-rechner');
@@ -56,7 +63,7 @@
   }
 
   function formatEuro(n) {
-    return new Intl.NumberFormat('de-DE', {
+    return new Intl.NumberFormat(loc() === 'en' ? 'en-GB' : 'de-DE', {
       style: 'currency',
       currency: 'EUR',
       maximumFractionDigits: 0
@@ -64,7 +71,7 @@
   }
 
   function formatHours(n) {
-    return n.toFixed(1).replace('.', ',');
+    return loc() === 'en' ? n.toFixed(1) : n.toFixed(1).replace('.', ',');
   }
 
   function clearError() {
@@ -100,7 +107,7 @@
       periodWeekBtn.setAttribute('aria-pressed', period === 'week' ? 'true' : 'false');
     }
     if (volLabel) {
-      volLabel.textContent = period === 'month' ? 'Anfragen pro Monat' : 'Anfragen pro Woche';
+      volLabel.textContent = t(period === 'month' ? 'Anfragen pro Monat' : 'Anfragen pro Woche');
     }
   }
 
@@ -116,18 +123,18 @@
       if (!el) continue;
       var raw = String(el.value || '').trim();
       if (raw === '') {
-        showError('Bitte füllen Sie alle Felder aus.');
+        showError(t('Bitte füllen Sie alle Felder aus.'));
         el.focus();
         return false;
       }
       var value = parseFloat(raw);
       if (!isFinite(value) || value < 0) {
-        showError('Bitte geben Sie eine gültige Zahl ab 0 ein.');
+        showError(t('Bitte geben Sie eine gültige Zahl ab 0 ein.'));
         el.focus();
         return false;
       }
       if (el === phoneShareEl && value > 100) {
-        showError('Der Anteil darf höchstens 100 Prozent betragen.');
+        showError(t('Der Anteil darf höchstens 100 Prozent betragen.'));
         el.focus();
         return false;
       }
@@ -160,7 +167,7 @@
       }
     }
 
-    if (labelEl) labelEl.textContent = stepCopy[step] || '';
+    if (labelEl) labelEl.textContent = t(stepCopy[step] || '');
 
     for (var b = 0; b < bars.length; b++) {
       var barStep = parseInt(bars[b].getAttribute('data-bar'), 10);
@@ -210,17 +217,17 @@
     if (isWizard) {
       var hoursP = document.createElement('p');
       hoursP.className = 'rq-result-hours';
-      hoursP.textContent = formatHours(hoursMonth) + ' Stunden im Monat';
+      hoursP.textContent = t(formatHours(hoursMonth) + ' Stunden im Monat');
       outEl.appendChild(hoursP);
 
       var euroP = document.createElement('p');
       euroP.className = 'rq-result-euro';
-      euroP.textContent = 'rund ' + formatEuro(euroMonth) + ' im Monat';
+      euroP.textContent = t('rund ' + formatEuro(euroMonth) + ' im Monat');
       outEl.appendChild(euroP);
 
       var weekHint = document.createElement('p');
       weekHint.className = 'rq-result-week';
-      weekHint.textContent = '≈ ' + formatHours(hoursWeek) + ' Std/Woche';
+      weekHint.textContent = t('≈ ' + formatHours(hoursWeek) + ' Std/Woche');
       outEl.appendChild(weekHint);
 
       // Ersparnis nur, wenn der Besucher selbst eine Annahme gesetzt hat.
@@ -236,13 +243,13 @@
 
         var deltaLabel = document.createElement('span');
         deltaLabel.className = 'rq-result-delta__label';
-        deltaLabel.textContent = 'Bei Ihrer Annahme von ' + autoShare + ' Prozent';
+        deltaLabel.textContent = t('Bei Ihrer Annahme von ' + autoShare + ' Prozent');
         delta.appendChild(deltaLabel);
 
         var deltaValue = document.createElement('span');
         deltaValue.className = 'rq-result-delta__value';
         deltaValue.textContent =
-          formatHours(savedHours) + ' Stunden und rund ' + formatEuro(savedEuro) + ' im Monat';
+          t(formatHours(savedHours) + ' Stunden und rund ' + formatEuro(savedEuro) + ' im Monat');
         delta.appendChild(deltaValue);
 
         outEl.appendChild(delta);
@@ -253,11 +260,13 @@
       chart.setAttribute('role', 'img');
       chart.setAttribute(
         'aria-label',
-        'Aufteilung: Mailbearbeitung ' +
-          formatHours(emailHoursMonth) +
-          ' Stunden im Monat, Telefon-Nacharbeit ' +
-          formatHours(phoneHoursMonth) +
-          ' Stunden im Monat'
+        t(
+          'Aufteilung: Mailbearbeitung ' +
+            formatHours(emailHoursMonth) +
+            ' Stunden im Monat, Telefon-Nacharbeit ' +
+            formatHours(phoneHoursMonth) +
+            ' Stunden im Monat'
+        )
       );
 
       // Ohne Aufwand gibt es keine Aufteilung. Ein 50/50-Balken wuerde eine
@@ -289,11 +298,11 @@
 
       var mailItem = document.createElement('span');
       mailItem.className = 'rq-chart__item rq-chart__item--mail';
-      mailItem.textContent = 'Mail ' + formatHours(emailHoursMonth) + ' Std/Monat';
+      mailItem.textContent = t('Mail ' + formatHours(emailHoursMonth) + ' Std/Monat');
 
       var phoneItem = document.createElement('span');
       phoneItem.className = 'rq-chart__item rq-chart__item--phone';
-      phoneItem.textContent = 'Telefon ' + formatHours(phoneHoursMonth) + ' Std/Monat';
+      phoneItem.textContent = t('Telefon ' + formatHours(phoneHoursMonth) + ' Std/Monat');
 
       legend.appendChild(mailItem);
       legend.appendChild(phoneItem);
@@ -303,13 +312,13 @@
     }
 
     var p = document.createElement('p');
-    p.appendChild(document.createTextNode('Nach Ihren eigenen Angaben verbringt Ihr Büro rechnerisch '));
+    p.appendChild(document.createTextNode(t('Nach Ihren eigenen Angaben verbringt Ihr Büro rechnerisch ')));
     var strongH = document.createElement('strong');
-    strongH.textContent = formatHours(hoursMonth) + ' Stunden im Monat';
+    strongH.textContent = t(formatHours(hoursMonth) + ' Stunden im Monat');
     p.appendChild(strongH);
-    p.appendChild(document.createTextNode(' mit Mailbearbeitung und Mailbox-Nachtelefonaten, kalkulatorischer Gegenwert etwa '));
+    p.appendChild(document.createTextNode(t(' mit Mailbearbeitung und Mailbox-Nachtelefonaten, kalkulatorischer Gegenwert etwa ')));
     var strongE = document.createElement('strong');
-    strongE.textContent = formatEuro(euroMonth) + ' im Monat';
+    strongE.textContent = t(formatEuro(euroMonth) + ' im Monat');
     p.appendChild(strongE);
     p.appendChild(document.createTextNode(' (≈ ' + formatHours(hoursWeek) + ' Std/Woche).'));
     outEl.appendChild(p);
@@ -373,6 +382,15 @@
     if (e.target && e.target.tagName === 'BUTTON') return;
     e.preventDefault();
     if (nextBtn && !nextBtn.hidden) nextBtn.click();
+  });
+
+  document.addEventListener('rais:lang', function () {
+    if (volLabel) {
+      volLabel.textContent = t(period === 'month' ? 'Anfragen pro Monat' : 'Anfragen pro Woche');
+    }
+    if (labelEl) labelEl.textContent = t(stepCopy[step] || '');
+    if (errorEl && errorEl.textContent) errorEl.textContent = t(errorEl.textContent);
+    if (step === 4 || !isWizard) render();
   });
 
   setStep(1);

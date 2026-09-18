@@ -28,7 +28,9 @@
       el.classList.toggle('is-active', next > 0 && next < 4 && id === next);
     });
     if (badge) {
-      badge.textContent = badges[next] || 'Wartend';
+      badge.textContent = window.RAIS && window.RAIS.t
+        ? window.RAIS.t(badges[next] || 'Wartend')
+        : (badges[next] || 'Wartend');
       badge.classList.toggle('is-lead', next >= 4);
     }
     if (termin) {

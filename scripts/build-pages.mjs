@@ -7,7 +7,8 @@ import {
   contactHtml,
   footerHtml,
   bookingModalHtml,
-  scriptsHtml
+  scriptsHtml,
+  i18nScriptsHtml
 } from './page-shell.mjs';
 import {
   UNIVERSAL,
@@ -62,6 +63,7 @@ function page({
     afterContact +
     footerHtml({ stickyHref, stickyLabel, minimal: footerMinimal }) +
     bookingModalHtml(dauer, bookingAriaLabel) +
+    i18nScriptsHtml +
     extraScripts +
     scriptsHtml;
   writeFileSync(resolve(root, file), html, 'utf8');

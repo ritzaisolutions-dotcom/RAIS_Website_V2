@@ -3,14 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+(function () {
+  try {
+    var lang = localStorage.getItem('rais-lang');
+    if (lang === 'en' || lang === 'de') {
+      document.documentElement.lang = lang;
+      document.documentElement.setAttribute('data-lang', lang);
+      if (lang === 'en') document.documentElement.setAttribute('data-lang-pending', '');
+    }
+  } catch (e) { /* private mode */ }
+}());
+</script>
   <title>AMS | Anfragen-System von RAIS</title>
   <meta name="description" content="AMS von RAIS: Portalanfragen qualifizieren und Termine buchen. Beispielsystem für den Mittelstand. Bei hohem Volumen oft 20 bis 35 Stunden pro Woche zurück.">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<<<<<<<< HEAD:ams.html
   <link rel="icon" type="image/png" href="favicon.png?v=3">
-========
-  <link rel="icon" type="image/png" href="favicon.png">
->>>>>>>> 3fb1c91 (Sync live RAIS site and add foerderung.de-inspired motion plus glass claims.):aqut.html
   <meta property="og:title" content="AMS | Anfragen-System von RAIS">
   <meta property="og:description" content="AMS von RAIS: Portalanfragen qualifizieren und Termine buchen. Beispielsystem für den Mittelstand. Bei hohem Volumen oft 20 bis 35 Stunden pro Woche zurück.">
   <meta property="og:url" content="https://ritz-ai.solutions/ams.html">
@@ -20,21 +28,12 @@
   <script src="scripts/sentry-klaro-bootstrap.js"></script>
   <script src="klaro-config.js"></script>
   <script src="vendor/klaro/klaro.js"></script>
-  <!-- home.css war frueher startseiten-exklusiv. Damit lagen der
-       Rechner-Wizard (.rq-*), das Architekturbild (.arch), das
-       Ja-Nein-Raster (.icp-*) und die Ablauf-Zeitleiste nur dort.
-       Folge: der Rechner auf aqut.html rendert als rohes
-       Browser-Default, weil saemtliche .rq-Regeln fehlten.
-       Die beiden Dateien teilen sich genau einen Selektor (#contact)
-       und dort verschiedene Eigenschaften, deshalb ist das gefahrlos. -->
-
-  <link rel="stylesheet" href="fonts.css">
-  <link rel="stylesheet" href="styles/booking-modal.css">
+  <link rel="stylesheet" href="vendor/klaro/klaro.min.css">
+  <link rel="stylesheet" href="styles/klaro-overrides.css">
   <link rel="stylesheet" href="fonts.css">
   <link rel="stylesheet" href="styles/antigravity-polish.css">
   <link rel="stylesheet" href="styles/tailwind.generated.css">
   <link rel="stylesheet" href="styles/site-multipage.css">
-<<<<<<<< HEAD:ams.html
   <!-- home.css war frueher startseiten-exklusiv. Damit lagen der
        Rechner-Wizard (.rq-*), das Architekturbild (.arch), das
        Ja-Nein-Raster (.icp-*) und die Ablauf-Zeitleiste nur dort.
@@ -42,8 +41,6 @@
        Browser-Default, weil saemtliche .rq-Regeln fehlten.
        Die beiden Dateien teilen sich genau einen Selektor (#contact)
        und dort verschiedene Eigenschaften, deshalb ist das gefahrlos. -->
-========
->>>>>>>> 3fb1c91 (Sync live RAIS site and add foerderung.de-inspired motion plus glass claims.):aqut.html
   <link rel="stylesheet" href="styles/home.css">
   <link rel="stylesheet" href="styles/booking-modal.css">
 
@@ -91,6 +88,10 @@
       </ul>
     </div>
     <div class="nav-right">
+      <div class="lang-toggle" data-i18n-ignore role="group" aria-label="Sprache / Language">
+      <button type="button" class="lang-toggle__btn" data-lang-set="de" aria-pressed="true">DE</button>
+      <button type="button" class="lang-toggle__btn" data-lang-set="en" aria-pressed="false">EN</button>
+    </div>
       <button type="button" class="btn-primary js-open-booking" id="nav-demo-btn" data-source="nav">Kostenlosen KI-Audit buchen</button>
       <button class="nav-hamburger" id="hamburger-btn" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-overlay">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -107,6 +108,10 @@
     <a href="zusammenarbeit.html" class="mobile-link" data-close-menu>So arbeiten wir</a>
     <a href="persoenlichkeit.html" class="mobile-link" data-close-menu>Persönlichkeit</a>
     <hr class="mobile-hr">
+    <div class="lang-toggle" data-i18n-ignore role="group" aria-label="Sprache / Language">
+      <button type="button" class="lang-toggle__btn" data-lang-set="de" aria-pressed="true">DE</button>
+      <button type="button" class="lang-toggle__btn" data-lang-set="en" aria-pressed="false">EN</button>
+    </div>
     <button type="button" class="mobile-cta js-open-booking" id="mobile-demo-btn" data-source="mobile-nav">Kostenlosen KI-Audit buchen</button>
   </div>
 </div>
@@ -400,6 +405,9 @@
     </div>
   </div>
 </div>
+
+<script src="scripts/i18n-dict.js"></script>
+<script src="scripts/i18n.js"></script>
 
 <script src="scripts/aqut-rechner.js"></script>
 <script src="scripts/aqut-sim.js"></script>

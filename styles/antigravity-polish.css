@@ -262,6 +262,45 @@ button.featured-btn {
     flex-shrink: 0;
 }
 
+html[data-lang-pending] body { visibility: hidden; }
+
+.lang-toggle {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: rgba(251, 248, 243, 0.72);
+    flex-shrink: 0;
+}
+.lang-toggle__btn {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: var(--stone);
+    font-family: inherit;
+    font-size: 0.7rem;
+    font-weight: 650;
+    letter-spacing: 0.08em;
+    min-width: 2rem;
+    min-height: 1.8rem;
+    padding: 0 0.42rem;
+    border-radius: 999px;
+    cursor: pointer;
+    line-height: 1;
+}
+.lang-toggle__btn:hover { color: var(--charcoal); }
+.lang-toggle__btn[aria-pressed="true"],
+.lang-toggle__btn.is-active {
+    background: var(--green-800, #004225);
+    color: var(--linen-on-green, #FBF8F3);
+}
+.lang-toggle__btn:focus-visible {
+    outline: 2px solid var(--orange);
+    outline-offset: 2px;
+}
+.mobile-nav-inner .lang-toggle { margin: 0.15rem 0 0.85rem; }
+
 .nav-hamburger {
     display: none;
     align-items: center;

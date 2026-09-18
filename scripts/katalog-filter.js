@@ -65,14 +65,16 @@
       if (match) hits++;
     });
 
-    status.textContent =
+    var msg =
       hits === 0
         ? 'Kein Eintrag passt zu „' + input.value.trim() + '“. Im Erstgespräch klären wir auch Fälle, die hier nicht stehen.'
         : hits === 1
           ? '1 Eintrag gefunden.'
           : hits + ' Einträge gefunden.';
+    status.textContent = window.RAIS && window.RAIS.t ? window.RAIS.t(msg) : msg;
   }
 
   input.addEventListener('input', apply);
   input.addEventListener('search', apply);
+  document.addEventListener('rais:lang', apply);
 })();
