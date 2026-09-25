@@ -8,7 +8,8 @@ import {
   footerHtml,
   bookingModalHtml,
   scriptsHtml,
-  i18nScriptsHtml
+  i18nScriptsHtml,
+  portraitHtml
 } from './page-shell.mjs';
 import {
   UNIVERSAL,
@@ -20,6 +21,8 @@ import {
   flagships
 } from './systemakte-data.mjs';
 import { renderTechstack } from './techstack-data.mjs';
+import { amsMain } from './page-content/ams-main.mjs';
+import { systemeMain } from './page-content/systeme-main.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, '..');
@@ -43,7 +46,9 @@ function page({
   bodyAttrs = '',
   footerMinimal = false,
   ogImage = '',
-  afterContact = ''
+  afterContact = '',
+  noindex = false,
+  showPortrait = true
 }) {
   const resolvedBodyAttrs = calUrl
     ? `${bodyAttrs} data-cal-url="${calUrl}"`.trim()
@@ -55,9 +60,11 @@ function page({
       path,
       extraCss,
       bodyAttrs: resolvedBodyAttrs ? ` ${resolvedBodyAttrs}` : '',
-      ogImage
+      ogImage,
+      noindex
     }) +
     navHtml(active, navCta || {}) +
+    (showPortrait ? portraitHtml() : '') +
     `<main id="main">${main}</main>` +
     contactHtml({ calUrl, dauer, ...(contact || {}) }) +
     afterContact +
@@ -71,242 +78,38 @@ function page({
 }
 
 page({
+  file: 'systeme.html',
+  active: 'systeme',
+  title: 'Systeme | Closed Loop Onboarding und AMS — RAIS',
+  description:
+    'Closed Loop Onboarding und AMS (Speed to Lead) von RAIS: vom Mandat bis zum Mehrwert-Reporting, Anfragen sofort zum Termin. Kostenlosen Audit buchen.',
+  path: 'systeme.html',
+  main: systemeMain,
+  contact: {
+    label: 'Kostenloser Audit',
+    title: 'Termin wählen.',
+    copy: [
+      '20 Minuten. Ein Engpass. Prozess-Sparring: was geht, was nicht, was Sinn macht.',
+      'Sie geben Ihre Angaben direkt im Kalender ein. Ein zweites Formular gibt es nicht.'
+    ],
+    calTitle: 'Kostenlosen Audit buchen',
+    calSub: '20 Minuten, kostenlos.'
+  }
+});
+
+page({
   file: 'ams.html',
   active: 'systeme',
   title: 'AMS | Anfragen-System von RAIS',
   description:
-    'AMS von RAIS: Portalanfragen qualifizieren und Termine buchen. Beispielsystem für den Mittelstand. Bei hohem Volumen oft 20 bis 35 Stunden pro Woche zurück.',
+    'AMS von RAIS: Anfragen qualifizieren, Termin vorbereiten, an Ihr Team übergeben. Immobilien als Referenz. Rechnen Sie mit Ihren eigenen Zahlen. Kostenlosen Audit buchen.',
   path: 'ams.html',
-  main: `
-<section class="page-hero page-hero--aqut">
-  <div class="page-hero__inner">
-    <span class="mono-label">Beispielsystem von RAIS</span>
-    <h1>AMS: so bauen wir Systeme. Exemplarisch für Immobilien.</h1>
-    <p>Bei hohem Anfragevolumen oft im Bereich von 20 bis 35 Stunden pro Woche, abhängig von Ihrem Volumen. Erstreaktion von durchschnittlich 15 Stunden auf 2 Minuten. Das Prinzip überträgt sich auf andere B2B-Prozesse.</p>
-    <button type="button" class="btn-primary js-open-booking" data-source="aqut-hero">Kostenlosen KI-Audit buchen</button>
-  </div>
-</section>
-
-<section class="aqut-sim-section" aria-labelledby="aqut-sim-title">
-  <div class="section-wrap">
-    <span class="mono-label">Live-Simulation</span>
-    <h2 class="section-h2" id="aqut-sim-title">So läuft eine Anfrage durch AMS</h2>
-    <p class="section-sub">Klicken Sie auf Demo Anfrage testen. Die Karte wandert Schritt für Schritt durch die Pipeline.</p>
-    <div class="aqut-sim" id="aqut-sim" data-step="0">
-      <div class="aqut-sim__glow" aria-hidden="true"></div>
-      <ol class="aqut-sim__rail" aria-label="AMS Pipeline">
-        <li class="aqut-sim__node" data-node="1">
-          <span class="aqut-sim__pulse" aria-hidden="true"></span>
-          <strong>Portal-Mail</strong>
-          <span>Anfrage trifft ein</span>
-        </li>
-        <li class="aqut-sim__node" data-node="2">
-          <span class="aqut-sim__pulse" aria-hidden="true"></span>
-          <strong>KI-Check</strong>
-          <span>Qualifizierung &amp; Bonität</span>
-        </li>
-        <li class="aqut-sim__node" data-node="3">
-          <span class="aqut-sim__pulse" aria-hidden="true"></span>
-          <strong>Kalender</strong>
-          <span>Termin-Slot gebucht</span>
-        </li>
-        <li class="aqut-sim__node" data-node="4">
-          <span class="aqut-sim__pulse" aria-hidden="true"></span>
-          <strong>CRM</strong>
-          <span>Eintrag &amp; Reminder</span>
-        </li>
-      </ol>
-      <div class="aqut-sim__card" id="aqut-sim-card" aria-live="polite">
-        <span class="aqut-sim__card-label">Demo-Anfrage</span>
-        <p id="aqut-sim-status">Bereit. Starten Sie die Simulation.</p>
-      </div>
-      <div class="aqut-sim__actions">
-        <button type="button" class="btn-primary" id="aqut-sim-play">Demo Anfrage testen</button>
-        <button type="button" class="home-cta-link" id="aqut-sim-reset" hidden>Zurücksetzen</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="section-wrap" style="padding-top:2rem;">
-    <span class="mono-label">Ihre Rechnung</span>
-    <h2 class="section-h2">Rechner: nach Ihren eigenen Angaben</h2>
-    <p class="section-sub">Keine Lead-Erfassung. Keine Kontaktdaten. Nur Aufklärung aus Ihren Zahlen: Mailbearbeitung plus Mailbox-Nachtelefonate. CRM klären wir im Discovery-Call.</p>
-    <div class="rechner rechner--wizard" id="aqut-rechner">
-      <div class="rq-progress">
-        <span class="rq-progress__label" id="rq-step-label">Schritt 1 von 3</span>
-        <div class="rq-progress__bars" aria-hidden="true">
-          <span class="rq-progress__bar is-filled" data-bar="1"></span>
-          <span class="rq-progress__bar" data-bar="2"></span>
-          <span class="rq-progress__bar" data-bar="3"></span>
-        </div>
-      </div>
-
-      <fieldset class="rq-step" data-step="1">
-        <legend class="rq-step__title">Ihr Anfragevolumen</legend>
-        <p class="rq-step__hint">Wie viele Anfragen landen bei Ihnen, und wie lange dauert die Bearbeitung?</p>
-        <div class="rq-period" role="group" aria-label="Zeitraum für Anfragevolumen">
-          <button type="button" class="rq-period__btn is-active" id="rq-period-month" data-period="month" aria-pressed="true">Monatlich</button>
-          <button type="button" class="rq-period__btn" id="rq-period-week" data-period="week" aria-pressed="false">Wöchentlich</button>
-        </div>
-        <div class="rq-fields">
-          <div>
-            <label for="rq-volume" id="rq-volume-label">Anfragen pro Monat</label>
-            <input id="rq-volume" type="number" min="0" step="1" value="350" inputmode="numeric">
-          </div>
-          <div>
-            <label for="rq-minutes">Minuten pro Mail-Anfrage</label>
-            <input id="rq-minutes" type="number" min="0" step="1" value="18" inputmode="numeric">
-          </div>
-        </div>
-      </fieldset>
-
-      <fieldset class="rq-step" data-step="2" hidden>
-        <legend class="rq-step__title">Telefon-Nacharbeit</legend>
-        <p class="rq-step__hint">Wie viel Zeit verbringt Ihr Team mit dem Hinterhertelefonieren von Mailbox-Anfragen?</p>
-        <div class="rq-fields">
-          <div>
-            <label for="rq-phone-share">Anteil Anfragen mit Mailbox-Nachtelefonat (%)</label>
-            <input id="rq-phone-share" type="number" min="0" max="100" step="1" value="30" inputmode="numeric">
-          </div>
-          <div>
-            <label for="rq-phone-minutes">Minuten pro Mailbox-Nein-Anruf</label>
-            <input id="rq-phone-minutes" type="number" min="0" step="1" value="5" inputmode="numeric">
-          </div>
-        </div>
-      </fieldset>
-
-      <fieldset class="rq-step" data-step="3" hidden>
-        <legend class="rq-step__title">Ihr Kostensatz</legend>
-        <p class="rq-step__hint">Mit welchem internen Stundensatz rechnen Sie die Bearbeitungszeit?</p>
-        <div class="rq-fields">
-          <div>
-            <label for="rq-rate">Stundensatz in Euro</label>
-            <input id="rq-rate" type="number" min="0" step="1" value="45" inputmode="decimal">
-          </div>
-        </div>
-      </fieldset>
-
-      <div class="rq-step rq-step--result" data-step="4" hidden>
-        <span class="rq-step__eyebrow">Ihr Ergebnis</span>
-        <p class="rq-step__hint">nach Ihren eigenen Angaben, ausgewiesen pro Monat</p>
-        <div class="rechner__out" id="rq-output" aria-live="polite"></div>
-      </div>
-
-      <p class="rq-error" id="rq-error" hidden role="alert"></p>
-
-      <div class="rq-nav">
-        <button type="button" class="rq-btn-back" id="rq-back" hidden>Zurück</button>
-        <button type="button" class="rq-btn-reset" id="rq-reset" hidden>Werte anpassen</button>
-        <button type="button" class="rq-btn-next" id="rq-next">Weiter</button>
-        <button type="button" class="btn-primary js-open-booking rq-btn-cta" id="rq-cta" data-source="aqut-rechner" hidden>Kostenlosen KI-Audit buchen</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="section-wrap">
-    <span class="mono-label">Prozess</span>
-    <h2 class="section-h2">Vier Schritte von der Portalanfrage zum Termin</h2>
-    <div class="steps-4">
-      <article><h3>Anfrage kommt rein</h3><p>Portal-Mail wird erfasst und dem Objekt zugeordnet.</p></article>
-      <article><h3>Qualifizierung</h3><p>Kauf oder Miete, fehlende Angaben, automatische Rückfrage.</p></article>
-      <article><h3>Terminbuchung</h3><p>Interessent wählt selbst, Termin landet im Kalender.</p></article>
-      <article><h3>Übersicht</h3><p>Dashboard und Suche über alle Leads und Termine.</p></article>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="section-wrap">
-    <span class="mono-label">Paket 1</span>
-    <h2 class="section-h2">Was AMS konkret liefert</h2>
-    <p class="section-sub">Das Setup für den Qualifizierungsalltag: von der Portalanfrage bis zum gebuchten Erstgespräch.</p>
-    <ul class="list-plain">
-      <li>Automatische Qualifizierung eingehender Portalanfragen</li>
-      <li>Kauf/Miete-Erkennung und Rückfrage bei fehlenden Angaben</li>
-      <li>Personalisierter Terminbuchungslink</li>
-      <li>Kalenderintegration (aktuell Outlook / Microsoft Graph)</li>
-      <li>Übersichts-Dashboard und intelligente Suche</li>
-      <li>Anbindung an onOffice oder Propstack, wo technisch und vertraglich möglich</li>
-    </ul>
-  </div>
-</section>
-
-<section class="sage-block">
-  <div class="section-wrap">
-    <span class="mono-label">Use Cases</span>
-    <h2 class="section-h2">So arbeitet das System im Alltag</h2>
-    <details open><summary>Anfrage kommt rein und wird qualifiziert</summary><p>Rückfrage geht automatisch raus, wenn Angaben fehlen.</p></details>
-    <details><summary>Interessent bucht Termin selbst</summary><p>Der Slot landet direkt im Kalender Ihres Büros.</p></details>
-    <details><summary>Dashboard und intelligente Suche</summary><p>Alle Anfragen und Termine an einem Ort, durchsuchbar.</p></details>
-  </div>
-</section>
-
-<section>
-  <div class="section-wrap">
-    <span class="mono-label">Danach</span>
-    <h2 class="section-h2">Ausblick Paket 2</h2>
-    <p class="section-sub">Nach stabilem Go-Live: Besichtigungstermine, digitale Mieterselbstauskunft, Vergleichsansicht. Kein zweites Angebot auf dieser Seite, nur der Weg danach.</p>
-  </div>
-</section>
-
-<section>
-  <div class="section-wrap">
-    <span class="mono-label">Scope</span>
-    <h2 class="section-h2">Was drin ist und was nicht</h2>
-    <div class="scope-grid">
-      <div>
-        <h3>Enthalten</h3>
-        <ul>
-          <li>Setup und Anbindung laut Scope Paket 1</li>
-          <li>Schulung Ihres Teams</li>
-          <li>DSGVO-konforme EU-Infrastruktur und AVV</li>
-        </ul>
-      </div>
-      <div>
-        <h3>Nicht enthalten</h3>
-        <ul>
-          <li>Beliebige Zusatzmodule ohne Abstimmung</li>
-          <li>Portal-Partnerschaften oder Markenrechte Dritter</li>
-          <li>Unbegrenzte Feature-Wünsche im Setup-Preis</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="section-wrap">
-    <span class="mono-label">FAQ</span>
-    <h2 class="section-h2">Häufige Fragen</h2>
-    <div class="faq-list">
-      <details>
-        <summary>Wie steht es um DSGVO und Hosting?</summary>
-        <p>Systeme laufen selbst gehostet in der EU, Datenbank in Frankfurt. AVV nach Art. 28 DSGVO. Kundendaten bleiben in der EU.</p>
-      </details>
-      <details>
-        <summary>Funktioniert AMS mit onOffice oder Propstack?</summary>
-        <p>Ja, Anbindung an bestehende CRMs ist Teil des Setups, sofern API und Freigaben vorliegen. Ohne CRM bauen wir eine schlanke eigene Datenhaltung.</p>
-      </details>
-      <details>
-        <summary>Wie lange dauert Setup bis Go-Live?</summary>
-        <p>Abhängig von Zugängen, Kalender und Qualifizierungskriterien. Im Audit klären wir eine realistische Timeline für Ihr Büro.</p>
-      </details>
-      <details>
-        <summary>Für welche Teamgröße passt AMS?</summary>
-        <p>AMS ist für unabhängige Maklerbüros mit etwa 5 bis 25 Mitarbeitenden und spürbarem Portalvolumen gebaut. Solo-Makler, Franchise und bankgebundene Agenturen sind nicht die Zielgruppe. Für andere Branchen im Mittelstand bauen wir vergleichbare Qualifizierungssysteme nach dem gleichen Stack.</p>
-      </details>
-    </div>
-    <p style="margin-top:2rem;">
-      <button type="button" class="btn-primary js-open-booking" data-source="aqut-faq">Kostenlosen KI-Audit buchen</button>
-    </p>
-  </div>
-</section>
-`,
-  extraScripts: '\n<script src="scripts/aqut-rechner.js"></script>\n<script src="scripts/aqut-sim.js"></script>\n'
+  noindex: true,
+  main: amsMain,
+  extraScripts: `
+<script src="scripts/aqut-rechner.js"></script>
+<script src="scripts/aqut-sim.js"></script>
+`
 });
 
 page({
@@ -314,7 +117,7 @@ page({
   active: 'referenzen',
   title: 'Systemkatalog | RAIS',
   description:
-    `Der Systemkatalog von RAIS: ${systemCount()} Systeme zum Anfragen. Anfragen qualifizieren, Support, Ticketing, Dokumente, Content und Reporting, für Maklerbüros mit Anfragevolumen.`,
+    `Systemkatalog und Referenzen von RAIS: ${systemCount()} Systeme. Anfragen qualifizieren, Support, Ticketing, Dokumente, Content und Reporting für den operativen Mittelstand. Immobilien als Referenzbranche.`,
   path: 'referenzen.html',
   extraScripts:
     '<script src="scripts/branchen-tabs.js"></script>\n<script src="scripts/katalog-filter.js"></script>\n',
@@ -324,6 +127,18 @@ page({
     <span class="mono-label">Systemkatalog</span>
     <h1>Suchen Sie sich Ihr System aus</h1>
     <p>${systemCount()} Systeme, die wir bauen. Jeder Eintrag nennt den Auslöser, den Ablauf, die Stelle für die menschliche Übergabe und ausdrücklich das, was das System nicht tut. Was passt, fragen Sie direkt an.</p>
+  </div>
+</section>
+
+<section id="referenz-haller" class="band-linen" aria-labelledby="referenz-haller-title">
+  <div class="section-wrap">
+    <span class="mono-label">Erste Referenz</span>
+    <h2 class="section-h2" id="referenz-haller-title">Haller Immobilienberatung</h2>
+    <p class="section-sub">Ausgangslage: wiederkehrende Portalanfragen, manuelle Sichtung, Engpass beim Zurückrufen. Gebaut: AMS, Anfragen qualifizieren und an das Team übergeben. Status: läuft im Alltag. Öffentliche Kennzahlen folgen, sobald Freigabe und Messung vorliegen. Keine Logo-Wand, kein erfundener Case.</p>
+    <div class="home-cta-row">
+      <a class="home-cta-link" href="ams.html">AMS im Detail</a>
+      <button type="button" class="btn-primary js-open-booking" data-source="referenz-haller">Kostenlosen KI-Audit buchen</button>
+    </div>
   </div>
 </section>
 
@@ -407,7 +222,7 @@ ${renderBranchen({ cta: true })}
           <span class="akte__title">Wo genau liegen unsere Daten, und wer verarbeitet sie?</span>
           <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
         </summary>
-        <div class="akte__body"><p>Bei uns: Hosting innerhalb der EU, Datenbank in Frankfurt, AVV nach Art. 28 DSGVO. Wer das nicht in einem Satz beantworten kann, weiß es selbst nicht.</p></div>
+        <div class="akte__body"><p>Bei uns: Hosting in der EU, Datenbank in Frankfurt. Wer das nicht in einem Satz beantworten kann, weiß es selbst nicht.</p></div>
       </details></li>
       <li><details class="akte akte--frage">
         <summary class="akte__head">
@@ -469,6 +284,7 @@ page({
   title: 'So arbeiten wir | RAIS',
   description: 'Zusammenarbeit mit RAIS in fünf klaren Schritten: Erstkontakt, Discovery, Sales, Onboarding, Go-Live.',
   path: 'zusammenarbeit.html',
+  noindex: true,
   main: `
 <section class="page-hero">
   <div class="page-hero__inner">
@@ -633,21 +449,22 @@ page({
 
     <div style="margin-top:3rem;">
       <span class="mono-label">Qualität</span>
-      <h2 class="section-h2">Externer Spezialist für Review und Security</h2>
-      <p class="section-sub">Code-Review und Sicherheitsaudit durch einen externen Spezialisten. Gegenmittel gegen den Ein-Personen-Einwand, ohne eine erfundene „wir“-Fassade.</p>
+      <h2 class="section-h2">Review von außen</h2>
+      <p class="section-sub">Code und Sicherheit lässt ein unabhängiger Spezialist mitprüfen. Kurz und ohne Theater.</p>
     </div>
     <div style="margin-top:3rem;">
       <span class="mono-label">Infrastruktur</span>
-      <h2 class="section-h2">EU-Standorte und AVV</h2>
+      <h2 class="section-h2">Wo die Systeme laufen</h2>
       <table class="infra-table">
         <thead><tr><th>Thema</th><th>Umsetzung</th></tr></thead>
         <tbody>
           <tr><td>Hosting</td><td>Selbst gehostet in der EU</td></tr>
           <tr><td>Datenbank</td><td>Frankfurt (EU)</td></tr>
           <tr><td>Vertrag</td><td>AVV nach Art. 28 DSGVO</td></tr>
-          <tr><td>Weitergabe</td><td>Kundendaten bleiben in der EU</td></tr>
+          <tr><td>Übergabe</td><td>Dokumentiert, ohne Vendor-Lock-in</td></tr>
         </tbody>
       </table>
+      <p class="section-sub" style="margin-top:1rem;">Details zur Website selbst stehen in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
     </div>
   </div>
 </section>
@@ -660,6 +477,7 @@ page({
   title: 'Persönlichkeit | RAIS',
   description: 'Kevin Ritz hinter RAIS: LinkedIn und technische YouTube-Videos zu Automation und KI für den Mittelstand.',
   path: 'persoenlichkeit.html',
+  noindex: true,
   main: `
 <section class="page-hero">
   <div class="page-hero__inner">
@@ -683,7 +501,7 @@ page({
         <a href="https://linkedin.com/in/kevin-ritz-rais" target="_blank" rel="noopener noreferrer">Zum LinkedIn-Profil</a>
       </article>
       <article class="person-card">
-        <p>EU-Hosting und AVV als Trust-Signal: was Geschäftsführer bei Prozess-Systemen prüfen sollten.</p>
+        <p>Wie Geschäftsführer Prozess-Systeme prüfen: Infrastruktur, Freigaben, Übergabe.</p>
         <a href="https://linkedin.com/in/kevin-ritz-rais" target="_blank" rel="noopener noreferrer">Zum LinkedIn-Profil</a>
       </article>
     </div>
@@ -718,13 +536,15 @@ page({
   description:
     'Anfragen und Mieteranliegen noch per Hand? Wir zeigen, was sich automatisieren lässt. 60 Minuten, konkreter Plan, kein Pitch.',
   path: 'ai-roadmap.html',
+  noindex: true,
+  showPortrait: false,
   extraCss: ['styles/ai-roadmap.css'],
   ogImage: 'og-cover.webp',
   calUrl: AI_ROADMAP_CAL,
   dauer: '60 Minuten',
   bookingAriaLabel: 'KI-Roadmap buchen',
   bodyAttrs: 'class="page-roadmap"',
-  navCta: { ctaHref: '#contact', ctaLabel: 'KI-Roadmap', minimal: true },
+  navCta: { ctaHref: '#contact', ctaLabel: 'KI-Roadmap' },
   stickyHref: '#contact',
   stickyLabel: 'KI-Roadmap anfragen',
   footerMinimal: true,
@@ -1413,6 +1233,7 @@ flagships().forEach((rec) => {
     title: `${rec.title} | RAIS`,
     description: `${rec.title}: ${rec.trigger} Ablauf, Übergabepunkt und was das System ausdrücklich nicht tut.`,
     path: `system-${rec.slug}.html`,
+    noindex: true,
     main: `
 <section class="page-hero">
   <div class="page-hero__inner">

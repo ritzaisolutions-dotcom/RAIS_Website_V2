@@ -56,6 +56,20 @@
   },
   "decisions": [
     {
+      "id": "systeme-hub-2026-09-25",
+      "surface": "systeme.html + index.html",
+      "choice": "systeme-hub-logos-off-home",
+      "summary": "Home: short teaser cards only (Closed Loop + AMS). Details + tech logo marquee on systeme.html under the two systems. Nav link Systeme. AMS calculator stays on ams.html.",
+      "rejected": ["bullet-wall-on-home", "logos-above-offer-on-systeme", "six-usecase-grid-on-vsl-home"]
+    },
+    {
+      "id": "vsl-visual-home-2026-09-25",
+      "surface": "index.html",
+      "choice": "glass-illustrations-plus-systeme-teasers",
+      "summary": "VSL home: glass SVGs, short system teasers linking to systeme.html, Haller proof, step rail. Tech logo marquee moved off home to systeme hub.",
+      "rejected": ["text-only-bands", "fake-customer-logo-wall", "tech-marquee-on-home"]
+    },
+    {
       "id": "roadmap-hover-motion-2026-08-26",
       "surface": "ai-roadmap.html",
       "choice": "A-signal-plus-selective-B",

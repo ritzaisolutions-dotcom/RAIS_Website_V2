@@ -17,6 +17,7 @@
 </script>
   <title>Reporting und Wochenlage | RAIS</title>
   <meta name="description" content="Reporting und Wochenlage: Ein fester Termin in der Woche, oder ein vereinbarter Schwellenwert wird überschritten. Ablauf, Übergabepunkt und was das System ausdrücklich nicht tut.">
+  <meta name="robots" content="noindex, follow">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" href="favicon.png?v=3">
   <meta property="og:title" content="Reporting und Wochenlage | RAIS">
@@ -79,11 +80,10 @@
         <span class="nav-submark">Ritz AI Solutions</span>
       </div>
     </a>
-    <div class="nav-center" role="none">
-      <ul class="nav-list" role="list">
-        <li><a href="/#systeme">Systeme</a></li>
-        <li><a href="/#methodik">Methode</a></li>
-        <li><a href="referenzen.html" aria-current="page">Systemkatalog</a></li>
+    <div class="nav-center">
+      <ul class="nav-list">
+        <li><a href="systeme.html">Systeme</a></li>
+        <li><a href="referenzen.html" aria-current="page">Referenzen</a></li>
         <li><a href="ueber-uns.html">Über uns</a></li>
       </ul>
     </div>
@@ -92,30 +92,18 @@
       <button type="button" class="lang-toggle__btn" data-lang-set="de" aria-pressed="true">DE</button>
       <button type="button" class="lang-toggle__btn" data-lang-set="en" aria-pressed="false">EN</button>
     </div>
-      <button type="button" class="btn-primary js-open-booking" id="nav-demo-btn" data-source="nav">Kostenlosen KI-Audit buchen</button>
-      <button class="nav-hamburger" id="hamburger-btn" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-overlay">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
+      <button type="button" class="btn-primary js-open-booking" id="nav-demo-btn" data-source="nav">Kostenlosen Audit buchen</button>
     </div>
   </div>
 </nav>
-<div id="mobile-overlay" role="dialog" aria-label="Navigation" aria-modal="true">
-  <div class="mobile-nav-inner">
-    <a href="/#systeme" class="mobile-link" data-close-menu>Systeme</a>
-    <a href="/#methodik" class="mobile-link" data-close-menu>Methode</a>
-    <a href="referenzen.html" class="mobile-link" data-close-menu>Systemkatalog</a>
-    <a href="ueber-uns.html" class="mobile-link" data-close-menu>Über uns</a>
-    <a href="zusammenarbeit.html" class="mobile-link" data-close-menu>So arbeiten wir</a>
-    <a href="persoenlichkeit.html" class="mobile-link" data-close-menu>Persönlichkeit</a>
-    <hr class="mobile-hr">
-    <div class="lang-toggle" data-i18n-ignore role="group" aria-label="Sprache / Language">
-      <button type="button" class="lang-toggle__btn" data-lang-set="de" aria-pressed="true">DE</button>
-      <button type="button" class="lang-toggle__btn" data-lang-set="en" aria-pressed="false">EN</button>
-    </div>
-    <button type="button" class="mobile-cta js-open-booking" id="mobile-demo-btn" data-source="mobile-nav">Kostenlosen KI-Audit buchen</button>
+
+<aside class="founder-chip" aria-label="Kevin Ritz">
+  <img class="founder-chip__img" src="images/kevin-ritz.svg" width="48" height="48" alt="Kevin Ritz">
+  <div class="founder-chip__text">
+    <span class="founder-chip__name">Kevin Ritz</span>
+    <span class="founder-chip__role">Geschäftsführer</span>
   </div>
-</div>
-<main id="main">
+</aside><main id="main">
 <section class="page-hero">
   <div class="page-hero__inner">
     <span class="mono-label">Systemakte · REP</span>
@@ -174,13 +162,13 @@
   <div class="section-wrap">
     <div class="contact-grid">
       <div class="contact-text-col">
-        <span class="mono-label">Kostenlose KI-Audits</span>
+        <span class="mono-label">Kostenloser Audit</span>
         <h2 class="section-h2">20 Minuten. Kostenlos. Klare nächste Schritte.</h2>
         <p class="contact-copy">Wir analysieren Ihre Prozesse und zeigen, wo Zeit verloren geht. Sie bekommen drei umsetzbare Use Cases.</p>
         <p class="contact-copy">Kein Verkaufsdruck. Blueprint inklusive.</p>
       </div>
       <div class="cal-embed-wrap">
-        <p class="cal-card-title">Kostenlosen KI-Audit buchen</p>
+        <p class="cal-card-title">Kostenlosen Audit buchen</p>
         <p class="cal-card-sub">20 Minuten, kostenlos. Drei konkrete Automatisierungs-Ideen für Ihren Betrieb.</p>
         <div class="cal-inline" data-cal-inline data-source="contact" id="cal-inline-contact"></div>
       </div>
@@ -193,7 +181,7 @@
 </section>
 
 <div id="sticky-cta" aria-hidden="true">
-  <button type="button" class="sticky-cta-btn js-open-booking" id="sticky-demo-btn" data-source="sticky">KI-Audit buchen</button>
+  <button type="button" class="sticky-cta-btn js-open-booking" id="sticky-demo-btn" data-source="sticky">Kostenlosen Audit buchen</button>
 </div>
 <footer id="footer">
   <div class="footer-inner">
@@ -202,13 +190,7 @@
       <span>RAIS</span>
     </a>
     <nav class="footer-legal" aria-label="Seitenlinks">
-      <a href="/#systeme">Systeme</a>
-      <a href="/#methodik">Methode</a>
-      <a href="zusammenarbeit.html">So arbeiten wir</a>
-      <a href="referenzen.html">Systemkatalog</a>
-      <a href="ams.html">AMS Beispielsystem</a>
-      <a href="ai-roadmap.html">KI-Roadmap</a>
-      <a href="persoenlichkeit.html">Persönlichkeit</a>
+      <a href="ueber-uns.html">Über uns</a>
       <a href="#contact">Kontakt</a>
       <a href="impressum.html">Impressum</a>
       <a href="datenschutz.html">Datenschutz</a>
@@ -218,7 +200,7 @@
   </div>
 </footer>
 
-<div id="booking-modal" role="dialog" aria-modal="true" aria-label="Kostenlosen KI-Audit buchen">
+<div id="booking-modal" role="dialog" aria-modal="true" aria-label="Kostenlosen Audit buchen">
   <div class="bm-backdrop" id="bm-backdrop"></div>
   <div class="bm-box">
     <button class="bm-close" id="bm-close" type="button" aria-label="Schließen">

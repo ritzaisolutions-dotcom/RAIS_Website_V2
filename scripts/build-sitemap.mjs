@@ -34,23 +34,17 @@ import { execFileSync } from 'child_process';
 import { createHash } from 'crypto';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { flagships } from './systemakte-data.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const ORIGIN = 'https://ritz-ai.solutions';
 const MANIFEST = resolve(root, 'sitemap-lastmod.json');
 
-/** Feste Seiten mit ihrer Gewichtung. */
+/** Feste Seiten mit ihrer Gewichtung. VSL-Startseite + öffentliche Nav-Ziele. */
 const PAGES = [
   { file: 'index.html', loc: '/', priority: '1.0' },
-  { file: 'ams.html', priority: '0.9' },
-  { file: 'referenzen.html', priority: '0.8' },
-  { file: 'zusammenarbeit.html', priority: '0.7' },
-  { file: 'ueber-uns.html', priority: '0.7' },
-  { file: 'persoenlichkeit.html', priority: '0.6' },
-  { file: 'ai-roadmap.html', priority: '0.8' },
-  // Die Systemseiten stehen unter referenzen.html, deshalb darunter.
-  ...flagships().map((r) => ({ file: `system-${r.slug}.html`, priority: '0.7' })),
+  { file: 'referenzen.html', priority: '0.7' },
+  { file: 'systeme.html', priority: '0.8' },
+  { file: 'ueber-uns.html', priority: '0.5' },
 ];
 
 const heute = () => new Date().toISOString().slice(0, 10);

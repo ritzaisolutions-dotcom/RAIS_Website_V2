@@ -56,6 +56,13 @@
       .trim();
   }
 
+  /** EN values this short must not reverse-map (e.g. "." → "mit."). */
+  function isSafeReverseKey(en) {
+    var n = normalize(en);
+    if (!n || n.length <= 2) return false;
+    return /[A-Za-z0-9\u00C0-\u024F]/.test(n);
+  }
+
   var deToEn = Object.create(null);
   var enToDe = Object.create(null);
   var raw = window.RAIS_I18N_EN || {};
@@ -64,7 +71,7 @@
     var en = String(raw[key]);
     if (!de || de === normalize(en)) return;
     deToEn[de] = en;
-    enToDe[normalize(en)] = de;
+    if (isSafeReverseKey(en)) enToDe[normalize(en)] = de;
   });
 
   var PATTERNS = [
@@ -120,8 +127,15 @@
       }
       return original;
     }
-    if (lang === 'en') return deToEn[key] || original;
-    return key;
+    if (lang === 'en') {
+      var en = deToEn[key] || original;
+      if (en === original) return original;
+      var lead = (String(original).match(/^\s*/) || [''])[0];
+      var trail = (String(original).match(/\s*$/) || [''])[0];
+      return lead + String(en).replace(/^\s+|\s+$/g, '') + trail;
+    }
+    // Restore exact German source (whitespace around marks / after </strong>).
+    return original;
   }
 
   function readLang() {

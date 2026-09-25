@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 200" fill="none" role="img" aria-hidden="true">
+  <defs>
+    <linearGradient id="g-desk-bg" x1="20" y1="10" x2="260" y2="190" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0A5231"/>
+      <stop offset="100%" stop-color="#002A18"/>
+    </linearGradient>
+    <linearGradient id="g-desk-surface" x1="30" y1="120" x2="250" y2="190" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1A4A32"/>
+      <stop offset="100%" stop-color="#0D2E1E"/>
+    </linearGradient>
+    <linearGradient id="g-paper" x1="40" y1="40" x2="160" y2="120" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#C5DCC5"/>
+      <stop offset="55%" stop-color="#5A9A6A"/>
+      <stop offset="100%" stop-color="#004225"/>
+    </linearGradient>
+    <linearGradient id="g-paper-shine" x1="50" y1="36" x2="140" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.5"/>
+      <stop offset="55%" stop-color="#fff" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="f-desk" x="-10%" y="-10%" width="120%" height="130%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2.5" result="b"/>
+      <feOffset dy="3" result="o"/>
+      <feFlood flood-color="#001a0f" flood-opacity="0.4"/>
+      <feComposite in2="o" operator="in"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="280" height="200" rx="20" fill="url(#g-desk-bg)"/>
+  <!-- desk surface -->
+  <path d="M18 148h244l-14 36H32z" fill="url(#g-desk-surface)" opacity="0.95"/>
+  <g filter="url(#f-desk)">
+    <!-- mail / portal stack -->
+    <rect x="36" y="52" width="108" height="58" rx="8" fill="url(#g-paper)" opacity="0.55" transform="rotate(-6 90 81)"/>
+    <rect x="40" y="58" width="112" height="60" rx="8" fill="url(#g-paper)" opacity="0.8" transform="rotate(2 96 88)"/>
+    <rect x="44" y="62" width="116" height="62" rx="9" fill="url(#g-paper)" opacity="0.96"/>
+    <rect x="44" y="62" width="116" height="62" rx="9" fill="url(#g-paper-shine)"/>
+    <path d="M56 78h72M56 92h52" stroke="#FBF8F3" stroke-opacity="0.55" stroke-width="2.5" stroke-linecap="round"/>
+    <rect x="128" y="74" width="22" height="12" rx="6" fill="#EC6A37"/>
+    <!-- phone -->
+    <rect x="178" y="78" width="36" height="58" rx="8" fill="#0A3D28" stroke="#9FB88C" stroke-opacity="0.45" stroke-width="1.5"/>
+    <rect x="184" y="86" width="24" height="34" rx="3" fill="#FBF8F3" fill-opacity="0.12"/>
+    <circle cx="196" cy="128" r="4" fill="#EC6A37"/>
+    <!-- calendar with gaps -->
+    <rect x="222" y="48" width="40" height="44" rx="7" fill="#004225" stroke="#9FB88C" stroke-opacity="0.4"/>
+    <path d="M222 60h40" stroke="#E8F5EC" stroke-opacity="0.35" stroke-width="1.2"/>
+    <circle cx="232" cy="70" r="2.5" fill="#FBF8F3" opacity="0.85"/>
+    <circle cx="242" cy="70" r="2.5" fill="#FBF8F3" opacity="0.35"/>
+    <circle cx="252" cy="70" r="2.5" fill="#FBF8F3" opacity="0.35"/>
+    <circle cx="232" cy="80" r="2.5" fill="#FBF8F3" opacity="0.35"/>
+    <circle cx="242" cy="80" r="2.5" fill="#EC6A37"/>
+    <!-- growth block pushed back / faded -->
+    <rect x="168" y="28" width="72" height="22" rx="6" fill="#FBF8F3" fill-opacity="0.08" stroke="#9FB88C" stroke-opacity="0.25"/>
+    <path d="M178 42l12-8 10 5 14-10" stroke="#EC6A37" stroke-opacity="0.45" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="140" y="186" text-anchor="middle" fill="#FBF8F3" fill-opacity="0.5" font-family="Instrument Sans, system-ui, sans-serif" font-size="10" letter-spacing="0.1em">ALLTAG STATT WACHSTUM</text>
+</svg>

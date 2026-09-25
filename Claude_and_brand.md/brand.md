@@ -16,52 +16,43 @@ Das CSS dazu liegt als Pattern-Bibliothek am Ende von `styles/site-multipage.css
 
 ## Brand Summary
 
-RAIS (Ritz AI Solutions) ist ein praktischer Automatisierungs- und interner-KI-Partner für den **operativen Mittelstand**, mit **Immobilien als Referenzbranche**.
+RAIS (Ritz AI Solutions) ist ein praktischer Automatisierungs-Partner für **Dienstleistungsunternehmen**: Makler, Agenturen, Beratungen. Wiederkehrende Anfragen, Nachfassen und Übergaben laufen durch Systeme, nicht durch den Inhaber.
 
 RAIS soll nicht wie ein AI-Lab, eine Trend-Agentur oder eine vage Digitalberatung wirken. Die Marke soll ruhig, kompetent, kommerziell nützlich und in echten Arbeitsabläufen verankert wirken.
 
-**Änderung gegenüber Version 1:** Die vorherige Fassung nannte Makler, Hausverwaltungen und kleine Teams als Zielgruppe und warnte ausdrücklich davor, als "Immobilien-only" aufzutreten. Version 2 hat das auf Immobilienmakler als einzige aktive Nische verengt.
-
-**Änderung gegenüber Version 2 (Entscheidung vom 04.08.2026):** Die harte Verengung auf Maklerbüros wird zurückgenommen. Der ICP ist wieder der operative Mittelstand, Immobilien bleibt aber die Referenzbranche mit der größten Tiefe. Hintergrund: Die Startseite war bereits auf „operativer Mittelstand“ umpositioniert, während dieses Dokument noch Makler-only forderte. Mit der Systemakte (`scripts/systemakte-data.mjs`) führt die Seite jetzt vier Branchen. Hausverwaltungen sind kein Ausschluss mehr.
-
-**Präzisierung vom 09.08.2026, Umsetzungsfile 1:** Innerhalb der Referenzbranche ist die Ausrichtung die Immobilienwirtschaft, nicht nur der Verkauf. Die verkaufende Copy bleibt auf Maklerbüros ausgerichtet, weil dort der Engpass am schärfsten formulierbar ist. Hausverwaltung ist damit kein verworfener Pivot, sondern erscheint auf der Systemseite als Use Case, etwa Mieteranfragen bei Beschwerden, Ticketing und Kundensupport über WhatsApp und E-Mail parallel. Anlass war ein Widerspruch zwischen `CLAUDE.md` Version 3, die noch Makler-only führte, und der Live-Seite. `brand.md` ist die höhere Autorität, `CLAUDE.md` wurde nachgezogen.
-
-**Was das für die Startseite konkret heisst (09.08.2026):** Hero und `#zielgruppe` sprechen Maklerbüros direkt an, nicht den Mittelstand im Allgemeinen. Die H1 lautet „Ihr Maklerbüro hat kein Tool-Problem", die Eyebrow nennt das Volumenkriterium ohne Mitarbeiterzahl, die Passt-Karte listet Anfragen pro Woche statt Teamgrösse.
-
-Das ist **kein** Widerspruch zum ICP oben. Der ICP bleibt der operative Mittelstand, die Branchen-Tabs und die Systemakte führen weiter vier Branchen. Getrennt sind Ansprache und Reichweite: Die Startseite adressiert die Nische, in der wir am glaubwürdigsten sind, und öffnet weiter unten über den Systemkatalog. Wer diesen Absatz liest und die Startseite wieder auf „operativer Mittelstand" zurückschreiben will, ändert damit eine bewusste Entscheidung, keinen Fehler.
-
-Offen und bewusst nicht mit angefasst: die Meta-Titel und Descriptions der Startseite nennen weiter den Mittelstand. Das ist eine SEO-Entscheidung mit eigener Abwägung, nicht Copy.
+**Änderung September 2026 (VSL-Startseite):** Der ICP ist **Dienstleistungsunternehmen**. Die Startseite führt mit „Dienstleister“, dann zählt sie die Segmente auf. Eine Aktion: Audit buchen. Käufer im Audit: Inhaber / Geschäftsführer (der Engpass). Handwerk und Handel sind keine geführten Branchenbänder.
 
 ## Audience
 
 **Zielgruppe (ICP), verbindlich:**
 
-Operativer Mittelstand, 5 bis 200 Mitarbeitende, mit wiederkehrenden Prozessen und spürbarem Volumen.
+Dienstleistungsunternehmen mit wiederkehrendem Anfrage- und Vorgangsvolumen.
 
-**Geführte Branchen** (Reihenfolge entspricht der Tiefe auf der Website):
+**Aufzählung auf der Startseite (Reihenfolge):**
 
-1. **Immobilien** (Maklerbüros und Hausverwaltungen) — Referenzbranche, AMS sitzt hier
-2. **Handwerk und Bau** (SHK, Elektro, Bau und Ausbau)
-3. **Handel, Großhandel und E-Commerce**
-4. **Agenturen, Coaches und Beratungen**
+1. **Makler und Immobilienberatung** — schärfstes Schmerzbeispiel, laufende Referenz Haller
+2. **Agenturen** (Marketing, Web, SEO, Content)
+3. **Beratungen und Coaching** mit wiederkehrendem Intake
 
-Weitere Branchen im Einzelfall, wenn wiederkehrende Prozesse mit Volumen vorliegen. Ablehnen, wenn kein echter Mehrwert erkennbar ist.
+Eyebrow-Muster: `Für Dienstleister: Makler, Agenturen, Beratungen` — Frame zuerst, Liste danach. Nicht drei gleichrangige Marken im Hero.
+
+Weitere Dienstleister im Einzelfall, wenn Anfragen, Onboarding oder Support Volumen haben. Ablehnen, wenn kein echter Mehrwert erkennbar ist.
+
+**Zielperson im Audit:** Inhaber / Geschäftsführer, der selbst der Engpass ist (zeitknapp, oft nicht-technisch).
 
 **Harte Ausschlusskriterien:**
 
-- Einzelkämpfer ohne Team
-- Betriebe ohne wiederkehrende Prozesse mit Volumen
+- Einzelkämpfer ohne Team und ohne Volumen
+- Betriebe ohne wiederkehrende Prozesse
 - Auftraggeber, die nur Strategiepapiere wollen und keine Umsetzung
 - Keine Bereitschaft zu klaren Freigaben und Verantwortlichkeiten
 
-**Nicht mehr ausgeschlossen:** Hausverwaltungen. Franchise-Netzwerke und bankgebundene Agenturen bleiben unattraktiv, sind aber kein formaler Ausschluss mehr, sondern eine Frage der Entscheidungswege im Einzelfall.
-
 **Qualifizierende Merkmale, in Reihenfolge der Wichtigkeit:**
 
-1. Wiederkehrende Prozesse mit spürbarem Volumen
-2. 5 bis 200 Mitarbeitende im Team
+1. Wiederkehrende Anfragen oder Vorgänge mit spürbarem Volumen
+2. Team oder klare Übergabe an Menschen im Ablauf
 3. Bestehende Tools und CRMs, oder Bereitschaft, eines einzuführen
-4. Offenheit für KI und Datenverantwortung, wichtigstes weiches Kriterium
+4. Offenheit für Automatisierung und Datenverantwortung
 
 **Merkmale der Zielperson:**
 
@@ -70,7 +61,7 @@ Weitere Branchen im Einzelfall, wenn wiederkehrende Prozesse mit Volumen vorlieg
 - skeptisch gegenüber Hype und SaaS-Ballast
 - legen Wert auf Reaktionsgeschwindigkeit, saubere Akten, keine verlorenen Anfragen
 
-Copy muss in wenigen Sekunden verständlich sein.
+Copy: kurz, ergebnisorientiert, Schmerz im ersten Satz. Kein Mittelstands-Absatz.
 
 ## USP und Kernbotschaft
 

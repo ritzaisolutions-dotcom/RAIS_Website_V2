@@ -13,14 +13,14 @@ const copyTargets = [
   // nicht ausgeliefert. Deshalb genau diese eine Datei.
   { from: 'images/cover.webp', to: 'og-cover.webp' },
   { from: 'vendor', to: 'vendor' },
-  // images/ wird NICHT kopiert (entfernt 05.08.2026).
+  // images/ wird NICHT komplett kopiert (entfernt 05.08.2026).
   //
-  // Jeder Bildpfad steht im HTML, und Vite bundelt daraus selbst nach
-  // dist/assets mit Hash im Dateinamen. Geprueft: weder ein kopiertes
-  // Stylesheet noch ein Skript verweist auf images/, und im gebauten
-  // HTML steht kein einziger Verweis darauf. Die Kopie war reine
-  // Doppelung und hat 26 MB ausgeliefert, davon 19 MB Dateien, die
-  // nirgends referenziert sind.
+  // Jeder Bildpfad im HTML wird von Vite nach dist/assets gehasht.
+  // Kopierte Stylesheets werden danach aber wieder eingehaengt und
+  // behalten ihre Original-url(). Der Hero-Hintergrund lebt nur in
+  // styles/ai-roadmap.css, deshalb 404 auf Produktion, obwohl die
+  // Datei in Git und als gehashtes Vite-Asset liegt.
+  { from: 'images/roadmap/hero-atmosphere.png', to: 'images/roadmap/hero-atmosphere.png' },
   //
   // Wer kuenftig einen Bildpfad ERST ZUR LAUFZEIT zusammenbaut (etwa in
   // einem Skript), muss das hier wieder aufnehmen oder das Bild nach

@@ -99,10 +99,10 @@
 .page-roadmap .page-hero--roadmap-atmosphere {
   background-color: var(--rm-canvas);
   background-image:
-    linear-gradient(90deg, rgba(245, 242, 236, 0.62) 0%, rgba(245, 242, 236, 0.38) 42%, rgba(245, 242, 236, 0.12) 68%, rgba(245, 242, 236, 0.28) 100%),
+    linear-gradient(90deg, rgba(245, 242, 236, 0.28) 0%, rgba(245, 242, 236, 0.12) 42%, rgba(245, 242, 236, 0.04) 68%, rgba(245, 242, 236, 0.18) 100%),
     url('../images/roadmap/hero-atmosphere.png');
   background-size: cover;
-  background-position: 92% 108%;
+  background-position: left 70%;
   background-repeat: no-repeat;
 }
 

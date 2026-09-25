@@ -112,6 +112,13 @@
     return true;
   }
 
+  /* CTA / Modal: gleiche Geste wie der Gate-Button. Wenn Klaro da ist,
+     Consent setzen und Embed laden — kein zweiter Klick. */
+  function ensureConsent() {
+    if (hasConsent()) return true;
+    return grantConsent();
+  }
+
   /* Klaro kann spaeter noch widerrufen werden. Dann fallen alle
      Container auf den Platzhalter zurueck. */
   function watchConsent() {
@@ -380,6 +387,8 @@
   function mount(el, opts) {
     if (!el) return null;
     var options = opts || {};
+    if (options.ensureConsent) ensureConsent();
+
     var existing = null;
     mounted.forEach(function (entry) { if (entry.el === el) existing = entry; });
 
@@ -396,7 +405,10 @@
         if (hasConsent()) activate(existing);
         return existing;
       }
-      if (!existing.loaded && hasConsent()) activate(existing);
+      if (!existing.loaded && hasConsent()) {
+        existing.consentedAt = existing.consentedAt || Date.now();
+        activate(existing);
+      }
       return existing;
     }
 
@@ -431,40 +443,69 @@
     return clean || null;
   }
 
-  window.RAISCal = { mount: mount, hasConsent: hasConsent };
+  window.RAISCal = {
+    mount: mount,
+    hasConsent: hasConsent,
+    ensureConsent: ensureConsent,
+    grantConsent: grantConsent
+  };
 
   watchConsent();
 
   /* Container, die schon im Markup stehen, brauchen keinen Aufruf.
-     Sie haengen aber am Seitenende, deshalb erst kurz vor Sicht
-     einhaengen. Ein Iframe, der beim Seitenaufbau laedt, kostet
-     Ladezeit fuer eine Sektion, die die meisten nie erreichen. */
+     Kontakt-Embed sofort (Conversion), Rest kurz vor Sichtbarkeit. */
   function autoMount() {
     var nodes = document.querySelectorAll('[data-cal-inline]');
     if (!nodes.length) return;
 
-    if (typeof window.IntersectionObserver !== 'function') {
-      nodes.forEach(function (el) {
-        mount(el, {
-          source: el.getAttribute('data-source'),
-          calUrl: el.getAttribute('data-cal-url') || pageCalUrl()
-        });
+    function mountNode(el) {
+      mount(el, {
+        source: el.getAttribute('data-source'),
+        calUrl: el.getAttribute('data-cal-url') || pageCalUrl()
       });
+    }
+
+    var eager = [];
+    var lazy = [];
+    nodes.forEach(function (el) {
+      if (el.id === 'cal-inline-contact' || el.classList.contains('cal-inline--contact')) {
+        eager.push(el);
+      } else {
+        lazy.push(el);
+      }
+    });
+
+    eager.forEach(mountNode);
+
+    if (!lazy.length) return;
+
+    if (typeof window.IntersectionObserver !== 'function') {
+      lazy.forEach(mountNode);
       return;
     }
+
+    var pending = lazy.slice();
 
     var observer = new window.IntersectionObserver(function (entries) {
       entries.forEach(function (item) {
         if (!item.isIntersecting) return;
         observer.unobserve(item.target);
-        mount(item.target, {
-          source: item.target.getAttribute('data-source'),
-          calUrl: item.target.getAttribute('data-cal-url') || pageCalUrl()
-        });
+        pending = pending.filter(function (n) { return n !== item.target; });
+        mountNode(item.target);
       });
     }, { rootMargin: '400px 0px' });
 
-    nodes.forEach(function (el) { observer.observe(el); });
+    pending.forEach(function (el) { observer.observe(el); });
+
+    /* Never leave only the static HTML fallback if IO never fires. */
+    window.setTimeout(function () {
+      pending.forEach(function (el) {
+        observer.unobserve(el);
+        /* Real embed gate uses .cal-gate__btn; HTML fallback uses .js-open-booking. */
+        if (!el.querySelector('.cal-gate__btn, iframe')) mountNode(el);
+      });
+      pending = [];
+    }, 1200);
   }
 
   if (document.readyState === 'loading') {

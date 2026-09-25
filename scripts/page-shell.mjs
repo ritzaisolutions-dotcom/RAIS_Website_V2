@@ -28,7 +28,7 @@ export const i18nScriptsHtml = `
 <script src="scripts/i18n-dict.js"></script>
 <script src="scripts/i18n.js"></script>
 `;
-export function bookingModalHtml(dauer = '20 Minuten', ariaLabel = 'Kostenlosen KI-Audit buchen') {
+export function bookingModalHtml(dauer = '20 Minuten', ariaLabel = 'Kostenlosen Audit buchen') {
   return `
 <div id="booking-modal" role="dialog" aria-modal="true" aria-label="${ariaLabel}">
   <div class="bm-backdrop" id="bm-backdrop"></div>
@@ -53,54 +53,17 @@ export function bookingModalHtml(dauer = '20 Minuten', ariaLabel = 'Kostenlosen 
  * site-nav.js prueft Hamburger und Overlay auf null, das Weglassen ist
  * daher gefahrlos. Nur opt-in setzen, der Rest der Seiten bleibt gleich.
  */
+/**
+ * Sitewide: Wortmarke, Systeme, Referenzen, Über uns, Audit-CTA.
+ * options.minimal bleibt akzeptiert, falls alte Aufrufe kommen.
+ */
 export function navHtml(active, options = {}) {
-  const link = (href, label, key) =>
-    `<li><a href="${href}"${active === key ? ' aria-current="page"' : ''}>${label}</a></li>`;
-  const ctaLabel = options.ctaLabel || 'Kostenlosen KI-Audit buchen';
+  const ctaLabel = options.ctaLabel || 'Kostenlosen Audit buchen';
   const ctaHref = options.ctaHref;
-  const minimal = !!options.minimal;
   const navCta = ctaHref
     ? `<a class="btn-primary" id="nav-demo-btn" href="${ctaHref}">${ctaLabel}</a>`
     : `<button type="button" class="btn-primary js-open-booking" id="nav-demo-btn" data-source="nav">${ctaLabel}</button>`;
-  const mobileCta = ctaHref
-    ? `<a class="mobile-cta" id="mobile-demo-btn" href="${ctaHref}" data-close-menu>${ctaLabel}</a>`
-    : `<button type="button" class="mobile-cta js-open-booking" id="mobile-demo-btn" data-source="mobile-nav">${ctaLabel}</button>`;
-
-  const navCenter = minimal
-    ? ''
-    : `
-    <div class="nav-center" role="none">
-      <ul class="nav-list" role="list">
-        ${link('/#systeme', 'Systeme', 'systeme')}
-        ${link('/#methodik', 'Methode', 'methodik')}
-        ${link('referenzen.html', 'Systemkatalog', 'referenzen')}
-        ${link('ueber-uns.html', 'Über uns', 'ueber-uns')}
-      </ul>
-    </div>`;
-
-  const hamburger = minimal
-    ? ''
-    : `
-      <button class="nav-hamburger" id="hamburger-btn" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-overlay">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>`;
-
-  const overlay = minimal
-    ? ''
-    : `
-<div id="mobile-overlay" role="dialog" aria-label="Navigation" aria-modal="true">
-  <div class="mobile-nav-inner">
-    <a href="/#systeme" class="mobile-link" data-close-menu>Systeme</a>
-    <a href="/#methodik" class="mobile-link" data-close-menu>Methode</a>
-    <a href="referenzen.html" class="mobile-link" data-close-menu>Systemkatalog</a>
-    <a href="ueber-uns.html" class="mobile-link" data-close-menu>Über uns</a>
-    <a href="zusammenarbeit.html" class="mobile-link" data-close-menu>So arbeiten wir</a>
-    <a href="persoenlichkeit.html" class="mobile-link" data-close-menu>Persönlichkeit</a>
-    <hr class="mobile-hr">
-    ${langToggleHtml()}
-    ${mobileCta}
-  </div>
-</div>`;
+  const current = (id) => (active === id ? ' aria-current="page"' : '');
 
   return `
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
@@ -112,14 +75,36 @@ export function navHtml(active, options = {}) {
         <span class="nav-wordmark">RAIS</span>
         <span class="nav-submark">Ritz AI Solutions</span>
       </div>
-    </a>${navCenter}
+    </a>
+    <div class="nav-center">
+      <ul class="nav-list">
+        <li><a href="systeme.html"${current('systeme')}>Systeme</a></li>
+        <li><a href="referenzen.html"${current('referenzen')}>Referenzen</a></li>
+        <li><a href="ueber-uns.html"${current('ueber-uns')}>Über uns</a></li>
+      </ul>
+    </div>
     <div class="nav-right">
       ${langToggleHtml()}
-      ${navCta}${hamburger}
+      ${navCta}
     </div>
   </div>
-</nav>${overlay}
+</nav>
 `;
+}
+
+/**
+ * Kleines Portrait unter der Nav, nur auf Unterseiten.
+ * Bild: images/kevin-ritz.svg bis ein Foto als kevin-ritz.webp liegt.
+ */
+export function portraitHtml() {
+  return `
+<aside class="founder-chip" aria-label="Kevin Ritz">
+  <img class="founder-chip__img" src="images/kevin-ritz.svg" width="48" height="48" alt="Kevin Ritz">
+  <div class="founder-chip__text">
+    <span class="founder-chip__name">Kevin Ritz</span>
+    <span class="founder-chip__role">Geschäftsführer</span>
+  </div>
+</aside>`;
 }
 
 /**
@@ -132,10 +117,10 @@ export function navHtml(active, options = {}) {
 export function contactHtml({
   calUrl,
   dauer = '20 Minuten',
-  label = 'Kostenlose KI-Audits',
+  label = 'Kostenloser Audit',
   title,
   copy,
-  calTitle = 'Kostenlosen KI-Audit buchen',
+  calTitle = 'Kostenlosen Audit buchen',
   calSub,
   gate = '',
   media = ''
@@ -179,7 +164,7 @@ export function contactHtml({
  * erreichbar sein muessen. Alles andere waere auf einer Seite mit
  * genau einem Ziel ein Ausstieg.
  */
-export function footerHtml({ stickyHref, stickyLabel = 'KI-Audit buchen', minimal = false } = {}) {
+export function footerHtml({ stickyHref, stickyLabel = 'Kostenlosen Audit buchen', minimal = false } = {}) {
   const sticky = stickyHref
     ? `<a class="sticky-cta-btn" id="sticky-demo-btn" href="${stickyHref}">${stickyLabel}</a>`
     : `<button type="button" class="sticky-cta-btn js-open-booking" id="sticky-demo-btn" data-source="sticky">${stickyLabel}</button>`;
@@ -188,13 +173,7 @@ export function footerHtml({ stickyHref, stickyLabel = 'KI-Audit buchen', minima
       <a href="impressum.html">Impressum</a>
       <a href="datenschutz.html">Datenschutz</a>`
     : `
-      <a href="/#systeme">Systeme</a>
-      <a href="/#methodik">Methode</a>
-      <a href="zusammenarbeit.html">So arbeiten wir</a>
-      <a href="referenzen.html">Systemkatalog</a>
-      <a href="ams.html">AMS Beispielsystem</a>
-      <a href="ai-roadmap.html">KI-Roadmap</a>
-      <a href="persoenlichkeit.html">Persönlichkeit</a>
+      <a href="ueber-uns.html">Über uns</a>
       <a href="#contact">Kontakt</a>
       <a href="impressum.html">Impressum</a>
       <a href="datenschutz.html">Datenschutz</a>
@@ -217,10 +196,11 @@ export function footerHtml({ stickyHref, stickyLabel = 'KI-Audit buchen', minima
 `;
 }
 
-export function headHtml({ title, description, path, extraCss = [], bodyAttrs = '', ogImage = '' }) {
+export function headHtml({ title, description, path, extraCss = [], bodyAttrs = '', ogImage = '', noindex = false }) {
   const extraCssLinks = extraCss
     .map((href) => `  <link rel="stylesheet" href="${href}">`)
     .join('\n');
+  const robots = noindex ? `\n  <meta name="robots" content="noindex, follow">` : '';
   return `<!DOCTYPE html>
 <html lang="de" class="scroll-smooth">
 <head>
@@ -228,7 +208,7 @@ export function headHtml({ title, description, path, extraCss = [], bodyAttrs = 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   ${i18nBootHtml}
   <title>${title}</title>
-  <meta name="description" content="${description}">
+  <meta name="description" content="${description}">${robots}
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" href="favicon.png?v=3">
   <meta property="og:title" content="${title}">

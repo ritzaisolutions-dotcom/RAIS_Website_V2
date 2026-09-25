@@ -155,6 +155,12 @@ a { color: inherit; }
 }
 .btn-primary:hover,
 .hero-btn-primary:hover { background: var(--orange-hover); }
+.btn-primary:focus-visible,
+.hero-btn-primary:focus-visible,
+.sticky-cta-btn:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+}
 .btn-outline,
 .hero-btn-outline {
   display: inline-flex;
@@ -236,6 +242,12 @@ a { color: inherit; }
 }
 .nav-list a:hover,
 .nav-list a[aria-current="page"] { color: var(--charcoal); }
+.nav-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
 .nav-right { display: flex; align-items: center; gap: 0.75rem; }
 
 html[data-lang-pending] body { visibility: hidden; }
@@ -325,10 +337,66 @@ a.sticky-cta-btn {
 }
 
 @media (max-width: 900px) {
-  .nav-center { display: none; }
-  .nav-hamburger { display: inline-flex; align-items: center; justify-content: center; }
-  .nav-right .btn-primary { display: none; }
+  .nav-center {
+    display: flex;
+    flex: 0 1 auto;
+    order: 3;
+    width: 100%;
+    justify-content: flex-start;
+    padding-top: 0.35rem;
+  }
+  .nav-inner {
+    flex-wrap: wrap;
+  }
+  .nav-hamburger { display: none; }
+  .nav-list { gap: 0.35rem; }
+  .nav-list a {
+    font-size: 0.85rem;
+    min-height: 40px;
+    padding: 0.25rem 0.5rem;
+  }
+  .nav-right .btn-primary { display: inline-flex; }
   .nav-right .lang-toggle { display: inline-flex; }
+}
+
+/* Portrait-Chip unter der Nav (Unterseiten). Nicht in der Hauptnav. */
+.founder-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: min(1100px, calc(100% - 2.5rem));
+  margin: 0 auto;
+  padding: calc(var(--nav-h, 72px) + 0.85rem) 0 0;
+}
+
+.founder-chip__img {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 1px solid var(--border, #D9D1C7);
+  background: var(--racing-green, #004225);
+}
+
+.founder-chip__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.founder-chip__name {
+  font-family: var(--serif, 'Source Serif 4', Georgia, serif);
+  font-size: 0.95rem;
+  color: var(--charcoal, #2F2A24);
+  line-height: 1.2;
+}
+
+.founder-chip__role {
+  font-family: var(--mono, ui-monospace, monospace);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--stone, #7B746B);
 }
 
 /* Page hero (inner pages).
@@ -338,7 +406,7 @@ a.sticky-cta-btn {
    Startseite. Jetzt oeffnet und schliesst jede Seite auf Gruen,
    dazwischen die hellen Baender. */
 .page-hero {
-  padding: calc(var(--nav-h) + 4rem) 0 clamp(3rem, 6vw, 4.5rem);
+  padding: 2rem 0 clamp(3rem, 6vw, 4.5rem);
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -479,6 +547,80 @@ a.sticky-cta-btn {
   border-bottom: 1px solid var(--border);
   color: var(--charcoal);
 }
+
+/* AMS Lieferliste: SWS-Mechanik, RAIS-Stimme */
+.deliver-list {
+  list-style: none;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem;
+}
+.deliver-item {
+  padding: 1.25rem 1.35rem;
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+  background: var(--surface, #fff);
+}
+.deliver-item h3 {
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+  margin: 0 0 0.55rem;
+  font-size: 1.1rem;
+  color: var(--charcoal);
+}
+.deliver-item__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 999px;
+  background: var(--green-800, #004225);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.deliver-item p {
+  margin: 0 0 0.55rem;
+  color: var(--stone);
+  font-size: 0.95rem;
+}
+.deliver-item__see a {
+  font-weight: 600;
+  color: var(--orange);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.deliver-item__limit {
+  margin-top: 0.75rem !important;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.88rem !important;
+}
+.deliver-item__limit span {
+  display: inline-block;
+  margin-right: 0.4rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+.cta-criteria {
+  display: inline-block;
+  margin-left: 0.85rem;
+  color: var(--stone);
+  font-size: 0.9rem;
+}
+.rq-crm-note {
+  margin: 1rem 0 0;
+  max-width: 36rem;
+  color: var(--stone);
+  font-size: 0.9rem;
+}
+
 .teaser-card {
   margin-top: 1.5rem;
   padding: 1.35rem 1.4rem;

@@ -128,7 +128,8 @@ const esc = (s) =>
  * Die Dauer haengt an der Anzahl der Logos, damit die Geschwindigkeit
  * gleich bleibt, wenn Eintraege dazukommen oder wegfallen.
  */
-export function renderTechstack() {
+export function renderTechstack(opts = {}) {
+  const logosOnly = opts.logosOnly === true;
   const items = GROUPS.flatMap((g) => g.items).filter((i) => i.listed !== false);
 
   if (items.length === 0) return '';
@@ -144,11 +145,15 @@ export function renderTechstack() {
   // ohne zu hetzen. Pause bei Hover/Fokus bleibt.
   const duration = (items.length * 2.5).toFixed(1);
 
-  // Kein Fliesstext mehr ueber oder unter dem Streifen: Besucher
-  // koennen ohnehin nicht unterscheiden, welches Werkzeug wofuer
-  // eingesetzt wird, und der Text wurde nicht gelesen. Stattdessen
-  // ein Schloss mit zwei nachpruefbaren Angaben.
-  return `    <div class="techstack">
+  const trust = logosOnly
+    ? ''
+    : `
+      <p class="techstack__trust">
+        <svg class="ico" aria-hidden="true"><use href="#i-lock"></use></svg>
+        ${esc(TRUST_LABEL)}
+      </p>`;
+
+  return `    <div class="techstack${logosOnly ? ' techstack--logos-only' : ''}">
       <div class="marquee techstack__marquee" style="--marquee-duration: ${duration}s">
         <div class="marquee__track">
           <ul class="techstack__list">
@@ -158,10 +163,6 @@ ${run}
 ${run}
           </ul>
         </div>
-      </div>
-      <p class="techstack__trust">
-        <svg class="ico" aria-hidden="true"><use href="#i-lock"></use></svg>
-        ${esc(TRUST_LABEL)}
-      </p>
+      </div>${trust}
     </div>`;
 }

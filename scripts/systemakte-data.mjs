@@ -185,11 +185,10 @@ export const UNIVERSAL = [
 /**
  * Branchen. Immobilien ist die Referenzbranche und steht zuerst.
  *
- * Seit 09.08.2026 zeigt die Seite nur noch Immobilien, passend zur
- * Makler-Ansprache in Hero und `#zielgruppe`. Die anderen drei tragen
- * `active: false` und werden von der Ausleitung unten herausgefiltert.
- * Die Daten bleiben absichtlich stehen, das Zurueckholen einer Branche
- * ist damit das Entfernen einer Zeile und keine Recherche im Git-Log.
+ * Der Systemkatalog zeigt nur Branchen mit `active: true` (derzeit
+ * Immobilien). Die Home-Filter-Liste „Wenn“ nutzt ALL_BRANCHEN und
+ * listet alle vier mit Use-Case-Titeln. Die Daten der inaktiven
+ * Branchen bleiben absichtlich stehen.
  */
 const ALL_BRANCHEN = [
   {
@@ -538,8 +537,13 @@ const ALL_BRANCHEN = [
  * Was die Seite tatsaechlich zeigt. Eine Branche auf `active: false`
  * verschwindet aus den Reitern, aus dem Systemkatalog und aus
  * flagships(), ohne dass ihre Eintraege verloren gehen.
+ *
+ * Die Home-Filter-Liste „Wenn“ nutzt bewusst ALL_BRANCHEN, damit alle
+ * vier Branchen mit Use-Case-Titeln sichtbar sind, auch wenn der
+ * Katalog vorerst nur Immobilien tief führt.
  */
 export const BRANCHEN = ALL_BRANCHEN.filter((b) => b.active !== false);
+export { ALL_BRANCHEN };
 
 /**
  * Wie viele Systeme der Katalog tatsaechlich zeigt.
@@ -727,6 +731,36 @@ ${tablist}${panels}
  */
 export function flagships() {
   return [...UNIVERSAL, ...BRANCHEN.flatMap((b) => b.records)].filter((r) => r.slug);
+}
+
+/**
+ * Home-Filter: Wenn-Rahmen als Accordion. Pro Branche nur Titel der
+ * Use Cases, Link in den Katalog. Nutzt ALL_BRANCHEN (vier Branchen).
+ */
+export function renderHomeWennBranchen() {
+  const items = ALL_BRANCHEN.map((b, i) => {
+    const titles = b.records.map((r) => `<li>${esc(r.title)}</li>`).join('');
+    const open = i === 0 ? ' open' : '';
+    /* Aktive Branchen haben Katalog-Anker; inaktive landen auf #branchen. */
+    const href =
+      b.active !== false
+        ? `referenzen.html#branche-${esc(b.slug)}`
+        : 'referenzen.html#branchen';
+    return `      <details class="wenn-branche"${open}>
+        <summary class="wenn-branche__sum">
+          <span class="wenn-branche__label">${esc(b.label)}</span>
+          <span class="wenn-branche__title">${esc(b.title)}</span>
+        </summary>
+        <div class="wenn-branche__body">
+          <ul class="wenn-branche__cases">${titles}</ul>
+          <a class="home-cta-link" href="${href}">Im Systemkatalog ansehen</a>
+        </div>
+      </details>`;
+  }).join('\n');
+
+  return `    <div class="wenn-branchen" id="branchen-list">
+${items}
+    </div>`;
 }
 
 /**

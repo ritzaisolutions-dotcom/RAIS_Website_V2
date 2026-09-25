@@ -1,10 +1,9 @@
 /**
  * Buchungsmodal, einstufig.
  *
- * Das zweistufige Formular ist entfallen. Der Klick auf einen CTA
- * zeigt sofort den Kalender, der Lead entsteht nach bestaetigter
- * Buchung in scripts/cal-embed.js. Dieses Modul kuemmert sich nur
- * noch um Oeffnen, Schliessen, Fokus und die Quellenzuordnung.
+ * Der Klick auf einen CTA setzt Cal-Consent (gleiche Geste wie der
+ * Gate-Button) und zeigt den Kalender. Der Lead entsteht nach
+ * bestaetigter Buchung in scripts/cal-embed.js.
  *
  * Die data-source-Werte der Buttons bleiben unveraendert, sie sind
  * der Schluessel der Lead-Attribution.
@@ -37,7 +36,8 @@
       window.RAISCal.mount(calWrap, {
         source: options.source || null,
         icpSegment: options.icp_segment || null,
-        calUrl: pageCal || undefined
+        calUrl: pageCal || undefined,
+        ensureConsent: true
       });
     }
 

@@ -6,7 +6,7 @@
   "scripts": {
     "config": "node scripts/generate-public-config.mjs",
     "deploy": "npm run config",
-    "pages": "node scripts/build-pages.mjs && node scripts/sync-index-shell.mjs && node scripts/build-sitemap.mjs",
+    "pages": "node scripts/build-pages.mjs && node scripts/_patch-home-filter.mjs && node scripts/sync-index-shell.mjs && node scripts/build-sitemap.mjs",
     "predev": "npm run config && npm run pages",
     "prebuild": "npm run config && npm run pages",
     "dev": "vite",
