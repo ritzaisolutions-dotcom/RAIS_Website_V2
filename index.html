@@ -14,6 +14,28 @@
   } catch (e) { /* private mode */ }
 }());
 </script>
+    <script>
+/* Convert-LP: beim Laden immer Hero — kein Rest-Hash (#faq/#termin) aus
+   vorherigen Nav-/CTA-Klicks. In-Page-Anker (Klick) bleiben danach aktiv. */
+(function () {
+  try {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  } catch (e) { /* ignore */ }
+  var hash = location.hash;
+  if (hash && hash !== '#hero' && hash !== '#') {
+    history.replaceState(null, '', location.pathname + location.search);
+  }
+  function pinHero() {
+    if (window.scrollY !== 0) window.scrollTo(0, 0);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', pinHero);
+  } else {
+    pinHero();
+  }
+  window.addEventListener('load', pinHero);
+}());
+</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Home: VSL-Startseite für Dienstleister. Eine Aktion: Audit buchen. -->
@@ -1350,7 +1372,7 @@
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
 <nav id="navbar" aria-label="Hauptnavigation">
   <div class="nav-inner">
-    <a href="/" class="nav-brand" aria-label="RAIS zur Startseite">
+    <a href="#hero" class="nav-brand" aria-label="RAIS zur Startseite">
       <img src="favicon.svg" alt="" width="44" height="44" aria-hidden="true">
       <div class="nav-brand-words">
         <span class="nav-wordmark">RAIS</span>
@@ -1384,8 +1406,6 @@
                     <span class="hero-h1__line">das <span class="hero-h1__mark hero-h1__mark--italic">kaufkräftige Anfragen</span> generiert,</span>
                     <span class="hero-h1__line"><span class="hero-h1__mark">vorqualifiziert</span> und direkt in den <span class="hero-h1__mark">Kalender</span> setzt.</span>
                 </h1>
-                <p class="convert-hero__guarantee">7 und 60 Tage Geld-zurück.</p>
-
                 <div class="vsl vsl--poster-only" id="vsl" data-vsl-src="">
                     <div class="vsl__frame">
                         <img class="vsl__poster" src="images/mark-koch-hero.webp" alt="" width="1280" height="720" decoding="async">
@@ -1394,54 +1414,63 @@
 
                 <div class="hero-ctas">
                     <button type="button" class="hero-btn-primary js-open-booking" id="hero-work-btn" data-source="hero">Unverbindliches Erstgespräch buchen</button>
+                    <a class="convert-hero__pill" href="#garantie">60-Day-ROI-Geldzurückgarantie</a>
                 </div>
             </div>
         </section>
 
-        <section id="bridge" class="home-band home-band--linen" aria-labelledby="bridge-label">
+        <section id="bridge" class="home-band home-band--linen" aria-labelledby="garantie-title">
             <div class="section-wrap convert-bridge">
-                <div class="convert-bridge__intro">
-                    <span class="mono-label" id="bridge-label">Im Gespräch</span>
-                    <ul class="convert-bridge__list">
-                        <li>Wir schauen, wo bei euch Anfragen, Quali oder Mandate hängen.</li>
-                        <li>Wir skizzieren, wie Akut + Meta bei euch laufen würde.</li>
-                        <li>Wir rechnen grob, ob sich der Einstieg für euch lohnt — mit euren Zahlen.</li>
-                    </ul>
-                </div>
-                <div class="convert-bridge__guarantees garantie" id="garantie" aria-labelledby="garantie-title">
-                    <img class="garantie__icon convert-bridge__shield" src="images/glass/shield.svg" width="56" height="56" alt="" loading="lazy" decoding="async">
-                    <div class="garantie__copy">
-                        <span class="mono-label">7 · 60 Tage</span>
-                        <h2 class="section-h2" id="garantie-title">Zwei Garantien. Unser Risiko.</h2>
-                        <p class="garantie__body"><strong>Day 1–7 · Alignment:</strong> Fühlt sich die erste Woche nicht genau so an wie besprochen — volles Geld zurück, ohne Fragen. Setup + erste Betreuung. Media nur wenn noch nicht ausgegeben.</p>
-                        <p class="garantie__body"><strong>Day 1–60 · ROI Geld-zurück:</strong> Zahlt sich das System in 60 Tagen nicht für euch aus — bekommt ihr euer Geld zurück. Voraussetzung: Mitwirkung und Live. Closing macht ihr.</p>
-                    </div>
+                <span class="mono-label">Garantie</span>
+                <h2 class="section-h2" id="garantie-title">Zwei Garantien. Unser Risiko.</h2>
+                <div class="convert-guarantee-grid" id="garantie">
+                    <article class="convert-guarantee-card">
+                        <img class="convert-guarantee-card__shield" src="images/glass/shield.svg" width="72" height="72" alt="" loading="lazy" decoding="async">
+                        <p class="convert-guarantee-card__label">Tag 1–7 · sofort</p>
+                        <h3 class="convert-guarantee-card__title">No Questions Asked</h3>
+                        <p class="convert-guarantee-card__body">Fühlt sich die erste Woche nicht so an wie besprochen, steigen Sie aus. Volles Geld zurück — ohne Begründung, ohne Fragen.</p>
+                        <p class="convert-guarantee-card__sub">Setup und erste Betreuung. Media nur, wenn noch nicht ausgegeben.</p>
+                    </article>
+                    <article class="convert-guarantee-card">
+                        <img class="convert-guarantee-card__shield" src="images/glass/shield.svg" width="72" height="72" alt="" loading="lazy" decoding="async">
+                        <p class="convert-guarantee-card__label">Tag 1–60 · nach Livegang</p>
+                        <h3 class="convert-guarantee-card__title">ROI-Garantie</h3>
+                        <p class="convert-guarantee-card__body">Neue Anfragen holen in 60 Tagen mindestens den Wert Ihres Investments wieder rein. Tun sie das nicht, und der Grund liegt bei uns, bekommen Sie Ihr Geld zurück.</p>
+                        <p class="convert-guarantee-card__sub">Sie leisten Ihren Teil, wie vertraglich abgestimmt: Input, Visuals, Kampagne live, Zahlung erfolgt. Wir haben nicht geliefert, was zugesagt war. Closing bleibt bei Ihnen.</p>
+                    </article>
                 </div>
                 <div class="convert-bridge__cta">
                     <button type="button" class="hero-btn-primary js-open-booking" data-source="bridge">Unverbindliches Erstgespräch buchen</button>
-                    <p class="convert-guarantee-badge">7 Tage Alignment · 60 Tage ROI Geld-zurück</p>
                 </div>
             </div>
         </section>
 
-        <section id="pains" class="home-band home-band--linen" aria-labelledby="pains-title">
+        <section id="pains" class="glass-band" aria-labelledby="pains-title">
             <div class="section-wrap">
-                <span class="mono-label">Klingt das bekannt?</span>
-                <h2 class="section-h2" id="pains-title">Ihr vermittelt — und trotzdem fehlt der Fahrplan.</h2>
-                <div class="convert-pain-grid">
-                    <article class="convert-pain-card">
-                        <p class="convert-pain-card__quote">„Zu wenig kaufkräftige Anfragen — und keine, die planbar kommen.“</p>
+                <span class="mono-label mono-label--on-green">Der Engpass</span>
+                <h2 class="glass-band__title" id="pains-title">Drei Probleme, die Wachstum bremsen</h2>
+                <div class="glass-band__grid">
+                    <article class="glass-claim">
+                        <div class="glass-claim__icon">
+                            <img class="glass-claim__fallback" src="images/glass/inbox.svg" width="96" height="96" alt="" loading="lazy" decoding="async">
+                        </div>
+                        <h3 class="glass-claim__heading">Zu wenig kaufkräftige Kaufanfragen</h3>
+                        <p class="glass-claim__body">Portale und Netzwerk reichen nicht. Die guten Käufer fehlen — und der Kalender bleibt dünn.</p>
                     </article>
-                    <article class="convert-pain-card">
-                        <p class="convert-pain-card__quote">„Anfragen filtern, nachhaken, terminieren — der Vormittag ist weg.“</p>
+                    <article class="glass-claim">
+                        <div class="glass-claim__icon">
+                            <img class="glass-claim__fallback" src="images/glass/ads.svg" width="96" height="96" alt="" loading="lazy" decoding="async">
+                        </div>
+                        <h3 class="glass-claim__heading">Zu wenig Kaufmandate</h3>
+                        <p class="glass-claim__body">Verkäufer kommen nicht von allein. Ohne Ankauf stockt der Zufluss an Objekten.</p>
                     </article>
-                    <article class="convert-pain-card">
-                        <p class="convert-pain-card__quote">„Verkaufsmandate fehlen — Ankauf und Bestand laufen, Mandate nicht.“</p>
+                    <article class="glass-claim">
+                        <div class="glass-claim__icon">
+                            <img class="glass-claim__fallback" src="images/glass/calendar.svg" width="96" height="96" alt="" loading="lazy" decoding="async">
+                        </div>
+                        <h3 class="glass-claim__heading">Zu viel Zeit mit Vorqualifizieren</h3>
+                        <p class="glass-claim__body">Filtern, nachfassen, Termine setzen. Stunden, die im Tagesgeschäft fehlen.</p>
                     </article>
-                </div>
-                <div class="convert-bridge__cta convert-bridge__cta--after">
-                    <button type="button" class="hero-btn-primary js-open-booking" data-source="pains">Unverbindliches Erstgespräch buchen</button>
-                    <p class="convert-guarantee-badge">7 Tage Alignment · 60 Tage ROI Geld-zurück</p>
                 </div>
             </div>
         </section>
@@ -1449,22 +1478,22 @@
         <section id="old-new" class="home-band home-band--cloud" aria-labelledby="old-new-title">
             <div class="section-wrap">
                 <span class="mono-label">Vorher → Nachher</span>
-                <h2 class="section-h2" id="old-new-title">Vom Hoffen zu planbaren Gesprächen.</h2>
+                <h2 class="section-h2" id="old-new-title">Vom Hoffen zu planbaren Kaufanfragen.</h2>
                 <div class="convert-split">
                     <div class="convert-split__col">
                         <h3 class="convert-split__h">Vorher</h3>
                         <ul class="convert-split__list">
                             <li>
                                 <span class="convert-split__num" aria-hidden="true">1</span>
-                                <strong>Wenige oder unklare Anfragen</strong>
+                                <span><strong>Auf Gut Glück.</strong> Objekt auf ImmoScout und Immowelt stellen — und hoffen, dass jemand reagiert.</span>
                             </li>
                             <li>
                                 <span class="convert-split__num" aria-hidden="true">2</span>
-                                <strong>Stunden für Filter, Rückfragen, Terminieren</strong>
+                                <span><strong>Liste verbrennen.</strong> Dieselbe Bestandskunden immer wieder anrufen, bis niemand mehr rangeht.</span>
                             </li>
                             <li>
                                 <span class="convert-split__num" aria-hidden="true">3</span>
-                                <strong>Zu wenig Kauf-/Verkaufsmandate</strong>
+                                <span><strong>Nur das Netzwerk.</strong> Neue Verkaufsmandate nur, wenn zufällig eine Referenz kommt.</span>
                             </li>
                         </ul>
                     </div>
@@ -1473,15 +1502,15 @@
                         <ul class="convert-split__list">
                             <li>
                                 <span class="convert-split__num convert-split__num--new" aria-hidden="true">1</span>
-                                <strong>Qualifizierte Anfragen + Termine im Kalender</strong>
+                                <span><strong>Aktiv schalten.</strong> Kampagnen an neue, noch unangetastete Interessenten in Ihrer Region.</span>
                             </li>
                             <li>
                                 <span class="convert-split__num convert-split__num--new" aria-hidden="true">2</span>
-                                <strong>Quali und Terminsetzen laufen Done-for-you</strong>
+                                <span><strong>Liste erweitern.</strong> Neue Leads dazu — statt die bestehende abzutelefonieren.</span>
                             </li>
                             <li>
                                 <span class="convert-split__num convert-split__num--new" aria-hidden="true">3</span>
-                                <strong>Meta über GF-Profil: Ankauf + Mandats-Termine</strong>
+                                <span><strong>Nummer 1 nach außen.</strong> Sichtbar der Ansprechpartner, wenn jemand sein Objekt online vertreiben will.</span>
                             </li>
                         </ul>
                     </div>
@@ -1600,6 +1629,7 @@
         <section id="roi" class="home-band home-band--cloud" aria-labelledby="roi-title">
             <div class="section-wrap section-wrap--narrow">
                 <h2 class="section-h2" id="roi-title">Was Ihr Werbebudget tragen kann</h2>
+                <p class="section-sub">Die Aufteilung ist variabel. Liegt Ihr größeres Problem bei bestehenden Objekten oder bei neuen Mandaten? Werbebudget und Kreativ-Volumen legen wir dorthin: mehr auf Kaufinteressenten, mehr auf Mandatsgewinnung — oder beides, passend zu Ihrem Bedarf.</p>
                 <div id="roi-board">
                     <p class="roi-disclaimer">Beispielrechnung · spekulativ · keine Garantie. Kosten = Media + 1.500 €. Der Abschluss liegt bei Ihnen.</p>
                     <div class="roi-chart-wrap">
@@ -1641,13 +1671,6 @@
                             <label><input type="radio" name="roi-mix" data-roi-mix value="50"> 50/50 Ankauf–Verkauf</label>
                         </div>
                     </div>
-                    <ul class="roi-kpis" aria-live="polite">
-                        <li class="roi-kpis__item roi-kpis__item--cost"><span class="roi-kpis__label">Was es kostet</span><strong data-roi-cost>6.500 €</strong></li>
-                        <li class="roi-kpis__item roi-kpis__item--worst"><span class="roi-kpis__label">Worst raus</span><strong data-roi-worst>12.700 €</strong></li>
-                        <li class="roi-kpis__item roi-kpis__item--best"><span class="roi-kpis__label">Best raus</span><strong data-roi-best>25.400 €</strong></li>
-                        <li class="roi-kpis__item roi-kpis__item--gap-w"><span class="roi-kpis__label">Worst − Kosten</span><strong data-roi-gap-worst>6.200 €</strong></li>
-                        <li class="roi-kpis__item roi-kpis__item--gap-b"><span class="roi-kpis__label">Best − Kosten</span><strong data-roi-gap>18.900 €</strong></li>
-                    </ul>
                     <div class="roi-return">
                         <h3 class="roi-return__title">Return (Modell) · spekulativ</h3>
                         <p class="roi-return__note">Faktor = Umsatz ÷ Kosten. Keine Garantie.</p>
@@ -1821,13 +1844,15 @@
         /* ── Active nav state on scroll ──────────────────────── */
         var navAnchorGroups = [
             document.querySelectorAll('.nav-list a[href^="#"]'),
+            document.querySelectorAll('.convert-nav-links a[href^="#"]'),
             document.querySelectorAll('.mobile-link[href^="#"]')
         ];
 
         var navTargets = [];
-        Array.prototype.forEach.call(document.querySelectorAll('.nav-list a[href^="#"]'), function(anchor) {
+        var navSelector = '.nav-list a[href^="#"], .convert-nav-links a[href^="#"]';
+        Array.prototype.forEach.call(document.querySelectorAll(navSelector), function(anchor) {
             var id = anchor.getAttribute('href');
-            if (!id || id.length < 2) return;
+            if (!id || id.length < 2 || id === '#hero') return;
             var target = document.querySelector(id);
             if (target) {
                 navTargets.push({ id: id, target: target });
@@ -1837,10 +1862,10 @@
         function setActiveNav(id) {
             navAnchorGroups.forEach(function(group) {
                 Array.prototype.forEach.call(group, function(link) {
-                    var isActive = link.getAttribute('href') === id;
+                    var isActive = !!(id && link.getAttribute('href') === id);
                     link.classList.toggle('is-active', isActive);
                     if (isActive) {
-                        link.setAttribute('aria-current', 'page');
+                        link.setAttribute('aria-current', 'true');
                     } else {
                         link.removeAttribute('aria-current');
                     }
@@ -1852,10 +1877,18 @@
             if (!navTargets.length) return;
             var offset = (navbar ? navbar.offsetHeight : 72) + 26;
             var scrollMarker = window.scrollY + offset;
-            var activeId = navTargets[0].id;
+            var activeId = null;
+            var firstSectionTop = navTargets[0].target.getBoundingClientRect().top + window.scrollY;
+
+            /* Im Hero / oberhalb der ersten Nav-Section: nichts aktiv. */
+            if (scrollMarker < firstSectionTop) {
+                setActiveNav(null);
+                return;
+            }
 
             navTargets.forEach(function(item) {
-                if (scrollMarker >= item.target.offsetTop) {
+                var top = item.target.getBoundingClientRect().top + window.scrollY;
+                if (scrollMarker >= top) {
                     activeId = item.id;
                 }
             });
@@ -2012,7 +2045,6 @@
     </button>
     <div class="bm-step is-active" id="bm-step-0">
       <h2 class="bm-title">Unverbindliches Erstgespräch</h2>
-      <p class="bm-sub">20 Minuten am Telefon. Sie wählen den Termin direkt im Kalender — ein zweites Formular gibt es nicht.</p>
       <div class="bm-cal-wrap" id="bm-cal-wrap"></div>
     </div>
   </div>

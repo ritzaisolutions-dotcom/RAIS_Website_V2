@@ -134,8 +134,11 @@
         if (name !== 'consents' && name !== 'saveConsents') return;
         mounted.forEach(function (entry) {
           if (hasConsent()) {
+            clearReadyTimer(entry);
+            entry.loaded = false;
             activate(entry);
           } else {
+            clearReadyTimer(entry);
             entry.loaded = false;
             renderPlaceholder(entry);
           }
@@ -230,34 +233,111 @@
     window.Cal = Cal;
   }
 
-  function loadScript() {
-    if (scriptPromise) return scriptPromise;
+  function loadScript(scriptUrl) {
+    var src = scriptUrl || target.script;
+    if (scriptPromise && scriptPromise._raisSrc === src) return scriptPromise;
     installStub();
     scriptPromise = new Promise(function (resolve, reject) {
+      var existing = document.querySelector('script[data-rais-cal-embed]');
+      if (existing && existing.getAttribute('src') === src) {
+        if (window.Cal && !window.Cal.q) {
+          resolve();
+          return;
+        }
+        existing.addEventListener('load', function () { resolve(); });
+        existing.addEventListener('error', function () {
+          reject(new Error('cal embed script failed'));
+        });
+        return;
+      }
       var s = document.createElement('script');
-      s.src = target.script;
+      s.src = src;
       s.async = true;
+      s.setAttribute('data-rais-cal-embed', '');
       s.onload = resolve;
       s.onerror = function () { reject(new Error('cal embed script failed')); };
       document.head.appendChild(s);
     });
+    scriptPromise._raisSrc = src;
     return scriptPromise;
+  }
+
+  function clearReadyTimer(entry) {
+    if (entry.readyTimer) {
+      window.clearTimeout(entry.readyTimer);
+      entry.readyTimer = 0;
+    }
+  }
+
+  function markReady(entry) {
+    clearReadyTimer(entry);
+    entry.el.classList.remove('is-loading');
+  }
+
+  function scheduleReadyFallback(entry) {
+    clearReadyTimer(entry);
+    entry.readyTimer = window.setTimeout(function () {
+      entry.readyTimer = 0;
+      if (entry.el.querySelector('iframe')) {
+        markReady(entry);
+        return;
+      }
+      entry.loaded = false;
+      entry.el.classList.remove('is-loading');
+      renderFallbackLink(entry);
+    }, 4000);
+  }
+
+  function renderDirectFrame(entry) {
+    var resolved = entry.target || target;
+    var pageUrl = resolved.origin + '/' + resolved.link;
+    clearReadyTimer(entry);
+    entry.el.classList.remove('is-loading');
+    entry.el.innerHTML = '';
+
+    var frame = document.createElement('iframe');
+    frame.title = t('Termin wählen');
+    frame.src = pageUrl + '?embed=true';
+    frame.loading = 'eager';
+    frame.referrerPolicy = 'strict-origin-when-cross-origin';
+    frame.setAttribute('allow', 'payment');
+    frame.style.width = '100%';
+    frame.style.height = '680px';
+    frame.style.border = '0';
+    frame.style.display = 'block';
+    frame.style.background = '#FBF8F3';
+    entry.el.appendChild(frame);
+
+    var link = document.createElement('a');
+    link.href = pageUrl;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.className = 'cal-direct-link';
+    link.textContent = t('Termin bei Cal.com öffnen');
+    entry.el.appendChild(link);
   }
 
   function activate(entry) {
     if (entry.loaded) return;
     entry.loaded = true;
+    /* Convert-LP: kein Embed-Skript. Direktes Iframe lädt den Kalender
+       auch wenn Klaro schon akzeptiert ist und Cal.js hängen bleibt. */
+    if (entry.noLead) {
+      renderDirectFrame(entry);
+      return;
+    }
     entry.el.innerHTML = '';
     entry.el.classList.add('is-loading');
 
-    loadScript().catch(function () {
+    var resolved = entry.target || target;
+    loadScript(resolved.script).catch(function () {
       entry.loaded = false;
+      clearReadyTimer(entry);
       entry.el.classList.remove('is-loading');
       renderFallbackLink(entry);
     });
 
     var ns = entry.ns;
-    var resolved = entry.target || target;
     var hideDetails = resolved.link.indexOf('immo-ai-roadmap') !== -1;
     window.Cal('init', ns, { origin: resolved.origin });
     var inlineOpts = {
@@ -278,7 +358,7 @@
     window.Cal.ns[ns]('on', {
       action: 'bookingSuccessful',
       callback: function (event) {
-        entry.el.classList.remove('is-loading');
+        markReady(entry);
         submitLead(entry, event && event.detail ? event.detail.data : null);
         /* Local diagnostic only on /makler.html. No persistence. */
         if (window.RAISFunnel && typeof window.RAISFunnel.track === 'function') {
@@ -290,8 +370,9 @@
     });
     window.Cal.ns[ns]('on', {
       action: 'linkReady',
-      callback: function () { entry.el.classList.remove('is-loading'); }
+      callback: function () { markReady(entry); }
     });
+    scheduleReadyFallback(entry);
   }
 
   /* ── Lead nach bestaetigter Buchung ─────────────────────────── */
@@ -395,6 +476,7 @@
     if (!el) return null;
     var options = opts || {};
     var forceLoad = options.ensureConsent === true;
+    var remount = options.remount === true;
     if (forceLoad) ensureConsent();
 
     var existing = null;
@@ -407,16 +489,23 @@
       if (options.calUrl) existing.target = resolveTarget(options.calUrl);
       if (options.config) existing.config = options.config;
       if (typeof options.noLead === 'boolean') existing.noLead = options.noLead;
-      if (existing.loaded && options.config) {
+
+      if (remount || (existing.loaded && options.config) || (!existing.loaded && (forceLoad || hasConsent()))) {
+        clearReadyTimer(existing);
         existing.loaded = false;
         existing.leadSent = false;
         existing.el.innerHTML = '';
-        if (forceLoad || hasConsent()) activate(existing);
-        return existing;
-      }
-      if (!existing.loaded && (forceLoad || hasConsent())) {
-        existing.consentedAt = existing.consentedAt || Date.now();
-        activate(existing);
+        existing.el.classList.remove('is-loading');
+        if (remount) {
+          counter += 1;
+          existing.ns = 'rais-' + counter;
+        }
+        if (forceLoad || remount || hasConsent()) {
+          existing.consentedAt = Date.now();
+          activate(existing);
+        } else {
+          renderPlaceholder(existing);
+        }
       }
       return existing;
     }
@@ -430,6 +519,7 @@
       noLead: options.noLead === true || (el && el.hasAttribute('data-cal-nolead')),
       mountedAt: Date.now(),
       consentedAt: 0,
+      readyTimer: 0,
       source: sanitizeSource(options.source),
       icpSegment: options.icpSegment || null,
       target: resolveEntryTarget(el, options),
