@@ -89,9 +89,13 @@
   /* ── Einwilligung ───────────────────────────────────────────── */
 
   function manager() {
-    return window.klaro && typeof window.klaro.getManager === 'function'
-      ? window.klaro.getManager()
-      : null;
+    try {
+      if (!window.klaro || typeof window.klaro.getManager !== 'function') return null;
+      return window.klaro.getManager();
+    } catch (e) {
+      /* Klaro-Skript blockiert (Adblocker) oder Config nicht geladen. */
+      return null;
+    }
   }
 
   function hasConsent() {
@@ -109,10 +113,14 @@
 
   function grantConsent() {
     var mgr = manager();
-    if (!mgr) return false;
-    mgr.updateConsent(SERVICE, true);
-    mgr.saveAndApplyConsents();
-    return true;
+    if (!mgr || typeof mgr.updateConsent !== 'function') return false;
+    try {
+      mgr.updateConsent(SERVICE, true);
+      mgr.saveAndApplyConsents();
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 
   /* CTA / Modal: gleiche Geste wie der Gate-Button. Wenn Klaro da ist,
