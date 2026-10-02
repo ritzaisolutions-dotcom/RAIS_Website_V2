@@ -1408,22 +1408,13 @@
                         <li>Wir rechnen grob, ob sich der Einstieg für euch lohnt — mit euren Zahlen.</li>
                     </ul>
                 </div>
-                <div class="convert-bridge__guarantees" id="garantie" aria-labelledby="garantie-title">
-                    <img class="convert-bridge__shield" src="images/glass/shield.svg" width="56" height="56" alt="" loading="lazy" decoding="async">
-                    <h2 class="visually-hidden" id="garantie-title">Garantien</h2>
-                    <div class="convert-guarantee-grid">
-                        <article class="convert-guarantee-card">
-                            <p class="convert-guarantee-card__label">Day 1–7</p>
-                            <h3 class="convert-guarantee-card__title">Alignment-Garantie</h3>
-                            <p class="convert-guarantee-card__body">Fühlt sich die erste Woche nicht genau so an wie besprochen — volles Geld zurück, ohne Fragen.</p>
-                            <p class="convert-guarantee-card__sub">Setup + erste Betreuung. Media nur wenn noch nicht ausgegeben.</p>
-                        </article>
-                        <article class="convert-guarantee-card">
-                            <p class="convert-guarantee-card__label">Day 1–60</p>
-                            <h3 class="convert-guarantee-card__title">ROI Geld-zurück-Garantie</h3>
-                            <p class="convert-guarantee-card__body">Zahlt sich das System in 60 Tagen nicht für euch aus — bekommt ihr euer Geld zurück.</p>
-                            <p class="convert-guarantee-card__sub">Voraussetzung: Mitwirkung und Live. Closing macht ihr.</p>
-                        </article>
+                <div class="convert-bridge__guarantees garantie" id="garantie" aria-labelledby="garantie-title">
+                    <img class="garantie__icon convert-bridge__shield" src="images/glass/shield.svg" width="56" height="56" alt="" loading="lazy" decoding="async">
+                    <div class="garantie__copy">
+                        <span class="mono-label">7 · 60 Tage</span>
+                        <h2 class="section-h2" id="garantie-title">Zwei Garantien. Unser Risiko.</h2>
+                        <p class="garantie__body"><strong>Day 1–7 · Alignment:</strong> Fühlt sich die erste Woche nicht genau so an wie besprochen — volles Geld zurück, ohne Fragen. Setup + erste Betreuung. Media nur wenn noch nicht ausgegeben.</p>
+                        <p class="garantie__body"><strong>Day 1–60 · ROI Geld-zurück:</strong> Zahlt sich das System in 60 Tagen nicht für euch aus — bekommt ihr euer Geld zurück. Voraussetzung: Mitwirkung und Live. Closing macht ihr.</p>
                     </div>
                 </div>
                 <div class="convert-bridge__cta">
@@ -1459,22 +1450,40 @@
             <div class="section-wrap">
                 <span class="mono-label">Vorher → Nachher</span>
                 <h2 class="section-h2" id="old-new-title">Vom Hoffen zu planbaren Gesprächen.</h2>
-                <div class="convert-before-after" role="table" aria-label="Vorher und Nachher">
-                    <div class="convert-before-after__head" role="row">
-                        <span role="columnheader">Vorher</span>
-                        <span role="columnheader">Nachher</span>
+                <div class="convert-split">
+                    <div class="convert-split__col">
+                        <h3 class="convert-split__h">Vorher</h3>
+                        <ul class="convert-split__list">
+                            <li>
+                                <span class="convert-split__num" aria-hidden="true">1</span>
+                                <strong>Wenige oder unklare Anfragen</strong>
+                            </li>
+                            <li>
+                                <span class="convert-split__num" aria-hidden="true">2</span>
+                                <strong>Stunden für Filter, Rückfragen, Terminieren</strong>
+                            </li>
+                            <li>
+                                <span class="convert-split__num" aria-hidden="true">3</span>
+                                <strong>Zu wenig Kauf-/Verkaufsmandate</strong>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="convert-before-after__row" role="row">
-                        <span role="cell">Wenige oder unklare Anfragen</span>
-                        <span role="cell">Qualifizierte Anfragen + Termine im Kalender</span>
-                    </div>
-                    <div class="convert-before-after__row" role="row">
-                        <span role="cell">Stunden für Filter, Rückfragen, Terminieren</span>
-                        <span role="cell">Quali und Terminsetzen laufen Done-for-you</span>
-                    </div>
-                    <div class="convert-before-after__row" role="row">
-                        <span role="cell">Zu wenig Kauf-/Verkaufsmandate</span>
-                        <span role="cell">Meta über GF-Profil: Ankauf + Mandats-Termine</span>
+                    <div class="convert-split__col convert-split__col--new">
+                        <h3 class="convert-split__h">Nachher</h3>
+                        <ul class="convert-split__list">
+                            <li>
+                                <span class="convert-split__num convert-split__num--new" aria-hidden="true">1</span>
+                                <strong>Qualifizierte Anfragen + Termine im Kalender</strong>
+                            </li>
+                            <li>
+                                <span class="convert-split__num convert-split__num--new" aria-hidden="true">2</span>
+                                <strong>Quali und Terminsetzen laufen Done-for-you</strong>
+                            </li>
+                            <li>
+                                <span class="convert-split__num convert-split__num--new" aria-hidden="true">3</span>
+                                <strong>Meta über GF-Profil: Ankauf + Mandats-Termine</strong>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -1524,43 +1533,64 @@
                     <li class="step-rail__item" data-step="0">
                         <span class="step-rail__dot" aria-hidden="true"></span>
                         <span class="step-rail__num">01</span>
-                        <strong class="step-rail__title">Markt- &amp; Personenverständnis</strong>
+                        <span class="step-rail__head">
+                            <svg class="step-rail__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s6.5-5.2 6.5-11a6.5 6.5 0 1 0-13 0c0 5.8 6.5 11 6.5 11Z"/><circle cx="12" cy="10" r="2.25"/></svg>
+                            <strong class="step-rail__title">Markt- &amp; Personenverständnis</strong>
+                        </span>
                         <span class="step-rail__desc">Wer Sie sind, lokaler Markt, wie Sie vermarktet werden.</span>
                     </li>
                     <li class="step-rail__item" data-step="1">
                         <span class="step-rail__dot" aria-hidden="true"></span>
                         <span class="step-rail__num">02</span>
-                        <strong class="step-rail__title">Konzeption &amp; Visuals</strong>
+                        <span class="step-rail__head">
+                            <svg class="step-rail__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 8.5 20 5v14l-5-3.5"/><rect x="3" y="5" width="12" height="14" rx="1.5"/></svg>
+                            <strong class="step-rail__title">Konzeption &amp; Visuals</strong>
+                        </span>
                         <span class="step-rail__desc">Gemeinsam: wir skripten, Sie filmen; wir editieren fertig.</span>
                     </li>
                     <li class="step-rail__item" data-step="2">
                         <span class="step-rail__dot" aria-hidden="true"></span>
                         <span class="step-rail__num">03</span>
-                        <strong class="step-rail__title">Kampagne aufsetzen</strong>
+                        <span class="step-rail__head">
+                            <svg class="step-rail__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3"/><path d="M12 18v3"/><path d="M3 12h3"/><path d="M18 12h3"/><circle cx="12" cy="12" r="3.25"/><path d="m16.2 7.8 2.1-2.1"/><path d="m5.7 18.3 2.1-2.1"/><path d="m16.2 16.2 2.1 2.1"/><path d="m5.7 5.7 2.1 2.1"/></svg>
+                            <strong class="step-rail__title">Kampagne aufsetzen</strong>
+                        </span>
                         <span class="step-rail__desc">Struktur und Setup, bevor das Werbebudget fließt.</span>
                     </li>
                     <li class="step-rail__item" data-step="3">
                         <span class="step-rail__dot" aria-hidden="true"></span>
                         <span class="step-rail__num">04</span>
-                        <strong class="step-rail__title">Start der Werbung</strong>
+                        <span class="step-rail__head">
+                            <svg class="step-rail__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11v2a1 1 0 0 0 1 1h1.4l3.1 4.2A1.5 1.5 0 0 0 11 17.2V6.8a1.5 1.5 0 0 0-2.5-1L5.4 10H4a1 1 0 0 0-1 1Z"/><path d="M15.5 8.5a4.5 4.5 0 0 1 0 7"/><path d="M18 6a8 8 0 0 1 0 12"/></svg>
+                            <strong class="step-rail__title">Start der Werbung</strong>
+                        </span>
                         <span class="step-rail__desc">Danach starten die Anzeigen.</span>
                     </li>
                     <li class="step-rail__item" data-step="4">
                         <span class="step-rail__dot" aria-hidden="true"></span>
                         <span class="step-rail__num">05</span>
-                        <strong class="step-rail__title">Interessenten tragen sich ein</strong>
+                        <span class="step-rail__head">
+                            <svg class="step-rail__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4h8a2 2 0 0 1 2 2v14l-6-3-6 3V6a2 2 0 0 1 2-2Z"/><path d="M10 9h4"/><path d="M10 13h4"/></svg>
+                            <strong class="step-rail__title">Interessenten tragen sich ein</strong>
+                        </span>
                         <span class="step-rail__desc">Formulare aus den Kampagnen (und Portale/Web laufen parallel).</span>
                     </li>
                     <li class="step-rail__item" data-step="5">
                         <span class="step-rail__dot" aria-hidden="true"></span>
                         <span class="step-rail__num">06</span>
-                        <strong class="step-rail__title">Qualifizierung</strong>
+                        <span class="step-rail__head">
+                            <svg class="step-rail__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 10h.01"/><path d="M12 10h.01"/><path d="M16 10h.01"/><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.6L4 21l1.9-4.4A8.5 8.5 0 1 1 21 11.5Z"/><path d="m9.5 14.5 1.6 1.1 3.4-3.6"/></svg>
+                            <strong class="step-rail__title">Qualifizierung</strong>
+                        </span>
                         <span class="step-rail__desc">Anzeigen-Anfragen per WhatsApp; Portal-/Website-Anfragen per E-Mail; nach Ihren Regeln.</span>
                     </li>
                     <li class="step-rail__item" data-step="6">
                         <span class="step-rail__dot" aria-hidden="true"></span>
                         <span class="step-rail__num">07</span>
-                        <strong class="step-rail__title">Termin in Ihrem Kalender</strong>
+                        <span class="step-rail__head">
+                            <svg class="step-rail__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M8 3v4"/><path d="M16 3v4"/><path d="M3.5 10h17"/><path d="m9.5 15 1.7 1.7 3.8-3.8"/></svg>
+                            <strong class="step-rail__title">Termin in Ihrem Kalender</strong>
+                        </span>
                         <span class="step-rail__desc">Nur Qualifizierte, nach Ihren Bedingungen; Abschluss bei Ihnen.</span>
                     </li>
                 </ol>
@@ -1737,7 +1767,7 @@
                     <div class="contact-deliver__cta">
                         <p class="cal-card-sub">Verbindliches Strategiegespräch · Telefon</p>
                         <div class="cal-surface">
-                            <div class="cal-inline" data-cal-inline data-cal-click data-cal-nolead data-source="termin" data-cal-url="https://cal.com/ritzaisolutions/akut-fit-call" id="cal-inline-termin"></div>
+                            <div class="cal-inline" data-cal-inline data-cal-nolead data-source="termin" data-cal-url="https://cal.com/ritzaisolutions/akut-fit-call" id="cal-inline-termin"></div>
                         </div>
                         <p class="contact-deliver__trust">Kevin Ritz · Akut Fit-Call · kein Verkaufsdruck</p>
                     </div>

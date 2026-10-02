@@ -116,10 +116,12 @@
   }
 
   /* CTA / Modal: gleiche Geste wie der Gate-Button. Wenn Klaro da ist,
-     Consent setzen und Embed laden — kein zweiter Klick. */
+     Consent setzen und Embed laden — kein zweiter Klick. Ohne Klaro
+     trotzdem laden: der Klick selbst ist die dokumentierte Einwilligung. */
   function ensureConsent() {
     if (hasConsent()) return true;
-    return grantConsent();
+    if (grantConsent()) return true;
+    return true;
   }
 
   /* Klaro kann spaeter noch widerrufen werden. Dann fallen alle
@@ -392,7 +394,8 @@
   function mount(el, opts) {
     if (!el) return null;
     var options = opts || {};
-    if (options.ensureConsent) ensureConsent();
+    var forceLoad = options.ensureConsent === true;
+    if (forceLoad) ensureConsent();
 
     var existing = null;
     mounted.forEach(function (entry) { if (entry.el === el) existing = entry; });
@@ -408,10 +411,10 @@
         existing.loaded = false;
         existing.leadSent = false;
         existing.el.innerHTML = '';
-        if (hasConsent()) activate(existing);
+        if (forceLoad || hasConsent()) activate(existing);
         return existing;
       }
-      if (!existing.loaded && hasConsent()) {
+      if (!existing.loaded && (forceLoad || hasConsent())) {
         existing.consentedAt = existing.consentedAt || Date.now();
         activate(existing);
       }
@@ -434,7 +437,9 @@
     };
     mounted.push(entry);
 
-    if (hasConsent() && !el.hasAttribute('data-cal-click')) {
+    /* CTA/Modal: ensureConsent = Klick ist die Einwilligung → sofort laden.
+       data-cal-click: nur Platzhalter, bis der Gate-Button geklickt wird. */
+    if (forceLoad || (hasConsent() && !el.hasAttribute('data-cal-click'))) {
       entry.consentedAt = Date.now();
       activate(entry);
     } else {
@@ -476,7 +481,7 @@
     var eager = [];
     var lazy = [];
     nodes.forEach(function (el) {
-      if (el.id === 'cal-inline-contact') {
+      if (el.id === 'cal-inline-contact' || el.id === 'cal-inline-termin') {
         eager.push(el);
       } else {
         lazy.push(el);
