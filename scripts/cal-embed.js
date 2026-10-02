@@ -305,24 +305,30 @@
 
     var frame = document.createElement('iframe');
     frame.title = t('Termin wählen');
-    frame.src = 'https://app.cal.com/' + resolved.link + '?embed=true&layout=month_view';
+    /* Monat zuerst, ohne die lange Event-Beschreibung darüber.
+       Danach Zeit, dann Angaben — alles in derselben Höhe. */
+    frame.src = 'https://app.cal.com/' + resolved.link
+      + '/embed?embedType=inline&layout=month_view&hideEventTypeDetails=true&theme=light';
     frame.loading = 'eager';
     frame.referrerPolicy = 'strict-origin-when-cross-origin';
     frame.setAttribute('allow', 'payment');
     frame.style.width = '100%';
-    frame.style.height = '680px';
+    frame.style.height = '100%';
+    frame.style.minHeight = '560px';
     frame.style.border = '0';
     frame.style.display = 'block';
-    frame.style.background = '#FBF8F3';
+    frame.style.background = '#fff';
     entry.el.appendChild(frame);
 
-    var link = document.createElement('a');
-    link.href = pageUrl;
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    link.className = 'cal-direct-link';
-    link.textContent = t('Termin bei Cal.com öffnen');
-    entry.el.appendChild(link);
+    if (entry.el.id !== 'bm-cal-wrap') {
+      var link = document.createElement('a');
+      link.href = pageUrl;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.className = 'cal-direct-link';
+      link.textContent = t('Termin bei Cal.com öffnen');
+      entry.el.appendChild(link);
+    }
   }
 
   function activate(entry) {

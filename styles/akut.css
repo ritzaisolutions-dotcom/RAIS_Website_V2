@@ -209,9 +209,34 @@
 
 .page-akut .bm-cal-wrap,
 .page-akut .cal-surface .cal-inline {
-  min-height: 680px;
+  min-height: 560px;
+  height: min(72vh, 680px);
   color-scheme: light;
-  background: #FBF8F3;
+  background: #fff;
+  overflow: hidden;
+}
+
+.page-akut #booking-modal .bm-box {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding-bottom: 1.25rem;
+}
+
+.page-akut #booking-modal .bm-step.is-active {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  flex: 1;
+}
+
+.page-akut #booking-modal .bm-cal-wrap {
+  flex: 1;
+  margin-top: 0.75rem;
+}
+
+.page-akut #booking-modal .bm-title {
+  margin-bottom: 0;
 }
 
 .page-akut .cal-surface .cal-inline {
