@@ -6,11 +6,34 @@
 }
 
 .page-akut .convert-hero__h1 {
-  max-width: 38rem;
+  max-width: min(42rem, 100%);
+}
+
+.page-akut .convert-hero__h1 .hero-h1__line {
+  display: block;
+  text-wrap: pretty;
+}
+
+@media (min-width: 720px) {
+  .page-akut .convert-hero__h1 .hero-h1__line {
+    white-space: nowrap;
+  }
 }
 
 .page-akut #hero .hero-h1__mark {
   color: #EC6A37;
+}
+
+.page-akut #hero .hero-h1--promise {
+  display: block;
+  font-size: clamp(1.35rem, 3.2vw, 2.05rem);
+  line-height: 1.28;
+}
+
+@media (max-width: 600px) {
+  .page-akut #hero .hero-h1--promise {
+    font-size: clamp(1.2rem, 5.4vw, 1.55rem);
+  }
 }
 
 .page-akut #hero .hero-content {
@@ -21,12 +44,36 @@
   margin-top: 0.25rem;
 }
 
+@media (max-width: 720px) {
+  /* Langer Nav-CTA springt sonst aus der Pill und überdeckt den Inhalt. */
+  .page-akut #navbar .nav-right .btn-primary {
+    display: none;
+  }
+}
+
 .page-akut .convert-hero__guarantee {
   margin: 0;
   font-size: clamp(0.95rem, 2vw, 1.05rem);
   font-weight: 600;
   color: rgba(251, 248, 243, 0.92);
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+}
+
+.page-akut .cal-surface {
+  width: 100%;
+  max-width: 40rem;
+  padding: 0.85rem;
+  border-radius: var(--radius-md, 1.1rem);
+  background: #FBF8F3;
+  border: 1px solid rgba(251, 248, 243, 0.22);
+  color: #2F2A24;
+  color-scheme: light;
+}
+
+.page-akut .cal-surface .cal-inline {
+  margin-top: 0;
+  color-scheme: light;
+  background: #FBF8F3;
 }
 
 .page-akut .vsl--poster-only .vsl__frame {

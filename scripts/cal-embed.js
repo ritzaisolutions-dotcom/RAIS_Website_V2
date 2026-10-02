@@ -269,6 +269,7 @@
     window.Cal.ns[ns]('inline', inlineOpts);
     window.Cal.ns[ns]('ui', {
       theme: 'light',
+      colorScheme: 'light',
       cssVarsPerTheme: { light: { 'cal-brand': '#EC6A37' } },
       hideEventTypeDetails: hideDetails
     });
