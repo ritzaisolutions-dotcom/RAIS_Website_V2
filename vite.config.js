@@ -34,7 +34,6 @@ export default defineConfig({
         ueberUns: resolve(__dirname, 'ueber-uns.html'),
         persoenlichkeit: resolve(__dirname, 'persoenlichkeit.html'),
         aiRoadmap: resolve(__dirname, 'ai-roadmap.html'),
-        akut: resolve(__dirname, 'akut.html'),
         roiPraemissen: resolve(__dirname, 'roi-praemissen.html'),
         // Flaggschiff-Systemseiten. Erzeugt von scripts/build-pages.mjs aus
         // allen Eintraegen mit `slug` in scripts/systemakte-data.mjs.

@@ -37,6 +37,7 @@ const copyTargets = [
   { from: 'styles/ai-roadmap.css', to: 'styles/ai-roadmap.css' },
   { from: 'styles/glass-motion.css', to: 'styles/glass-motion.css' },
   { from: 'styles/akut.css', to: 'styles/akut.css' },
+  { from: 'styles/roi-praemissen.css', to: 'styles/roi-praemissen.css' },
   { from: 'fonts.css', to: 'fonts.css' },
   { from: 'favicon.svg', to: 'favicon.svg' },
   { from: 'favicon.png', to: 'favicon.png' },
@@ -55,8 +56,8 @@ const sharedStyles = [
   'styles/glass-motion.css',
 ];
 
-/* Ads-LP: kein Corporate-Home-CSS, kein Booking-Modal, kein Glass. */
-const akutSharedStyles = [
+/* Convert-Home (index.html): kein Corporate-Home-CSS, kein Booking-Modal, kein Glass. */
+const convertSharedStyles = [
   'fonts.css',
   'styles/antigravity-polish.css',
   'styles/tailwind.generated.css',
@@ -66,7 +67,8 @@ const akutSharedStyles = [
 
 const pageStyles = {
   'ai-roadmap.html': ['styles/ai-roadmap.css'],
-  'akut.html': ['styles/akut.css'],
+  'index.html': ['styles/akut.css'],
+  'roi-praemissen.html': ['styles/roi-praemissen.css'],
 };
 
 mkdirSync(dist, { recursive: true });
@@ -80,7 +82,7 @@ for (const { from, to } of copyTargets) {
 function ensureStyles(html, pageName) {
   let out = html;
   const tags = [];
-  const base = pageName === 'akut.html' ? akutSharedStyles : sharedStyles;
+  const base = pageName === 'index.html' ? convertSharedStyles : sharedStyles;
   const hrefs = base.concat(pageStyles[pageName] || []);
   for (const href of hrefs) {
     if (out.includes(href)) continue;
