@@ -434,7 +434,7 @@
     };
     mounted.push(entry);
 
-    if (hasConsent()) {
+    if (hasConsent() && !el.hasAttribute('data-cal-click')) {
       entry.consentedAt = Date.now();
       activate(entry);
     } else {
@@ -476,7 +476,7 @@
     var eager = [];
     var lazy = [];
     nodes.forEach(function (el) {
-      if (el.id === 'cal-inline-contact' || el.id === 'cal-inline-termin' || el.classList.contains('cal-inline--contact')) {
+      if (el.id === 'cal-inline-contact') {
         eager.push(el);
       } else {
         lazy.push(el);
