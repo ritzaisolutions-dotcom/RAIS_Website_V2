@@ -36,6 +36,7 @@ const copyTargets = [
   { from: 'styles/tailwind.generated.css', to: 'styles/tailwind.generated.css' },
   { from: 'styles/ai-roadmap.css', to: 'styles/ai-roadmap.css' },
   { from: 'styles/glass-motion.css', to: 'styles/glass-motion.css' },
+  { from: 'styles/akut.css', to: 'styles/akut.css' },
   { from: 'fonts.css', to: 'fonts.css' },
   { from: 'favicon.svg', to: 'favicon.svg' },
   { from: 'favicon.png', to: 'favicon.png' },
@@ -54,8 +55,18 @@ const sharedStyles = [
   'styles/glass-motion.css',
 ];
 
+/* Ads-LP: kein Corporate-Home-CSS, kein Booking-Modal, kein Glass. */
+const akutSharedStyles = [
+  'fonts.css',
+  'styles/antigravity-polish.css',
+  'styles/tailwind.generated.css',
+  'styles/site-multipage.css',
+  'styles/akut.css',
+];
+
 const pageStyles = {
   'ai-roadmap.html': ['styles/ai-roadmap.css'],
+  'akut.html': ['styles/akut.css'],
 };
 
 mkdirSync(dist, { recursive: true });
@@ -69,7 +80,8 @@ for (const { from, to } of copyTargets) {
 function ensureStyles(html, pageName) {
   let out = html;
   const tags = [];
-  const hrefs = sharedStyles.concat(pageStyles[pageName] || []);
+  const base = pageName === 'akut.html' ? akutSharedStyles : sharedStyles;
+  const hrefs = base.concat(pageStyles[pageName] || []);
   for (const href of hrefs) {
     if (out.includes(href)) continue;
     tags.push(`  <link rel="stylesheet" href="${href}">`);

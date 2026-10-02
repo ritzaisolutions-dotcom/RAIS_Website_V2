@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ROI-Prämissen &amp; Rechnungsweg | RAIS</title>
+    <meta name="description" content="Beispielrechnung für Werbebudget und Betreuung: Prämissen, CPL, Rechnungsweg und Zahlentabelle. Spekulativ — keine Garantie." />
+    <meta name="robots" content="noindex, follow" />
+    <link rel="canonical" href="https://www.ritz-ai.solutions/roi-praemissen" />
+    <link rel="icon" type="image/png" href="favicon.png?v=3" />
+    <link rel="stylesheet" href="fonts.css" />
+    <link rel="stylesheet" href="styles/site-multipage.css" />
+    <link rel="stylesheet" href="styles/roi-praemissen.css" />
+</head>
+<body class="page-roi-praemissen">
+    <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+    <header class="rp-header no-print" id="navbar">
+        <div class="rp-header__inner">
+            <a href="/" class="rp-brand" aria-label="RAIS Startseite">
+                <img src="favicon.svg" alt="" width="32" height="32" />
+                <span>RAIS</span>
+            </a>
+            <nav class="rp-nav" aria-label="Seitenlinks">
+                <a href="/#roi">Zurück zum Rechner</a>
+                <button type="button" class="rp-btn rp-btn--ghost" id="rp-print-btn">Seite als PDF speichern</button>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main" class="rp-main">
+        <div class="rp-wrap">
+            <p class="rp-eyebrow">Beispielrechnung · spekulativ</p>
+            <h1 class="rp-h1">Woher kommen die Zahlen?</h1>
+            <p class="rp-lead">Alle Prämissen und der Rechnungsweg hinter dem Werbebudget-Rechner auf der Startseite. Keine Garantie für Abschlüsse, Mandate oder Courtage — der Abschluss liegt bei Ihnen.</p>
+
+            <section class="rp-section" aria-labelledby="rp-cost-title">
+                <h2 class="rp-h2" id="rp-cost-title">Was Sie zahlen</h2>
+                <ul class="rp-cost-list">
+                    <li><strong>Setup</strong> 3.900 € einmalig</li>
+                    <li><strong>Betreuung</strong> 1.500 € / Monat</li>
+                    <li><strong>Media</strong> ab 1.000 € / Monat auf Ihrem Werbekonto — extra, direkt an Meta</li>
+                </ul>
+                <p class="rp-note">Monatskosten in der Kurve = Media + 1.500 € Betreuung. Setup ist nicht in der Monatskurve enthalten.</p>
+            </section>
+
+            <section class="rp-section" aria-labelledby="rp-prem-title">
+                <h2 class="rp-h2" id="rp-prem-title">Prämissen</h2>
+                <p class="rp-note">Default-Mix 70/30 Ankauf–Verkauf. Alternative: 50/50.</p>
+                <div class="rp-table-wrap">
+                    <table class="rp-table">
+                        <caption>Annahmen für Ankauf und Verkauf</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Größe</th>
+                                <th scope="col">Ankauf</th>
+                                <th scope="col">Verkauf</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">CPL (Kosten je Anfrage)</th>
+                                <td>35 €</td>
+                                <td>50 €</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Setzquote (Termin gebucht)</th>
+                                <td>35 %</td>
+                                <td>30 %</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Erscheinen</th>
+                                <td>65 %</td>
+                                <td>65 %</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Abschluss Best</th>
+                                <td>8 % der Ankauf-Termine</td>
+                                <td>2 % der Verkaufs-Anfragen</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Courtage (Modell)</th>
+                                <td>10.000 €</td>
+                                <td>12.000 €</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <ul class="rp-cost-list">
+                    <li><strong>Best</strong> = Planumsatz bei den Annahmen oben</li>
+                    <li><strong>Worst</strong> = 50 % von Best</li>
+                    <li><strong>Base</strong> = 75 % von Best (nur intern / Referenz)</li>
+                    <li><strong>Kosten</strong> = Media + 1.500 €</li>
+                </ul>
+            </section>
+
+            <section class="rp-section" aria-labelledby="rp-steps-title">
+                <h2 class="rp-h2" id="rp-steps-title">Rechnungsweg in fünf Schritten</h2>
+                <ol class="rp-steps">
+                    <li><strong>Media-Split.</strong> Ihr Werbebudget wird nach Mix geteilt (z. B. 70 % Ankauf, 30 % Verkauf).</li>
+                    <li><strong>Anfragen.</strong> Ankauf-Anfragen = Ankauf-Media ÷ 35 € CPL. Verkaufs-Anfragen = Verkaufs-Media ÷ 50 € CPL.</li>
+                    <li><strong>Termine.</strong> Ankauf-Termine ≈ Anfragen × 35 % × 65 %. Verkaufs-Termine ≈ Anfragen × 30 % × 65 %.</li>
+                    <li><strong>Best-Umsatz.</strong> Ankauf: Termine × 8 % × 10.000 €. Verkauf: Verkaufs-Anfragen × 2 % × 12.000 €. Summe = Best.</li>
+                    <li><strong>Worst, Kosten, Gap.</strong> Worst = Best × 50 %. Kosten = Media + 1.500 €. Gap = Best − Kosten bzw. Worst − Kosten.</li>
+                </ol>
+            </section>
+
+            <section class="rp-section" aria-labelledby="rp-table-title">
+                <h2 class="rp-h2" id="rp-table-title">Zahlentabelle Media 1.000–5.000 € (Mix 70/30)</h2>
+                <div class="rp-table-wrap">
+                    <table class="rp-table">
+                        <caption>Beispielrechnung spekulativ — gleiche Formel wie der Rechner auf der Startseite</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Media</th>
+                                <th scope="col">Kosten</th>
+                                <th scope="col">Worst</th>
+                                <th scope="col">Best</th>
+                                <th scope="col">Worst − Kosten</th>
+                                <th scope="col">Best − Kosten</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1.000 €</td>
+                                <td>2.500 €</td>
+                                <td>2.540 €</td>
+                                <td>5.080 €</td>
+                                <td>40 €</td>
+                                <td>2.580 €</td>
+                            </tr>
+                            <tr>
+                                <td>2.000 €</td>
+                                <td>3.500 €</td>
+                                <td>5.080 €</td>
+                                <td>10.160 €</td>
+                                <td>1.580 €</td>
+                                <td>6.660 €</td>
+                            </tr>
+                            <tr>
+                                <td>3.000 €</td>
+                                <td>4.500 €</td>
+                                <td>7.620 €</td>
+                                <td>15.240 €</td>
+                                <td>3.120 €</td>
+                                <td>10.740 €</td>
+                            </tr>
+                            <tr>
+                                <td>4.000 €</td>
+                                <td>5.500 €</td>
+                                <td>10.160 €</td>
+                                <td>20.320 €</td>
+                                <td>4.660 €</td>
+                                <td>14.820 €</td>
+                            </tr>
+                            <tr>
+                                <td>5.000 €</td>
+                                <td>6.500 €</td>
+                                <td>12.700 €</td>
+                                <td>25.400 €</td>
+                                <td>6.200 €</td>
+                                <td>18.900 €</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="rp-section" aria-labelledby="rp-not-title">
+                <h2 class="rp-h2" id="rp-not-title">Was wir nicht behaupten</h2>
+                <ul class="rp-cost-list">
+                    <li>Keine Abschlussgarantie</li>
+                    <li>Keine Zusage zu Mandaten oder Courtage</li>
+                    <li>Keine Garantie, dass Worst den Monat trägt — nur ein Modell</li>
+                </ul>
+            </section>
+
+            <div class="rp-actions no-print">
+                <button type="button" class="rp-btn" id="rp-print-btn-2">Seite als PDF speichern</button>
+                <a class="rp-btn rp-btn--ghost" href="/#roi">Zurück zum Rechner</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="rp-footer no-print">
+        <div class="rp-wrap rp-footer__inner">
+            <a href="/">RAIS</a>
+            <nav aria-label="Rechtliches">
+                <a href="impressum.html">Impressum</a>
+                <a href="datenschutz.html">Datenschutz</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+    (function () {
+      function printPage() {
+        window.print();
+      }
+      var btn1 = document.getElementById('rp-print-btn');
+      var btn2 = document.getElementById('rp-print-btn-2');
+      if (btn1) btn1.addEventListener('click', printPage);
+      if (btn2) btn2.addEventListener('click', printPage);
+      try {
+        if (new URLSearchParams(window.location.search).get('print') === '1') {
+          window.setTimeout(printPage, 400);
+        }
+      } catch (e) { /* ignore */ }
+    }());
+    </script>
+</body>
+</html>

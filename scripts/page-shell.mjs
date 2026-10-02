@@ -18,10 +18,8 @@ export const i18nBootHtml = `<script>
 </script>`;
 
 export function langToggleHtml() {
-  return `<div class="lang-toggle" data-i18n-ignore role="group" aria-label="Sprache / Language">
-      <button type="button" class="lang-toggle__btn" data-lang-set="de" aria-pressed="true">DE</button>
-      <button type="button" class="lang-toggle__btn" data-lang-set="en" aria-pressed="false">EN</button>
-    </div>`;
+  // DE-only site — no language switcher.
+  return '';
 }
 
 export const i18nScriptsHtml = `

@@ -11,7 +11,11 @@
   var items = root.querySelectorAll('.step-rail__item[data-step]');
   if (!items.length) return;
 
-  var DURATION_MS = 2800;
+  var STEP_STAGGER_MS = 560;
+  var DURATION_MS = Math.max(
+    2800,
+    (items.length - 1) * STEP_STAGGER_MS + 1200
+  );
   var reduce =
     window.matchMedia &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;

@@ -10,6 +10,13 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const path = resolve(root, 'index.html');
 let html = readFileSync(path, 'utf8');
 
+/* Convert-Home ist handgeschrieben. Der VSL-Home-Patch würde
+   die 9-Section-Spine überschreiben. */
+if (html.includes('data-page="convert"')) {
+  console.log('_patch-home-filter: convert home, main left untouched');
+  process.exit(0);
+}
+
 const TITLE = 'RAIS | Systeme für Makler, Berater und Agenturen';
 const DESC =
   'Für Sie erledigt: ein Wachstumssystem, das sich selbst zahlt — oder Sie bekommen Ihre Monatsbeiträge zurück. Für Makler, Berater und Agenturen.';

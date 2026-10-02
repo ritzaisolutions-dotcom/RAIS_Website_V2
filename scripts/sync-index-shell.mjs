@@ -17,6 +17,13 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const indexPath = resolve(root, 'index.html');
 let html = readFileSync(indexPath, 'utf8');
 
+/* Convert-Home ist handgeschrieben. Der Shell-Sync würde Audit-Nav,
+   Sprachumschalter und Buchungsmodal wieder einsetzen. */
+if (html.includes('data-page="convert"')) {
+  console.log('sync-index-shell: convert home, shell left untouched');
+  process.exit(0);
+}
+
 /** Home nav: minimal shell (logo + audit). */
 function homeNavHtml() {
   return navHtml(null);

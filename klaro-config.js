@@ -67,7 +67,14 @@ var klaroConfig = {
     try { return localStorage.getItem('rais-lang') === 'en' ? 'en' : 'de'; }
     catch (e) { return 'de'; }
   }()),
-  mustConsent: true,
+  mustConsent: (function () {
+    try {
+      var path = (window.location && window.location.pathname) || '';
+      // Privacy policy must stay readable — no cookie wall (Care.com-style).
+      if (/\/datenschutz(\.html)?\/?$/i.test(path)) return false;
+    } catch (e) { /* ignore */ }
+    return true;
+  }()),
   acceptAll: true,
   hideDeclineAll: false,
   privacyPolicy: '/datenschutz.html',

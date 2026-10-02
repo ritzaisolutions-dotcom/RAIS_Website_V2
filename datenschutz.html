@@ -299,12 +299,34 @@
         .placeholder-block strong {
             color: hsl(var(--industrial-orange));
         }
+
+        .ds-klaro-btn {
+            display: inline;
+            margin: 0;
+            padding: 0;
+            border: none;
+            background: none;
+            color: hsl(var(--industrial-orange));
+            font: inherit;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .ds-klaro-btn:hover,
+        .ds-klaro-btn:focus-visible {
+            color: hsl(var(--foreground));
+        }
+
+        /* Privacy page: no cookie wall — settings via button only */
+        .page-datenschutz .klaro .cookie-notice {
+            display: none !important;
+        }
     </style>
 </head>
-<body>
+<body class="page-datenschutz">
 <header class="site-shell topbar">
     <a href="/" class="brand">RAIS</a>
-    <div class="lang-toggle" data-i18n-ignore role="group" aria-label="Sprache / Language">
+    <div class="lang-toggle" data-i18n-ignore role="group" aria-label="Sprache / Language" hidden>
         <button type="button" class="lang-toggle__btn" data-lang-set="de" aria-pressed="true">DE</button>
         <button type="button" class="lang-toggle__btn" data-lang-set="en" aria-pressed="false">EN</button>
     </div>
@@ -378,6 +400,7 @@ E-Mail: kevin@ritz-ai.solutions</p>
                 <p>Wir verwenden auf dieser Website das Open-Source-Consent-Management-Tool <strong>Klaro</strong>, um Einwilligungen für einwilligungsbedürftige Dienste zu verwalten und technisch abzubilden. Klaro wird von unserem eigenen Server ausgeliefert (selbst gehostet) – es werden keine Consent-Daten an den Klaro-Anbieter oder externe Consent-CDNs übermittelt.</p>
                 <p>Die Consent-Entscheidungen werden im Browser des Nutzers (localStorage) gespeichert und zur Erfüllung unserer Nachweispflicht gemäß Art.&nbsp;7 Abs.&nbsp;1 DSGVO zusätzlich in unserer Supabase-Datenbank synchronisiert (siehe nächster Absatz). Rechtsgrundlage für den Einsatz von Klaro ist Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;c DSGVO sowie Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;f DSGVO (berechtigtes Interesse an der rechtssicheren Verwaltung von Einwilligungen).</p>
                 <p>Weitere Informationen zu Klaro: <a href="https://klaro.org" target="_blank" rel="noopener noreferrer">https://klaro.org</a>.</p>
+                <p>Auf dieser Seite öffnet sich der Einwilligungsdialog nicht automatisch — Sie sollen die Erklärung ungestört lesen können. Einstellungen jederzeit öffnen: <button type="button" class="ds-klaro-btn" id="ds-klaro-open">Datenschutzeinstellungen öffnen</button>.</p>
                 <p>Zur Erfüllung unserer Nachweispflicht nach Art.&nbsp;7 Abs.&nbsp;1 DSGVO speichern wir Ihre Consent-Entscheidung zusätzlich zur lokalen Speicherung in unserer Supabase-Datenbank (Tabelle für Consent-Nachweise; verarbeitet werden eine zufällig erzeugte pseudonyme Browser-ID, die getroffene Auswahl je Dienst und die aufgerufene Seite). Diese Browser-ID wird als personenbezogenes Datum behandelt und ebenfalls lokal in Ihrem Browser (localStorage) gespeichert, um Mehrfacheinträge zu vermeiden. Rechtsgrundlage ist Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;c DSGVO i.&nbsp;V.&nbsp;m. Art.&nbsp;7 Abs.&nbsp;1 DSGVO.</p>
 
                 <h3>Sentry (Fehlerüberwachung)</h3>
@@ -454,5 +477,16 @@ E-Mail: kevin@ritz-ai.solutions</p>
 </footer>
 <script src="scripts/i18n-dict.js"></script>
 <script src="scripts/i18n.js"></script>
+<script>
+(function () {
+  var btn = document.getElementById('ds-klaro-open');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    if (window.klaro && typeof window.klaro.show === 'function') {
+      window.klaro.show(undefined, true);
+    }
+  });
+}());
+</script>
 </body>
 </html>

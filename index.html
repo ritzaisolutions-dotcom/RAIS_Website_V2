@@ -17,8 +17,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Home: VSL-Startseite für Dienstleister. Eine Aktion: Audit buchen. -->
-    <title>RAIS | Systeme für Makler, Berater und Agenturen</title>
-    <meta name="description" content="Für Sie erledigt: ein Wachstumssystem, das sich selbst zahlt — oder Sie bekommen Ihre Monatsbeiträge zurück. Für Makler, Berater und Agenturen.">
+    <title>RAIS | Done-for-you Marketing-System für Wohnmakler</title>
+    <meta name="description" content="Ein Done-for-you-Marketing-System, das kaufkräftige Anfragen generiert, vorqualifiziert und direkt in den Kalender setzt. 30 Tage vor Live: passt das Setup nicht — Geld zurück.">
     <meta name="google-site-verification" content="A6q1zlZLweKSa1vIxp-owVoxpEXPyIW-gPWdY6N79ZI">
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -26,15 +26,15 @@
     <link rel="apple-touch-icon" href="favicon.png?v=3">
 
     <!-- OpenGraph -->
-    <meta property="og:title" content="RAIS | Systeme für Makler, Berater und Agenturen">
-    <meta property="og:description" content="Für Sie erledigt: ein Wachstumssystem, das sich selbst zahlt — oder Sie bekommen Ihre Monatsbeiträge zurück. Für Makler, Berater und Agenturen.">
+    <meta property="og:title" content="RAIS | Done-for-you Marketing-System für Wohnmakler">
+    <meta property="og:description" content="Ein Done-for-you-Marketing-System, das kaufkräftige Anfragen generiert, vorqualifiziert und direkt in den Kalender setzt. 30 Tage vor Live: passt das Setup nicht — Geld zurück.">
     <meta property="og:url" content="https://ritz-ai.solutions">
     <meta property="og:type" content="website">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="RAIS | Systeme für Makler, Berater und Agenturen">
-    <meta name="twitter:description" content="Für Sie erledigt: ein Wachstumssystem, das sich selbst zahlt — oder Sie bekommen Ihre Monatsbeiträge zurück. Für Makler, Berater und Agenturen.">
+    <meta name="twitter:title" content="RAIS | Done-for-you Marketing-System für Wohnmakler">
+    <meta name="twitter:description" content="Ein Done-for-you-Marketing-System, das kaufkräftige Anfragen generiert, vorqualifiziert und direkt in den Kalender setzt. 30 Tage vor Live: passt das Setup nicht — Geld zurück.">
 
     <!-- Schema.org -->
     <script type="application/ld+json">
@@ -43,7 +43,7 @@
       "@type": "ProfessionalService",
       "name": "RAIS (Ritz AI Solutions)",
       "url": "https://ritz-ai.solutions",
-      "description": "Für Sie erledigt: ein Wachstumssystem, das sich selbst zahlt — oder Sie bekommen Ihre Monatsbeiträge zurück. Für Makler, Berater und Agenturen.",
+      "description": "Ein Done-for-you-Marketing-System, das kaufkräftige Anfragen generiert, vorqualifiziert und direkt in den Kalender setzt. 30 Tage vor Live: passt das Setup nicht — Geld zurück.",
       "brand": { "@type": "Brand", "name": "RAIS" },
       "areaServed": ["DE", "AT", "CH"]
     }
@@ -66,6 +66,7 @@
     <link rel="stylesheet" href="styles/tailwind.generated.css">
     <link rel="stylesheet" href="styles/site-multipage.css">
     <link rel="stylesheet" href="styles/home.css">
+    <link rel="stylesheet" href="styles/akut.css">
     <link rel="stylesheet" href="styles/booking-modal.css">
     <link rel="stylesheet" href="styles/glass-motion.css">
     <script src="vendor/lucide.min.js"></script>
@@ -371,48 +372,6 @@
             padding: 1.5rem 1rem;
         }
 
-        /* Mono label pill */
-        .hero-label {
-            display: inline-block;
-            font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
-            font-size: 0.75rem;
-            letter-spacing: 0.13em;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.85);
-            border: 1px solid rgba(255, 255, 255, 0.35);
-            background: rgba(255, 255, 255, 0.08);
-            padding: 0.5rem 1.125rem;
-            border-radius: 100px;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-        }
-
-        /* Eyebrow ueber der H1. Laenger als ein Label, deshalb mit
-           Zeilenhoehe und Umbruch statt einer harten Pill-Zeile. */
-        .hero-label--eyebrow {
-            margin: 0;
-            /* Breit genug fuer zwei Zeilen. Bei 46ch brach der Satz
-               auf drei um und drueckte die H1 aus dem ersten Bild. */
-            max-width: 64ch;
-            line-height: 1.5;
-            padding: 0.55rem 1.25rem;
-            text-wrap: balance;
-        }
-
-        /* Auf schmalen Viewports traegt die Pill den Satz nicht mehr,
-           dort bleibt nur die Typografie. */
-        @media (max-width: 640px) {
-            .hero-label--eyebrow {
-                border: none;
-                background: none;
-                padding: 0;
-                backdrop-filter: none;
-                -webkit-backdrop-filter: none;
-                letter-spacing: 0.1em;
-                font-size: 0.7rem;
-            }
-        }
-
         /* H1 */
         .hero-h1 {
             font-family: var(--serif);
@@ -460,36 +419,6 @@
             text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
         }
 
-        /* Lief vorher in --charcoal mit Linen-Glow und waere auf
-           gruenem Grund unlesbar. Zurueckgenommenes Linen haelt
-           die Bedeutung und kommt als Displaygroesse auf gut 5:1. */
-        .hero-h1__mark--charcoal {
-            color: rgba(251, 248, 243, 0.52);
-            font-style: normal;
-            text-decoration: none;
-            text-shadow: none;
-        }
-
-        /* Subline */
-        .hero-sub {
-            font-family: var(--sans);
-            font-size: clamp(1.05rem, 2.1vw, 1.28rem);
-            line-height: 1.7;
-            color: rgba(255, 255, 255, 0.88);
-            max-width: 700px;
-            text-shadow: 0 1px 8px rgba(0,0,0,0.18);
-        }
-
-        /* Die USP trägt den Untertitel. Eigene Zeile, damit sie als
-           Aussage steht und nicht als Auftakt einer Aufzählung liest. */
-        .hero-sub__usp {
-            display: block;
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 0.3rem;
-        }
-
-
         /* CTA row */
         .hero-ctas {
             display: flex;
@@ -498,65 +427,6 @@
             justify-content: center;
             gap: 0.875rem;
             margin-top: 0.375rem;
-        }
-
-        /* Direktion 2.1: zwei gleich gewichtete Wege, nicht nur Audit. */
-        .hero-ctas--equal .hero-btn-primary,
-        .hero-ctas--equal .hero-btn-outline {
-            min-width: 12.5rem;
-        }
-        .hero-ctas--equal .hero-btn-outline {
-            background: transparent;
-            color: #fff;
-            border-color: rgba(255, 255, 255, 0.7);
-            font-family: var(--sans);
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-        }
-        .hero-ctas--equal .hero-btn-outline:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: #fff;
-        }
-        .hero-trust-line {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.45rem;
-            margin: 1.25rem 0 0;
-            color: rgba(255, 255, 255, 0.78);
-            font-size: 0.85rem;
-            letter-spacing: 0.02em;
-        }
-        .hero-trust-line .ico {
-            width: 1rem;
-            height: 1rem;
-            flex-shrink: 0;
-        }
-
-        /* Zweiter Weg fuer alle, die noch nicht buchen wollen.
-           Bewusst ohne Flaeche, damit der primaere CTA der
-           einzige laute bleibt (brand_steer). */
-        .hero-btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            min-height: 44px;
-            padding: 0.7rem 0.25rem;
-            color: rgba(255, 255, 255, 0.92);
-            font-size: 0.95rem;
-            font-weight: 500;
-            text-decoration: underline;
-            text-underline-offset: 4px;
-            text-decoration-thickness: 1px;
-            text-decoration-color: rgba(255, 255, 255, 0.45);
-            text-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
-        }
-        .hero-btn-secondary:hover {
-            text-decoration-color: rgba(255, 255, 255, 0.9);
-        }
-        .hero-btn-secondary:focus-visible {
-            outline: 2px solid #fff;
-            outline-offset: 3px;
-            border-radius: 2px;
         }
 
         .hero-btn-primary {
@@ -569,8 +439,10 @@
             font-family: var(--sans);
             font-size: 1rem;
             font-weight: 500;
+            border: none;
             border-radius: 10px;
             text-decoration: none;
+            cursor: pointer;
             transition: all 0.3s ease;
             white-space: nowrap;
             position: relative;
@@ -597,49 +469,6 @@
             opacity: 1;
         }
 
-        .hero-btn-outline {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.875rem 1.875rem;
-            background-color: transparent;
-            color: #FFFFFF;
-            font-family: var(--sans);
-            font-size: 1rem;
-            font-weight: 500;
-            border-radius: 10px;
-            text-decoration: none;
-            border: 1.5px solid rgba(255, 255, 255, 0.35);
-            transition: border-color 0.15s ease, background-color 0.15s ease;
-            white-space: nowrap;
-        }
-
-        .hero-btn-outline:hover {
-            border-color: #FFFFFF;
-            background-color: rgba(255, 255, 255, 0.08);
-        }
-
-        button.hero-btn-outline {
-            cursor: pointer;
-            background-color: transparent;
-        }
-
-        /* Scroll cue */
-        .hero-scroll-cue {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 2;
-            color: rgba(255, 255, 255, 0.58);
-            animation: hero-bounce 2.8s ease-in-out infinite;
-        }
-
-        @keyframes hero-bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0);   }
-            50%       { transform: translateX(-50%) translateY(7px); }
-        }
-
         @media (max-width: 600px) {
             #hero {
                 padding: calc(var(--nav-h) + 1.25rem) 1.25rem 2.5rem;
@@ -651,22 +480,10 @@
                 border-radius: 16px;
             }
 
-            .hero-label {
-                font-size: 0.6875rem;
-                line-height: 1.45;
-                padding: 0.5rem 0.95rem;
-            }
-
             .hero-h1 {
                 font-size: clamp(2rem, 10.6vw, 3.35rem);
                 line-height: 1.1;
             }
-
-            .hero-sub {
-                font-size: 1rem;
-                line-height: 1.62;
-            }
-
 
             .hero-ctas {
                 flex-direction: column;
@@ -675,8 +492,7 @@
                 max-width: 320px;
             }
 
-            .hero-btn-primary,
-            .hero-btn-outline { justify-content: center; }
+            .hero-btn-primary { justify-content: center; }
         }
 
 
@@ -1507,7 +1323,7 @@
 
 </head>
 
-<body>
+<body class="page-akut" data-page="convert" data-cal-url="https://cal.com/ritzaisolutions/akut-fit-call">
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
   <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
   <symbol id="i-crm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-5.4 6-5.4s6 2.1 6 5.4"/><path d="M17 9.5h4M17 13h4"/></symbol>
@@ -1541,276 +1357,400 @@
         <span class="nav-submark">Ritz AI Solutions</span>
       </div>
     </a>
-    <div class="nav-center">
-      <ul class="nav-list">
-        <li><a href="systeme.html">Systeme</a></li>
-        <li><a href="referenzen.html">Referenzen</a></li>
-        <li><a href="ueber-uns.html">Über uns</a></li>
-      </ul>
-    </div>
     <div class="nav-right">
-      <div class="lang-toggle" data-i18n-ignore role="group" aria-label="Sprache / Language">
-      <button type="button" class="lang-toggle__btn" data-lang-set="de" aria-pressed="true">DE</button>
-      <button type="button" class="lang-toggle__btn" data-lang-set="en" aria-pressed="false">EN</button>
-    </div>
-      <button type="button" class="btn-primary js-open-booking" id="nav-demo-btn" data-source="nav">Kostenlosen Audit buchen</button>
+      <button type="button" class="btn-primary js-open-booking" id="nav-demo-btn" data-source="nav">Unverbindliches Gespräch buchen</button>
     </div>
   </div>
 </nav>
 
 
+    
     <main id="main">
 
-        <section id="hero">
+        <section id="hero" aria-labelledby="akut-h1">
             <div class="hero-overlay" aria-hidden="true"></div>
             <div class="hero-content">
                 <div class="hero-brand-emblem">
                     <img src="favicon.svg" alt="" width="36" height="36">
                     <span class="hero-brand-emblem__word">RAIS</span>
                 </div>
-                <h1 class="hero-h1 hero-h1--promise" data-i18n-ignore>
-                    <span data-lang-copy="de">Für Sie erledigt: ein <span class="hero-h1__mark">Wachstumssystem</span>, das sich <span class="hero-h1__mark">selbst zahlt</span> — oder Sie bekommen Ihre <span class="hero-h1__mark">Monatsbeiträge zurück</span>.</span>
-                    <span data-lang-copy="en">Done for you: a <span class="hero-h1__mark">growth system</span> that <span class="hero-h1__mark">pays for itself</span> — or you get your <span class="hero-h1__mark">monthly fees back</span>.</span>
-                </h1>
-                <p class="hero-sub">Für Makler, Berater und Agenturen</p>
+                <h1 id="akut-h1" class="hero-h1 hero-h1--promise convert-hero__h1">Ein Done-for-you-Marketing-System, das kaufkräftige Anfragen generiert, vorqualifiziert und direkt in den <span class="hero-h1__mark">Kalender</span> setzt.</h1>
+                <p class="convert-hero__guarantee">30 Tage Geld-zurück-Garantie bis zum Livegang.</p>
 
-                <div class="vsl vsl--booking" id="vsl" data-vsl-src="">
+                <div class="vsl vsl--poster-only" id="vsl" data-vsl-src="">
                     <div class="vsl__frame">
                         <img class="vsl__poster" src="images/mark-koch-hero.webp" alt="" width="1280" height="720" decoding="async">
-                        <button type="button" class="vsl__play js-open-booking" data-source="vsl" aria-label="Kostenlosen Audit buchen">
-                            <span class="vsl__play-icon" aria-hidden="true"></span>
-                            <span class="vsl__play-label">Audit buchen</span>
-                        </button>
                     </div>
                 </div>
 
                 <div class="hero-ctas">
-                    <button type="button" class="hero-btn-primary js-open-booking" id="hero-work-btn" data-source="hero">Kostenlosen Audit buchen</button>
+                    <button type="button" class="hero-btn-primary js-open-booking" id="hero-work-btn" data-source="hero">Unverbindliches Gespräch buchen</button>
                 </div>
             </div>
         </section>
 
-        <section id="briefing" class="glass-band" aria-labelledby="briefing-title">
+        <section id="pains" class="glass-band" aria-labelledby="pains-title">
             <div class="section-wrap">
-                <span class="mono-label mono-label--on-green">Vor dem Gespräch</span>
-                <h2 class="glass-band__title" id="briefing-title">Was klar wird.</h2>
+                <span class="mono-label mono-label--on-green">Der Engpass</span>
+                <h2 class="glass-band__title" id="pains-title">Drei Probleme, die Wachstum bremsen</h2>
                 <div class="glass-band__grid">
                     <article class="glass-claim">
                         <div class="glass-claim__icon">
-                            <img class="glass-claim__fallback" src="images/glass/play.svg" width="120" height="120" alt="" loading="lazy" decoding="async">
+                            <img class="glass-claim__fallback" src="images/glass/inbox.svg" width="96" height="96" alt="" loading="lazy" decoding="async">
                         </div>
-                        <h3 class="glass-claim__heading">Vor dem Termin</h3>
-                        <p class="glass-claim__body">Was wir bauen, woran Sie den Engpass erkennen, wie ein Fall aussieht.</p>
+                        <h3 class="glass-claim__heading">Zu wenig kaufkräftige Kaufanfragen</h3>
+                        <p class="glass-claim__body">Portale und Netzwerk reichen nicht. Die guten Käufer fehlen — und der Kalender bleibt dünn.</p>
                     </article>
                     <article class="glass-claim">
                         <div class="glass-claim__icon">
-                            <img class="glass-claim__fallback" src="images/glass/calendar.svg" width="120" height="120" alt="" loading="lazy" decoding="async">
+                            <img class="glass-claim__fallback" src="images/glass/ads.svg" width="96" height="96" alt="" loading="lazy" decoding="async">
                         </div>
-                        <h3 class="glass-claim__heading">Im Termin</h3>
-                        <p class="glass-claim__body">Ihr Engpass in 20 Minuten. Ein konkreter nächster Schritt.</p>
+                        <h3 class="glass-claim__heading">Zu wenig Kaufmandate</h3>
+                        <p class="glass-claim__body">Verkäufer kommen nicht von allein. Ohne Ankauf stockt der Zufluss an Objekten.</p>
                     </article>
                     <article class="glass-claim">
                         <div class="glass-claim__icon">
-                            <img class="glass-claim__fallback" src="images/glass/open.svg" width="120" height="120" alt="" loading="lazy" decoding="async">
+                            <img class="glass-claim__fallback" src="images/glass/calendar.svg" width="96" height="96" alt="" loading="lazy" decoding="async">
                         </div>
-                        <h3 class="glass-claim__heading">Prozess-Sparring</h3>
-                        <p class="glass-claim__body">Was geht, was nicht, was Sinn macht.</p>
+                        <h3 class="glass-claim__heading">Zu viel Zeit mit Vorqualifizieren</h3>
+                        <p class="glass-claim__body">Filtern, nachfassen, Termine setzen. Stunden, die im Tagesgeschäft fehlen.</p>
                     </article>
                 </div>
             </div>
         </section>
 
-        <section id="schmerz" class="home-band home-band--linen" aria-labelledby="schmerz-title">
-            <div class="section-wrap schmerz-split">
-                <div class="schmerz-split__copy">
-                    <span class="mono-label">Der Engpass</span>
-                    <h2 class="section-h2" id="schmerz-title">Zeit weg. Wachstum liegengeblieben.</h2>
-                    <ul class="schmerz-list">
-                        <li>Stunden verschwinden in Nachfassen und Handarbeit.</li>
-                        <li>Kunden und Umsatz bleiben aus, weil Sie operativ in der Ineffizienz feststecken.</li>
-                        <li>Wachstum wartet, solange der Alltag den Kalender frisst.</li>
-                    </ul>
-                    <p class="schmerz-bridge">Wir nehmen Ihnen das ab — ohne ein weiteres Projekt, das Sie selbst durchziehen müssen.</p>
+        <section id="old-new" class="home-band home-band--linen" aria-labelledby="old-new-title">
+            <div class="section-wrap">
+                <span class="mono-label">Alt und Neu</span>
+                <h2 class="section-h2" id="old-new-title">Vom Hoffen zu planbaren neuen Kaufinteressenten.</h2>
+                <p class="section-sub usecase-lead">Reaktiv warten — oder aktiv neue Menschen in Ihrer Region erreichen.</p>
+                <div class="convert-split">
+                    <div class="convert-split__col">
+                        <h3 class="convert-split__h">Bisher · reaktiv</h3>
+                        <ol class="convert-split__list">
+                            <li>
+                                <span class="convert-split__num" aria-hidden="true">1</span>
+                                <span><strong>Portale &amp; Website.</strong> Immowelt/ImmoScout und die eigene Seite: inseriert und gehofft, dass Suchende kommen.</span>
+                            </li>
+                            <li>
+                                <span class="convert-split__num" aria-hidden="true">2</span>
+                                <span><strong>Bestand abgegrast.</strong> Dieselbe Liste immer wieder — Zeit verbrannt, Postfach voll, wenig echte Gespräche.</span>
+                            </li>
+                            <li>
+                                <span class="convert-split__num" aria-hidden="true">3</span>
+                                <span><strong>Termine von Hand.</strong> Unpassende Anfragen ins Kalender-Chaos — Assistenz und Backoffice überlastet.</span>
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="convert-split__col convert-split__col--new">
+                        <h3 class="convert-split__h">Heute · aktiv</h3>
+                        <ol class="convert-split__list">
+                            <li>
+                                <span class="convert-split__num convert-split__num--new" aria-hidden="true">1</span>
+                                <span><strong>Meta-Kampagnen.</strong> Instagram &amp; Facebook: neue Menschen in Ihrer Region — oft noch nicht aktiv suchend, aber kaufkräftig.</span>
+                            </li>
+                            <li>
+                                <span class="convert-split__num convert-split__num--new" aria-hidden="true">2</span>
+                                <span><strong>Seriöse Präsenz.</strong> Bekannt werden vor Ort; Ankauf- und Verkaufsinteresse; klarer Weg, Sie zu kontaktieren.</span>
+                            </li>
+                            <li>
+                                <span class="convert-split__num convert-split__num--new" aria-hidden="true">3</span>
+                                <span><strong>Vorqualifiziert in den Kalender.</strong> Nach Ihren Kriterien per WhatsApp oder E-Mail — Termin gesetzt. Portal-Anfragen laufen parallel mit.</span>
+                            </li>
+                        </ol>
+                    </div>
                 </div>
-                <figure class="schmerz-split__visual">
-                    <img src="images/glass/desk-bottleneck.svg" width="280" height="200" alt="Alltag am Schreibtisch: Postfach und Nachfassen statt Wachstum" loading="lazy" decoding="async">
-                </figure>
             </div>
         </section>
 
-        <section id="ergebnis" class="home-band home-band--cloud" aria-labelledby="ergebnis-title">
+        <section id="haller" class="home-band home-band--cloud" aria-labelledby="haller-title">
             <div class="section-wrap">
-                <span class="mono-label">Anwendungsfälle</span>
-                <h2 class="section-h2" id="ergebnis-title">Ergebnis, nicht Tool-Menü.</h2>
-                <p class="section-sub usecase-lead">Von wo bis wohin. Was das System übernimmt — und wo Sie entscheiden.</p>
-                <ul class="usecase-grid">
-                    <li class="usecase-card">
-                        <img class="usecase-card__icon" src="images/glass/inbox.svg" width="72" height="72" alt="" loading="lazy" decoding="async">
-                        <h3 class="usecase-card__title">Speed to Lead</h3>
-                        <ul class="usecase-card__bullets">
-                            <li>Von: Portalanfrage, Formular oder Mail</li>
-                            <li>Bis: qualifizierter Termin im Kalender</li>
-                            <li>Ihr Team gibt frei — keine Preiszusage durch das System</li>
+                <span class="mono-label">Referenz</span>
+                <h2 class="section-h2" id="haller-title">Haller Immobilienberatung</h2>
+                <article class="akut-proof">
+                    <div class="akut-proof__logo">
+                        <img src="images/akut/haller-logo-nobg.png" alt="Haller Immobilienberatung GmbH" width="220" height="80" onerror="this.onerror=null;this.src='images/akut/haller-logo-fallback.png';this.closest('.akut-proof__logo').classList.add('is-fallback')">
+                    </div>
+                    <div>
+                        <p class="akut-proof__status">Prozess im Alltag</p>
+                        <p class="akut-proof__stat">~60 Stunden / Monat</p>
+                        <h3 class="akut-proof__name">Haller Immobilienberatung</h3>
+                        <p class="akut-proof__claim">Allein beim Qualifizieren und Setzen von Interessenten-Terminen aus Portalanfragen spart Haller ~60 Stunden pro Monat.</p>
+                        <ul class="akut-proof__minis">
+                            <li>
+                                <img src="images/glass/inbox.svg" width="32" height="32" alt="" loading="lazy" decoding="async">
+                                <span>Portalanfragen vorqualifiziert</span>
+                            </li>
+                            <li>
+                                <img src="images/glass/calendar.svg" width="32" height="32" alt="" loading="lazy" decoding="async">
+                                <span>Interessenten-Termine gesetzt</span>
+                            </li>
+                            <li>
+                                <img src="images/glass/open.svg" width="32" height="32" alt="" loading="lazy" decoding="async">
+                                <span>~60 Std./Monat zurück</span>
+                            </li>
                         </ul>
-                    </li>
-                    <li class="usecase-card">
-                        <img class="usecase-card__icon" src="images/glass/open.svg" width="72" height="72" alt="" loading="lazy" decoding="async">
-                        <h3 class="usecase-card__title">Onboarding</h3>
-                        <ul class="usecase-card__bullets">
-                            <li>Von: Mandat unterschrieben</li>
-                            <li>Bis: Checkliste und Startpaket laufen</li>
-                            <li>Ohne dass Sie die Liste tippen</li>
-                        </ul>
-                    </li>
-                    <li class="usecase-card">
-                        <img class="usecase-card__icon" src="images/glass/chat.svg" width="72" height="72" alt="" loading="lazy" decoding="async">
-                        <h3 class="usecase-card__title">Kundenservice</h3>
-                        <ul class="usecase-card__bullets">
-                            <li>Von: Nachricht außerhalb der Bürozeiten</li>
-                            <li>Bis: erste Antwort oder Eskalation bei Ihnen</li>
-                            <li>Mensch greift ein, wenn es eng wird</li>
-                        </ul>
-                    </li>
-                    <li class="usecase-card">
-                        <img class="usecase-card__icon" src="images/glass/document.svg" width="72" height="72" alt="" loading="lazy" decoding="async">
-                        <h3 class="usecase-card__title">Dokumente</h3>
-                        <ul class="usecase-card__bullets">
-                            <li>Von: PDF oder Scan im Posteingang</li>
-                            <li>Bis: Daten in der Akte</li>
-                            <li>Freigabe bleibt bei Ihnen</li>
-                        </ul>
-                    </li>
-                    <li class="usecase-card">
-                        <img class="usecase-card__icon" src="images/glass/bars.svg" width="72" height="72" alt="" loading="lazy" decoding="async">
-                        <h3 class="usecase-card__title">Wochenlage</h3>
-                        <ul class="usecase-card__bullets">
-                            <li>Von: verstreute Zahlen und offene Punkte</li>
-                            <li>Bis: eine Lageübersicht für die Woche</li>
-                            <li>Ohne dass jemand die Liste zusammensucht</li>
-                        </ul>
-                    </li>
-                    <li class="usecase-card">
-                        <img class="usecase-card__icon" src="images/glass/ads.svg" width="72" height="72" alt="" loading="lazy" decoding="async">
-                        <h3 class="usecase-card__title">Ads-Reporting</h3>
-                        <ul class="usecase-card__bullets">
-                            <li>Von: Google Ads und Meta Ads Rohdaten</li>
-                            <li>Bis: eine Performance-Übersicht für Sie</li>
-                            <li>Wöchentlich, ohne Export-Chaos</li>
-                        </ul>
-                    </li>
-                </ul>
-                <p class="usecase-more">
-                    <a class="home-cta-link" href="systeme.html">Systeme im Überblick</a>
-                </p>
-            </div>
-        </section>
-
-        <section id="beweis" class="home-band home-band--linen" aria-labelledby="beweis-title">
-            <div class="section-wrap">
-                <span class="mono-label">Beweis</span>
-                <h2 class="section-h2" id="beweis-title">Ein Fall. Ohne erfundene Kennzahlen.</h2>
-                <article class="proof-doc">
-                    <img class="proof-doc__illu" src="images/glass/document.svg" width="120" height="132" alt="" loading="lazy" decoding="async">
-                    <div class="proof-doc__body">
-                        <p class="proof-doc__status">Live im Alltag</p>
-                        <h3 class="proof-doc__name">Haller Immobilienberatung</h3>
-                        <p class="proof-doc__text">Anfrage-System live: Qualifizierung und Terminübergabe an das Team. Läuft im Alltag.</p>
                     </div>
                 </article>
             </div>
         </section>
 
-        <section id="ablauf" class="home-band home-band--cloud collab-pin" aria-labelledby="ablauf-title" data-collab-pin>
+        <section id="ablauf" class="home-band home-band--linen collab-pin collab-pin--stack" aria-labelledby="ablauf-title" data-collab-pin>
             <div class="section-wrap">
                 <span class="mono-label">Zusammenarbeit</span>
-                <h2 class="section-h2" id="ablauf-title">So läuft die Zusammenarbeit.</h2>
-                <p class="section-sub usecase-lead">Fünf Schritte vom ersten Termin bis zum laufenden System. Reihenfolge, kein Menü.</p>
+                <h2 class="section-h2" id="ablauf-title">Mehr Anfragen. Mehr Mandate. Gleicher Aufwand.</h2>
+                <p class="collab-phases" aria-hidden="true"><span>Setup 01–04</span><span>Betrieb 05–07</span></p>
                 <div class="step-rail__bar" aria-hidden="true">
                     <div class="step-rail__bar-fill"></div>
                 </div>
-                <ol class="step-rail" aria-label="Zusammenarbeit in fünf Schritten">
+                <ol class="step-rail" aria-label="Zusammenarbeit in sieben Schritten">
                     <li class="step-rail__item" data-step="0">
                         <span class="step-rail__dot" aria-hidden="true"></span>
                         <span class="step-rail__num">01</span>
-                        <strong class="step-rail__title">Termin</strong>
-                        <span class="step-rail__desc">Kurz klären, ob Volumen und Setup passen.</span>
+                        <strong class="step-rail__title">Markt- &amp; Personenverständnis</strong>
+                        <span class="step-rail__desc">Wer Sie sind, lokaler Markt, wie Sie vermarktet werden.</span>
                     </li>
                     <li class="step-rail__item" data-step="1">
                         <span class="step-rail__dot" aria-hidden="true"></span>
                         <span class="step-rail__num">02</span>
-                        <strong class="step-rail__title">Discovery</strong>
-                        <span class="step-rail__desc">Engpass und Prozess. Welches System den Hebel hat.</span>
+                        <strong class="step-rail__title">Konzeption &amp; Visuals</strong>
+                        <span class="step-rail__desc">Gemeinsam: wir skripten, Sie filmen; wir editieren fertig.</span>
                     </li>
                     <li class="step-rail__item" data-step="2">
                         <span class="step-rail__dot" aria-hidden="true"></span>
                         <span class="step-rail__num">03</span>
-                        <strong class="step-rail__title">Konzept</strong>
-                        <span class="step-rail__desc">Scope, Timeline, Preis und messbare Kriterien. Schriftlich.</span>
+                        <strong class="step-rail__title">Kampagne aufsetzen</strong>
+                        <span class="step-rail__desc">Struktur und Setup, bevor das Werbebudget fließt.</span>
                     </li>
                     <li class="step-rail__item" data-step="3">
                         <span class="step-rail__dot" aria-hidden="true"></span>
                         <span class="step-rail__num">04</span>
-                        <strong class="step-rail__title">Aufbau</strong>
-                        <span class="step-rail__desc">Anbindung an Ihre Tools. Test mit echten Abläufen.</span>
+                        <strong class="step-rail__title">Start der Werbung</strong>
+                        <span class="step-rail__desc">Danach starten die Anzeigen.</span>
                     </li>
                     <li class="step-rail__item" data-step="4">
                         <span class="step-rail__dot" aria-hidden="true"></span>
                         <span class="step-rail__num">05</span>
-                        <strong class="step-rail__title">Go-Live</strong>
-                        <span class="step-rail__desc">Übergabe und Monitoring. Anpassungen laufen mit.</span>
+                        <strong class="step-rail__title">Interessenten tragen sich ein</strong>
+                        <span class="step-rail__desc">Formulare aus den Kampagnen (und Portale/Web laufen parallel).</span>
+                    </li>
+                    <li class="step-rail__item" data-step="5">
+                        <span class="step-rail__dot" aria-hidden="true"></span>
+                        <span class="step-rail__num">06</span>
+                        <strong class="step-rail__title">Qualifizierung</strong>
+                        <span class="step-rail__desc">Anzeigen-Anfragen per WhatsApp; Portal-/Website-Anfragen per E-Mail; nach Ihren Regeln.</span>
+                    </li>
+                    <li class="step-rail__item" data-step="6">
+                        <span class="step-rail__dot" aria-hidden="true"></span>
+                        <span class="step-rail__num">07</span>
+                        <strong class="step-rail__title">Termin in Ihrem Kalender</strong>
+                        <span class="step-rail__desc">Nur Qualifizierte, nach Ihren Bedingungen; Abschluss bei Ihnen.</span>
                     </li>
                 </ol>
             </div>
         </section>
 
-        <section id="garantie" class="home-band home-band--linen garantie-band" aria-labelledby="garantie-title">
+        <section id="roi" class="home-band home-band--cloud" aria-labelledby="roi-title">
+            <div class="section-wrap section-wrap--narrow">
+                <h2 class="section-h2" id="roi-title">Was Ihr Werbebudget tragen kann</h2>
+                <div id="roi-board">
+                    <p class="roi-disclaimer">Beispielrechnung · spekulativ · keine Garantie. Kosten = Media + 1.500 €. Der Abschluss liegt bei Ihnen.</p>
+                    <div class="roi-chart-wrap">
+                        <div data-roi-chart class="roi-chart"></div>
+                        <div class="roi-tip" data-roi-tip hidden></div>
+                    </div>
+                    <p class="roi-legend">
+                        <span class="roi-legend__worst">Worst (~50 %)</span>
+                        <span class="roi-legend__best">Best (Plan 100 %)</span>
+                        <span class="roi-legend__cost">Kosten (Media + 1.500 €)</span>
+                        <span class="roi-legend__buffer" data-roi-buffer-legend hidden>Puffer Worst Case</span>
+                    </p>
+                    <p class="roi-source-links">
+                        <a href="/roi-praemissen">Woher kommen die Zahlen? Alle Prämissen und der Rechnungsweg</a>
+                        <a href="/roi-praemissen?print=1">PDF herunterladen</a>
+                    </p>
+                    <div class="roi-controls">
+                        <div>
+                            <label for="roi-media">Werbebudget / Monat</label>
+                            <div class="roi-presets" role="group" aria-label="Werbebudget-Stufen">
+                                <button type="button" class="roi-preset" data-roi-preset="1000">
+                                    <span class="roi-preset__label">Minimum</span>
+                                    <span class="roi-preset__val">1.000 €</span>
+                                </button>
+                                <button type="button" class="roi-preset is-active" data-roi-preset="5000" aria-pressed="true">
+                                    <span class="roi-preset__label">Empfohlen</span>
+                                    <span class="roi-preset__val">5.000 €</span>
+                                </button>
+                                <button type="button" class="roi-preset" data-roi-preset="25000">
+                                    <span class="roi-preset__label">Maximum</span>
+                                    <span class="roi-preset__val">25.000 €</span>
+                                </button>
+                            </div>
+                            <input id="roi-media" data-roi-media type="range" min="1000" max="25000" step="100" value="5000" aria-valuetext="5.000 Euro">
+                            <p class="roi-readout"><span>Media <strong data-roi-media-out>5.000 €</strong></span><span data-roi-mix-out>70/30 Ankauf–Verkauf</span></p>
+                        </div>
+                        <div class="roi-mix" role="radiogroup" aria-label="Aufteilung Ankauf–Verkauf">
+                            <label><input type="radio" name="roi-mix" data-roi-mix value="70" checked> 70/30 Ankauf–Verkauf</label>
+                            <label><input type="radio" name="roi-mix" data-roi-mix value="50"> 50/50 Ankauf–Verkauf</label>
+                        </div>
+                    </div>
+                    <ul class="roi-kpis" aria-live="polite">
+                        <li class="roi-kpis__item roi-kpis__item--cost"><span class="roi-kpis__label">Was es kostet</span><strong data-roi-cost>6.500 €</strong></li>
+                        <li class="roi-kpis__item roi-kpis__item--worst"><span class="roi-kpis__label">Worst raus</span><strong data-roi-worst>12.700 €</strong></li>
+                        <li class="roi-kpis__item roi-kpis__item--best"><span class="roi-kpis__label">Best raus</span><strong data-roi-best>25.400 €</strong></li>
+                        <li class="roi-kpis__item roi-kpis__item--gap-w"><span class="roi-kpis__label">Worst − Kosten</span><strong data-roi-gap-worst>6.200 €</strong></li>
+                        <li class="roi-kpis__item roi-kpis__item--gap-b"><span class="roi-kpis__label">Best − Kosten</span><strong data-roi-gap>18.900 €</strong></li>
+                    </ul>
+                    <div class="roi-return">
+                        <h3 class="roi-return__title">Return (Modell) · spekulativ</h3>
+                        <p class="roi-return__note">Faktor = Umsatz ÷ Kosten. Keine Garantie.</p>
+                        <div class="roi-return__wrap">
+                            <table class="roi-return__table">
+                                <caption class="visually-hidden">Return Minimum, Empfohlen und Maximum bei aktuellem Mix</caption>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Stufe</th>
+                                        <th scope="col">Was rein</th>
+                                        <th scope="col">Was es kostet</th>
+                                        <th scope="col">Worst raus</th>
+                                        <th scope="col">Best raus</th>
+                                        <th scope="col">Faktor Worst</th>
+                                        <th scope="col">Faktor Best</th>
+                                    </tr>
+                                </thead>
+                                <tbody data-roi-return-table>
+                                    <tr>
+                                        <th scope="row">Minimum</th>
+                                        <td>1.000 €</td>
+                                        <td>2.500 €</td>
+                                        <td>2.540 €</td>
+                                        <td>5.080 €</td>
+                                        <td>~1,0×</td>
+                                        <td>~2,0×</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Empfohlen</th>
+                                        <td>5.000 €</td>
+                                        <td>6.500 €</td>
+                                        <td>12.700 €</td>
+                                        <td>25.400 €</td>
+                                        <td>~2,0×</td>
+                                        <td>~3,9×</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Maximum</th>
+                                        <td>25.000 €</td>
+                                        <td>26.500 €</td>
+                                        <td>63.500 €</td>
+                                        <td>127.000 €</td>
+                                        <td>~2,4×</td>
+                                        <td>~4,8×</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <table class="roi-sr-table visually-hidden">
+                        <caption>Beispielrechnung spekulativ bei Media 1.000–25.000 €, Mix 70/30</caption>
+                        <thead><tr><th>Media</th><th>Kosten</th><th>Worst</th><th>Best</th></tr></thead>
+                        <tbody data-roi-sr-table></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="home-band home-band--linen" aria-labelledby="faq-title">
+            <div class="section-wrap section-wrap--narrow">
+                <span class="mono-label">FAQ</span>
+                <h2 class="section-h2" id="faq-title">Häufige Fragen</h2>
+                <div class="akut-faq">
+                    <details>
+                        <summary>Was kostet es wirklich monatsweise — und was zahle ich an Media selbst?</summary>
+                        <p>Setup 3.900 € einmalig. Betreuung 1.500 € / Monat. Media ab 1.000 € läuft auf Ihrem Werbekonto — das zahlen Sie direkt an Meta, nicht an uns. Monatlich also Betreuung + Ihr Media-Budget.</p>
+                    </details>
+                    <details>
+                        <summary>Wie viel Aufwand kommt auf mein Team?</summary>
+                        <p>Sie filmen (wir skripten und schneiden), geben Kriterien vor und führen die Gespräche. Vorqualifizieren und Termine setzen übernehmen wir. Ziel: mehr Anfragen, ohne dass Ihr Team mehr telefoniert.</p>
+                    </details>
+                    <details>
+                        <summary>Müsst ihr in unser CRM (Propstack/onOffice) rein?</summary>
+                        <p>Nicht zwingend für den Start. Wo es Sinn macht, knüpfen wir an Propstack oder onOffice an — Freigabe und Zugänge liegen bei Ihnen.</p>
+                    </details>
+                    <details>
+                        <summary>Ersetzt das Immowelt/ImmoScout?</summary>
+                        <p>Nein. Portale und Website bleiben. Meta + Akut ist ein zweiter Kanal für planbare, vorqualifizierte Interessenten — kein Ersatz.</p>
+                    </details>
+                    <details>
+                        <summary>Was, wenn die Werbung wieder nichts bringt?</summary>
+                        <p>Bis vor dem Livegang der ersten Werbung: 30 Tage Geld-zurück auf Setup und Betreuung. Media nur unausgegeben. Danach steuern wir Kampagnen nach — ohne Abschlussgarantie; der Abschluss liegt bei Ihnen.</p>
+                    </details>
+                    <details>
+                        <summary>Für wen ist das gedacht?</summary>
+                        <p>Unabhängige Under-/Mid-Wohnmakler in DACH, ab ca. 3 Personen inklusive Geschäftsführung. Propstack oder onOffice. Liquid für Setup, Betreuung und mind. 1.000 € Media.</p>
+                    </details>
+                    <details>
+                        <summary>Sagt ihr Preise zu oder bucht wild?</summary>
+                        <p>Wir buchen keine wilden Termine. Interessenten werden nach Ihren Regeln vorqualifiziert — Budget, Zeitrahmen, Ernsthaftigkeit — und landen erst dann in Ihrem Kalender. Preise und Abschluss sagen Sie.</p>
+                    </details>
+                    <details>
+                        <summary>Wo liegen die Daten — wer darf ran? (DSGVO)</summary>
+                        <p>Werbedaten und Kontakte laufen über Ihr Konto und Ihre Systeme. Zugänge und Freigaben steuern Sie. Details zur Verarbeitung stehen in unserer Datenschutzerklärung.</p>
+                    </details>
+                    <details>
+                        <summary>Doppelarbeit mit unserer Media-Agentur?</summary>
+                        <p>Klar getrennte Rollen: wir liefern Meta + Qualifizierung + Termine für Ihren Kalender. Wenn Sie eine Agentur haben, stimmen wir Schnittstellen ab — kein paralleles Rätselraten auf demselben Konto ohne Absprache.</p>
+                    </details>
+                    <details>
+                        <summary>Wie funktioniert die 30-Tage-Geld-zurück genau?</summary>
+                        <p>30 Tage Geld-zurück-Garantie bis zum Livegang: gilt bis vor dem Start der ersten Werbung. Zurück: Setup 3.900 € + Betreuung 1.500 €. Media nur, wenn noch nicht ausgegeben. Danach nicht.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section id="garantie" class="home-band home-band--cloud garantie-band" aria-labelledby="garantie-title">
             <div class="section-wrap">
                 <div class="garantie">
                     <img class="garantie__icon" src="images/glass/shield.svg" width="96" height="96" alt="" loading="lazy" decoding="async">
                     <div class="garantie__copy">
                         <span class="mono-label">Unser Risiko, nicht Ihres</span>
-                        <h2 class="section-h2" id="garantie-title">Garantie am System, nicht am Pitch.</h2>
-                        <p class="garantie__body">Bei Bedarf kommen wir zu Ihnen und handeln eine Garantie aus — passend zu dem System, das Ihren Engpass löst. Jede Problemlösung braucht eine eigene, passende Zusage. Festgehalten werden messbare Kennzahlen vor dem Start.</p>
-                        <p class="garantie__body">Bleibt in den ersten zwei Monaten nach Go-Live der Mehrwert nach diesen Kennzahlen aus oder nicht messbar, bekommen Sie Ihre Monatsbeiträge zurück.</p>
+                        <h2 class="section-h2" id="garantie-title">30 Tage Geld-zurück-Garantie bis zum Livegang.</h2>
+                        <p class="garantie__body">Bis vor dem Livegang der ersten Werbung: Setup 3.900 € und Betreuung 1.500 € zurück, no questions asked. Media nur unausgegeben — kein Abschlussversprechen.</p>
                     </div>
                 </div>
                 <div class="home-cta-row home-cta-row--center">
-                    <button type="button" class="hero-btn-primary js-open-booking" id="cta-before-contact" data-source="before-contact">Kostenlosen Audit buchen</button>
+                    <button type="button" class="hero-btn-primary js-open-booking" id="cta-before-contact" data-source="garantie">Unverbindliches Gespräch buchen</button>
                 </div>
             </div>
         </section>
 
-<section id="contact" class="contact-band home-band--green">
+        <section id="termin" class="contact-band home-band--green" aria-labelledby="termin-title">
             <div class="section-wrap">
                 <div class="contact-deliver">
-                    <span class="mono-label mono-label--contact">Kostenloser Audit</span>
-                    <p class="contact-claim">20 Minuten. Ein Engpass. Prozess-Sparring: was geht, was nicht, was Sinn macht.</p>
-                    <h2 class="section-h2 contact-h2">Termin wählen.</h2>
+                    <span class="mono-label mono-label--contact">Akut Kennenlernen</span>
+                    <p class="contact-claim">30 Minuten am Telefon. Klarheit, ob es für Sie passt — ohne Verpflichtung.</p>
+                    <h2 class="section-h2 contact-h2" id="termin-title">Bereit für Anfragen, die in den Kalender gehören?</h2>
                     <p class="contact-copy home-contact-lead">
-                        Sie geben Ihre Angaben direkt im Kalender ein. Ein zweites Formular gibt es nicht.
+                        30 Minuten · kein zweites Formular.
                     </p>
-
                     <div class="contact-deliver__cta">
-                        <p class="cal-card-sub">20 Minuten, kostenlos.</p>
-                        <div class="cal-inline cal-inline--contact" data-cal-inline data-source="contact" id="cal-inline-contact">
-                            <button type="button" class="cal-load-btn js-open-booking" data-source="contact-fallback">Termin wählen</button>
-                        </div>
-                        <p class="contact-deliver__trust">Kevin Ritz · Audit · kein Verkaufsdruck</p>
+                        <p class="cal-card-sub">30 Minuten · Telefon</p>
+                        <div class="cal-inline cal-inline--contact" data-cal-inline data-cal-nolead data-source="termin" data-cal-url="https://cal.com/ritzaisolutions/akut-fit-call" id="cal-inline-termin"></div>
+                        <p class="contact-deliver__trust">Kevin Ritz · Akut Fit-Call · kein Verkaufsdruck</p>
                     </div>
                 </div>
             </div>
         </section>
 
-
-
     </main>
+
 
 
     <!-- ═══════════════════════════════════════════════════════
          MOBILE STICKY CTA
     ═══════════════════════════════════════════════════════ -->
     <div id="sticky-cta" aria-hidden="true">
-        <button type="button" class="sticky-cta-btn js-open-booking" id="sticky-demo-btn" data-source="sticky">Kostenlosen Audit buchen</button>
+        <button type="button" class="sticky-cta-btn js-open-booking" id="sticky-demo-btn" data-source="sticky">Unverbindliches Gespräch buchen</button>
     </div>
 
     <!-- ═══════════════════════════════════════════════════════
@@ -2001,7 +1941,7 @@
 
         /* ── Mobile sticky CTA ───────────────────────────────── */
         var stickyCta = document.getElementById('sticky-cta');
-        var contactEl = document.getElementById('contact');
+        var contactEl = document.getElementById('termin');
         var midCta = document.getElementById('cta-before-contact');
         if (stickyCta && contactEl) {
             function bandInView(el) {
@@ -2031,7 +1971,7 @@
          BOOKING MODAL
     ═══════════════════════════════════════════════════════ -->
 
-<div id="booking-modal" role="dialog" aria-modal="true" aria-label="Kostenlosen Audit buchen">
+<div id="booking-modal" role="dialog" aria-modal="true" aria-label="Unverbindliches Gespräch buchen">
   <div class="bm-backdrop" id="bm-backdrop"></div>
   <div class="bm-box">
     <button class="bm-close" id="bm-close" type="button" aria-label="Schließen">
@@ -2039,7 +1979,7 @@
     </button>
     <div class="bm-step is-active" id="bm-step-0">
       <h2 class="bm-title">Wählen Sie Ihren Termin</h2>
-      <p class="bm-sub">20 Minuten, kostenlos. Sie geben Ihre Angaben direkt im Kalender ein, ein zweites Formular gibt es nicht.</p>
+      <p class="bm-sub">30 Minuten am Telefon. Sie geben Ihre Angaben direkt im Kalender ein — ein zweites Formular gibt es nicht.</p>
       <div class="bm-cal-wrap" id="bm-cal-wrap"></div>
     </div>
   </div>
@@ -2154,6 +2094,7 @@
     <script src="scripts/motion.js"></script>
 <script src="scripts/vsl-player.js"></script>
     <script src="scripts/collab-scroll.js"></script>
+<script src="scripts/roi-board.js"></script>
 
 <script src="scripts/i18n-dict.js"></script>
 <script src="scripts/i18n.js"></script>

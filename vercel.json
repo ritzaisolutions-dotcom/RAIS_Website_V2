@@ -13,7 +13,12 @@
     { "source": "/makler.html", "destination": "/ai-roadmap.html", "permanent": true },
     { "source": "/makler", "destination": "/ai-roadmap.html", "permanent": true },
     { "source": "/ai-roadmap", "destination": "/ai-roadmap.html", "permanent": true },
-    { "source": "/ai-roadmap/", "destination": "/ai-roadmap.html", "permanent": true }
+    { "source": "/ai-roadmap/", "destination": "/ai-roadmap.html", "permanent": true },
+    { "source": "/akut.html", "destination": "/", "permanent": false },
+    { "source": "/akut", "destination": "/", "permanent": false },
+    { "source": "/akut/", "destination": "/", "permanent": false },
+    { "source": "/roi-praemissen", "destination": "/roi-praemissen.html", "permanent": false },
+    { "source": "/roi-praemissen/", "destination": "/roi-praemissen.html", "permanent": false }
   ],
   "headers": [
     {

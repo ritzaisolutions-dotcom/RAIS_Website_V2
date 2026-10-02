@@ -30,6 +30,9 @@
  *
  * "engpass" landet bewusst auf pain_point. Das frueher gesendete Feld
  * engpass hat die Edge Function nie gelesen, es fiel still weg.
+ *
+ * Auf /akut: data-cal-nolead am Container. Dann kein submit-audit-lead —
+ * die Akut-Quali (Anfragevolumen, Primaerschmerz, CRM) bleibt im Event.
  */
 (function () {
   'use strict';
@@ -313,6 +316,7 @@
   }
 
   function submitLead(entry, data) {
+    if (entry.noLead) return;
     if (!SUPABASE_URL || !SUPABASE_ANON) return;
     if (entry.leadSent) return;
 
@@ -398,6 +402,7 @@
       if (options.icpSegment) existing.icpSegment = options.icpSegment;
       if (options.calUrl) existing.target = resolveTarget(options.calUrl);
       if (options.config) existing.config = options.config;
+      if (typeof options.noLead === 'boolean') existing.noLead = options.noLead;
       if (existing.loaded && options.config) {
         existing.loaded = false;
         existing.leadSent = false;
@@ -418,6 +423,7 @@
       ns: 'rais-' + counter,
       loaded: false,
       leadSent: false,
+      noLead: options.noLead === true || (el && el.hasAttribute('data-cal-nolead')),
       mountedAt: Date.now(),
       consentedAt: 0,
       source: sanitizeSource(options.source),
@@ -461,14 +467,15 @@
     function mountNode(el) {
       mount(el, {
         source: el.getAttribute('data-source'),
-        calUrl: el.getAttribute('data-cal-url') || pageCalUrl()
+        calUrl: el.getAttribute('data-cal-url') || pageCalUrl(),
+        noLead: el.hasAttribute('data-cal-nolead')
       });
     }
 
     var eager = [];
     var lazy = [];
     nodes.forEach(function (el) {
-      if (el.id === 'cal-inline-contact' || el.classList.contains('cal-inline--contact')) {
+      if (el.id === 'cal-inline-contact' || el.id === 'cal-inline-termin' || el.classList.contains('cal-inline--contact')) {
         eager.push(el);
       } else {
         lazy.push(el);

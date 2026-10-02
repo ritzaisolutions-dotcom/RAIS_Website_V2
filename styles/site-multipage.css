@@ -252,7 +252,12 @@ a { color: inherit; }
 
 html[data-lang-pending] body { visibility: hidden; }
 
+/* DE-only: language switcher removed site-wide */
 .lang-toggle {
+  display: none !important;
+}
+
+.lang-toggle__unused {
   display: inline-flex;
   align-items: center;
   padding: 2px;

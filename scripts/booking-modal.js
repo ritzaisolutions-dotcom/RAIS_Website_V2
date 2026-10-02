@@ -33,11 +33,13 @@
 
     if (calWrap && window.RAISCal) {
       var pageCal = document.body && document.body.getAttribute('data-cal-url');
+      var isConvert = document.body && document.body.getAttribute('data-page') === 'convert';
       window.RAISCal.mount(calWrap, {
         source: options.source || null,
         icpSegment: options.icp_segment || null,
         calUrl: pageCal || undefined,
-        ensureConsent: true
+        ensureConsent: true,
+        noLead: isConvert || (document.body && document.body.hasAttribute('data-cal-nolead'))
       });
     }
 

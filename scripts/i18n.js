@@ -221,8 +221,20 @@
     }
   }
 
+  function ensureToggle() {
+    // DE-only site — do not inject a language switcher.
+    var existing = document.querySelectorAll('.lang-toggle');
+    for (var i = 0; i < existing.length; i++) {
+      existing[i].remove();
+    }
+  }
+
+  function bindToggles() {
+    // no-op: English toggle removed
+  }
+
   function apply(lang, opts) {
-    current = lang === 'en' ? 'en' : 'de';
+    current = 'de';
     writeLang(current);
     document.documentElement.lang = current;
     document.documentElement.setAttribute('data-lang', current);
@@ -240,28 +252,7 @@
   }
 
   function langToggleMarkup() {
-    return (
-      '<div class="lang-toggle" data-i18n-ignore role="group" aria-label="Sprache / Language">' +
-        '<button type="button" class="lang-toggle__btn" data-lang-set="de" aria-pressed="true">DE</button>' +
-        '<button type="button" class="lang-toggle__btn" data-lang-set="en" aria-pressed="false">EN</button>' +
-      '</div>'
-    );
-  }
-
-  function ensureToggle() {
-    if (document.querySelector('.lang-toggle')) return;
-    var host = document.querySelector('.nav-right') || document.querySelector('.topbar') || document.querySelector('header');
-    if (!host) return;
-    host.insertAdjacentHTML('afterbegin', langToggleMarkup());
-  }
-
-  function bindToggles() {
-    document.addEventListener('click', function (event) {
-      var btn = event.target.closest && event.target.closest('[data-lang-set]');
-      if (!btn) return;
-      event.preventDefault();
-      apply(btn.getAttribute('data-lang-set'));
-    });
+    return '';
   }
 
   var applying = false;
