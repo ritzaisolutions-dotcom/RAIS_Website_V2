@@ -27,27 +27,45 @@
 
   function openModal(opts) {
     var options = opts || {};
+    var isConvert = document.body && document.body.getAttribute('data-page') === 'convert';
+    if (isConvert) {
+      var termin = document.getElementById('termin');
+      var inline = document.getElementById('cal-inline-termin');
+      var pageCal = document.body.getAttribute('data-cal-url');
+      if (inline && window.RAISCal) {
+        window.RAISCal.mount(inline, {
+          source: options.source || 'termin',
+          icpSegment: options.icp_segment || null,
+          calUrl: pageCal || undefined,
+          ensureConsent: true,
+          remount: !inline.querySelector('iframe'),
+          noLead: true
+        });
+      }
+      if (termin && typeof termin.scrollIntoView === 'function') {
+        termin.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      return;
+    }
+
     lastFocused = document.activeElement;
     modal.classList.add('is-open');
     document.body.classList.add('noscroll');
 
     if (calWrap && window.RAISCal) {
-      var pageCal = document.body && document.body.getAttribute('data-cal-url');
-      var isConvert = document.body && document.body.getAttribute('data-page') === 'convert';
+      var pageCalOther = document.body && document.body.getAttribute('data-cal-url');
       calWrap.innerHTML = '';
       calWrap.classList.remove('is-loading');
       window.RAISCal.mount(calWrap, {
         source: options.source || null,
         icpSegment: options.icp_segment || null,
-        calUrl: pageCal || undefined,
+        calUrl: pageCalOther || undefined,
         ensureConsent: true,
         remount: true,
-        noLead: isConvert || (document.body && document.body.hasAttribute('data-cal-nolead'))
+        noLead: document.body && document.body.hasAttribute('data-cal-nolead')
       });
     }
 
-    /* Der Kalender kommt asynchron, deshalb zuerst auf den
-       Schliessen-Button. Von dort tabbt man in den Embed. */
     if (closeBtn) closeBtn.focus();
   }
 

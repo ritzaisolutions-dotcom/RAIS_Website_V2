@@ -26,6 +26,7 @@
 
 .page-akut #hero .hero-h1__mark--italic {
   font-style: italic;
+  color: var(--sage-light, #9FB88C);
 }
 
 .page-akut #hero .hero-h1--promise {
@@ -219,10 +220,17 @@
 
 .page-akut .cal-direct-link {
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 0.85rem;
-  font-size: 0.92rem;
+  min-height: 44px;
+  padding: 0.75rem 1.25rem;
+  border-radius: 10px;
+  background: var(--orange, #EC6A37);
+  color: #fff;
+  font-size: 0.95rem;
   font-weight: 600;
-  color: var(--charcoal, #2F2A24);
+  text-decoration: none;
 }
 
 .page-akut .vsl--poster-only .vsl__frame {

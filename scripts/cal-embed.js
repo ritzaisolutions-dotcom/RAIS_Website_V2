@@ -297,7 +297,7 @@
 
     var frame = document.createElement('iframe');
     frame.title = t('Termin wählen');
-    frame.src = pageUrl + '?embed=true';
+    frame.src = 'https://app.cal.com/' + resolved.link + '?embed=true&layout=month_view';
     frame.loading = 'eager';
     frame.referrerPolicy = 'strict-origin-when-cross-origin';
     frame.setAttribute('allow', 'payment');
