@@ -295,12 +295,38 @@
     }, 4000);
   }
 
+  /* Cal liefert Embed-Seiten mit body { visibility:hidden; opacity:0 }.
+     Ohne Embed-Snippet bleibt das unsichtbar, bis der Parent
+     parentKnowsIframeReady antwortet. Direktes Iframe (Convert-LP)
+     braucht diesen Handshake selbst — sonst weisses Modal. */
+  var iframeReadyAckInstalled = false;
+  function installIframeReadyAck() {
+    if (iframeReadyAckInstalled) return;
+    iframeReadyAckInstalled = true;
+    window.addEventListener('message', function (event) {
+      var origin = event.origin || '';
+      if (origin !== 'https://app.cal.com' && origin !== 'https://cal.com') return;
+      var data = event.data;
+      if (!data || typeof data !== 'object') return;
+      if (data.originator !== 'CAL' || data.type !== '__iframeReady') return;
+      var source = event.source;
+      if (!source || typeof source.postMessage !== 'function') return;
+      try {
+        source.postMessage(
+          { originator: 'CAL', method: 'parentKnowsIframeReady', arg: {} },
+          origin
+        );
+      } catch (e) { /* ignore */ }
+    });
+  }
+
   function renderDirectFrame(entry) {
     var resolved = entry.target || target;
     var pageUrl = resolved.origin + '/' + resolved.link;
     clearReadyTimer(entry);
     entry.el.classList.remove('is-loading');
     entry.el.innerHTML = '';
+    installIframeReadyAck();
 
     var frame = document.createElement('iframe');
     frame.title = t('Termin wählen');
