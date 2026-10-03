@@ -141,11 +141,12 @@
       update: function (_obj, name) {
         if (name !== 'consents' && name !== 'saveConsents') return;
         mounted.forEach(function (entry) {
+          if (!hasConsent() && entry.holdUntil && Date.now() < entry.holdUntil) return;
           if (hasConsent()) {
             clearReadyTimer(entry);
             entry.loaded = false;
             activate(entry);
-          } else {
+          } else if (!entry.openedByClick) {
             clearReadyTimer(entry);
             entry.loaded = false;
             renderPlaceholder(entry);
@@ -184,13 +185,11 @@
     btn.addEventListener('click', function () {
       btn.disabled = true;
       btn.textContent = t('Kalender wird geladen…');
+      entry.openedByClick = true;
+      entry.holdUntil = Date.now() + 2000;
       entry.consentedAt = Date.now();
-      if (!grantConsent()) {
-        /* Ohne Klaro-Manager keine belastbare Einwilligung, also
-           auch kein Embed. Der externe Link bleibt als Ausweg. */
-        renderFallbackLink(entry);
-        return;
-      }
+      grantConsent();
+      entry.loaded = false;
       activate(entry);
     });
     box.appendChild(btn);
@@ -515,6 +514,10 @@
           existing.ns = 'rais-' + counter;
         }
         if (forceLoad || remount || hasConsent()) {
+          if (forceLoad) {
+            existing.openedByClick = true;
+            existing.holdUntil = Date.now() + 2000;
+          }
           existing.consentedAt = Date.now();
           activate(existing);
         } else {
@@ -544,6 +547,10 @@
     /* CTA/Modal: ensureConsent = Klick ist die Einwilligung → sofort laden.
        data-cal-click: nur Platzhalter, bis der Gate-Button geklickt wird. */
     if (forceLoad || (hasConsent() && !el.hasAttribute('data-cal-click'))) {
+      if (forceLoad) {
+        entry.openedByClick = true;
+        entry.holdUntil = Date.now() + 2000;
+      }
       entry.consentedAt = Date.now();
       activate(entry);
     } else {

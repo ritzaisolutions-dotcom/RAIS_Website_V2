@@ -110,3 +110,32 @@
 .klaro .cookie-modal a {
     color: #ec6a37 !important;
 }
+
+#klaro-reopen {
+  position: fixed;
+  left: 0.75rem;
+  bottom: 0.75rem;
+  z-index: 40;
+  margin: 0;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid rgba(47, 42, 36, 0.18);
+  border-radius: 999px;
+  background: rgba(251, 248, 243, 0.94);
+  color: #2f2a24;
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(47, 42, 36, 0.12);
+}
+
+#klaro-reopen:hover {
+  background: #fff;
+}
+
+@media (max-width: 860px) {
+  #klaro-reopen {
+    bottom: 4.5rem;
+  }
+}

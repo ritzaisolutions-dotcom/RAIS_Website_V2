@@ -172,3 +172,33 @@ var klaroConfig = {
     },
   ],
 };
+
+/* Kleiner Wiedereinstieg, nachdem das Banner weg ist.
+   „Nur notwendige“ darf die spätere Buchung nicht sperren;
+   die Einstellungen bleiben über diesen Button erreichbar. */
+(function () {
+  function openSettings() {
+    try {
+      if (window.klaro && typeof window.klaro.show === 'function') {
+        window.klaro.show(undefined, true);
+      }
+    } catch (e) { /* Klaro blockiert */ }
+  }
+
+  function mountButton() {
+    if (document.getElementById('klaro-reopen')) return;
+    var btn = document.createElement('button');
+    btn.id = 'klaro-reopen';
+    btn.type = 'button';
+    btn.setAttribute('aria-label', 'Datenschutzeinstellungen');
+    btn.textContent = 'Datenschutz';
+    btn.addEventListener('click', openSettings);
+    document.body.appendChild(btn);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', mountButton);
+  } else {
+    mountButton();
+  }
+}());
