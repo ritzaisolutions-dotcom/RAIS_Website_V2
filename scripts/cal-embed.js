@@ -637,4 +637,40 @@
   } else {
     autoMount();
   }
+
+  /* Convert-LP: Cal-Iframe meldet bookingSuccessful per postMessage.
+     Nur dort auf die Danke-Seite wechseln — andere Cal-Seiten bleiben. */
+  function isCalBookingSuccess(data) {
+    if (!data) return false;
+    if (typeof data === 'string') {
+      try { data = JSON.parse(data); } catch (e) { return false; }
+    }
+    if (typeof data !== 'object') return false;
+    var type = data.type || data.action || data.method || '';
+    if (type === 'bookingSuccessful' || type === 'bookingSuccessfulV2') return true;
+    if (data.data && typeof data.data === 'object') {
+      var nested = data.data.type || data.data.action || '';
+      if (nested === 'bookingSuccessful' || nested === 'bookingSuccessfulV2') return true;
+    }
+    return false;
+  }
+
+  function listenConvertThanksRedirect() {
+    if (!document.body || document.body.dataset.page !== 'convert') return;
+    var redirected = false;
+    window.addEventListener('message', function (event) {
+      if (redirected) return;
+      var origin = event.origin || '';
+      if (origin !== 'https://app.cal.com' && origin !== 'https://cal.com') return;
+      if (!isCalBookingSuccess(event.data)) return;
+      redirected = true;
+      window.location.assign('/danke.html');
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', listenConvertThanksRedirect);
+  } else {
+    listenConvertThanksRedirect();
+  }
 }());

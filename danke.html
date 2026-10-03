@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Termin steht | RAIS</title>
+  <meta name="description" content="Ihr Termin für das 20-Minuten-Gespräch steht. Kurz vorbereiten, dann telefonieren.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" href="favicon.png?v=3">
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="styles/site-multipage.css">
+  <link rel="stylesheet" href="styles/akut.css">
+</head>
+<body class="page-akut page-danke">
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <nav id="navbar" aria-label="Hauptnavigation">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand" aria-label="RAIS zur Startseite">
+        <img src="favicon.svg" alt="" width="44" height="44" aria-hidden="true">
+        <div class="nav-brand-words">
+          <span class="nav-wordmark">RAIS</span>
+          <span class="nav-submark">Ritz AI Solutions</span>
+        </div>
+      </a>
+      <div class="nav-right">
+        <a href="/" class="danke-nav-home">Zur Startseite</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+    <section class="danke-band" aria-labelledby="danke-title">
+      <div class="section-wrap section-wrap--narrow danke-wrap">
+        <h1 class="danke-h1" id="danke-title">Termin steht.</h1>
+        <p class="danke-lead">20 Minuten am Telefon. Die Einladung kommt von Cal.com.</p>
+
+        <div class="danke-block">
+          <span class="mono-label">Vor dem Anruf</span>
+          <ol class="danke-list">
+            <li>Geschäftsführung ist selbst am Telefon.</li>
+            <li>Grobe Zahlen parat: Anfragen, Mandate, was an Werbung heute läuft.</li>
+            <li>Wo es hakt: Anfragen, Qualifizierung oder Mandate.</li>
+          </ol>
+        </div>
+
+        <div class="danke-block">
+          <span class="mono-label">Im Gespräch</span>
+          <ol class="danke-list">
+            <li>Wo es bei Ihnen hakt.</li>
+            <li>Wie Akut und Meta in Ihrem Büro laufen würden.</li>
+            <li>Ob sich der Einstieg mit Ihren Zahlen lohnt, und was die Garantie abdeckt.</li>
+          </ol>
+        </div>
+
+        <p class="danke-role">Sie filmen kurz und führen die Gespräche. Den Rest machen wir.</p>
+
+        <p class="danke-reschedule">Wenn der Termin nicht passt: über die Mail von Cal.com verschieben.</p>
+
+        <p class="danke-home">
+          <a href="/">Zurück zur Startseite</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer">
+    <div class="footer-inner">
+      <a href="/" class="footer-brand" aria-label="RAIS Startseite">
+        <img src="favicon.svg" alt="" width="48" height="48" aria-hidden="true">
+        <span class="footer-wordmark">RAIS</span>
+      </a>
+      <nav class="footer-legal" aria-label="Seitenlinks">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+      </nav>
+      <span class="footer-copy">© 2026 Ritz AI Solutions · RAIS · Koblenz</span>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    var navbar = document.getElementById('navbar');
+    if (!navbar) return;
+    window.addEventListener('scroll', function () {
+      navbar.classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+  }());
+  </script>
+</body>
+</html>
