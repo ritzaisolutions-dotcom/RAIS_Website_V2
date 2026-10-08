@@ -1,3 +1,11 @@
+User-agent: facebookexternalhit
+Allow: /datenschutz.html
+Allow: /impressum.html
+Disallow: /html files/
+Disallow: /rais_rechtstexte/
+Disallow: /live_scs/
+Allow: /
+
 User-agent: *
 Disallow: /datenschutz.html
 Disallow: /impressum.html
