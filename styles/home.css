@@ -2377,14 +2377,21 @@ html[data-lang='en'] #hero .hero-h1--promise [data-lang-copy='en'] {
 }
 
 #hero .hero-sub {
-  max-width: 36rem;
-  margin-top: 0.35rem;
+  max-width: 40rem;
+  margin: 0.65rem auto 0;
+  color: rgba(251, 248, 243, 0.92);
+  font-family: var(--serif);
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: center;
+  text-wrap: pretty;
 }
 
 /* Promise H1: smaller wrapping sentence, white + orange Schlagwoerter */
 #hero .hero-h1--promise {
   display: block;
-  max-width: 38rem;
+  max-width: 46rem;
   margin-inline: auto;
   font-size: clamp(1.2rem, 2.6vw, 1.85rem);
   font-weight: 600;
