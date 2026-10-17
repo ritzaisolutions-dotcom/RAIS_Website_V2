@@ -39,8 +39,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Home: VSL-Startseite für Wohnmakler. Eine Aktion: Erstgespräch buchen. -->
-    <title>RAIS | Done-for-you-Marketing für Wohnimmobilienmakler</title>
-    <meta name="description" content="Ein Done-for-you-Marketing-System für Wohnimmobilienmakler, das kaufkräftige Anfragen generiert, vorqualifiziert und direkt in den Kalender setzt. Vom Hoffnungsmarketing zu planbaren Kaufanfragen.">
+    <title>RAIS | Planbar qualifizierte Kaufanfragen in unter 90 Tagen</title>
+    <meta name="description" content="Ein Done-for-you-Marketing-System, das planbar qualifizierte Kaufanfragen generiert, um Ihr Objekt in Ihrer Region in unter 90 Tagen zu verkaufen. Die Autorität in Ihrem regionalen Markt: Werbekampagnen an eine Kundschaft, die sich bis jetzt noch gar nicht auf den Portalen aufhält.">
     <meta name="google-site-verification" content="A6q1zlZLweKSa1vIxp-owVoxpEXPyIW-gPWdY6N79ZI">
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -48,15 +48,15 @@
     <link rel="apple-touch-icon" href="favicon.png?v=3">
 
     <!-- OpenGraph -->
-    <meta property="og:title" content="RAIS | Done-for-you-Marketing für Wohnimmobilienmakler">
-    <meta property="og:description" content="Ein Done-for-you-Marketing-System für Wohnimmobilienmakler, das kaufkräftige Anfragen generiert, vorqualifiziert und direkt in den Kalender setzt. Vom Hoffnungsmarketing zu planbaren Kaufanfragen.">
+    <meta property="og:title" content="RAIS | Planbar qualifizierte Kaufanfragen in unter 90 Tagen">
+    <meta property="og:description" content="Ein Done-for-you-Marketing-System, das planbar qualifizierte Kaufanfragen generiert, um Ihr Objekt in Ihrer Region in unter 90 Tagen zu verkaufen. Die Autorität in Ihrem regionalen Markt: Werbekampagnen an eine Kundschaft, die sich bis jetzt noch gar nicht auf den Portalen aufhält.">
     <meta property="og:url" content="https://ritz-ai.solutions">
     <meta property="og:type" content="website">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="RAIS | Done-for-you-Marketing für Wohnimmobilienmakler">
-    <meta name="twitter:description" content="Ein Done-for-you-Marketing-System für Wohnimmobilienmakler, das kaufkräftige Anfragen generiert, vorqualifiziert und direkt in den Kalender setzt. Vom Hoffnungsmarketing zu planbaren Kaufanfragen.">
+    <meta name="twitter:title" content="RAIS | Planbar qualifizierte Kaufanfragen in unter 90 Tagen">
+    <meta name="twitter:description" content="Ein Done-for-you-Marketing-System, das planbar qualifizierte Kaufanfragen generiert, um Ihr Objekt in Ihrer Region in unter 90 Tagen zu verkaufen. Die Autorität in Ihrem regionalen Markt: Werbekampagnen an eine Kundschaft, die sich bis jetzt noch gar nicht auf den Portalen aufhält.">
 
     <!-- Schema.org -->
     <script type="application/ld+json">
@@ -65,7 +65,7 @@
       "@type": "ProfessionalService",
       "name": "RAIS (Ritz AI Solutions)",
       "url": "https://ritz-ai.solutions",
-      "description": "Ein Done-for-you-Marketing-System für Wohnimmobilienmakler, das kaufkräftige Anfragen generiert, vorqualifiziert und direkt in den Kalender setzt. Vom Hoffnungsmarketing zu planbaren Kaufanfragen.",
+      "description": "Ein Done-for-you-Marketing-System, das planbar qualifizierte Kaufanfragen generiert, um Ihr Objekt in Ihrer Region in unter 90 Tagen zu verkaufen. Die Autorität in Ihrem regionalen Markt: Werbekampagnen an eine Kundschaft, die sich bis jetzt noch gar nicht auf den Portalen aufhält.",
       "brand": { "@type": "Brand", "name": "RAIS" },
       "areaServed": ["DE", "AT", "CH"]
     }
@@ -1236,8 +1236,12 @@
             width: 100%;
             /* Der Kalender braucht die Breite der Monatsansicht. Die
                540px stammen aus der Zeit des Formulars. */
-            max-width: 1040px;
-            max-height: 90vh;
+            width: 96vw;
+            max-width: none;
+            height: 92vh;
+            max-height: 92vh;
+            display: flex;
+            flex-direction: column;
             overflow-y: auto;
             padding: 2.5rem 2rem 2rem;
             box-shadow: 0 32px 80px rgba(20,17,13,0.28), 0 0 0 1px rgba(255,255,255,0.12) inset;
@@ -1260,7 +1264,16 @@
         .bm-close:hover { color: var(--charcoal); }
 
         .bm-step { display: none; }
-        .bm-step.is-active { display: block; }
+        .bm-step.is-active {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            min-height: 0;
+        }
+        #bm-cal-wrap {
+            flex: 1;
+            min-height: 0;
+        }
 
         /* Fortschrittspunkte, Formularfelder, Auswahlkacheln und die
            Zurueck/Weiter-Leiste sind mit dem zweistufigen Formular
@@ -1379,7 +1392,7 @@
     </a>
     <div class="nav-center convert-nav-links" aria-label="Seitenabschnitte">
       <a href="#referenz">Referenz</a>
-      <a href="#roi">ROI</a>
+      <a href="#garantie">Garantie</a>
       <a href="#faq">FAQ</a>
     </div>
     <div class="nav-right">
@@ -1400,11 +1413,11 @@
                     <span class="hero-brand-emblem__word">RAIS</span>
                 </div>
                 <h1 id="akut-h1" class="hero-h1 hero-h1--promise convert-hero__h1">
-                    <span class="hero-h1__line">Ein <span class="hero-h1__mark">Done-for-you</span>-Marketing-System für Wohnimmobilienmakler,</span>
-                    <span class="hero-h1__line">das <span class="hero-h1__mark hero-h1__mark--italic">kaufkräftige Anfragen</span> generiert,</span>
-                    <span class="hero-h1__line"><span class="hero-h1__mark">vorqualifiziert</span> und direkt in den <span class="hero-h1__mark">Kalender</span> setzt.</span>
+                    <span class="hero-h1__line">Ein <span class="hero-h1__mark">Done-for-you</span>-Marketing-System,</span>
+                    <span class="hero-h1__line">das <span class="hero-h1__mark hero-h1__mark--italic">planbar qualifizierte Kaufanfragen</span> generiert,</span>
+                    <span class="hero-h1__line">um Ihr Objekt in Ihrer Region in unter <span class="hero-h1__mark">90 Tagen</span> zu verkaufen.</span>
                 </h1>
-                <p class="hero-sub">Vom Hoffnungsmarketing zu planbaren Kaufanfragen.</p>
+                <p class="hero-sub">Die Autorität in Ihrem regionalen Markt: Werbekampagnen an eine Kundschaft, die sich bis jetzt noch gar nicht auf den Portalen aufhält.</p>
                 <div class="vsl vsl--poster-only" id="vsl" data-vsl-src="">
                     <div class="vsl__frame">
                         <img class="vsl__poster" src="images/mark-koch-hero.webp" alt="" width="1280" height="720" decoding="async">
@@ -1413,11 +1426,35 @@
 
                 <div class="hero-ctas">
                     <button type="button" class="hero-btn-primary js-open-booking" id="hero-work-btn" data-source="hero">Unverbindliches Erstgespräch buchen</button>
+                    <a class="convert-hero__pill" href="#garantie">60-Day-ROI-Geldzurückgarantie</a>
                 </div>
             </div>
         </section>
 
-        <section id="bridge" class="home-band home-band--linen" aria-labelledby="bridge-title">
+        <section id="garantie" class="home-band home-band--linen" aria-labelledby="garantie-title">
+            <div class="section-wrap convert-bridge">
+                <span class="mono-label">Garantie</span>
+                <h2 class="section-h2" id="garantie-title">Zwei Garantien. Unser Risiko.</h2>
+                <div class="convert-guarantee-grid">
+                    <article class="convert-guarantee-card">
+                        <img class="convert-guarantee-card__shield" src="images/glass/shield.svg" width="72" height="72" alt="" loading="lazy" decoding="async">
+                        <p class="convert-guarantee-card__label">Tag 1–7 · sofort</p>
+                        <h3 class="convert-guarantee-card__title">No Questions Asked</h3>
+                        <p class="convert-guarantee-card__body">Fühlt sich die erste Woche nicht so an wie besprochen, steigen Sie aus. Volles Geld zurück, ohne Begründung, ohne Fragen.</p>
+                        <p class="convert-guarantee-card__sub">Setup und erste Betreuung. Media nur, wenn noch nicht ausgegeben.</p>
+                    </article>
+                    <article class="convert-guarantee-card">
+                        <img class="convert-guarantee-card__shield" src="images/glass/shield.svg" width="72" height="72" alt="" loading="lazy" decoding="async">
+                        <p class="convert-guarantee-card__label">Tag 1–60 · nach Livegang</p>
+                        <h3 class="convert-guarantee-card__title">ROI-Garantie</h3>
+                        <p class="convert-guarantee-card__body">Neue Anfragen holen in 60 Tagen mindestens den Wert Ihres Investments wieder rein. Tun sie das nicht, und der Grund liegt bei uns, bekommen Sie Ihr Geld zurück.</p>
+                        <p class="convert-guarantee-card__sub">Sie leisten Ihren Teil, wie vertraglich abgestimmt: Input, Visuals, Kampagne live, Zahlung erfolgt. Wir haben nicht geliefert, was zugesagt war. Closing bleibt bei Ihnen.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="bridge" class="home-band home-band--cloud" aria-labelledby="bridge-title">
             <div class="section-wrap convert-bridge">
                 <span class="mono-label">Der Markt</span>
                 <h2 class="section-h2" id="bridge-title">Objekte brauchen länger. Portale reichen allein nicht mehr.</h2>
@@ -1624,108 +1661,7 @@
             </div>
         </section>
 
-        <section id="roi" class="home-band home-band--cloud" aria-labelledby="roi-title">
-            <div class="section-wrap section-wrap--narrow">
-                <h2 class="section-h2" id="roi-title">Planbare Kaufanfragen. Rechnen Sie selbst.</h2>
-                <p class="section-sub">Qualifizierte Interessenten in Ihrem Kalender, ohne dass Ihr Team das Postfach sortiert. Rechnen Sie selbst, was Ihr Werbebudget tragen kann.</p>
-                <div id="roi-board">
-                    <p class="roi-disclaimer">Beispielrechnung · spekulativ · keine Garantie. Kosten = Media + 1.500 €. Der Abschluss liegt bei Ihnen.</p>
-                    <div class="roi-chart-wrap">
-                        <div data-roi-chart class="roi-chart"></div>
-                        <div class="roi-tip" data-roi-tip hidden></div>
-                    </div>
-                    <p class="roi-legend">
-                        <span class="roi-legend__worst">Worst (~50 %)</span>
-                        <span class="roi-legend__best">Best (Plan 100 %)</span>
-                        <span class="roi-legend__cost">Kosten (Media + 1.500 €)</span>
-                        <span class="roi-legend__buffer" data-roi-buffer-legend hidden>Puffer Worst Case</span>
-                    </p>
-                    <p class="roi-source-links">
-                        <a href="/roi-praemissen">Woher kommen die Zahlen? Alle Prämissen und der Rechnungsweg</a>
-                        <a href="/roi-praemissen?print=1">PDF herunterladen</a>
-                    </p>
-                    <div class="roi-controls">
-                        <div>
-                            <label for="roi-media">Werbebudget / Monat</label>
-                            <div class="roi-presets" role="group" aria-label="Werbebudget-Stufen">
-                                <button type="button" class="roi-preset" data-roi-preset="1000">
-                                    <span class="roi-preset__label">Minimum</span>
-                                    <span class="roi-preset__val">1.000 €</span>
-                                </button>
-                                <button type="button" class="roi-preset is-active" data-roi-preset="5000" aria-pressed="true">
-                                    <span class="roi-preset__label">Empfohlen</span>
-                                    <span class="roi-preset__val">5.000 €</span>
-                                </button>
-                                <button type="button" class="roi-preset" data-roi-preset="25000">
-                                    <span class="roi-preset__label">Maximum</span>
-                                    <span class="roi-preset__val">25.000 €</span>
-                                </button>
-                            </div>
-                            <input id="roi-media" data-roi-media type="range" min="1000" max="25000" step="100" value="5000" aria-valuetext="5.000 Euro">
-                            <p class="roi-readout"><span>Media <strong data-roi-media-out>5.000 €</strong></span><span data-roi-mix-out>70/30 Ankauf–Verkauf</span></p>
-                        </div>
-                        <div class="roi-mix" role="radiogroup" aria-label="Aufteilung Ankauf–Verkauf">
-                            <label><input type="radio" name="roi-mix" data-roi-mix value="70" checked> 70/30 Ankauf–Verkauf</label>
-                            <label><input type="radio" name="roi-mix" data-roi-mix value="50"> 50/50 Ankauf–Verkauf</label>
-                        </div>
-                    </div>
-                    <div class="roi-return">
-                        <h3 class="roi-return__title">Return (Modell) · spekulativ</h3>
-                        <p class="roi-return__note">Faktor = Umsatz ÷ Kosten. Keine Garantie.</p>
-                        <div class="roi-return__wrap">
-                            <table class="roi-return__table">
-                                <caption class="visually-hidden">Return Minimum, Empfohlen und Maximum bei aktuellem Mix</caption>
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Stufe</th>
-                                        <th scope="col">Was rein</th>
-                                        <th scope="col">Was es kostet</th>
-                                        <th scope="col">Worst raus</th>
-                                        <th scope="col">Best raus</th>
-                                        <th scope="col">Faktor Worst</th>
-                                        <th scope="col">Faktor Best</th>
-                                    </tr>
-                                </thead>
-                                <tbody data-roi-return-table>
-                                    <tr>
-                                        <th scope="row">Minimum</th>
-                                        <td>1.000 €</td>
-                                        <td>2.500 €</td>
-                                        <td>2.540 €</td>
-                                        <td>5.080 €</td>
-                                        <td>~1,0×</td>
-                                        <td>~2,0×</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Empfohlen</th>
-                                        <td>5.000 €</td>
-                                        <td>6.500 €</td>
-                                        <td>12.700 €</td>
-                                        <td>25.400 €</td>
-                                        <td>~2,0×</td>
-                                        <td>~3,9×</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Maximum</th>
-                                        <td>25.000 €</td>
-                                        <td>26.500 €</td>
-                                        <td>63.500 €</td>
-                                        <td>127.000 €</td>
-                                        <td>~2,4×</td>
-                                        <td>~4,8×</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <table class="roi-sr-table visually-hidden">
-                        <caption>Beispielrechnung spekulativ bei Media 1.000–25.000 €, Mix 70/30</caption>
-                        <thead><tr><th>Media</th><th>Kosten</th><th>Worst</th><th>Best</th></tr></thead>
-                        <tbody data-roi-sr-table></tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
+        
 
         <section id="faq" class="home-band home-band--linen" aria-labelledby="faq-title">
             <div class="section-wrap section-wrap--narrow">
@@ -1765,6 +1701,10 @@
                         <p>Werbekonto, Kontakte und CRM bleiben Ihre. Zugänge und Freigaben steuern Sie. Details in unserer Datenschutzerklärung.</p>
                     </details>
                     <details>
+                        <summary>Wie funktionieren die Geld-zurück-Garantien?</summary>
+                        <p>Tag 1–7: Fühlt sich die erste Woche nicht so an wie besprochen, gibt es Setup und erste Betreuung zurück, ohne Fragen. Media nur, wenn noch nicht ausgegeben. Tag 1–60: Holen neue Anfragen den Wert des Investments nicht wieder rein und der Grund liegt bei uns, gibt es das Geld zurück. Der Abschluss bleibt bei Ihnen.</p>
+                    </details>
+                    <details>
                         <summary>Wir haben schon eine Agentur.</summary>
                         <p>Die meisten Agenturen liefern Klicks. Wir kümmern uns auch darum, was danach passiert: Kontakt in Minuten, Vorqualifizierung, Termin, Nachfassen. Wenn Sie eine Agentur behalten, stimmen wir die Rollen ab.</p>
                     </details>
@@ -1774,20 +1714,18 @@
 
         <section id="termin" class="contact-band home-band--green" aria-labelledby="termin-title">
             <div class="section-wrap">
-                <div class="contact-deliver">
-                    <span class="mono-label mono-label--contact">Erstgespräch</span>
-                    <p class="contact-claim">20 Minuten am Telefon. Wir schauen uns Ihre Region und Ihre Objekte an und sagen Ihnen offen, ob es passt.</p>
-                    <h2 class="section-h2 contact-h2" id="termin-title">Entscheiden Sie, dass Objekte nicht länger stehen bleiben müssen.</h2>
-                    <p class="contact-copy home-contact-lead">
-                        Unverbindliches Erstgespräch · 20 Minuten · kein zweites Formular.
-                    </p>
-                    <div class="contact-deliver__cta">
-                        <p class="cal-card-sub">Unverbindliches Erstgespräch · Telefon</p>
-                        <div class="cal-surface">
-                            <div class="cal-inline" data-cal-inline data-cal-nolead data-source="termin" data-cal-url="https://cal.com/ritzaisolutions/akut-fit-call" id="cal-inline-termin"></div>
-                        </div>
-                        <p class="contact-deliver__trust">Kevin Ritz · Erstgespräch · kein Verkaufsdruck</p>
+                <div class="termin-layout">
+                    <div class="termin-layout__copy">
+                        <span class="mono-label mono-label--contact">Erstgespräch</span>
+                        <p class="contact-claim">20 Minuten am Telefon. Wir schauen uns Ihre Region und Ihre Objekte an und sagen Ihnen offen, ob es passt.</p>
+                        <h2 class="section-h2 contact-h2" id="termin-title">Entscheiden Sie, dass Objekte nicht länger stehen bleiben müssen.</h2>
+                        <p class="contact-copy home-contact-lead">
+                            Unverbindliches Erstgespräch · 20 Minuten · kein zweites Formular.
+                        </p>
+                        <button type="button" class="hero-btn-primary js-open-booking" data-source="termin">Unverbindliches Erstgespräch buchen</button>
+                        <p class="termin-layout__trust">Kevin Ritz · Erstgespräch · kein Verkaufsdruck</p>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -2153,7 +2091,6 @@
     <script src="scripts/motion.js"></script>
 <script src="scripts/vsl-player.js"></script>
     <script src="scripts/collab-scroll.js"></script>
-<script src="scripts/roi-board.js"></script>
 
 <script src="scripts/i18n-dict.js"></script>
 <script src="scripts/i18n.js"></script>

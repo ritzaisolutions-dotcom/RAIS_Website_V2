@@ -154,7 +154,24 @@
 
 /* Der Kalender braucht die Breite der Monatsansicht, das alte
    540px-Modal war fuer ein Formular gebaut. */
-#booking-modal .bm-box { max-width: 1040px; }
+#booking-modal .bm-box {
+  width: 96vw;
+  max-width: none;
+  height: 92vh;
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+}
+#booking-modal .bm-step.is-active {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+#booking-modal .bm-cal-wrap {
+  flex: 1;
+  min-height: 0;
+}
 
 @media (max-width: 480px) {
   .bm-box { padding: 2rem 1.25rem 1.25rem; border-radius: 1rem; }

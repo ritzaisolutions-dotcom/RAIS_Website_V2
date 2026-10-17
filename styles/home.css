@@ -2377,15 +2377,19 @@ html[data-lang='en'] #hero .hero-h1--promise [data-lang-copy='en'] {
 }
 
 #hero .hero-sub {
-  max-width: 40rem;
-  margin: 0.65rem auto 0;
-  color: rgba(251, 248, 243, 0.92);
-  font-family: var(--serif);
-  font-size: clamp(1.05rem, 2vw, 1.35rem);
-  font-weight: 600;
-  line-height: 1.35;
+  max-width: 36rem;
+  margin: 0 auto;
+  color: rgba(251, 248, 243, 0.72);
+  font-family: var(--sans);
+  font-size: clamp(0.82rem, 1.25vw, 0.95rem);
+  font-weight: 500;
+  line-height: 1.45;
   text-align: center;
   text-wrap: pretty;
+}
+
+#hero .hero-sub__line {
+  display: block;
 }
 
 /* Promise H1: smaller wrapping sentence, white + orange Schlagwoerter */
@@ -2405,6 +2409,15 @@ html[data-lang='en'] #hero .hero-h1--promise [data-lang-copy='en'] {
   color: var(--orange, #EC6A37);
   font-style: normal;
   font-weight: 700;
+}
+
+#hero .hero-h1__line--follow {
+  display: block;
+  max-width: 38rem;
+  margin: 0.65rem auto 0;
+  font-size: 0.62em;
+  font-weight: 500;
+  line-height: 1.4;
 }
 
 #hero {

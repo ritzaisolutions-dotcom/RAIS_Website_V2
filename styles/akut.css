@@ -45,6 +45,10 @@
   gap: 1.1rem;
 }
 
+.page-akut #hero .hero-h1--promise + .hero-sub {
+  margin-top: -0.75rem;
+}
+
 .page-akut #hero .hero-ctas {
   margin-top: 0.25rem;
   display: flex;
@@ -1019,6 +1023,28 @@
 
 .page-akut #termin {
   scroll-margin-top: 5rem;
+}
+
+.page-akut #termin > .section-wrap {
+  width: min(1240px, calc(100% - 2.5rem));
+}
+
+.page-akut .termin-layout {
+  max-width: 40rem;
+}
+
+.page-akut .termin-layout__copy .hero-btn-primary {
+  margin-top: 1.35rem;
+}
+
+.page-akut .termin-layout__trust {
+  margin: 0.85rem 0 0;
+  font-size: 0.9rem;
+  color: rgba(251, 248, 243, 0.72);
+}
+
+.page-akut #garantie {
+  scroll-margin-top: 5.5rem;
 }
 
 @media (max-width: 560px) {
