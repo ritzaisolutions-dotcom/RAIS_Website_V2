@@ -1176,3 +1176,463 @@
   letter-spacing: 0.08em;
 }
 
+
+
+/* ── Landingpage Wohnmakler: neue Bausteine (Stand 21.10.2026) ──────────
+   Nur neue Klassen, keine bestehenden Regeln überschrieben. Karten auf
+   hellem Grund wie die Garantie-Karten, auf Grün Haarlinie plus Füllung. */
+
+/* Pre-Headline nutzt .hero-sub, hier nur der Abstand zur H1 */
+.page-akut #hero .akut-pre {
+  margin: 0 auto 0.35rem;
+}
+
+.page-akut .akut-cta-note {
+  margin: 0;
+  font-size: 0.86rem;
+  line-height: 1.4;
+  color: rgba(251, 248, 243, 0.78);
+  text-align: center;
+}
+
+.page-akut .home-band .akut-cta-note {
+  color: var(--stone, #7B746B);
+}
+
+.page-akut .akut-cta-note--on-green {
+  color: rgba(251, 248, 243, 0.78);
+}
+
+/* Drei Karten nebeneinander (Gespräch, Paket, Garantie) */
+.page-akut .convert-guarantee-grid--3 {
+  max-width: 64rem;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 900px) {
+  .page-akut .convert-guarantee-grid--3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.page-akut .akut-lead {
+  max-width: 40rem;
+  margin: 0 auto;
+  color: var(--stone, #7B746B);
+}
+
+.page-akut .akut-fineprint {
+  margin: 0;
+  max-width: 40rem;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--stone, #7B746B);
+}
+
+/* Button auf grünem Band zentriert */
+.page-akut .convert-bridge__cta--on-green {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* CTA im FAQ-Text */
+.page-akut .akut-inline-cta {
+  display: inline;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-weight: 600;
+  color: var(--racing-green, #004225);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.page-akut .footer-disclaimer {
+  margin: 0.75rem auto 0;
+  max-width: 48rem;
+  padding: 0 1.25rem 1rem;
+  font-size: 0.76rem;
+  line-height: 1.45;
+  text-align: center;
+  color: var(--stone, #7B746B);
+}
+
+
+/* ── Prozess: von der Anzeige bis zum Rückruf (5 Schritte) ───────────── */
+.page-akut .akut-flow {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  width: 100%;
+  max-width: 72rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.25rem;
+  text-align: left;
+  counter-reset: flow;
+}
+
+.page-akut .akut-flow__step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 1.25rem 1.1rem 1.35rem;
+  background: var(--surface, #FBF8F3);
+  border: 1px solid var(--border, #D9D1C7);
+  border-radius: var(--radius-md, 1.1rem);
+  box-shadow: 0 8px 24px rgba(47, 42, 36, 0.06);
+}
+
+/* Verbindungslinie zum nächsten Schritt */
+.page-akut .akut-flow__step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 2.1rem;
+  right: -1.25rem;
+  width: 1.25rem;
+  height: 2px;
+  background: var(--sage, #789464);
+}
+
+/* Der Schritt, der uns von anderen unterscheidet */
+.page-akut .akut-flow__step--lead {
+  background: var(--racing-green, #004225);
+  border-color: var(--racing-green, #004225);
+  box-shadow: none;
+  color: var(--linen-on-green, #FBF8F3);
+}
+
+.page-akut .akut-flow__icon {
+  width: 28px;
+  height: 28px;
+  color: var(--racing-green, #004225);
+}
+
+.page-akut .akut-flow__step--lead .akut-flow__icon,
+.page-akut .akut-flow__step--lead .akut-flow__num {
+  color: var(--sage-light, #9FB88C);
+}
+
+.page-akut .akut-flow__num {
+  font-family: var(--mono, ui-monospace, monospace);
+  font-size: 0.74rem;
+  color: var(--sage, #789464);
+}
+
+.page-akut .akut-flow__title {
+  font-family: var(--serif);
+  font-size: 1.12rem;
+  line-height: 1.25;
+  font-weight: 700;
+  color: inherit;
+}
+
+.page-akut .akut-flow__step:not(.akut-flow__step--lead) .akut-flow__title {
+  color: var(--charcoal, #2F2A24);
+}
+
+.page-akut .akut-flow__desc {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--stone, #7B746B);
+}
+
+.page-akut .akut-flow__step--lead .akut-flow__desc {
+  color: rgba(251, 248, 243, 0.84);
+}
+
+@media (max-width: 1000px) {
+  .page-akut .akut-flow {
+    grid-template-columns: 1fr;
+    max-width: 34rem;
+  }
+
+  .page-akut .akut-flow__step:not(:last-child)::after {
+    top: auto;
+    bottom: -1.25rem;
+    right: auto;
+    left: 2.2rem;
+    width: 2px;
+    height: 1.25rem;
+  }
+}
+
+
+/* ── Schlanke Startseite: Problem, Hebel, System, Zahlen, Garantie, Erstgespräch ── */
+
+/* Problem: drei große Aussagen als Zeilen, nicht als Mini-Karten */
+.page-akut .akut-statements {
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--border, #D9D1C7);
+}
+
+.page-akut .akut-statement {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr;
+  gap: 1rem;
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--border, #D9D1C7);
+}
+
+.page-akut .akut-statement__n {
+  font-family: var(--mono, ui-monospace, monospace);
+  font-size: 0.9rem;
+  color: var(--sage, #789464);
+  padding-top: 0.55rem;
+}
+
+.page-akut .akut-statement__h {
+  margin: 0 0 0.55rem;
+  font-family: var(--serif);
+  font-size: clamp(1.4rem, 2.7vw, 2rem);
+  line-height: 1.2;
+  letter-spacing: -0.018em;
+  color: var(--charcoal, #2F2A24);
+}
+
+.page-akut .akut-statement__p {
+  margin: 0;
+  max-width: 46rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--charcoal, #2F2A24);
+}
+
+@media (max-width: 600px) {
+  .page-akut .akut-statement {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+  .page-akut .akut-statement__n {
+    padding-top: 0;
+  }
+}
+
+/* Hebel auf Grün */
+.page-akut .akut-lever {
+  margin-top: 1.75rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.page-akut .akut-lever .card-green {
+  padding: 1.6rem 1.5rem 1.7rem;
+}
+
+.page-akut .akut-lever__p {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: rgba(251, 248, 243, 0.92);
+}
+
+@media (max-width: 800px) {
+  .page-akut .akut-lever {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Zahlen */
+.page-akut .akut-why {
+  margin: 3rem 0 0;
+  font-family: var(--serif);
+  font-size: clamp(1.35rem, 2.4vw, 1.8rem);
+  letter-spacing: -0.018em;
+  color: var(--charcoal, #2F2A24);
+  text-align: center;
+}
+
+.page-akut .akut-stats {
+  width: 100%;
+  max-width: 64rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  text-align: left;
+}
+
+.page-akut .akut-stat {
+  margin: 0;
+  padding: 1.4rem 1.3rem 1.5rem;
+  background: var(--surface, #FBF8F3);
+  border: 1px solid var(--border, #D9D1C7);
+  border-radius: var(--radius-md, 1.1rem);
+}
+
+.page-akut .akut-stat__num {
+  margin: 0 0 0.4rem;
+  font-family: var(--serif);
+  font-size: clamp(2.6rem, 5vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--racing-green, #004225);
+}
+
+.page-akut .akut-stat__cap {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--charcoal, #2F2A24);
+}
+
+.page-akut .akut-stat__src {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--stone, #7B746B);
+}
+
+.page-akut .akut-stat__src a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.page-akut .akut-solve {
+  max-width: 44rem;
+  margin: 0 auto;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--charcoal, #2F2A24);
+}
+
+@media (max-width: 900px) {
+  .page-akut .akut-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+.page-akut .akut-contribution {
+  max-width: none;
+  margin-top: 1.25rem;
+}
+
+/* Garantie: eine Karte */
+.page-akut .akut-guarantee {
+  width: 100%;
+  max-width: 46rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding: 1.75rem 1.6rem;
+  text-align: left;
+  background: var(--surface, #FBF8F3);
+  border: 1px solid var(--border, #D9D1C7);
+  border-radius: var(--radius-md, 1.1rem);
+  box-shadow: 0 8px 24px rgba(47, 42, 36, 0.06);
+}
+
+.page-akut .akut-guarantee__shield {
+  flex: 0 0 72px;
+  width: 72px;
+  height: auto;
+}
+
+@media (max-width: 600px) {
+  .page-akut .akut-guarantee {
+    flex-direction: column;
+  }
+}
+
+/* Erstgespräch auf Grün, mit Kevin */
+.page-akut .akut-call {
+  display: grid;
+  grid-template-columns: 20rem 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.page-akut .akut-call__who {
+  padding: 1.5rem;
+  background: var(--fill-on-green, rgba(251, 248, 243, 0.06));
+  border: 1px solid var(--rule-on-green, rgba(251, 248, 243, 0.14));
+  border-radius: var(--radius-md, 1.1rem);
+  color: rgba(251, 248, 243, 0.86);
+}
+
+.page-akut .akut-call__photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed rgba(251, 248, 243, 0.3);
+  border-radius: var(--radius-sm, 0.7rem);
+  font-family: var(--mono, ui-monospace, monospace);
+  font-size: 0.78rem;
+  color: rgba(251, 248, 243, 0.6);
+}
+
+.page-akut img.akut-call__photo {
+  display: block;
+  width: 10rem;
+  height: 10rem;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border: 2px solid rgba(251, 248, 243, 0.3);
+  border-radius: 50%;
+}
+
+.page-akut .akut-call__name {
+  margin: 1rem 0 0;
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  color: var(--linen-on-green, #FBF8F3);
+}
+
+.page-akut .akut-call__role {
+  margin: 0.15rem 0 0.75rem;
+  font-family: var(--mono, ui-monospace, monospace);
+  font-size: 0.78rem;
+  color: var(--sage-light, #9FB88C);
+}
+
+.page-akut .akut-call__text {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+.page-akut .akut-agenda {
+  list-style: none;
+  margin: 1.25rem 0 1.75rem;
+  padding: 0;
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--rule-on-green, rgba(251, 248, 243, 0.14));
+}
+
+.page-akut .akut-agenda li {
+  padding: 0.95rem 0;
+  border-bottom: 1px solid var(--rule-on-green, rgba(251, 248, 243, 0.14));
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: rgba(251, 248, 243, 0.86);
+}
+
+.page-akut .akut-agenda strong {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  color: var(--linen-on-green, #FBF8F3);
+}
+
+.page-akut .akut-call__main .akut-cta-note {
+  text-align: left;
+  margin-top: 0.75rem;
+}
+
+@media (max-width: 860px) {
+  .page-akut .akut-call {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .page-akut .akut-call__who {
+    max-width: 22rem;
+  }
+}

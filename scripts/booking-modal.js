@@ -61,7 +61,9 @@
   window.RAIS_openBooking = openModal;
 
   document.querySelectorAll('.js-open-booking').forEach(function (el) {
-    el.addEventListener('click', function () {
+    el.addEventListener('click', function (e) {
+      /* Anker (Nav, Sticky) behalten href="#termin" als Fallback ohne JS. */
+      if (el.tagName === 'A') e.preventDefault();
       openModal({
         source: el.getAttribute('data-source') || el.id || null,
         icp_segment: el.getAttribute('data-icp') || null
