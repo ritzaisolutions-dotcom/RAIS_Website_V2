@@ -46,7 +46,7 @@
   var SUPABASE_ANON = cfg.supabaseAnonKey || '';
   var SERVICE = 'cal';
 
-  var FALLBACK_URL = 'https://cal.com/ritzaisolutions/erstgesprach-mit-rais';
+  var FALLBACK_URL = 'https://cal.com/ritzaisolutions/strategiegespraech-mit-rais';
   var ALLOWED_HOSTS = ['cal.com', 'www.cal.com', 'ritz-ai-solutions.cal.eu'];
 
   /* Nur diese Werte akzeptiert submit-audit-lead als pain_point. */
