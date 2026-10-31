@@ -1187,6 +1187,14 @@
   margin: 0 auto 0.35rem;
 }
 
+.page-akut #hero .hero-sub--script {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  color: rgba(251, 248, 243, 0.88);
+}
+
 .page-akut .akut-cta-note {
   margin: 0;
   font-size: 0.86rem;
@@ -1343,6 +1351,27 @@
 
 .page-akut .akut-flow__step--lead .akut-flow__desc {
   color: rgba(251, 248, 243, 0.84);
+}
+
+.page-akut .akut-flow__cta {
+  align-self: flex-start;
+  margin-top: 0.35rem;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid rgba(251, 248, 243, 0.5);
+  border-radius: var(--radius-sm, 0.6rem);
+  background: transparent;
+  color: var(--linen-on-green, #FBF8F3);
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.page-akut .akut-flow__cta:hover,
+.page-akut .akut-flow__cta:focus-visible {
+  background: rgba(251, 248, 243, 0.12);
+  border-color: rgba(251, 248, 243, 0.8);
 }
 
 @media (max-width: 1000px) {
