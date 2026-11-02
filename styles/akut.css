@@ -1148,6 +1148,26 @@
   max-width: 36rem;
 }
 
+.page-danke .danke-confirm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 1.25rem 1.35rem;
+  border-radius: 1rem;
+  background: rgba(0, 66, 37, 0.07);
+  border: 1px solid rgba(0, 66, 37, 0.16);
+}
+
+.page-danke .danke-confirm__eyebrow {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--racing-green, #004225);
+}
+
 .page-danke .danke-h1 {
   margin: 0;
   font-family: var(--serif);
@@ -1158,20 +1178,43 @@
   color: var(--charcoal);
 }
 
+.page-danke .danke-confirm .danke-h1 {
+  font-size: clamp(1.85rem, 4vw, 2.35rem);
+}
+
 .page-danke .danke-lead {
-  margin: -0.6rem 0 0;
-  font-size: 1.1rem;
+  margin: 0;
+  font-size: 1.05rem;
   line-height: 1.55;
   color: var(--stone);
 }
 
 .page-danke .danke-slot {
-  margin: -0.75rem 0 0;
+  margin: 0.15rem 0 0;
   font-family: var(--serif);
-  font-size: clamp(1.15rem, 2.4vw, 1.45rem);
+  font-size: clamp(1.15rem, 2.4vw, 1.4rem);
   line-height: 1.35;
   color: var(--charcoal);
   font-weight: 500;
+}
+
+.page-danke .danke-cal-hint {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--stone);
+}
+
+.page-danke .danke-btn.is-disabled,
+.page-danke .danke-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.page-danke .danke-help {
+  padding-top: 0.35rem;
+  border-top: 1px solid var(--border, #D9D1C7);
 }
 
 .page-danke .danke-copy {

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Termin steht | RAIS</title>
-  <meta name="description" content="Ihr Termin für das Erstgespräch steht. Bestätigen per WhatsApp oder SMS, in den Kalender legen und kurz vorbereiten.">
+  <title>Termin gebucht | RAIS</title>
+  <meta name="description" content="Ihr Erstgespräch ist gebucht. Termin in den Kalender legen und kurz vorbereiten.">
   <meta name="robots" content="noindex, follow">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" href="favicon.png?v=3">
@@ -32,39 +32,27 @@
   <main id="main">
     <section class="danke-band" aria-labelledby="danke-title">
       <div class="section-wrap section-wrap--narrow danke-wrap">
-        <h1 class="danke-h1" id="danke-title">Termin steht.</h1>
-        <p class="danke-lead" id="danke-lead">45 Minuten Erstgespräch. Bestätigen Sie den Termin kurz und legen Sie ihn in Ihren Kalender.</p>
-        <p class="danke-slot" id="danke-slot" hidden></p>
 
-        <div class="danke-block">
-          <span class="mono-label">Termin bestätigen</span>
-          <p class="danke-copy">Kurze Bestätigung an uns, damit wir den Slot fest halten.</p>
-          <div class="danke-actions" id="danke-confirm-actions">
-            <a class="danke-btn danke-btn--primary" id="danke-wa" href="https://wa.me/4915129755134" target="_blank" rel="noopener noreferrer">Per WhatsApp bestätigen</a>
-            <a class="danke-btn danke-btn--ghost" id="danke-sms" href="sms:+4915129755134">Per SMS bestätigen</a>
-          </div>
+        <div class="danke-confirm" role="status">
+          <p class="danke-confirm__eyebrow">Buchung erfolgreich</p>
+          <h1 class="danke-h1" id="danke-title">Termin gebucht.</h1>
+          <p class="danke-slot" id="danke-slot">45 Minuten Erstgespräch am Telefon</p>
         </div>
 
-        <div class="danke-block">
+        <p class="danke-lead" id="danke-lead">
+          Die Bestätigung kommt per E-Mail. Die Geschäftsführung ruft Sie zum Termin an.
+        </p>
+
+        <div class="danke-block" id="danke-cal-block">
           <span class="mono-label">In den Kalender</span>
-          <p class="danke-copy">Damit der Termin bei Ihnen nicht untergeht.</p>
+          <p class="danke-copy">Damit der Termin bei Ihnen feststeht.</p>
           <div class="danke-actions" id="danke-cal-actions">
-            <a class="danke-btn danke-btn--ghost" id="danke-gcal" href="#" target="_blank" rel="noopener noreferrer">Google Kalender</a>
+            <a class="danke-btn danke-btn--primary" id="danke-gcal" href="#" target="_blank" rel="noopener noreferrer">Google Kalender</a>
             <button class="danke-btn danke-btn--ghost" id="danke-ics" type="button">ICS herunterladen</button>
           </div>
-        </div>
-
-        <div class="danke-block danke-video-block">
-          <span class="mono-label">Kurz von uns</span>
-          <p class="danke-copy">Einordnung, bevor wir telefonieren.</p>
-          <div class="danke-video" id="danke-video">
-            <!-- Video-ID unten im Script setzen (YT_VIDEO_ID). Bis dahin: Kanal-Link. -->
-            <a class="danke-yt-card" href="https://www.youtube.com/@kevin_ritz" target="_blank" rel="noopener noreferrer">
-              <img src="images/youtube-curated-thumb.svg" width="1280" height="720" alt="" loading="lazy" decoding="async">
-              <span class="danke-yt-card__play" aria-hidden="true">▶</span>
-              <span class="danke-yt-card__caption">Video auf YouTube ansehen</span>
-            </a>
-          </div>
+          <p class="danke-cal-hint" id="danke-cal-hint" hidden>
+            Kalender-Links erscheinen nach einer frischen Buchung über die Landingpage.
+          </p>
         </div>
 
         <div class="danke-block">
@@ -76,7 +64,25 @@
           </ol>
         </div>
 
-        <p class="danke-reschedule">Wenn der Termin nicht passt: melden Sie sich kurz per WhatsApp oder E-Mail, wir finden einen neuen Slot.</p>
+        <div class="danke-block danke-video-block">
+          <span class="mono-label">Kurz vorbereiten</span>
+          <p class="danke-copy">Einordnung, bevor wir telefonieren.</p>
+          <div class="danke-video" id="danke-video">
+            <a class="danke-yt-card" href="https://www.youtube.com/@kevin_ritz" target="_blank" rel="noopener noreferrer">
+              <img src="images/youtube-curated-thumb.svg" width="1280" height="720" alt="" loading="lazy" decoding="async">
+              <span class="danke-yt-card__play" aria-hidden="true">▶</span>
+              <span class="danke-yt-card__caption">Video auf YouTube ansehen</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="danke-block danke-help">
+          <span class="mono-label">Termin ändern oder Frage?</span>
+          <p class="danke-copy">Schreiben Sie uns kurz. Wir finden einen neuen Slot oder klären vorab.</p>
+          <div class="danke-actions">
+            <a class="danke-btn danke-btn--ghost" id="danke-wa" href="https://wa.me/4915129755134" target="_blank" rel="noopener noreferrer">Per WhatsApp schreiben</a>
+          </div>
+        </div>
 
         <p class="danke-home">
           <a href="/">Zurück zur Startseite</a>
@@ -112,7 +118,7 @@
     var YT_VIDEO_ID = '';
     var PHONE_E164 = '4915129755134';
     var EVENT_TITLE = 'RAIS Erstgespräch (45 Min.)';
-    var EVENT_DETAILS = 'Telefonisches Erstgespräch mit RAIS. 45 Minuten.';
+    var EVENT_DETAILS = 'Telefonisches Erstgespräch mit RAIS. 45 Minuten. Die Geschäftsführung ruft Sie an.';
 
     var params = new URLSearchParams(window.location.search);
     var label = params.get('label') || '';
@@ -123,26 +129,22 @@
     var slotEl = document.getElementById('danke-slot');
     var leadEl = document.getElementById('danke-lead');
     if (label && slotEl) {
-      slotEl.hidden = false;
       slotEl.textContent = label;
       if (leadEl) {
-        leadEl.textContent = 'Ihr Termin: ' + label + '. Bestätigen Sie kurz und legen Sie ihn in Ihren Kalender.';
+        leadEl.textContent =
+          'Die Bestätigung kommt per E-Mail. Die Geschäftsführung ruft Sie zum Termin an.';
       }
     }
 
-    var confirmMsg =
-      'Hallo RAIS, hiermit bestätige ich mein Erstgespräch' +
+    var helpMsg =
+      'Hallo RAIS, ich habe eine Frage zu meinem Erstgespräch' +
       (label ? ' am ' + label : '') +
-      (name ? '. Mein Name: ' + name : '') +
+      (name ? ' (Name: ' + name + ')' : '') +
       '.';
 
     var wa = document.getElementById('danke-wa');
     if (wa) {
-      wa.href = 'https://wa.me/' + PHONE_E164 + '?text=' + encodeURIComponent(confirmMsg);
-    }
-    var sms = document.getElementById('danke-sms');
-    if (sms) {
-      sms.href = 'sms:+' + PHONE_E164 + '?body=' + encodeURIComponent(confirmMsg);
+      wa.href = 'https://wa.me/' + PHONE_E164 + '?text=' + encodeURIComponent(helpMsg);
     }
 
     function pad(n) {
@@ -162,10 +164,6 @@
       );
     }
 
-    function toIcsStamp(d) {
-      return toGcalStamp(d);
-    }
-
     var startDate = startIso ? new Date(startIso) : null;
     var endDate = endIso ? new Date(endIso) : null;
     if (startDate && !endDate) {
@@ -174,14 +172,16 @@
 
     var gcal = document.getElementById('danke-gcal');
     var icsBtn = document.getElementById('danke-ics');
+    var calHint = document.getElementById('danke-cal-hint');
+    var hasTimes = startDate && endDate && !isNaN(startDate.getTime());
 
-    if (startDate && endDate && !isNaN(startDate.getTime())) {
+    if (hasTimes) {
       if (gcal) {
         gcal.href =
           'https://calendar.google.com/calendar/render?action=TEMPLATE' +
           '&text=' + encodeURIComponent(EVENT_TITLE) +
           '&dates=' + toGcalStamp(startDate) + '/' + toGcalStamp(endDate) +
-          '&details=' + encodeURIComponent(EVENT_DETAILS + (label ? ' ' + label : ''));
+          '&details=' + encodeURIComponent(EVENT_DETAILS + (label ? ' Termin: ' + label : ''));
       }
       if (icsBtn) {
         icsBtn.addEventListener('click', function () {
@@ -192,9 +192,9 @@
             'CALSCALE:GREGORIAN\r\n' +
             'BEGIN:VEVENT\r\n' +
             'UID:rais-' + (params.get('id') || Date.now()) + '@ritz-ai.solutions\r\n' +
-            'DTSTAMP:' + toIcsStamp(new Date()) + '\r\n' +
-            'DTSTART:' + toIcsStamp(startDate) + '\r\n' +
-            'DTEND:' + toIcsStamp(endDate) + '\r\n' +
+            'DTSTAMP:' + toGcalStamp(new Date()) + '\r\n' +
+            'DTSTART:' + toGcalStamp(startDate) + '\r\n' +
+            'DTEND:' + toGcalStamp(endDate) + '\r\n' +
             'SUMMARY:' + EVENT_TITLE + '\r\n' +
             'DESCRIPTION:' + EVENT_DETAILS.replace(/\n/g, '\\n') + '\r\n' +
             'END:VEVENT\r\n' +
@@ -216,12 +216,13 @@
         gcal.addEventListener('click', function (e) {
           e.preventDefault();
         });
-        gcal.style.opacity = '0.5';
+        gcal.classList.add('is-disabled');
       }
       if (icsBtn) {
         icsBtn.disabled = true;
-        icsBtn.style.opacity = '0.5';
+        icsBtn.classList.add('is-disabled');
       }
+      if (calHint) calHint.hidden = false;
     }
 
     var videoHost = document.getElementById('danke-video');
