@@ -288,41 +288,16 @@ select et.id, q.sort, q.key, q.label, q.type, q.required, q.options::jsonb
 from et
 cross join (
   values
-    (10, 'owner', 'Bist du Geschäftsführer / Inhaber?', 'boolean', true, '[]'),
-    (20, 'team_size', 'Teamgröße (inkl. GF)?', 'number', true, '[]'),
-    (30, 'crm', 'Welches CRM nutzt ihr?', 'single', true,
-      '[{"value":"propstack","label":"Propstack"},{"value":"onoffice","label":"onOffice"},{"value":"anderes","label":"Anderes"},{"value":"keins","label":"Keins"}]'),
-    (40, 'inquiries_per_day', 'Wie viele Anfragen / Tag ungefähr?', 'text', true, '[]'),
-    (50, 'ads_budget', 'Ads-Budget möglich ≥ 1.000 € / Monat auf eurem Konto?', 'single', true,
-      '[{"value":"ja","label":"Ja"},{"value":"nein","label":"Nein"},{"value":"unklar","label":"Unklar"}]'),
-    (60, 'pain', 'Primärschmerz?', 'single', true,
-      '[{"value":"kaufanfragen","label":"Zu wenig Kaufanfragen"},{"value":"mandate","label":"Zu wenig Kaufmandate"},{"value":"filter","label":"Zu viel Zeit mit Filtern & Quali"}]')
+    (10, 'pain', 'Was ist Ihr größter Schmerz gerade?', 'single', true,
+      '[{"value":"kaufanfragen","label":"Planbare, kaufkräftige Nachfragen"},{"value":"eigentuemer","label":"Angebot an Eigentümer, die verkaufen wollen"},{"value":"nachfassen","label":"Manuelle Arbeit: schnell abholen und nachfassen"}]'),
+    (20, 'sales_per_year', 'Wie viele Immobilien verkaufen Sie aktuell ungefähr pro Jahr?', 'number', true, '[]'),
+    (30, 'social_media', 'Bisherige Erfahrung mit Social Media als Vertriebskanal?', 'single', true,
+      '[{"value":"nein","label":"Nein, noch nicht"},{"value":"ja","label":"Ja"}]'),
+    (40, 'social_media_how', 'Wenn ja: Wie haben Sie Social Media bisher als Vertriebskanal genutzt?', 'text', false, '[]')
 ) as q(sort, key, label, type, required, options)
 where not exists (
   select 1 from public.booking_questions x
   where x.event_type_id = et.id and x.key = q.key
-);
-
-with et as (
-  select id from public.booking_event_types where slug = 'erstgespraech'
-)
-insert into public.booking_rules (event_type_id, sort, name, condition, outcome, reject_message)
-select et.id, r.sort, r.name, r.condition::jsonb, r.outcome, r.reject_message
-from et
-cross join (
-  values
-    (10, 'Kein Inhaber',
-      '{"field":"owner","op":"eq","value":false}',
-      'reject',
-      'Aktuell arbeiten wir nur direkt mit Inhabern und Geschäftsführern. Melde dich gerne erneut, wenn du entscheiden kannst.'),
-    (20, 'Budget zu niedrig',
-      '{"field":"ads_budget","op":"eq","value":"nein"}',
-      'reject',
-      'Ohne monatliches Ads-Budget ab etwa 1.000 € passt unser System derzeit nicht. Schreib uns, wenn sich das ändert.')
-) as r(sort, name, condition, outcome, reject_message)
-where not exists (
-  select 1 from public.booking_rules x
-  where x.event_type_id = et.id and x.name = r.name
 );
 
 commit;

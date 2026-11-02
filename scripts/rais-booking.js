@@ -356,9 +356,14 @@
       var form = el('form', { className: 'rb-form', onSubmit: onSubmit });
       if (state.error) form.appendChild(el('p', { className: 'rb-error', text: state.error }));
 
-      form.appendChild(el('p', { className: 'rb-muted', text: 'Quali-Fragen' }));
+      form.appendChild(el('p', { className: 'rb-muted', text: 'Drei kurze Fragen' }));
       (state.data.questions || []).forEach(function (q) {
-        form.appendChild(renderQuestion(q, state));
+        if (q.key === 'social_media_how' && state.answers.social_media !== 'ja') {
+          return;
+        }
+        form.appendChild(renderQuestion(q, state, function () {
+          paint();
+        }));
       });
 
       form.appendChild(el('p', { className: 'rb-muted', text: 'Freie Termine' }));
@@ -401,6 +406,11 @@
         return;
       }
       var missing = (state.data.questions || []).find(function (q) {
+        if (q.key === 'social_media_how') {
+          if (state.answers.social_media !== 'ja') return false;
+          var how = state.answers.social_media_how;
+          return !how || String(how).trim() === '';
+        }
         if (!q.required) return false;
         var v = state.answers[q.key];
         return v === undefined || v === null || v === '';
@@ -408,6 +418,9 @@
       if (missing) {
         setError('Bitte alle Pflichtfragen beantworten.');
         return;
+      }
+      if (state.answers.social_media !== 'ja') {
+        delete state.answers.social_media_how;
       }
       if (!state.name || !state.email) {
         setError('Name und E-Mail sind Pflicht.');
@@ -454,37 +467,53 @@
       });
   }
 
-  function renderQuestion(q, state) {
+  function renderQuestion(q, state, onChangeExtra) {
+    var requireHow = q.key === 'social_media_how' && state.answers.social_media === 'ja';
+    var isRequired = q.required || requireHow;
     var wrap = el('label', { className: 'rb-field' }, [
-      el('span', { text: q.label + (q.required ? ' *' : '') }),
+      el('span', { text: q.label + (isRequired ? ' *' : '') }),
     ]);
     var control;
     if (q.type === 'boolean') {
       control = el('select', {
-        required: q.required ? 'required' : null,
+        required: isRequired ? 'required' : null,
         onChange: function (e) {
           state.answers[q.key] =
             e.target.value === '' ? undefined : e.target.value === 'true';
+          if (typeof onChangeExtra === 'function') onChangeExtra();
         },
       });
       control.appendChild(el('option', { value: '', text: 'Bitte wählen' }));
       control.appendChild(el('option', { value: 'true', text: 'Ja' }));
       control.appendChild(el('option', { value: 'false', text: 'Nein' }));
+      if (state.answers[q.key] === true) control.value = 'true';
+      if (state.answers[q.key] === false) control.value = 'false';
     } else if (q.type === 'single' && q.options && q.options.length) {
       control = el('select', {
-        required: q.required ? 'required' : null,
+        required: isRequired ? 'required' : null,
         onChange: function (e) {
           state.answers[q.key] = e.target.value || undefined;
+          if (q.key === 'social_media' && state.answers[q.key] !== 'ja') {
+            delete state.answers.social_media_how;
+          }
+          if (typeof onChangeExtra === 'function') onChangeExtra();
         },
       });
       control.appendChild(el('option', { value: '', text: 'Bitte wählen' }));
       q.options.forEach(function (o) {
         control.appendChild(el('option', { value: o.value, text: o.label }));
       });
+      if (state.answers[q.key]) control.value = String(state.answers[q.key]);
     } else if (q.type === 'number') {
       control = el('input', {
         type: 'number',
-        required: q.required ? 'required' : null,
+        min: '0',
+        step: '1',
+        required: isRequired ? 'required' : null,
+        value:
+          state.answers[q.key] === undefined || state.answers[q.key] === null
+            ? ''
+            : String(state.answers[q.key]),
         onInput: function (e) {
           state.answers[q.key] =
             e.target.value === '' ? undefined : Number(e.target.value);
@@ -493,7 +522,9 @@
     } else {
       control = el('input', {
         type: 'text',
-        required: q.required ? 'required' : null,
+        required: isRequired ? 'required' : null,
+        value: state.answers[q.key] ? String(state.answers[q.key]) : '',
+        placeholder: q.key === 'social_media_how' ? 'z. B. Meta-Ads, organische Reels…' : '',
         onInput: function (e) {
           state.answers[q.key] = e.target.value;
         },

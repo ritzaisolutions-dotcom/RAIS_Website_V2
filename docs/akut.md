@@ -24,6 +24,12 @@ Architektur-SOP: https://app.notion.com/p/40c66e6bc840815c83a3c51aa50c8a15
 7. FAQ
 8. CTA-Band: Panel auf Grün, eine starke Headline, Nutzen-Lead, großer Buchungsbutton
 
+## Buchungsfragen (`erstgespraech`)
+
+1. Kern-Pain (single)
+2. Verkäufe jährlich (number)
+3. Social Media als Vertriebskanal (ja/nein); bei ja: Freitext „wie?“
+
 ## Nicht auf der LP
 
 - Paketpreise
