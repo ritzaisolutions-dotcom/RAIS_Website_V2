@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none" role="img" aria-hidden="true">
+  <defs>
+    <linearGradient id="g-iss" x1="16" y1="100" x2="104" y2="16" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#004225"/>
+      <stop offset="50%" stop-color="#4E9460"/>
+      <stop offset="100%" stop-color="#B8D9BE"/>
+    </linearGradient>
+    <linearGradient id="g-iss-hot" x1="70" y1="20" x2="110" y2="70" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F9B08A"/>
+      <stop offset="100%" stop-color="#EC6A37"/>
+    </linearGradient>
+    <linearGradient id="g-iss-shine" x1="20" y1="18" x2="90" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="f-iss" x="-15%" y="-15%" width="130%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2.2" result="b"/>
+      <feOffset dy="3" result="o"/>
+      <feFlood flood-color="#004225" flood-opacity="0.3"/>
+      <feComposite in2="o" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <g filter="url(#f-iss)">
+    <!-- Media channel -->
+    <rect x="18" y="34" width="36" height="52" rx="10" fill="url(#g-iss)" opacity="0.94"/>
+    <rect x="18" y="34" width="36" height="52" rx="10" fill="url(#g-iss-shine)"/>
+    <rect x="26" y="44" width="20" height="14" rx="3" stroke="#FBF8F3" stroke-opacity="0.85" stroke-width="2"/>
+    <path d="M30 68h12M30 74h8" stroke="#FBF8F3" stroke-opacity="0.75" stroke-width="2" stroke-linecap="round"/>
+    <!-- Flow arrow -->
+    <path d="M58 60h12" stroke="#789464" stroke-width="3" stroke-linecap="round"/>
+    <path d="M66 54l8 6-8 6" stroke="#789464" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <!-- Buyer / lead -->
+    <circle cx="88" cy="44" r="16" fill="url(#g-iss-hot)" opacity="0.96"/>
+    <circle cx="88" cy="40" r="5" fill="#FBF8F3" opacity="0.92"/>
+    <path d="M78 54c3-6 17-6 20 0" stroke="#2F2A24" stroke-width="2.2" stroke-linecap="round"/>
+    <!-- CRM node -->
+    <rect x="74" y="68" width="28" height="22" rx="6" fill="url(#g-iss)" opacity="0.95"/>
+    <path d="M80 76h16M80 82h10" stroke="#FBF8F3" stroke-opacity="0.88" stroke-width="2" stroke-linecap="round"/>
+  </g>
+</svg>

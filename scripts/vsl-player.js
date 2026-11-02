@@ -6,9 +6,8 @@
  * Mit data-vsl-src (mp4 oder Embed-URL von Vimeo, Wistia, YouTube) wird er zum Player.
  * Optional: data-vsl-captions="pfad/zur/datei.vtt" fuer Untertitel (mp4).
  *
- * Wistia-Embeds laden erst nach Klaro-Consent fuer den Service "wistia".
- * Der Play-Klick setzt die Einwilligung (wie Cal.com in cal-embed.js) und
- * laedt dann das iframe. Widerruf entfernt das Embed wieder.
+ * Mit data-vsl-src (Wistia/Embed/mp4) startet der Player sofort, ohne Play-Button.
+ * Wistia setzt dabei Klaro-Consent "wistia". Widerruf entfernt das Embed.
  *
  * Ereignisse (fuer spaeteres Tracking, nur nach Klaro-Zustimmung zu verwenden):
  *   document 'rais:vsl'  detail: { event: 'play' | '25' | '50' | '75' | 'ended', t }
@@ -21,7 +20,7 @@
   var captions = (root.getAttribute('data-vsl-captions') || '').trim();
   var play = root.querySelector('.vsl__play');
   var frame = root.querySelector('.vsl__frame');
-  if (!play || !frame) return;
+  if (!frame) return;
 
   var posterHtml = null;
   var playHtml = null;
@@ -136,7 +135,7 @@
     var iframe = document.createElement('iframe');
     iframe.src = src;
     iframe.title = 'RAIS Video';
-    iframe.loading = 'lazy';
+    iframe.loading = 'eager';
     iframe.allow =
       'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
     iframe.allowFullscreen = true;
@@ -191,6 +190,7 @@
   }
 
   if (!src) {
+    if (!play) return;
     root.classList.add('vsl--booking');
     play.classList.add('js-open-booking');
     if (!play.getAttribute('data-source')) play.setAttribute('data-source', 'vsl');
@@ -201,12 +201,6 @@
   }
 
   root.classList.remove('vsl--booking');
-  play.classList.remove('js-open-booking');
-  play.removeAttribute('data-source');
-  play.setAttribute('aria-label', 'Video abspielen');
-  var label = play.querySelector('.vsl__play-label');
-  if (label) label.textContent = 'Video ansehen';
-
-  play.addEventListener('click', onPlayClick);
+  startPlayback();
   watchConsent();
 })();

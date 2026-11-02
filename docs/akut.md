@@ -1,37 +1,31 @@
-# `/akut` — offene Punkte
+# VSL Landing Page (`index.html`)
 
-Ads-only Landing. Corporate-Home bleibt unangetastet. Sichtbarer Text ist LP-Copy v1.
+Copy und Aufbau ausgerichtet auf Notion **VSL Skript**  
+https://app.notion.com/p/40b66e6bc84081b7b9bff7d799f631e7
 
-## Steht
+Architektur-SOP: https://app.notion.com/p/40c66e6bc840815c83a3c51aa50c8a15
 
-- H1: Kaufkräftige Anfragen — vorqualifiziert, direkt in deinen Kalender.
-- CTA: Unverbindliches Gespräch buchen → `#termin`
-- Cal-URL: `https://cal.com/ritzaisolutions/akut-fit-call` mit `data-cal-nolead`
-- ROI nur die drei gelockten Zeilen. Kein Schieberegler, kein Return-Feld.
-- Logos: `images/akut/rais-wordmark.png`, `images/akut/haller-logo.png` (schwarze Fläche)
-- `noindex, follow`
+## Claim (Video = Seite)
 
-## Cal-Fragen (Wortlaut am Event prüfen, kein Formular auf der Seite)
+- 15 qualifizierte Kaufinteressenten in den ersten 6 Wochen
+- Sofort abgeholt, nur Qualifizierte ins CRM
+- 6-Wochen-Geld-zurück, wenn die 15 nicht kommen
+- Avatar: Wohnmakler ab ~20 verkauften Immobilien / Jahr
 
-Event in der Copy: Akut Kennenlernen, 30 Minuten, Telefon. URL bleibt `akut-fit-call`.
+## Sektionen
 
-1. Bist du Geschäftsführer / Inhaber? (Ja / Nein)
-2. Teamgröße (inkl. GF)? (Zahl)
-3. Welches CRM nutzt ihr? (Propstack / onOffice / Anderes / Keins)
-4. Wie viele Anfragen / Tag ungefähr? (Kurztext oder Zahl)
-5. Ads-Budget möglich ≥ 1.000 € / Monat auf eurem Konto? (Ja / Nein / Unklar)
-6. Primärschmerz? (Zu wenig Kaufanfragen / Zu wenig Kaufmandate / Zu viel Zeit mit Filtern & Quali)
+1. Hero + VSL (Wistia `p7g2vfjbmq`, kein Play-Button, kein Poster)
+2. Old Way (Portale + Hoffen) + Konsequenzsatz (Status quo) + Button
+3. Immo Sales System (Mark links, Serhant-Zitat, 5 Bausteine mit Icons) + Button  
+   Zielgruppe → Kampagne → Sofort abgeholt (Assistent) → Qualifizierung (Assistent) → Nur Qualifizierte ins CRM
+4. Haller (Backoffice / 60 Std Nachfassen, kein Meta-Proof)
+5. Zusammenarbeit + Button
+6. Garantie (Full Money Back, Adspend ausgenommen)
+7. FAQ
+8. CTA-Band: Panel auf Grün, eine starke Headline, Nutzen-Lead, großer Buchungsbutton
 
-Webhook nach Notion ist Ops, nicht dieser Stand.
+## Nicht auf der LP
 
-## VSL / Wistia (Infra steht)
-
-- Klaro-Service `wistia`, Consent-Gate in `scripts/vsl-player.js` (Play-Klick = Einwilligung)
-- Datenschutz-Absatz „Wistia erst nach Ihrer Aktion“
-- CSP Report-Only: `*.wistia.com` / `*.wistia.net` in frame/script/connect/img/media
-- Media-ID: `p7g2vfjbmq` → `data-vsl-src="https://fast.wistia.net/embed/iframe/p7g2vfjbmq"`
-
-## Noch nicht
-
-- ROI-Stufen und Return-Feld, sobald Kevin die Labels lockt. Nicht erfinden.
-- Meta Pixel nicht verdrahtet
+- Paketpreise
+- Eigene „Was das kostet“-Sektion
+- Top-3%-Avatar (durch Skript-Avatar ersetzt)
