@@ -40,9 +40,8 @@ Options -Indexes
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
     Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
     Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
-    # frame-src stand hier auf 'none'. Seit der Kalender inline eingebettet
-    # ist statt in einem neuen Tab zu oeffnen, wuerde das den Embed blockieren.
-    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' js-de.sentry-cdn.com app.cal.com; style-src 'self' 'unsafe-inline' fonts.googleapis.com; img-src 'self' data:; font-src 'self' fonts.gstatic.com; connect-src 'self' *.ingest.de.sentry.io qdywaenmojdxhfxqbvun.supabase.co cal.com *.cal.com; frame-src cal.com *.cal.com; frame-ancestors 'self'; form-action 'self'; object-src 'none'; base-uri 'self'"
+    # Align with vercel.json (no Cal.com; Wistia optional via Report-Only there).
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' js-de.sentry-cdn.com *.wistia.com *.wistia.net; style-src 'self' 'unsafe-inline' fonts.googleapis.com *.wistia.com *.wistia.net; img-src 'self' data: *.wistia.com *.wistia.net embed-ssl.wistia.com; font-src 'self' fonts.gstatic.com; media-src 'self' blob: *.wistia.com *.wistia.net; connect-src 'self' *.ingest.de.sentry.io qdywaenmojdxhfxqbvun.supabase.co *.wistia.com *.wistia.net; frame-src *.wistia.com *.wistia.net fast.wistia.net; frame-ancestors 'self'; form-action 'self'; object-src 'none'; base-uri 'self'"
 </IfModule>
 
 # Cache Control: Disable for HTML (fast updates), enable heavily for hashed assets (Vite CSS/JS)

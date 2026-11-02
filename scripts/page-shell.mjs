@@ -26,7 +26,11 @@ export const i18nScriptsHtml = `
 <script src="scripts/i18n-dict.js"></script>
 <script src="scripts/i18n.js"></script>
 `;
-export function bookingModalHtml(dauer = '20 Minuten', ariaLabel = 'Kostenlosen Audit buchen') {
+export function bookingModalHtml(
+  dauer = '45 Minuten',
+  ariaLabel = 'Erstgespräch buchen',
+  title = 'Erstgespräch buchen',
+) {
   return `
 <div id="booking-modal" role="dialog" aria-modal="true" aria-label="${ariaLabel}">
   <div class="bm-backdrop" id="bm-backdrop"></div>
@@ -35,8 +39,8 @@ export function bookingModalHtml(dauer = '20 Minuten', ariaLabel = 'Kostenlosen 
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
     <div class="bm-step is-active" id="bm-step-0">
-      <h2 class="bm-title">Wählen Sie Ihren Termin</h2>
-      <p class="bm-sub">${dauer}, kostenlos. Sie geben Ihre Angaben direkt im Kalender ein, ein zweites Formular gibt es nicht.</p>
+      <h2 class="bm-title">${title}</h2>
+      <p class="bm-sub">${dauer}, unverbindlich. Quali-Fragen, Termin und Kontaktdaten in einem Schritt.</p>
       <div class="bm-cal-wrap" id="bm-cal-wrap"></div>
     </div>
   </div>
@@ -106,24 +110,21 @@ export function portraitHtml() {
 }
 
 /**
- * gate: optionales Markup, das vor dem Kalender steht. Ist es gesetzt,
- * traegt der Kalender-Container `data-cal-deferred` statt
- * `data-cal-inline`. Damit fasst ihn das autoMount in cal-embed.js
- * nicht an; die Seite haengt ihn selbst ein, sobald das Gate erfuellt
- * ist. Ohne `gate` bleibt alles wie zuvor.
+ * gate: optionales Markup vor der Buchungsmaske. Ist es gesetzt,
+ * traegt der Container `data-cal-deferred` statt `data-cal-inline`.
+ * autoMount in rais-booking.js fasst ihn dann nicht an; die Seite
+ * haengt ihn nach dem Gate selbst ein (z. B. mountStep4).
  */
 export function contactHtml({
-  calUrl,
-  dauer = '20 Minuten',
-  label = 'Kostenloser Audit',
+  dauer = '45 Minuten',
+  label = 'Erstgespräch',
   title,
   copy,
-  calTitle = 'Kostenlosen Audit buchen',
+  calTitle = 'Erstgespräch buchen',
   calSub,
   gate = '',
   media = ''
 } = {}) {
-  const calAttr = calUrl ? ` data-cal-url="${calUrl}"` : '';
   const headline = title || `${dauer}. Kostenlos. Klare nächste Schritte.`;
   const paragraphs = copy || [
     'Wir analysieren Ihre Prozesse und zeigen, wo Zeit verloren geht. Sie bekommen drei umsetzbare Use Cases.',
@@ -144,7 +145,7 @@ export function contactHtml({
       <div class="cal-embed-wrap">
         <p class="cal-card-title">${calTitle}</p>
         <p class="cal-card-sub">${sub}</p>${gate}
-        <div class="cal-inline" ${calFlag} data-source="contact" id="cal-inline-contact"${calAttr}${calHidden}></div>
+        <div class="cal-inline" ${calFlag} data-source="contact" id="cal-inline-contact"${calHidden}></div>
       </div>
     </div>
     <div class="contact-details">
@@ -281,7 +282,7 @@ export const spriteHtml = `<svg xmlns="http://www.w3.org/2000/svg" style="displa
 
 export const scriptsHtml = `
 <script src="scripts/site-nav.js"></script>
-<script src="scripts/cal-embed.js"></script>
+<script src="scripts/rais-booking.js"></script>
 <script src="scripts/booking-modal.js"></script>
 </body>
 </html>

@@ -109,6 +109,7 @@ var klaroConfig = {
       purposes: {
         security: 'Sicherheit & Fehlerbehebung',
         booking: 'Terminbuchung',
+        media: 'Video & Medien',
       },
     },
     en: {
@@ -133,16 +134,22 @@ var klaroConfig = {
       purposes: {
         security: 'Security and troubleshooting',
         booking: 'Appointment booking',
+        media: 'Video and media',
       },
       sentry: {
         title: 'Sentry (error monitoring)',
         description:
           'Sentry captures technical errors so we can keep the website stable. Processing on EU servers (ingest.de.sentry.io). Provider: Functional Software Inc., San Francisco, USA.',
       },
-      cal: {
-        title: 'Cal.com (appointment booking)',
+      booking: {
+        title: 'Appointment booking',
         description:
-          'Cal.com provides the booking calendar. Loading it sends your IP address to Cal.com. You enter your booking details there. Provider: Cal.com, Inc., San Francisco, USA.',
+          'Our booking form loads available slots from our servers (Supabase) and, after you confirm, creates a Google Calendar event. Provider for calendar sync: Google Ireland Limited / Google LLC.',
+      },
+      wistia: {
+        title: 'Wistia (video player)',
+        description:
+          'Wistia hosts and plays the sales video. Loading the player sends your IP address to Wistia. The video loads only after you click play or enable Wistia in the privacy settings. Provider: Wistia, Inc., USA.',
       },
     },
   },
@@ -157,16 +164,25 @@ var klaroConfig = {
       required: false,
       optOut: false,
     },
-    /* Der Terminkalender ist auf jeder Seite eingebettet, laedt aber
-       erst nach Einwilligung. Ohne Einwilligung steht ein Platzhalter
-       mit Ladebutton, siehe scripts/cal-embed.js. Kein Autoload, kein
-       contextualConsentOnly, weil Klaro hier nichts selbst einhaengt. */
+    /* Eigene Buchungsmaske (scripts/rais-booking.js). Lädt erst nach
+       CTA bzw. Gate-Einwilligung. Kein Dritt-iframe. */
     {
-      name: 'cal',
-      title: 'Cal.com (Terminbuchung)',
+      name: 'booking',
+      title: 'Terminbuchung (RAIS)',
       description:
-        'Cal.com stellt den Terminkalender bereit. Beim Laden wird Ihre IP-Adresse an Cal.com übertragen, Ihre Buchungsangaben geben Sie direkt dort ein. Anbieter: Cal.com, Inc., San Francisco, USA.',
+        'Unsere Buchungsmaske lädt freie Termine von unseren Servern (Supabase) und legt nach Bestätigung einen Eintrag in Google Calendar an. Anbieter Kalender-Sync: Google Ireland Limited / Google LLC. Es wird kein Cal.com-Embed geladen.',
       purposes: ['booking'],
+      required: false,
+      optOut: false,
+    },
+    /* VSL im Hero: Embed erst nach Play-Klick / Klaro-Consent,
+       siehe scripts/vsl-player.js. Kein Autoload beim Seitenaufruf. */
+    {
+      name: 'wistia',
+      title: 'Wistia (Video-Player)',
+      description:
+        'Wistia hostet und spielt das Verkaufsvideo ab. Beim Laden des Players wird Ihre IP-Adresse an Wistia übertragen. Das Video lädt erst, wenn Sie auf Abspielen klicken oder Wistia in den Datenschutzeinstellungen aktivieren. Anbieter: Wistia, Inc., USA.',
+      purposes: ['media'],
       required: false,
       optOut: false,
     },

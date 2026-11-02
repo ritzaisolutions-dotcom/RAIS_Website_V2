@@ -2,7 +2,6 @@
 window.RAIS_PUBLIC_CONFIG = {
   "supabaseUrl": "https://qdywaenmojdxhfxqbvun.supabase.co",
   "supabaseAnonKey": "sb_publishable_GMX1IpC2TDN8iayfXjZsCA_Zcv1ZIia",
-  "calComUrl": "https://cal.com/ritzaisolutions/erstgesprach-mit-rais",
   "sentryDsn": "https://YOUR_KEY@oXXXX.ingest.de.sentry.io/XXXX",
   "sentryLoaderKey": "YOUR_KEY"
 };

@@ -24,8 +24,14 @@ Event in der Copy: Akut Kennenlernen, 30 Minuten, Telefon. URL bleibt `akut-fit-
 
 Webhook nach Notion ist Ops, nicht dieser Stand.
 
+## VSL / Wistia (Infra steht)
+
+- Klaro-Service `wistia`, Consent-Gate in `scripts/vsl-player.js` (Play-Klick = Einwilligung)
+- Datenschutz-Absatz „Wistia erst nach Ihrer Aktion“
+- CSP Report-Only: `*.wistia.com` / `*.wistia.net` in frame/script/connect/img/media
+- Media-ID: `p7g2vfjbmq` → `data-vsl-src="https://fast.wistia.net/embed/iframe/p7g2vfjbmq"`
+
 ## Noch nicht
 
-- VSL-URL (`data-vsl-src` leer). Danach Klaro-Dienst, Datenschutz-Absatz, `frame-src` in `vercel.json`
 - ROI-Stufen und Return-Feld, sobald Kevin die Labels lockt. Nicht erfinden.
 - Meta Pixel nicht verdrahtet

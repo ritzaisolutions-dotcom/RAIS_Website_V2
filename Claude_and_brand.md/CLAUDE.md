@@ -32,15 +32,15 @@ Bestehendes Fundament wiederverwenden. Vanilla HTML, Vite, Tailwind. Gezielte Ed
 
 Kontakt/Audit ist ein Modul auf jeder Seite. Primäre Nav: Systeme · Referenzen · Über uns · Persönlichkeit · Audit. Zusammenarbeit im Footer.
 
-## Buchungsstrecke (Stand 09.08.2026)
+## Buchungsstrecke (Stand 02.11.2026)
 
-Kein vorgeschaltetes Formular mehr. Der Cal-Kalender ist inline eingebettet, in `#contact` auf jeder Seite und im einstufigen Buchungsmodal. Regeln:
+Custom Booking über Supabase (`booking-availability` / `booking-book`) und `scripts/rais-booking.js`. Kein Cal.com. Regeln:
 
-- Dauer des Erstgesprächs ist überall **20 Minuten**. Die 60 Minuten gehören ausschließlich zum Discovery Call im Ablauf-Abschnitt
-- Der Embed lädt erst nach Einwilligung über den Klaro-Service `cal`, vorher steht ein Platzhalter
-- Die Qualifizierungsfragen sind Pflichtfelder in der Cal-Buchungsmaske, nicht auf der Website. Identifier und Wertebereiche stehen im Kopf von `scripts/cal-embed.js`
-- Der Lead entsteht erst nach bestätigter Buchung über `bookingSuccessful`. Abbrecher werden bewusst nicht erfasst
-- Ziel-URL kommt aus `CAL_COM_URL`, lokal aus `.env`, in Produktion aus den Vercel-Umgebungsvariablen
+- Event-Typ aktuell nur **`erstgespraech`** (45 Minuten, Europe/Berlin)
+- Klaro-Service: `booking`. Homepage-Modal = einstufig (Fragen + Slots + Kontakt)
+- KI-Roadmap: Gate Fragen 1–3, Prefetch ab Frage 1, Step 4 = Kontakt + Slot (`mountStep4`), `source: 'ai-roadmap'`
+- Absage: DB-Status `cancelled` ist SoT; GCal-Delete erst wenn OAuth-Secrets stehen (siehe `docs/booking-gcal-setup.md`)
+- `CAL_COM_URL` / `calComUrl` entfallen; `scripts/cal-embed.js` ist nur noch Stub/Alias
 
 ## Design Authority
 

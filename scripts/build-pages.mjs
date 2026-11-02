@@ -36,7 +36,6 @@ function page({
   main,
   extraScripts = '',
   extraCss = [],
-  calUrl,
   dauer,
   navCta,
   contact,
@@ -50,23 +49,20 @@ function page({
   noindex = false,
   showPortrait = true
 }) {
-  const resolvedBodyAttrs = calUrl
-    ? `${bodyAttrs} data-cal-url="${calUrl}"`.trim()
-    : bodyAttrs;
   const html =
     headHtml({
       title,
       description,
       path,
       extraCss,
-      bodyAttrs: resolvedBodyAttrs ? ` ${resolvedBodyAttrs}` : '',
+      bodyAttrs: bodyAttrs ? ` ${bodyAttrs}` : '',
       ogImage,
       noindex
     }) +
     navHtml(active, navCta || {}) +
     (showPortrait ? portraitHtml() : '') +
     `<main id="main">${main}</main>` +
-    contactHtml({ calUrl, dauer, ...(contact || {}) }) +
+    contactHtml({ dauer, ...(contact || {}) }) +
     afterContact +
     footerHtml({ stickyHref, stickyLabel, minimal: footerMinimal }) +
     bookingModalHtml(dauer, bookingAriaLabel) +
@@ -89,11 +85,11 @@ page({
     label: 'Kostenloser Audit',
     title: 'Termin wählen.',
     copy: [
-      '20 Minuten. Ein Engpass. Prozess-Sparring: was geht, was nicht, was Sinn macht.',
-      'Sie geben Ihre Angaben direkt im Kalender ein. Ein zweites Formular gibt es nicht.'
+      '45 Minuten Erstgespräch. Ein Engpass. Prozess-Sparring: was geht, was nicht, was Sinn macht.',
+      'Quali-Fragen, Termin und Kontaktdaten in einer Maske.'
     ],
-    calTitle: 'Kostenlosen Audit buchen',
-    calSub: '20 Minuten, kostenlos.'
+    calTitle: 'Erstgespräch buchen',
+    calSub: 'Erstgespräch, 45 Minuten. Kostenlos.'
   }
 });
 
@@ -527,22 +523,19 @@ page({
 `
 });
 
-const AI_ROADMAP_CAL = 'https://cal.com/ritzaisolutions/immo-ai-roadmap';
-
 page({
   file: 'ai-roadmap.html',
   active: null,
   title: 'KI-Automatisierung für Immobilienunternehmen | RAIS',
   description:
-    'Anfragen und Mieteranliegen noch per Hand? Wir zeigen, was sich automatisieren lässt. 60 Minuten, konkreter Plan, kein Pitch.',
+    'Anfragen und Mieteranliegen noch per Hand? Wir zeigen, was sich automatisieren lässt. Erstgespräch, 45 Minuten, konkreter Plan, kein Pitch.',
   path: 'ai-roadmap.html',
   noindex: true,
   showPortrait: false,
   extraCss: ['styles/ai-roadmap.css'],
   ogImage: 'og-cover.webp',
-  calUrl: AI_ROADMAP_CAL,
-  dauer: '60 Minuten',
-  bookingAriaLabel: 'KI-Roadmap buchen',
+  dauer: '45 Minuten',
+  bookingAriaLabel: 'Erstgespräch buchen',
   bodyAttrs: 'class="page-roadmap"',
   navCta: { ctaHref: '#contact', ctaLabel: 'KI-Roadmap' },
   stickyHref: '#contact',
@@ -552,11 +545,11 @@ page({
     label: 'KI-Roadmap',
     title: 'Termin wählen',
     copy: [
-      'Drei kurze Fragen, dann der Kalender. Die schriftliche Roadmap behalten Sie.',
+      'Drei kurze Fragen, dann Kontakt und Termin. Die schriftliche Roadmap behalten Sie.',
       'Kein Pitch. Wenn wir keinen sinnvollen Anwendungsfall sehen, sagen wir es Ihnen.'
     ],
-    calTitle: 'KI-Roadmap buchen',
-    calSub: '60 Minuten, kostenlos.',
+    calTitle: 'Erstgespräch buchen',
+    calSub: 'Erstgespräch, 45 Minuten. Kostenlos.',
     gate: `
         <div class="roadmap-gate" id="roadmap-gate">
           <div class="roadmap-gate__head">
@@ -567,7 +560,7 @@ page({
               <span class="roadmap-gate__bar" data-gbar="3"></span>
             </div>
           </div>
-          <p class="roadmap-gate__lead">Drei Fragen, dann sehen Sie den Kalender. Damit ich vorbereitet ins Gespräch gehe.</p>
+          <p class="roadmap-gate__lead">Drei Fragen, dann wählen Sie Termin und Kontaktdaten. Damit ich vorbereitet ins Gespräch gehe.</p>
 
           <fieldset class="roadmap-gate__q" data-gstep="1">
             <legend>Wo tut es am meisten weh?</legend>
@@ -629,9 +622,9 @@ page({
             <button type="button" class="rq-btn-back" id="gate-back" hidden>Zurück</button>
             <button type="button" class="btn-primary" id="gate-submit">Weiter</button>
           </div>
-          <p class="roadmap-gate__note">Name, E-Mail und Telefon geben Sie erst im Kalender an, und dort nur einmal.</p>
+          <p class="roadmap-gate__note">Name, E-Mail und Telefon geben Sie im nächsten Schritt zusammen mit dem Termin an.</p>
         </div>
-        <p class="roadmap-gate__done" id="gate-done" hidden>Danke. Wählen Sie unten Ihren Termin.</p>`
+        <p class="roadmap-gate__done" id="gate-done" hidden>Danke. Wählen Sie unten Ihren Termin und hinterlassen Sie Ihre Kontaktdaten.</p>`
   },
   extraScripts:
     '\n<script src="scripts/roadmap-hero-ui.js"></script>\n<script src="scripts/aqut-sim.js"></script>\n<script src="scripts/ai-roadmap-funnel.js"></script>\n',
@@ -646,7 +639,7 @@ page({
           <span class="akte__toggle"><span class="akte__toggle-closed">Antwort öffnen</span><span class="akte__toggle-open">Antwort schließen</span></span>
         </summary>
         <div class="akte__body">
-          <p>60 Minuten. Wir schauen uns einen echten Prozess an. Was kostet er heute, was muss ein Mensch machen, was lässt sich automatisieren, was bringt das wirtschaftlich. Danach eine schriftliche Roadmap. Kein Pitch.</p>
+          <p>45 Minuten Erstgespräch. Wir schauen uns einen echten Prozess an. Was kostet er heute, was muss ein Mensch machen, was lässt sich automatisieren, was bringt das wirtschaftlich. Danach eine schriftliche Roadmap. Kein Pitch.</p>
         </div>
       </details></li>
       <li><details class="akte akte--frage">
@@ -1108,7 +1101,7 @@ ${renderTechstack()}
           <li>Was kann automatisiert werden?</li>
           <li>Was würde das wirtschaftlich bringen?</li>
         </ul>
-        <p class="roadmap-offer__meta">60 Minuten. Konkreter Plan. Kein vorbereiteter Pitch.</p>
+        <p class="roadmap-offer__meta">45 Minuten Erstgespräch. Konkreter Plan. Kein vorbereiteter Pitch.</p>
         <p class="roadmap-offer__trust"><strong>Kein Verkaufsgespräch.</strong> Wenn wir keinen sinnvollen Anwendungsfall sehen, sagen wir es Ihnen.</p>
         <a class="btn-primary" href="#contact">KI-Roadmap anfragen</a>
       </div>

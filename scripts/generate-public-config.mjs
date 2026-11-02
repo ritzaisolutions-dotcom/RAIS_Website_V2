@@ -35,7 +35,7 @@ function sentryLoaderKey(dsn) {
 
 // process.env (Vercel / CI) wins; local .env is fallback only.
 const fileEnv = loadEnv(envPath);
-const required = ['SUPABASE_URL', 'SUPABASE_ANON_KEY', 'CAL_COM_URL', 'SENTRY_DSN'];
+const required = ['SUPABASE_URL', 'SUPABASE_ANON_KEY', 'SENTRY_DSN'];
 const env = Object.fromEntries(
   required.map((key) => [key, process.env[key] || fileEnv[key] || ''])
 );
@@ -52,7 +52,6 @@ if (missing.length) {
 const config = {
   supabaseUrl: env.SUPABASE_URL,
   supabaseAnonKey: env.SUPABASE_ANON_KEY,
-  calComUrl: env.CAL_COM_URL,
   sentryDsn: env.SENTRY_DSN,
   sentryLoaderKey: sentryLoaderKey(env.SENTRY_DSN),
 };

@@ -1,12 +1,8 @@
 /**
- * Buchungsmodal, einstufig.
+ * Buchungsmodal — Custom RAIS Booking (kein Cal.com).
  *
- * Der Klick auf einen CTA setzt Cal-Consent (gleiche Geste wie der
- * Gate-Button) und zeigt den Kalender. Der Lead entsteht nach
- * bestaetigter Buchung in scripts/cal-embed.js.
- *
- * Die data-source-Werte der Buttons bleiben unveraendert, sie sind
- * der Schluessel der Lead-Attribution.
+ * CTA setzt Booking-Consent (gleiche Geste wie Gate) und öffnet den Flow.
+ * data-source bleibt der Attribution-Schlüssel.
  */
 (function () {
   'use strict';
@@ -20,9 +16,12 @@
   var lastFocused = null;
 
   var FOCUSABLE = [
-    'a[href]', 'button:not([disabled])', 'input:not([disabled])',
-    'select:not([disabled])', 'textarea:not([disabled])', 'iframe',
-    '[tabindex]:not([tabindex="-1"])'
+    'a[href]',
+    'button:not([disabled])',
+    'input:not([disabled])',
+    'select:not([disabled])',
+    'textarea:not([disabled])',
+    '[tabindex]:not([tabindex="-1"])',
   ].join(',');
 
   function openModal(opts) {
@@ -31,18 +30,19 @@
     modal.classList.add('is-open');
     document.body.classList.add('noscroll');
 
-    if (calWrap && window.RAISCal) {
-      var pageCal = document.body && document.body.getAttribute('data-cal-url');
-      var isConvert = document.body && document.body.getAttribute('data-page') === 'convert';
+    if (calWrap && window.RAISBooking) {
       calWrap.innerHTML = '';
       calWrap.classList.remove('is-loading');
-      window.RAISCal.mount(calWrap, {
+      if (
+        options.ensureConsent !== false &&
+        typeof window.RAISBooking.grantConsent === 'function'
+      ) {
+        /* CTA-Klick = Einwilligung, analog zum alten Cal-Gate */
+        window.RAISBooking.grantConsent();
+      }
+      window.RAISBooking.mount(calWrap, {
         source: options.source || null,
-        icpSegment: options.icp_segment || null,
-        calUrl: pageCal || undefined,
-        ensureConsent: true,
-        remount: true,
-        noLead: isConvert || (document.body && document.body.hasAttribute('data-cal-nolead'))
+        ensureConsent: false,
       });
     }
 
@@ -62,11 +62,10 @@
 
   document.querySelectorAll('.js-open-booking').forEach(function (el) {
     el.addEventListener('click', function (e) {
-      /* Anker (Nav, Sticky) behalten href="#termin" als Fallback ohne JS. */
       if (el.tagName === 'A') e.preventDefault();
       openModal({
         source: el.getAttribute('data-source') || el.id || null,
-        icp_segment: el.getAttribute('data-icp') || null
+        icp_segment: el.getAttribute('data-icp') || null,
       });
     });
   });
@@ -82,8 +81,6 @@
       return;
     }
 
-    /* Fokus bleibt im Dialog. Sobald der Cal-Iframe den Fokus hat,
-       uebernimmt der Browser, das ist gewollt. */
     if (e.key !== 'Tab') return;
     var items = modal.querySelectorAll(FOCUSABLE);
     if (!items.length) return;
@@ -97,4 +94,4 @@
       first.focus();
     }
   });
-}());
+})();

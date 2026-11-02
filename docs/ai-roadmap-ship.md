@@ -166,7 +166,7 @@ Rate-Limit-Kontingent `lead` (5 Versuche je 15 Minuten und IP).
 2. Die drei Gate-Antworten in `funnel_qualify` (`type: "qualify"`),
    inklusive Wortlaut der Einwilligung als Nachweis nach Art. 7 DSGVO.
 3. Der eigentliche Lead entsteht erst nach bestätigter Buchung, über
-   `submit-audit-lead` (aus `scripts/cal-embed.js`) → `inbound_leads`,
+   ~~`submit-audit-lead` (aus `scripts/cal-embed.js`) → `inbound_leads`~~ — **tot / ersetzt** durch Custom Booking (`booking-book` + `rais-booking.js`); Edge `submit-audit-lead` nicht mehr aus dem Frontend aufrufen,
    Notion, Mail.
 4. Prozesshandbuch-Downloads laufen unverändert über
    `lead_magnet_downloads` + n8n.

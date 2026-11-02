@@ -5,15 +5,11 @@
  *    Flach, keine Schritte. Drei Eingaben, das Ergebnis rechnet live
  *    daneben mit. Nichts davon verlaesst den Browser.
  *
- * 2. Gate vor dem Kalender (#roadmap-gate)
- *    Drei Fragen, dann erscheint das Cal-Embed. Bewusst ohne Name,
- *    E-Mail und Telefon: die entstehen genau einmal, naemlich in der
- *    Cal-Maske. Die drei Antworten gehen mit der Einwilligung an
- *    submit-funnel-lead (type "qualify") und landen in funnel_qualify.
- *
- * Der Kalender-Container traegt im Markup data-cal-deferred, damit
- * das autoMount in cal-embed.js ihn nicht selbst einhaengt. Erst nach
- * dem Gate ruft diese Datei RAISCal.mount() auf.
+ * 2. Gate vor dem Termin (#roadmap-gate)
+ *    Drei Fragen, dann Step 4: Kontakt + Slot (RAISBooking.mountStep4).
+ *    Nach Frage 1: Availability-Prefetch. Privacy-Consent in Step 3.
+ *    answers gehen an booking-book (source ai-roadmap) und parallel
+ *    an submit-funnel-lead (type qualify).
  */
 (function () {
   'use strict';
@@ -195,9 +191,6 @@
       );
     }
     if (previewEl) {
-      /* Die Kostenzahl steht in Euro, also steht die Rueckgewinnzahl
-         auch in Euro. Sonst ist nur die Zahl monetarisiert, die weh
-         tut, und die, die hilft, bleibt abstrakt. */
       previewEl.textContent = t(
         'Davon übernimmt das System nach dem Aufbau typischerweise 70 Prozent. Das sind rund ' +
           formatDe(c.recovered, 1) +
@@ -207,8 +200,6 @@
       );
     }
 
-    /* Kurzfassung fuer die Live-Region. Das ganze Ergebnisfeld als
-       aria-live waere bei jedem Reglerschritt sechs Absaetze. */
     var liveEl = document.getElementById('rf-live');
     if (liveEl) {
       liveEl.textContent =
@@ -266,7 +257,7 @@
     }
   }
 
-  /* ── 2. Gate vor dem Kalender ───────────────────────────────── */
+  /* ── 2. Gate → Step 4 Booking ───────────────────────────────── */
 
   var gate = document.getElementById('roadmap-gate');
 
@@ -275,6 +266,7 @@
     var gateStep = 1;
     var gateState = { pain: '', ecosystem: '', crm: '', volume: 25 };
     var gateSent = {};
+    var prefetchStarted = false;
     var gateErr = document.getElementById('gate-error');
     var gateSubmit = document.getElementById('gate-submit');
     var gateBack = document.getElementById('gate-back');
@@ -305,6 +297,16 @@
       track('funnel_step_' + n);
     }
 
+    function startPrefetch() {
+      if (prefetchStarted) return;
+      prefetchStarted = true;
+      if (window.RAISBooking && typeof window.RAISBooking.prefetch === 'function') {
+        window.RAISBooking.prefetch({ event: 'erstgespraech' }).catch(function () {
+          /* Prefetch ist Best-Effort; Step 4 lädt sonst selbst. */
+        });
+      }
+    }
+
     function paintGate(moveFocus) {
       gate.querySelectorAll('[data-gstep]').forEach(function (panel) {
         panel.hidden = Number(panel.getAttribute('data-gstep')) !== gateStep;
@@ -315,7 +317,7 @@
       });
       if (gateBack) gateBack.hidden = gateStep === 1;
       if (gateSubmit) {
-        gateSubmit.textContent = t(gateStep === GATE_STEPS ? 'Weiter zum Kalender' : 'Weiter');
+        gateSubmit.textContent = t(gateStep === GATE_STEPS ? 'Weiter zum Termin' : 'Weiter');
       }
       gateError('');
       if (!moveFocus) return;
@@ -334,8 +336,6 @@
       paintGate(true);
     }
 
-    /* Einfachauswahl: der Klick ist die Antwort, ein zusaetzliches
-       "Weiter" bringt keine Information. */
     gate.addEventListener('click', function (e) {
       var btn = e.target.closest('[data-gate="pain"]');
       if (!btn || !gate.contains(btn)) return;
@@ -346,6 +346,7 @@
         el.setAttribute('aria-checked', on ? 'true' : 'false');
       });
       emitGateStep(1);
+      startPrefetch();
       if (gateStep === 1) gateGo(2);
     });
 
@@ -368,10 +369,6 @@
     }
 
     if (gateVolume) {
-      /* Wer den Rechner oben schon benutzt hat, findet den Wert hier
-         wieder, statt ihn ein zweites Mal einzustellen. Sobald der
-         Regler hier einmal selbst bewegt wurde, gilt dieser Wert und
-         der Rechner schreibt ihn nicht mehr um. */
       var gateVolumeTouched = false;
       gateState.volume = calc.volumenWoche;
       gateVolume.value = String(gateState.volume);
@@ -398,24 +395,40 @@
       });
     }
 
-    function revealCal() {
+    function bookingAnswers() {
+      var answers = {
+        pain: gateState.pain,
+        ecosystem: gateState.ecosystem,
+        crm: gateState.crm,
+        volume: gateState.volume,
+        anfragen_pro_woche: gateState.volume
+      };
+      var engpass = PAIN_TO_ENGPASS[gateState.pain];
+      if (engpass) answers.engpass = engpass;
+      return answers;
+    }
+
+    function revealStep4() {
       var el = document.getElementById('cal-inline-contact');
       if (!el) return;
       el.hidden = false;
-      /* Ab hier darf cal-embed.js den Container kennen. */
       el.removeAttribute('data-cal-deferred');
-      el.setAttribute('data-cal-inline', '');
+      el.setAttribute('data-rais-booking-defer', '');
 
       var done = document.getElementById('gate-done');
       if (done) done.hidden = false;
       gate.hidden = true;
 
-      if (window.RAISCal && typeof window.RAISCal.mount === 'function') {
-        window.RAISCal.mount(el, {
-          source: 'ai-roadmap',
-          icpSegment: gateState.pain === 'mieteranliegen' ? 'verwaltung' : 'makler',
-          config: calConfig()
-        });
+      var opts = {
+        source: 'ai-roadmap',
+        answers: bookingAnswers(),
+        icpSegment: gateState.pain === 'mieteranliegen' ? 'verwaltung' : 'makler'
+      };
+
+      if (window.RAISBooking && typeof window.RAISBooking.mountStep4 === 'function') {
+        window.RAISBooking.mountStep4(el, opts);
+      } else if (window.RAISCal && typeof window.RAISCal.mount === 'function') {
+        window.RAISCal.mount(el, opts);
       }
 
       if (typeof el.scrollIntoView === 'function') {
@@ -423,36 +436,14 @@
       }
     }
 
-    function calConfig() {
-      var c = compute();
-      var notes = [
-        'Engpass: ' + gateState.pain,
-        'Mail/Kalender: ' + gateState.ecosystem,
-        'CRM: ' + gateState.crm,
-        'Volumen: ' + gateState.volume + ' / Woche',
-        'Rechner: ' + formatDe(c.hoursMonth, 1) + ' h/Monat bei ' + formatDe(calc.stundensatz) + ' EUR/Std'
-      ].join('\n');
-      var config = {
-        locale: 'de',
-        notes: notes,
-        'anfragen-pro-woche': String(gateState.volume),
-        crm: gateState.crm
-      };
-      var engpass = PAIN_TO_ENGPASS[gateState.pain];
-      if (engpass) config.engpass = engpass;
-      return config;
-    }
-
     if (gateSubmit) {
       gateSubmit.addEventListener('click', function () {
-        /* Jede Frage wird dort geprueft, wo sie gestellt wurde.
-           Sonst springt der Fehler an eine Stelle, die gerade gar
-           nicht sichtbar ist. */
         if (gateStep === 1) {
           if (!gateState.pain) {
             gateError(t('Bitte wählen Sie, wo es am meisten weh tut.'));
             return;
           }
+          startPrefetch();
           gateGo(2);
           return;
         }
@@ -488,9 +479,7 @@
         gateSubmit.disabled = true;
         gateSubmit.textContent = t('Einen Moment…');
 
-        /* Der Kalender darf nicht davon abhaengen, ob das Speichern
-           klappt. Fehlschlaege landen im Log, der Termin bleibt
-           erreichbar. */
+        /* Termin darf nicht davon abhängen, ob Quali-Save klappt. */
         post({
           type: 'qualify',
           pain: gateState.pain,
@@ -503,8 +492,8 @@
           consent_text: CONSENT_TEXT
         }).then(function () {
           gateSubmit.disabled = false;
-          gateSubmit.textContent = t('Weiter zum Kalender');
-          revealCal();
+          gateSubmit.textContent = t('Weiter zum Termin');
+          revealStep4();
         });
       });
     }
