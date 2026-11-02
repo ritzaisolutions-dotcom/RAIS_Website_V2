@@ -18,30 +18,10 @@ import {
   gcalConfigured,
   queryFreeBusy,
 } from "../_shared/booking-gcal.ts";
-
-const allowedOrigins = new Set(
-  (Deno.env.get("RAIS_ALLOWED_ORIGINS") ??
-    "https://ritz-ai.solutions,https://www.ritz-ai.solutions,http://127.0.0.1:5173,http://localhost:5173")
-    .split(",")
-    .map((o) => o.trim())
-    .filter(Boolean),
-);
+import { corsHeaders, isAllowedOrigin } from "../_shared/booking-cors.ts";
 
 const RATE_WINDOW_MS = 60 * 60_000;
 const RATE_MAX = 12;
-
-function cors(origin: string | null): HeadersInit {
-  const allow = origin && allowedOrigins.has(origin)
-    ? origin
-    : [...allowedOrigins][0];
-  return {
-    "Access-Control-Allow-Origin": allow,
-    "Access-Control-Allow-Headers":
-      "authorization, x-client-info, apikey, content-type",
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
-    "Content-Type": "application/json",
-  };
-}
 
 function json(
   status: number,
@@ -50,7 +30,7 @@ function json(
 ): Response {
   return new Response(JSON.stringify(body), {
     status,
-    headers: cors(origin),
+    headers: corsHeaders(origin, "POST, OPTIONS"),
   });
 }
 
@@ -60,11 +40,6 @@ function clientIp(req: Request): string {
     req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
     "0.0.0.0"
   );
-}
-
-function originAllowed(origin: string | null): boolean {
-  if (!origin) return true; // same-origin / curl / server tools
-  return allowedOrigins.has(origin);
 }
 
 async function sendConfirmMails(input: {
@@ -108,12 +83,16 @@ async function sendConfirmMails(input: {
 Deno.serve(async (req) => {
   const origin = req.headers.get("Origin");
   if (req.method === "OPTIONS") {
-    return new Response(null, { status: 204, headers: cors(origin) });
+    return new Response(null, {
+      status: 204,
+      headers: corsHeaders(origin, "POST, OPTIONS"),
+    });
   }
   if (req.method !== "POST") {
     return json(405, { error: "method_not_allowed" }, origin);
   }
-  if (!originAllowed(origin)) {
+  // null Origin = curl / server tools; browser always sends Origin
+  if (origin && !isAllowedOrigin(origin)) {
     return json(403, { error: "origin_forbidden" }, origin);
   }
 

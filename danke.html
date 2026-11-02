@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Termin steht | RAIS</title>
-  <meta name="description" content="Ihr Termin für das Erstgespräch steht. Kurz vorbereiten, dann telefonieren.">
+  <meta name="description" content="Ihr Termin für das Erstgespräch steht. Bestätigen per WhatsApp oder SMS, in den Kalender legen und kurz vorbereiten.">
   <meta name="robots" content="noindex, follow">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" href="favicon.png?v=3">
@@ -33,7 +33,39 @@
     <section class="danke-band" aria-labelledby="danke-title">
       <div class="section-wrap section-wrap--narrow danke-wrap">
         <h1 class="danke-h1" id="danke-title">Termin steht.</h1>
-        <p class="danke-lead">45 Minuten Erstgespräch am Telefon. Die Bestätigung kommt per E-Mail.</p>
+        <p class="danke-lead" id="danke-lead">45 Minuten Erstgespräch. Bestätigen Sie den Termin kurz und legen Sie ihn in Ihren Kalender.</p>
+        <p class="danke-slot" id="danke-slot" hidden></p>
+
+        <div class="danke-block">
+          <span class="mono-label">Termin bestätigen</span>
+          <p class="danke-copy">Kurze Bestätigung an uns, damit wir den Slot fest halten.</p>
+          <div class="danke-actions" id="danke-confirm-actions">
+            <a class="danke-btn danke-btn--primary" id="danke-wa" href="https://wa.me/4915129755134" target="_blank" rel="noopener noreferrer">Per WhatsApp bestätigen</a>
+            <a class="danke-btn danke-btn--ghost" id="danke-sms" href="sms:+4915129755134">Per SMS bestätigen</a>
+          </div>
+        </div>
+
+        <div class="danke-block">
+          <span class="mono-label">In den Kalender</span>
+          <p class="danke-copy">Damit der Termin bei Ihnen nicht untergeht.</p>
+          <div class="danke-actions" id="danke-cal-actions">
+            <a class="danke-btn danke-btn--ghost" id="danke-gcal" href="#" target="_blank" rel="noopener noreferrer">Google Kalender</a>
+            <button class="danke-btn danke-btn--ghost" id="danke-ics" type="button">ICS herunterladen</button>
+          </div>
+        </div>
+
+        <div class="danke-block danke-video-block">
+          <span class="mono-label">Kurz von uns</span>
+          <p class="danke-copy">Einordnung, bevor wir telefonieren.</p>
+          <div class="danke-video" id="danke-video">
+            <!-- Video-ID unten im Script setzen (YT_VIDEO_ID). Bis dahin: Kanal-Link. -->
+            <a class="danke-yt-card" href="https://www.youtube.com/@kevin_ritz" target="_blank" rel="noopener noreferrer">
+              <img src="images/youtube-curated-thumb.svg" width="1280" height="720" alt="" loading="lazy" decoding="async">
+              <span class="danke-yt-card__play" aria-hidden="true">▶</span>
+              <span class="danke-yt-card__caption">Video auf YouTube ansehen</span>
+            </a>
+          </div>
+        </div>
 
         <div class="danke-block">
           <span class="mono-label">Vor dem Anruf</span>
@@ -44,18 +76,7 @@
           </ol>
         </div>
 
-        <div class="danke-block">
-          <span class="mono-label">Im Gespräch</span>
-          <ol class="danke-list">
-            <li>Wo es bei Ihnen hakt.</li>
-            <li>Wie Akut und Meta in Ihrem Büro laufen würden.</li>
-            <li>Ob sich der Einstieg mit Ihren Zahlen lohnt, und was die Garantie abdeckt.</li>
-          </ol>
-        </div>
-
-        <p class="danke-role">Sie filmen kurz und führen die Gespräche. Den Rest machen wir.</p>
-
-        <p class="danke-reschedule">Wenn der Termin nicht passt: melden Sie sich kurz per E-Mail, wir finden einen neuen Slot.</p>
+        <p class="danke-reschedule">Wenn der Termin nicht passt: melden Sie sich kurz per WhatsApp oder E-Mail, wir finden einen neuen Slot.</p>
 
         <p class="danke-home">
           <a href="/">Zurück zur Startseite</a>
@@ -81,10 +102,141 @@
   <script>
   (function () {
     var navbar = document.getElementById('navbar');
-    if (!navbar) return;
-    window.addEventListener('scroll', function () {
-      navbar.classList.toggle('scrolled', window.scrollY > 10);
-    }, { passive: true });
+    if (navbar) {
+      window.addEventListener('scroll', function () {
+        navbar.classList.toggle('scrolled', window.scrollY > 10);
+      }, { passive: true });
+    }
+
+    /* Optional: konkrete Video-ID eintragen, dann wird eingebettet. */
+    var YT_VIDEO_ID = '';
+    var PHONE_E164 = '4915129755134';
+    var EVENT_TITLE = 'RAIS Erstgespräch (45 Min.)';
+    var EVENT_DETAILS = 'Telefonisches Erstgespräch mit RAIS. 45 Minuten.';
+
+    var params = new URLSearchParams(window.location.search);
+    var label = params.get('label') || '';
+    var startIso = params.get('start') || '';
+    var endIso = params.get('end') || '';
+    var name = params.get('name') || '';
+
+    var slotEl = document.getElementById('danke-slot');
+    var leadEl = document.getElementById('danke-lead');
+    if (label && slotEl) {
+      slotEl.hidden = false;
+      slotEl.textContent = label;
+      if (leadEl) {
+        leadEl.textContent = 'Ihr Termin: ' + label + '. Bestätigen Sie kurz und legen Sie ihn in Ihren Kalender.';
+      }
+    }
+
+    var confirmMsg =
+      'Hallo RAIS, hiermit bestätige ich mein Erstgespräch' +
+      (label ? ' am ' + label : '') +
+      (name ? '. Mein Name: ' + name : '') +
+      '.';
+
+    var wa = document.getElementById('danke-wa');
+    if (wa) {
+      wa.href = 'https://wa.me/' + PHONE_E164 + '?text=' + encodeURIComponent(confirmMsg);
+    }
+    var sms = document.getElementById('danke-sms');
+    if (sms) {
+      sms.href = 'sms:+' + PHONE_E164 + '?body=' + encodeURIComponent(confirmMsg);
+    }
+
+    function pad(n) {
+      return String(n).padStart(2, '0');
+    }
+
+    function toGcalStamp(d) {
+      return (
+        d.getUTCFullYear() +
+        pad(d.getUTCMonth() + 1) +
+        pad(d.getUTCDate()) +
+        'T' +
+        pad(d.getUTCHours()) +
+        pad(d.getUTCMinutes()) +
+        pad(d.getUTCSeconds()) +
+        'Z'
+      );
+    }
+
+    function toIcsStamp(d) {
+      return toGcalStamp(d);
+    }
+
+    var startDate = startIso ? new Date(startIso) : null;
+    var endDate = endIso ? new Date(endIso) : null;
+    if (startDate && !endDate) {
+      endDate = new Date(startDate.getTime() + 45 * 60 * 1000);
+    }
+
+    var gcal = document.getElementById('danke-gcal');
+    var icsBtn = document.getElementById('danke-ics');
+
+    if (startDate && endDate && !isNaN(startDate.getTime())) {
+      if (gcal) {
+        gcal.href =
+          'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+          '&text=' + encodeURIComponent(EVENT_TITLE) +
+          '&dates=' + toGcalStamp(startDate) + '/' + toGcalStamp(endDate) +
+          '&details=' + encodeURIComponent(EVENT_DETAILS + (label ? ' ' + label : ''));
+      }
+      if (icsBtn) {
+        icsBtn.addEventListener('click', function () {
+          var ics =
+            'BEGIN:VCALENDAR\r\n' +
+            'VERSION:2.0\r\n' +
+            'PRODID:-//RAIS//Booking//DE\r\n' +
+            'CALSCALE:GREGORIAN\r\n' +
+            'BEGIN:VEVENT\r\n' +
+            'UID:rais-' + (params.get('id') || Date.now()) + '@ritz-ai.solutions\r\n' +
+            'DTSTAMP:' + toIcsStamp(new Date()) + '\r\n' +
+            'DTSTART:' + toIcsStamp(startDate) + '\r\n' +
+            'DTEND:' + toIcsStamp(endDate) + '\r\n' +
+            'SUMMARY:' + EVENT_TITLE + '\r\n' +
+            'DESCRIPTION:' + EVENT_DETAILS.replace(/\n/g, '\\n') + '\r\n' +
+            'END:VEVENT\r\n' +
+            'END:VCALENDAR\r\n';
+          var blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+          var url = URL.createObjectURL(blob);
+          var a = document.createElement('a');
+          a.href = url;
+          a.download = 'rais-erstgespraech.ics';
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          URL.revokeObjectURL(url);
+        });
+      }
+    } else {
+      if (gcal) {
+        gcal.setAttribute('aria-disabled', 'true');
+        gcal.addEventListener('click', function (e) {
+          e.preventDefault();
+        });
+        gcal.style.opacity = '0.5';
+      }
+      if (icsBtn) {
+        icsBtn.disabled = true;
+        icsBtn.style.opacity = '0.5';
+      }
+    }
+
+    var videoHost = document.getElementById('danke-video');
+    if (videoHost && YT_VIDEO_ID) {
+      videoHost.innerHTML = '';
+      var frame = document.createElement('iframe');
+      frame.className = 'danke-yt-embed';
+      frame.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(YT_VIDEO_ID);
+      frame.title = 'RAIS Video';
+      frame.setAttribute('loading', 'lazy');
+      frame.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+      frame.setAttribute('allowfullscreen', '');
+      frame.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+      videoHost.appendChild(frame);
+    }
   }());
   </script>
 </body>

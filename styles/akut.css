@@ -279,18 +279,35 @@
 
 .page-akut .bm-cal-wrap,
 .page-akut .cal-surface .cal-inline {
-  min-height: 560px;
-  height: min(72vh, 680px);
+  min-height: 0;
+  height: auto;
+  max-height: none;
   color-scheme: light;
   background: #fff;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .page-akut #booking-modal .bm-box {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   padding-bottom: 1.25rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.page-akut #booking-modal .bm-cal-wrap.rb-root {
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: none;
+  overflow: visible;
+}
+
+.page-akut #booking-modal .rb-slots {
+  max-height: min(38vh, 22rem);
+  overflow-y: auto;
+  padding-right: 0.25rem;
+  -webkit-overflow-scrolling: touch;
 }
 
 .page-akut #booking-modal .bm-step.is-active {
@@ -1146,6 +1163,120 @@
   font-size: 1.1rem;
   line-height: 1.55;
   color: var(--stone);
+}
+
+.page-danke .danke-slot {
+  margin: -0.75rem 0 0;
+  font-family: var(--serif);
+  font-size: clamp(1.15rem, 2.4vw, 1.45rem);
+  line-height: 1.35;
+  color: var(--charcoal);
+  font-weight: 500;
+}
+
+.page-danke .danke-copy {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.5;
+  color: var(--stone);
+}
+
+.page-danke .danke-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.page-danke .danke-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.7rem 1.15rem;
+  border-radius: 10px;
+  font: inherit;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.page-danke .danke-btn--primary {
+  background: var(--orange, #EC6A37);
+  color: var(--on-orange, #2F2A24);
+}
+
+.page-danke .danke-btn--primary:hover {
+  background: var(--orange-hover, #F37A48);
+}
+
+.page-danke .danke-btn--ghost {
+  background: #fff;
+  color: var(--charcoal);
+  border-color: var(--border, #D9D1C7);
+}
+
+.page-danke .danke-btn--ghost:hover {
+  border-color: var(--charcoal);
+}
+
+.page-danke .danke-video-block {
+  gap: 0.85rem;
+}
+
+.page-danke .danke-video {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border, #D9D1C7);
+  background: #111;
+}
+
+.page-danke .danke-yt-card {
+  position: relative;
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.page-danke .danke-yt-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.page-danke .danke-yt-card__play {
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: rgba(251, 248, 243, 0.92);
+  color: var(--charcoal);
+  font-size: 0.95rem;
+  padding-left: 0.15rem;
+}
+
+.page-danke .danke-yt-card__caption {
+  display: block;
+  padding: 0.85rem 1rem;
+  background: #fff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--charcoal);
+}
+
+.page-danke .danke-yt-embed {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
 }
 
 .page-danke .danke-block {

@@ -258,7 +258,24 @@
     ];
   }
 
-  function renderDone(container, result) {
+  function thanksUrl(result, meta) {
+    var r = result || {};
+    var m = meta || {};
+    var params = new URLSearchParams();
+    if (r.label) params.set('label', r.label);
+    if (r.startsAt) params.set('start', r.startsAt);
+    if (r.endsAt) params.set('end', r.endsAt);
+    if (r.bookingId) params.set('id', r.bookingId);
+    if (m.name) params.set('name', m.name);
+    var qs = params.toString();
+    return 'danke.html' + (qs ? '?' + qs : '');
+  }
+
+  function goToThanks(result, meta) {
+    window.location.assign(thanksUrl(result, meta));
+  }
+
+  function renderDone(container, result, meta) {
     container.innerHTML = '';
     container.classList.add('rb-root');
     var r = result || {};
@@ -276,14 +293,10 @@
     container.appendChild(
       el('div', { className: 'rb-result rb-result-ok' }, [
         el('h3', { text: 'Termin bestätigt' }),
-        el('p', {
-          text:
-            (r.label || '') +
-            ' — Du erhältst eine Bestätigung per E-Mail' +
-            (r.gcalSynced ? ' und den Kalendereintrag.' : '.'),
-        }),
+        el('p', { text: 'Einen Moment, wir leiten dich weiter…' }),
       ]),
     );
+    goToThanks(r, meta);
   }
 
   function bookErrorMessage(err) {
@@ -321,6 +334,53 @@
     );
   }
 
+  var WIZARD_QUESTION_KEYS = ['pain', 'sales_per_year', 'social_media'];
+  var WIZARD_STEP_LABELS = [
+    'Schmerz',
+    'Verkaufszahl',
+    'Social Media',
+    'Termin',
+  ];
+
+  function questionByKey(questions, key) {
+    return (questions || []).find(function (q) {
+      return q.key === key;
+    });
+  }
+
+  function answerMissing(q, answers) {
+    if (!q) return true;
+    if (q.key === 'social_media_how') {
+      if (answers.social_media !== 'ja') return false;
+      var how = answers.social_media_how;
+      return !how || String(how).trim() === '';
+    }
+    if (!q.required) return false;
+    var v = answers[q.key];
+    return v === undefined || v === null || v === '';
+  }
+
+  function renderWizardProgress(wizardStep) {
+    var dots = el('div', { className: 'rb-progress-dots', 'aria-hidden': 'true' });
+    for (var i = 1; i <= 4; i++) {
+      dots.appendChild(
+        el('span', {
+          className:
+            'rb-progress-dot' +
+            (i === wizardStep ? ' is-current' : '') +
+            (i < wizardStep ? ' is-done' : ''),
+        }),
+      );
+    }
+    return el('div', { className: 'rb-progress' }, [
+      el('p', {
+        className: 'rb-progress-label',
+        text: 'Schritt ' + wizardStep + ' von 4 — ' + WIZARD_STEP_LABELS[wizardStep - 1],
+      }),
+      dots,
+    ]);
+  }
+
   function mountFlow(container, options) {
     var opts = options || {};
     var source = opts.source || null;
@@ -332,6 +392,7 @@
       email: '',
       phone: '',
       step: 'load',
+      wizardStep: 1,
       error: null,
       result: null,
     };
@@ -339,6 +400,35 @@
     function setError(msg) {
       state.error = msg;
       paint();
+    }
+
+    function goTo(next) {
+      state.error = null;
+      state.wizardStep = next;
+      paint();
+      container.scrollTop = 0;
+      var box = container.closest('.bm-box');
+      if (box) box.scrollTop = 0;
+    }
+
+    function validateQuestionStep(wizardStep) {
+      var key = WIZARD_QUESTION_KEYS[wizardStep - 1];
+      var q = questionByKey(state.data && state.data.questions, key);
+      if (answerMissing(q, state.answers)) {
+        setError('Bitte die Frage beantworten, dann weiter.');
+        return false;
+      }
+      if (key === 'social_media' && state.answers.social_media === 'ja') {
+        var howQ = questionByKey(state.data.questions, 'social_media_how');
+        if (howQ && answerMissing(howQ, state.answers)) {
+          setError('Bitte kurz beschreiben, wie Sie Social Media bisher nutzen.');
+          return false;
+        }
+      }
+      if (key === 'social_media' && state.answers.social_media !== 'ja') {
+        delete state.answers.social_media_how;
+      }
+      return true;
     }
 
     function paint() {
@@ -349,50 +439,108 @@
         return;
       }
       if (state.step === 'done') {
-        renderDone(container, state.result);
+        renderDone(container, state.result, {
+          name: state.name,
+        });
         return;
       }
 
-      var form = el('form', { className: 'rb-form', onSubmit: onSubmit });
+      var form = el('form', { className: 'rb-form rb-wizard', onSubmit: onSubmit });
+      form.appendChild(renderWizardProgress(state.wizardStep));
       if (state.error) form.appendChild(el('p', { className: 'rb-error', text: state.error }));
 
-      form.appendChild(el('p', { className: 'rb-muted', text: 'Drei kurze Fragen' }));
-      (state.data.questions || []).forEach(function (q) {
-        if (q.key === 'social_media_how' && state.answers.social_media !== 'ja') {
-          return;
+      if (state.wizardStep >= 1 && state.wizardStep <= 3) {
+        var qKey = WIZARD_QUESTION_KEYS[state.wizardStep - 1];
+        var q = questionByKey(state.data.questions, qKey);
+        form.appendChild(
+          el('p', {
+            className: 'rb-muted',
+            text: 'Frage ' + state.wizardStep + ' von 3',
+          }),
+        );
+        if (q) {
+          form.appendChild(
+            renderQuestion(q, state, function () {
+              paint();
+            }),
+          );
         }
-        form.appendChild(renderQuestion(q, state, function () {
+        if (qKey === 'social_media' && state.answers.social_media === 'ja') {
+          var howQ = questionByKey(state.data.questions, 'social_media_how');
+          if (howQ) {
+            form.appendChild(
+              renderQuestion(howQ, state, function () {
+                paint();
+              }),
+            );
+          }
+        }
+      } else {
+        form.appendChild(el('p', { className: 'rb-muted', text: 'Freie Termine' }));
+        renderSlotPicker(form, state, function (s) {
+          state.slot = s;
           paint();
-        }));
-      });
+        });
+        form.appendChild(el('p', { className: 'rb-muted', text: 'Kontaktdaten' }));
+        contactFields(state).forEach(function (n) {
+          form.appendChild(n);
+        });
+      }
 
-      form.appendChild(el('p', { className: 'rb-muted', text: 'Freie Termine' }));
-      renderSlotPicker(form, state, function (s) {
-        state.slot = s;
-        paint();
-      });
+      var nav = el('div', { className: 'rb-nav' });
+      if (state.wizardStep > 1) {
+        nav.appendChild(
+          el(
+            'button',
+            {
+              type: 'button',
+              className: 'rb-btn rb-btn-ghost',
+              onClick: function () {
+                goTo(state.wizardStep - 1);
+              },
+            },
+            ['Zurück'],
+          ),
+        );
+      } else {
+        nav.appendChild(el('span', { className: 'rb-nav-spacer' }));
+      }
 
-      form.appendChild(el('p', { className: 'rb-muted', text: 'Kontaktdaten' }));
-      contactFields(state).forEach(function (n) {
-        form.appendChild(n);
-      });
-
-      form.appendChild(
-        el(
-          'button',
-          {
-            type: 'submit',
-            className: 'rb-btn rb-btn-primary',
-            disabled: state.step === 'submit' ? 'disabled' : null,
-          },
-          [state.step === 'submit' ? 'Buche…' : 'Termin verbindlich buchen'],
-        ),
-      );
+      if (state.wizardStep < 4) {
+        nav.appendChild(
+          el(
+            'button',
+            {
+              type: 'button',
+              className: 'rb-btn rb-btn-primary',
+              onClick: function () {
+                if (!validateQuestionStep(state.wizardStep)) return;
+                goTo(state.wizardStep + 1);
+              },
+            },
+            ['Weiter'],
+          ),
+        );
+      } else {
+        nav.appendChild(
+          el(
+            'button',
+            {
+              type: 'submit',
+              className: 'rb-btn rb-btn-primary',
+              disabled: state.step === 'submit' ? 'disabled' : null,
+            },
+            [state.step === 'submit' ? 'Buche…' : 'Termin verbindlich buchen'],
+          ),
+        );
+      }
+      form.appendChild(nav);
       container.appendChild(form);
     }
 
     function onSubmit(e) {
       e.preventDefault();
+      if (state.wizardStep !== 4) return;
       state.error = null;
       var hp = container.querySelector('.rb-hp input');
       if (hp && hp.value) {
@@ -405,19 +553,11 @@
         setError('Bitte einen Termin wählen.');
         return;
       }
-      var missing = (state.data.questions || []).find(function (q) {
-        if (q.key === 'social_media_how') {
-          if (state.answers.social_media !== 'ja') return false;
-          var how = state.answers.social_media_how;
-          return !how || String(how).trim() === '';
+      for (var i = 0; i < WIZARD_QUESTION_KEYS.length; i++) {
+        if (!validateQuestionStep(i + 1)) {
+          goTo(i + 1);
+          return;
         }
-        if (!q.required) return false;
-        var v = state.answers[q.key];
-        return v === undefined || v === null || v === '';
-      });
-      if (missing) {
-        setError('Bitte alle Pflichtfragen beantworten.');
-        return;
       }
       if (state.answers.social_media !== 'ja') {
         delete state.answers.social_media_how;
@@ -442,7 +582,10 @@
       })
         .then(function (body) {
           prefetchCache = null;
-          state.result = body;
+          state.result = Object.assign({}, body, {
+            startsAt: body.startsAt || (state.slot && state.slot.startsAt),
+            endsAt: body.endsAt || (state.slot && state.slot.endsAt),
+          });
           state.step = 'done';
           paint();
         })
@@ -458,12 +601,17 @@
       .then(function (data) {
         state.data = data;
         state.step = 'form';
+        state.wizardStep = 1;
         paint();
       })
-      .catch(function () {
+      .catch(function (err) {
         state.step = 'form';
         state.data = { questions: [], slots: [] };
-        setError('Termine konnten nicht geladen werden. Bitte später erneut versuchen.');
+        var detail = err && err.message ? String(err.message) : '';
+        setError(
+          'Termine konnten nicht geladen werden. Bitte später erneut versuchen.' +
+            (detail && detail !== 'Failed to fetch' ? ' (' + detail + ')' : ''),
+        );
       });
   }
 
@@ -554,7 +702,7 @@
 
     function paint() {
       if (state.step === 'done') {
-        renderDone(container, state.result);
+        renderDone(container, state.result, { name: state.name });
         return;
       }
       container.innerHTML = '';
@@ -630,7 +778,10 @@
       })
         .then(function (body) {
           prefetchCache = null;
-          state.result = body;
+          state.result = Object.assign({}, body, {
+            startsAt: body.startsAt || (state.slot && state.slot.startsAt),
+            endsAt: body.endsAt || (state.slot && state.slot.endsAt),
+          });
           state.step = 'done';
           paint();
         })

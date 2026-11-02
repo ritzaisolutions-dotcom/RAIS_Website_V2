@@ -119,7 +119,15 @@
   background: #fff;
   font: inherit;
 }
-.rb-slots { display: flex; flex-direction: column; gap: 0.55rem; }
+.rb-slots {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  max-height: min(38vh, 22rem);
+  overflow-y: auto;
+  padding-right: 0.25rem;
+  -webkit-overflow-scrolling: touch;
+}
 .rb-day-label { font-weight: 600; font-size: 0.9rem; margin-top: 0.35rem; }
 .rb-slot-row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .rb-slot {
@@ -151,7 +159,47 @@
   color: var(--on-orange, #2F2A24);
 }
 .rb-btn-primary:hover { background: var(--orange-hover, #F37A48); }
+.rb-btn-ghost {
+  background: transparent;
+  color: var(--stone, #7B746B);
+  border: 1px solid var(--border, #D9D1C7);
+}
+.rb-btn-ghost:hover { color: var(--charcoal, #2F2A24); border-color: var(--charcoal, #2F2A24); }
 .rb-btn[disabled] { opacity: 0.65; cursor: default; }
+.rb-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-bottom: 0.35rem;
+}
+.rb-progress-label {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--stone, #7B746B);
+}
+.rb-progress-dots {
+  display: flex;
+  gap: 0.4rem;
+}
+.rb-progress-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: var(--border, #D9D1C7);
+}
+.rb-progress-dot.is-done { background: rgba(236, 106, 55, 0.45); }
+.rb-progress-dot.is-current { background: var(--orange, #EC6A37); width: 1.35rem; }
+.rb-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+.rb-nav .rb-btn { margin-top: 0; flex: 1; }
+.rb-nav-spacer { flex: 1; }
+.rb-wizard .rb-muted:first-of-type { margin-top: 0.35rem; }
 .rb-gate {
   display: flex;
   flex-direction: column;

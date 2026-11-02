@@ -7,25 +7,7 @@ import {
   generateCandidateSlots,
 } from "../_shared/booking-core.ts";
 import { gcalConfigured, queryFreeBusy } from "../_shared/booking-gcal.ts";
-
-const allowedOrigins = new Set(
-  (Deno.env.get("RAIS_ALLOWED_ORIGINS") ??
-    "https://ritz-ai.solutions,https://www.ritz-ai.solutions,http://127.0.0.1:5173,http://localhost:5173")
-    .split(",")
-    .map((o) => o.trim())
-    .filter(Boolean),
-);
-
-function cors(origin: string | null): HeadersInit {
-  const allow = origin && allowedOrigins.has(origin) ? origin : [...allowedOrigins][0];
-  return {
-    "Access-Control-Allow-Origin": allow,
-    "Access-Control-Allow-Headers":
-      "authorization, x-client-info, apikey, content-type",
-    "Access-Control-Allow-Methods": "GET, OPTIONS",
-    "Content-Type": "application/json",
-  };
-}
+import { corsHeaders } from "../_shared/booking-cors.ts";
 
 function json(
   status: number,
@@ -34,14 +16,17 @@ function json(
 ): Response {
   return new Response(JSON.stringify(body), {
     status,
-    headers: cors(origin),
+    headers: corsHeaders(origin, "GET, OPTIONS"),
   });
 }
 
 Deno.serve(async (req) => {
   const origin = req.headers.get("Origin");
   if (req.method === "OPTIONS") {
-    return new Response(null, { status: 204, headers: cors(origin) });
+    return new Response(null, {
+      status: 204,
+      headers: corsHeaders(origin, "GET, OPTIONS"),
+    });
   }
   if (req.method !== "GET") {
     return json(405, { error: "method_not_allowed" }, origin);
