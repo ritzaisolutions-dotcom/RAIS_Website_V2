@@ -32,15 +32,16 @@ Bestehendes Fundament wiederverwenden. Vanilla HTML, Vite, Tailwind. Gezielte Ed
 
 Kontakt/Audit ist ein Modul auf jeder Seite. Primäre Nav: Systeme · Referenzen · Über uns · Persönlichkeit · Audit. Zusammenarbeit im Footer.
 
-## Buchungsstrecke (Stand 02.11.2026)
+## Buchungsstrecke (Stand 03.11.2026)
 
-Custom Booking über Supabase (`booking-availability` / `booking-book`) und `scripts/rais-booking.js`. Kein Cal.com. Regeln:
+Cal.com Embed über `scripts/cal-embed.js` + Modal `scripts/booking-modal.js`. Kein Custom-Booking im Frontend.
 
-- Event-Typ aktuell nur **`erstgespraech`** (45 Minuten, Europe/Berlin)
-- Klaro-Service: `booking`. Homepage-Modal = einstufig (Fragen + Slots + Kontakt)
-- KI-Roadmap: Gate Fragen 1–3, Prefetch ab Frage 1, Step 4 = Kontakt + Slot (`mountStep4`), `source: 'ai-roadmap'`
-- Absage: DB-Status `cancelled` ist SoT; GCal-Delete erst wenn OAuth-Secrets stehen (siehe `docs/booking-gcal-setup.md`)
-- `CAL_COM_URL` / `calComUrl` entfallen; `scripts/cal-embed.js` ist nur noch Stub/Alias
+- Event: `ritzaisolutions/strategiegespraech-mit-rais` (45 Minuten, Google Meet)
+- Quali-Fragen im Cal-Event: Schmerz, Verkäufe/Jahr, Social Media (+ optionales Wie)
+- Klaro-Service: `cal`. Laden erst nach CTA/Gate, nicht beim Seitenaufruf
+- Nach Buchung: Client-Redirect auf `/danke.html` (Cal-Plan ohne serverseitigen Redirect)
+- Leads: Cal `BOOKING_CREATED` → Edge `submit-cal-lead` → Notion CRM (`Quelle = Inbound Website`). Kein Lead in Supabase. Setup: `docs/cal-lead-notion.md`
+- Supabase `booking-*` / `rais-booking.js` bleiben im Repo, Frontend ruft sie nicht auf
 
 ## Design Authority
 

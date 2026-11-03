@@ -9,3 +9,8 @@ verify_jwt = false
 # Qualifizierung + Events von /ai-roadmap.html. Gleicher Schutz wie Audit-Lead:
 # Origin-Allowlist, Rate-Limit (register_funnel_attempt), Timing, Feldgrenzen.
 verify_jwt = false
+
+[functions.submit-cal-lead]
+# Cal.com BOOKING_CREATED Webhook → Notion CRM. Auth nur über CAL_WEBHOOK_SECRET
+# (X-Cal-Signature-256). Kein JWT, kein Lead-Schreiben in Supabase.
+verify_jwt = false

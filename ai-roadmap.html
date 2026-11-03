@@ -594,87 +594,13 @@
       <div class="contact-text-col">
         <span class="mono-label">KI-Roadmap</span>
         <h2 class="section-h2">Termin wählen</h2>
-        <p class="contact-copy">Drei kurze Fragen, dann Kontakt und Termin. Die schriftliche Roadmap behalten Sie.</p>
+        <p class="contact-copy">Termin und kurze Quali-Fragen direkt im Kalender. Die schriftliche Roadmap behalten Sie.</p>
         <p class="contact-copy">Kein Pitch. Wenn wir keinen sinnvollen Anwendungsfall sehen, sagen wir es Ihnen.</p>
       </div>
       <div class="cal-embed-wrap">
         <p class="cal-card-title">Erstgespräch buchen</p>
         <p class="cal-card-sub">Erstgespräch, 45 Minuten. Kostenlos.</p>
-        <div class="roadmap-gate" id="roadmap-gate">
-          <div class="roadmap-gate__head">
-            <span class="roadmap-gate__count" id="gate-count">Frage 1 von 3</span>
-            <div class="roadmap-gate__bars" aria-hidden="true">
-              <span class="roadmap-gate__bar is-filled" data-gbar="1"></span>
-              <span class="roadmap-gate__bar" data-gbar="2"></span>
-              <span class="roadmap-gate__bar" data-gbar="3"></span>
-            </div>
-          </div>
-          <p class="roadmap-gate__lead">Drei Fragen, dann wählen Sie Termin und Kontaktdaten. Damit ich vorbereitet ins Gespräch gehe.</p>
-
-          <fieldset class="roadmap-gate__q" data-gstep="1">
-            <legend>Wo tut es am meisten weh?</legend>
-            <div class="roadmap-gate__choice" role="radiogroup" aria-label="Hauptproblem">
-              <button type="button" class="roadmap-gate__opt" data-gate="pain" data-value="manuelle-bearbeitung" role="radio" aria-checked="false">Anfragen von Hand bearbeiten kostet zu viel Zeit</button>
-              <button type="button" class="roadmap-gate__opt" data-gate="pain" data-value="mieteranliegen" role="radio" aria-checked="false">Mieteranliegen im Griff behalten</button>
-              <button type="button" class="roadmap-gate__opt" data-gate="pain" data-value="reaktionszeit" role="radio" aria-checked="false">Zu langsame Reaktion auf neue Anfragen</button>
-              <button type="button" class="roadmap-gate__opt" data-gate="pain" data-value="terminierung" role="radio" aria-checked="false">Termine vereinbaren frisst den Tag</button>
-            </div>
-          </fieldset>
-
-          <fieldset class="roadmap-gate__q" data-gstep="2" hidden>
-            <legend>Womit arbeiten Sie?</legend>
-            <div class="rq-fields">
-              <div>
-                <label for="gate-ecosystem">Mail und Kalender</label>
-                <select id="gate-ecosystem">
-                  <option value="">Bitte wählen</option>
-                  <option value="google">Google Workspace</option>
-                  <option value="microsoft365">Microsoft 365</option>
-                  <option value="imap">Eigener Server per IMAP</option>
-                  <option value="gemischt">Gemischt</option>
-                  <option value="weiss-nicht">Weiß ich nicht</option>
-                </select>
-              </div>
-              <div>
-                <label for="gate-crm">CRM</label>
-                <select id="gate-crm">
-                  <option value="">Bitte wählen</option>
-                  <option value="onoffice">onOffice</option>
-                  <option value="propstack">Propstack</option>
-                  <option value="flowfact">FlowFact</option>
-                  <option value="haufe">Haufe</option>
-                  <option value="excel">Excel oder keins</option>
-                  <option value="anderes">Anderes</option>
-                </select>
-              </div>
-            </div>
-          </fieldset>
-
-          <fieldset class="roadmap-gate__q" data-gstep="3" hidden>
-            <legend>Wie viele Vorgänge pro Woche?</legend>
-            <p class="roadmap-gate__hint">Anfragen oder Mieteranliegen, je nachdem was bei Ihnen überwiegt.</p>
-            <div class="roadmap-slider">
-              <div class="roadmap-slider__row">
-                <label for="gate-volume">Vorgänge pro Woche</label>
-                <span class="roadmap-slider__value" id="gate-volume-out">25</span>
-              </div>
-              <input id="gate-volume" type="range" min="5" max="150" step="1" value="25">
-            </div>
-            <label class="lm-check" for="gate-privacy">
-              <input type="checkbox" id="gate-privacy" required>
-              <span>Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a> gelesen und bin einverstanden, dass diese drei Angaben zur Vorbereitung des Gesprächs gespeichert werden.</span>
-            </label>
-          </fieldset>
-
-          <p class="rq-error" id="gate-error" hidden role="alert"></p>
-          <div class="roadmap-gate__nav">
-            <button type="button" class="rq-btn-back" id="gate-back" hidden>Zurück</button>
-            <button type="button" class="btn-primary" id="gate-submit">Weiter</button>
-          </div>
-          <p class="roadmap-gate__note">Name, E-Mail und Telefon geben Sie im nächsten Schritt zusammen mit dem Termin an.</p>
-        </div>
-        <p class="roadmap-gate__done" id="gate-done" hidden>Danke. Wählen Sie unten Ihren Termin und hinterlassen Sie Ihre Kontaktdaten.</p>
-        <div class="cal-inline" data-cal-deferred data-source="contact" id="cal-inline-contact" hidden></div>
+        <div class="cal-inline" data-cal-inline data-source="contact" id="cal-inline-contact"></div>
       </div>
     </div>
     <div class="contact-details">
@@ -805,9 +731,46 @@
     <button class="bm-close" id="bm-close" type="button" aria-label="Schließen">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
-    <div class="bm-step is-active" id="bm-step-0">
+    <div class="bm-progress" aria-hidden="true">
+      <span class="bm-dot is-filled is-current" data-bm-dot="1"></span>
+      <span class="bm-dot" data-bm-dot="2"></span>
+      <span class="bm-dot" data-bm-dot="3"></span>
+      <span class="bm-dot" data-bm-dot="4"></span>
+    </div>
+
+    <div class="bm-step is-active" id="bm-step-1" data-bm-q="pain" data-bm-next="2">
+      <h2 class="bm-title">Was ist Ihr größter Schmerz gerade?</h2>
+      <p class="bm-sub">Ein Klick genügt.</p>
+      <div class="bm-choices" role="radiogroup" aria-label="Größter Schmerz">
+        <button type="button" class="bm-choice" role="radio" aria-checked="false" data-value="kaufanfragen">Planbare, kaufkräftige Nachfragen</button>
+        <button type="button" class="bm-choice" role="radio" aria-checked="false" data-value="eigentuemer">Angebot an Eigentümer, die verkaufen wollen</button>
+        <button type="button" class="bm-choice" role="radio" aria-checked="false" data-value="nachfassen">Manuelle Arbeit: schnell abholen und nachfassen</button>
+      </div>
+    </div>
+
+    <div class="bm-step" id="bm-step-2" data-bm-q="sales_per_year" data-bm-next="3">
+      <h2 class="bm-title">Wie viele Immobilien verkaufen Sie aktuell ungefähr pro Jahr?</h2>
+      <p class="bm-sub">Grobe Zahl reicht.</p>
+      <div class="bm-choices bm-choices--compact" role="radiogroup" aria-label="Verkäufe pro Jahr">
+        <button type="button" class="bm-choice" role="radio" aria-checked="false" data-value="8">unter 10</button>
+        <button type="button" class="bm-choice" role="radio" aria-checked="false" data-value="15">10–20</button>
+        <button type="button" class="bm-choice" role="radio" aria-checked="false" data-value="30">20–40</button>
+        <button type="button" class="bm-choice" role="radio" aria-checked="false" data-value="50">über 40</button>
+      </div>
+    </div>
+
+    <div class="bm-step" id="bm-step-3" data-bm-q="social_media" data-bm-next="4">
+      <h2 class="bm-title">Bisherige Erfahrung mit Social Media als Vertriebskanal?</h2>
+      <p class="bm-sub">Danach wählen Sie den Termin.</p>
+      <div class="bm-choices bm-choices--compact" role="radiogroup" aria-label="Social Media">
+        <button type="button" class="bm-choice" role="radio" aria-checked="false" data-value="nein">Nein, noch nicht</button>
+        <button type="button" class="bm-choice" role="radio" aria-checked="false" data-value="ja">Ja</button>
+      </div>
+    </div>
+
+    <div class="bm-step" id="bm-step-4">
       <h2 class="bm-title">Erstgespräch buchen</h2>
-      <p class="bm-sub">45 Minuten, unverbindlich. Quali-Fragen, Termin und Kontaktdaten in einem Schritt.</p>
+      <p class="bm-sub">45 Minuten, kostenlos. Kontaktdaten direkt im Kalender.</p>
       <div class="bm-cal-wrap" id="bm-cal-wrap"></div>
     </div>
   </div>
@@ -821,7 +784,7 @@
 <script src="scripts/ai-roadmap-funnel.js"></script>
 
 <script src="scripts/site-nav.js"></script>
-<script src="scripts/rais-booking.js"></script>
+<script src="scripts/cal-embed.js"></script>
 <script src="scripts/booking-modal.js"></script>
 </body>
 </html>

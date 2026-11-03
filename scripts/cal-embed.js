@@ -1,38 +1,16 @@
 /**
  * Cal Inline-Embed, geteilt von Buchungsmodal und Kontaktsektion.
  *
- * Ablauf: kein Netzwerkzugriff auf Cal, solange der Klaro-Service "cal"
- * nicht eingewilligt ist. Ohne Einwilligung steht ein Platzhalter mit
- * Ladebutton. Der Klick auf diesen Button ist die Einwilligung, sie wird
- * ueber Klaro persistiert und gilt danach fuer alle Container.
+ * Kein Netzwerkzugriff auf Cal, solange der Klaro-Service "cal" nicht
+ * eingewilligt ist. Ohne Einwilligung: Platzhalter mit Ladebutton.
+ * CTA/Modal-Klick gilt als Einwilligung (wie der Gate-Button).
  *
- * Nach bestaetigter Buchung meldet Cal "bookingSuccessful". Erst dann
- * entsteht der Lead in Notion und Supabase, ueber dieselbe Edge Function
- * wie zuvor das Formular. Die Function ist unveraendert, das Payload
- * muss daher ihren Vertrag treffen:
+ * Event: ritzaisolutions/strategiegespraech-mit-rais
+ * Quali-Fragen leben im Cal-Event (pain, sales_per_year, social_media,
+ * social_media_how). Kein vorgeschaltetes Formular, kein Custom-Booking.
  *
- *   name            Pflicht
- *   email           Pflicht
- *   phone           Pflicht, 6 bis 20 Ziffern
- *   inquiry_volume  Pflicht, Zahl 0 bis 300
- *   pain_point      optional, nur die sechs Slugs unten
- *   source          optional, nur [A-Za-z0-9_-]
- *   privacy_ack     muss true sein
- *   form_opened_at  ISO, mindestens 1,5 s und hoechstens 60 min alt
- *
- * Die dafuer noetigen Felder werden im Cal-Dashboard als Buchungsfragen
- * angelegt. Die Identifier muessen exakt so heissen:
- *
- *   attendeePhoneNumber   Telefon, Pflicht (Cal-Standardfeld)
- *   anfragen-pro-woche    Zahl, Pflicht, min 0, max 300
- *   engpass               Auswahl, Pflicht, Werte = PAIN_POINTS unten
- *   crm                   Text, optional
- *
- * "engpass" landet bewusst auf pain_point. Das frueher gesendete Feld
- * engpass hat die Edge Function nie gelesen, es fiel still weg.
- *
- * Auf /akut: data-cal-nolead am Container. Dann kein submit-audit-lead —
- * die Akut-Quali (Anfragevolumen, Primaerschmerz, CRM) bleibt im Event.
+ * Nach bookingSuccessful: Weiterleitung auf /danke.html (Cal-Plan ohne
+ * serverseitigen Redirect).
  */
 (function () {
   'use strict';
@@ -42,29 +20,17 @@
   }
 
   var cfg = window.RAIS_PUBLIC_CONFIG || {};
-  var SUPABASE_URL = cfg.supabaseUrl || '';
-  var SUPABASE_ANON = cfg.supabaseAnonKey || '';
   var SERVICE = 'cal';
 
   var FALLBACK_URL = 'https://cal.com/ritzaisolutions/strategiegespraech-mit-rais';
   var ALLOWED_HOSTS = ['cal.com', 'www.cal.com', 'ritz-ai-solutions.cal.eu'];
 
-  /* Nur diese Werte akzeptiert submit-audit-lead als pain_point. */
-  var PAIN_POINTS = [
-    'inseratsanfragen-qualifizieren',
-    'mieteranliegen-management',
-    'terminierung-besichtigungen',
-    'onboarding-vertragsunterschrift',
-    'wiederkehrende-kundenfragen',
-    'gesamtprozess',
-    'anderes'
-  ];
-
   var target = resolveTarget(cfg.calComUrl);
   var scriptPromise = null;
   var mounted = [];
-
-  /* ── Ziel und Herkunft ──────────────────────────────────────── */
+  var counter = 0;
+  var thanksRedirectInstalled = false;
+  var thanksRedirected = false;
 
   function resolveTarget(raw) {
     var url;
@@ -76,24 +42,19 @@
     if (url.protocol !== 'https:' || ALLOWED_HOSTS.indexOf(url.hostname) === -1) {
       url = new URL(FALLBACK_URL);
     }
-    /* cal.com liefert das Embed-Skript von app.cal.com, eine
-       Organisations-Domain liefert es von sich selbst. */
     var isCalCom = url.hostname === 'cal.com' || url.hostname === 'www.cal.com';
     return {
       origin: isCalCom ? 'https://cal.com' : url.origin,
       script: (isCalCom ? 'https://app.cal.com' : url.origin) + '/embed/embed.js',
-      link: url.pathname.replace(/^\/+/, '').replace(/\/+$/, '')
+      link: url.pathname.replace(/^\/+/, '').replace(/\/+$/, ''),
     };
   }
-
-  /* ── Einwilligung ───────────────────────────────────────────── */
 
   function manager() {
     try {
       if (!window.klaro || typeof window.klaro.getManager !== 'function') return null;
       return window.klaro.getManager();
     } catch (e) {
-      /* Klaro-Skript blockiert (Adblocker) oder Config nicht geladen. */
       return null;
     }
   }
@@ -102,7 +63,6 @@
     var mgr = manager();
     if (mgr && mgr.consents) return mgr.consents[SERVICE] === true;
     try {
-      /* Klaro legt den Wert URL-kodiert ab, JSON.parse allein reicht nicht. */
       var raw = window.localStorage.getItem('klaro') || '{}';
       var stored = JSON.parse(decodeURIComponent(raw));
       return stored[SERVICE] === true;
@@ -123,17 +83,12 @@
     }
   }
 
-  /* CTA / Modal: gleiche Geste wie der Gate-Button. Wenn Klaro da ist,
-     Consent setzen und Embed laden — kein zweiter Klick. Ohne Klaro
-     trotzdem laden: der Klick selbst ist die dokumentierte Einwilligung. */
   function ensureConsent() {
     if (hasConsent()) return true;
     if (grantConsent()) return true;
     return true;
   }
 
-  /* Klaro kann spaeter noch widerrufen werden. Dann fallen alle
-     Container auf den Platzhalter zurueck. */
   function watchConsent() {
     var mgr = manager();
     if (!mgr || typeof mgr.watch !== 'function') return;
@@ -152,11 +107,9 @@
             renderPlaceholder(entry);
           }
         });
-      }
+      },
     });
   }
-
-  /* ── Platzhalter ────────────────────────────────────────────── */
 
   function renderPlaceholder(entry) {
     var box = document.createElement('div');
@@ -169,8 +122,9 @@
 
     var note = document.createElement('p');
     note.className = 'cal-gate__note';
-    note.textContent =
-      t('Der Kalender kommt von unserem Terminanbieter Cal.com. Mit dem Klick laden Sie ihn nach, dabei wird Ihre IP-Adresse an Cal.com übertragen. Name, E-Mail und Telefonnummer geben Sie anschließend direkt im Kalender ein. Details in der ');
+    note.textContent = t(
+      'Der Kalender kommt von unserem Terminanbieter Cal.com. Mit dem Klick laden Sie ihn nach, dabei wird Ihre IP-Adresse an Cal.com übertragen. Name, E-Mail und Telefonnummer geben Sie anschließend direkt im Kalender ein. Details in der ',
+    );
     var link = document.createElement('a');
     link.href = 'datenschutz.html';
     link.textContent = t('Datenschutzerklärung');
@@ -210,21 +164,19 @@
     entry.el.appendChild(link);
   }
 
-  /* ── Embed ──────────────────────────────────────────────────── */
-
-  /* Offizielle Cal-Queue. Aufrufe vor dem Laden von embed.js werden
-     gepuffert und danach abgespielt, deshalb darf activate() sofort
-     nach dem Stub arbeiten. Das Skript haengt hier bewusst selbst am
-     DOM statt lazy im Stub, sonst gaebe es kein onerror. */
   function installStub() {
     if (window.Cal && window.Cal.q) return;
-    var push = function (a, ar) { a.q.push(ar); };
+    var push = function (a, ar) {
+      a.q.push(ar);
+    };
     var Cal = function () {
       var ar = arguments;
       if (ar[0] === 'init') {
         var namespace = ar[1];
         if (typeof namespace === 'string') {
-          var api = Cal.ns[namespace] || function () { push(api, arguments); };
+          var api = Cal.ns[namespace] || function () {
+            push(api, arguments);
+          };
           api.q = api.q || [];
           Cal.ns[namespace] = api;
           push(api, ar);
@@ -251,7 +203,9 @@
           resolve();
           return;
         }
-        existing.addEventListener('load', function () { resolve(); });
+        existing.addEventListener('load', function () {
+          resolve();
+        });
         existing.addEventListener('error', function () {
           reject(new Error('cal embed script failed'));
         });
@@ -262,7 +216,9 @@
       s.async = true;
       s.setAttribute('data-rais-cal-embed', '');
       s.onload = resolve;
-      s.onerror = function () { reject(new Error('cal embed script failed')); };
+      s.onerror = function () {
+        reject(new Error('cal embed script failed'));
+      };
       document.head.appendChild(s);
     });
     scriptPromise._raisSrc = src;
@@ -295,10 +251,6 @@
     }, 4000);
   }
 
-  /* Cal liefert Embed-Seiten mit body { visibility:hidden; opacity:0 }.
-     Ohne Embed-Snippet bleibt das unsichtbar, bis der Parent
-     parentKnowsIframeReady antwortet. Direktes Iframe (Convert-LP)
-     braucht diesen Handshake selbst — sonst weisses Modal. */
   var iframeReadyAckInstalled = false;
   function installIframeReadyAck() {
     if (iframeReadyAckInstalled) return;
@@ -314,10 +266,59 @@
       try {
         source.postMessage(
           { originator: 'CAL', method: 'parentKnowsIframeReady', arg: {} },
-          origin
+          origin,
         );
-      } catch (e) { /* ignore */ }
+      } catch (e) {
+        /* ignore */
+      }
     });
+  }
+
+  function goToThanks() {
+    if (thanksRedirected) return;
+    thanksRedirected = true;
+    window.location.assign('/danke.html');
+  }
+
+  function isCalBookingSuccess(data) {
+    if (!data) return false;
+    if (typeof data === 'string') {
+      try {
+        data = JSON.parse(data);
+      } catch (e) {
+        return false;
+      }
+    }
+    if (typeof data !== 'object') return false;
+    var type = data.type || data.action || data.method || '';
+    if (type === 'bookingSuccessful' || type === 'bookingSuccessfulV2') return true;
+    if (data.data && typeof data.data === 'object') {
+      var nested = data.data.type || data.data.action || '';
+      if (nested === 'bookingSuccessful' || nested === 'bookingSuccessfulV2') return true;
+    }
+    return false;
+  }
+
+  function listenThanksRedirect() {
+    if (thanksRedirectInstalled) return;
+    thanksRedirectInstalled = true;
+    window.addEventListener('message', function (event) {
+      var origin = event.origin || '';
+      if (origin !== 'https://app.cal.com' && origin !== 'https://cal.com') return;
+      if (!isCalBookingSuccess(event.data)) return;
+      goToThanks();
+    });
+  }
+
+  function configQuery(config) {
+    if (!config || typeof config !== 'object') return '';
+    var parts = [];
+    Object.keys(config).forEach(function (key) {
+      var value = config[key];
+      if (value === undefined || value === null || value === '') return;
+      parts.push(encodeURIComponent(key) + '=' + encodeURIComponent(String(value)));
+    });
+    return parts.length ? '&' + parts.join('&') : '';
   }
 
   function renderDirectFrame(entry) {
@@ -327,13 +328,15 @@
     entry.el.classList.remove('is-loading');
     entry.el.innerHTML = '';
     installIframeReadyAck();
+    listenThanksRedirect();
 
     var frame = document.createElement('iframe');
     frame.title = t('Termin wählen');
-    /* Monat zuerst, ohne die lange Event-Beschreibung darüber.
-       Danach Zeit, dann Angaben — alles in derselben Höhe. */
-    frame.src = 'https://app.cal.com/' + resolved.link
-      + '/embed?embedType=inline&layout=month_view&hideEventTypeDetails=true&theme=light';
+    frame.src =
+      'https://app.cal.com/' +
+      resolved.link +
+      '/embed?embedType=inline&layout=month_view&hideEventTypeDetails=true&theme=light' +
+      configQuery(entry.config);
     frame.loading = 'eager';
     frame.referrerPolicy = 'strict-origin-when-cross-origin';
     frame.setAttribute('allow', 'payment');
@@ -359,12 +362,14 @@
   function activate(entry) {
     if (entry.loaded) return;
     entry.loaded = true;
-    /* Convert-LP: kein Embed-Skript. Direktes Iframe lädt den Kalender
-       auch wenn Klaro schon akzeptiert ist und Cal.js hängen bleibt. */
-    if (entry.noLead) {
+    listenThanksRedirect();
+
+    /* Convert-LP und Modal: direktes Iframe (zuverlässiger als Cal.js). */
+    if (entry.noLead || entry.direct) {
       renderDirectFrame(entry);
       return;
     }
+
     entry.el.innerHTML = '';
     entry.el.classList.add('is-loading');
 
@@ -377,125 +382,45 @@
     });
 
     var ns = entry.ns;
-    var hideDetails = resolved.link.indexOf('immo-ai-roadmap') !== -1;
     window.Cal('init', ns, { origin: resolved.origin });
     var inlineOpts = {
       elementOrSelector: entry.el,
       calLink: resolved.link,
       layout: 'month_view',
-      config: Object.assign({
-        locale: (window.RAIS && window.RAIS.lang && window.RAIS.lang() === 'en') ? 'en' : 'de'
-      }, entry.config || {})
+      config: Object.assign(
+        {
+          locale: window.RAIS && window.RAIS.lang && window.RAIS.lang() === 'en' ? 'en' : 'de',
+        },
+        entry.config || {},
+      ),
     };
     window.Cal.ns[ns]('inline', inlineOpts);
     window.Cal.ns[ns]('ui', {
       theme: 'light',
       colorScheme: 'light',
       cssVarsPerTheme: { light: { 'cal-brand': '#EC6A37' } },
-      hideEventTypeDetails: hideDetails
+      hideEventTypeDetails: true,
     });
     window.Cal.ns[ns]('on', {
       action: 'bookingSuccessful',
-      callback: function (event) {
+      callback: function () {
         markReady(entry);
-        submitLead(entry, event && event.detail ? event.detail.data : null);
-        /* Local diagnostic only on /makler.html. No persistence. */
         if (window.RAISFunnel && typeof window.RAISFunnel.track === 'function') {
           window.RAISFunnel.track('booking_confirmed', {
-            source: entry.source || null
+            source: entry.source || null,
           });
         }
-      }
+        goToThanks();
+      },
     });
     window.Cal.ns[ns]('on', {
       action: 'linkReady',
-      callback: function () { markReady(entry); }
+      callback: function () {
+        markReady(entry);
+      },
     });
     scheduleReadyFallback(entry);
   }
-
-  /* ── Lead nach bestaetigter Buchung ─────────────────────────── */
-
-  function pick(responses, keys) {
-    if (!responses) return null;
-    for (var i = 0; i < keys.length; i++) {
-      var value = responses[keys[i]];
-      if (value && typeof value === 'object') value = value.value;
-      if (value !== undefined && value !== null && String(value).trim() !== '') {
-        return String(value).trim();
-      }
-    }
-    return null;
-  }
-
-  /* Die Function verlangt einen Zeitstempel, der zwischen 1,5 s und
-     60 min alt ist. Eine Buchung kann laenger dauern, deshalb wird
-     ausserhalb des Fensters auf einen gueltigen Wert korrigiert. */
-  function openedAt(entry) {
-    var stamp = entry.consentedAt || entry.mountedAt;
-    var age = Date.now() - stamp;
-    if (age < 1500 || age > 55 * 60 * 1000) stamp = Date.now() - 5000;
-    return new Date(stamp).toISOString();
-  }
-
-  function submitLead(entry, data) {
-    if (entry.noLead) return;
-    if (!SUPABASE_URL || !SUPABASE_ANON) return;
-    if (entry.leadSent) return;
-
-    var booking = (data && data.booking) || {};
-    var responses = booking.responses || (data && data.responses) || {};
-    var attendee = (booking.attendees && booking.attendees[0]) || {};
-
-    var name = pick(responses, ['name']) || attendee.name || null;
-    var email = pick(responses, ['email']) || attendee.email || null;
-    var phone = pick(responses, ['attendeePhoneNumber', 'telefon', 'phone', 'smsReminderNumber']);
-    var volume = pick(responses, ['anfragen-pro-woche', 'anfragen_pro_woche']);
-    var painPoint = pick(responses, ['engpass', 'pain-point', 'pain_point']);
-
-    var inquiryVolume = volume === null ? null : Number(volume);
-    if (inquiryVolume !== null && isFinite(inquiryVolume)) {
-      inquiryVolume = Math.max(0, Math.min(300, Math.round(inquiryVolume)));
-    } else {
-      inquiryVolume = null;
-    }
-
-    if (!name || !email || !phone || inquiryVolume === null) {
-      /* Fehlt ein Pflichtfeld, wuerde die Function mit 400 antworten.
-         Die Buchung selbst steht bereits, deshalb nur protokollieren. */
-      console.warn('RAIS: Buchung ohne vollstaendige Lead-Felder, Pflichtfragen in Cal pruefen.');
-      return;
-    }
-
-    entry.leadSent = true;
-
-    fetch(SUPABASE_URL + '/functions/v1/submit-audit-lead', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'apikey': SUPABASE_ANON,
-        'Authorization': 'Bearer ' + SUPABASE_ANON
-      },
-      body: JSON.stringify({
-        name: name.slice(0, 200),
-        email: email.slice(0, 254),
-        phone: phone.slice(0, 40),
-        inquiry_volume: inquiryVolume,
-        pain_point: PAIN_POINTS.indexOf(painPoint) === -1 ? null : painPoint,
-        icp_segment: entry.icpSegment || null,
-        source: entry.source || null,
-        privacy_ack: true,
-        form_opened_at: openedAt(entry)
-      })
-    }).catch(function () {
-      /* Der Termin steht trotzdem. Cal benachrichtigt uns per Mail. */
-      entry.leadSent = false;
-    });
-  }
-
-  /* ── Oeffentliche Schnittstelle ─────────────────────────────── */
-
-  var counter = 0;
 
   function pageCalUrl() {
     var body = document.body;
@@ -511,6 +436,12 @@
     return resolveTarget(raw);
   }
 
+  function sanitizeSource(value) {
+    if (!value) return null;
+    var clean = String(value).replace(/[^A-Za-z0-9_-]/g, '').slice(0, 100);
+    return clean || null;
+  }
+
   function mount(el, opts) {
     if (!el) return null;
     var options = opts || {};
@@ -519,20 +450,25 @@
     if (forceLoad) ensureConsent();
 
     var existing = null;
-    mounted.forEach(function (entry) { if (entry.el === el) existing = entry; });
+    mounted.forEach(function (entry) {
+      if (entry.el === el) existing = entry;
+    });
 
     if (existing) {
-      /* Source darf sich aendern, der Kalender bleibt stehen. */
       if (options.source) existing.source = sanitizeSource(options.source);
       if (options.icpSegment) existing.icpSegment = options.icpSegment;
       if (options.calUrl) existing.target = resolveTarget(options.calUrl);
       if (options.config) existing.config = options.config;
       if (typeof options.noLead === 'boolean') existing.noLead = options.noLead;
+      if (typeof options.direct === 'boolean') existing.direct = options.direct;
 
-      if (remount || (existing.loaded && options.config) || (!existing.loaded && (forceLoad || hasConsent()))) {
+      if (
+        remount ||
+        (existing.loaded && options.config) ||
+        (!existing.loaded && (forceLoad || hasConsent()))
+      ) {
         clearReadyTimer(existing);
         existing.loaded = false;
-        existing.leadSent = false;
         existing.el.innerHTML = '';
         existing.el.classList.remove('is-loading');
         if (remount) {
@@ -554,24 +490,26 @@
     }
 
     counter += 1;
+    var isConvert = document.body && document.body.getAttribute('data-page') === 'convert';
     var entry = {
       el: el,
       ns: 'rais-' + counter,
       loaded: false,
-      leadSent: false,
-      noLead: options.noLead === true || (el && el.hasAttribute('data-cal-nolead')),
+      noLead:
+        options.noLead === true ||
+        (el && el.hasAttribute('data-cal-nolead')) ||
+        isConvert,
+      direct: options.direct === true || isConvert || el.id === 'bm-cal-wrap',
       mountedAt: Date.now(),
       consentedAt: 0,
       readyTimer: 0,
       source: sanitizeSource(options.source),
       icpSegment: options.icpSegment || null,
       target: resolveEntryTarget(el, options),
-      config: options.config || null
+      config: options.config || null,
     };
     mounted.push(entry);
 
-    /* CTA/Modal: ensureConsent = Klick ist die Einwilligung → sofort laden.
-       data-cal-click: nur Platzhalter, bis der Gate-Button geklickt wird. */
     if (forceLoad || (hasConsent() && !el.hasAttribute('data-cal-click'))) {
       if (forceLoad) {
         entry.openedByClick = true;
@@ -585,24 +523,6 @@
     return entry;
   }
 
-  /* submit-audit-lead weist alles ab, was nicht [A-Za-z0-9_-] ist. */
-  function sanitizeSource(value) {
-    if (!value) return null;
-    var clean = String(value).replace(/[^A-Za-z0-9_-]/g, '').slice(0, 100);
-    return clean || null;
-  }
-
-  window.RAISCal = {
-    mount: mount,
-    hasConsent: hasConsent,
-    ensureConsent: ensureConsent,
-    grantConsent: grantConsent
-  };
-
-  watchConsent();
-
-  /* Container, die schon im Markup stehen, brauchen keinen Aufruf.
-     Kontakt-Embed sofort (Conversion), Rest kurz vor Sichtbarkeit. */
   function autoMount() {
     var nodes = document.querySelectorAll('[data-cal-inline]');
     if (!nodes.length) return;
@@ -611,7 +531,7 @@
       mount(el, {
         source: el.getAttribute('data-source'),
         calUrl: el.getAttribute('data-cal-url') || pageCalUrl(),
-        noLead: el.hasAttribute('data-cal-nolead')
+        noLead: el.hasAttribute('data-cal-nolead'),
       });
     }
 
@@ -626,7 +546,6 @@
     });
 
     eager.forEach(mountNode);
-
     if (!lazy.length) return;
 
     if (typeof window.IntersectionObserver !== 'function') {
@@ -635,68 +554,58 @@
     }
 
     var pending = lazy.slice();
+    var observer = new window.IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (item) {
+          if (!item.isIntersecting) return;
+          observer.unobserve(item.target);
+          pending = pending.filter(function (n) {
+            return n !== item.target;
+          });
+          mountNode(item.target);
+        });
+      },
+      { rootMargin: '400px 0px' },
+    );
 
-    var observer = new window.IntersectionObserver(function (entries) {
-      entries.forEach(function (item) {
-        if (!item.isIntersecting) return;
-        observer.unobserve(item.target);
-        pending = pending.filter(function (n) { return n !== item.target; });
-        mountNode(item.target);
-      });
-    }, { rootMargin: '400px 0px' });
+    pending.forEach(function (el) {
+      observer.observe(el);
+    });
 
-    pending.forEach(function (el) { observer.observe(el); });
-
-    /* Never leave only the static HTML fallback if IO never fires. */
     window.setTimeout(function () {
       pending.forEach(function (el) {
         observer.unobserve(el);
-        /* Real embed gate uses .cal-gate__btn; HTML fallback uses .js-open-booking. */
         if (!el.querySelector('.cal-gate__btn, iframe')) mountNode(el);
       });
       pending = [];
     }, 1200);
   }
 
+  /* Script + DNS warmen, sobald Consent da ist. Iframe erst bei mount. */
+  function preload(opts) {
+    var options = opts || {};
+    if (options.ensureConsent !== false) ensureConsent();
+    if (!hasConsent() && options.ensureConsent !== false) ensureConsent();
+    return loadScript((options.calUrl ? resolveTarget(options.calUrl) : target).script).catch(
+      function () {
+        return null;
+      },
+    );
+  }
+
+  window.RAISCal = {
+    mount: mount,
+    preload: preload,
+    hasConsent: hasConsent,
+    ensureConsent: ensureConsent,
+    grantConsent: grantConsent,
+  };
+
+  watchConsent();
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', autoMount);
   } else {
     autoMount();
   }
-
-  /* Convert-LP: Cal-Iframe meldet bookingSuccessful per postMessage.
-     Nur dort auf die Danke-Seite wechseln — andere Cal-Seiten bleiben. */
-  function isCalBookingSuccess(data) {
-    if (!data) return false;
-    if (typeof data === 'string') {
-      try { data = JSON.parse(data); } catch (e) { return false; }
-    }
-    if (typeof data !== 'object') return false;
-    var type = data.type || data.action || data.method || '';
-    if (type === 'bookingSuccessful' || type === 'bookingSuccessfulV2') return true;
-    if (data.data && typeof data.data === 'object') {
-      var nested = data.data.type || data.data.action || '';
-      if (nested === 'bookingSuccessful' || nested === 'bookingSuccessfulV2') return true;
-    }
-    return false;
-  }
-
-  function listenConvertThanksRedirect() {
-    if (!document.body || document.body.dataset.page !== 'convert') return;
-    var redirected = false;
-    window.addEventListener('message', function (event) {
-      if (redirected) return;
-      var origin = event.origin || '';
-      if (origin !== 'https://app.cal.com' && origin !== 'https://cal.com') return;
-      if (!isCalBookingSuccess(event.data)) return;
-      redirected = true;
-      window.location.assign('/danke.html');
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', listenConvertThanksRedirect);
-  } else {
-    listenConvertThanksRedirect();
-  }
-}());
+})();

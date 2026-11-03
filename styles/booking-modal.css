@@ -48,11 +48,19 @@
 .bm-step { display: none; }
 .bm-step.is-active { display: block; }
 
-/* Fortschrittspunkte, Formularfelder, Slider und die
-   Zurueck/Weiter-Leiste sind mit dem zweistufigen Formular
-   entfallen. Das Modal zeigt nur noch den Kalender. Der
-   Fehlerzustand .bm-error lebt weiter in styles/home.css,
-   dort nutzt ihn scripts/lead-magnet.js. */
+.bm-progress {
+  display: flex;
+  gap: 0.4rem;
+  margin: 0 0 1.25rem;
+}
+.bm-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: rgba(47, 42, 36, 0.18);
+}
+.bm-dot.is-filled { background: var(--orange, #EC6A37); }
+.bm-dot.is-current { box-shadow: 0 0 0 3px rgba(236, 106, 55, 0.22); }
 
 .bm-title {
   font-size: 1.25rem;
@@ -64,7 +72,43 @@
 .bm-sub {
   font-size: 0.9rem;
   color: var(--stone, #7B746B);
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.bm-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+.bm-choices--compact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+}
+.bm-choice {
+  min-height: 48px;
+  padding: 0.85rem 1rem;
+  text-align: left;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--charcoal, #2F2A24);
+  background: #fff;
+  border: 1px solid var(--border, #D9D1C7);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.12s ease;
+}
+.bm-choice:hover {
+  border-color: var(--orange, #EC6A37);
+  transform: translateY(-1px);
+}
+.bm-choice.is-selected {
+  border-color: var(--orange, #EC6A37);
+  background: rgba(236, 106, 55, 0.08);
+}
+@media (max-width: 520px) {
+  .bm-choices--compact { grid-template-columns: 1fr; }
 }
 
 

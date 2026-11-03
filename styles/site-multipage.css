@@ -2132,13 +2132,11 @@ a.sticky-cta-btn {
   position: relative;
   isolation: isolate;
   color: var(--linen-on-green, #FBF8F3);
-  /* Kanten leicht abtiefen statt in die helle Nachbarflaeche
-     auszublenden: ein Verlauf Gruen -> Cloud wird matschig,
-     eine harte Kante bei diesem Kontrast liest praezise. */
+  /* Ambient wie LP-Template .band--green: Soft-Glow oben +
+     leichter Diagonalverlauf, in Racing-Green / Sage statt Blau. */
   background:
-    linear-gradient(180deg, var(--green-900, #002A18) 0%, transparent 20%),
-    linear-gradient(0deg, var(--green-900, #002A18) 0%, transparent 16%),
-    var(--green-800, #004225);
+    radial-gradient(ellipse at 30% 0%, rgba(159, 184, 140, 0.32), transparent 50%),
+    linear-gradient(160deg, var(--green-800, #004225) 0%, var(--green-900, #002A18) 100%);
 }
 
 

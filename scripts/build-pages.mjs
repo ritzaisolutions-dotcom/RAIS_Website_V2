@@ -545,86 +545,11 @@ page({
     label: 'KI-Roadmap',
     title: 'Termin wählen',
     copy: [
-      'Drei kurze Fragen, dann Kontakt und Termin. Die schriftliche Roadmap behalten Sie.',
+      'Termin und kurze Quali-Fragen direkt im Kalender. Die schriftliche Roadmap behalten Sie.',
       'Kein Pitch. Wenn wir keinen sinnvollen Anwendungsfall sehen, sagen wir es Ihnen.'
     ],
     calTitle: 'Erstgespräch buchen',
-    calSub: 'Erstgespräch, 45 Minuten. Kostenlos.',
-    gate: `
-        <div class="roadmap-gate" id="roadmap-gate">
-          <div class="roadmap-gate__head">
-            <span class="roadmap-gate__count" id="gate-count">Frage 1 von 3</span>
-            <div class="roadmap-gate__bars" aria-hidden="true">
-              <span class="roadmap-gate__bar is-filled" data-gbar="1"></span>
-              <span class="roadmap-gate__bar" data-gbar="2"></span>
-              <span class="roadmap-gate__bar" data-gbar="3"></span>
-            </div>
-          </div>
-          <p class="roadmap-gate__lead">Drei Fragen, dann wählen Sie Termin und Kontaktdaten. Damit ich vorbereitet ins Gespräch gehe.</p>
-
-          <fieldset class="roadmap-gate__q" data-gstep="1">
-            <legend>Wo tut es am meisten weh?</legend>
-            <div class="roadmap-gate__choice" role="radiogroup" aria-label="Hauptproblem">
-              <button type="button" class="roadmap-gate__opt" data-gate="pain" data-value="manuelle-bearbeitung" role="radio" aria-checked="false">Anfragen von Hand bearbeiten kostet zu viel Zeit</button>
-              <button type="button" class="roadmap-gate__opt" data-gate="pain" data-value="mieteranliegen" role="radio" aria-checked="false">Mieteranliegen im Griff behalten</button>
-              <button type="button" class="roadmap-gate__opt" data-gate="pain" data-value="reaktionszeit" role="radio" aria-checked="false">Zu langsame Reaktion auf neue Anfragen</button>
-              <button type="button" class="roadmap-gate__opt" data-gate="pain" data-value="terminierung" role="radio" aria-checked="false">Termine vereinbaren frisst den Tag</button>
-            </div>
-          </fieldset>
-
-          <fieldset class="roadmap-gate__q" data-gstep="2" hidden>
-            <legend>Womit arbeiten Sie?</legend>
-            <div class="rq-fields">
-              <div>
-                <label for="gate-ecosystem">Mail und Kalender</label>
-                <select id="gate-ecosystem">
-                  <option value="">Bitte wählen</option>
-                  <option value="google">Google Workspace</option>
-                  <option value="microsoft365">Microsoft 365</option>
-                  <option value="imap">Eigener Server per IMAP</option>
-                  <option value="gemischt">Gemischt</option>
-                  <option value="weiss-nicht">Weiß ich nicht</option>
-                </select>
-              </div>
-              <div>
-                <label for="gate-crm">CRM</label>
-                <select id="gate-crm">
-                  <option value="">Bitte wählen</option>
-                  <option value="onoffice">onOffice</option>
-                  <option value="propstack">Propstack</option>
-                  <option value="flowfact">FlowFact</option>
-                  <option value="haufe">Haufe</option>
-                  <option value="excel">Excel oder keins</option>
-                  <option value="anderes">Anderes</option>
-                </select>
-              </div>
-            </div>
-          </fieldset>
-
-          <fieldset class="roadmap-gate__q" data-gstep="3" hidden>
-            <legend>Wie viele Vorgänge pro Woche?</legend>
-            <p class="roadmap-gate__hint">Anfragen oder Mieteranliegen, je nachdem was bei Ihnen überwiegt.</p>
-            <div class="roadmap-slider">
-              <div class="roadmap-slider__row">
-                <label for="gate-volume">Vorgänge pro Woche</label>
-                <span class="roadmap-slider__value" id="gate-volume-out">25</span>
-              </div>
-              <input id="gate-volume" type="range" min="5" max="150" step="1" value="25">
-            </div>
-            <label class="lm-check" for="gate-privacy">
-              <input type="checkbox" id="gate-privacy" required>
-              <span>Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a> gelesen und bin einverstanden, dass diese drei Angaben zur Vorbereitung des Gesprächs gespeichert werden.</span>
-            </label>
-          </fieldset>
-
-          <p class="rq-error" id="gate-error" hidden role="alert"></p>
-          <div class="roadmap-gate__nav">
-            <button type="button" class="rq-btn-back" id="gate-back" hidden>Zurück</button>
-            <button type="button" class="btn-primary" id="gate-submit">Weiter</button>
-          </div>
-          <p class="roadmap-gate__note">Name, E-Mail und Telefon geben Sie im nächsten Schritt zusammen mit dem Termin an.</p>
-        </div>
-        <p class="roadmap-gate__done" id="gate-done" hidden>Danke. Wählen Sie unten Ihren Termin und hinterlassen Sie Ihre Kontaktdaten.</p>`
+    calSub: 'Erstgespräch, 45 Minuten. Kostenlos.'
   },
   extraScripts:
     '\n<script src="scripts/roadmap-hero-ui.js"></script>\n<script src="scripts/aqut-sim.js"></script>\n<script src="scripts/ai-roadmap-funnel.js"></script>\n',

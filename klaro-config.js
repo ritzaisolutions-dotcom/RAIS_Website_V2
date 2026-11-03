@@ -141,10 +141,10 @@ var klaroConfig = {
         description:
           'Sentry captures technical errors so we can keep the website stable. Processing on EU servers (ingest.de.sentry.io). Provider: Functional Software Inc., San Francisco, USA.',
       },
-      booking: {
-        title: 'Appointment booking',
+      cal: {
+        title: 'Cal.com (appointment booking)',
         description:
-          'Our booking form loads available slots from our servers (Supabase) and, after you confirm, creates a Google Calendar event. Provider for calendar sync: Google Ireland Limited / Google LLC.',
+          'Cal.com provides the booking calendar. Loading it sends your IP address to Cal.com. You enter your booking details there. Provider: Cal.com, Inc., San Francisco, USA.',
       },
       wistia: {
         title: 'Wistia (video player)',
@@ -164,13 +164,13 @@ var klaroConfig = {
       required: false,
       optOut: false,
     },
-    /* Eigene Buchungsmaske (scripts/rais-booking.js). Lädt erst nach
-       CTA bzw. Gate-Einwilligung. Kein Dritt-iframe. */
+    /* Cal.com Embed (scripts/cal-embed.js). Lädt erst nach CTA/Gate.
+       Kein Autoload beim Seitenaufruf. */
     {
-      name: 'booking',
-      title: 'Terminbuchung (RAIS)',
+      name: 'cal',
+      title: 'Cal.com (Terminbuchung)',
       description:
-        'Unsere Buchungsmaske lädt freie Termine von unseren Servern (Supabase) und legt nach Bestätigung einen Eintrag in Google Calendar an. Anbieter Kalender-Sync: Google Ireland Limited / Google LLC. Es wird kein Cal.com-Embed geladen.',
+        'Cal.com stellt den Terminkalender bereit. Beim Laden wird Ihre IP-Adresse an Cal.com übertragen, Ihre Buchungsangaben geben Sie direkt dort ein. Anbieter: Cal.com, Inc., San Francisco, USA.',
       purposes: ['booking'],
       required: false,
       optOut: false,
