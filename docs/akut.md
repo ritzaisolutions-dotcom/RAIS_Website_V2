@@ -23,7 +23,7 @@ Repo: https://github.com/ritzaisolutions-dotcom/rais-lp-template
    Zielgruppe → Kampagne → Sofort abgeholt (Assistent) → Qualifizierung (Assistent) → Nur Qualifizierte ins CRM
 4. Haller (Backoffice / 60 Std Nachfassen, kein Meta-Proof)
 5. Zusammenarbeit + Button
-6. Garantie (Full Money Back, Adspend ausgenommen)
+6. Garantie (Full Money Back)
 7. FAQ
 8. CTA-Band: Panel auf Grün, eine starke Headline, Nutzen-Lead, großer Buchungsbutton
 
