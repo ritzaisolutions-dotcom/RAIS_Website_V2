@@ -195,31 +195,46 @@
 }
 
 /* Garantie-Pille unter Buchungs-CTAs */
-.page-akut .rais-guarantee-pill {
+.page-akut .rais-guarantee-note {
   display: inline-flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem 0.55rem;
-  max-width: 22rem;
+  gap: 0.4rem;
+  max-width: 100%;
   margin: 0;
-  padding: 0.4rem 0.75rem;
-  border-radius: 999px;
-  border: 1px solid var(--border, #D9D1C7);
-  background: rgba(251, 248, 243, 0.72);
+  padding: 0;
+  border: 0;
+  background: transparent;
   color: var(--charcoal, #2F2A24);
   font-family: var(--sans);
-  font-size: clamp(0.78rem, 1.6vw, 0.88rem);
+  font-size: clamp(0.78rem, 1.5vw, 0.88rem);
   font-weight: 500;
-  line-height: 1.35;
-  text-align: center;
-  text-wrap: pretty;
+  line-height: 1.25;
+  white-space: nowrap;
 }
 
-.page-akut .rais-guarantee-pill--on-dark {
-  border-color: rgba(251, 248, 243, 0.28);
-  background: rgba(251, 248, 243, 0.1);
-  color: rgba(251, 248, 243, 0.92);
+.page-akut .rais-guarantee-note img {
+  width: 0.95rem;
+  height: 0.95rem;
+  flex: 0 0 auto;
+}
+
+.page-akut .rais-guarantee-note--on-dark {
+  color: rgba(251, 248, 243, 0.9);
+}
+
+.page-akut .rais-guarantee-note--on-dark img {
+  filter: brightness(0) invert(1);
+  opacity: 0.92;
+}
+
+@media (max-width: 420px) {
+  .page-akut .rais-guarantee-note {
+    white-space: normal;
+    text-align: center;
+    text-wrap: pretty;
+  }
 }
 
 .page-akut .akut-guarantee-shield {
@@ -1759,8 +1774,8 @@
 }
 
 .page-akut #ablauf .akut-flow {
-  grid-template-columns: repeat(4, 1fr);
-  max-width: 64rem;
+  grid-template-columns: repeat(5, 1fr);
+  max-width: 72rem;
   margin-left: auto;
   margin-right: auto;
 }
