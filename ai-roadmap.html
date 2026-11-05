@@ -731,46 +731,9 @@
     <button class="bm-close" id="bm-close" type="button" aria-label="Schließen">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
-    <div class="bm-progress" aria-hidden="true">
-      <span class="bm-dot is-filled is-current" data-bm-dot="1"></span>
-      <span class="bm-dot" data-bm-dot="2"></span>
-      <span class="bm-dot" data-bm-dot="3"></span>
-      <span class="bm-dot" data-bm-dot="4"></span>
-    </div>
-
-    <div class="bm-step is-active" id="bm-step-1" data-bm-q="pain" data-bm-next="2">
-      <h2 class="bm-title">Was ist Ihr größter Schmerz gerade?</h2>
-      <p class="bm-sub">Ein Klick genügt.</p>
-      <div class="bm-choices" role="radiogroup" aria-label="Größter Schmerz">
-        <button type="button" class="bm-choice" role="radio" aria-checked="false" data-value="kaufanfragen">Planbare, kaufkräftige Nachfragen</button>
-        <button type="button" class="bm-choice" role="radio" aria-checked="false" data-value="eigentuemer">Angebot an Eigentümer, die verkaufen wollen</button>
-        <button type="button" class="bm-choice" role="radio" aria-checked="false" data-value="nachfassen">Manuelle Arbeit: schnell abholen und nachfassen</button>
-      </div>
-    </div>
-
-    <div class="bm-step" id="bm-step-2" data-bm-q="sales_per_year" data-bm-next="3">
-      <h2 class="bm-title">Wie viele Immobilien verkaufen Sie aktuell ungefähr pro Jahr?</h2>
-      <p class="bm-sub">Grobe Zahl reicht.</p>
-      <div class="bm-choices bm-choices--compact" role="radiogroup" aria-label="Verkäufe pro Jahr">
-        <button type="button" class="bm-choice" role="radio" aria-checked="false" data-value="8">unter 10</button>
-        <button type="button" class="bm-choice" role="radio" aria-checked="false" data-value="15">10–20</button>
-        <button type="button" class="bm-choice" role="radio" aria-checked="false" data-value="30">20–40</button>
-        <button type="button" class="bm-choice" role="radio" aria-checked="false" data-value="50">über 40</button>
-      </div>
-    </div>
-
-    <div class="bm-step" id="bm-step-3" data-bm-q="social_media" data-bm-next="4">
-      <h2 class="bm-title">Bisherige Erfahrung mit Social Media als Vertriebskanal?</h2>
-      <p class="bm-sub">Danach wählen Sie den Termin.</p>
-      <div class="bm-choices bm-choices--compact" role="radiogroup" aria-label="Social Media">
-        <button type="button" class="bm-choice" role="radio" aria-checked="false" data-value="nein">Nein, noch nicht</button>
-        <button type="button" class="bm-choice" role="radio" aria-checked="false" data-value="ja">Ja</button>
-      </div>
-    </div>
-
-    <div class="bm-step" id="bm-step-4">
+    <div class="bm-step is-active" id="bm-step-cal">
       <h2 class="bm-title">Erstgespräch buchen</h2>
-      <p class="bm-sub">45 Minuten, kostenlos. Kontaktdaten direkt im Kalender.</p>
+      <p class="bm-sub">Kostenlos. Kontaktdaten und Fragen direkt im Kalender.</p>
       <div class="bm-cal-wrap" id="bm-cal-wrap"></div>
     </div>
   </div>

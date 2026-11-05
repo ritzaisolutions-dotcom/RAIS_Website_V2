@@ -10,28 +10,26 @@ Repo: https://github.com/ritzaisolutions-dotcom/rais-lp-template
 
 ## Claim (Video = Seite)
 
-- 15 qualifizierte Kaufinteressenten in den ersten 6 Wochen
-- Sofort abgeholt, nur Qualifizierte ins CRM
-- 6-Wochen-Geld-zurück, wenn die 15 nicht kommen
+- 15 ernsthafte Kaufanfragen in den ersten 6 Wochen
+- Sofort abgeholt, nur Ernsthafte ins CRM
+- Zwei Garantie-Stufen: 7 Tage Geld zurück, und 15 Anfragen ab Go-live (Werbebudget inklusive)
 - Avatar: Wohnmakler ab ~20 verkauften Immobilien / Jahr
 
 ## Sektionen
 
-1. Hero + VSL (Wistia `yhmqp1lrav`, kein Play-Button, kein Poster)
-2. Old Way (Portale + Hoffen) + Konsequenzsatz (Status quo) + Button
-3. Immo Sales System (Mark links, Serhant-Zitat, 5 Bausteine mit Icons) + Button  
-   Zielgruppe → Kampagne → Sofort abgeholt (Assistent) → Qualifizierung (Assistent) → Nur Qualifizierte ins CRM
-4. Haller (Backoffice / 60 Std Nachfassen, kein Meta-Proof)
-5. Zusammenarbeit + Button
-6. Garantie (Full Money Back)
+1. Hero + VSL (Wistia `yhmqp1lrav`) + Garantie-Pille + Erstgespräch-Checklist + Trust Haller
+2. Schmerz: Eyebrow „Kennen Sie das?“ + 6 Aussage-Karten + CTA + Pille
+3. Immo Sales System (5 Bausteine mit Icons) + Button + Pille  
+   Käufer → Kampagne → Sofort abgeholt → Qualifizierung → Nur Ernsthafte ins CRM
+4. Haller (Backoffice / 60 Std Nachfassen, kein Meta-Proof), Label „Unser erster Kunde“
+5. Zusammenarbeit + Button + Pille
+6. Garantie (Lead + zwei Karten + Vertragsfußzeile)
 7. FAQ
-8. CTA-Band: Panel auf Grün, eine starke Headline, Nutzen-Lead, großer Buchungsbutton
+8. CTA-Band: 60 Minuten, Buchungsbutton, Garantie-Pille
 
-## Buchungsfragen (`erstgespraech`)
+## Buchung (`erstgespraech`)
 
-1. Kern-Pain (single)
-2. Verkäufe jährlich (number)
-3. Social Media als Vertriebskanal (ja/nein); bei ja: Freitext „wie?“
+Modal öffnet direkt Cal.com. Quali-Fragen liegen in Cal.com (nicht hardcodiert auf der LP).
 
 ## Nicht auf der LP
 

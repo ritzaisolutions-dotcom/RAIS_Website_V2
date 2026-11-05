@@ -146,7 +146,7 @@ const modalScripts =
 const after = html.slice(cutEnd);
 html =
   before +
-  bookingModalHtml('45 Minuten', 'Erstgespräch buchen', 'Erstgespräch, 45 Minuten').trim() +
+  bookingModalHtml('Erstgespräch buchen', 'Termin wählen').trim() +
   modalScripts +
   after;
 

@@ -65,7 +65,7 @@ function page({
     contactHtml({ dauer, ...(contact || {}) }) +
     afterContact +
     footerHtml({ stickyHref, stickyLabel, minimal: footerMinimal }) +
-    bookingModalHtml(dauer, bookingAriaLabel) +
+    bookingModalHtml(bookingAriaLabel) +
     i18nScriptsHtml +
     extraScripts +
     scriptsHtml;
