@@ -160,8 +160,8 @@
       }
       entry.openedByClick = true;
       entry.consentedAt = Date.now();
-      entry.loaded = false;
-      activate(entry);
+      /* Der Klaro-Watcher hat den Eintrag beim Speichern meist schon aktiviert. */
+      if (!entry.loaded) activate(entry);
     });
     box.appendChild(btn);
 
