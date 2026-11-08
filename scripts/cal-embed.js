@@ -153,9 +153,18 @@
       btn.disabled = true;
       btn.textContent = t('Kalender wird geladen…');
       if (!grantConsent()) {
-        /* Consent-Tool nicht verfügbar: nichts laden. */
+        /* Consent-Tool nicht verfügbar (z. B. von einem Blocker unterdrückt): nichts laden, Hinweis zeigen. */
         btn.disabled = false;
         btn.textContent = t('Zustimmen und Termin wählen');
+        if (!box.querySelector('.cal-gate__error')) {
+          var err = document.createElement('p');
+          err.className = 'cal-gate__error';
+          err.setAttribute('role', 'alert');
+          err.textContent = t(
+            'Die Einwilligung konnte nicht gespeichert werden. Bitte laden Sie die Seite neu oder schreiben Sie uns an kevin@ritz-ai.solutions.',
+          );
+          box.appendChild(err);
+        }
         return;
       }
       entry.openedByClick = true;

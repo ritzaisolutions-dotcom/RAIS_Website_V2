@@ -218,7 +218,7 @@ ${ogImage ? `  <meta property="og:image" content="https://ritz-ai.solutions/${og
   <script src="scripts/public-config.js"></script>
   <script src="scripts/sentry-klaro-bootstrap.js"></script>
   <script src="scripts/meta-pixel-klaro-bootstrap.js"></script>
-  <script src="klaro-config.js"></script>
+  <script src="site-prefs.js"></script>
   <script src="vendor/klaro/klaro.js"></script>
   <link rel="stylesheet" href="vendor/klaro/klaro.min.css">
   <link rel="stylesheet" href="styles/klaro-overrides.css">

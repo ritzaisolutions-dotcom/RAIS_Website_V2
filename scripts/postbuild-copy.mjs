@@ -26,7 +26,7 @@ const copyTargets = [
   // einem Skript), muss das hier wieder aufnehmen oder das Bild nach
   // public/ legen. Nur dann greift Vite nicht.
   { from: 'fonts', to: 'fonts' },
-  { from: 'klaro-config.js', to: 'klaro-config.js' },
+  { from: 'site-prefs.js', to: 'site-prefs.js' },
   { from: 'styles/klaro-overrides.css', to: 'styles/klaro-overrides.css' },
   { from: 'styles/site-multipage.css', to: 'styles/site-multipage.css' },
   { from: 'styles/home.css', to: 'styles/home.css' },

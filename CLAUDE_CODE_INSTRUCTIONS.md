@@ -88,7 +88,7 @@ Reihenfolge der Sektionen:
 
 | Bereich | Details |
 |---------|---------|
-| Consent | Klaro (`klaro-config.js`) |
+| Consent | Klaro (`site-prefs.js`) |
 | Booking | Modal + Calendly-Embed |
 | Lead-Speicher | Supabase (fire-and-forget aus Modal) |
 | Sentry | Error-Monitoring (CSP in `.htaccess`) |

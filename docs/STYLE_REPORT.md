@@ -78,7 +78,7 @@ RAIS_Website_V2/
 ├── favicon.svg
 ├── favicon.png
 ├── fonts.css                     # Inter + JetBrains Mono
-├── klaro-config.js
+├── site-prefs.js
 ├── package.json
 ├── vite.config.js                # Route-Registrierung
 ├── vercel.json
@@ -1197,7 +1197,7 @@ Beispiel gerendert (`zusammenarbeit.html`):
 
 ### Consent: Klaro
 
-Dateien: `klaro-config.js`, `vendor/klaro/klaro.js`, `vendor/klaro/klaro.min.css`, `styles/klaro-overrides.css`. Auf jeder Marketing-Seite im `<head>` (Reihenfolge: `public-config.js` → `sentry-klaro-bootstrap.js` → `klaro-config.js` → `klaro.js`).
+Dateien: `site-prefs.js`, `vendor/klaro/klaro.js`, `vendor/klaro/klaro.min.css`, `styles/klaro-overrides.css`. Auf jeder Marketing-Seite im `<head>` (Reihenfolge: `public-config.js` → `sentry-klaro-bootstrap.js` → `site-prefs.js` → `klaro.js`).
 
 ```javascript
 var klaroConfig = {

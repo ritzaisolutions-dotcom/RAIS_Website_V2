@@ -2,7 +2,7 @@
  *
  * Der Pixel-Code wird als "text/plain" mit data-name="meta-pixel" in den
  * <head> gelegt. Klaro führt ihn erst aus, wenn der Service "meta-pixel"
- * (klaro-config.js) eingewilligt ist. Vorher: kein Request an Meta.
+ * (site-prefs.js) eingewilligt ist. Vorher: kein Request an Meta.
  *
  * Bewusst weggelassen: das <noscript><img ...facebook.com/tr...></noscript>
  * aus dem Meta-Standardsnippet. Es würde ohne JavaScript und damit ohne
