@@ -58,7 +58,7 @@ if (!url || !anon) {
 
 const body = {
   consent_id: randomUUID(),
-  decisions: { sentry: true },
+  decisions: { cal: true },
   page_url: '/test-cookie-consent-insert',
 };
 

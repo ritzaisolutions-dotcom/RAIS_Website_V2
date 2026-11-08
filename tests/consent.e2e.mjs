@@ -4,7 +4,7 @@
  * Usage:  npm run test:e2e            (startet vite auf Port 5191)
  *         BASE_URL=https://www.ritz-ai.solutions npm run test:e2e   (gegen Live)
  *
- * Meta, Cal.com, Wistia und Sentry werden per Route abgefangen: Es erreichen
+ * Meta, Cal.com und Wistia werden per Route abgefangen: Es erreichen
  * keine Testdaten diese Anbieter, und fbevents.js wird durch einen Stub ersetzt,
  * der wie das Original bei fbq('track', ...) einen Request auf facebook.com/tr
  * sendet. So prüfen wir unsere Verdrahtung, nicht Metas Skript.
@@ -17,7 +17,7 @@ const PIXEL_ID = '1486765559987145';
 const EXTERNAL_BASE = process.env.BASE_URL;
 const PORT = 5191;
 const BASE = EXTERNAL_BASE || `http://localhost:${PORT}`;
-const THIRD_PARTY = /facebook\.(com|net)|cal\.com|wistia\.(com|net)|sentry/i;
+const THIRD_PARTY = /facebook\.(com|net)|cal\.com|wistia\.(com|net)/i;
 
 const FBEVENTS_STUB = `
 (function () {
@@ -59,7 +59,7 @@ async function newPage(browser, { blockPrefs = false } = {}) {
     r.fulfill({ status: 200, contentType: 'application/javascript', body: FBEVENTS_STUB }));
   await ctx.route(/www\.facebook\.com\/tr/, (r) =>
     r.fulfill({ status: 200, contentType: 'image/gif', body: Buffer.from('R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==', 'base64') }));
-  await ctx.route(/(^https:\/\/([a-z0-9-]+\.)?cal\.com)|wistia|sentry/i, (r) =>
+  await ctx.route(/(^https:\/\/([a-z0-9-]+\.)?cal\.com)|wistia/i, (r) =>
     r.fulfill({ status: 200, contentType: 'text/html', body: '<html></html>' }));
   if (blockPrefs) await ctx.route(/site-prefs\.js/, (r) => r.abort());
   const page = await ctx.newPage();
@@ -163,14 +163,6 @@ try {
     await ctx.close();
   });
 
-  await scenario('7 Kein Sentry-Request mit Platzhalter-Key nach Einwilligung', async () => {
-    const { ctx, page, seen } = await newPage(browser);
-    await openHome(page);
-    await page.getByRole('button', { name: /Alle akzeptieren/ }).first().click();
-    await page.waitForTimeout(2500);
-    assert.deepEqual(seen.filter((u) => /sentry/i.test(hostOf(u))), []);
-    await ctx.close();
-  });
 } finally {
   await browser.close();
   if (server) server.kill();

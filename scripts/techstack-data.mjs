@@ -15,7 +15,7 @@
  *
  * 1. Verarbeitet ein Anbieter Daten von BESUCHERN DIESER WEBSITE?
  *    Dann gehört er in `datenschutz.html`. Betrifft aktuell Hostinger,
- *    Supabase, Sentry, Notion, Cal.com.
+ *    Supabase, Notion, Cal.com.
  *
  * 2. Ist ein Anbieter Teil dessen, was wir für KUNDEN bauen?
  *    Dann gehört er in den AVV mit dem jeweiligen Kunden, NICHT in die

@@ -8,7 +8,7 @@
  * aus dem Meta-Standardsnippet. Es würde ohne JavaScript und damit ohne
  * Einwilligung einen Request an Meta auslösen.
  *
- * Muss VOR vendor/klaro/klaro.js eingebunden sein (wie sentry-klaro-bootstrap.js).
+ * Muss VOR vendor/klaro/klaro.js eingebunden sein.
  */
 (function () {
   var PIXEL_ID = '1486765559987145';

@@ -30,7 +30,7 @@ Supabase hält nur Rate-Limit (gehashte IP). Details: [`audit-lead-notion-email.
    CAL_COM_URL=https://ritz-ai-solutions.cal.eu/kevin/erstgespraech-mit-rais
    ```
 
-   Wichtig: `SENTRY_DSN` und `SUPABASE_ANON_KEY` in `.env` müssen echte Werte sein. Danach `npm run config`.
+   Wichtig: `SUPABASE_URL` und `SUPABASE_ANON_KEY` in `.env` müssen echte Werte sein. Danach `npm run config`.
 
 5. nginx-CSP auf dem VPS aus [`deploy/nginx/ritz-ai.solutions.conf`](../deploy/nginx/ritz-ai.solutions.conf) aktivieren.
 

@@ -91,7 +91,6 @@ Reihenfolge der Sektionen:
 | Consent | Klaro (`site-prefs.js`) |
 | Booking | Modal + Calendly-Embed |
 | Lead-Speicher | Supabase (fire-and-forget aus Modal) |
-| Sentry | Error-Monitoring (CSP in `.htaccess`) |
 | Fonts | Baskerville/Palatino (Headlines), System/Mono für Labels |
 | Farben | CSS-Variablen, Palette siehe `brand.md` |
 

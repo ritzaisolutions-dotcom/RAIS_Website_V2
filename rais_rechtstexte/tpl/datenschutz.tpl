@@ -257,9 +257,6 @@
                 <p>Weitere Informationen zu Klaro: <a href="https://klaro.org" target="_blank" rel="noopener">https://klaro.org</a>.</p>
                 <p>Zur Erfüllung unserer Nachweispflicht nach Art.&nbsp;7 Abs.&nbsp;1 DSGVO speichern wir Ihre Consent-Entscheidung zusätzlich zur lokalen Speicherung in unserer Supabase-Datenbank (Tabelle für Consent-Nachweise; verarbeitet werden eine zufällig erzeugte pseudonyme Browser-ID, die getroffene Auswahl je Dienst und die aufgerufene Seite). Diese Browser-ID wird als personenbezogenes Datum behandelt und ebenfalls lokal in Ihrem Browser (localStorage) gespeichert, um Mehrfacheinträge zu vermeiden. Rechtsgrundlage ist Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;c DSGVO i.&nbsp;V.&nbsp;m. Art.&nbsp;7 Abs.&nbsp;1 DSGVO.</p>
 
-                <h3>Sentry (Fehlerüberwachung)</h3>
-                <p>Zur Erkennung technischer Störungen setzen wir Sentry ein (Functional Software Inc., USA). Der Dienst wird erst nach Einwilligung über Klaro geladen. Die Verarbeitung erfolgt über EU-Server (<code>ingest.de.sentry.io</code>). Rechtsgrundlage: Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;a DSGVO i.&nbsp;V.&nbsp;m. §&nbsp;25 Abs.&nbsp;1 TDDDG. Weitere Informationen: <a href="https://sentry.io/privacy/" target="_blank" rel="noopener">https://sentry.io/privacy/</a>.</p>
-
                 <h3>Terminbuchung erst nach Ihrer Aktion</h3>
                 <p>Die Buchungsmaske wird beim bloßen Seitenaufruf nicht geladen. Sie wird geladen, wenn Sie einen Buchungsbutton betätigen oder die Terminbuchung in den Datenschutzeinstellungen aktivieren. Mit dieser Aktion willigen Sie ein, dass unsere Buchungs-API (Supabase Edge Functions) aufgerufen wird. Nach einer bestätigten Buchung kann der Termin in Google Calendar gespiegelt werden. Es gibt kein Cal.com-Embed mehr.</p>
 

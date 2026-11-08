@@ -89,7 +89,7 @@ var klaroConfig = {
     de: {
       consentNotice: {
         description:
-          'Wir nutzen Cookies und ähnliche Technologien. Einige sind technisch notwendig, andere helfen uns – mit deiner Einwilligung – bei der Fehlererkennung und der Werbemessung (Meta Pixel) auf dieser Website.',
+          'Wir nutzen Cookies und ähnliche Technologien. Einige sind technisch notwendig, andere helfen uns – mit deiner Einwilligung – bei der Terminbuchung, bei Videos und bei der Werbemessung (Meta Pixel) auf dieser Website.',
         learnMore: 'Einstellungen',
       },
       consentModal: {
@@ -107,7 +107,6 @@ var klaroConfig = {
       close: 'Schließen',
       poweredBy: 'Verwaltet mit Klaro',
       purposes: {
-        security: 'Sicherheit & Fehlerbehebung',
         booking: 'Terminbuchung',
         media: 'Video & Medien',
         marketing: 'Marketing & Werbemessung',
@@ -116,7 +115,7 @@ var klaroConfig = {
     en: {
       consentNotice: {
         description:
-          'We use cookies and similar technologies. Some are technically required, others help us, with your consent, detect errors and measure advertising (Meta Pixel) on this website.',
+          'We use cookies and similar technologies. Some are technically required, others help us, with your consent, with appointment booking, videos and ad measurement (Meta Pixel) on this website.',
         learnMore: 'Settings',
       },
       consentModal: {
@@ -133,7 +132,6 @@ var klaroConfig = {
       close: 'Close',
       poweredBy: 'Managed with Klaro',
       purposes: {
-        security: 'Security and troubleshooting',
         booking: 'Appointment booking',
         media: 'Video and media',
         marketing: 'Marketing and ad measurement',
@@ -142,11 +140,6 @@ var klaroConfig = {
         title: 'Meta Pixel (ad measurement)',
         description:
           'The Meta Pixel measures the effectiveness of our Facebook and Instagram ads and lets us show ads to relevant audiences. It loads only after you consent and transmits your IP address, browser data and the pages you view to Meta. Provider: Meta Platforms Ireland Limited, Dublin, Ireland (data may be transferred to Meta Platforms, Inc., USA).',
-      },
-      sentry: {
-        title: 'Sentry (error monitoring)',
-        description:
-          'Sentry captures technical errors so we can keep the website stable. Processing on EU servers (ingest.de.sentry.io). Provider: Functional Software Inc., San Francisco, USA.',
       },
       cal: {
         title: 'Cal.com (appointment booking)',
@@ -162,15 +155,6 @@ var klaroConfig = {
   },
 
   services: [
-    {
-      name: 'sentry',
-      title: 'Sentry (Fehlerüberwachung)',
-      description:
-        'Sentry erfasst technische Fehler, damit wir die Stabilität der Website sicherstellen können. Verarbeitung auf EU-Servern (ingest.de.sentry.io). Anbieter: Functional Software Inc., San Francisco, USA.',
-      purposes: ['security'],
-      required: false,
-      optOut: false,
-    },
     /* Cal.com Embed (scripts/cal-embed.js). Lädt erst nach CTA/Gate.
        Kein Autoload beim Seitenaufruf. */
     {

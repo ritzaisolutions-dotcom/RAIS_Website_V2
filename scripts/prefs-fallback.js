@@ -5,7 +5,7 @@
  * schlichter Hinweis mit Mailadresse und Cal.com-Link.
  *
  * Wichtig: Dieses Skript lädt nichts nach und erteilt keine Einwilligung.
- * Meta Pixel, Cal-Embed, Wistia und Sentry bleiben aus, weil sie nur über
+ * Meta Pixel, Cal-Embed und Wistia bleiben aus, weil sie nur über
  * Klaro freigegeben werden. Der Cal.com-Link ist ein normaler Link, den die
  * Person selbst anklickt; es wird nichts eingebettet.
  */
