@@ -14,3 +14,10 @@ verify_jwt = false
 # Cal.com BOOKING_CREATED Webhook → Notion CRM. Auth nur über CAL_WEBHOOK_SECRET
 # (X-Cal-Signature-256). Kein JWT, kein Lead-Schreiben in Supabase.
 verify_jwt = false
+
+[functions.submit-deletion-request]
+# Öffentliche Löschanfrage von /datenloeschung.html. Kein JWT: der Aufruf trägt nur
+# den Publishable-Key. Schutz über Origin-Allowlist, Rate-Limit, Honeypot, Timing
+# und Feldgrenzen. Zustellung an AUDIT_LEAD_NOTIFY_EMAIL, dieselbe Stelle wie die
+# übrigen Anfragen. Kein Eintrag in inbound_leads oder Notion.
+verify_jwt = false

@@ -29,6 +29,7 @@ export default defineConfig({
         danke: resolve(__dirname, 'danke.html'),
         impressum: resolve(__dirname, 'impressum.html'),
         datenschutz: resolve(__dirname, 'datenschutz.html'),
+        datenloeschung: resolve(__dirname, 'datenloeschung.html'),
         aqut: resolve(__dirname, 'ams.html'),
         referenzen: resolve(__dirname, 'referenzen.html'),
         zusammenarbeit: resolve(__dirname, 'zusammenarbeit.html'),

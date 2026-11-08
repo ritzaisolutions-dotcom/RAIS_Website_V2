@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Datenlöschung | RAIS</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href="https://ritz-ai.solutions/datenloeschung.html" />
+    <link rel="icon" type="image/png" href="favicon.png?v=3" />
+    <link rel="stylesheet" href="fonts.css" />
+    <script src="scripts/public-config.js"></script>
+    <style>
+        :root {
+            --background: 40 29% 94%;
+            --foreground: 24 13% 16%;
+            --border: 36 21% 83%;
+            --industrial-orange: 18 83% 57%;
+            --dark-pistachio: 95 28% 26%;
+            --muted-stone: 31 8% 42%;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: hsl(var(--background));
+            color: hsl(var(--foreground));
+            background-image:
+                radial-gradient(circle at top right, rgba(143, 159, 114, 0.22), transparent 28%),
+                linear-gradient(180deg, rgba(251, 248, 243, 0.98), rgba(244, 241, 234, 1));
+        }
+
+        a { color: inherit; }
+
+        .site-shell {
+            width: min(40rem, calc(100vw - 2rem));
+            margin: 0 auto;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            align-items: center;
+            padding: 1.5rem 0 1rem;
+        }
+
+        .brand {
+            font-family: "Baskerville", "Palatino Linotype", "Book Antiqua", serif;
+            font-size: 1.9rem;
+            color: hsl(var(--foreground));
+            text-decoration: none;
+        }
+
+        .page-frame {
+            background: rgba(251, 248, 243, 0.94);
+            border: 1px solid rgba(72, 96, 54, 0.18);
+            border-radius: 1.75rem;
+            box-shadow: 0 18px 48px rgba(47, 42, 36, 0.06);
+            padding: clamp(1.25rem, 3vw, 2.5rem);
+            margin: 1rem auto 2rem;
+        }
+
+        .signal-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: hsl(var(--dark-pistachio));
+            margin-bottom: 0.75rem;
+        }
+
+        .signal-divider {
+            height: 1px;
+            background: linear-gradient(90deg, rgba(72, 96, 54, 0.82), rgba(236, 106, 55, 0.55), rgba(217, 209, 199, 0.18));
+            margin: 0 0 1.5rem;
+        }
+
+        h1 {
+            font-family: "Baskerville", "Palatino Linotype", "Book Antiqua", serif;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            line-height: 1.15;
+            margin: 0 0 1rem;
+        }
+
+        p { margin: 0 0 1rem; line-height: 1.7; color: hsl(var(--muted-stone)); }
+
+        .en {
+            font-size: 0.92rem;
+        }
+
+        form { display: grid; gap: 0.9rem; margin-top: 1.25rem; }
+
+        label {
+            display: grid;
+            gap: 0.35rem;
+            font-size: 0.92rem;
+            color: hsl(var(--foreground));
+        }
+
+        input, select, textarea {
+            width: 100%;
+            min-height: 46px;
+            padding: 0.65rem 0.85rem;
+            font: inherit;
+            color: hsl(var(--foreground));
+            background: #fff;
+            border: 1px solid hsl(var(--border));
+            border-radius: 0.7rem;
+        }
+
+        textarea { min-height: 7rem; resize: vertical; }
+
+        input:focus-visible, select:focus-visible, textarea:focus-visible {
+            outline: 2px solid hsl(var(--dark-pistachio));
+            outline-offset: 1px;
+        }
+
+        .is-invalid { border-color: hsl(var(--industrial-orange)); }
+
+        .check {
+            display: flex;
+            gap: 0.65rem;
+            align-items: flex-start;
+            font-size: 0.92rem;
+            line-height: 1.5;
+            color: hsl(var(--muted-stone));
+        }
+
+        .check input { width: 1.05rem; min-height: 0; margin-top: 0.2rem; }
+
+        button {
+            appearance: none;
+            border: 0;
+            border-radius: 999px;
+            min-height: 48px;
+            padding: 0.75rem 1.25rem;
+            font: inherit;
+            font-weight: 650;
+            color: #2F2A24;
+            background: hsl(var(--industrial-orange));
+            cursor: pointer;
+        }
+
+        button:disabled { opacity: 0.6; cursor: wait; }
+
+        .note, .form-status { font-size: 0.88rem; }
+        .form-status[data-state="error"] { color: #8a3418; }
+        .form-status[data-state="ok"] { color: hsl(var(--dark-pistachio)); }
+
+        .hp {
+            position: absolute;
+            left: -9999px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+
+        .site-footer {
+            padding: 0 0 2.5rem;
+            color: hsl(var(--muted-stone));
+            font-size: 0.92rem;
+        }
+
+        .site-footer a { color: hsl(var(--industrial-orange)); text-decoration: none; }
+        .site-footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+<header class="site-shell topbar">
+    <a href="/" class="brand">RAIS</a>
+</header>
+<main class="site-shell">
+    <section class="page-frame">
+        <div class="signal-label">RAIS / Datenlöschung</div>
+        <div class="signal-divider"></div>
+        <h1>Daten löschen lassen</h1>
+        <p class="en">Use this form to ask RAIS to delete personal data we hold about you. This page is not linked from the website. The request goes to the same address that receives every other inquiry.</p>
+        <p>Über dieses Formular verlangen Sie die Löschung Ihrer personenbezogenen Daten. Die Seite ist nicht von der Website aus verlinkt. Die Anfrage geht an dieselbe Stelle wie alle anderen Anfragen.</p>
+        <p>WhatsApp-Daten löschen wir innerhalb von 30 Tagen. Für übrige Daten gilt die <a href="datenschutz.html">Datenschutzerklärung</a>. Gesetzliche Aufbewahrungspflichten bleiben unberührt. Die Löschung bestätigen wir an die angegebene E-Mail.</p>
+
+        <form id="deletion-form" novalidate>
+            <div class="hp" aria-hidden="true">
+                <label for="deletion-company">Firma
+                    <input id="deletion-company" name="company" type="text" tabindex="-1" autocomplete="off" />
+                </label>
+            </div>
+            <label for="deletion-name">Name
+                <input id="deletion-name" name="name" type="text" autocomplete="name" required maxlength="200" />
+            </label>
+            <label for="deletion-email">E-Mail für die Bestätigung
+                <input id="deletion-email" name="email" type="email" autocomplete="email" required maxlength="254" />
+            </label>
+            <label for="deletion-phone">Telefonnummer, falls es um WhatsApp geht
+                <input id="deletion-phone" name="phone" type="tel" autocomplete="tel" maxlength="40" />
+            </label>
+            <label for="deletion-scope">Was soll gelöscht werden?
+                <select id="deletion-scope" name="scope" required>
+                    <option value="">Bitte wählen</option>
+                    <option value="whatsapp">WhatsApp-Nachrichten</option>
+                    <option value="anfrage">Website-Anfrage</option>
+                    <option value="termin">Terminbuchung</option>
+                    <option value="alles">Alle bei RAIS gespeicherten Daten</option>
+                    <option value="sonstiges">Sonstiges</option>
+                </select>
+            </label>
+            <label for="deletion-message">Woran wir die Daten erkennen
+                <textarea id="deletion-message" name="message" maxlength="2000" placeholder="Zum Beispiel die WhatsApp-Nummer, die E-Mail der Anfrage oder der Termin."></textarea>
+            </label>
+            <label class="check" for="deletion-confirm">
+                <input id="deletion-confirm" name="confirm" type="checkbox" required />
+                <span>Ich verlange die Löschung der genannten Daten.</span>
+            </label>
+            <button id="deletion-submit" type="submit">Löschanfrage senden</button>
+            <p id="deletion-status" class="form-status" role="status" aria-live="polite"></p>
+        </form>
+        <p class="note">Die Anfrage verwenden wir nur, um die Löschung zu prüfen und zu bestätigen.</p>
+    </section>
+</main>
+<footer class="site-shell site-footer">
+    <a href="datenschutz.html">Datenschutz</a>
+</footer>
+<script>
+(function () {
+  var cfg = window.RAIS_PUBLIC_CONFIG || {};
+  var openedAt = new Date().toISOString();
+  var form = document.getElementById('deletion-form');
+  var status = document.getElementById('deletion-status');
+  var submit = document.getElementById('deletion-submit');
+  if (!form || !status || !submit) return;
+
+  function mark(el, invalid) {
+    if (!el) return;
+    el.classList.toggle('is-invalid', invalid);
+    if (invalid) el.setAttribute('aria-invalid', 'true');
+    else el.removeAttribute('aria-invalid');
+  }
+
+  function setStatus(state, text) {
+    status.dataset.state = state;
+    status.textContent = text;
+  }
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    var name = document.getElementById('deletion-name');
+    var email = document.getElementById('deletion-email');
+    var phone = document.getElementById('deletion-phone');
+    var scope = document.getElementById('deletion-scope');
+    var message = document.getElementById('deletion-message');
+    var confirm = document.getElementById('deletion-confirm');
+    var company = document.getElementById('deletion-company');
+    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
+    var phoneDigits = phone.value.replace(/\D/g, '');
+    var phoneOk = phone.value.trim() === '' || (phoneDigits.length >= 6 && phoneDigits.length <= 20);
+    var scopeOk = scope.value !== '';
+    var messageOk = scope.value !== 'sonstiges' || message.value.trim() !== '';
+
+    mark(name, name.value.trim() === '');
+    mark(email, !emailOk);
+    mark(phone, !phoneOk);
+    mark(scope, !scopeOk);
+    mark(message, !messageOk);
+    mark(confirm, !confirm.checked);
+
+    if (!name.value.trim() || !emailOk || !phoneOk || !scopeOk || !messageOk || !confirm.checked) {
+      setStatus('error', 'Bitte Name, eine gültige E-Mail und den Bereich ausfüllen. Bei „Sonstiges“ brauchen wir eine kurze Beschreibung.');
+      return;
+    }
+
+    if (company && company.value.trim()) return;
+
+    if (!cfg.supabaseUrl || !cfg.supabaseAnonKey) {
+      setStatus('error', 'Das Formular ist gerade nicht erreichbar. Schreiben Sie an kevin@ritz-ai.solutions mit dem Betreff „Datenlöschung“.');
+      return;
+    }
+
+    submit.disabled = true;
+    setStatus('', 'Wird gesendet …');
+
+    fetch(cfg.supabaseUrl + '/functions/v1/submit-deletion-request', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        apikey: cfg.supabaseAnonKey,
+        Authorization: 'Bearer ' + cfg.supabaseAnonKey
+      },
+      body: JSON.stringify({
+        name: name.value.trim(),
+        email: email.value.trim(),
+        phone: phone.value.trim(),
+        scope: scope.value,
+        message: message.value.trim(),
+        confirm: true,
+        company: company ? company.value : '',
+        form_opened_at: openedAt
+      })
+    }).then(function (res) {
+      if (!res.ok) throw new Error('request failed');
+      form.reset();
+      setStatus('ok', 'Die Anfrage ist eingegangen. Die Bestätigung kommt an die angegebene E-Mail, soweit wir die Daten löschen können.');
+    }).catch(function () {
+      setStatus('error', 'Der Versand hat nicht geklappt. Schreiben Sie an kevin@ritz-ai.solutions mit dem Betreff „Datenlöschung“.');
+    }).finally(function () {
+      submit.disabled = false;
+    });
+  });
+}());
+</script>
+</body>
+</html>
