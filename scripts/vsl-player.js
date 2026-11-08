@@ -6,8 +6,11 @@
  * Mit data-vsl-src (mp4 oder Embed-URL von Vimeo, Wistia, YouTube) wird er zum Player.
  * Optional: data-vsl-captions="pfad/zur/datei.vtt" fuer Untertitel (mp4).
  *
- * Mit data-vsl-src (Wistia/Embed/mp4) startet der Player sofort, ohne Play-Button.
- * Wistia setzt dabei Klaro-Consent "wistia". Widerruf entfernt das Embed.
+ * Wistia (data-vsl-src) lädt NICHT beim Seitenaufruf. Es startet nur, wenn die
+ * Person bereits in "wistia" eingewilligt hat (Banner) oder auf "Video abspielen"
+ * klickt; der Klick ist die dokumentierte Einwilligung (siehe Datenschutz).
+ * Vorher: Poster-Gate ohne Request an Wistia. Widerruf entfernt das Embed.
+ * Mp4/andere Embeds starten wie bisher.
  *
  * Ereignisse (fuer spaeteres Tracking, nur nach Klaro-Zustimmung zu verwenden):
  *   document 'rais:vsl'  detail: { event: 'play' | '25' | '50' | '75' | 'ended', t }
@@ -25,6 +28,51 @@
   var posterHtml = null;
   var playHtml = null;
   var loaded = false;
+
+  function t(text) {
+    return window.RAIS && typeof window.RAIS.t === 'function' ? window.RAIS.t(text) : text;
+  }
+
+  /* Gate statt Autostart: kein Request an Wistia, bis geklickt wird. */
+  function renderGate() {
+    if (frame.querySelector('.vsl__gate')) return;
+    var gate = document.createElement('div');
+    gate.className = 'vsl__gate';
+    gate.style.cssText =
+      'position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;' +
+      'justify-content:center;gap:0.9rem;padding:1rem;text-align:center;color:#FBF8F3;';
+
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'vsl__play';
+    btn.style.cssText = 'position:static;inset:auto;';
+    var icon = document.createElement('span');
+    icon.className = 'vsl__play-icon';
+    var label = document.createElement('span');
+    label.className = 'vsl__play-label';
+    label.textContent = t('Video abspielen');
+    btn.appendChild(icon);
+    btn.appendChild(label);
+    btn.addEventListener('click', onPlayClick);
+    gate.appendChild(btn);
+
+    var note = document.createElement('p');
+    note.style.cssText = 'margin:0;max-width:34rem;font-size:0.78rem;line-height:1.45;opacity:0.85;';
+    note.appendChild(
+      document.createTextNode(
+        t('Das Video wird von Wistia (USA) geladen. Mit dem Klick wird Ihre IP-Adresse an Wistia übertragen. Details in der '),
+      ),
+    );
+    var link = document.createElement('a');
+    link.href = 'datenschutz.html';
+    link.textContent = t('Datenschutzerklärung');
+    link.style.cssText = 'color:#FBF8F3;text-decoration:underline;';
+    note.appendChild(link);
+    note.appendChild(document.createTextNode('.'));
+    gate.appendChild(note);
+
+    frame.appendChild(gate);
+  }
 
   function emit(name, t) {
     try {
@@ -89,6 +137,10 @@
 
   function restorePoster() {
     clearMedia();
+    if (isWistia(src)) {
+      renderGate();
+      return;
+    }
     if (!frame.querySelector('.vsl__poster') && posterHtml) {
       frame.insertAdjacentHTML('afterbegin', posterHtml);
     }
@@ -132,6 +184,7 @@
   }
 
   function mountIframe() {
+    if (loaded) return;
     var iframe = document.createElement('iframe');
     iframe.src = src;
     iframe.title = 'RAIS Video';
@@ -145,6 +198,9 @@
   }
 
   function startPlayback() {
+    if (loaded) return;
+    var gate = frame.querySelector('.vsl__gate');
+    if (gate) gate.remove();
     var poster = frame.querySelector('.vsl__poster');
     var btn = frame.querySelector('.vsl__play');
     if (poster) {
@@ -183,8 +239,13 @@
     mgr.watch({
       update: function (_obj, name) {
         if (name !== 'consents' && name !== 'saveConsents') return;
-        if (hasConsent()) return;
+        if (hasConsent()) {
+          /* Erst nach dem Speichern starten, nicht beim bloßen Umschalten im Dialog. */
+          if (name === 'saveConsents' && !loaded) startPlayback();
+          return;
+        }
         if (loaded) restorePoster();
+        else if (isWistia(src)) renderGate();
       }
     });
   }
@@ -201,6 +262,10 @@
   }
 
   root.classList.remove('vsl--booking');
-  startPlayback();
+  if (isWistia(src) && !hasConsent()) {
+    renderGate();
+  } else {
+    startPlayback();
+  }
   watchConsent();
 })();

@@ -1,6 +1,10 @@
 (function () {
   var cfg = window.RAIS_PUBLIC_CONFIG;
   if (!cfg || !cfg.sentryDsn || !cfg.sentryLoaderKey) return;
+  /* Platzhalter aus der Vorlage (YOUR_KEY / oXXXX) sind kein echter Sentry-Key:
+     dann keinen Loader anlegen, sonst gäbe es nach der Einwilligung einen
+     Request auf eine nicht existierende Sentry-URL. */
+  if (/YOUR_KEY|XXXX/.test(cfg.sentryDsn) || /YOUR_KEY|XXXX/.test(cfg.sentryLoaderKey)) return;
 
   var loader = document.createElement('script');
   loader.type = 'text/plain';
