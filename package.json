@@ -15,6 +15,7 @@
     "build:tailwind": "tailwindcss -i ./styles/tailwind.input.css -o ./styles/tailwind.generated.css --config ./tailwind.config.js --minify",
     "test:roi-webhook": "node scripts/roi-lead-smoke-test.mjs",
     "test:lead-magnet-webhook": "node scripts/test-lead-magnet-webhook.mjs",
+    "test:unit": "vitest run",
     "test:e2e": "node tests/consent.e2e.mjs",
     "test:cookie-consent": "node scripts/test-cookie-consent-insert.mjs",
     "vendor:klaro": "node scripts/vendor-klaro.mjs"
@@ -23,7 +24,8 @@
     "klaro": "^0.7.21",
     "playwright-core": "^1.65.0",
     "tailwindcss": "^3.4.17",
-    "vite": "^5.0.0"
+    "vite": "^5.0.0",
+    "vitest": "^2.1.9"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.100.1"

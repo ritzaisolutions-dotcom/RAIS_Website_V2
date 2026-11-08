@@ -281,6 +281,7 @@ export const spriteHtml = `<svg xmlns="http://www.w3.org/2000/svg" style="displa
 
 export const scriptsHtml = `
 <script src="scripts/site-nav.js"></script>
+<script src="scripts/cal-tracking.js"></script>
 <script src="scripts/cal-embed.js"></script>
 <script src="scripts/booking-modal.js"></script>
 </body>

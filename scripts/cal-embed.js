@@ -21,6 +21,8 @@
   }
 
   var cfg = window.RAIS_PUBLIC_CONFIG || {};
+  /* Zuordnungsdaten fuer das serverseitige Schedule (scripts/cal-tracking.js). */
+  var T = window.RAISCalTracking || null;
   /* Buchung nur mit beiden Einwilligungen (Cal.com + Meta Pixel). */
   var SERVICES = ['cal', 'meta-pixel'];
   var grantingUntil = 0;
@@ -300,6 +302,69 @@
     });
   }
 
+  /* Felder fuer die versteckten Cal-Felder. Nur mit beiden Einwilligungen, sonst {}. */
+  function trackingFields() {
+    if (!T || !hasConsent()) return {};
+    try {
+      window.RAIS_EVENT_ID = window.RAIS_EVENT_ID || T.newEventId();
+      return T.trackingConfig({
+        consent: true,
+        cookie: document.cookie,
+        href: window.location.href,
+        search: window.location.search,
+        userAgent: window.navigator ? window.navigator.userAgent : '',
+        eventId: window.RAIS_EVENT_ID,
+        nowMs: Date.now(),
+      });
+    } catch (e) {
+      return {};
+    }
+  }
+
+  /* _fbp entsteht erst, wenn fbevents.js geladen ist (kurz nach der Zustimmung).
+     Hoechstens 1200 ms warten, dann trotzdem weiter. Ohne Tracking-Modul oder mit
+     vorhandenem Cookie wird nicht gewartet. */
+  function whenPixelCookie(done) {
+    function has() {
+      try {
+        return /(?:^|;\s*)_fbp=/.test(document.cookie);
+      } catch (e) {
+        return true;
+      }
+    }
+    if (!T || has()) {
+      done();
+      return;
+    }
+    var waited = 0;
+    var timer = window.setInterval(function () {
+      waited += 100;
+      if (has() || waited >= 1200) {
+        window.clearInterval(timer);
+        done();
+      }
+    }, 100);
+  }
+
+  /* Nur Logging, nur mit localStorage.rais_debug_cal = '1'. Speichert und sendet nichts. */
+  function debugBooking(source, raw) {
+    try {
+      if (window.localStorage.getItem('rais_debug_cal') !== '1' || !window.console) return;
+      var d = raw;
+      if (typeof d === 'string') d = JSON.parse(d);
+      var inner = d && d.data && typeof d.data === 'object' ? d.data : {};
+      window.console.info('[rais] Cal Buchung', {
+        source: source,
+        type: d && (d.type || d.action || d.method) || null,
+        keys: Object.keys(inner),
+        hasUid: typeof inner.uid === 'string',
+        uid: typeof inner.uid === 'string' ? inner.uid : null,
+      });
+    } catch (e) {
+      /* Debug darf nie stoeren */
+    }
+  }
+
   function goToThanks() {
     if (thanksRedirected) return;
     thanksRedirected = true;
@@ -309,7 +374,11 @@
     var delay = 0;
     try {
       if (typeof window.fbq === 'function') {
-        window.fbq('track', 'Schedule');
+        if (window.RAIS_EVENT_ID) {
+          window.fbq('track', 'Schedule', {}, { eventID: window.RAIS_EVENT_ID });
+        } else {
+          window.fbq('track', 'Schedule');
+        }
         delay = 400;
       }
     } catch (e) {
@@ -346,6 +415,7 @@
       var origin = event.origin || '';
       if (origin !== 'https://app.cal.com' && origin !== 'https://cal.com') return;
       if (!isCalBookingSuccess(event.data)) return;
+      debugBooking('iframe', event.data);
       goToThanks();
     });
   }
@@ -361,7 +431,7 @@
     return parts.length ? '&' + parts.join('&') : '';
   }
 
-  function renderDirectFrame(entry) {
+  function renderDirectFrame(entry, tracking) {
     var resolved = entry.target || target;
     var pageUrl = resolved.origin + '/' + resolved.link;
     clearReadyTimer(entry);
@@ -376,7 +446,7 @@
       'https://app.cal.com/' +
       resolved.link +
       '/embed?embedType=inline&layout=month_view&hideEventTypeDetails=true&theme=light' +
-      configQuery(entry.config);
+      configQuery(Object.assign({}, tracking || {}, entry.config || {}));
     frame.loading = 'eager';
     frame.referrerPolicy = 'strict-origin-when-cross-origin';
     frame.setAttribute('allow', 'payment');
@@ -404,12 +474,25 @@
     entry.loaded = true;
     listenThanksRedirect();
 
-    /* Convert-LP und Modal: direktes Iframe (zuverlässiger als Cal.js). */
-    if (entry.noLead || entry.direct) {
-      renderDirectFrame(entry);
-      return;
-    }
+    entry.activation = (entry.activation || 0) + 1;
+    var run = entry.activation;
+    entry.el.classList.add('is-loading');
 
+    whenPixelCookie(function () {
+      /* Zwischenzeitlich widerrufen oder neu aktiviert: nichts mehr tun. */
+      if (entry.activation !== run || !entry.loaded || !hasConsent()) return;
+      var tracking = trackingFields();
+
+      /* Convert-LP und Modal: direktes Iframe (zuverlässiger als Cal.js). */
+      if (entry.noLead || entry.direct) {
+        renderDirectFrame(entry, tracking);
+        return;
+      }
+      mountCalJs(entry, tracking);
+    });
+  }
+
+  function mountCalJs(entry, tracking) {
     entry.el.innerHTML = '';
     entry.el.classList.add('is-loading');
 
@@ -431,6 +514,7 @@
         {
           locale: window.RAIS && window.RAIS.lang && window.RAIS.lang() === 'en' ? 'en' : 'de',
         },
+        tracking || {},
         entry.config || {},
       ),
     };
@@ -443,8 +527,9 @@
     });
     window.Cal.ns[ns]('on', {
       action: 'bookingSuccessful',
-      callback: function () {
+      callback: function (e) {
         markReady(entry);
+        debugBooking('cal.js', e && e.detail);
         if (window.RAISFunnel && typeof window.RAISFunnel.track === 'function') {
           window.RAISFunnel.track('booking_confirmed', {
             source: entry.source || null,

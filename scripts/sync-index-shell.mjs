@@ -140,6 +140,7 @@ before = before.replace(/\s*<script src="scripts\/site-nav\.js"><\/script>\s*$/m
 
 // cal-embed.js muss vor booking-modal.js stehen.
 const modalScripts =
+  '\n<script src="scripts/cal-tracking.js"></script>' +
   '\n<script src="scripts/cal-embed.js"></script>' +
   '\n<script src="scripts/booking-modal.js"></script>\n\n';
 
@@ -154,6 +155,10 @@ html =
 html = html.replace(
   /(<script src="scripts\/rais-booking\.js"><\/script>\s*)+/g,
   ''
+);
+html = html.replace(
+  /(<script src="scripts\/cal-tracking\.js"><\/script>\s*){2,}/g,
+  '<script src="scripts/cal-tracking.js"></script>\n'
 );
 html = html.replace(
   /(<script src="scripts\/cal-embed\.js"><\/script>\s*){2,}/g,
