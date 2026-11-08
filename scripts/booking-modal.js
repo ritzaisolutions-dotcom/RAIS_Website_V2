@@ -47,8 +47,8 @@
 
   function warmCal() {
     if (!window.RAISCal) return;
-    if (typeof window.RAISCal.grantConsent === 'function') window.RAISCal.grantConsent();
-    if (typeof window.RAISCal.ensureConsent === 'function') window.RAISCal.ensureConsent();
+    /* Kein automatisches Zustimmen: preload lädt nur, wenn schon beide
+       Einwilligungen (Cal.com + Meta Pixel) vorliegen. */
     if (typeof window.RAISCal.preload === 'function') {
       window.RAISCal.preload({ ensureConsent: true });
     }
@@ -63,7 +63,7 @@
     modal.classList.add('is-open');
     document.body.classList.add('noscroll');
 
-    /* CTA-Klick = Einwilligung → Cal so früh wie möglich warmen. */
+    /* Cal vorwärmen, aber nur mit bestehender Einwilligung; sonst zeigt das Modal das Zustimmungs-Gate. */
     warmCal();
     mountCal();
 

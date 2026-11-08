@@ -1,9 +1,10 @@
 /**
  * Cal Inline-Embed, geteilt von Buchungsmodal und Kontaktsektion.
  *
- * Kein Netzwerkzugriff auf Cal, solange der Klaro-Service "cal" nicht
- * eingewilligt ist. Ohne Einwilligung: Platzhalter mit Ladebutton.
- * CTA/Modal-Klick gilt als Einwilligung (wie der Gate-Button).
+ * Kein Netzwerkzugriff auf Cal, solange NICHT BEIDE Klaro-Services
+ * "cal" und "meta-pixel" eingewilligt sind. Ohne Einwilligung: Platzhalter
+ * mit Zustimmungs-Button. Nur dieser Button erteilt die Einwilligung (beide
+ * Dienste zugleich); ein CTA-/Modal-Klick allein gilt NICHT als Einwilligung.
  *
  * Event: ritzaisolutions/strategiegespraech-mit-rais
  * Quali-Fragen leben im Cal-Event (pain, sales_per_year, social_media,
@@ -20,7 +21,9 @@
   }
 
   var cfg = window.RAIS_PUBLIC_CONFIG || {};
-  var SERVICE = 'cal';
+  /* Buchung nur mit beiden Einwilligungen (Cal.com + Meta Pixel). */
+  var SERVICES = ['cal', 'meta-pixel'];
+  var grantingUntil = 0;
 
   var FALLBACK_URL = 'https://cal.com/ritzaisolutions/strategiegespraech-mit-rais';
   var ALLOWED_HOSTS = ['cal.com', 'www.cal.com', 'ritz-ai-solutions.cal.eu'];
@@ -61,21 +64,31 @@
 
   function hasConsent() {
     var mgr = manager();
-    if (mgr && mgr.consents) return mgr.consents[SERVICE] === true;
+    if (mgr && mgr.consents) {
+      return SERVICES.every(function (name) {
+        return mgr.consents[name] === true;
+      });
+    }
     try {
       var raw = window.localStorage.getItem('klaro') || '{}';
       var stored = JSON.parse(decodeURIComponent(raw));
-      return stored[SERVICE] === true;
+      return SERVICES.every(function (name) {
+        return stored[name] === true;
+      });
     } catch (e) {
       return false;
     }
   }
 
+  /* Nur vom Zustimmungs-Button im Gate aufrufen (explizite Handlung). */
   function grantConsent() {
     var mgr = manager();
     if (!mgr || typeof mgr.updateConsent !== 'function') return false;
     try {
-      mgr.updateConsent(SERVICE, true);
+      grantingUntil = Date.now() + 2000;
+      SERVICES.forEach(function (name) {
+        mgr.updateConsent(name, true);
+      });
       mgr.saveAndApplyConsents();
       return true;
     } catch (e) {
@@ -83,10 +96,9 @@
     }
   }
 
+  /* Erteilt nichts mehr automatisch: gibt nur zurück, ob beide Einwilligungen da sind. */
   function ensureConsent() {
-    if (hasConsent()) return true;
-    if (grantConsent()) return true;
-    return true;
+    return hasConsent();
   }
 
   function watchConsent() {
@@ -96,12 +108,13 @@
       update: function (_obj, name) {
         if (name !== 'consents' && name !== 'saveConsents') return;
         mounted.forEach(function (entry) {
-          if (!hasConsent() && entry.holdUntil && Date.now() < entry.holdUntil) return;
+          if (!hasConsent() && Date.now() < grantingUntil) return;
           if (hasConsent()) {
+            if (entry.loaded) return;
             clearReadyTimer(entry);
             entry.loaded = false;
             activate(entry);
-          } else if (!entry.openedByClick) {
+          } else {
             clearReadyTimer(entry);
             entry.loaded = false;
             renderPlaceholder(entry);
@@ -123,7 +136,7 @@
     var note = document.createElement('p');
     note.className = 'cal-gate__note';
     note.textContent = t(
-      'Der Kalender kommt von unserem Terminanbieter Cal.com. Mit dem Klick laden Sie ihn nach, dabei wird Ihre IP-Adresse an Cal.com übertragen. Name, E-Mail und Telefonnummer geben Sie anschließend direkt im Kalender ein. Details in der ',
+      'Für die Online-Terminbuchung benötigen wir Ihre Einwilligung in zwei Dienste: Cal.com (Kalender, Ihre IP-Adresse wird an Cal.com übertragen) und Meta Pixel (Werbemessung, Daten werden an Meta übertragen, damit wir sehen, ob eine Buchung über unsere Anzeigen zustande kam). Ohne beide Einwilligungen ist keine Online-Buchung möglich; alternativ erreichen Sie uns per E-Mail an kevin@ritz-ai.solutions. Name, E-Mail und Telefonnummer geben Sie anschließend direkt im Kalender ein. Details in der ',
     );
     var link = document.createElement('a');
     link.href = 'datenschutz.html';
@@ -135,14 +148,18 @@
     var btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'cal-gate__btn';
-    btn.textContent = t('Kalender laden und Termin wählen');
+    btn.textContent = t('Zustimmen und Termin wählen');
     btn.addEventListener('click', function () {
       btn.disabled = true;
       btn.textContent = t('Kalender wird geladen…');
+      if (!grantConsent()) {
+        /* Consent-Tool nicht verfügbar: nichts laden. */
+        btn.disabled = false;
+        btn.textContent = t('Zustimmen und Termin wählen');
+        return;
+      }
       entry.openedByClick = true;
-      entry.holdUntil = Date.now() + 2000;
       entry.consentedAt = Date.now();
-      grantConsent();
       entry.loaded = false;
       activate(entry);
     });
@@ -277,7 +294,21 @@
   function goToThanks() {
     if (thanksRedirected) return;
     thanksRedirected = true;
-    window.location.assign('/danke.html');
+    /* Buchung abgeschlossen → Meta-Event "Schedule". Der Kalender lädt nur mit
+       Meta-Pixel-Einwilligung, fbq existiert hier also nur bei Zustimmung.
+       Kurze Verzögerung, damit der Request vor dem Seitenwechsel rausgeht. */
+    var delay = 0;
+    try {
+      if (typeof window.fbq === 'function') {
+        window.fbq('track', 'Schedule');
+        delay = 400;
+      }
+    } catch (e) {
+      /* Tracking darf die Weiterleitung nie blockieren */
+    }
+    window.setTimeout(function () {
+      window.location.assign('/danke.html');
+    }, delay);
   }
 
   function isCalBookingSuccess(data) {
@@ -475,11 +506,7 @@
           counter += 1;
           existing.ns = 'rais-' + counter;
         }
-        if (forceLoad || remount || hasConsent()) {
-          if (forceLoad) {
-            existing.openedByClick = true;
-            existing.holdUntil = Date.now() + 2000;
-          }
+        if (hasConsent()) {
           existing.consentedAt = Date.now();
           activate(existing);
         } else {
@@ -510,11 +537,7 @@
     };
     mounted.push(entry);
 
-    if (forceLoad || (hasConsent() && !el.hasAttribute('data-cal-click'))) {
-      if (forceLoad) {
-        entry.openedByClick = true;
-        entry.holdUntil = Date.now() + 2000;
-      }
+    if (hasConsent() && (forceLoad || !el.hasAttribute('data-cal-click'))) {
       entry.consentedAt = Date.now();
       activate(entry);
     } else {
@@ -584,8 +607,7 @@
   /* Script + DNS warmen, sobald Consent da ist. Iframe erst bei mount. */
   function preload(opts) {
     var options = opts || {};
-    if (options.ensureConsent !== false) ensureConsent();
-    if (!hasConsent() && options.ensureConsent !== false) ensureConsent();
+    if (!hasConsent()) return Promise.resolve(null);
     return loadScript((options.calUrl ? resolveTarget(options.calUrl) : target).script).catch(
       function () {
         return null;

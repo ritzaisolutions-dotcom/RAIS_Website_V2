@@ -89,7 +89,7 @@ var klaroConfig = {
     de: {
       consentNotice: {
         description:
-          'Wir nutzen Cookies und ähnliche Technologien. Einige sind technisch notwendig, andere helfen uns – mit deiner Einwilligung – bei der Fehlererkennung auf dieser Website.',
+          'Wir nutzen Cookies und ähnliche Technologien. Einige sind technisch notwendig, andere helfen uns – mit deiner Einwilligung – bei der Fehlererkennung und der Werbemessung (Meta Pixel) auf dieser Website.',
         learnMore: 'Einstellungen',
       },
       consentModal: {
@@ -110,12 +110,13 @@ var klaroConfig = {
         security: 'Sicherheit & Fehlerbehebung',
         booking: 'Terminbuchung',
         media: 'Video & Medien',
+        marketing: 'Marketing & Werbemessung',
       },
     },
     en: {
       consentNotice: {
         description:
-          'We use cookies and similar technologies. Some are technically required, others help us, with your consent, detect errors on this website.',
+          'We use cookies and similar technologies. Some are technically required, others help us, with your consent, detect errors and measure advertising (Meta Pixel) on this website.',
         learnMore: 'Settings',
       },
       consentModal: {
@@ -135,6 +136,12 @@ var klaroConfig = {
         security: 'Security and troubleshooting',
         booking: 'Appointment booking',
         media: 'Video and media',
+        marketing: 'Marketing and ad measurement',
+      },
+      'meta-pixel': {
+        title: 'Meta Pixel (ad measurement)',
+        description:
+          'The Meta Pixel measures the effectiveness of our Facebook and Instagram ads and lets us show ads to relevant audiences. It loads only after you consent and transmits your IP address, browser data and the pages you view to Meta. Provider: Meta Platforms Ireland Limited, Dublin, Ireland (data may be transferred to Meta Platforms, Inc., USA).',
       },
       sentry: {
         title: 'Sentry (error monitoring)',
@@ -183,6 +190,19 @@ var klaroConfig = {
       description:
         'Wistia hostet und spielt das Verkaufsvideo ab. Beim Laden des Players wird Ihre IP-Adresse an Wistia übertragen. Das Video lädt erst, wenn Sie auf Abspielen klicken oder Wistia in den Datenschutzeinstellungen aktivieren. Anbieter: Wistia, Inc., USA.',
       purposes: ['media'],
+      required: false,
+      optOut: false,
+    },
+    /* Meta Pixel: Code kommt aus scripts/meta-pixel-klaro-bootstrap.js
+       (type="text/plain", data-name="meta-pixel"). Läuft erst nach Opt-in.
+       cookies: Klaro löscht _fbp/_fbc, wenn der Dienst abgelehnt/widerrufen wird. */
+    {
+      name: 'meta-pixel',
+      title: 'Meta Pixel (Werbemessung)',
+      description:
+        'Der Meta Pixel misst die Wirkung unserer Facebook- und Instagram-Werbung und ermöglicht zielgruppenbasierte Anzeigen. Er lädt erst nach Ihrer Einwilligung und überträgt IP-Adresse, Browserdaten und aufgerufene Seiten an Meta. Anbieter: Meta Platforms Ireland Limited, Dublin, Irland (ggf. Übermittlung an Meta Platforms, Inc., USA).',
+      purposes: ['marketing'],
+      cookies: [/^_fbp$/, /^_fbc$/],
       required: false,
       optOut: false,
     },

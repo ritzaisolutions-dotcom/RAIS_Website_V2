@@ -1193,5 +1193,7 @@
   "Weiter zum Termin": "Continue to booking",
   "Danke. Wählen Sie unten Ihren Termin und hinterlassen Sie Ihre Kontaktdaten.": "Thanks. Choose your time below and leave your contact details.",
   "45 Minuten Erstgespräch am Telefon. Die Bestätigung kommt per E-Mail.": "45-minute first conversation by phone. Confirmation arrives by email.",
-  "Wenn der Termin nicht passt: melden Sie sich kurz per E-Mail, wir finden einen neuen Slot.": "If the time does not work: email us briefly and we will find a new slot."
+  "Wenn der Termin nicht passt: melden Sie sich kurz per E-Mail, wir finden einen neuen Slot.": "If the time does not work: email us briefly and we will find a new slot.",
+  "Für die Online-Terminbuchung benötigen wir Ihre Einwilligung in zwei Dienste: Cal.com (Kalender, Ihre IP-Adresse wird an Cal.com übertragen) und Meta Pixel (Werbemessung, Daten werden an Meta übertragen, damit wir sehen, ob eine Buchung über unsere Anzeigen zustande kam). Ohne beide Einwilligungen ist keine Online-Buchung möglich; alternativ erreichen Sie uns per E-Mail an kevin@ritz-ai.solutions. Name, E-Mail und Telefonnummer geben Sie anschließend direkt im Kalender ein. Details in der ": "To book online we need your consent to two services: Cal.com (calendar, your IP address is sent to Cal.com) and Meta Pixel (ad measurement, data is sent to Meta so we can see whether a booking came from our ads). Without both consents, online booking is not possible; alternatively, you can reach us by email at kevin@ritz-ai.solutions. You then enter name, email and phone number directly in the calendar. Details in the ",
+  "Zustimmen und Termin wählen": "Agree and pick a time"
 }

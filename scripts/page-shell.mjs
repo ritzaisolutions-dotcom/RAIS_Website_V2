@@ -217,6 +217,7 @@ ${ogImage ? `  <meta property="og:image" content="https://ritz-ai.solutions/${og
   <meta property="twitter:image" content="https://ritz-ai.solutions/${ogImage}">` : ''}
   <script src="scripts/public-config.js"></script>
   <script src="scripts/sentry-klaro-bootstrap.js"></script>
+  <script src="scripts/meta-pixel-klaro-bootstrap.js"></script>
   <script src="klaro-config.js"></script>
   <script src="vendor/klaro/klaro.js"></script>
   <link rel="stylesheet" href="vendor/klaro/klaro.min.css">
