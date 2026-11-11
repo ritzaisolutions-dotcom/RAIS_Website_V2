@@ -1390,13 +1390,9 @@
       </div>
     </a>
     <div class="nav-center convert-nav-links" aria-label="Seitenabschnitte">
-      <a href="#garantie">Garantie</a>
-      <a href="#schmerz">Schmerz</a>
-      <a href="#system">System</a>
-      <a href="#referenz">Referenz</a>
-      <a href="#assistent">Assistent</a>
+      <a href="#system">ISS</a>
+      <a href="#referenz">Referenzen</a>
       <a href="#ablauf">Zusammenarbeit</a>
-      <a href="#faq">FAQ</a>
     </div>
     <div class="nav-right">
       <a href="#termin" class="btn-primary js-open-booking" id="nav-demo-btn" data-source="nav">Erstgespräch buchen</a>
@@ -1408,21 +1404,21 @@
 
         <section id="hero" aria-labelledby="akut-h1">
             <div class="hero-overlay" aria-hidden="true"></div>
-            <div class="hero-content">
-                <p class="hero-sub akut-pre hero-sub--script">Für Wohnmakler ab 20 verkauften Immobilien im Jahr.</p>
-                <h1 id="akut-h1" class="hero-h1 hero-h1--promise convert-hero__h1">
+            <div class="hero-content hero-enter">
+                <p class="hero-sub akut-pre hero-sub--script hero-enter__item" style="--enter-i:0">Für Wohnmakler ab 20 verkauften Immobilien im Jahr.</p>
+                <h1 id="akut-h1" class="hero-h1 hero-h1--promise convert-hero__h1 hero-enter__item" style="--enter-i:1">
                     Von der teuren Portalflut zu ernsthaften Kaufanfragen, planbar in nur 6 Wochen.
                 </h1>
-                <p class="hero-sub hero-sub--script">15 ernsthafte Kaufanfragen in den ersten 6 Wochen, monatlich planbar, direkt abgeholt.</p>
+                <p class="hero-sub hero-sub--script hero-enter__item" style="--enter-i:2"><span class="akut-mark">15 ernsthafte Kaufanfragen</span> in den ersten 6 Wochen, monatlich planbar, direkt abgeholt.</p>
                 <!-- Wistia Media-ID yhmqp1lrav. Kein Poster/Thumbnail. Embed sofort. -->
-                <div class="vsl" id="vsl" data-vsl-src="https://fast.wistia.net/embed/iframe/yhmqp1lrav" data-vsl-captions="">
+                <div class="vsl hero-enter__item" id="vsl" style="--enter-i:3" data-vsl-src="https://fast.wistia.net/embed/iframe/yhmqp1lrav" data-vsl-captions="">
                     <div class="vsl__frame"></div>
                 </div>
-                <div class="hero-ctas">
+                <div class="hero-ctas hero-enter__item" style="--enter-i:4">
                     <button type="button" class="hero-btn-primary js-open-booking" id="hero-work-btn" data-source="hero">Erstgespräch buchen</button>
                     <p class="rais-guarantee-note rais-guarantee-note--on-dark"><img src="images/glass/shield.svg" width="16" height="16" alt="" loading="lazy" decoding="async"><span>15 ernsthafte Kaufanfragen in 6 Wochen garantiert</span></p>
                 </div>
-                <div class="hero-clarify">
+                <div class="hero-clarify hero-enter__item" style="--enter-i:5">
                     <p class="hero-clarify__title">Im Erstgespräch klären wir:</p>
                     <ul class="hero-clarify__list">
                         <li>ob in Ihrer Region genug ernsthafte Käufer erreichbar sind</li>
@@ -1521,6 +1517,12 @@
             </div>
         </section>
 
+        <section id="sonar" class="sonar-band" aria-hidden="true">
+            <div class="sonar-band__stage" data-sonar-grid>
+                <canvas></canvas>
+            </div>
+        </section>
+
         <section id="referenz" class="home-band home-band--linen" aria-labelledby="referenz-title">
             <div class="section-wrap">
                 <span class="mono-label">Referenz</span>
@@ -1531,7 +1533,7 @@
                     </div>
                     <div class="akut-proof__body">
                         <p class="akut-proof__status">Backoffice-Case</p>
-                        <p class="akut-proof__stat">rund 80 Stunden</p>
+                        <p class="akut-proof__stat"><span class="akut-stat-pop">rund 80 Stunden</span></p>
                         <p class="akut-proof__claim">Bei Haller haben wir allein im Abholen und Nachfassen von Kaufanfragen rund 80 Stunden zurückgewonnen. Ein ehrlicher Backoffice-Fall.</p>
                         <ul class="akut-proof__minis">
                             <li>
@@ -1556,30 +1558,40 @@
             <div class="section-wrap">
                 <span class="mono-label">Virtueller Vertriebsassistent</span>
                 <h2 class="section-h2" id="assistent-title">Eine Anfrage kommt rein. In Minuten ist sie abgeholt.</h2>
-                <p class="section-sub akut-assistant-lead">Der Assistent schreibt per WhatsApp, legt das erste Käuferprofil an, qualifiziert vor, legt den Termin und schreibt nur passende Daten ins CRM.</p>
-                <div class="va-flow" aria-label="Was der virtuelle Vertriebsassistent macht">
+                <p class="section-sub akut-assistant-lead">Der Virtuelle Vertriebsassistent schreibt per WhatsApp, legt das Käuferprofil an, fasst nach, legt den Termin und schreibt nur passende Daten ins CRM.</p>
+                <div class="va-flow va-flow--rays" aria-label="Was der Virtuelle Vertriebsassistent macht">
                     <div class="va-flow__hub">
                         <img class="va-flow__hub-icon" src="images/glass/assistant.svg" width="72" height="72" alt="" loading="lazy" decoding="async">
-                        <span class="va-flow__hub-label">Virtueller Assistent</span>
+                        <span class="va-flow__hub-label">Virtueller Vertriebsassistent</span>
                     </div>
                     <ol class="va-flow__steps">
                         <li class="va-flow__step">
+                            <span class="va-flow__ray" aria-hidden="true"></span>
                             <span class="va-flow__num">1</span>
                             <strong class="va-flow__title">Erstes Gespräch anstoßen</strong>
                             <span class="va-flow__desc">Erste Antwort und Gesprächsöffnung, ohne dass Sie am Handy sitzen.</span>
                         </li>
                         <li class="va-flow__step">
+                            <span class="va-flow__ray" aria-hidden="true"></span>
                             <span class="va-flow__num">2</span>
                             <strong class="va-flow__title">Käuferprofil und Vorqualifizierung</strong>
                             <span class="va-flow__desc">Budget, Finanzierung und Kaufzeitraum in den ersten Nachrichten.</span>
                         </li>
                         <li class="va-flow__step">
+                            <span class="va-flow__ray" aria-hidden="true"></span>
                             <span class="va-flow__num">3</span>
+                            <strong class="va-flow__title">Automatisches Nachfassen</strong>
+                            <span class="va-flow__desc">Bleibt die Antwort aus, hakt er nach Ihren Regeln nach, bis Klarheit da ist oder der Lead kalt bleibt.</span>
+                        </li>
+                        <li class="va-flow__step">
+                            <span class="va-flow__ray" aria-hidden="true"></span>
+                            <span class="va-flow__num">4</span>
                             <strong class="va-flow__title">Termin legen</strong>
                             <span class="va-flow__desc">Sie rufen an, wenn schon Vertrauen da ist und der Slot steht.</span>
                         </li>
                         <li class="va-flow__step">
-                            <span class="va-flow__num">4</span>
+                            <span class="va-flow__ray" aria-hidden="true"></span>
+                            <span class="va-flow__num">5</span>
                             <strong class="va-flow__title">Vorwissen und gefilterte Daten ins CRM</strong>
                             <span class="va-flow__desc">Propstack, onOffice, FlowFact. Nur wer passt, landet dort.</span>
                         </li>
@@ -1592,7 +1604,7 @@
             <div class="section-wrap">
                 <span class="mono-label">Zusammenarbeit</span>
                 <h2 class="section-h2" id="ablauf-title">So starten wir.</h2>
-                <ol class="akut-flow" aria-label="Zusammenarbeit in fünf Schritten">
+                <ol class="akut-flow akut-flow--vertical" aria-label="Zusammenarbeit in fünf Schritten">
                     <li class="akut-flow__step">
                         <img class="akut-flow__icon" src="images/glass/chat.svg" width="28" height="28" alt="" loading="lazy" decoding="async">
                         <span class="akut-flow__num">1</span>
@@ -1631,12 +1643,18 @@
             </div>
         </section>
 
-        <section id="termin" class="home-band home-band--green akut-cta-band" aria-labelledby="termin-title">
+        <section id="termin" class="home-band home-band--green akut-cta-band akut-cta-band--industrial" aria-labelledby="termin-title">
             <div class="section-wrap">
-                <div class="akut-cta">
+                <div class="akut-cta akut-cta--industrial">
                     <span class="mono-label mono-label--contact">60 Minuten</span>
-                    <h2 class="section-h2 akut-cta__title" id="termin-title">In 60 Minuten klären wir, ob 15 ernsthafte Kaufanfragen in Ihrer Region drin sind.</h2>
+                    <h2 class="section-h2 akut-cta__title" id="termin-title">In 60 Minuten klären wir, ob <span class="akut-mark akut-mark--on-dark">15 ernsthafte Kaufanfragen</span> in Ihrer Region drin sind.</h2>
                     <p class="akut-cta__lead">Im Erstgespräch klären wir, ob das Immo Sales System zu Ihrem Markt passt.</p>
+                    <p class="akut-cta__expect-label">Was Sie erwartet</p>
+                    <ul class="akut-cta__expect">
+                        <li>Ob in Ihrer Region genug ernsthafte Käufer erreichbar sind</li>
+                        <li>Wie die Kampagne für Ihre Objekte und Ihren Markt aussähe</li>
+                        <li>Was Portal-Anfragen Sie heute kosten und was 15 ernsthafte Kaufanfragen wert sind</li>
+                    </ul>
                     <button type="button" class="hero-btn-primary akut-cta__btn js-open-booking" data-source="termin">Erstgespräch buchen</button>
                     <p class="rais-guarantee-note rais-guarantee-note--on-dark"><img src="images/glass/shield.svg" width="16" height="16" alt="" loading="lazy" decoding="async"><span>15 ernsthafte Kaufanfragen in 6 Wochen garantiert</span></p>
                     <p class="akut-cta__note">Ohne Verpflichtung. Drei kurze Fragen, dann Termin.</p>
@@ -1867,46 +1885,118 @@
             window.lucide.createIcons();
         }
 
-        /* ── Antigravity reveal orchestration ───────────────────
-           Das Register faded als ein Block ein, nicht Zeile für Zeile.
-           15 gestaffelte Einzelreveals wären dekorative Bewegung
-           ohne Verkaufszweck. */
+        /* ── Convert-LP reveal orchestration ────────────────────
+           Targets: Garantie/Schmerz/System/Referenz/VA/Ablauf/Termin/
+           Videos/FAQ. Sibling-Stagger für Karten und Flow-Steps. */
         var revealTargets = document.querySelectorAll([
-            '.icp-card', '.datenblatt', '.ablauf-step', '.kontrakt', '.arch', '.fragen',
-            '.stack-card', '.beweis-grid', '.akte-register', '.branchen',
-            '.trust-grid', '.contact-text-col', '.contact-detail',
-            '.audit-blueprint', '.cal-embed-wrap', '.rechner'
+            '#garantie .akut-guarantee-shield',
+            '#garantie .akut-guarantee-lead',
+            '.convert-guarantee-card',
+            '#schmerz .mono-label',
+            '#schmerz .section-h2',
+            '.akut-pain-card',
+            '#schmerz .akut-consequence',
+            '#schmerz .convert-bridge__cta',
+            '#system .akut-system-head',
+            '#system .akut-flow__step',
+            '#system .convert-bridge__cta',
+            '.akut-proof',
+            '#assistent .mono-label',
+            '#assistent .section-h2',
+            '#assistent .akut-assistant-lead',
+            '.va-flow__hub',
+            '.va-flow__step',
+            '#ablauf .mono-label',
+            '#ablauf .section-h2',
+            '#ablauf .akut-flow__step',
+            '#ablauf .convert-bridge__cta',
+            '.akut-cta',
+            '#videos .mono-label',
+            '#videos .section-h2',
+            '#videos .section-sub',
+            '.yt-gate',
+            '.yt-channel-btn',
+            '#faq .mono-label',
+            '#faq .section-h2',
+            '.akut-faq'
         ].join(','));
 
-        revealTargets.forEach(function (el, index) {
+        revealTargets.forEach(function (el) {
             if (!el.classList.contains('reveal')) {
                 el.classList.add('reveal');
             }
-            if (!el.classList.contains('reveal-delay-1') && !el.classList.contains('reveal-delay-2') && !el.classList.contains('reveal-delay-3')) {
-                var stagger = index % 3;
-                if (stagger === 1) el.classList.add('reveal-delay-1');
-                if (stagger === 2) el.classList.add('reveal-delay-2');
+            var parent = el.parentElement;
+            if (!parent) return;
+            var groupSel = null;
+            if (el.classList.contains('convert-guarantee-card')) groupSel = ':scope > .convert-guarantee-card';
+            else if (el.classList.contains('akut-pain-card')) groupSel = ':scope > .akut-pain-card';
+            else if (el.classList.contains('va-flow__step')) groupSel = ':scope > .va-flow__step';
+            else if (el.classList.contains('akut-flow__step')) groupSel = ':scope > .akut-flow__step';
+            if (!groupSel) return;
+            var group = parent.querySelectorAll(groupSel);
+            var sibIndex = Array.prototype.indexOf.call(group, el);
+            if (sibIndex >= 0) {
+                el.style.transitionDelay = (sibIndex * 0.07) + 's';
+                el.style.setProperty('--reveal-i', String(sibIndex));
             }
         });
 
+        function inViewport(el, topPad, bottomPad) {
+            var r = el.getBoundingClientRect();
+            var vh = window.innerHeight || document.documentElement.clientHeight;
+            return r.top < vh * (bottomPad || 0.92) && r.bottom > vh * (topPad || 0.06);
+        }
+
+        function activateVisibleMarks() {
+            document.querySelectorAll('.akut-mark:not(.is-on)').forEach(function (el) {
+                if (inViewport(el, 0.1, 0.88)) el.classList.add('is-on');
+            });
+        }
+
+        /* Orange highlight wipe when mark scrolls into view */
+        var markObserver = null;
         if ('IntersectionObserver' in window) {
-            var revealObserver = new IntersectionObserver(function(entries) {
+            markObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-on');
+                        markObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.35, rootMargin: '0px 0px -6% 0px' });
+            document.querySelectorAll('.akut-mark').forEach(function (el) {
+                markObserver.observe(el);
+            });
+        }
+
+        var revealObserver = null;
+        function activateVisibleReveals() {
+            document.querySelectorAll('.reveal:not(.active)').forEach(function (el) {
+                if (!inViewport(el)) return;
+                el.classList.add('active');
+                if (revealObserver) revealObserver.unobserve(el);
+            });
+            activateVisibleMarks();
+        }
+
+        if ('IntersectionObserver' in window) {
+            revealObserver = new IntersectionObserver(function(entries) {
                 entries.forEach(function(entry) {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('active');
                         revealObserver.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.14, rootMargin: '0px 0px -4% 0px' });
+            }, { threshold: 0.08, rootMargin: '0px 0px -2% 0px' });
 
             document.querySelectorAll('.reveal').forEach(function(el) {
                 revealObserver.observe(el);
             });
-        } else {
-            document.querySelectorAll('.reveal').forEach(function(el) {
-                el.classList.add('active');
-            });
         }
+
+        activateVisibleReveals();
+        window.addEventListener('scroll', activateVisibleReveals, { passive: true });
+        window.addEventListener('resize', activateVisibleReveals);
 
         /* ── Mobile sticky CTA ───────────────────────────────── */
         var stickyCta = document.getElementById('sticky-cta');
@@ -2065,6 +2155,7 @@
 <script src="scripts/vsl-player.js"></script>
 <script src="scripts/yt-gate.js"></script>
     <script src="scripts/collab-scroll.js"></script>
+<script src="scripts/sonar-grid.js"></script>
 
 <script src="scripts/i18n-dict.js"></script>
 <script src="scripts/i18n.js"></script>
