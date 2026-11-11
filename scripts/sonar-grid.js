@@ -169,12 +169,6 @@
     pointer.active = false;
   }
 
-  function onClick(e) {
-    if (reduce) return;
-    var rect = canvas.getBoundingClientRect();
-    spawnPing(e.clientX - rect.left, e.clientY - rect.top, performance.now() / 1000);
-  }
-
   resize();
   if (reduce) {
     draw(0);
@@ -187,9 +181,12 @@
     if (reduce) draw(0);
   }, { passive: true });
 
-  root.addEventListener('pointermove', onPointer, { passive: true });
-  root.addEventListener('pointerleave', onLeave);
-  root.addEventListener('click', onClick);
+  /* Hover glow on the CTA band; stage itself stays pointer-events: none */
+  var interactiveHost = root.closest('#termin');
+  if (interactiveHost && !reduce) {
+    interactiveHost.addEventListener('pointermove', onPointer, { passive: true });
+    interactiveHost.addEventListener('pointerleave', onLeave);
+  }
 
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
