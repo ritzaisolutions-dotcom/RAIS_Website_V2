@@ -151,6 +151,11 @@ var klaroConfig = {
         description:
           'Wistia hosts and plays the sales video. Loading the player sends your IP address to Wistia. The video loads only after you click play or enable Wistia in the privacy settings. Provider: Wistia, Inc., USA.',
       },
+      youtube: {
+        title: 'YouTube (video player)',
+        description:
+          'YouTube plays the context video. Loading the player sends your IP address to Google Ireland. The video loads only after you click play or enable YouTube in the privacy settings. Provider: Google Ireland Limited, Dublin, Ireland.',
+      },
     },
   },
 
@@ -173,6 +178,17 @@ var klaroConfig = {
       title: 'Wistia (Video-Player)',
       description:
         'Wistia hostet und spielt das Verkaufsvideo ab. Beim Laden des Players wird Ihre IP-Adresse an Wistia übertragen. Das Video lädt erst, wenn Sie auf Abspielen klicken oder Wistia in den Datenschutzeinstellungen aktivieren. Anbieter: Wistia, Inc., USA.',
+      purposes: ['media'],
+      required: false,
+      optOut: false,
+    },
+    /* YouTube-Kontextvideo: Embed erst nach Play-Klick / Klaro-Consent,
+       siehe scripts/yt-gate.js. Kein Autoload beim Seitenaufruf. */
+    {
+      name: 'youtube',
+      title: 'YouTube (Video-Player)',
+      description:
+        'YouTube spielt das Kontextvideo ab. Beim Laden des Players wird Ihre IP-Adresse an Google Ireland übertragen. Das Video lädt erst, wenn Sie auf Abspielen klicken oder YouTube in den Datenschutzeinstellungen aktivieren. Anbieter: Google Ireland Limited, Dublin, Irland.',
       purposes: ['media'],
       required: false,
       optOut: false,
