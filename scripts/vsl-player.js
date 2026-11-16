@@ -60,7 +60,7 @@
     note.style.cssText = 'margin:0;max-width:34rem;font-size:0.78rem;line-height:1.45;opacity:0.85;';
     note.appendChild(
       document.createTextNode(
-        t('Das Video wird von Wistia (USA) geladen. Mit dem Klick wird Ihre IP-Adresse an Wistia übertragen. Details in der '),
+        t('Das Video wird von Wistia (USA) geladen. Mit dem Klick wird deine IP-Adresse an Wistia übertragen. Details in der '),
       ),
     );
     var link = document.createElement('a');
